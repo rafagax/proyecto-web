@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Code2, Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Globe, Mail, MessageCircle } from 'lucide-react';
+import logoImg from '../assets/logo sin fondo.png';
 
 const Footer = () => {
   return (
@@ -8,17 +9,15 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-col">
             <Link to="/" className="navbar-logo" style={{ marginBottom: '1rem', display: 'flex' }}>
-              <Code2 size={28} className="text-gradient" />
-              <span>Web<span className="text-gradient">Nova</span></span>
+              <img src={logoImg} alt="WebNova Logo" style={{ height: '45px' }} />
             </Link>
             <p>
               Transformamos tu visión en una experiencia digital extraordinaria. Especialistas en diseño y desarrollo web de alto rendimiento.
             </p>
             <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-              <a href="#" style={{ color: 'var(--text-secondary)' }}><Instagram size={20} /></a>
-              <a href="#" style={{ color: 'var(--text-secondary)' }}><Twitter size={20} /></a>
-              <a href="#" style={{ color: 'var(--text-secondary)' }}><Linkedin size={20} /></a>
-              <a href="#" style={{ color: 'var(--text-secondary)' }}><Facebook size={20} /></a>
+              <a href="#" style={{ color: 'var(--text-secondary)' }}><Globe size={20} /></a>
+              <a href="#" style={{ color: 'var(--text-secondary)' }}><Mail size={20} /></a>
+              <a href="#" style={{ color: 'var(--text-secondary)' }}><MessageCircle size={20} /></a>
             </div>
           </div>
 
@@ -49,9 +48,16 @@ const Footer = () => {
             <p>Dirección: Av. Tecnológica 123, Ciudad Digital</p>
           </div>
         </div>
-        
+
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} WebNova Agencia Digital. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} Todos los derechos reservados.</p>
+          <div className="footer-developer" style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>
+            <p>Sitio web desarrollado por: {' '}
+              <a href="https://portafolio-kpi-jv.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', fontWeight: '600' }}>
+                Ing. Jesús Vásquez
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,4 +1,5 @@
-import { ArrowRight, Layout, Smartphone, Zap, Search, CheckCircle2, MessageCircle, Mail, MapPin } from 'lucide-react';
+import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin } from 'lucide-react';
+import heroImg from '../assets/hero.png';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -7,17 +8,17 @@ const Home = () => {
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-bg-glow"></div>
-        <div className="container">
-          <div className="hero-content">
+        <div className="container" style={{display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '2rem'}}>
+          <div className="hero-content" style={{flex: '1 1 400px', textAlign: 'left', margin: 0}}>
             <h1 className="hero-title" style={{lineHeight: 1.1, marginBottom: '2rem'}}>
               ¿Buscás una<br/>
-              web única<br/>
-              <span className="text-gradient">que realmente<br/>convierta?</span>
+              web inteligente<br/>
+              <span className="text-gradient">con IA integrada?</span>
             </h1>
-            <p className="hero-subtitle" style={{fontSize: '1.1rem', maxWidth: '550px'}}>
-              Creamos sitios web que combinan diseño impecable con resultados reales. <strong>+10 años</strong> convirtiendo negocios en marcas digitales que generan clientes.
+            <p className="hero-subtitle" style={{fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0}}>
+              Desarrollamos ecosistemas digitales ultrarrápidos, automatizados y optimizados para SEO. <strong>Impulsa tus ventas</strong> con tecnología de última generación.
             </p>
-            <div className="hero-buttons" style={{marginTop: '3rem'}}>
+            <div className="hero-buttons" style={{marginTop: '3rem', justifyContent: 'flex-start'}}>
               <a href="#" className="btn-whatsapp-large">
                 <div className="whatsapp-icon-bg">
                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,6 +28,9 @@ const Home = () => {
                 Consultanos por WhatsApp
               </a>
             </div>
+          </div>
+          <div className="hero-image" style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+             <img src={heroImg} alt="Tecnología e IA" style={{maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(0, 229, 255, 0.3))'}} />
           </div>
         </div>
       </section>
@@ -43,31 +47,31 @@ const Home = () => {
 
           <div className="services-grid">
             <div className="service-card">
-              <div className="service-icon"><Layout size={24} /></div>
-              <h3>Diseño a Medida</h3>
+              <div className="service-icon"><Cpu size={24} /></div>
+              <h3>Desarrollo Web Ultra Rápido</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Interfaces únicas y atractivas diseñadas específicamente para tu marca y tu público objetivo.
+                Arquitecturas modernas (React, Vite) sin dependencias pesadas, garantizando carga instantánea y máximo SEO.
               </p>
             </div>
             <div className="service-card">
-              <div className="service-icon"><Smartphone size={24} /></div>
-              <h3>100% Responsivo</h3>
+              <div className="service-icon"><Bot size={24} /></div>
+              <h3>Automatización con IA</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Tu web se verá y funcionará perfectamente en computadoras, tablets y smartphones.
+                Integramos chatbots inteligentes y flujos automáticos para que tu web trabaje por ti 24/7.
               </p>
             </div>
             <div className="service-card">
               <div className="service-icon"><Zap size={24} /></div>
-              <h3>Máxima Velocidad</h3>
+              <h3>Electrónica & IoT</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Optimizamos el rendimiento para que tu página cargue al instante y no pierdas clientes.
+                Conectamos tu software con hardware real. Paneles de control para monitoreo y sistemas electrónicos.
               </p>
             </div>
             <div className="service-card">
-              <div className="service-icon"><Search size={24} /></div>
-              <h3>SEO Optimizado</h3>
+              <div className="service-icon"><Activity size={24} /></div>
+              <h3>Analítica Avanzada</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Estructuramos tu web para que Google la encuentre fácilmente y atraiga tráfico orgánico.
+                Sistemas de métricas precisos y ligeros para rastrear cada conversión sin sacrificar velocidad.
               </p>
             </div>
           </div>

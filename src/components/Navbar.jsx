@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2 } from 'lucide-react';
-
+import { Menu, X } from 'lucide-react';
+import logoImg from '../assets/logo sin fondo.png';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,12 +30,7 @@ const Navbar = () => {
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to="/" className="navbar-logo">
-            <span style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
-               <div style={{width: 12, height: 12, borderRadius: '50%', background: 'var(--accent-pink)'}}></div>
-               <div style={{width: 16, height: 16, borderRadius: '50%', background: 'var(--accent-purple)'}}></div>
-               <div style={{width: 12, height: 12, borderRadius: '50%', background: 'var(--accent-pink)'}}></div>
-            </span>
-            <span style={{ marginLeft: '8px', letterSpacing: '2px', fontWeight: 900 }}>NOAH<span style={{fontWeight: 400}}>WEB</span></span>
+            <img src={logoImg} alt="WebNova Logo" style={{ height: '45px' }} />
           </Link>
 
           <nav className="navbar-links">
@@ -63,12 +58,7 @@ const Navbar = () => {
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
            <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
-              <span style={{ display: 'flex', gap: '2px', alignItems: 'center' }}>
-                 <div style={{width: 12, height: 12, borderRadius: '50%', background: 'var(--accent-pink)'}}></div>
-                 <div style={{width: 16, height: 16, borderRadius: '50%', background: 'var(--accent-purple)'}}></div>
-                 <div style={{width: 12, height: 12, borderRadius: '50%', background: 'var(--accent-pink)'}}></div>
-              </span>
-              <span style={{ marginLeft: '8px', letterSpacing: '2px', fontWeight: 900 }}>NOAH<span style={{fontWeight: 400}}>WEB</span></span>
+              <img src={logoImg} alt="WebNova Logo" style={{ height: '45px' }} />
            </Link>
            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
              <X size={32} />
@@ -79,7 +69,7 @@ const Navbar = () => {
             <Link 
               key={link.name} 
               to={link.path}
-              className={`mobile-menu-item ${index === 0 ? 'pink-bg' : 'purple-bg'}`}
+              className={`mobile-menu-item ${index === 0 ? 'blue-bg' : 'cyan-bg'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               {link.name}

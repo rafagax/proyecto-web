@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@700&display=swap');
 
 :root {
-  --bg-primary: #030008;
-  --bg-secondary: #0a0515;
-  --bg-tertiary: #130a2a;
+  --bg-primary: #000000;
+  --bg-secondary: #050508;
+  --bg-tertiary: #0a0a10;
   --text-primary: #ffffff;
-  --text-secondary: #a0a0b0;
+  --text-secondary: #a0aab5;
   
-  /* Pink/Purple Theme from Reference */
-  --accent-pink: #ff52a2;
-  --accent-purple: #9b51e0;
-  --accent-purple-light: #b070f0;
-  --accent-menu-bg: #9d7cf0;
+  /* Tech Blue Theme */
+  --accent-blue: #0066ff;
+  --accent-cyan: #00e5ff;
+  --accent-blue-light: #4d94ff;
+  --accent-menu-bg: #001a4d;
   
-  --accent-gradient: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+  --accent-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
   
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;

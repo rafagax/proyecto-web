@@ -117,11 +117,11 @@
   border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.mobile-menu-item.pink-bg {
-  background: var(--accent-pink);
+.mobile-menu-item.blue-bg {
+  background: var(--accent-blue);
 }
 
-.mobile-menu-item.purple-bg {
+.mobile-menu-item.cyan-bg {
   background: var(--accent-menu-bg);
 }
 
@@ -430,7 +430,7 @@
   gap: 15px;
   padding: 8px 30px 8px 8px;
   background: transparent;
-  border: 1px solid var(--accent-purple);
+  border: 1px solid var(--accent-cyan);
   border-radius: 40px;
   color: white;
   font-weight: 600;
@@ -439,7 +439,7 @@
 }
 
 .btn-whatsapp-large:hover {
-  background: rgba(155, 81, 224, 0.1);
+  background: rgba(0, 229, 255, 0.1);
   transform: translateY(-2px);
 }
 
@@ -449,7 +449,7 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: var(--accent-pink);
+  background: var(--accent-blue);
   border-radius: 50%;
 }
 
