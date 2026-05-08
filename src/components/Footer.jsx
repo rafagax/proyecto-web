@@ -43,9 +43,9 @@ const Footer = () => {
 
           <div className="footer-col">
             <h3>Contacto</h3>
-            <p>Email: hola@webnova.com</p>
-            <p>Teléfono: +1 234 567 8900</p>
-            <p>Dirección: Av. Tecnológica 123, Ciudad Digital</p>
+            <p>Email: inversionesdigitales@hotmail.es</p>
+            <p>Teléfono: +58 414 473 5431</p>
+            <p>Dirección: Maracay, Aragua, Venezuela</p>
           </div>
         </div>
 
