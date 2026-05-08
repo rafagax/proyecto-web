@@ -1,8 +1,30 @@
+import { useState } from 'react';
 import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    servicio: '',
+    mensaje: ''
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { nombre, email, servicio, mensaje } = formData;
+    const phone = '584144735431';
+    const text = `Hola, mi nombre es ${nombre}. Mi correo es ${email}. Estoy interesado en el servicio de ${servicio}. Mi mensaje: ${mensaje}`;
+    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
@@ -19,7 +41,7 @@ const Home = () => {
               Desarrollamos ecosistemas digitales ultrarrápidos, automatizados y optimizados para SEO. <strong>Impulsa tus ventas</strong> con tecnología de última generación.
             </p>
             <div className="hero-buttons" style={{marginTop: '3rem', justifyContent: 'flex-start'}}>
-              <a href="#" className="btn-whatsapp-large">
+              <a href="https://wa.me/584144735431?text=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20sus%20servicios%20de%20desarrollo%20web." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
                 <div className="whatsapp-icon-bg">
                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M20.52 3.449C18.24 1.245 15.24 0 12 0C5.383 0 0 5.383 0 12C0 14.12 0.549 16.19 1.593 18.016L0 24L6.115 22.396C7.882 23.344 9.905 23.856 12 23.856C18.617 23.856 24 18.473 24 12C24 8.76 22.755 5.76 20.52 3.449ZM12 21.841C10.203 21.841 8.468 21.359 6.953 20.461L6.593 20.248L2.946 21.203L3.918 17.656L3.684 17.284C2.688 15.704 2.156 13.888 2.156 12C2.156 6.577 6.577 2.156 12 2.156C14.633 2.156 17.076 3.181 18.939 5.044C20.801 6.907 21.827 9.349 21.827 12C21.827 17.423 17.423 21.841 12 21.841ZM17.423 14.588C17.125 14.439 15.656 13.715 15.385 13.616C15.115 13.517 14.916 13.468 14.717 13.765C14.519 14.063 13.973 14.708 13.805 14.907C13.636 15.105 13.468 15.13 13.171 14.981C12.873 14.832 11.909 14.517 10.771 13.501C9.885 12.711 9.288 11.733 9.119 11.436C8.951 11.139 9.101 10.978 9.25 10.831C9.384 10.697 9.553 10.479 9.702 10.306C9.851 10.132 9.901 10.008 10 9.81C10.099 9.612 10.05 9.438 9.975 9.29C9.9 9.141 9.288 7.643 9.032 7.03C8.784 6.435 8.536 6.516 8.357 6.505C8.188 6.495 7.989 6.495 7.791 6.495C7.592 6.495 7.27 6.569 6.997 6.867C6.724 7.164 5.955 7.883 5.955 9.346C5.955 10.809 7.022 12.222 7.171 12.421C7.32 12.619 9.245 15.707 12.27 16.902C14.656 17.844 15.291 17.656 15.936 17.557C16.581 17.458 18.016 16.69 18.313 15.847C18.611 15.005 18.611 14.286 18.512 14.137C18.413 13.988 18.215 13.888 17.917 13.74Z" fill="white"/>
@@ -156,7 +178,7 @@ const Home = () => {
                 <div className="contact-icon"><MessageCircle size={24} /></div>
                 <div>
                   <h4 style={{ marginBottom: '0.2rem' }}>WhatsApp</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}>+1 234 567 8900</p>
+                  <p style={{ color: 'var(--text-secondary)' }}>+58 414 473 5431</p>
                 </div>
               </div>
               
@@ -164,7 +186,7 @@ const Home = () => {
                 <div className="contact-icon"><Mail size={24} /></div>
                 <div>
                   <h4 style={{ marginBottom: '0.2rem' }}>Email</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}>hola@webnova.com</p>
+                  <p style={{ color: 'var(--text-secondary)' }}>inversionesdigitales@hotmail.es</p>
                 </div>
               </div>
               
@@ -172,27 +194,55 @@ const Home = () => {
                 <div className="contact-icon"><MapPin size={24} /></div>
                 <div>
                   <h4 style={{ marginBottom: '0.2rem' }}>Ubicación</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}>Ciudad Digital, Tech Hub 404</p>
+                  <p style={{ color: 'var(--text-secondary)' }}>Maracay, Aragua, Venezuela</p>
                 </div>
               </div>
             </div>
 
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label>Nombre Completo</label>
-                <input type="text" placeholder="Tu nombre" />
+                <input 
+                  type="text" 
+                  name="nombre"
+                  value={formData.nombre}
+                  onChange={handleInputChange}
+                  placeholder="Tu nombre" 
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>Correo Electrónico</label>
-                <input type="email" placeholder="tu@email.com" />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="tu@email.com" 
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>Servicio de Interés</label>
-                <input type="text" placeholder="Ej. Plan Profesional" />
+                <input 
+                  type="text" 
+                  name="servicio"
+                  value={formData.servicio}
+                  onChange={handleInputChange}
+                  placeholder="Ej. Plan Profesional" 
+                  required
+                />
               </div>
               <div className="form-group">
                 <label>Mensaje</label>
-                <textarea rows="4" placeholder="Cuéntanos un poco sobre tu proyecto..."></textarea>
+                <textarea 
+                  rows="4" 
+                  name="mensaje"
+                  value={formData.mensaje}
+                  onChange={handleInputChange}
+                  placeholder="Cuéntanos un poco sobre tu proyecto..."
+                  required
+                ></textarea>
               </div>
               <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem' }}>
                 Enviar Mensaje

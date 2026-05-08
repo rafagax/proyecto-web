@@ -53,7 +53,7 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} Todos los derechos reservados.</p>
           <div className="footer-developer" style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>
             <p>Sitio web desarrollado por: {' '}
-              <a href="https://portafolio-kpi-jv.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', fontWeight: '600' }}>
+              <a href="https://portafolio-kpi-jv.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', fontWeight: '600' }}>
                 Ing. Jesús Vásquez
               </a>
             </p>

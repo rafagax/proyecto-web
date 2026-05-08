@@ -456,8 +456,8 @@
 /* Floating Elements */
 .floating-whatsapp {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 25px;
+  right: 25px;
   width: 60px;
   height: 60px;
   background-color: #25D366;
@@ -467,26 +467,49 @@
   justify-content: center;
   z-index: 100;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  animation: anti-gravity 3s ease-in-out infinite;
+}
+
+.floating-whatsapp::before,
+.floating-whatsapp::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #25D366;
+  border-radius: 50%;
+  z-index: -1;
+  animation: pulse-waves 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.floating-whatsapp::after {
+  animation-delay: 1s;
 }
 
 .floating-whatsapp:hover {
-  transform: scale(1.1);
+  animation-play-state: paused;
+  transform: scale(1.1) translateY(-5px);
 }
 
-.floating-lang {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: white;
-  color: black;
-  display: flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-weight: 700;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  cursor: pointer;
-  font-family: 'Space Grotesk', sans-serif;
+@keyframes anti-gravity {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-waves {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }
