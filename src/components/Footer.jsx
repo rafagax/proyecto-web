@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-col">
             <Link to="/" className="navbar-logo" style={{ marginBottom: '1rem', display: 'flex' }}>
-              <img src={logoImg} alt="WebNova Logo" style={{ height: '45px' }} />
+              <img src={logoImg} alt="WebNova Logo" style={{ height: '80px' }} />
             </Link>
             <p>
               Transformamos tu visión en una experiencia digital extraordinaria. Especialistas en diseño y desarrollo web de alto rendimiento.

@@ -30,7 +30,7 @@ const Navbar = () => {
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to="/" className="navbar-logo">
-            <img src={logoImg} alt="WebNova Logo" style={{ height: '45px' }} />
+            <img src={logoImg} alt="WebNova Logo" style={{ height: '80px' }} />
           </Link>
 
           <nav className="navbar-links">
@@ -58,7 +58,7 @@ const Navbar = () => {
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
            <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
-              <img src={logoImg} alt="WebNova Logo" style={{ height: '45px' }} />
+              <img src={logoImg} alt="WebNova Logo" style={{ height: '80px' }} />
            </Link>
            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
              <X size={32} />
