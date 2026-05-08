@@ -12,16 +12,16 @@ const knowledgeBase = [
     response: `¡Hola! 👋 Soy el asistente virtual de Inversiones Digitales.\n\nTe puedo ayudar con información sobre creación de páginas web, planes, precios, entrega en 7 días, SEO local, IA integrada, chatbot, tienda online y contacto directo.\n\n¿Qué tipo de página web necesitas para tu negocio?`
   },
   {
+    keywords: ['7 dias', 'siete dias', 'tiempo', 'cuanto tarda', 'cuánto tarda', 'entrega', 'rapido', 'rápido', 'lista', 'plazo'],
+    response: `Tu diseño web puede estar listo en tan solo 7 días, dependiendo del tipo de proyecto, la cantidad de secciones y la información que necesites incluir.\n\nTrabajamos con un proceso rápido, ordenado y profesional para que puedas comenzar a mostrar tu negocio en internet cuanto antes.`
+  },
+  {
     keywords: ['quienes son', 'quiénes son', 'empresa', 'inversiones digitales', 'nosotros', 'que hacen', 'qué hacen'],
     response: `Somos Inversiones Digitales, especialistas en diseño y desarrollo web de alto rendimiento.\n\nTransformamos tu visión en una experiencia digital profesional, moderna y estratégica para que tu negocio gane presencia, confianza y más oportunidades de venta.`
   },
   {
     keywords: ['pagina web', 'página web', 'sitio web', 'web', 'quiero una web', 'hacer una pagina', 'crear pagina', 'necesito una pagina', 'desarrollo web'],
-    response: `¡Excelente! 🚀\n\nEn Inversiones Digitales creamos páginas web modernas, rápidas y adaptadas a todos los dispositivos, pensadas para transmitir profesionalismo, generar confianza y ayudar a que más clientes elijan tus servicios.\n\nPodemos desarrollar landing pages, páginas empresariales, sitios multi-página y tiendas online.`
-  },
-  {
-    keywords: ['7 dias', 'siete dias', 'tiempo', 'cuanto tarda', 'cuánto tarda', 'entrega', 'rapido', 'rápido', 'lista', 'plazo'],
-    response: `Tu diseño web puede estar listo en tan solo 7 días, dependiendo del tipo de proyecto, la cantidad de secciones y la información que necesites incluir.\n\nTrabajamos con un proceso rápido, ordenado y profesional para que puedas comenzar a mostrar tu negocio en internet cuanto antes.`
+    response: `¡Excelente elección! 🚀\n\nEn Inversiones Digitales creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, Webs Empresariales o Tiendas Online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATIS** por WhatsApp para asesorarte con tu proyecto?\n\n📲 Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+asesoria+gratuita`
   },
   {
     keywords: ['servicios', 'que ofrecen', 'qué ofrecen', 'incluye', 'beneficios', 'soluciones digitales'],
@@ -48,20 +48,8 @@ const knowledgeBase = [
     response: `Podemos integrar un chatbot o asistente virtual para responder preguntas frecuentes, orientar a tus clientes y ayudarte a captar oportunidades incluso fuera del horario laboral.\n\nEs ideal para explicar servicios, mostrar planes, enviar datos de contacto y guiar al usuario hacia WhatsApp o formulario.`
   },
   {
-    keywords: ['planes', 'precios', 'precio', 'plan', 'costo', 'cuanto cuesta', 'cuánto cuesta', 'tarifa', 'paquetes'],
-    response: `Tenemos 3 planes principales:\n\n💠 Plan Básico — $299\nIdeal para empezar. Incluye landing page de 5 secciones, diseño responsivo, botón de WhatsApp, formulario de contacto y posicionamiento SEO local.\n\n💠 Plan Pyme — $599\nIdeal para negocios en crecimiento. Incluye web multi-página de hasta 5 páginas, diseño responsivo premium, SEO avanzado, integración con redes, dominio y hosting por 1 año.\n\n💠 Plan E-Commerce — $1500\nIdeal para vender online. Incluye tienda online completa, pasarelas de pago, panel de administración, carga de primeros 20 productos y soporte prioritario por 1 mes.\n\n¿Quieres que te ayude a elegir el mejor plan para tu negocio?`
-  },
-  {
-    keywords: ['basico', 'básico', 'landing', 'landing page', 'plan basico', 'plan básico', '299'],
-    response: `El Plan Básico tiene un valor de $299 y es ideal para empezar.\n\nIncluye:\n\n✅ Landing Page de 5 secciones\n✅ Diseño responsivo\n✅ Botón de WhatsApp\n✅ Formulario de contacto\n✅ Posicionamiento SEO local\n\nEs una excelente opción si necesitas una página clara, profesional y rápida para presentar tu negocio.`
-  },
-  {
-    keywords: ['pyme', 'plan pyme', '599', 'negocio en crecimiento', 'multi pagina', 'multipagina', 'multi-página'],
-    response: `El Plan Pyme tiene un valor de $599 y está pensado para negocios en crecimiento.\n\nIncluye:\n\n✅ Web multi-página de hasta 5 páginas\n✅ Diseño responsivo premium\n✅ Optimización SEO avanzada\n✅ Integración con redes sociales\n✅ Dominio y hosting por 1 año\n\nEs uno de los planes más completos para empresas que desean una presencia digital más sólida.`
-  },
-  {
-    keywords: ['ecommerce', 'e-commerce', 'tienda online', 'tienda', 'vender online', 'productos', 'catalogo', 'catálogo', '1500'],
-    response: `El Plan E-Commerce tiene un valor de $1500 y es ideal para vender productos online.\n\nIncluye:\n\n✅ Tienda online completa\n✅ Pasarelas de pago\n✅ Panel de administración\n✅ Carga de los primeros 20 productos\n✅ Soporte prioritario por 1 mes\n\nEs perfecto si quieres llevar tu negocio al mundo digital y comenzar a vender por internet.`
+    keywords: ['planes', 'precios', 'precio', 'plan', 'costo', 'cuanto cuesta', 'cuánto cuesta', 'tarifa', 'paquetes', 'basico', 'básico', '599', '1500', '299'],
+    response: `¡Oferta especial solo por esta semana! 🔥\n\nCrea tu sitio web profesional con **50% de descuento** y paga solo **$149.99**.\n\nHaz que tu negocio se vea más confiable, moderno y preparado para recibir clientes.\n\n📲 Aprovecha esta promoción antes de que finalice:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+aprovechar+la+oferta+de+149`
   },
   {
     keywords: ['dominio', 'hosting', 'correo corporativo', 'servidor'],
@@ -113,6 +101,25 @@ const getBotResponse = (userText) => {
   }
 
   return fallbackResponse;
+};
+
+const formatMessage = (text) => {
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+  const parts = text.split(urlRegex);
+  
+  return parts.map((part, i) => {
+    if (part.match(urlRegex)) {
+      let displayText = part;
+      // Si es un link de WhatsApp, mostrar el número formateado
+      if (part.includes('wa.me')) {
+        displayText = '📲 +58 414 473 5431';
+      } else if (part.length > 40) {
+        displayText = part.substring(0, 37) + '...';
+      }
+      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="ka-chat-link">{displayText}</a>;
+    }
+    return part;
+  });
 };
 
 const Chatbot = () => {
@@ -187,7 +194,7 @@ const Chatbot = () => {
         <div id="ka-chatbot-messages">
           {messages.map((msg, index) => (
             <div key={index} className={`ka-msg ${msg.sender === 'bot' ? 'ka-msg-bot' : 'ka-msg-user'}`}>
-              {msg.text}
+              {formatMessage(msg.text)}
             </div>
           ))}
           {isTyping && (

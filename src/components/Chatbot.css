@@ -163,6 +163,17 @@
   border-bottom-right-radius: 4px;
 }
 
+.ka-chat-link {
+  color: #00AEEF;
+  text-decoration: underline;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.ka-msg-user .ka-chat-link {
+  color: #ffffff;
+}
+
 .ka-typing {
   font-size: 13px;
   color: var(--ka-muted);
