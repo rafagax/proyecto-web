@@ -21,7 +21,7 @@ const knowledgeBase = [
   },
   {
     keywords: ['pagina web', 'página web', 'sitio web', 'web', 'quiero una web', 'hacer una pagina', 'crear pagina', 'necesito una pagina', 'desarrollo web'],
-    response: `¡Excelente elección! 🚀\n\nEn Inversiones Digitales creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, Webs Empresariales o Tiendas Online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATIS** por WhatsApp para asesorarte con tu proyecto?\n\n📲 Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+asesoria+gratuita`
+    response: `¡Excelente elección! 🚀\n\nEn Inversiones Digitales creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, Webs Empresariales o Tiendas Online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATIS** por WhatsApp para asesorarte con tu proyecto?\n\n Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+asesoria+gratuita`
   },
   {
     keywords: ['servicios', 'que ofrecen', 'qué ofrecen', 'incluye', 'beneficios', 'soluciones digitales'],
@@ -49,7 +49,7 @@ const knowledgeBase = [
   },
   {
     keywords: ['planes', 'precios', 'precio', 'plan', 'costo', 'cuanto cuesta', 'cuánto cuesta', 'tarifa', 'paquetes', 'basico', 'básico', '599', '1500', '299'],
-    response: `¡Oferta especial solo por esta semana! 🔥\n\nCrea tu sitio web profesional con **50% de descuento** y paga solo **$149.99**.\n\nHaz que tu negocio se vea más confiable, moderno y preparado para recibir clientes.\n\n📲 Aprovecha esta promoción antes de que finalice:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+aprovechar+la+oferta+de+149`
+    response: `¡Oferta especial solo por esta semana! \n\nCrea tu sitio web profesional con **50% de descuento** y paga solo **$149.99**.\n\nHaz que tu negocio se vea más confiable, moderno y preparado para recibir clientes.\n\n Aprovecha esta promoción antes de que finalice:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+aprovechar+la+oferta+de+149`
   },
   {
     keywords: ['dominio', 'hosting', 'correo corporativo', 'servidor'],
@@ -57,7 +57,7 @@ const knowledgeBase = [
   },
   {
     keywords: ['whatsapp', 'contacto', 'asesor', 'humano', 'correo', 'email', 'llamar', 'cotizar', 'cotizacion', 'cotización', 'agendar', 'consulta gratis'],
-    response: `Claro, puedes contactarnos directamente para recibir asesoría gratuita.\n\n📲 WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n📍 Ubicación: ${locationBusiness}\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/${whatsappNumber}\n\nCuéntanos qué tipo de página web necesitas y te orientamos con gusto.`
+    response: `Claro, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n📍 Ubicación: ${locationBusiness}\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/${whatsappNumber}\n\nCuéntanos qué tipo de página web necesitas y te orientamos con gusto.`
   },
   {
     keywords: ['ubicacion', 'ubicación', 'donde estan', 'dónde están', 'maracay', 'venezuela', 'aragua'],
@@ -81,7 +81,7 @@ const knowledgeBase = [
   }
 ];
 
-const fallbackResponse = `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Plan Básico, Pyme y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrada\n✅ WhatsApp, formularios y contacto\n\n📲 WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n\nCuéntame un poco más sobre lo que necesitas y te oriento.`;
+const fallbackResponse = `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Plan Básico, Pyme y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrada\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n\nCuéntame un poco más sobre lo que necesitas y te oriento.`;
 
 const normalizeText = (text) => {
   return text
@@ -106,7 +106,7 @@ const getBotResponse = (userText) => {
 const formatMessage = (text) => {
   const urlRegex = /(https?:\/\/[^\s]+)/g;
   const parts = text.split(urlRegex);
-  
+
   return parts.map((part, i) => {
     if (part.match(urlRegex)) {
       let displayText = part;
