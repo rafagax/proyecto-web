@@ -69,16 +69,16 @@ const Home = () => {
           </div>
 
           <div className="services-grid">
-            {/* 1st: Aumento de Ventas */}
+            {/* 1st: Presencia digital profesional */}
             <div className="service-card">
-              <div className="service-icon"><Activity size={24} /></div>
-              <h3>Aumento de Ventas</h3>
+              <div className="service-icon"><Bot size={24} /></div>
+              <h3>Presencia digital profesional</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Aplicamos estrategias de posicionamiento geo-local y optimización web para que tu negocio gane más visibilidad, atraiga clientes cercanos y convierta más visitas en oportunidades reales de venta.
+                Desarrollamos una página web moderna, clara y atractiva que fortalece la imagen de tu negocio, genera confianza en tus clientes y hace que tu marca transmita profesionalismo desde el primer clic, ayudando a que más clientes elijan tus servicios.
               </p>
             </div>
 
-            {/* 2nd: Desarrollo web */}
+            {/* 2nd: Desarrollo web rápido */}
             <div className="service-card">
               <div className="service-icon"><Cpu size={24} /></div>
               <h3>Desarrollo web rápido y profesional</h3>
@@ -87,12 +87,12 @@ const Home = () => {
               </p>
             </div>
 
-            {/* 3rd: Presencia digital */}
+            {/* 3rd: Aumento de Ventas */}
             <div className="service-card">
-              <div className="service-icon"><Bot size={24} /></div>
-              <h3>Presencia digital profesional</h3>
+              <div className="service-icon"><Activity size={24} /></div>
+              <h3>Aumento de Ventas</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Desarrollamos una página web moderna, clara y atractiva que fortalece la imagen de tu negocio, genera confianza en tus clientes y hace que tu marca transmita profesionalismo desde el primer clic, ayudando a que más clientes elijan tus servicios.
+                Aplicamos estrategias de posicionamiento geo-local y optimización web para que tu negocio gane más visibilidad, atraiga clientes de tu zona, aparezca de primero en Google y logramos que logres ser recomendado por la IA.
               </p>
             </div>
 

@@ -1,9 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 
 const testimonials = [
+  // Venezuela x4
   {
     name: "Rafael Martínez",
-    location: "Valencia, Venezuela",
+    location: "Valencia, Venezuela 🇻🇪",
     quote: "En 7 días tenía mi web funcionando y recibiendo clientes. El equipo fue increíblemente profesional y resolvió todo lo que pedí.",
     initial: "R",
     service: "Landing Page",
@@ -11,47 +12,15 @@ const testimonials = [
   },
   {
     name: "Daniela Suárez",
-    location: "Maracay, Aragua",
+    location: "Maracay, Venezuela 🇻🇪",
     quote: "Gracias a la automatización que implementaron, respondo consultas de WhatsApp sin esfuerzo. Mis ventas subieron un 40% el primer mes.",
     initial: "D",
     service: "Automatización IA",
     color: "#00e5ff",
   },
   {
-    name: "José Hernández",
-    location: "Caracas, Venezuela",
-    quote: "Increíble el posicionamiento SEO local. Ahora mis clientes de la zona me encuentran fácilmente en Google. 100% recomendados.",
-    initial: "J",
-    service: "SEO Local",
-    color: "#0066ff",
-  },
-  {
-    name: "Luisa Peña",
-    location: "Barquisimeto, Venezuela",
-    quote: "Mi tienda online quedó espectacular. Carga rapidísimo y mis clientes me felicitan por lo fácil que es comprar. Excelente trabajo.",
-    initial: "L",
-    service: "E-Commerce",
-    color: "#00e5ff",
-  },
-  {
-    name: "Andrés Blanco",
-    location: "Maracaibo, Venezuela",
-    quote: "Cumplieron con el plazo prometido y el resultado superó todas mis expectativas. La comunicación durante el proyecto fue impecable.",
-    initial: "A",
-    service: "Web Profesional",
-    color: "#0066ff",
-  },
-  {
-    name: "Camila Rojas",
-    location: "Puerto Ordaz, Venezuela",
-    quote: "Tenía miedo de no entender nada de tecnología, pero me explicaron todo paso a paso. Ahora manejo mi web sin problemas.",
-    initial: "C",
-    service: "Landing Page",
-    color: "#00e5ff",
-  },
-  {
     name: "Miguel Ángel Torres",
-    location: "Maturín, Venezuela",
+    location: "Maturín, Venezuela 🇻🇪",
     quote: "El chatbot que me integraron atiende clientes mientras duermo. Es una inversión que se pagó sola en menos de un mes.",
     initial: "M",
     service: "Chatbot IA",
@@ -59,11 +28,54 @@ const testimonials = [
   },
   {
     name: "Valentina Castro",
-    location: "Los Teques, Venezuela",
+    location: "Los Teques, Venezuela 🇻🇪",
     quote: "Antes no aparecía en Google. Ahora soy la primera opción en mi ciudad. El trabajo de SEO local que hicieron fue extraordinario.",
     initial: "V",
     service: "SEO + Web",
     color: "#00e5ff",
+  },
+  // USA x2
+  {
+    name: "James Rodríguez",
+    location: "Miami, Florida 🇺🇸",
+    quote: "I needed a bilingual website for my Hispanic audience and they delivered perfectly. The design is clean, fast and professional. Highly recommended!",
+    initial: "J",
+    service: "Bilingual Web",
+    color: "#0066ff",
+  },
+  {
+    name: "Sofia Mendez",
+    location: "Houston, Texas 🇺🇸",
+    quote: "My business visibility skyrocketed after their local SEO work. I went from being invisible online to getting 3–4 new clients per week.",
+    initial: "S",
+    service: "SEO Local",
+    color: "#00e5ff",
+  },
+  // Spain x2
+  {
+    name: "Carlos Fernández",
+    location: "Madrid, España 🇪🇸",
+    quote: "Contraté el servicio desde España y la experiencia fue impecable. Entregaron antes del plazo y el diseño superó mis expectativas.",
+    initial: "C",
+    service: "Web Profesional",
+    color: "#0066ff",
+  },
+  {
+    name: "Lucía Herrera",
+    location: "Barcelona, España 🇪🇸",
+    quote: "Necesitaba una tienda online y la montaron en tiempo récord. El soporte postventa también fue excelente. Mi negocio creció notablemente.",
+    initial: "L",
+    service: "E-Commerce",
+    color: "#00e5ff",
+  },
+  // USA x3 (replacing Panama)
+  {
+    name: "Carlos Pérez",
+    location: "New York, NY 🇺🇸",
+    quote: "They built my website in less than a week and the results were immediate. My restaurant started getting online reservations right away. Amazing team!",
+    initial: "C",
+    service: "Web + SEO",
+    color: "#0066ff",
   },
 ];
 

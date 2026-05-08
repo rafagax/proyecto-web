@@ -438,8 +438,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.service-card:hover::before {
-  transform: scaleX(1);
+.service-card p {
+  text-align: justify;
 }
 
 .service-icon {
