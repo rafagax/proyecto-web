@@ -208,6 +208,105 @@
   font-size: 0.9rem;
 }
 
+/* ---- Testimonials Section ---- */
+.testimonials-section {
+  padding: 5rem 0 4rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary));
+}
+
+.testimonials-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .testimonials-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.testimonials-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-cyan);
+}
+
+.testimonials-rating-badge {
+  display: none;
+  padding: 8px 18px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 30px;
+  font-size: 0.9rem;
+  background: var(--bg-secondary);
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .testimonials-rating-badge {
+    display: block;
+  }
+}
+
+/* Mobile carousel */
+.testimonials-carousel {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 40px, black calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 40px, black calc(100% - 40px), transparent 100%);
+}
+
+.testimonials-carousel::-webkit-scrollbar { display: none; }
+
+.testimonials-track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem;
+  width: max-content;
+}
+
+/* Desktop grid - hidden always, carousel is used instead */
+.testimonials-grid {
+  display: none;
+}
+
+/* Carousel always visible on all screen sizes */
+.testimonials-carousel {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 60px, black calc(100% - 60px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 60px, black calc(100% - 60px), transparent 100%);
+}
+
+/* Card */
+.testimonial-card {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--border-radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(0, 229, 255, 0.2);
+  box-shadow: 0 8px 30px rgba(0,102,255,0.1);
+  transform: translateY(-4px);
+}
+
 .footer-bottom-bar {
   border-top: 1px solid rgba(255,255,255,0.05);
   padding: 1.5rem 0;

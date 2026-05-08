@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { Link } from 'react-router-dom';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -68,20 +69,33 @@ const Home = () => {
           </div>
 
           <div className="services-grid">
+            {/* 1st: Aumento de Ventas */}
+            <div className="service-card">
+              <div className="service-icon"><Activity size={24} /></div>
+              <h3>Aumento de Ventas</h3>
+              <p style={{ color: 'var(--text-secondary)' }}>
+                Aplicamos estrategias de posicionamiento geo-local y optimización web para que tu negocio gane más visibilidad, atraiga clientes cercanos y convierta más visitas en oportunidades reales de venta.
+              </p>
+            </div>
+
+            {/* 2nd: Desarrollo web */}
             <div className="service-card">
               <div className="service-icon"><Cpu size={24} /></div>
               <h3>Desarrollo web rápido y profesional</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Creamos páginas web modernas, rápidas y adaptadas a todos los dispositivos, pensadas para ofrecer una experiencia clara, atractiva y confiable desde el primer clic.
+                Creamos páginas web modernas, rápidas y adaptadas a todos los dispositivos en tan solo <strong style={{ color: 'var(--accent-cyan)' }}>7 días</strong>, ofreciendo una experiencia clara, atractiva y confiable desde el primer clic.
               </p>
             </div>
+
+            {/* 3rd: Presencia digital */}
             <div className="service-card">
               <div className="service-icon"><Bot size={24} /></div>
-              <h3>Automatización para ahorrar tiempo</h3>
+              <h3>Presencia digital profesional</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                Integramos herramientas inteligentes que ayudan a responder consultas, captar clientes y optimizar procesos, permitiendo que tu negocio trabaje de forma más eficiente todos los días.
+                Desarrollamos una página web moderna, clara y atractiva que fortalece la imagen de tu negocio, genera confianza en tus clientes y hace que tu marca transmita profesionalismo desde el primer clic, ayudando a que más clientes elijan tus servicios.
               </p>
             </div>
+
             {/*
             <div className="service-card">
               <div className="service-icon"><Zap size={24} /></div>
@@ -91,13 +105,6 @@ const Home = () => {
               </p>
             </div>
             */}
-            <div className="service-card">
-              <div className="service-icon"><Activity size={24} /></div>
-              <h3>Aumento de Ventas</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Estrategias de posicionamiento geo-local y optimización para multiplicar tus conversiones y atraer clientes de tu zona.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -158,6 +165,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <TestimonialsSection />
 
       {/* Contact Section */}
       <section className="section" id="contacto">
