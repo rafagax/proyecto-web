@@ -13,7 +13,7 @@ const Footer = () => {
               Inversiones<span className="text-gradient">Digitales</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1.5rem', maxWidth: '350px' }}>
-              Transformamos tu visión en una experiencia digital extraordinaria. Especialistas en diseño y desarrollo web de alto rendimiento.
+              We transform your vision into an extraordinary digital experience. Specialists in high-performance web design and development.
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(0, 229, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><MessageCircle size={20} /></a>
@@ -24,23 +24,24 @@ const Footer = () => {
 
           {/* Links Col */}
           <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <h3 style={{ fontSize: '1.2rem', color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem', display: 'inline-block' }}>Explorar</h3>
+            <h3 style={{ fontSize: '1.2rem', color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem', display: 'inline-block' }}>Explore</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="footer-links">
-                <Link to="/">Inicio</Link>
-                <Link to="#servicios">Servicios</Link>
-                <Link to="#precios">Precios</Link>
+                <Link to="/">Home</Link>
+                <Link to="/services">Services</Link>
+                <Link to="/pricing">Pricing</Link>
               </div>
               <div className="footer-links">
-                <Link to="#contacto">Contacto</Link>
-                <Link to="/faqs">Preguntas Frecuentes</Link>
+                <Link to="/our-clients">Our Clients</Link>
+                <Link to="/faqs">FAQs</Link>
+                <Link to="/contact">Contact</Link>
               </div>
             </div>
           </div>
 
           {/* Contact Col */}
           <div className="footer-col" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <h3 style={{ fontSize: '1.2rem', color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem', display: 'inline-block' }}>Contacto Directo</h3>
+            <h3 style={{ fontSize: '1.2rem', color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem', display: 'inline-block' }}>Direct Contact</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--text-secondary)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Mail size={16} color="var(--accent-cyan)" />
@@ -60,12 +61,12 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom-bar">
-          <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Inversiones Digitales. Todos los derechos reservados.</p>
+          <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Inversiones Digitales. All rights reserved.</p>
           <span className="footer-separator">|</span>
           <p style={{ margin: 0, fontSize: '0.85rem', textAlign: 'center' }}>
             CEO:{' '}
             <a href="https://portafolio-kpi-jv.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', fontWeight: '600' }}>
-              Ing. Jesús Vásquez
+              Eng. Jesús Vásquez
             </a>
           </p>
         </div>

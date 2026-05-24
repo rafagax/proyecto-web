@@ -17,12 +17,11 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'HOME', path: '/' },
-    { name: 'NOSOTROS', path: '/nosotros' },
-    { name: 'SERVICIOS', path: '/servicios' },
-    { name: 'CLIENTES', path: '/clientes' },
-    { name: 'PRECIOS', path: '/precios' },
-    { name: 'FAQS', path: '/faqs' },
-    { name: 'CONTACTO', path: '/contacto' },
+    { name: 'ABOUT US', path: '/about' },
+    { name: 'SERVICES', path: '/services' },
+    { name: 'OUR CLIENTS', path: '/our-clients' },
+    { name: 'PRICING', path: '/pricing' },
+    { name: 'FAQs', path: '/faqs' },
   ];
 
   return (
@@ -43,8 +42,8 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
-            <Link to="/contacto" className="btn btn-primary" style={{ padding: '8px 20px', color: '#000000', fontWeight: '700' }}>
-              Contáctanos
+            <Link to="/contact" className="btn btn-primary" style={{ padding: '8px 20px', color: '#000000', fontWeight: '700' }}>
+              Get in Touch
             </Link>
           </nav>
 
@@ -75,6 +74,13 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
+          <Link
+            to="/contact"
+            className="mobile-menu-item blue-bg"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            GET IN TOUCH
+          </Link>
         </nav>
       </div>
     </>

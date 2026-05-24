@@ -5,7 +5,7 @@ const testimonials = [
   {
     name: "Rafael Martínez",
     location: "Valencia, Venezuela 🇻🇪",
-    quote: "En 7 días tenía mi web funcionando y recibiendo clientes. El equipo fue increíblemente profesional y resolvió todo lo que pedí.",
+    quote: "In 7 days I had my website up and running and receiving clients. The team was incredibly professional and handled everything I asked for.",
     initial: "R",
     service: "Landing Page",
     color: "#0066ff",
@@ -13,23 +13,23 @@ const testimonials = [
   {
     name: "Daniela Suárez",
     location: "Maracay, Venezuela 🇻🇪",
-    quote: "Gracias a la automatización que implementaron, respondo consultas de WhatsApp sin esfuerzo. Mis ventas subieron un 40% el primer mes.",
+    quote: "Thanks to the AI automation they implemented, I answer WhatsApp inquiries effortlessly. My sales went up 40% in the first month.",
     initial: "D",
-    service: "Automatización IA",
+    service: "AI Automation",
     color: "#00e5ff",
   },
   {
     name: "Miguel Ángel Torres",
     location: "Maturín, Venezuela 🇻🇪",
-    quote: "El chatbot que me integraron atiende clientes mientras duermo. Es una inversión que se pagó sola en menos de un mes.",
+    quote: "The chatbot they integrated handles clients while I sleep. It's an investment that paid for itself in less than a month.",
     initial: "M",
-    service: "Chatbot IA",
+    service: "AI Chatbot",
     color: "#0066ff",
   },
   {
     name: "Valentina Castro",
     location: "Los Teques, Venezuela 🇻🇪",
-    quote: "Antes no aparecía en Google. Ahora soy la primera opción en mi ciudad. El trabajo de SEO local que hicieron fue extraordinario.",
+    quote: "I wasn't showing up on Google at all. Now I'm the top result in my city. The local SEO work they did was extraordinary.",
     initial: "V",
     service: "SEO + Web",
     color: "#00e5ff",
@@ -48,27 +48,27 @@ const testimonials = [
     location: "Houston, Texas 🇺🇸",
     quote: "My business visibility skyrocketed after their local SEO work. I went from being invisible online to getting 3–4 new clients per week.",
     initial: "S",
-    service: "SEO Local",
+    service: "Local SEO",
     color: "#00e5ff",
   },
   // Spain x2
   {
     name: "Carlos Fernández",
-    location: "Madrid, España 🇪🇸",
-    quote: "Contraté el servicio desde España y la experiencia fue impecable. Entregaron antes del plazo y el diseño superó mis expectativas.",
+    location: "Madrid, Spain 🇪🇸",
+    quote: "I hired the service from Spain and the experience was flawless. They delivered ahead of schedule and the design exceeded my expectations.",
     initial: "C",
-    service: "Web Profesional",
+    service: "Professional Web",
     color: "#0066ff",
   },
   {
     name: "Lucía Herrera",
-    location: "Barcelona, España 🇪🇸",
-    quote: "Necesitaba una tienda online y la montaron en tiempo récord. El soporte postventa también fue excelente. Mi negocio creció notablemente.",
+    location: "Barcelona, Spain 🇪🇸",
+    quote: "I needed an online store and they set it up in record time. The post-sale support was also excellent. My business grew remarkably.",
     initial: "L",
     service: "E-Commerce",
     color: "#00e5ff",
   },
-  // USA x3 (replacing Panama)
+  // USA x3
   {
     name: "Carlos Pérez",
     location: "New York, NY 🇺🇸",
@@ -96,7 +96,7 @@ const TestimonialCard = ({ t }) => (
   >
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
       <span style={{ fontSize: "0.7rem", color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-        Opinión verificada
+        Verified Review
       </span>
       <span style={{ fontSize: "0.75rem", fontWeight: "700", color: "var(--accent-cyan)" }}>Google</span>
     </div>
@@ -164,15 +164,15 @@ export function TestimonialsSection() {
         {/* Header */}
         <div className="testimonials-header">
           <div>
-            <span className="testimonials-tag">Clientes satisfechos</span>
+            <span className="testimonials-tag">Happy Clients</span>
             <h2 style={{ fontSize: "clamp(1.8rem, 3vw, 2.5rem)", lineHeight: 1.1, marginTop: "0.75rem" }}>
-              Negocios que ya{" "}
-              <span className="text-gradient">crecen con nosotros</span>
+              Businesses already{" "}
+              <span className="text-gradient">growing with us</span>
             </h2>
           </div>
           <div className="testimonials-rating-badge">
             <span style={{ fontWeight: "700", color: "#fff" }}>4.9 / 5</span>
-            <span style={{ color: "var(--text-secondary)" }}> · Google Reseñas</span>
+            <span style={{ color: "var(--text-secondary)" }}> · Google Reviews</span>
           </div>
         </div>
       </div>
