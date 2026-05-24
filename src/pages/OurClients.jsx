@@ -103,34 +103,133 @@ const StarRating = () => (
   </div>
 );
 
+/* ---- Rating bar widths ---- */
+const ratingCategories = [
+  { label: 'Quality',          pct: 98 },
+  { label: 'Schedule',         pct: 96 },
+  { label: 'Cost',             pct: 94 },
+  { label: 'Willing to Refer', pct: 99 },
+];
+
+const RatingBar = ({ label, pct }) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <span style={{ minWidth: '110px', fontSize: '0.85rem', color: 'var(--text-secondary)', textAlign: 'right' }}>{label}</span>
+    <div style={{ flex: 1, height: '8px', borderRadius: '4px', background: 'rgba(255,255,255,0.08)', overflow: 'hidden' }}>
+      <div
+        style={{
+          width: `${pct}%`,
+          height: '100%',
+          borderRadius: '4px',
+          background: 'var(--accent-gradient)',
+          boxShadow: '0 0 8px rgba(0,229,255,0.4)',
+        }}
+      />
+    </div>
+    <span style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--accent-cyan)', minWidth: '36px' }}>
+      {(pct / 20).toFixed(1)}
+    </span>
+  </div>
+);
+
 const OurClients = () => {
   return (
     <div className="animate-fade-in">
       {/* Page Header */}
       <section className="hero" style={{ minHeight: '40vh', paddingTop: '180px', paddingBottom: '4rem' }}>
         <div className="hero-bg-glow"></div>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
-            Real Results
-          </span>
-          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
-            Our <span className="text-gradient">Clients</span>
-          </h1>
-          <p className="hero-subtitle" style={{ maxWidth: '650px', margin: '0 auto' }}>
-            Businesses from Venezuela, the United States, and Spain trust us to build their digital presence. Here's what they have to say.
-          </p>
+        <div className="container">
 
-          {/* Stats Bar */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', marginTop: '3rem' }}>
+          {/* ── Review Summary Card ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '3rem',
+            alignItems: 'center',
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(0,229,255,0.12)',
+            borderRadius: '20px',
+            padding: 'clamp(2rem, 5vw, 3.5rem)',
+            backdropFilter: 'blur(12px)',
+            marginBottom: '4rem',
+          }}>
+
+            {/* Left — Title */}
+            <div>
+              <span style={{
+                display: 'inline-block',
+                padding: '6px 18px',
+                borderRadius: '30px',
+                border: '1px solid rgba(0,229,255,0.25)',
+                fontSize: '0.78rem',
+                fontWeight: '700',
+                letterSpacing: '0.12em',
+                color: 'var(--accent-cyan)',
+                textTransform: 'uppercase',
+                marginBottom: '1.25rem',
+              }}>
+                Testimonials
+              </span>
+              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '0.75rem' }}>
+                What Others Said<br />
+                <span className="text-gradient">About Us</span>
+              </h1>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', maxWidth: '340px' }}>
+                Businesses from Venezuela, the USA &amp; Spain trust us to build their digital presence.
+              </p>
+            </div>
+
+            {/* Right — Score + bars */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {/* Overall score */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Overall Review Rating</p>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
+                    <span style={{ fontSize: '3.5rem', fontWeight: '900', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>4.9</span>
+                  </div>
+                  {/* Stars */}
+                  <div style={{ display: 'flex', gap: '3px', marginTop: '6px' }}>
+                    {[1,2,3,4,5].map(i => (
+                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i <= 5 ? '#00e5ff' : 'rgba(255,255,255,0.2)'}>
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Category bars */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                {ratingCategories.map((cat) => (
+                  <RatingBar key={cat.label} {...cat} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* ── Stats Strip ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+            gap: '1rem',
+            background: 'rgba(0,0,0,0.3)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRadius: '16px',
+            padding: '2rem',
+          }}>
             {[
               { value: '4.9/5', label: 'Google Rating' },
-              { value: '50+', label: 'Happy Clients' },
-              { value: '3', label: 'Countries Served' },
-              { value: '100%', label: 'Satisfaction Rate' },
+              { value: '50+',   label: 'Happy Clients' },
+              { value: '3',     label: 'Countries Served' },
+              { value: '100%',  label: 'Satisfaction Rate' },
             ].map((stat, i) => (
               <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '800', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{stat.value}</div>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.25rem' }}>{stat.label}</div>
+                <div style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: '900', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1.1 }}>
+                  {stat.value}
+                </div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '0.4rem', letterSpacing: '0.02em' }}>
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
