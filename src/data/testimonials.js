@@ -65,4 +65,81 @@ export const testimonials = [
     location: 'Houston, Texas 🇺🇸',
     rating: 5
   },
+  {
+    id: 7,
+    title: 'Best Investment for My Business',
+    category: 'E-Commerce',
+    image: 'https://images.pexels.com/photos/4968391/pexels-photo-4968391.jpeg',
+    summary: 'Invested in their services and saw ROI within the first month. Highly recommend!',
+    readTime: '2 min',
+    author: 'Roberto García',
+    location: 'Buenos Aires, Argentina 🇦🇷',
+    rating: 5
+  },
+  {
+    id: 8,
+    title: 'Professional Results, Fast Delivery',
+    category: 'Web Development',
+    image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg',
+    summary: 'Delivered everything on time with exceptional quality. My website is converting!',
+    readTime: '3 min',
+    author: 'Maria Fernández',
+    location: 'Madrid, Spain 🇪🇸',
+    rating: 5
+  },
+  {
+    id: 9,
+    title: 'Transformed My Online Visibility',
+    category: 'SEO',
+    image: 'https://images.pexels.com/photos/3873474/pexels-photo-3873474.jpeg',
+    summary: 'From invisible to top rankings. Their SEO strategy is solid and results-driven.',
+    readTime: '2 min',
+    author: 'Luis Martínez',
+    location: 'Bogotá, Colombia 🇨🇴',
+    rating: 5
+  },
+  {
+    id: 10,
+    title: 'AI Chatbot Changed Everything',
+    category: 'AI & Automation',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
+    summary: 'Customer inquiries are handled automatically. Customer satisfaction went up 85%.',
+    readTime: '2 min',
+    author: 'Ana López',
+    location: 'Lima, Peru 🇵🇪',
+    rating: 5
+  },
+  {
+    id: 11,
+    title: 'Exactly What I Needed',
+    category: 'Web Design',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&q=80',
+    summary: 'They understood my vision perfectly and executed it flawlessly. Impressive team.',
+    readTime: '2 min',
+    author: 'Carlos Ruiz',
+    location: 'Cartagena, Colombia 🇨🇴',
+    rating: 5
+  },
+  {
+    id: 12,
+    title: 'Game-Changer for My Business',
+    category: 'Marketing',
+    image: 'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg',
+    summary: 'The complete package: web + SEO + automation. My sales doubled in 3 months.',
+    readTime: '3 min',
+    author: 'Juan Pérez',
+    location: 'Guadalajara, Mexico 🇲🇽',
+    rating: 5
+  },
+  {
+    id: 13,
+    title: 'Outstanding Service Quality',
+    category: 'E-Commerce',
+    image: 'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg',
+    summary: 'Professional, responsive, and results-oriented. They went above and beyond expectations.',
+    readTime: '2 min',
+    author: 'Patricia González',
+    location: 'San José, Costa Rica 🇨🇷',
+    rating: 5
+  },
 ];
