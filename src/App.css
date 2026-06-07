@@ -334,6 +334,18 @@
   #servicios {
     display: none !important;
   }
+
+  /* En móvil: ocultar advisory button y botón WhatsApp del hero */
+  .hero-advisory-wrap,
+  .hero-buttons-desktop {
+    display: none !important;
+  }
+
+  /* Quitar minHeight para que el hero quepa en pantalla */
+  .hero-content-responsive {
+    min-height: unset !important;
+    padding-top: 1rem !important;
+  }
 }
 
 /* Mobile Menu */
