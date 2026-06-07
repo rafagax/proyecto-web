@@ -34,9 +34,9 @@ const Home = () => {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
           <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0 }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
-              Looking for a<br />
-              smart website<br />
-              <span className="text-gradient">powered by AI?</span>
+              Transform Your Business<br />
+              with AI-Powered<br />
+              <span className="text-gradient">Digital Solutions</span>
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0 }}>
               We build ultra-fast, automated digital ecosystems optimized for SEO. <strong>Boost your sales</strong> with cutting-edge technology.
@@ -62,9 +62,9 @@ const Home = () => {
       <section className="section" id="services">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>Our <span className="text-gradient">Services</span></h2>
+            <h2 style={{ fontSize: '2.5rem' }}>Our <span className="text-gradient">Core Services</span></h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-              Complete digital solutions to grow your brand online.
+              Complete digital solutions designed to accelerate your business growth and maximize online visibility.
             </p>
           </div>
 
@@ -74,25 +74,25 @@ const Home = () => {
               <div className="service-icon"><Bot size={24} /></div>
               <h3>Professional Digital Presence</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                We build a modern, clear and attractive website that strengthens your business image, builds trust with your clients, and makes your brand project professionalism from the very first click — helping more customers choose your services.
+                We design and build stunning, modern websites that establish your brand authority, build customer trust, and showcase professionalism from the first interaction, driving more conversions and customer loyalty.
               </p>
             </div>
 
             {/* 2nd: Fast Web Development */}
             <div className="service-card">
               <div className="service-icon"><Cpu size={24} /></div>
-              <h3>Fast & Professional Web Development</h3>
+              <h3>Lightning-Fast Web Development</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                We create modern, fast and multi-device websites in just <strong style={{ color: 'var(--accent-cyan)' }}>7 days</strong>, delivering a clear, attractive and trustworthy experience from the first click.
+                High-performance, fully responsive websites built and deployed in <strong style={{ color: 'var(--accent-cyan)' }}>7 business days</strong>, using cutting-edge technologies optimized for speed, security, and mobile-first design.
               </p>
             </div>
 
             {/* 3rd: Sales Growth */}
             <div className="service-card">
               <div className="service-icon"><Activity size={24} /></div>
-              <h3>Sales Growth</h3>
+              <h3>SEO & Growth Strategy</h3>
               <p style={{ color: 'var(--text-secondary)' }}>
-                We apply geo-local positioning and web optimization strategies so your business gains more visibility, attracts local clients, ranks first on Google, and gets recommended by AI.
+                Data-driven SEO and local marketing strategies that position your business at the top of Google search results, attract qualified leads, and generate sustainable revenue growth in your market.
               </p>
             </div>
           </div>
@@ -109,9 +109,9 @@ const Home = () => {
       <section className="section" id="pricing" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>Plans & <span className="text-gradient">Pricing</span></h2>
+            <h2 style={{ fontSize: '2.5rem' }}>Simple & <span className="text-gradient">Transparent Pricing</span></h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-              Choose the plan that best fits your business needs.
+              Choose the perfect plan to launch and grow your digital presence. All plans include 24/7 support and continuous optimization.
             </p>
           </div>
 
@@ -174,17 +174,17 @@ const Home = () => {
       <section className="section" id="contact">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}><span className="text-gradient">Get in Touch</span></h2>
+            <h2 style={{ fontSize: '2.5rem' }}><span className="text-gradient">Let's Build Something Great</span></h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-              Ready to start your project? Write to us and we'll get back to you as soon as possible.
+              Ready to transform your digital presence? Get in touch with our team for a personalized consultation and free strategy session.
             </p>
           </div>
 
           <div className="contact-container">
             <div className="contact-info">
-              <h3 style={{ fontSize: '1.8rem', lineHeight: '1.2' }}>Your web design ready in just <span className="text-gradient">7 days</span>!</h3>
+              <h3 style={{ fontSize: '1.8rem', lineHeight: '1.2' }}>Websites Delivered in <span className="text-gradient">7 Days</span></h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6', fontSize: '1.05rem' }}>
-                Don't wait any longer to grow your business. Leave us a message about your project and a professional will contact you shortly.
+                Don't let another day go by without a professional online presence. Contact us today and our team will reach out within 24 hours with a personalized strategy.
               </p>
 
               <div className="contact-item">
