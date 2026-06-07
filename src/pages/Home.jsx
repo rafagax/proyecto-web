@@ -146,7 +146,7 @@ const Home = () => {
       <section className="hero">
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2rem', paddingBottom: '4rem' }}>
-          <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '2rem', minHeight: '600px' }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
               Web Development, <span className="text-gradient">AI Automation</span>, and <br />
               Advanced Analytics
