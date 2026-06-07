@@ -94,17 +94,8 @@ const Navbar = () => {
         </div>
 
         <nav className="mobile-menu-nav">
-          {/* Home */}
-          <Link
-            to="/"
-            className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Home
-          </Link>
-
-          {/* Services Section in Mobile */}
-          <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          {/* Services Section in Mobile - First Priority */}
+          <div>
             <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }}>
               Services
             </div>
@@ -122,23 +113,49 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Clients, Pricing, Blog, FAQs */}
-          {mainLinks.slice(1).map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`mobile-menu-item ${location.pathname === link.path ? 'active' : ''}`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {/* Clients - High Conversion Priority */}
+          <Link
+            to="/our-clients"
+            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Clients
+          </Link>
+
+          {/* Pricing - High Conversion Priority */}
+          <Link
+            to="/pricing"
+            className={`mobile-menu-item ${location.pathname === '/pricing' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Pricing
+          </Link>
+
+          {/* Contact Us - CTA Priority */}
           <Link
             to="/contact"
             className={`mobile-menu-item contact-link ${location.pathname === '/contact' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Contact
+            Contact Us
+          </Link>
+
+          {/* FAQs - Medium Priority */}
+          <Link
+            to="/faqs"
+            className={`mobile-menu-item ${location.pathname === '/faqs' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            FAQs
+          </Link>
+
+          {/* Blog - Lower Priority */}
+          <Link
+            to="/blog"
+            className={`mobile-menu-item ${location.pathname === '/blog' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Blog
           </Link>
         </nav>
       </div>
