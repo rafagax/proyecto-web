@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { updateMetaTags, addFAQSchema } from '../utils/seo';
 
 const faqs = [
   {
@@ -94,6 +95,16 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
 
 const FAQs = () => {
   const [openIndex, setOpenIndex] = useState(null);
+
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Frequently Asked Questions | Web Development & Services',
+      description: 'Get answers to common questions about web development, pricing, timeline, and our services. Learn how we can help your business grow online.',
+      keywords: 'FAQ, web development questions, pricing questions, service questions, support',
+      canonical: 'https://yourdomain.com/faqs'
+    });
+    addFAQSchema(faqs);
+  }, []);
 
   const handleToggle = (idx) => {
     setOpenIndex(openIndex === idx ? null : idx);

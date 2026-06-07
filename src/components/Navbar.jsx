@@ -25,39 +25,39 @@ const Navbar = () => {
 
   const servicesColumns = [
     {
-      title: 'Web Development & Maintenance',
-      focus: 'Web building & business digitalization',
+      title: 'Web Development & Design',
+      focus: 'Professional websites built for growth',
       icon: <Code size={18} />,
       links: [
-        { name: 'Custom UX/UI Design', path: '/services/custom-ux-ui' },
-        { name: 'Responsive Web Development', path: '/services/responsive-web' },
-        { name: 'Maintenance & Core Updates', path: '/services/maintenance-updates' },
-        { name: 'Performance Optimization', path: '/services/performance-optimization' },
+        { name: 'Custom Web Design', path: '/services/custom-ux-ui' },
+        { name: 'Responsive Development', path: '/services/responsive-web' },
+        { name: 'Website Maintenance', path: '/services/maintenance-updates' },
+        { name: 'Performance & Speed', path: '/services/performance-optimization' },
         { name: 'Technical Support', path: '/services/technical-support' },
       ]
     },
     {
-      title: 'Automation & AI',
-      focus: 'AI chatbots & automated workflows',
+      title: 'AI Automation & Chatbots',
+      focus: '24/7 customer engagement solutions',
       icon: <Bot size={18} />,
       links: [
-        { name: 'WhatsApp AI Agents', path: '/services/whatsapp-ai-agents' },
-        { name: 'Workflow Automation', path: '/services/workflow-automation' },
-        { name: 'System Integration (APIs)', path: '/services/system-integration' },
-        { name: 'Conversational Solutions', path: '/services/conversational-solutions' },
-        { name: 'Custom Chatbots', path: '/services/custom-chatbots' },
+        { name: 'AI Chatbots', path: '/services/whatsapp-ai-agents' },
+        { name: 'Process Automation', path: '/services/workflow-automation' },
+        { name: 'API Integration', path: '/services/system-integration' },
+        { name: 'Lead Capture', path: '/services/conversational-solutions' },
+        { name: 'WhatsApp Integration', path: '/services/custom-chatbots' },
       ]
     },
     {
-      title: 'Digital Strategy & Data',
-      focus: 'SEO, dashboards & analytics',
+      title: 'SEO & Digital Growth',
+      focus: 'Rank higher and attract more customers',
       icon: <BarChart3 size={18} />,
       links: [
-        { name: 'SEO & Web Positioning', path: '/services/seo-positioning' },
-        { name: 'Traffic & User Analytics', path: '/services/traffic-analytics' },
-        { name: 'Live KPI Dashboards', path: '/services/kpi-dashboards' },
-        { name: 'Weekly Performance Reports', path: '/services/performance-reports' },
-        { name: 'Content Strategy', path: '/services/content-strategy' },
+        { name: 'Local SEO', path: '/services/seo-positioning' },
+        { name: 'Analytics & Tracking', path: '/services/traffic-analytics' },
+        { name: 'Performance Dashboards', path: '/services/kpi-dashboards' },
+        { name: 'Monthly Reports', path: '/services/performance-reports' },
+        { name: 'Content Marketing', path: '/services/content-strategy' },
       ]
     }
   ];
@@ -65,7 +65,9 @@ const Navbar = () => {
   const mainLinks = [
     { name: 'Home', path: '/' },
     { name: 'Pricing', path: '/pricing' },
-    { name: 'Blog', path: '/blog' }
+    { name: 'Clients', path: '/our-clients' },
+    { name: 'Blog', path: '/blog' },
+    { name: 'FAQs', path: '/faqs' }
   ];
 
   return (
@@ -77,13 +79,20 @@ const Navbar = () => {
           </Link>
 
           <nav className="navbar-links">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={location.pathname === '/' ? 'active' : ''}
             >
               Home
             </Link>
-            
+
+            <Link
+              to="/our-clients"
+              className={location.pathname === '/our-clients' ? 'active' : ''}
+            >
+              Clients
+            </Link>
+
             {/* Services Mega Menu Trigger */}
             <div className="nav-mega-item">
               <span className={`nav-mega-trigger ${location.pathname.startsWith('/services') ? 'active' : ''}`}>
@@ -118,18 +127,25 @@ const Navbar = () => {
               </div>
             </div>
 
-            <Link 
-              to="/pricing" 
+            <Link
+              to="/pricing"
               className={location.pathname === '/pricing' ? 'active' : ''}
             >
               Pricing
             </Link>
 
-            <Link 
-              to="/blog" 
+            <Link
+              to="/blog"
               className={location.pathname === '/blog' ? 'active' : ''}
             >
               Blog
+            </Link>
+
+            <Link
+              to="/faqs"
+              className={location.pathname === '/faqs' ? 'active' : ''}
+            >
+              FAQs
             </Link>
 
             <Link to="/contact" className={`btn btn-contact-header ${location.pathname === '/contact' ? 'active' : ''}`}>
@@ -155,14 +171,22 @@ const Navbar = () => {
         </div>
         
         <nav className="mobile-menu-nav">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             Home
           </Link>
-          
+
+          <Link
+            to="/our-clients"
+            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Clients
+          </Link>
+
           {/* Services Accordion */}
           <div className="mobile-menu-dropdown-container">
             <button 
@@ -197,22 +221,30 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link 
-            to="/pricing" 
+          <Link
+            to="/pricing"
             className={`mobile-menu-item ${location.pathname === '/pricing' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             Pricing
           </Link>
 
-          <Link 
-            to="/blog" 
+          <Link
+            to="/blog"
             className={`mobile-menu-item ${location.pathname === '/blog' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             Blog
           </Link>
-          
+
+          <Link
+            to="/faqs"
+            className={`mobile-menu-item ${location.pathname === '/faqs' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            FAQs
+          </Link>
+
           <div className="mobile-menu-footer">
             <Link
               to="/contact"

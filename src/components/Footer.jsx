@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom-bar">
-          <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Inversiones Digitales. All rights reserved.</p>
+          <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Ied.</p>
           <span className="footer-separator">|</span>
           <p style={{ margin: 0, fontSize: '0.85rem', textAlign: 'center' }}>
             CEO:{' '}
