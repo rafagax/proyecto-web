@@ -32,6 +32,9 @@ export const BlogCarousel = () => {
 
   const visibleCount = getVisibleCount();
 
+  // Always show 3 on desktop, with infinite loop
+  const displayCount = visibleCount === 3 ? 3 : visibleCount;
+
   return (
     <section className="blog-carousel-section">
       <div className="container">
@@ -52,8 +55,15 @@ export const BlogCarousel = () => {
           <div className="blog-carousel-container">
             <div className="blog-carousel-track">
               {blogPosts.map((post, index) => {
-                const isVisible =
-                  index >= currentIndex && index < currentIndex + visibleCount;
+                // Check if post should be visible (with infinite loop)
+                let isVisible = false;
+                for (let i = 0; i < displayCount; i++) {
+                  if ((currentIndex + i) % blogPosts.length === index) {
+                    isVisible = true;
+                    break;
+                  }
+                }
+
                 return (
                   <div
                     key={post.id}
@@ -96,18 +106,23 @@ export const BlogCarousel = () => {
 
         {/* Indicators */}
         <div className="carousel-indicators-blog">
-          {blogPosts.map((_, idx) => (
-            <button
-              key={idx}
-              className={`indicator ${
-                idx >= currentIndex && idx < currentIndex + visibleCount
-                  ? 'active'
-                  : ''
-              }`}
-              onClick={() => setCurrentIndex(Math.max(0, idx - visibleCount + 1))}
-              aria-label={`Go to article ${idx + 1}`}
-            />
-          ))}
+          {blogPosts.map((_, idx) => {
+            let isActive = false;
+            for (let i = 0; i < displayCount; i++) {
+              if ((currentIndex + i) % blogPosts.length === idx) {
+                isActive = true;
+                break;
+              }
+            }
+            return (
+              <button
+                key={idx}
+                className={`indicator ${isActive ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(idx)}
+                aria-label={`Go to article ${idx + 1}`}
+              />
+            );
+          })}
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
