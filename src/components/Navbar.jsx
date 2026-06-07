@@ -29,10 +29,10 @@ const Navbar = () => {
       focus: 'Professional websites built for growth',
       icon: <Code size={18} />,
       links: [
-        { name: 'Custom Web Design', path: '/services/custom-ux-ui' },
-        { name: 'Responsive Development', path: '/services/responsive-web' },
-        { name: 'Website Maintenance', path: '/services/maintenance-updates' },
-        { name: 'Performance & Speed', path: '/services/performance-optimization' },
+        { name: 'We Create Your Professional Website', path: '/services/custom-ux-ui' },
+        { name: 'Fast & Responsive Development', path: '/services/responsive-web' },
+        { name: 'Website Management & Maintenance', path: '/services/maintenance-updates' },
+        { name: 'Performance & Speed Optimization', path: '/services/performance-optimization' },
         { name: 'Technical Support', path: '/services/technical-support' },
       ]
     },
@@ -41,10 +41,10 @@ const Navbar = () => {
       focus: '24/7 customer engagement solutions',
       icon: <Bot size={18} />,
       links: [
-        { name: 'AI Chatbots', path: '/services/whatsapp-ai-agents' },
-        { name: 'Process Automation', path: '/services/workflow-automation' },
-        { name: 'API Integration', path: '/services/system-integration' },
-        { name: 'Lead Capture', path: '/services/conversational-solutions' },
+        { name: 'AI Automation - Sell 24/7 on WhatsApp', path: '/services/whatsapp-ai-agents' },
+        { name: 'Process Automation & Workflows', path: '/services/workflow-automation' },
+        { name: 'API Integration & Systems', path: '/services/system-integration' },
+        { name: 'Lead Capture Automation', path: '/services/conversational-solutions' },
         { name: 'WhatsApp Integration', path: '/services/custom-chatbots' },
       ]
     },
@@ -53,11 +53,11 @@ const Navbar = () => {
       focus: 'Rank higher and attract more customers',
       icon: <BarChart3 size={18} />,
       links: [
-        { name: 'Local SEO', path: '/services/seo-positioning' },
-        { name: 'Analytics & Tracking', path: '/services/traffic-analytics' },
-        { name: 'Performance Dashboards', path: '/services/kpi-dashboards' },
-        { name: 'Monthly Reports', path: '/services/performance-reports' },
-        { name: 'Content Marketing', path: '/services/content-strategy' },
+        { name: 'Rank #1 on Google - Local SEO', path: '/services/seo-positioning' },
+        { name: 'Analytics & Performance Tracking', path: '/services/traffic-analytics' },
+        { name: 'KPI Dashboards & Reports', path: '/services/kpi-dashboards' },
+        { name: 'Monthly Performance Reports', path: '/services/performance-reports' },
+        { name: 'Content Strategy & Marketing', path: '/services/content-strategy' },
       ]
     }
   ];
