@@ -23,27 +23,43 @@ const Navbar = () => {
     setMobileServicesOpen(false);
   }, [location]);
 
-  const topServices = [
+  const servicesColumns = [
     {
-      name: 'We Create Your Professional Website',
-      path: '/services/custom-ux-ui',
+      title: 'Web Development & Design',
+      focus: 'Professional websites built for growth',
       icon: <Code size={18} />,
+      links: [
+        { name: 'Custom Web Design', path: '/services/custom-ux-ui' },
+        { name: 'Responsive Development', path: '/services/responsive-web' },
+        { name: 'Website Maintenance', path: '/services/maintenance-updates' },
+        { name: 'Performance & Speed', path: '/services/performance-optimization' },
+        { name: 'Technical Support', path: '/services/technical-support' },
+      ]
     },
     {
-      name: 'Rank #1 on Google - Local SEO',
-      path: '/services/responsive-web',
-      icon: <BarChart3 size={18} />,
-    },
-    {
-      name: 'Website Management & Maintenance',
-      path: '/services/maintenance-updates',
-      icon: <Code size={18} />,
-    },
-    {
-      name: 'AI Automation - Sell 24/7 on WhatsApp',
-      path: '/services/whatsapp-ai-agents',
+      title: 'AI Automation & Chatbots',
+      focus: '24/7 customer engagement solutions',
       icon: <Bot size={18} />,
+      links: [
+        { name: 'AI Chatbots', path: '/services/whatsapp-ai-agents' },
+        { name: 'Process Automation', path: '/services/workflow-automation' },
+        { name: 'API Integration', path: '/services/system-integration' },
+        { name: 'Lead Capture', path: '/services/conversational-solutions' },
+        { name: 'WhatsApp Integration', path: '/services/custom-chatbots' },
+      ]
     },
+    {
+      title: 'SEO & Digital Growth',
+      focus: 'Rank higher and attract more customers',
+      icon: <BarChart3 size={18} />,
+      links: [
+        { name: 'Local SEO', path: '/services/seo-positioning' },
+        { name: 'Analytics & Tracking', path: '/services/traffic-analytics' },
+        { name: 'Performance Dashboards', path: '/services/kpi-dashboards' },
+        { name: 'Monthly Reports', path: '/services/performance-reports' },
+        { name: 'Content Marketing', path: '/services/content-strategy' },
+      ]
+    }
   ];
 
   const mainLinks = [
@@ -78,30 +94,36 @@ const Navbar = () => {
               Clients
             </Link>
 
-            {/* Services Menu - 4 Top Services */}
+            {/* Services Mega Menu Trigger */}
             <div className="nav-mega-item">
               <span className={`nav-mega-trigger ${location.pathname.startsWith('/services') ? 'active' : ''}`}>
                 Services <ChevronDown size={14} className="chevron-icon" />
               </span>
               <div className="mega-menu-dropdown">
                 <div className="mega-menu-content">
-                  <ul className="mega-menu-col-links" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    {topServices.map((service) => (
-                      <li key={service.path}>
-                        <Link
-                          to={service.path}
-                          className={location.pathname === service.path ? 'active' : ''}
-                        >
-                          {service.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', marginTop: '1rem', paddingTop: '1rem' }}>
-                    <Link to="/services" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: '600' }}>
-                      View All Services →
-                    </Link>
-                  </div>
+                  {servicesColumns.map((col) => (
+                    <div key={col.title} className="mega-menu-column">
+                      <div className="mega-menu-col-header">
+                        <span className="mega-menu-col-icon">{col.icon}</span>
+                        <div>
+                          <h4>{col.title}</h4>
+                          <p>{col.focus}</p>
+                        </div>
+                      </div>
+                      <ul className="mega-menu-col-links">
+                        {col.links.map((link) => (
+                          <li key={link.path}>
+                            <Link
+                              to={link.path}
+                              className={location.pathname === link.path ? 'active' : ''}
+                            >
+                              {link.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
