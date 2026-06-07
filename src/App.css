@@ -1463,7 +1463,7 @@
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 420px;
 }
 
 .blog-carousel-card-small:hover {
@@ -1475,9 +1475,11 @@
 
 .blog-card-image-small {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.3s ease;
+  display: block;
 }
 
 .blog-carousel-card-small:hover .blog-card-image-small {
