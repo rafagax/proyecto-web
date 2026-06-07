@@ -2142,29 +2142,15 @@
   }
 
   .btn-hero-primary {
+    display: none !important;
+  }
+
+  .hero-contact-form input::placeholder {
+    color: rgba(160, 174, 192, 0.6) !important;
+  }
+
+  .hero-contact-form input {
     width: 100% !important;
-    max-width: 290px !important;
-    background-color: #00e5ff !important;
-    color: #05050a !important;
-    border: none !important;
-    padding: 1rem 1.5rem !important;
-    border-radius: 12px !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-  }
-
-  .btn-hero-primary:hover {
-    background-color: #00d9ff !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4) !important;
-  }
-
-  .btn-hero-primary .whatsapp-icon-bg svg {
-    filter: none !important;
   }
 
   /* Ocultar botón WhatsApp flotante en móvil */
