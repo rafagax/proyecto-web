@@ -161,16 +161,16 @@ export const ServicesMegaMenu = () => {
       <style>{`
         .services-mega-menu-container {
           position: absolute;
-          top: 100%;
+          top: calc(100% + 12px);
           left: 50%;
           transform: translateX(-50%);
-          margin-top: 12px;
           z-index: 9999;
           display: flex;
           justify-content: center;
           padding: 0 20px;
           width: 100vw;
           pointer-events: auto;
+          will-change: opacity, transform;
         }
 
         .services-mega-menu-wrapper {
@@ -184,17 +184,18 @@ export const ServicesMegaMenu = () => {
           border-radius: 16px;
           overflow: hidden;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-          animation: slideDown 0.3s ease-out;
+          animation: slideDown 0.25s ease-out forwards;
+          will-change: opacity, transform;
         }
 
         @keyframes slideDown {
           from {
             opacity: 0;
-            transform: translateX(-50%) translateY(-10px);
+            transform: translateY(-8px);
           }
           to {
             opacity: 1;
-            transform: translateX(-50%) translateY(0);
+            transform: translateY(0);
           }
         }
 
