@@ -154,7 +154,7 @@ const Home = () => {
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2.5rem' }}>
               We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in reaal time.
             </p>
-            <div className="hero-buttons" style={{ marginTop: 0, justifyContent: 'flex-start', marginLeft: '180px' }}>
+            <div className="hero-buttons" style={{ marginTop: 0, justifyContent: 'flex-start', marginLeft: 'clamp(0px, 12vw, 180px)' }}>
               <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
                 <div className="whatsapp-icon-bg">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
