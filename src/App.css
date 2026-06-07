@@ -791,18 +791,22 @@
    Mobile Hero — Todo en 1 pantalla
    ============================== */
 @media (max-width: 768px) {
-  /* Título más compacto */
+  /* Título más compacto y centrado */
   .hero-title {
     font-size: clamp(1.65rem, 7vw, 2.4rem) !important;
     margin-bottom: 0.6rem !important;
     line-height: 1.15 !important;
+    text-align: center !important;
   }
 
-  /* Subtítulo compacto */
+  /* Subtítulo compacto y centrado */
   .hero-subtitle {
     font-size: 0.82rem !important;
     margin-bottom: 0.6rem !important;
     line-height: 1.5 !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
   /* Formulario compacto */
@@ -812,10 +816,9 @@
     width: 100% !important;
   }
 
-  /* Título del formulario */
+  /* Título del formulario - OCULTO en móvil para que empiece directo con los campos */
   .hero-contact-form h3 {
-    font-size: 0.9rem !important;
-    margin-bottom: 0.55rem !important;
+    display: none !important;
   }
 
   /* Inputs del formulario */
@@ -845,12 +848,14 @@
     border-radius: 8px !important;
   }
 
-  /* Contenedor del hero sin min-height */
+  /* Contenedor del hero sin min-height y centrado */
   .hero-content-responsive {
     min-height: unset !important;
     padding-top: 0.5rem !important;
     padding-bottom: 1rem !important;
     justify-content: flex-start !important;
+    text-align: center !important;
+    align-items: center !important;
   }
 
   /* Container del hero sin padding extra */
