@@ -84,7 +84,37 @@ const Navbar = () => {
         </div>
 
         <nav className="mobile-menu-nav">
-          {mainLinks.map((link) => (
+          {mainLinks.slice(0, 2).map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`mobile-menu-item ${location.pathname === link.path ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+
+          {/* Services Section in Mobile */}
+          <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }}>
+              Services
+            </div>
+            <Link to="/services/custom-ux-ui" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              We Create Your Professional Website
+            </Link>
+            <Link to="/services/seo-positioning" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              Rank #1 on Google - Local SEO
+            </Link>
+            <Link to="/services/maintenance-updates" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              Website Management & Maintenance
+            </Link>
+            <Link to="/services/whatsapp-ai-agents" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              AI Automation - Sell 24/7 on WhatsApp
+            </Link>
+          </div>
+
+          {mainLinks.slice(2).map((link) => (
             <Link
               key={link.path}
               to={link.path}
