@@ -111,7 +111,6 @@ const StarRating = () => (
   </div>
 );
 
-/* ---- Rating bar widths ---- */
 const ratingCategories = [
   { label: 'Quality',          pct: 98 },
   { label: 'Schedule',         pct: 96 },
@@ -151,12 +150,36 @@ const OurClients = () => {
 
   return (
     <div className="animate-fade-in">
+      {/* Estilos inyectados temporalmente para manejar el hover de manera limpia y nativa */}
+      <style>{`
+        .client-link-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          padding: 4px 10px;
+          border-radius: 16px;
+          font-size: 0.65rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          z-index: 10;
+          position: relative;
+        }
+        .client-link-btn:hover {
+          background-color: var(--hover-bg) !important;
+          border-color: var(--hover-border) !important;
+          opacity: 0.95;
+        }
+      `}</style>
+
       {/* Page Header */}
       <section className="hero" style={{ minHeight: '40vh', paddingTop: '180px', paddingBottom: '4rem' }}>
         <div className="hero-bg-glow"></div>
         <div className="container">
 
-          {/* ── Review Summary Card ── */}
+          {/* Review Summary Card */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -197,17 +220,15 @@ const OurClients = () => {
 
             {/* Right — Score + bars */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-              {/* Overall score */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                 <div>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Overall Review Rating</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
                     <span style={{ fontSize: '3.5rem', fontWeight: '900', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>4.9</span>
                   </div>
-                  {/* Stars */}
                   <div style={{ display: 'flex', gap: '3px', marginTop: '6px' }}>
                     {[1,2,3,4,5].map(i => (
-                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i <= 5 ? '#00e5ff' : 'rgba(255,255,255,0.2)'}>
+                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill='#00e5ff'>
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     ))}
@@ -215,7 +236,6 @@ const OurClients = () => {
                 </div>
               </div>
 
-              {/* Category bars */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {ratingCategories.map((cat) => (
                   <RatingBar key={cat.label} {...cat} />
@@ -224,7 +244,7 @@ const OurClients = () => {
             </div>
           </div>
 
-          {/* ── Stats Strip ── */}
+          {/* Stats Strip */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
@@ -261,7 +281,7 @@ const OurClients = () => {
               <div
                 key={idx}
                 className="testimonial-card"
-                style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}
+                style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative' }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
@@ -276,7 +296,6 @@ const OurClients = () => {
                   &ldquo;{client.quote}&rdquo;
                 </p>
 
-                {/* Result badge */}
                 <div style={{ background: `${client.color}15`, border: `1px solid ${client.color}40`, borderRadius: '8px', padding: '8px 14px', fontSize: '0.85rem', color: client.color, fontWeight: '600' }}>
                   ✓ {client.result}
                 </div>
@@ -306,37 +325,22 @@ const OurClients = () => {
                   }}>
                     {client.service}
                   </span>
+                  
                   {client.website && (
                     <a
                       href={client.website}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="client-link-btn"
                       style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                        padding: '4px 10px',
-                        borderRadius: '16px',
                         background: `${client.color}15`,
                         color: client.color,
-                        fontSize: '0.65rem',
-                        fontWeight: '700',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.08em',
                         border: `1px solid ${client.color}40`,
-                        transition: 'all 0.3s ease',
-                        textDecoration: 'none',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = `${client.color}25`;
-                        e.currentTarget.style.borderColor = `${client.color}80`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = `${client.color}15`;
-                        e.currentTarget.style.borderColor = `${client.color}40`;
+                        '--hover-bg': `${client.color}25`,
+                        '--hover-border': `${client.color}80`
                       }}
                     >
-                      🔗 {client.websiteLabel || 'Visit'}
+                      🔗 {client.websiteLabel || 'View Site'}
                     </a>
                   )}
                 </div>
