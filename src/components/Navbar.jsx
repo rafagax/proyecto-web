@@ -21,6 +21,16 @@ const Navbar = () => {
     setMobileMenuOpen(false);
   }, [location]);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('mobile-menu-open');
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.classList.remove('mobile-menu-open');
+    }
+  }, [mobileMenuOpen]);
+
   const mainLinks = [
     { name: 'Home', path: '/' },
     { name: 'Clients', path: '/our-clients' },

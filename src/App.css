@@ -2099,3 +2099,9 @@
     transform: translateX(0);
   }
 }
+
+/* Hide floating buttons when mobile menu is open */
+:root.mobile-menu-open .floating-whatsapp,
+:root.mobile-menu-open #ka-chatbot-window {
+  display: none !important;
+}
