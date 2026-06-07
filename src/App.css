@@ -2451,3 +2451,73 @@
     padding: 0.95rem 1.5rem;
   }
 }
+
+/* ==============================
+   Hero Advisory CTA Button
+   ============================== */
+.hero-advisory-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #00e5ff 0%, #0066ff 100%);
+  color: #fff;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 229, 255, 0.35),
+              0 2px 8px rgba(0, 102, 255, 0.25);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+}
+
+/* Shimmer sweep */
+.hero-advisory-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
+  transform: skewX(-20deg);
+  animation: advisory-shimmer 3s ease-in-out infinite;
+}
+
+@keyframes advisory-shimmer {
+  0%   { left: -75%; }
+  60%  { left: 130%; }
+  100% { left: 130%; }
+}
+
+.hero-advisory-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 35px rgba(0, 229, 255, 0.5),
+              0 4px 14px rgba(0, 102, 255, 0.4);
+}
+
+.hero-advisory-btn:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.hero-advisory-btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 600px) {
+  .hero-advisory-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.5rem;
+  }
+}

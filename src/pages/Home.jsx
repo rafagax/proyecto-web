@@ -151,9 +151,28 @@ const Home = () => {
               Web Development, <span className="text-gradient">AI Automation</span>, and <br />
               Advanced Analytics
             </h1>
-             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2.5rem' }}>
+             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2rem' }}>
               We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in reaal time.
             </p>
+
+            {/* Hero CTA - Free Advisory */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+              <a
+                href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20a%20free%20advisory%20session%20for%20my%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-advisory-btn"
+              >
+                <span className="hero-advisory-btn-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L13.09 8.26L19 6L15.45 11.13L22 12L15.45 12.87L19 18L13.09 15.74L12 22L10.91 15.74L5 18L8.55 12.87L2 12L8.55 11.13L5 6L10.91 8.26L12 2Z" fill="currentColor"/>
+                  </svg>
+                </span>
+                Get Your Free Advisory
+                <ArrowRight size={17} />
+              </a>
+            </div>
+
             <div className="hero-buttons" style={{ marginBottom: '2rem', justifyContent: 'center' }}>
               <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large" style={{ alignItems: 'center', gap: '10px' }}>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
