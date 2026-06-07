@@ -689,14 +689,6 @@
   /* For fixed navbar */
 }
 
-@media (min-width: 769px) {
-  .hero {
-    align-items: flex-start;
-    overflow: visible;
-    padding-bottom: 4rem;
-  }
-}
-
 @media (max-width: 768px) {
   .hero {
     padding-top: 100px;
