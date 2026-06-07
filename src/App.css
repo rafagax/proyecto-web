@@ -682,10 +682,11 @@
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   padding-top: 100px;
+  padding-bottom: 4rem;
   /* For fixed navbar */
 }
 
