@@ -154,20 +154,28 @@ const Home = () => {
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2.5rem' }}>
               We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in reaal time.
             </p>
-            <div className="hero-contact-form" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '280px', margin: '1.5rem auto 0' }}>
-              <h3 style={{ color: '#fff', fontSize: '0.95rem', fontWeight: '600', marginBottom: '1rem', textAlign: 'center' }}>Get Your Free Audit</h3>
+            <div className="hero-contact-form" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
+              <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>Get Your Free Audit</h3>
               <form onSubmit={(e) => {
                 e.preventDefault();
-                const name = e.target.name?.value || '';
+                const phone = e.target.phone?.value || '';
                 const email = e.target.email?.value || '';
-                const phone = '584144735431';
-                const text = `Hi! I'm interested in a free audit. Name: ${name}, Email: ${email}`;
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
-              }} style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                <input type="text" name="name" placeholder="Your name" required style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.85rem' }} />
-                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.75rem', borderRadius: '8px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.85rem' }} />
-                <button type="submit" style={{ padding: '0.85rem', borderRadius: '8px', background: '#00e5ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '0.9rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 6px 20px rgba(0, 229, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
-                  Send via WhatsApp
+                const service = e.target.service?.value || '';
+                const waPhone = '584144735431';
+                const text = `Hi! I want a free audit for: ${service}\n📱 Phone: ${phone}\n📧 Email: ${email}`;
+                window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
+              }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
+                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
+                <select name="service" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }}>
+                  <option value="" style={{ background: '#0a0a0c', color: '#fff' }}>Select service for audit</option>
+                  <option value="Web Development" style={{ background: '#0a0a0c' }}>Web Development</option>
+                  <option value="SEO Optimization" style={{ background: '#0a0a0c' }}>SEO Optimization</option>
+                  <option value="Website Management" style={{ background: '#0a0a0c' }}>Website Management</option>
+                  <option value="AI Automation" style={{ background: '#0a0a0c' }}>AI Automation</option>
+                </select>
+                <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#00e5ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(0, 229, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
+                  Send Audit Request
                 </button>
               </form>
             </div>

@@ -2119,20 +2119,20 @@
   }
 
   .hero-content-responsive .hero-title {
-    font-size: 1.5rem !important;
+    font-size: 2rem !important;
     font-weight: 800 !important;
     letter-spacing: -0.02em !important;
-    line-height: 1.25 !important;
-    margin-bottom: 0.75rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .hero-content-responsive .hero-subtitle {
-    font-size: 0.85rem !important;
+    font-size: 0.95rem !important;
     color: #a0aec0 !important;
-    margin: 0.75rem auto !important;
-    max-width: 280px !important;
-    line-height: 1.5 !important;
-    margin-bottom: 1rem !important;
+    margin: 1rem auto !important;
+    max-width: 300px !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.5rem !important;
   }
 
   .hero-content-responsive .hero-buttons {
@@ -2141,16 +2141,53 @@
     width: 100% !important;
   }
 
+  .hero-contact-form {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 1rem !important;
+  }
+
+  .hero-contact-form input,
+  .hero-contact-form select {
+    width: 100% !important;
+  }
+
+  .hero-contact-form input::placeholder,
+  .hero-contact-form select::placeholder {
+    color: rgba(160, 174, 192, 0.7) !important;
+  }
+
   .btn-hero-primary {
     display: none !important;
   }
+}
 
-  .hero-contact-form input::placeholder {
-    color: rgba(160, 174, 192, 0.6) !important;
+/* Desktop - mostrar botón WhatsApp */
+@media (min-width: 769px) {
+  .hero-contact-form {
+    display: none !important;
   }
 
-  .hero-contact-form input {
+  .btn-hero-primary {
     width: 100% !important;
+    max-width: 290px !important;
+    background-color: #00e5ff !important;
+    color: #05050a !important;
+    border: none !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  .btn-hero-primary:hover {
+    background-color: #00d9ff !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4) !important;
   }
 
   /* Ocultar botón WhatsApp flotante en móvil */
