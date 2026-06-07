@@ -2109,3 +2109,25 @@
 :root.mobile-menu-open #ka-chatbot-container {
   display: none !important;
 }
+
+/* Hero Content Responsive */
+@media (max-width: 768px) {
+  .hero-content-responsive {
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .hero-content-responsive .hero-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+  }
+
+  .hero-content-responsive .hero-subtitle {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-content-responsive .hero-buttons {
+    margin-left: 0 !important;
+    justify-content: center !important;
+  }
+}
