@@ -104,7 +104,7 @@ const Pricing = () => {
               <div className="pricing-card">
                 <h3>SEO Optimization</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>Rank higher on Google</p>
-                <div className="price-amount">$499<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <div className="price-amount">$300<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
                 <ul className="price-features">
                   <li><CheckCircle2 size={18} /> Keyword Research & Strategy</li>
                   <li><CheckCircle2 size={18} /> On-Page Optimization</li>
@@ -122,7 +122,7 @@ const Pricing = () => {
               <div className="pricing-card">
                 <h3>Website Management</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>Keep your site running smoothly</p>
-                <div className="price-amount">$499<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <div className="price-amount">$400<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
                 <ul className="price-features">
                   <li><CheckCircle2 size={18} /> Daily Security Monitoring</li>
                   <li><CheckCircle2 size={18} /> Automatic Backups</li>
