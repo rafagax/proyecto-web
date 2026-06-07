@@ -6,12 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     // Optimize bundle size
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-      },
-    },
+    minify: 'esbuild',
     // Generate source maps for production debugging
     sourcemap: false,
     // Chunk size for better caching
