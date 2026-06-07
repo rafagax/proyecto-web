@@ -35,10 +35,10 @@ const serviceCategories = [
     description: 'Know exactly how your business is performing',
     icon: <BarChart3 size={20} />,
     services: [
-      { name: 'Sales & Revenue Indicators', path: '/services/kpi-dashboards' },
+      { name: 'Productivity Indicators by Department', path: '/services/traffic-analytics' },
       { name: 'Understand Customer Behavior', path: '/services/traffic-analytics' },
       { name: 'Business Growth Dashboard', path: '/services/performance-reports' },
-      { name: 'Productivity Indicators by Department', path: '/services/traffic-analytics' },
+      { name: 'Sales & Revenue Indicators', path: '/services/kpi-dashboards' },
       { name: 'Business Intelligence Tools', path: '/services/kpi-dashboards' },
     ]
   },
