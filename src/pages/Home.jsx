@@ -160,20 +160,14 @@ const Home = () => {
                 e.preventDefault();
                 const phone = e.target.phone?.value || '';
                 const email = e.target.email?.value || '';
-                const service = e.target.service?.value || '';
+                const message = e.target.message?.value || '';
                 const waPhone = '584144735431';
-                const text = `Hi! I want a free audit for: ${service}\n📱 Phone: ${phone}\n📧 Email: ${email}`;
+                const text = `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`;
                 window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
               }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
                 <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
-                <select name="service" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }}>
-                  <option value="" style={{ background: '#0a0a0c', color: '#fff' }}>Select service for audit</option>
-                  <option value="Web Development" style={{ background: '#0a0a0c' }}>Web Development</option>
-                  <option value="SEO Optimization" style={{ background: '#0a0a0c' }}>SEO Optimization</option>
-                  <option value="Website Management" style={{ background: '#0a0a0c' }}>Website Management</option>
-                  <option value="AI Automation" style={{ background: '#0a0a0c' }}>AI Automation</option>
-                </select>
+                <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
                 <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#00e5ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(0, 229, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
                   Send Audit Request
                 </button>
