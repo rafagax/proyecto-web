@@ -152,7 +152,7 @@ const Home = () => {
               Advanced Analytics
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2rem' }}>
-              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics ( KPIs ) so you maintain total control over your growth in real time.
+              , optimize your Google ranking, and automate your sales with AI, while structuring your key metrics ( KPIs ) so you maintain total control over your growth in real time.
             </p >
 
             {/* Hero CTA - Free Advisory */}
