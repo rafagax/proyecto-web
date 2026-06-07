@@ -7,8 +7,6 @@ import { blogPosts } from '../data/blogPosts';
 import { updateMetaTags } from '../utils/seo';
 
 const Home = () => {
-  const [carouselIndex, setCarouselIndex] = useState(0);
-
   useEffect(() => {
     updateMetaTags({
       title: 'Professional Web Development & Digital Solutions',
@@ -19,22 +17,6 @@ const Home = () => {
       canonical: 'https://yourdomain.com/'
     });
   }, []);
-
-  // Autoplay carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % blogPosts.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handlePrevious = () => {
-    setCarouselIndex((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
-  };
-
-  const handleNext = () => {
-    setCarouselIndex((prev) => (prev + 1) % blogPosts.length);
-  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -405,61 +387,38 @@ const Home = () => {
           <h2>From Our <span className="text-gradient">Blog</span></h2>
           <p>Learn industry insights, strategies, and tips to grow your business online.</p>
 
-          <div className="blog-carousel-wrapper">
-            {/* Previous Button */}
-            <button
-              onClick={handlePrevious}
-              className="carousel-nav-btn carousel-prev"
-              aria-label="Previous article"
-            >
-              <ChevronLeft size={24} />
-            </button>
-
-            {/* Carousel Container */}
-            <div className="blog-carousel-container">
-              <div
-                className="blog-carousel-track"
-                style={{
-                  transform: `translateX(calc(-${carouselIndex * 100}% - ${carouselIndex * 2}rem))`,
-                  transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
-                }}
-              >
-                {blogPosts.map((post) => (
-                  <div key={post.id} className="blog-carousel-card">
-                    <img src={post.image} alt={post.title} className="blog-card-image" />
-                    <div className="blog-carousel-card-content">
-                      <div className="blog-category">{post.category}</div>
-                      <h3>{post.title}</h3>
-                      <p className="blog-excerpt">{post.excerpt}</p>
-                      <Link to={`/blog/${post.slug}`} className="read-more">
-                        Read More <ArrowRight size={18} />
-                      </Link>
-                    </div>
+          {/* Continuous Carousel */}
+          <div className="blog-carousel-continuous">
+            <div className="blog-carousel-track-continuous">
+              {/* Original items */}
+              {blogPosts.map((post) => (
+                <div key={`${post.id}-original`} className="blog-carousel-card-small">
+                  <img src={post.image} alt={post.title} className="blog-card-image-small" />
+                  <div className="blog-carousel-card-content-small">
+                    <div className="blog-category">{post.category}</div>
+                    <h3>{post.title}</h3>
+                    <p className="blog-excerpt">{post.excerpt}</p>
+                    <Link to={`/blog/${post.slug}`} className="read-more">
+                      Read More <ArrowRight size={16} />
+                    </Link>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
+              {/* Duplicate items for infinite loop */}
+              {blogPosts.map((post) => (
+                <div key={`${post.id}-duplicate`} className="blog-carousel-card-small">
+                  <img src={post.image} alt={post.title} className="blog-card-image-small" />
+                  <div className="blog-carousel-card-content-small">
+                    <div className="blog-category">{post.category}</div>
+                    <h3>{post.title}</h3>
+                    <p className="blog-excerpt">{post.excerpt}</p>
+                    <Link to={`/blog/${post.slug}`} className="read-more">
+                      Read More <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/* Next Button */}
-            <button
-              onClick={handleNext}
-              className="carousel-nav-btn carousel-next"
-              aria-label="Next article"
-            >
-              <ChevronRight size={24} />
-            </button>
-          </div>
-
-          {/* Indicators */}
-          <div className="carousel-indicators">
-            {blogPosts.map((_, idx) => (
-              <button
-                key={idx}
-                className={`indicator ${idx === carouselIndex ? 'active' : ''}`}
-                onClick={() => setCarouselIndex(idx)}
-                aria-label={`Go to article ${idx + 1}`}
-              />
-            ))}
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '2rem' }}>
