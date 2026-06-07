@@ -84,16 +84,14 @@ const Navbar = () => {
         </div>
 
         <nav className="mobile-menu-nav">
-          {mainLinks.slice(0, 2).map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`mobile-menu-item ${location.pathname === link.path ? 'active' : ''}`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.name}
-            </Link>
-          ))}
+          {/* Home */}
+          <Link
+            to="/"
+            className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
 
           {/* Services Section in Mobile */}
           <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
@@ -114,7 +112,8 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {mainLinks.slice(2).map((link) => (
+          {/* Clients, Pricing, Blog, FAQs */}
+          {mainLinks.slice(1).map((link) => (
             <Link
               key={link.path}
               to={link.path}

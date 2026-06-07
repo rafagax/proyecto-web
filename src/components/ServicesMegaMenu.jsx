@@ -149,12 +149,11 @@ export const ServicesMegaMenu = () => {
 
       <style>{`
         .services-mega-menu-container {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          margin-top: 12px;
-          z-index: 1000;
+          position: fixed;
+          top: calc(100% + 12px);
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
           display: flex;
           justify-content: center;
           padding: 0 20px;
