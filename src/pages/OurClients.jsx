@@ -328,12 +328,12 @@ const OurClients = () => {
                         textDecoration: 'none',
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.background = `${client.color}25`;
-                        e.target.style.borderColor = `${client.color}80`;
+                        e.currentTarget.style.background = `${client.color}25`;
+                        e.currentTarget.style.borderColor = `${client.color}80`;
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.background = `${client.color}15`;
-                        e.target.style.borderColor = `${client.color}40`;
+                        e.currentTarget.style.background = `${client.color}15`;
+                        e.currentTarget.style.borderColor = `${client.color}40`;
                       }}
                     >
                       🔗 {client.websiteLabel || 'Visit'}
