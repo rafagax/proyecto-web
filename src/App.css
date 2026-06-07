@@ -2160,12 +2160,20 @@
   .btn-hero-primary {
     display: none !important;
   }
+
+  .hero-buttons {
+    display: none !important;
+  }
 }
 
 /* Desktop - mostrar botón WhatsApp */
 @media (min-width: 769px) {
   .hero-contact-form {
     display: none !important;
+  }
+
+  .hero-buttons {
+    display: flex !important;
   }
 
   .btn-hero-primary {
