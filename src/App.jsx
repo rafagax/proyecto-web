@@ -7,6 +7,8 @@ import Pricing from './pages/Pricing';
 import OurClients from './pages/OurClients';
 import FAQs from './pages/FAQs';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import ServiceDetail from './pages/ServiceDetail';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
@@ -19,11 +21,15 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            
+            {/* Fallbacks & Redirects */}
+            <Route path="/contacto" element={<Contact />} />
             <Route path="/our-clients" element={<OurClients />} />
             <Route path="/faqs" element={<FAQs />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Legacy / redirect aliases */}
             <Route path="/about" element={<Home />} />
           </Routes>
         </main>
