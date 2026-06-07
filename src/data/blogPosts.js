@@ -54,4 +54,15 @@ export const blogPosts = [
     image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop&q=80',
     content: 'Speed is a ranking factor and drives conversions.',
   },
+  {
+    id: 6,
+    slug: 'mobile-first-design-strategy',
+    title: 'Mobile-First Design: The Future of Web Development',
+    excerpt: 'Over 70% of web traffic comes from mobile devices. Discover why mobile-first design is essential and how it transforms user engagement.',
+    category: 'Web Design',
+    date: 'January 2025',
+    author: 'Digital Solutions Pro',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop&q=80',
+    content: 'Mobile-first design ensures your users have the best experience on any device.',
+  },
 ];
