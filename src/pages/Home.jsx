@@ -148,12 +148,11 @@ const Home = () => {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
           <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0 }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
-              Transform Your Business<br />
-              with AI-Powered<br />
-              <span className="text-gradient">Digital Solutions</span>
+              Web Development, <span className="text-gradient">AI Automation</span>, and <br />
+              Advanced Analytics
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0 }}>
-              We build ultra-fast, automated digital ecosystems optimized for SEO. <strong>Boost your sales</strong> with cutting-edge technology.
+              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth.
             </p>
             <div className="hero-buttons" style={{ marginTop: '3rem', justifyContent: 'flex-start' }}>
               <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
