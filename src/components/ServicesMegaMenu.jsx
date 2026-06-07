@@ -112,30 +112,30 @@ export const ServicesMegaMenu = () => {
       </div>
 
       <style>{`
-        .services-mega-menu-container {
+    .mega-menu-container {
           position: absolute;
           top: 100%;
-          left: 0;
-          right: 0;
-          margin-top: 12px;
-          z-index: 1000;
-          display: flex;
-          justify-content: center;
-          padding: 0 20px;
-        }
-
-        .services-mega-menu-wrapper {
-          display: flex;
-          width: 100%;
-          max-width: 1100px;
-          background: rgba(10, 10, 12, 0.95);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          left: 0; /* Cambiado de 50% a 0 */
+          width: 850px;
+          background: rgba(10, 15, 25, 0.95);
+          backdrop-filter: blur(12px);
           border: 1px solid rgba(0, 229, 255, 0.15);
           border-radius: 16px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+          display: flex;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(10px); /* Simplificado */
+          transition: all 0.3s ease;
+          z-index: 100;
           overflow: hidden;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-          animation: slideDown 0.3s ease-out;
+          padding: 0;
+        }
+        
+        .mega-menu-wrapper:hover .mega-menu-container {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0); /* Simplificado */
         }
 
         @keyframes slideDown {
