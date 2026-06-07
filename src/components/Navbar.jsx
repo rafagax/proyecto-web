@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Code, Bot, BarChart3 } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import logoImg from '../assets/logo sin fondo.png';
+import { ServicesMegaMenu } from './ServicesMegaMenu';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [servicesMenuOpen, setServicesMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -22,57 +24,6 @@ const Navbar = () => {
     setMobileMenuOpen(false);
     setMobileServicesOpen(false);
   }, [location]);
-
-  const servicesColumns = [
-    {
-      title: 'Web Development & Design',
-      focus: 'Professional websites built for growth',
-      icon: <Code size={18} />,
-      links: [
-        { name: 'We Create Your Professional Website', path: '/services/custom-ux-ui' },
-        { name: 'Fast & Responsive Development', path: '/services/responsive-web' },
-        { name: 'Website Management & Maintenance', path: '/services/maintenance-updates' },
-        { name: 'Performance & Speed Optimization', path: '/services/performance-optimization' },
-        { name: 'Technical Support', path: '/services/technical-support' },
-      ]
-    },
-    {
-      title: 'SEO & Digital Growth',
-      focus: 'Rank higher and attract more customers',
-      icon: <BarChart3 size={18} />,
-      links: [
-        { name: 'Rank #1 on Google - Local SEO', path: '/services/seo-positioning' },
-        { name: 'Analytics & Performance Tracking', path: '/services/traffic-analytics' },
-        { name: 'Content Strategy & Marketing', path: '/services/content-strategy' },
-        { name: 'Monthly Performance Reports', path: '/services/performance-reports' },
-        { name: 'Organic Traffic Growth', path: '/services/traffic-analytics' },
-      ]
-    },
-    {
-      title: 'KPI & Performance Indicators',
-      focus: 'Know exactly how your business is performing',
-      icon: <BarChart3 size={18} />,
-      links: [
-        { name: 'Sales & Revenue Indicators', path: '/services/kpi-dashboards' },
-        { name: 'Understand Customer Behavior', path: '/services/traffic-analytics' },
-        { name: 'Business Growth Dashboard', path: '/services/performance-reports' },
-        { name: 'Productivity Indicators by Department', path: '/services/traffic-analytics' },
-        { name: 'Business Intelligence Tools', path: '/services/kpi-dashboards' },
-      ]
-    },
-    {
-      title: 'AI Automation & Chatbots',
-      focus: '24/7 customer engagement solutions',
-      icon: <Bot size={18} />,
-      links: [
-        { name: 'AI Automation - Sell 24/7 on WhatsApp', path: '/services/whatsapp-ai-agents' },
-        { name: 'Process Automation & Workflows', path: '/services/workflow-automation' },
-        { name: 'API Integration & Systems', path: '/services/system-integration' },
-        { name: 'Lead Capture Automation', path: '/services/conversational-solutions' },
-        { name: 'WhatsApp Integration', path: '/services/custom-chatbots' },
-      ]
-    }
-  ];
 
   const mainLinks = [
     { name: 'Home', path: '/' },
@@ -107,37 +58,15 @@ const Navbar = () => {
             </Link>
 
             {/* Services Mega Menu Trigger */}
-            <div className="nav-mega-item">
+            <div
+              className="nav-mega-item"
+              onMouseEnter={() => setServicesMenuOpen(true)}
+              onMouseLeave={() => setServicesMenuOpen(false)}
+            >
               <span className={`nav-mega-trigger ${location.pathname.startsWith('/services') ? 'active' : ''}`}>
                 Services <ChevronDown size={14} className="chevron-icon" />
               </span>
-              <div className="mega-menu-dropdown">
-                <div className="mega-menu-content">
-                  {servicesColumns.map((col) => (
-                    <div key={col.title} className="mega-menu-column">
-                      <div className="mega-menu-col-header">
-                        <span className="mega-menu-col-icon">{col.icon}</span>
-                        <div>
-                          <h4>{col.title}</h4>
-                          <p>{col.focus}</p>
-                        </div>
-                      </div>
-                      <ul className="mega-menu-col-links">
-                        {col.links.map((link) => (
-                          <li key={link.path}>
-                            <Link
-                              to={link.path}
-                              className={location.pathname === link.path ? 'active' : ''}
-                            >
-                              {link.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {servicesMenuOpen && <ServicesMegaMenu />}
             </div>
 
             <Link
