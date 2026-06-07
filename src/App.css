@@ -1657,7 +1657,11 @@
   }
 
   .blog-card-image-small {
-    height: 150px;
+    height: 180px;
+  }
+
+  .blog-carousel-card-small {
+    min-height: 380px;
   }
 
   .blog-carousel-card-content-small {
