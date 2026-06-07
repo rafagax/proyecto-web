@@ -148,6 +148,102 @@ const serviceDetails = {
       'Monthly performance reports'
     ]
   },
+  'technical-support': {
+    title: 'Technical Support',
+    description: 'Reliable technical support to keep your website running smoothly at all times.',
+    benefits: ['Fast response times', 'Expert assistance', 'Minimal downtime', 'Peace of mind', 'Proactive monitoring'],
+    process: ['Issue Reporting', 'Diagnosis', 'Resolution', 'Testing', 'Documentation'],
+    timeline: 'Same-day response',
+    price: 'Starting at $79/month',
+    features: [
+      'Priority email & chat support',
+      'Bug diagnosis and fixing',
+      'Hosting & domain assistance',
+      'Error monitoring & alerts',
+      'Emergency response',
+      'Monthly support summary'
+    ]
+  },
+  'conversational-solutions': {
+    title: 'Lead Capture & Conversational Solutions',
+    description: 'Turn website visitors into leads with intelligent conversational forms and flows.',
+    benefits: ['Higher lead conversion', 'Automated qualification', 'Personalized experience', '24/7 availability', 'CRM integration'],
+    process: ['Strategy Design', 'Flow Development', 'Integration', 'Testing', 'Launch & Optimize'],
+    timeline: '5-10 days',
+    price: 'Starting at $349',
+    features: [
+      'Custom lead capture flows',
+      'Multi-step conversational forms',
+      'Automated lead qualification',
+      'CRM & email integration',
+      'Real-time lead notifications',
+      'Conversion analytics'
+    ]
+  },
+  'custom-chatbots': {
+    title: 'WhatsApp Integration & Custom Chatbots',
+    description: 'Connect your business to WhatsApp with smart chatbots that handle inquiries automatically.',
+    benefits: ['Instant customer responses', 'Reduced workload', 'Higher engagement', 'Lead capture', 'Seamless handoff'],
+    process: ['Requirements', 'Bot Design', 'WhatsApp Setup', 'Testing', 'Go Live'],
+    timeline: '5-7 days',
+    price: 'Starting at $299/month',
+    features: [
+      'WhatsApp Business API integration',
+      'Custom chatbot flows',
+      'Automated FAQ responses',
+      'Lead capture & routing',
+      'Human handoff when needed',
+      'Chat analytics & reporting'
+    ]
+  },
+  'kpi-dashboards': {
+    title: 'KPI & Performance Dashboards',
+    description: 'Visualize your business metrics with custom dashboards that make data-driven decisions easy.',
+    benefits: ['Real-time data visibility', 'Better decisions', 'Team alignment', 'Goal tracking', 'Instant reporting'],
+    process: ['KPI Definition', 'Data Source Setup', 'Dashboard Design', 'Testing', 'Training'],
+    timeline: '7-14 days',
+    price: 'Starting at $399',
+    features: [
+      'Custom KPI dashboard design',
+      'Multi-source data integration',
+      'Real-time data updates',
+      'Goal tracking & alerts',
+      'Team sharing & permissions',
+      'Export & reporting tools'
+    ]
+  },
+  'performance-reports': {
+    title: 'Monthly Performance Reports',
+    description: 'Stay informed with detailed monthly reports covering your website traffic, SEO, and business metrics.',
+    benefits: ['Full visibility', 'Actionable insights', 'Progress tracking', 'Informed strategy', 'Time savings'],
+    process: ['Data Collection', 'Analysis', 'Report Generation', 'Review Call', 'Action Planning'],
+    timeline: 'Monthly delivery',
+    price: 'Starting at $99/month',
+    features: [
+      'Traffic & user behavior summary',
+      'SEO ranking updates',
+      'Conversion rate analysis',
+      'Goal progress tracking',
+      'Competitor snapshot',
+      'Next-month action recommendations'
+    ]
+  },
+  'content-strategy': {
+    title: 'Content Marketing & Strategy',
+    description: 'Attract and retain your target audience with a content strategy that drives organic growth.',
+    benefits: ['Organic traffic growth', 'Brand authority', 'Lead generation', 'Long-term ROI', 'Audience trust'],
+    process: ['Audience Research', 'Content Planning', 'Creation', 'Publishing', 'Performance Review'],
+    timeline: 'Ongoing',
+    price: 'Starting at $249/month',
+    features: [
+      'Content strategy & editorial calendar',
+      'SEO-optimized blog articles',
+      'Social media content',
+      'Email newsletter copy',
+      'Content performance tracking',
+      'Monthly content review'
+    ]
+  },
 };
 
 const ServiceDetail = () => {

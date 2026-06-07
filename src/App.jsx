@@ -9,6 +9,7 @@ import FAQs from './pages/FAQs';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import ServiceDetail from './pages/ServiceDetail';
+import Seo from './pages/Seo';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
@@ -31,6 +32,8 @@ function App() {
             <Route path="/our-clients" element={<OurClients />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/about" element={<Home />} />
+            <Route path="/seo" element={<Seo />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </main>
         <Footer />

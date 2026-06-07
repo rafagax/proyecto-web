@@ -4,7 +4,6 @@
 This is a professional **Web Development & Digital Services** website optimized for:
 - Landing page builders
 - Small business websites  
-- E-commerce solutions
 - AI automation integration
 
 **All content is in English** for international reach.
