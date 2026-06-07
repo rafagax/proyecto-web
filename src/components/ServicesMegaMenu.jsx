@@ -74,7 +74,7 @@ export const ServicesMegaMenu = () => {
         style={{
           background: 'transparent',
           border: 'none',
-          color: '#fff',
+          color: 'var(--text-secondary)',
           fontSize: '0.95rem',
           fontWeight: '600',
           cursor: 'pointer',
@@ -82,12 +82,19 @@ export const ServicesMegaMenu = () => {
           display: 'inline-flex',
           alignItems: 'center',
           gap: '6px',
-          transition: 'color 0.3s ease',
+          transition: 'all 0.3s ease',
+          position: 'relative',
         }}
         className="services-trigger"
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = '#fff';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = 'var(--text-secondary)';
+        }}
       >
         Services
-        <ChevronDown size={14} />
+        <ChevronDown size={14} style={{ transition: 'transform 0.3s ease', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
       </button>
 
       {/* Mega Menu - aparece al hover */}

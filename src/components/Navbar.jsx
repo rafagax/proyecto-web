@@ -26,7 +26,6 @@ const Navbar = () => {
     { name: 'Clients', path: '/our-clients' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Blog', path: '/blog' },
-    { name: 'KPI', path: '/kpi' },
     { name: 'FAQs', path: '/faqs' }
   ];
 
