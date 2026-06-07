@@ -65,6 +65,7 @@ const Navbar = () => {
   const mainLinks = [
     { name: 'Home', path: '/' },
     { name: 'Pricing', path: '/pricing' },
+    { name: 'Clients', path: '/our-clients' },
     { name: 'Blog', path: '/blog' }
   ];
 
@@ -118,15 +119,22 @@ const Navbar = () => {
               </div>
             </div>
 
-            <Link 
-              to="/pricing" 
+            <Link
+              to="/pricing"
               className={location.pathname === '/pricing' ? 'active' : ''}
             >
               Pricing
             </Link>
 
-            <Link 
-              to="/blog" 
+            <Link
+              to="/our-clients"
+              className={location.pathname === '/our-clients' ? 'active' : ''}
+            >
+              Clients
+            </Link>
+
+            <Link
+              to="/blog"
               className={location.pathname === '/blog' ? 'active' : ''}
             >
               Blog
@@ -197,16 +205,24 @@ const Navbar = () => {
             </div>
           </div>
 
-          <Link 
-            to="/pricing" 
+          <Link
+            to="/pricing"
             className={`mobile-menu-item ${location.pathname === '/pricing' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             Pricing
           </Link>
 
-          <Link 
-            to="/blog" 
+          <Link
+            to="/our-clients"
+            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Clients
+          </Link>
+
+          <Link
+            to="/blog"
             className={`mobile-menu-item ${location.pathname === '/blog' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
