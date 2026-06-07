@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin, Calendar, User, ChevronLeft, ChevronRight } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { Link } from 'react-router-dom';
-import { TestimonialsSection } from '../components/TestimonialsSection';
+import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { blogPosts } from '../data/blogPosts';
 import { updateMetaTags } from '../utils/seo';
 
@@ -285,52 +285,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="section">
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>Happy <span className="text-gradient">Clients</span></h2>
-            <p style={{ color: 'var(--text-secondary)' }}>
-              Businesses already growing with us
-            </p>
-            <div style={{ fontSize: '1.2rem', marginTop: '0.5rem' }}>
-              <span style={{ color: 'var(--accent-cyan)' }}>★★★★★</span> 4.9 / 5 · Google Reviews
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-            {testimonials.map((testimonial, idx) => (
-              <div
-                key={idx}
-                style={{
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '12px',
-                  padding: '2rem',
-                  backgroundColor: 'rgba(255,255,255,0.02)'
-                }}
-              >
-                <div style={{ display: 'flex', gap: '0.25rem', marginBottom: '1rem' }}>
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} style={{ color: 'var(--accent-cyan)' }}>★</span>
-                  ))}
-                </div>
-                <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6' }}>
-                  "{testimonial.text}"
-                </p>
-                <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1rem' }}>
-                  <p style={{ fontWeight: '600', marginBottom: '0.25rem' }}>{testimonial.author}</p>
-                  <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
-                    {testimonial.location}
-                  </p>
-                  <span style={{ display: 'inline-block', backgroundColor: 'rgba(0, 229, 255, 0.1)', color: 'var(--accent-cyan)', padding: '0.25rem 0.75rem', borderRadius: '4px', fontSize: '0.8rem' }}>
-                    {testimonial.service}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials Carousel */}
+      <TestimonialsCarousel />
 
       {/* CTA Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
