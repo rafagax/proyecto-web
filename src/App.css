@@ -799,12 +799,12 @@
     text-align: center !important;
   }
 
-  /* Subtítulo compacto y centrado */
+  /* Subtítulo compacto y justificado */
   .hero-subtitle {
     font-size: 0.82rem !important;
     margin-bottom: 0.6rem !important;
     line-height: 1.5 !important;
-    text-align: center !important;
+    text-align: justify !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
