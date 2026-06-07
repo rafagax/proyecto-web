@@ -2102,6 +2102,6 @@
 
 /* Hide floating buttons when mobile menu is open */
 :root.mobile-menu-open .floating-whatsapp,
-:root.mobile-menu-open #ka-chatbot-window {
+:root.mobile-menu-open #ka-chatbot-container {
   display: none !important;
 }
