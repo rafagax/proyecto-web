@@ -57,10 +57,6 @@ const Navbar = () => {
               Blog
             </Link>
 
-            <Link to="/kpi" className={location.pathname === '/kpi' ? 'active' : ''}>
-              KPI
-            </Link>
-
             <Link to="/faqs" className={location.pathname === '/faqs' ? 'active' : ''}>
               FAQs
             </Link>
