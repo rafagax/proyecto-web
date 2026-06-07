@@ -279,6 +279,17 @@ const Home = () => {
       {/* Blog Carousel Component */}
       <BlogCarousel />
 
+      {/* CTA Button Section */}
+      <section className="section" style={{ backgroundColor: 'transparent', paddingTop: '2rem', paddingBottom: '2rem' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <div className="hero-buttons">
+            <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
+              Start Your Free Audit
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Form Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
