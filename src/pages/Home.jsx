@@ -146,15 +146,15 @@ const Home = () => {
       <section className="hero">
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
-          <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0 }}>
+          <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
               Web Development, <span className="text-gradient">AI Automation</span>, and <br />
               Advanced Analytics
             </h1>
-            <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0 }}>
+            <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2.5rem' }}>
               We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in reaal time.
             </p>
-            <div className="hero-buttons" style={{ marginTop: '3rem', justifyContent: 'flex-start' }}>
+            <div className="hero-buttons" style={{ marginTop: 0, justifyContent: 'flex-start' }}>
               <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
                 <div className="whatsapp-icon-bg">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
