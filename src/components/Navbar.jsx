@@ -66,7 +66,8 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'Pricing', path: '/pricing' },
     { name: 'Clients', path: '/our-clients' },
-    { name: 'Blog', path: '/blog' }
+    { name: 'Blog', path: '/blog' },
+    { name: 'FAQs', path: '/faqs' }
   ];
 
   return (
@@ -138,6 +139,13 @@ const Navbar = () => {
               className={location.pathname === '/blog' ? 'active' : ''}
             >
               Blog
+            </Link>
+
+            <Link
+              to="/faqs"
+              className={location.pathname === '/faqs' ? 'active' : ''}
+            >
+              FAQs
             </Link>
 
             <Link to="/contact" className={`btn btn-contact-header ${location.pathname === '/contact' ? 'active' : ''}`}>
@@ -228,7 +236,15 @@ const Navbar = () => {
           >
             Blog
           </Link>
-          
+
+          <Link
+            to="/faqs"
+            className={`mobile-menu-item ${location.pathname === '/faqs' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            FAQs
+          </Link>
+
           <div className="mobile-menu-footer">
             <Link
               to="/contact"
