@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin } from 'lucide-react';
 import heroImg from '../assets/hero.png';
 import { Link } from 'react-router-dom';
 import { TestimonialsSection } from '../components/TestimonialsSection';
+import { updateMetaTags } from '../utils/seo';
 
 const Home = () => {
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Professional Web Development & Digital Solutions',
+      description: 'Build stunning websites in 7 days with AI integration, local SEO, and business automation. We create landing pages and e-commerce solutions for small businesses and enterprises.',
+      keywords: 'web development, web design, landing pages, SEO, AI chatbots, e-commerce, business websites, digital marketing',
+      ogTitle: 'Transform Your Business with Professional Web Development',
+      ogDescription: 'Get a professional website built in 7 days with modern technology and AI-powered features.',
+      canonical: 'https://yourdomain.com/'
+    });
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',

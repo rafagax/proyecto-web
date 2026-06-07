@@ -1,7 +1,17 @@
+import { useEffect } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { updateMetaTags } from '../utils/seo';
 
 const Pricing = () => {
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Web Development Pricing | Affordable Plans for All Businesses',
+      description: 'Simple, transparent pricing for websites, e-commerce stores, and digital services. Starting at $299 for landing pages. No hidden fees.',
+      keywords: 'web development pricing, website cost, landing page price, e-commerce pricing, affordable web design',
+      canonical: 'https://yourdomain.com/pricing'
+    });
+  }, []);
   return (
     <div className="animate-fade-in">
       {/* Page Header */}

@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, Clock, Zap, Target, BarChart3 } from 'lucide-react';
+import { updateMetaTags, addServiceSchema } from '../utils/seo';
 
 const serviceDetails = {
   'custom-ux-ui': {
@@ -151,6 +153,16 @@ const serviceDetails = {
 const ServiceDetail = () => {
   const { serviceId } = useParams();
   const service = serviceDetails[serviceId] || serviceDetails['custom-ux-ui'];
+
+  useEffect(() => {
+    updateMetaTags({
+      title: `${service.title} | Professional Web Development Services`,
+      description: service.description,
+      keywords: `${service.title}, web development, digital services, business solutions`,
+      canonical: `https://yourdomain.com/services/${serviceId}`
+    });
+    addServiceSchema(service.title, service.description, service.price);
+  }, [serviceId, service]);
 
   return (
     <div className="animate-fade-in">

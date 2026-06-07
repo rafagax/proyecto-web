@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { Bot, Cpu, Activity, Zap, Search, MessageSquare, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { updateMetaTags } from '../utils/seo';
 
 const services = [
   {
@@ -47,6 +49,15 @@ const services = [
 ];
 
 const Services = () => {
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Web Development Services | Professional Digital Solutions',
+      description: 'Explore our comprehensive services: web design, SEO optimization, AI chatbots, e-commerce development, and business automation.',
+      keywords: 'web development services, web design, SEO services, AI chatbots, e-commerce, business automation, digital marketing',
+      canonical: 'https://yourdomain.com/services'
+    });
+  }, []);
+
   return (
     <div className="animate-fade-in">
       {/* Page Header */}

@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Code, Zap, Search, MessageSquare } from 'lucide-react';
+import { updateMetaTags } from '../utils/seo';
 
 const articles = [
   {
@@ -141,6 +143,15 @@ const ArticleCard = ({ article }) => (
 );
 
 const Blog = () => {
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Web Development & Digital Marketing Blog | Industry Insights',
+      description: 'Learn about web development, SEO, digital marketing, and business automation. Read expert articles and insights to grow your online presence.',
+      keywords: 'web development blog, SEO tips, digital marketing, web design trends, business automation, e-commerce guides',
+      canonical: 'https://yourdomain.com/blog'
+    });
+  }, []);
+
   return (
     <div className="animate-fade-in">
       {/* Page Header */}

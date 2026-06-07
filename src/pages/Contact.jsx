@@ -1,7 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MessageCircle, Mail, MapPin } from 'lucide-react';
+import { updateMetaTags } from '../utils/seo';
 
 const Contact = () => {
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Contact Us | Get Your Free Web Strategy Consultation',
+      description: 'Ready to transform your business? Contact us for a free consultation. We respond within 2 hours. WhatsApp, email, and phone support available.',
+      keywords: 'contact us, free consultation, web development quote, business consultation, digital strategy',
+      canonical: 'https://yourdomain.com/contact'
+    });
+  }, []);
   const [formData, setFormData] = useState({
     name: '',
     email: '',

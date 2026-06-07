@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { updateMetaTags } from '../utils/seo';
 
 const clients = [
   {
@@ -132,6 +134,15 @@ const RatingBar = ({ label, pct }) => (
 );
 
 const OurClients = () => {
+  useEffect(() => {
+    updateMetaTags({
+      title: 'Client Testimonials | Success Stories & Reviews',
+      description: 'See what our 50+ satisfied clients say about our web development and digital services. Real results from real businesses.',
+      keywords: 'testimonials, client reviews, success stories, web development reviews, digital agency reviews',
+      canonical: 'https://yourdomain.com/our-clients'
+    });
+  }, []);
+
   return (
     <div className="animate-fade-in">
       {/* Page Header */}
