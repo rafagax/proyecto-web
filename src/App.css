@@ -682,12 +682,19 @@
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   padding-top: 100px;
-  padding-bottom: 4rem;
   /* For fixed navbar */
+}
+
+@media (min-width: 769px) {
+  .hero {
+    align-items: flex-start;
+    overflow: visible;
+    padding-bottom: 4rem;
+  }
 }
 
 @media (max-width: 768px) {
