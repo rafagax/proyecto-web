@@ -703,13 +703,17 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding-top: 100px;
+    padding-top: 80px;
+    min-height: 100svh;
+    align-items: flex-start;
   }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding-top: 60px;
+    padding-top: 70px;
+    min-height: 100svh;
+    align-items: flex-start;
   }
 }
 
@@ -780,6 +784,79 @@
 
   .btn-whatsapp-large {
     width: 100%;
+  }
+}
+
+/* ==============================
+   Mobile Hero — Todo en 1 pantalla
+   ============================== */
+@media (max-width: 768px) {
+  /* Título más compacto */
+  .hero-title {
+    font-size: clamp(1.65rem, 7vw, 2.4rem) !important;
+    margin-bottom: 0.6rem !important;
+    line-height: 1.15 !important;
+  }
+
+  /* Subtítulo compacto */
+  .hero-subtitle {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.6rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Formulario compacto */
+  .hero-contact-form {
+    margin-top: 0.4rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Título del formulario */
+  .hero-contact-form h3 {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.55rem !important;
+  }
+
+  /* Inputs del formulario */
+  .hero-contact-form input,
+  .hero-contact-form textarea {
+    padding: 0.55rem 0.75rem !important;
+    font-size: 0.8rem !important;
+    border-radius: 8px !important;
+  }
+
+  /* Textarea más corto */
+  .hero-contact-form textarea {
+    rows: 2;
+    height: 58px !important;
+    resize: none !important;
+  }
+
+  /* Gap del form más corto */
+  .hero-contact-form form {
+    gap: 0.45rem !important;
+  }
+
+  /* Botón submit compacto */
+  .hero-contact-form button[type="submit"] {
+    padding: 0.65rem !important;
+    font-size: 0.88rem !important;
+    border-radius: 8px !important;
+  }
+
+  /* Contenedor del hero sin min-height */
+  .hero-content-responsive {
+    min-height: unset !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Container del hero sin padding extra */
+  .hero .container {
+    padding-bottom: 1rem !important;
+    gap: 0.5rem !important;
   }
 }
 
