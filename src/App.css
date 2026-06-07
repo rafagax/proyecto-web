@@ -2115,24 +2115,24 @@
   .hero-content-responsive {
     text-align: center !important;
     align-items: center !important;
-    padding: 3rem 1.25rem 4rem 1.25rem !important;
+    padding: 2rem 1rem 2rem 1rem !important;
   }
 
   .hero-content-responsive .hero-title {
-    font-size: 1.75rem !important;
+    font-size: 1.5rem !important;
     font-weight: 800 !important;
     letter-spacing: -0.02em !important;
-    line-height: 1.3 !important;
-    margin-bottom: 1.25rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.75rem !important;
   }
 
   .hero-content-responsive .hero-subtitle {
-    font-size: 0.95rem !important;
+    font-size: 0.85rem !important;
     color: #a0aec0 !important;
-    margin: 1.25rem auto !important;
-    max-width: 320px !important;
-    line-height: 1.6 !important;
-    margin-bottom: 2rem !important;
+    margin: 0.75rem auto !important;
+    max-width: 280px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
   }
 
   .hero-content-responsive .hero-buttons {
