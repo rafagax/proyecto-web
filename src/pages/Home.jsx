@@ -143,7 +143,7 @@ const Home = () => {
   return (
     <div className="animate-fade-in">
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" >
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2rem', paddingBottom: '4rem' }}>
           <div className="hero-content hero-content-responsive" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '2rem', minHeight: '600px' }}>
@@ -152,8 +152,8 @@ const Home = () => {
               Advanced Analytics
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2rem' }}>
-              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in reaal time.
-            </p>
+              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.
+            </p >
 
             {/* Hero CTA - Free Advisory */}
             <div className="hero-advisory-wrap" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
@@ -178,17 +178,15 @@ const Home = () => {
               <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>Get Your Free Audit</h3>
               <form onSubmit={(e) => {
                 e.preventDefault();
-                const name = e.target.name?.value || '';
-                const email = e.target.email?.value || '';
                 const phone = e.target.phone?.value || '';
+                const email = e.target.email?.value || '';
                 const message = e.target.message?.value || '';
                 const waPhone = '584144735431';
-                const text = `👤 Name: ${name}\n📧 Email: ${email}\n📱 Phone: ${phone}\n💬 Message: ${message}`;
+                const text = `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`;
                 window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
               }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <input type="text" name="name" placeholder="Your name" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
-                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
                 <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
+                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
                 <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
                 <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#00e5ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(0, 229, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
                   Send Audit Request
