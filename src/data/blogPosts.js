@@ -7,7 +7,7 @@ export const blogPosts = [
     category: 'Web Development',
     date: 'June 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=400&fit=crop',
     content: `In 2025, your website is your digital storefront. Customers expect to find you online, and without a professional web presence, you're losing opportunities every single day.
 
 ## Why a Website Matters More Than Ever
@@ -59,7 +59,7 @@ The best time to build your website was 5 years ago. The second best time is tod
     category: 'SEO',
     date: 'May 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1562774053-71821e0907ef?w=800&h=400&fit=crop',
     content: `Local SEO is the fastest way to attract customers who are ready to buy. If you serve a specific geographic area, local search optimization is your secret weapon.
 
 ## What is Local SEO?
@@ -137,7 +137,7 @@ If your competitors aren't doing local SEO, you can own your local market. Start
     category: 'AI & Automation',
     date: 'April 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1677442d019cecf8739e9e3e15e3ebdd?ixlib=rb-4.0.3&w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1531746790731-6c087fecd51b?w=800&h=400&fit=crop',
     content: `Imagine having a sales team that never sleeps, never takes a break, and never misses a customer. That's what AI chatbots do.
 
 ## The Customer Service Crisis
@@ -219,7 +219,7 @@ Every day without a chatbot is lost sales. Your competitor with a chatbot is con
     category: 'E-Commerce',
     date: 'March 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1562774053-71821e0907ef?w=800&h=400&fit=crop',
     content: `E-commerce isn't a luxury anymore—it's essential. Your customers want to buy online. Here's how to let them.
 
 ## Why Online Sales Matter
@@ -351,7 +351,7 @@ The businesses that will dominate 2025 are already online. Don't be left behind.
     category: 'Performance',
     date: 'February 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1550355291-bbee04a92027?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1518622131218-90e7ca9ecf00?w=800&h=400&fit=crop',
     content: `Speed isn't just nice to have. It's a ranking factor. Google rewards fast websites with higher search rankings and better conversion rates.
 
 ## The Speed Problem

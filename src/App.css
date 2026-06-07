@@ -1725,7 +1725,6 @@
 .testimonials-carousel-track {
   display: flex;
   gap: 2rem;
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .testimonial-card {
@@ -1738,8 +1737,9 @@
   -webkit-backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   cursor: pointer;
+  animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .testimonial-card:hover {
@@ -1910,5 +1910,16 @@
 @media (min-width: 1025px) {
   .testimonial-card {
     flex: 0 0 calc(33.333% - 1.35rem);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
