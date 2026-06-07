@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Code, BarChart3, Bot, ArrowRight } from 'lucide-react';
+import { Code, BarChart3, Bot, ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const serviceCategories = [
@@ -59,11 +59,40 @@ const serviceCategories = [
 
 export const ServicesMegaMenu = () => {
   const [activeTab, setActiveTab] = useState('web-development');
+  const [isOpen, setIsOpen] = useState(false);
 
   const activeCategory = serviceCategories.find(cat => cat.id === activeTab);
 
   return (
-    <div className="services-mega-menu-container">
+    <div
+      style={{ position: 'relative', display: 'inline-block' }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      {/* Botón Services visible en el navbar */}
+      <button
+        style={{
+          background: 'transparent',
+          border: 'none',
+          color: '#fff',
+          fontSize: '0.95rem',
+          fontWeight: '600',
+          cursor: 'pointer',
+          padding: '8px 0',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          transition: 'color 0.3s ease',
+        }}
+        className="services-trigger"
+      >
+        Services
+        <ChevronDown size={14} />
+      </button>
+
+      {/* Mega Menu - aparece al hover */}
+      {isOpen && (
+      <div className="services-mega-menu-container">
       <div className="services-mega-menu-wrapper">
         {/* Left Column - Tabs */}
         <div className="services-tabs-column">
@@ -361,6 +390,8 @@ export const ServicesMegaMenu = () => {
           }
         }
       `}</style>
+      </div>
+      )}
     </div>
   );
 };
