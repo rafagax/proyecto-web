@@ -59,7 +59,7 @@ The best time to build your website was 5 years ago. The second best time is tod
     category: 'SEO',
     date: 'May 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1460925895917-adf4198c838f?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop',
     content: `Local SEO is the fastest way to attract customers who are ready to buy. If you serve a specific geographic area, local search optimization is your secret weapon.
 
 ## What is Local SEO?
@@ -137,7 +137,7 @@ If your competitors aren't doing local SEO, you can own your local market. Start
     category: 'AI & Automation',
     date: 'April 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1677442d019cecf8739e9e3e15e3ebdd?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1677442d019cecf8739e9e3e15e3ebdd?ixlib=rb-4.0.3&w=800&h=400&fit=crop',
     content: `Imagine having a sales team that never sleeps, never takes a break, and never misses a customer. That's what AI chatbots do.
 
 ## The Customer Service Crisis
