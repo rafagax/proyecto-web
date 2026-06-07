@@ -232,6 +232,40 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Decision CTA Section */}
+      <section className="decision-cta-section">
+        <div className="decision-cta-glow"></div>
+        <div className="container">
+          <div className="decision-cta-wrapper">
+            <div className="decision-cta-badge">
+              <Zap size={14} />
+              <span>Ready to scale?</span>
+            </div>
+            <h2 className="decision-cta-title">
+              Stop Guessing.<br />
+              <span className="text-gradient">Start Deciding with Data.</span>
+            </h2>
+            <p className="decision-cta-subtitle">
+              Join hundreds of businesses that use our AI-powered analytics to make faster, smarter decisions — and dominate their market.
+            </p>
+            <div className="decision-cta-pills">
+              <span className="decision-pill"><CheckCircle2 size={15} /> No commitment required</span>
+              <span className="decision-pill"><CheckCircle2 size={15} /> Results in 7 days</span>
+              <span className="decision-pill"><CheckCircle2 size={15} /> Free strategy session</span>
+            </div>
+            <a
+              href="https://wa.me/584144735431?text=Hello,%20I%20want%20to%20start%20making%20data-driven%20decisions%20for%20my%20business.%20Can%20we%20schedule%20a%20free%20session?"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="decision-cta-btn"
+            >
+              <span>Make the Decision Now</span>
+              <ArrowRight size={20} />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Carousel */}
       <TestimonialsCarousel />
 
