@@ -7,7 +7,7 @@ export const blogPosts = [
     category: 'Web Development',
     date: 'June 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop',
     content: `In 2025, your website is your digital storefront. Customers expect to find you online, and without a professional web presence, you're losing opportunities every single day.
 
 ## Why a Website Matters More Than Ever
@@ -59,7 +59,7 @@ The best time to build your website was 5 years ago. The second best time is tod
     category: 'SEO',
     date: 'May 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1562774053-71821e0907ef?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1460925895917-adf4198c838f?w=800&h=400&fit=crop',
     content: `Local SEO is the fastest way to attract customers who are ready to buy. If you serve a specific geographic area, local search optimization is your secret weapon.
 
 ## What is Local SEO?
@@ -219,7 +219,7 @@ Every day without a chatbot is lost sales. Your competitor with a chatbot is con
     category: 'E-Commerce',
     date: 'March 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1562774053-71821e0907ef?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1460925895917-adf4198c838f?w=800&h=400&fit=crop',
     content: `E-commerce isn't a luxury anymore—it's essential. Your customers want to buy online. Here's how to let them.
 
 ## Why Online Sales Matter
