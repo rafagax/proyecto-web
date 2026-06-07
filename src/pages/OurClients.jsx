@@ -150,7 +150,6 @@ const OurClients = () => {
 
   return (
     <div className="animate-fade-in">
-      {/* Estilos inyectados temporalmente para manejar el hover de manera limpia y nativa */}
       <style>{`
         .client-link-btn {
           display: inline-flex;
