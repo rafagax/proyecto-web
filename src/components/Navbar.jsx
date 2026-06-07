@@ -79,13 +79,20 @@ const Navbar = () => {
           </Link>
 
           <nav className="navbar-links">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={location.pathname === '/' ? 'active' : ''}
             >
               Home
             </Link>
-            
+
+            <Link
+              to="/our-clients"
+              className={location.pathname === '/our-clients' ? 'active' : ''}
+            >
+              Clients
+            </Link>
+
             {/* Services Mega Menu Trigger */}
             <div className="nav-mega-item">
               <span className={`nav-mega-trigger ${location.pathname.startsWith('/services') ? 'active' : ''}`}>
@@ -128,13 +135,6 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/our-clients"
-              className={location.pathname === '/our-clients' ? 'active' : ''}
-            >
-              Clients
-            </Link>
-
-            <Link
               to="/blog"
               className={location.pathname === '/blog' ? 'active' : ''}
             >
@@ -171,14 +171,22 @@ const Navbar = () => {
         </div>
         
         <nav className="mobile-menu-nav">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             Home
           </Link>
-          
+
+          <Link
+            to="/our-clients"
+            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Clients
+          </Link>
+
           {/* Services Accordion */}
           <div className="mobile-menu-dropdown-container">
             <button 
@@ -219,14 +227,6 @@ const Navbar = () => {
             onClick={() => setMobileMenuOpen(false)}
           >
             Pricing
-          </Link>
-
-          <Link
-            to="/our-clients"
-            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Clients
           </Link>
 
           <Link
