@@ -26,23 +26,19 @@ const Contact = () => {
   return (
     <div className="animate-fade-in">
       {/* Page Header */}
-      <section className="hero" style={{ minHeight: '40vh', paddingTop: '180px', paddingBottom: '4rem' }}>
+      <section className="hero" style={{ minHeight: '20vh', paddingTop: '50px', paddingBottom: '0rem', marginTop: '40px' }}>
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ textAlign: 'center' }}>
-          <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
-            Let's Talk
-          </span>
-          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+
+          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 0rem)', marginBottom: '0rem' }}>
             Get in <span className="text-gradient">Touch</span>
           </h1>
-          <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>
-            Ready to start your project? Write to us and a professional will get back to you as soon as possible — usually within a few hours.
-          </p>
+
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="section" style={{ paddingTop: '2rem' }}>
+      <section className="section" style={{ paddingTop: '0rem' }}>
         <div className="container">
           <div className="contact-container">
             <div className="contact-info">
@@ -106,17 +102,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              <div className="form-group">
-                <label>Service of Interest</label>
-                <input
-                  type="text"
-                  name="service"
-                  value={formData.service}
-                  onChange={handleInputChange}
-                  placeholder="e.g. Business Plan, SEO, Chatbot..."
-                  required
-                />
-              </div>
+
               <div className="form-group">
                 <label>Message</label>
                 <textarea
