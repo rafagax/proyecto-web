@@ -1,276 +1,231 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Code, Bot, BarChart3 } from 'lucide-react';
-import logoImg from '../assets/logo sin fondo.png';
+import React, { useState } from 'react';
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const location = useLocation();
+// 1. Estructura de datos segura (sin librerías externas que rompan la app)
+const servicesData = [
+  {
+    id: 'web',
+    title: 'Web Development & Design',
+    subtitle: 'Professional websites built for growth',
+    icon: '💻', 
+    items: [
+      'We Create Your Professional Website',
+      'Fast & Responsive Development',
+      'Website Management & Maintenance',
+      'Performance & Speed Optimization',
+      'Technical Support'
+    ]
+  },
+  {
+    id: 'seo',
+    title: 'SEO & Digital Growth',
+    subtitle: 'Rank higher and attract more customers',
+    icon: '📈',
+    items: [
+      'Rank #1 on Google - Local SEO',
+      'Analytics & Performance Tracking',
+      'Content Strategy & Marketing',
+      'Monthly Performance Reports',
+      'Organic Traffic Growth'
+    ]
+  },
+  {
+    id: 'kpi',
+    title: 'KPI & Performance Indicators',
+    subtitle: 'Know exactly how your business is performing',
+    icon: '📊',
+    items: [
+      'Sales & Revenue Indicators',
+      'Understand Customer Behavior',
+      'Business Growth Dashboard',
+      'Productivity Indicators by Dept',
+      'Business Intelligence Tools'
+    ]
+  },
+  {
+    id: 'ai',
+    title: 'AI Automation & Chatbots',
+    subtitle: '24/7 customer engagement solutions',
+    icon: '🤖',
+    items: [
+      'AI Automation - Sell 24/7 on WhatsApp',
+      'Process Automation & Workflows',
+      'Custom AI Chatbot Training',
+      'CRM Integration & Lead Capture',
+      'Automated Customer Support'
+    ]
+  }
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+const ServicesMegaMenu = () => {
+  // Estado para controlar qué pestaña está activa (por defecto la primera)
+  const [activeTab, setActiveTab] = useState(servicesData[0].id);
+  // Estado para mostrar/ocultar el menú al pasar el cursor sobre "Services"
+  const [isOpen, setIsOpen] = useState(false);
 
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setMobileMenuOpen(false);
-    setMobileServicesOpen(false);
-  }, [location]);
-
-  const servicesColumns = [
-    {
-      title: 'Web Development & Design',
-      focus: 'Professional websites built for growth',
-      icon: <Code size={18} />,
-      links: [
-        { name: 'We Create Your Professional Website', path: '/services/custom-ux-ui' },
-        { name: 'Fast & Responsive Development', path: '/services/responsive-web' },
-        { name: 'Website Management & Maintenance', path: '/services/maintenance-updates' },
-        { name: 'Performance & Speed Optimization', path: '/services/performance-optimization' },
-        { name: 'Technical Support', path: '/services/technical-support' },
-      ]
-    },
-    {
-      title: 'SEO & Digital Growth',
-      focus: 'Rank higher and attract more customers',
-      icon: <BarChart3 size={18} />,
-      links: [
-        { name: 'Rank #1 on Google - Local SEO', path: '/services/seo-positioning' },
-        { name: 'Analytics & Performance Tracking', path: '/services/traffic-analytics' },
-        { name: 'Content Strategy & Marketing', path: '/services/content-strategy' },
-        { name: 'Monthly Performance Reports', path: '/services/performance-reports' },
-        { name: 'Organic Traffic Growth', path: '/services/traffic-analytics' },
-      ]
-    },
-    {
-      title: 'KPI & Performance Indicators',
-      focus: 'Know exactly how your business is performing',
-      icon: <BarChart3 size={18} />,
-      links: [
-        { name: 'Sales & Revenue Indicators', path: '/services/kpi-dashboards' },
-        { name: 'Understand Customer Behavior', path: '/services/traffic-analytics' },
-        { name: 'Business Growth Dashboard', path: '/services/performance-reports' },
-        { name: 'Productivity Indicators by Department', path: '/services/traffic-analytics' },
-        { name: 'Business Intelligence Tools', path: '/services/kpi-dashboards' },
-      ]
-    },
-    {
-      title: 'AI Automation & Chatbots',
-      focus: '24/7 customer engagement solutions',
-      icon: <Bot size={18} />,
-      links: [
-        { name: 'AI Automation - Sell 24/7 on WhatsApp', path: '/services/whatsapp-ai-agents' },
-        { name: 'Process Automation & Workflows', path: '/services/workflow-automation' },
-        { name: 'API Integration & Systems', path: '/services/system-integration' },
-        { name: 'Lead Capture Automation', path: '/services/conversational-solutions' },
-        { name: 'WhatsApp Integration', path: '/services/custom-chatbots' },
-      ]
-    }
-  ];
-
-  const mainLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Pricing', path: '/pricing' },
-    { name: 'Clients', path: '/our-clients' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'KPI', path: '/kpi' },
-    { name: 'FAQs', path: '/faqs' }
-  ];
+  // Encontrar los datos de la pestaña activa de forma segura
+  const activeContent = servicesData.find(tab => tab.id === activeTab) || servicesData[0];
 
   return (
-    <>
-      <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container">
-          <Link to="/" className="navbar-logo">
-            <img src={logoImg} alt="Inversiones Digitales Logo" className="header-logo" />
-          </Link>
+    <div 
+      className="mega-menu-wrapper"
+      style={{ position: 'relative', display: 'inline-block' }}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
+      <style>{`
+        .mega-menu-container {
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 850px;
+          background: rgba(10, 15, 25, 0.95);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(0, 229, 255, 0.15);
+          border-radius: 16px;
+          box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+          display: flex;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 100;
+          overflow: hidden;
+          padding: 0;
+        }
+        
+        .mega-menu-wrapper:hover .mega-menu-container {
+          opacity: 1;
+          visibility: visible;
+          transform: translateX(-50%) translateY(10px);
+        }
 
-          <nav className="navbar-links">
-            <Link
-              to="/"
-              className={location.pathname === '/' ? 'active' : ''}
+        .tab-button {
+          width: 100%;
+          text-align: left;
+          padding: 1.25rem 1.5rem;
+          background: transparent;
+          border: none;
+          border-left: 3px solid transparent;
+          color: #fff;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .tab-button:hover {
+          background: rgba(255,255,255,0.03);
+        }
+
+        .tab-button.active {
+          background: rgba(0, 229, 255, 0.08);
+          border-left: 3px solid #00e5ff;
+        }
+
+        .service-item {
+          padding: 0.75rem 1rem;
+          border-radius: 8px;
+          color: #a0aec0;
+          transition: all 0.2s;
+          cursor: pointer;
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+        }
+
+        .service-item::before {
+          content: "→";
+          margin-right: 8px;
+          color: #00e5ff;
+          opacity: 0;
+          transform: translateX(-5px);
+          transition: all 0.2s;
+        }
+
+        .service-item:hover {
+          background: rgba(255,255,255,0.05);
+          color: #fff;
+        }
+
+        .service-item:hover::before {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      `}</style>
+
+      {/* El botón del Navbar */}
+      <button style={{ 
+        background: 'transparent', 
+        border: 'none', 
+        color: '#fff', 
+        fontSize: '1rem', 
+        fontWeight: '500', 
+        cursor: 'pointer',
+        padding: '10px 15px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '5px'
+      }}>
+        Services
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </button>
+
+      {/* El Contenedor del Mega Menú */}
+      <div className="mega-menu-container">
+        
+        {/* Columna Izquierda: Pestañas (35% ancho) */}
+        <div style={{ width: '35%', background: 'rgba(0,0,0,0.4)', borderRight: '1px solid rgba(255,255,255,0.05)', padding: '1rem 0' }}>
+          {servicesData.map((tab) => (
+            <button
+              key={tab.id}
+              className={`tab-button ${activeTab === tab.id ? 'active' : ''}`}
+              onMouseEnter={() => setActiveTab(tab.id)}
             >
-              Home
-            </Link>
-
-            <Link
-              to="/our-clients"
-              className={location.pathname === '/our-clients' ? 'active' : ''}
-            >
-              Clients
-            </Link>
-
-            {/* Services Mega Menu Trigger */}
-            <div className="nav-mega-item">
-              <span className={`nav-mega-trigger ${location.pathname.startsWith('/services') ? 'active' : ''}`}>
-                Services <ChevronDown size={14} className="chevron-icon" />
-              </span>
-              <div className="mega-menu-dropdown">
-                <div className="mega-menu-content">
-                  {servicesColumns.map((col) => (
-                    <div key={col.title} className="mega-menu-column">
-                      <div className="mega-menu-col-header">
-                        <span className="mega-menu-col-icon">{col.icon}</span>
-                        <div>
-                          <h4>{col.title}</h4>
-                          <p>{col.focus}</p>
-                        </div>
-                      </div>
-                      <ul className="mega-menu-col-links">
-                        {col.links.map((link) => (
-                          <li key={link.path}>
-                            <Link
-                              to={link.path}
-                              className={location.pathname === link.path ? 'active' : ''}
-                            >
-                              {link.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+              <span style={{ fontSize: '1.5rem' }}>{tab.icon}</span>
+              <div>
+                <div style={{ fontWeight: '600', fontSize: '0.95rem', color: activeTab === tab.id ? '#00e5ff' : '#fff' }}>
+                  {tab.title}
+                </div>
+                <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '2px', lineHeight: '1.2' }}>
+                  {tab.subtitle}
                 </div>
               </div>
-            </div>
-
-            <Link
-              to="/pricing"
-              className={location.pathname === '/pricing' ? 'active' : ''}
-            >
-              Pricing
-            </Link>
-
-            <Link
-              to="/blog"
-              className={location.pathname === '/blog' ? 'active' : ''}
-            >
-              Blog
-            </Link>
-
-            <Link
-              to="/faqs"
-              className={location.pathname === '/faqs' ? 'active' : ''}
-            >
-              FAQs
-            </Link>
-
-            <Link to="/contact" className={`btn btn-contact-header ${location.pathname === '/contact' ? 'active' : ''}`}>
-              Contact
-            </Link>
-          </nav>
-
-          <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)}>
-            <Menu size={28} />
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
-        <div className="mobile-menu-header">
-          <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
-            <img src={logoImg} alt="Inversiones Digitales Logo" className="mobile-nav-logo" />
-          </Link>
-          <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
-            <X size={32} />
-          </button>
-        </div>
-        
-        <nav className="mobile-menu-nav">
-          <Link
-            to="/"
-            className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Home
-          </Link>
-
-          <Link
-            to="/our-clients"
-            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Clients
-          </Link>
-
-          {/* Services Accordion */}
-          <div className="mobile-menu-dropdown-container">
-            <button 
-              className={`mobile-menu-item dropdown-toggle ${location.pathname.startsWith('/services') ? 'active' : ''}`}
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-            >
-              <span>Services</span>
-              <ChevronDown size={18} className={`chevron-icon ${mobileServicesOpen ? 'rotate-180' : ''}`} />
             </button>
-            
-            <div className={`mobile-mega-submenu ${mobileServicesOpen ? 'open' : ''}`}>
-              {servicesColumns.map((col) => (
-                <div key={col.title} className="mobile-submenu-col">
-                  <div className="mobile-submenu-col-header">
-                    <span className="col-icon">{col.icon}</span>
-                    <span>{col.title}</span>
-                  </div>
-                  <div className="mobile-submenu-col-links">
-                    {col.links.map((link) => (
-                      <Link
-                        key={link.name}
-                        to={link.path}
-                        className={`mobile-submenu-item ${location.pathname === link.path ? 'active' : ''}`}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
+          ))}
+        </div>
+
+        {/* Columna Derecha: Contenido de la pestaña activa (65% ancho) */}
+        <div style={{ width: '65%', padding: '2rem' }}>
+          <div style={{ marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '700', color: '#fff', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <span style={{ color: '#00e5ff' }}>{activeContent.icon}</span> {activeContent.title}
+            </h3>
+            <p style={{ color: '#a0aec0', fontSize: '0.85rem', margin: '4px 0 0 0' }}>{activeContent.subtitle}</p>
           </div>
 
-          <Link
-            to="/pricing"
-            className={`mobile-menu-item ${location.pathname === '/pricing' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Pricing
-          </Link>
-
-          <Link
-            to="/blog"
-            className={`mobile-menu-item ${location.pathname === '/blog' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Blog
-          </Link>
-
-          <Link
-            to="/faqs"
-            className={`mobile-menu-item ${location.pathname === '/faqs' ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            FAQs
-          </Link>
-
-          <div className="mobile-menu-footer">
-            <Link
-              to="/contact"
-              className="btn btn-primary mobile-contact-btn"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.5rem' }}>
+            {activeContent.items.map((item, index) => (
+              <div key={index} className="service-item">
+                {item}
+              </div>
+            ))}
           </div>
-        </nav>
+
+          {/* CTA Inferior opcional */}
+          <div style={{ marginTop: '2rem', padding: '1rem', background: 'rgba(0, 229, 255, 0.05)', borderRadius: '8px', border: '1px dashed rgba(0, 229, 255, 0.2)' }}>
+            <p style={{ margin: 0, fontSize: '0.85rem', color: '#a0aec0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              Not sure what you need? 
+              <span style={{ color: '#00e5ff', fontWeight: '600', cursor: 'pointer' }}>Get a Free Audit →</span>
+            </p>
+          </div>
+        </div>
+
       </div>
-    </>
+    </div>
   );
 };
 
-export default Navbar;
+export default ServicesMegaMenu;
