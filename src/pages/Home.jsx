@@ -3,6 +3,7 @@ import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail,
 import heroImg from '../assets/hero.png';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
+import { BlogCarousel } from '../components/BlogCarousel';
 import { blogPosts } from '../data/blogPosts';
 import { updateMetaTags } from '../utils/seo';
 
@@ -337,53 +338,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Blog Carousel Section */}
-      <section className="blog-carousel-section">
-        <div className="container">
-          <h2>From Our <span className="text-gradient">Blog</span></h2>
-          <p>Learn industry insights, strategies, and tips to grow your business online.</p>
-
-          {/* Continuous Carousel */}
-          <div className="blog-carousel-continuous">
-            <div className="blog-carousel-track-continuous">
-              {/* Original items */}
-              {blogPosts.map((post) => (
-                <div key={`${post.id}-original`} className="blog-carousel-card-small">
-                  <img src={post.image} alt={post.title} className="blog-card-image-small" />
-                  <div className="blog-carousel-card-content-small">
-                    <div className="blog-category">{post.category}</div>
-                    <h3>{post.title}</h3>
-                    <p className="blog-excerpt">{post.excerpt}</p>
-                    <Link to={`/blog/${post.slug}`} className="read-more">
-                      Read More <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-              {/* Duplicate items for infinite loop */}
-              {blogPosts.map((post) => (
-                <div key={`${post.id}-duplicate`} className="blog-carousel-card-small">
-                  <img src={post.image} alt={post.title} className="blog-card-image-small" />
-                  <div className="blog-carousel-card-content-small">
-                    <div className="blog-category">{post.category}</div>
-                    <h3>{post.title}</h3>
-                    <p className="blog-excerpt">{post.excerpt}</p>
-                    <Link to={`/blog/${post.slug}`} className="read-more">
-                      Read More <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <Link to="/blog" className="btn-secondary">
-              View All Articles
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Blog Carousel Component */}
+      <BlogCarousel />
 
       {/* Contact Form Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>

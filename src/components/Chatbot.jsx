@@ -8,86 +8,86 @@ const locationBusiness = 'Maracay, Aragua, Venezuela';
 
 const knowledgeBase = [
   {
-    keywords: ['hola', 'buenos', 'buenas', 'hey', 'saludos', 'informacion', 'información', 'ayuda', 'asesoria', 'asesoría'],
-    response: `¡Hola! 👋 Soy el asistente virtual de Inversiones Digitales.\n\nTe puedo ayudar con información sobre creación de páginas web, planes, precios, entrega en 7 días, SEO local, IA integrada, chatbot, tienda online y contacto directo.\n\n¿Qué tipo de página web necesitas para tu negocio?`
+    keywords: ['hi', 'hello', 'hey', 'greetings', 'help', 'info', 'information', 'assistance', 'support'],
+    response: `Hello! 👋 I'm the virtual assistant for Digital Investments.\n\nI can help you with information about web creation, plans, pricing, 7-day delivery, local SEO, AI integration, chatbots, online stores, and contact details.\n\nWhat type of website do you need for your business?`
   },
   {
-    keywords: ['7 dias', 'siete dias', 'tiempo', 'cuanto tarda', 'cuánto tarda', 'entrega', 'rapido', 'rápido', 'lista', 'plazo'],
-    response: `Tu diseño web puede estar listo en tan solo 7 días, dependiendo del tipo de proyecto, la cantidad de secciones y la información que necesites incluir.\n\nTrabajamos con un proceso rápido, ordenado y profesional para que puedas comenzar a mostrar tu negocio en internet cuanto antes.`
+    keywords: ['7 days', 'seven days', 'time', 'how long', 'delivery', 'fast', 'quick', 'timeline', 'deadline'],
+    response: `Your web design can be ready in just 7 days, depending on the type of project, the number of sections, and the information you need to include.\n\nWe work with a fast, organized, and professional process so you can start showcasing your business on the internet as soon as possible.`
   },
   {
-    keywords: ['quienes son', 'quiénes son', 'empresa', 'inversiones digitales', 'nosotros', 'que hacen', 'qué hacen'],
-    response: `Somos Inversiones Digitales, especialistas en diseño y desarrollo web de alto rendimiento.\n\nTransformamos tu visión en una experiencia digital profesional, moderna y estratégica para que tu negocio gane presencia, confianza y más oportunidades de venta.`
+    keywords: ['who are you', 'who are you', 'company', 'digital investments', 'about us', 'what do you do'],
+    response: `We are Digital Investments, specialists in high-performance web design and development.\n\nWe transform your vision into a professional, modern, and strategic digital experience so your business gains presence, trust, and more sales opportunities.`
   },
   {
-    keywords: ['pagina web', 'página web', 'sitio web', 'web', 'quiero una web', 'hacer una pagina', 'crear pagina', 'necesito una pagina', 'desarrollo web'],
-    response: `¡Excelente elección! 🚀\n\nEn Inversiones Digitales creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, Webs Empresariales o Tiendas Online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATIS** por WhatsApp para asesorarte con tu proyecto?\n\n Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+asesoria+gratuita`
+    keywords: ['website', 'web site', 'web page', 'web', 'want a website', 'build website', 'create website', 'need website', 'web development'],
+    response: `Excellent choice! 🚀\n\nAt Digital Investments we create modern, fast, and strategic websites for your business to transmit professionalism and attract more customers.\n\nWe can develop Landing Pages, Business Websites, or Online Stores in record time.\n\nWould you like to schedule a **FREE CONSULTATION** on WhatsApp to advise you on your project?\n\n Click here to chat:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+schedule+a+free+consultation`
   },
   {
-    keywords: ['servicios', 'que ofrecen', 'qué ofrecen', 'incluye', 'beneficios', 'soluciones digitales'],
-    response: `Nuestros servicios están enfocados en hacer crecer tu marca en internet.\n\nOfrecemos:\n\n✅ Presencia digital profesional\n✅ Desarrollo web rápido y profesional\n✅ Optimización para aumentar ventas\n✅ Posicionamiento SEO local\n✅ Integración con WhatsApp\n✅ Formularios de contacto\n✅ Chatbot con IA\n✅ Tiendas online\n✅ Automatizaciones digitales`
+    keywords: ['services', 'what do you offer', 'include', 'benefits', 'digital solutions'],
+    response: `Our services are focused on growing your brand on the internet.\n\nWe offer:\n\n✅ Professional digital presence\n✅ Fast and professional web development\n✅ Sales optimization\n✅ Local SEO positioning\n✅ WhatsApp integration\n✅ Contact forms\n✅ AI-powered chatbot\n✅ Online stores\n✅ Digital automation`
   },
   {
-    keywords: ['presencia digital', 'profesionalismo', 'imagen profesional', 'marca', 'confianza', 'negocio profesional'],
-    response: `Desarrollamos una página web moderna, clara y atractiva que fortalece la imagen de tu negocio, genera confianza en tus clientes y hace que tu marca transmita profesionalismo desde el primer clic.\n\nUna buena web ayuda a que tu negocio se vea más serio, competitivo y preparado para vender.`
+    keywords: ['digital presence', 'professionalism', 'professional image', 'brand', 'trust', 'professional business'],
+    response: `We develop a modern, clear, and attractive website that strengthens your business image, builds customer trust, and makes your brand transmit professionalism from the first click.\n\nA good website helps your business look more serious, competitive, and ready to sell.`
   },
   {
-    keywords: ['ventas', 'aumento de ventas', 'vender mas', 'vender más', 'conversiones', 'clientes', 'atraer clientes'],
-    response: `Aplicamos estrategias de posicionamiento geo-local y optimización web para que tu negocio gane más visibilidad, atraiga clientes de tu zona, aparezca mejor en Google y aumente sus posibilidades de ser recomendado por la IA.\n\nEl objetivo es que tu página web no solo se vea bien, sino que también ayude a generar contactos y oportunidades reales de venta.`
+    keywords: ['sales', 'increase sales', 'sell more', 'conversions', 'customers', 'attract customers'],
+    response: `We apply geo-local positioning strategies and web optimization so your business gains more visibility, attracts customers in your area, appears better on Google, and increases its chances of being recommended by AI.\n\nThe goal is for your website to not only look good, but also help generate real sales contacts and opportunities.`
   },
   {
-    keywords: ['google', 'seo', 'posicionamiento', 'busqueda', 'búsqueda', 'aparecer en google', 'primeros lugares', 'local', 'seo local', 'geo local', 'geolocal'],
-    response: `Sí, trabajamos posicionamiento SEO local para que tu negocio tenga más visibilidad en Google y pueda atraer clientes de tu zona.\n\nDependiendo del plan, podemos incluir optimización SEO local básica o avanzada para mejorar la estructura, el contenido y la presencia digital de tu negocio.`
+    keywords: ['google', 'seo', 'positioning', 'search', 'appear on google', 'top results', 'local', 'local seo', 'geo local'],
+    response: `Yes, we work on local SEO positioning so your business has more visibility on Google and can attract customers in your area.\n\nDepending on the plan, we can include basic or advanced local SEO optimization to improve your business structure, content, and digital presence.`
   },
   {
-    keywords: ['ia', 'inteligencia artificial', 'recomendado por ia', 'chatgpt', 'recomiende', 'recomendacion', 'recomendación', 'ia integrada'],
-    response: `Sí, desarrollamos sitios web con enfoque en tecnología e IA.\n\nUna web bien estructurada, clara y optimizada ayuda a que tu negocio tenga más posibilidades de ser entendido, encontrado y recomendado por herramientas digitales e inteligencia artificial.\n\nTambién podemos integrar chatbot para responder preguntas frecuentes y captar clientes.`
+    keywords: ['ai', 'artificial intelligence', 'recommended by ai', 'chatgpt', 'recommend', 'recommendation', 'ai integrated'],
+    response: `Yes, we develop websites with a focus on technology and AI.\n\nA well-structured, clear, and optimized website helps your business have more chances of being understood, found, and recommended by digital tools and artificial intelligence.\n\nWe can also integrate a chatbot to answer frequently asked questions and capture customers.`
   },
   {
-    keywords: ['chatbot', 'bot', 'asistente virtual', 'automatizacion', 'automatización', 'responder clientes', 'whatsapp automatico', 'whatsapp automático'],
-    response: `Podemos integrar un chatbot o asistente virtual para responder preguntas frecuentes, orientar a tus clientes y ayudarte a captar oportunidades incluso fuera del horario laboral.\n\nEs ideal para explicar servicios, mostrar planes, enviar datos de contacto y guiar al usuario hacia WhatsApp o formulario.`
+    keywords: ['chatbot', 'bot', 'virtual assistant', 'automation', 'respond customers', 'whatsapp automatic', 'auto response'],
+    response: `We can integrate a chatbot or virtual assistant to answer frequently asked questions, guide your customers, and help you capture opportunities even outside business hours.\n\nIt's ideal for explaining services, showing plans, sending contact details, and guiding the user to WhatsApp or a form.`
   },
   {
-    keywords: ['planes', 'precios', 'precio', 'plan', 'costo', 'cuanto cuesta', 'cuánto cuesta', 'tarifa', 'paquetes', 'basico', 'básico', '599', '1500', '299'],
-    response: `¡Oferta especial solo por esta semana! \n\nCrea tu sitio web profesional con **50% de descuento** y paga solo **$149.99**.\n\nHaz que tu negocio se vea más confiable, moderno y preparado para recibir clientes.\n\n Aprovecha esta promoción antes de que finalice:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+aprovechar+la+oferta+de+149`
+    keywords: ['plans', 'pricing', 'price', 'plan', 'cost', 'how much', 'rate', 'packages', 'basic', '299', '599', '1500'],
+    response: `Special offer this week only! \n\nCreate your professional website with **50% discount** and pay only **$149.99**.\n\nMake your business look more trustworthy, modern, and ready to receive customers.\n\n Take advantage of this promotion before it ends:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+take+advantage+of+the+149+offer`
   },
   {
-    keywords: ['dominio', 'hosting', 'correo corporativo', 'servidor'],
-    response: `Sí, podemos orientarte con dominio y hosting.\n\nEl Plan Pyme incluye dominio y hosting por 1 año. En otros planes también podemos ayudarte a gestionarlo según las necesidades de tu proyecto.\n\nTener dominio propio ayuda a que tu negocio se vea más profesional y confiable.`
+    keywords: ['domain', 'hosting', 'corporate email', 'server'],
+    response: `Yes, we can guide you with domain and hosting.\n\nThe Business Plan includes domain and hosting for 1 year. In other plans, we can also help you manage it according to your project needs.\n\nHaving your own domain helps your business look more professional and trustworthy.`
   },
   {
-    keywords: ['whatsapp', 'contacto', 'asesor', 'humano', 'correo', 'email', 'llamar', 'cotizar', 'cotizacion', 'cotización', 'agendar', 'consulta gratis'],
-    response: `Claro, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n📍 Ubicación: ${locationBusiness}\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/${whatsappNumber}\n\nCuéntanos qué tipo de página web necesitas y te orientamos con gusto.`
+    keywords: ['whatsapp', 'contact', 'advisor', 'human', 'email', 'call', 'quote', 'schedule', 'free consultation'],
+    response: `Of course, you can contact us directly for free advice.\n\n WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n📍 Location: ${locationBusiness}\n\nYou can also message us on WhatsApp here:\nhttps://wa.me/${whatsappNumber}\n\nTell us what type of website you need and we'll be happy to help.`
   },
   {
-    keywords: ['ubicacion', 'ubicación', 'donde estan', 'dónde están', 'maracay', 'venezuela', 'aragua'],
-    response: `Estamos ubicados en Maracay, Aragua, Venezuela.\n\nTambién podemos atender proyectos a distancia para clientes en Venezuela, Estados Unidos, España y otros países.`
+    keywords: ['location', 'where are you', 'maracay', 'venezuela', 'aragua'],
+    response: `We are located in Maracay, Aragua, Venezuela.\n\nWe can also serve remote projects for clients in Venezuela, United States, Spain, and other countries.`
   },
   {
-    keywords: ['clientes', 'testimonios', 'reseñas', 'opiniones', 'google reseñas', 'calificacion', 'calificación'],
-    response: `Nuestros clientes nos califican con 4.9/5 en reseñas.\n\nHan destacado la rapidez de entrega, el diseño profesional, la integración de automatizaciones, el SEO local y el soporte durante el proceso.\n\nTrabajamos con negocios en Venezuela, Estados Unidos y España.`
+    keywords: ['clients', 'testimonials', 'reviews', 'opinions', 'google reviews', 'ratings'],
+    response: `Our clients rate us 4.9/5 in reviews.\n\nThey have highlighted our fast delivery, professional design, automation integration, local SEO, and support throughout the process.\n\nWe work with businesses in Venezuela, United States, and Spain.`
   },
   {
-    keywords: ['bilingue', 'bilingüe', 'ingles', 'inglés', 'espanol', 'español', 'hispano'],
-    response: `Sí, podemos desarrollar páginas web bilingües en español e inglés.\n\nEs una excelente opción si tu negocio atiende público hispano, clientes internacionales o deseas proyectar una imagen más profesional en distintos mercados.`
+    keywords: ['bilingual', 'english', 'spanish', 'hispanic'],
+    response: `Yes, we can develop bilingual websites in Spanish and English.\n\nIt's an excellent option if your business serves Hispanic audiences, international customers, or wants to project a more professional image in different markets.`
   },
   {
-    keywords: ['formulario', 'formulario de contacto', 'boton whatsapp', 'botón whatsapp', 'redes sociales', 'instagram', 'facebook'],
-    response: `Sí, podemos integrar formulario de contacto, botón de WhatsApp y enlaces a tus redes sociales.\n\nLa idea es que tus visitantes puedan comunicarse contigo de forma rápida y sencilla desde cualquier dispositivo.`
+    keywords: ['form', 'contact form', 'whatsapp button', 'social media', 'instagram', 'facebook'],
+    response: `Yes, we can integrate a contact form, WhatsApp button, and links to your social media.\n\nThe idea is for your visitors to be able to contact you quickly and easily from any device.`
   },
   {
-    keywords: ['mantenimiento', 'soporte', 'cambios', 'actualizaciones', 'postventa'],
-    response: `Podemos ofrecer soporte según el tipo de proyecto contratado.\n\nEn el Plan E-Commerce se incluye soporte prioritario por 1 mes. Para otros planes, podemos orientarte sobre opciones de mantenimiento, cambios o actualizaciones según lo que necesites.`
+    keywords: ['maintenance', 'support', 'changes', 'updates', 'after-sales'],
+    response: `We can offer support depending on the type of project contracted.\n\nThe E-Commerce Plan includes priority support for 1 month. For other plans, we can guide you on maintenance, changes, or updates options according to what you need.`
   }
 ];
 
-const fallbackResponse = `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Plan Básico, Pyme y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrada\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n\nCuéntame un poco más sobre lo que necesitas y te oriento.`;
+const fallbackResponse = `Thank you for writing to me. I can help you with information about:\n\n✅ Website creation\n✅ Starter, Business, and E-Commerce Plans\n✅ 7-day delivery\n✅ Local SEO and Google\n✅ Integrated chatbot and AI\n✅ WhatsApp, forms, and contact\n\n WhatsApp: +58 414 473 5431\n📧 Email: ${emailContact}\n\nTell me a bit about what you need and I'll help you.`;
 
 const normalizeText = (text) => {
   return text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .trim();
 };
 
@@ -110,7 +110,7 @@ const formatMessage = (text) => {
   return parts.map((part, i) => {
     if (part.match(urlRegex)) {
       let displayText = part;
-      // Si es un link de WhatsApp, mostrar el número formateado
+      // If it's a WhatsApp link, show the formatted number
       if (part.includes('wa.me')) {
         displayText = '📲 +58 414 473 5431';
       } else if (part.length > 40) {
@@ -177,18 +177,18 @@ const Chatbot = () => {
 
   return (
     <div id="ka-chatbot-container">
-      <button id="ka-chatbot-toggle" aria-label="Abrir chat" onClick={toggleChat}>
-        <img src={chatbotImg} alt="Asistente Virtual Inversiones Digitales" id="ka-avatar-img" />
+      <button id="ka-chatbot-toggle" aria-label="Open chat" onClick={toggleChat}>
+        <img src={chatbotImg} alt="Virtual Assistant Digital Investments" id="ka-avatar-img" />
         <span id="ka-chatbot-pulse"></span>
       </button>
 
       <div id="ka-chatbot-window" className={!isOpen ? 'ka-hidden' : ''}>
         <div id="ka-chatbot-header">
           <div className="ka-header-info">
-            <strong>Asistente Virtual</strong>
-            <span>Inversiones Digitales</span>
+            <strong>Virtual Assistant</strong>
+            <span>Digital Investments</span>
           </div>
-          <button id="ka-chatbot-close" aria-label="Cerrar chat" onClick={toggleChat}>✕</button>
+          <button id="ka-chatbot-close" aria-label="Close chat" onClick={toggleChat}>✕</button>
         </div>
 
         <div id="ka-chatbot-messages">
@@ -199,30 +199,30 @@ const Chatbot = () => {
           ))}
           {isTyping && (
             <div className="ka-typing" id="ka-typing">
-              El asistente está escribiendo...
+              The assistant is typing...
             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
         <div id="ka-chatbot-quick">
-          <button type="button" onClick={() => handleQuickReply('Quiero una página web')}>Quiero una web</button>
-          <button type="button" onClick={() => handleQuickReply('Cuáles son los planes y precios')}>Planes y precios</button>
-          <button type="button" onClick={() => handleQuickReply('Cuánto tarda mi página web')}>Tiempo de entrega</button>
+          <button type="button" onClick={() => handleQuickReply('I want a website')}>I want a website</button>
+          <button type="button" onClick={() => handleQuickReply('What are the plans and pricing')}>Plans & Pricing</button>
+          <button type="button" onClick={() => handleQuickReply('How long does it take')}>Delivery Time</button>
         </div>
 
         <form id="ka-chatbot-form" onSubmit={handleSubmit}>
           <input
             type="text"
             id="ka-chatbot-input"
-            placeholder="Escribe tu consulta aquí..."
+            placeholder="Type your question here..."
             autoComplete="off"
             required
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             ref={inputRef}
           />
-          <button type="submit" id="ka-chatbot-send" aria-label="Enviar mensaje">
+          <button type="submit" id="ka-chatbot-send" aria-label="Send message">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
               <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
             </svg>
