@@ -51,7 +51,7 @@ export const blogPosts = [
     category: 'Performance',
     date: 'February 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.pexels.com/photos/3379957/pexels-photo-3379957.jpeg',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop&q=80',
     content: 'Speed is a ranking factor and drives conversions.',
   },
 ];

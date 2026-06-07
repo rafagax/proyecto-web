@@ -58,7 +58,7 @@ export const testimonials = [
     id: 6,
     title: 'Soporte impecable durante todo el proceso',
     category: 'Servicio al Cliente',
-    image: 'https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg',
+    image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop&q=80',
     summary: 'Respondieron todas mis dudas. Entrega a tiempo y sin complicaciones.',
     readTime: '2 min',
     author: 'Sofia Mendez',
