@@ -45,7 +45,7 @@ const Home = () => {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '2rem' }}>
           <div className="hero-content" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0 }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
-              Transform Your Business<br />
+              0000000<br />
               with AI-Powered<br />
               <span className="text-gradient">Digital Solutions</span>
             </h1>
