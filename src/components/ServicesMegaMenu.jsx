@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Code, BarChart3, Bot, ArrowRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -60,14 +60,26 @@ const serviceCategories = [
 export const ServicesMegaMenu = () => {
   const [activeTab, setActiveTab] = useState('web-development');
   const [isOpen, setIsOpen] = useState(false);
+  const closeTimeoutRef = useRef(null);
 
   const activeCategory = serviceCategories.find(cat => cat.id === activeTab);
+
+  const handleMouseEnter = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsOpen(false);
+    }, 200);
+  };
 
   return (
     <div
       style={{ position: 'relative', display: 'inline-block' }}
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Botón Services visible en el navbar */}
       <button
