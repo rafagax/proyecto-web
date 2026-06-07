@@ -96,7 +96,7 @@ export const TestimonialsCarousel = () => {
                       </div>
 
                       <div className="testimonial-footer">
-                        <div>
+                        <div className="testimonial-author-section">
                           <p className="testimonial-author">
                             {testimonial.author}
                           </p>
