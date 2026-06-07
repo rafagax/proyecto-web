@@ -37,6 +37,30 @@ const Navbar = () => {
       ]
     },
     {
+      title: 'SEO & Digital Growth',
+      focus: 'Rank higher and attract more customers',
+      icon: <BarChart3 size={18} />,
+      links: [
+        { name: 'Rank #1 on Google - Local SEO', path: '/services/seo-positioning' },
+        { name: 'Analytics & Performance Tracking', path: '/services/traffic-analytics' },
+        { name: 'Content Strategy & Marketing', path: '/services/content-strategy' },
+        { name: 'Monthly Performance Reports', path: '/services/performance-reports' },
+        { name: 'Organic Traffic Growth', path: '/services/traffic-analytics' },
+      ]
+    },
+    {
+      title: 'KPI & Performance Indicators',
+      focus: 'Know exactly how your business is performing',
+      icon: <BarChart3 size={18} />,
+      links: [
+        { name: 'Sales & Revenue Indicators', path: '/services/kpi-dashboards' },
+        { name: 'Understand Customer Behavior', path: '/services/traffic-analytics' },
+        { name: 'Business Growth Dashboard', path: '/services/performance-reports' },
+        { name: 'Productivity Indicators by Department', path: '/services/traffic-analytics' },
+        { name: 'Business Intelligence Tools', path: '/services/kpi-dashboards' },
+      ]
+    },
+    {
       title: 'AI Automation & Chatbots',
       focus: '24/7 customer engagement solutions',
       icon: <Bot size={18} />,
@@ -46,18 +70,6 @@ const Navbar = () => {
         { name: 'API Integration & Systems', path: '/services/system-integration' },
         { name: 'Lead Capture Automation', path: '/services/conversational-solutions' },
         { name: 'WhatsApp Integration', path: '/services/custom-chatbots' },
-      ]
-    },
-    {
-      title: 'SEO & Digital Growth',
-      focus: 'Rank higher and attract more customers',
-      icon: <BarChart3 size={18} />,
-      links: [
-        { name: 'Rank #1 on Google - Local SEO', path: '/services/seo-positioning' },
-        { name: 'Analytics & Performance Tracking', path: '/services/traffic-analytics' },
-        { name: 'KPI Dashboards & Reports', path: '/services/kpi-dashboards' },
-        { name: 'Monthly Performance Reports', path: '/services/performance-reports' },
-        { name: 'Content Strategy & Marketing', path: '/services/content-strategy' },
       ]
     }
   ];
