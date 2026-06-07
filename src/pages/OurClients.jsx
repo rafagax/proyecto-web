@@ -4,13 +4,49 @@ import { updateMetaTags } from '../utils/seo';
 
 const clients = [
   {
+    name: "Georgina López",
+    business: "Bikinis L.B. Orgina",
+    location: "Venezuela 🇻🇪",
+    quote: "They transformed my fashion business with a beautiful e-commerce site. The website helped me reach customers internationally. Sales increased 150% in the first 3 months!",
+    initial: "B",
+    service: "E-Commerce Fashion",
+    result: "+150% sales growth",
+    color: "#00e5ff",
+    website: "https://bikinislborgina.vercel.app/",
+    websiteLabel: "View Site"
+  },
+  {
+    name: "Diego García",
+    business: "DragastroPedia Aragua",
+    location: "Aragua, Venezuela 🇻🇪",
+    quote: "Our restaurant directory needed a modern platform. They built a professional site that showcases all our partner restaurants perfectly. We've tripled our partnerships!",
+    initial: "D",
+    service: "Directory Platform",
+    result: "3x partnership growth",
+    color: "#0066ff",
+    website: "https://dragastropedia-aragua.com/",
+    websiteLabel: "View Site"
+  },
+  {
+    name: "José Cofer",
+    business: "Soluciones Cofer",
+    location: "Venezuela 🇻🇪",
+    quote: "The team delivered a professional B2B website that clearly communicates our services. Lead generation increased significantly and we're closing more deals with serious clients.",
+    initial: "S",
+    service: "B2B Solutions",
+    result: "+85% qualified leads",
+    color: "#00e5ff",
+    website: "https://solucionescofer.com/",
+    websiteLabel: "View Site"
+  },
+  {
     name: "Rafael Martínez",
     business: "Tech Services Valencia",
     location: "Valencia, Venezuela 🇻🇪",
     quote: "In 7 days I had my website up and running and receiving clients. The team was incredibly professional and handled everything I asked for.",
     initial: "R",
     service: "Landing Page",
-    result: "+60% more inquiries in the first month",
+    result: "+60% more inquiries",
     color: "#0066ff",
   },
   {
@@ -30,7 +66,7 @@ const clients = [
     quote: "I needed a bilingual website for my Hispanic audience and they delivered perfectly. The design is clean, fast and professional. Highly recommended!",
     initial: "J",
     service: "Bilingual Web",
-    result: "Doubled online client reach",
+    result: "Doubled online reach",
     color: "#0066ff",
   },
   {
@@ -50,18 +86,8 @@ const clients = [
     quote: "I hired the service from Spain and the experience was flawless. They delivered ahead of schedule and the design exceeded my expectations.",
     initial: "C",
     service: "Professional Web",
-    result: "Delivered 2 days ahead of schedule",
+    result: "Ahead of schedule",
     color: "#0066ff",
-  },
-  {
-    name: "Lucía Herrera",
-    business: "Lucía's Boutique Online",
-    location: "Barcelona, Spain 🇪🇸",
-    quote: "I needed an online store and they set it up in record time. The post-sale support was also excellent. My business grew remarkably.",
-    initial: "L",
-    service: "E-Commerce",
-    result: "Online store live in 10 days",
-    color: "#00e5ff",
   },
   {
     name: "Miguel Ángel Torres",
@@ -70,27 +96,7 @@ const clients = [
     quote: "The chatbot they integrated handles clients while I sleep. It's an investment that paid for itself in less than a month.",
     initial: "M",
     service: "AI Chatbot",
-    result: "ROI achieved in under 30 days",
-    color: "#0066ff",
-  },
-  {
-    name: "Valentina Castro",
-    business: "Valentina's Bakery",
-    location: "Los Teques, Venezuela 🇻🇪",
-    quote: "I wasn't showing up on Google at all. Now I'm the top result in my city. The local SEO work they did was extraordinary.",
-    initial: "V",
-    service: "SEO + Web",
-    result: "#1 Google ranking in her city",
-    color: "#00e5ff",
-  },
-  {
-    name: "Carlos Pérez",
-    business: "La Casa Restaurant",
-    location: "New York, NY 🇺🇸",
-    quote: "They built my website in less than a week and the results were immediate. My restaurant started getting online reservations right away. Amazing team!",
-    initial: "C",
-    service: "Web + SEO",
-    result: "Online reservations from day 1",
+    result: "ROI in 30 days",
     color: "#0066ff",
   },
 ];
@@ -230,7 +236,7 @@ const OurClients = () => {
           }}>
             {[
               { value: '4.9/5', label: 'Google Rating' },
-              { value: '50+',   label: 'Happy Clients' },
+              { value: '60+',   label: 'Happy Clients' },
               { value: '3',     label: 'Countries Served' },
               { value: '100%',  label: 'Satisfaction Rate' },
             ].map((stat, i) => (
@@ -292,13 +298,48 @@ const OurClients = () => {
                   </div>
                 </div>
 
-                <span style={{
-                  display: 'inline-block', padding: '4px 12px', borderRadius: '20px',
-                  background: `${client.color}22`, color: client.color,
-                  fontSize: '0.7rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.1em',
-                }}>
-                  {client.service}
-                </span>
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                  <span style={{
+                    display: 'inline-block', padding: '4px 12px', borderRadius: '20px',
+                    background: `${client.color}22`, color: client.color,
+                    fontSize: '0.7rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.1em',
+                  }}>
+                    {client.service}
+                  </span>
+                  {client.website && (
+                    <a
+                      href={client.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                        padding: '4px 10px',
+                        borderRadius: '16px',
+                        background: `${client.color}15`,
+                        color: client.color,
+                        fontSize: '0.65rem',
+                        fontWeight: '700',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.08em',
+                        border: `1px solid ${client.color}40`,
+                        transition: 'all 0.3s ease',
+                        textDecoration: 'none',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.target.style.background = `${client.color}25`;
+                        e.target.style.borderColor = `${client.color}80`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.background = `${client.color}15`;
+                        e.target.style.borderColor = `${client.color}40`;
+                      }}
+                    >
+                      🔗 {client.websiteLabel || 'Visit'}
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -311,11 +352,11 @@ const OurClients = () => {
           <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>
             Be our next <span className="text-gradient">success story</span>
           </h2>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
-            Join 50+ businesses that have already transformed their digital presence with us.
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '550px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
+            From fashion e-commerce to B2B platforms and restaurant directories — we've helped 60+ businesses across Venezuela, USA, and Spain transform their digital presence. Your success story could be next!
           </p>
           <Link to="/contact" className="btn btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
-            Get Your Free Audit
+            Schedule Free Consultation
           </Link>
         </div>
       </section>
