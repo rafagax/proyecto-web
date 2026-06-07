@@ -111,6 +111,7 @@ const StarRating = () => (
   </div>
 );
 
+/* ---- Rating bar widths ---- */
 const ratingCategories = [
   { label: 'Quality',          pct: 98 },
   { label: 'Schedule',         pct: 96 },
@@ -178,7 +179,7 @@ const OurClients = () => {
         <div className="hero-bg-glow"></div>
         <div className="container">
 
-          {/* Review Summary Card */}
+          {/* ── Review Summary Card ── */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
@@ -219,15 +220,17 @@ const OurClients = () => {
 
             {/* Right — Score + bars */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {/* Overall score */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                 <div>
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Overall Review Rating</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
                     <span style={{ fontSize: '3.5rem', fontWeight: '900', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>4.9</span>
                   </div>
+                  {/* Stars */}
                   <div style={{ display: 'flex', gap: '3px', marginTop: '6px' }}>
                     {[1,2,3,4,5].map(i => (
-                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill='#00e5ff'>
+                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i <= 5 ? '#00e5ff' : 'rgba(255,255,255,0.2)'}>
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     ))}
@@ -235,6 +238,7 @@ const OurClients = () => {
                 </div>
               </div>
 
+              {/* Category bars */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                 {ratingCategories.map((cat) => (
                   <RatingBar key={cat.label} {...cat} />
@@ -243,7 +247,7 @@ const OurClients = () => {
             </div>
           </div>
 
-          {/* Stats Strip */}
+          {/* ── Stats Strip ── */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
@@ -255,17 +259,13 @@ const OurClients = () => {
           }}>
             {[
               { value: '4.9/5', label: 'Google Rating' },
-              { value: '60+',   label: 'Happy Clients' },
+              { value: '50+',   label: 'Happy Clients' },
               { value: '3',     label: 'Countries Served' },
               { value: '100%',  label: 'Satisfaction Rate' },
             ].map((stat, i) => (
               <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', fontWeight: '900', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1.1 }}>
-                  {stat.value}
-                </div>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '0.4rem', letterSpacing: '0.02em' }}>
-                  {stat.label}
-                </div>
+                <div style={{ fontSize: '2.5rem', fontWeight: '800', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{stat.value}</div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.25rem' }}>{stat.label}</div>
               </div>
             ))}
           </div>
