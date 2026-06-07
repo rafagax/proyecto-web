@@ -2176,6 +2176,10 @@
     display: flex !important;
   }
 
+  .hero-buttons > a:last-child {
+    display: none !important;
+  }
+
   .btn-hero-primary {
     width: 100% !important;
     max-width: 290px !important;
