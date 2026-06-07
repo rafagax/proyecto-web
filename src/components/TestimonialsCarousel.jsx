@@ -31,16 +31,7 @@ export const TestimonialsCarousel = () => {
   };
 
   const visibleCount = getVisibleCount();
-  const [screenWidth, setScreenWidth] = useState(getVisibleCount());
-
-  const handleResize = () => {
-    setScreenWidth(getVisibleCount());
-  };
-
-  // Re-check on window resize
-  if (typeof window !== 'undefined') {
-    window.addEventListener('resize', handleResize);
-  }
+  const displayCount = visibleCount === 3 ? 3 : visibleCount;
 
   return (
     <section className="testimonials-carousel-section">
@@ -62,8 +53,15 @@ export const TestimonialsCarousel = () => {
           <div className="testimonials-carousel-container">
             <div className="testimonials-carousel-track">
               {testimonials.map((testimonial, index) => {
-                const isVisible =
-                  index >= currentIndex && index < currentIndex + visibleCount;
+                // Check if testimonial should be visible (with infinite loop)
+                let isVisible = false;
+                for (let i = 0; i < displayCount; i++) {
+                  if ((currentIndex + i) % testimonials.length === index) {
+                    isVisible = true;
+                    break;
+                  }
+                }
+
                 return (
                   <div
                     key={testimonial.id}
@@ -127,18 +125,23 @@ export const TestimonialsCarousel = () => {
 
         {/* Indicators */}
         <div className="carousel-indicators-testimonials">
-          {testimonials.map((_, idx) => (
-            <button
-              key={idx}
-              className={`indicator ${
-                idx >= currentIndex && idx < currentIndex + visibleCount
-                  ? 'active'
-                  : ''
-              }`}
-              onClick={() => setCurrentIndex(Math.max(0, idx - visibleCount + 1))}
-              aria-label={`Go to testimonial ${idx + 1}`}
-            />
-          ))}
+          {testimonials.map((_, idx) => {
+            let isActive = false;
+            for (let i = 0; i < displayCount; i++) {
+              if ((currentIndex + i) % testimonials.length === idx) {
+                isActive = true;
+                break;
+              }
+            }
+            return (
+              <button
+                key={idx}
+                className={`indicator ${isActive ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(idx)}
+                aria-label={`Go to testimonial ${idx + 1}`}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
