@@ -8,6 +8,7 @@ import OurClients from './pages/OurClients';
 import FAQs from './pages/FAQs';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import ServiceDetail from './pages/ServiceDetail';
 import Seo from './pages/Seo';
 import Chatbot from './components/Chatbot';
@@ -25,6 +26,7 @@ function App() {
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             
             {/* Fallbacks & Redirects */}
