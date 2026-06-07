@@ -11,6 +11,7 @@ import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import ServiceDetail from './pages/ServiceDetail';
 import Seo from './pages/Seo';
+import KPI from './pages/KPI';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/about" element={<Home />} />
             <Route path="/seo" element={<Seo />} />
+            <Route path="/kpi" element={<KPI />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </main>

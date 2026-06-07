@@ -687,7 +687,13 @@
 
 @media (max-width: 768px) {
   .hero {
-    padding-top: 120px;
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-top: 60px;
   }
 }
 
@@ -1693,6 +1699,11 @@
   .blog-post-info {
     flex-direction: column;
     gap: 1rem;
+  }
+
+  /* Show only 4 services on mobile */
+  .section:has(.service-card) > .container > div > .service-card:nth-child(n+5) {
+    display: none;
   }
 
   .blog-carousel-section {
