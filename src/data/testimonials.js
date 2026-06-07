@@ -47,7 +47,7 @@ export const testimonials = [
     id: 5,
     title: 'Increased My Bookings by 300%',
     category: 'Marketing',
-    image: 'https://images.pexels.com/photos/3379957/pexels-photo-3379957.jpeg',
+    image: 'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?w=400&h=300&fit=crop',
     summary: 'Combined web + SEO + chatbot strategy rocketed my bookings through the roof.',
     readTime: '2 min',
     author: 'James Rodríguez',
