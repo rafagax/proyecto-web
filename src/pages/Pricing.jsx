@@ -90,6 +90,72 @@ const Pricing = () => {
             </div>
           </div>
 
+          {/* Monthly Services Section */}
+          <div style={{ marginTop: '5rem', paddingTop: '3rem', borderTop: '1px solid rgba(0, 229, 255, 0.15)' }}>
+            <h2 style={{ fontSize: '2.2rem', textAlign: 'center', marginBottom: '1rem' }}>
+              Monthly <span className="text-gradient">Services</span>
+            </h2>
+            <p style={{ textAlign: 'center', color: 'var(--text-secondary)', maxWidth: '550px', margin: '0 auto 3rem', lineHeight: '1.6' }}>
+              Ongoing monthly services to keep your business growing and performing at its best.
+            </p>
+
+            <div className="pricing-grid">
+              {/* SEO Service */}
+              <div className="pricing-card">
+                <h3>SEO Optimization</h3>
+                <p style={{ color: 'var(--text-secondary)' }}>Rank higher on Google</p>
+                <div className="price-amount">$499<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <ul className="price-features">
+                  <li><CheckCircle2 size={18} /> Keyword Research & Strategy</li>
+                  <li><CheckCircle2 size={18} /> On-Page Optimization</li>
+                  <li><CheckCircle2 size={18} /> Content Optimization</li>
+                  <li><CheckCircle2 size={18} /> Backlink Building</li>
+                  <li><CheckCircle2 size={18} /> Monthly SEO Audit</li>
+                  <li><CheckCircle2 size={18} /> Google Analytics Reports</li>
+                  <li><CheckCircle2 size={18} /> 10+ Pages Optimized</li>
+                  <li><CheckCircle2 size={18} /> Priority Support</li>
+                </ul>
+                <Link to="/contact" className="btn btn-secondary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
+              </div>
+
+              {/* Website Management Service */}
+              <div className="pricing-card">
+                <h3>Website Management</h3>
+                <p style={{ color: 'var(--text-secondary)' }}>Keep your site running smoothly</p>
+                <div className="price-amount">$499<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <ul className="price-features">
+                  <li><CheckCircle2 size={18} /> Daily Security Monitoring</li>
+                  <li><CheckCircle2 size={18} /> Automatic Backups</li>
+                  <li><CheckCircle2 size={18} /> Software Updates</li>
+                  <li><CheckCircle2 size={18} /> Performance Optimization</li>
+                  <li><CheckCircle2 size={18} /> 99.9% Uptime Guarantee</li>
+                  <li><CheckCircle2 size={18} /> Content Updates (Up to 5/month)</li>
+                  <li><CheckCircle2 size={18} /> Bug Fixes & Support</li>
+                  <li><CheckCircle2 size={18} /> Monthly Performance Report</li>
+                </ul>
+                <Link to="/contact" className="btn btn-secondary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
+              </div>
+
+              {/* KPI Service */}
+              <div className="pricing-card">
+                <h3>KPI Analytics</h3>
+                <p style={{ color: 'var(--text-secondary)' }}>Track what matters to your business</p>
+                <div className="price-amount">$499<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <ul className="price-features">
+                  <li><CheckCircle2 size={18} /> Custom Dashboard Setup</li>
+                  <li><CheckCircle2 size={18} /> Sales & Revenue Tracking</li>
+                  <li><CheckCircle2 size={18} /> Customer Behavior Analysis</li>
+                  <li><CheckCircle2 size={18} /> Growth Metrics Dashboard</li>
+                  <li><CheckCircle2 size={18} /> Department Performance KPIs</li>
+                  <li><CheckCircle2 size={18} /> Real-Time Data Updates</li>
+                  <li><CheckCircle2 size={18} /> Weekly Performance Reviews</li>
+                  <li><CheckCircle2 size={18} /> Strategic Recommendations</li>
+                </ul>
+                <Link to="/contact" className="btn btn-secondary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
+              </div>
+            </div>
+          </div>
+
           {/* Custom Plan CTA */}
           <div style={{ marginTop: '5rem', background: 'var(--bg-secondary)', borderRadius: 'var(--border-radius-md)', padding: '4rem 3rem', textAlign: 'center', border: '1px solid rgba(0, 229, 255, 0.15)' }}>
             <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Need a <span className="text-gradient">Custom Plan?</span></h2>
