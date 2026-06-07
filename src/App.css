@@ -791,6 +791,7 @@
    Mobile Hero — Todo en 1 pantalla
    ============================== */
 @media (max-width: 768px) {
+
   /* Título más compacto y centrado */
   .hero-title {
     font-size: clamp(1.65rem, 7vw, 2.4rem) !important;
@@ -1523,7 +1524,7 @@
   color: #fff;
 }
 
-.blog-carousel-section > .container > p {
+.blog-carousel-section>.container>p {
   color: var(--text-secondary);
   margin-bottom: 3rem;
   font-size: 1.1rem;
@@ -1800,7 +1801,7 @@
   }
 
   /* Show only 4 services on mobile */
-  .section:has(.service-card) > .container > div > .service-card:nth-child(n+5) {
+  .section:has(.service-card)>.container>div>.service-card:nth-child(n+5) {
     display: none;
   }
 
@@ -1812,7 +1813,7 @@
     font-size: 1.75rem;
   }
 
-  .blog-carousel-section > .container > p {
+  .blog-carousel-section>.container>p {
     font-size: 0.95rem;
     margin-bottom: 2rem;
   }
@@ -1904,7 +1905,7 @@
   text-align: center;
 }
 
-.testimonials-carousel-section > .container > p {
+.testimonials-carousel-section>.container>p {
   color: var(--text-secondary);
   margin-bottom: 3rem;
   font-size: 1.1rem;
@@ -2192,6 +2193,7 @@
     opacity: 0;
     transform: translateX(20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -2270,7 +2272,7 @@
     display: flex !important;
   }
 
-  .hero-buttons > :last-child {
+  .hero-buttons> :last-child {
     display: none !important;
   }
 
@@ -2336,7 +2338,7 @@
     height: 48px !important;
     bottom: 12px !important;
     right: 12px !important;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
   }
 
   /* ensure chatbot toggle doesn't overlap hero buttons */
@@ -2373,8 +2375,17 @@
 }
 
 @keyframes decision-glow-pulse {
-  0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-  50%       { opacity: 1;   transform: translate(-50%, -50%) scale(1.08); }
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
 }
 
 .decision-cta-wrapper {
@@ -2419,7 +2430,7 @@
 /* Subtitle */
 .decision-cta-subtitle {
   font-size: 1.05rem;
-  color: var(--text-secondary, rgba(255,255,255,0.55));
+  color: var(--text-secondary, rgba(255, 255, 255, 0.55));
   max-width: 580px;
   line-height: 1.65;
   margin: 0;
@@ -2478,16 +2489,16 @@
   position: relative;
   overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease;
+    box-shadow 0.3s ease;
   box-shadow: 0 6px 30px rgba(0, 102, 255, 0.35),
-              0 2px 8px rgba(0, 229, 255, 0.2);
+    0 2px 8px rgba(0, 229, 255, 0.2);
 }
 
 .decision-cta-btn::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -2495,7 +2506,7 @@
 .decision-cta-btn:hover {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 14px 40px rgba(0, 102, 255, 0.5),
-              0 4px 16px rgba(0, 229, 255, 0.35);
+    0 4px 16px rgba(0, 229, 255, 0.35);
 }
 
 .decision-cta-btn:hover::before {
@@ -2519,9 +2530,19 @@
 }
 
 @keyframes decision-btn-ring {
-  0%   { opacity: 0;    transform: scale(1);    }
-  40%  { opacity: 0.45; }
-  100% { opacity: 0;    transform: scale(1.18); }
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  40% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
 }
 
 @media (max-width: 600px) {
@@ -2566,9 +2587,9 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 229, 255, 0.35),
-              0 2px 8px rgba(0, 102, 255, 0.25);
+    0 2px 8px rgba(0, 102, 255, 0.25);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.3s ease;
+    box-shadow 0.3s ease;
 }
 
 /* Shimmer sweep */
@@ -2579,21 +2600,29 @@
   left: -75%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.28), transparent);
   transform: skewX(-20deg);
   animation: advisory-shimmer 3s ease-in-out infinite;
 }
 
 @keyframes advisory-shimmer {
-  0%   { left: -75%; }
-  60%  { left: 130%; }
-  100% { left: 130%; }
+  0% {
+    left: -75%;
+  }
+
+  60% {
+    left: 130%;
+  }
+
+  100% {
+    left: 130%;
+  }
 }
 
 .hero-advisory-btn:hover {
   transform: translateY(-3px) scale(1.04);
   box-shadow: 0 10px 35px rgba(0, 229, 255, 0.5),
-              0 4px 14px rgba(0, 102, 255, 0.4);
+    0 4px 14px rgba(0, 102, 255, 0.4);
 }
 
 .hero-advisory-btn:active {
