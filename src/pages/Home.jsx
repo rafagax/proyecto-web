@@ -299,7 +299,7 @@ const Home = () => {
             <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
               Start Your Free Audit
             </a>
-            <Link to="/contact" className="btn-secondary">Schedule a Consultation</Link>
+            <Link to="/contact" className="btn-whatsapp-large">Schedule a Consultation</Link>
           </div>
         </div>
       </section>
