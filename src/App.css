@@ -2176,7 +2176,7 @@
     display: flex !important;
   }
 
-  .hero-buttons > a:last-child {
+  .hero-buttons > :last-child {
     display: none !important;
   }
 
