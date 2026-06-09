@@ -167,7 +167,7 @@ const Home = () => {
                     <path d="M12 2L13.09 8.26L19 6L15.45 11.13L22 12L15.45 12.87L19 18L13.09 15.74L12 22L10.91 15.74L5 18L8.55 12.87L2 12L8.55 11.13L5 6L10.91 8.26L12 2Z" fill="currentColor" />
                   </svg>
                 </span>
-                Get Your Free Advisory
+                Get Your Free Audit
                 <ArrowRight size={17} />
               </a>
             </div>
@@ -185,7 +185,7 @@ const Home = () => {
                 rel="noopener noreferrer"
                 className="btn-mobile-audit"
               >
-                Send Audit Request
+                Get Your Free Audit
                 <ArrowRight size={18} />
               </a>
             </div>
