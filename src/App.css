@@ -2844,4 +2844,225 @@
     flex-shrink: 0;
     margin-left: auto;
   }
+}
+
+/* ==========================================================================
+   Simulated iPhone Device Frame & Status Bar (Desktop Mockup Preview)
+   ========================================================================== */
+
+/* Logo Box styling */
+.logo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid #00e5ff;
+  border-radius: 10px;
+  background: #020812;
+  line-height: 1.1;
+  padding: 4px;
+  transition: all 0.3s ease;
+}
+
+.logo-box:hover {
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+.logo-box-mobile {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.logo-data {
+  font-size: 8px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1.2px;
+}
+
+.logo-flow {
+  font-size: 13px;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.iphone-status-bar {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  body {
+    background-color: #050a14 !important;
+    background-image: radial-gradient(circle at 50% 50%, #0c1a30 0%, #02060f 100%) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .app-container {
+    position: relative !important;
+    width: 390px !important;
+    height: 844px !important;
+    background: #020812 !important;
+    border: 13px solid #1a202c !important;
+    border-radius: 46px !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85),
+                0 0 0 2px rgba(255, 255, 255, 0.05),
+                0 0 45px rgba(0, 229, 255, 0.16) !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: translate3d(0, 0, 0) !important; /* Forces fixed navbar to position here */
+  }
+
+  /* Notch */
+  .app-container::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 125px !important;
+    height: 28px !important;
+    background: #1a202c !important;
+    border-bottom-left-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+    z-index: 100000 !important;
+  }
+
+  /* Home Bar Indicator */
+  .app-container::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 8px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 120px !important;
+    height: 4px !important;
+    background: rgba(255, 255, 255, 0.5) !important;
+    border-radius: 10px !important;
+    z-index: 100000 !important;
+    pointer-events: none !important;
+  }
+
+  main {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    scrollbar-width: none !important;
+  }
+  main::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Fixed Navigation position adjustments relative to container top (under status bar) */
+  .navbar {
+    top: 32px !important;
+    position: absolute !important;
+    width: 100% !important;
+    padding: 0.8rem 0 !important;
+    background: rgba(2, 8, 18, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  /* Status Bar */
+  .iphone-status-bar {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 32px;
+    padding: 0 28px 0 24px;
+    background: #020812;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 600;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .status-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .signal-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5px;
+    height: 9px;
+  }
+
+  .signal-bars .bar {
+    width: 2px;
+    background: #ffffff;
+    border-radius: 0.5px;
+  }
+  .signal-bars .bar1 { height: 3px; }
+  .signal-bars .bar2 { height: 5px; }
+  .signal-bars .bar3 { height: 7px; }
+  .signal-bars .bar4 { height: 9px; }
+
+  .wifi-icon {
+    width: 13px;
+    height: 9px;
+    fill: currentColor;
+  }
+
+  .battery-box {
+    width: 18px;
+    height: 9px;
+    border: 1px solid #ffffff;
+    border-radius: 2.5px;
+    padding: 0.8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .battery-level {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 1px;
+  }
+
+  .battery-tip {
+    content: '';
+    position: absolute;
+    right: -2.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5px;
+    height: 3.5px;
+    background: #ffffff;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+  }
+
+  /* Padding adjustments inside the mock container */
+  .hero {
+    padding-top: 108px !important;
+  }
+  
+  .floating-whatsapp {
+    position: absolute !important;
+    bottom: 22px !important;
+    right: 22px !important;
+  }
 }
