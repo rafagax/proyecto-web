@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin, Calendar, User, ChevronLeft, ChevronRight, Target, BarChart3, Sparkles, Code, TrendingUp } from 'lucide-react';
-import  heroImg from '../assets/Hero2.webp';
+import heroImg from '../assets/Hero2.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
@@ -173,7 +173,7 @@ const Home = () => {
             </div>
 
             {/* Mobile: Hero Image between subtitle and CTA */}
-            <div className="mobile-hero-img mobile-only">
+            {/*<div className="mobile-hero-img mobile-only">
               <img src={heroImg} alt="AI Technology" className="mobile-hero-img-el" />
             </div>
 
@@ -202,7 +202,7 @@ const Home = () => {
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
-              
+
               <Link to="/services/seo-positioning" className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <TrendingUp size={18} />
@@ -213,7 +213,7 @@ const Home = () => {
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
-              
+
               <Link to="/services/kpi-dashboards" className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <BarChart3 size={18} />
@@ -224,7 +224,7 @@ const Home = () => {
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
-              
+
               <Link to="/services/whatsapp-ai-agents" className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <Bot size={18} />
