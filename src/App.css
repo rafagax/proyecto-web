@@ -794,7 +794,8 @@
 
   /* Título más compacto y centrado */
   .hero-title {
-    font-size: clamp(1.65rem, 7vw, 2.4rem) !important;
+    font-size: clamp(1.3rem, 5.5vw, 1.75rem) !important;
+    white-space: nowrap;
     margin-bottom: 0.6rem !important;
     line-height: 1.15 !important;
     text-align: center !important;
@@ -2219,7 +2220,9 @@
     font-weight: 800 !important;
     letter-spacing: -0.02em !important;
     line-height: 1.2 !important;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 20px !important;
+    margin-left: -20px;
+
   }
 
   .hero-content-responsive .hero-subtitle {
@@ -2653,6 +2656,7 @@
 .mobile-only {
   display: none !important;
 }
+
 .mobile-only-break {
   display: none !important;
 }
@@ -2674,7 +2678,7 @@
   .hero-content-responsive {
     text-align: left !important;
     align-items: flex-start !important;
-    padding: 0.6rem 1rem 0 !important;
+
     min-height: unset !important;
     width: 100% !important;
   }
@@ -2686,14 +2690,15 @@
     letter-spacing: -0.02em !important;
     line-height: 1.15 !important;
     text-align: left !important;
-    margin-bottom: 0.65rem !important;
+    margin-bottom: 20px !important;
+    margin-left: -20px;
   }
 
   /* ── Subtitle ── */
   .hero-content-responsive .hero-subtitle {
     font-size: 0.8rem !important;
     color: #a0aab5 !important;
-    margin: 0 0 0.8rem 0 !important;
+    margin: 0px 0px 20px 0px !important;
     max-width: 100% !important;
     line-height: 1.5 !important;
     text-align: left !important;
@@ -2739,7 +2744,7 @@
     text-decoration: none !important;
     border: none !important;
     box-shadow: 0 6px 24px rgba(0, 229, 255, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+      inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
     transition: all 0.2s ease !important;
     cursor: pointer;
   }
@@ -2831,5 +2836,3 @@
     margin-left: auto;
   }
 }
-
-
