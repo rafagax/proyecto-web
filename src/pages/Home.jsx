@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin, Calendar, User, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin, Calendar, User, ChevronLeft, ChevronRight, Target, BarChart3, Sparkles, Code, TrendingUp } from 'lucide-react';
 import  heroImg from '../assets/Hero2.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
@@ -148,15 +148,14 @@ const Home = () => {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2rem', paddingBottom: '4rem' }}>
           <div className="hero-content hero-content-responsive" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '2rem', minHeight: '600px' }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
-              Web Development, <span className="text-gradient">AI Automation</span>, and <br />
-              Advanced Analytics
+              Web Development,<br className="mobile-only-break" /> <span className="text-gradient">AI Automation</span>,<br className="mobile-only-break" /> and <span className="text-gradient">Advanced Analytics</span>
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2rem' }}>
-              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs ) so you maintain total control over your growth in real time.
+              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.
             </p >
 
-            {/* Hero CTA - Free Advisory */}
-            <div className="hero-advisory-wrap" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
+            {/* Hero CTA - Free Advisory (Desktop Only) */}
+            <div className="hero-advisory-wrap desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
               <a
                 href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20a%20free%20advisory%20session%20for%20my%20business."
                 target="_blank"
@@ -173,8 +172,85 @@ const Home = () => {
               </a>
             </div>
 
+            {/* Mobile Hero CTA Button (Mobile Only) */}
+            <div className="mobile-hero-cta mobile-only">
+              <a
+                href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20request%20a%20free%20audit%20for%20my%20business."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-mobile-audit"
+              >
+                Send Audit Request
+                <ArrowRight size={18} />
+              </a>
+            </div>
 
-            <div className="hero-contact-form" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
+            {/* Mobile Hero Features Row (Mobile Only) */}
+            <div className="mobile-hero-features mobile-only">
+              <div className="feature-col">
+                <Target size={22} className="feature-icon" />
+                <span>Custom strategies</span>
+              </div>
+              <div className="feature-col-divider"></div>
+              <div className="feature-col">
+                <BarChart3 size={22} className="feature-icon" />
+                <span>Measurable results</span>
+              </div>
+              <div className="feature-col-divider"></div>
+              <div className="feature-col">
+                <Sparkles size={22} className="feature-icon" />
+                <span>Technology that drives growth</span>
+              </div>
+            </div>
+
+            {/* Mobile Hero Service Cards List (Mobile Only) */}
+            <div className="mobile-hero-services mobile-only">
+              <Link to="/services/custom-ux-ui" className="mobile-service-card">
+                <div className="service-card-icon-box">
+                  <Code size={18} />
+                </div>
+                <div className="service-card-text">
+                  <h4>Web Development & Design</h4>
+                  <p>Professional websites built for growth</p>
+                </div>
+                <ChevronRight size={18} className="service-card-arrow" />
+              </Link>
+              
+              <Link to="/services/seo-positioning" className="mobile-service-card">
+                <div className="service-card-icon-box">
+                  <TrendingUp size={18} />
+                </div>
+                <div className="service-card-text">
+                  <h4>SEO & Digital Growth</h4>
+                  <p>Rank higher and attract more customers</p>
+                </div>
+                <ChevronRight size={18} className="service-card-arrow" />
+              </Link>
+              
+              <Link to="/services/kpi-dashboards" className="mobile-service-card">
+                <div className="service-card-icon-box">
+                  <BarChart3 size={18} />
+                </div>
+                <div className="service-card-text">
+                  <h4>KPI & Performance Indicators</h4>
+                  <p>Know exactly how your business is performing</p>
+                </div>
+                <ChevronRight size={18} className="service-card-arrow" />
+              </Link>
+              
+              <Link to="/services/whatsapp-ai-agents" className="mobile-service-card">
+                <div className="service-card-icon-box">
+                  <Bot size={18} />
+                </div>
+                <div className="service-card-text">
+                  <h4>AI Automation & Chatbots</h4>
+                  <p>24/7 customer engagement solutions</p>
+                </div>
+                <ChevronRight size={18} className="service-card-arrow" />
+              </Link>
+            </div>
+
+            <div className="hero-contact-form desktop-only" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
               <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>Get Your Free Audit</h3>
               <form onSubmit={(e) => {
                 e.preventDefault();
