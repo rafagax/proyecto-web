@@ -173,9 +173,11 @@ const Home = () => {
             </div>
 
             {/* Mobile: Hero Image between subtitle and CTA */}
-            {/*<div className="mobile-hero-img mobile-only">
+            {/*
+            <div className="mobile-hero-img mobile-only">
               <img src={heroImg} alt="AI Technology" className="mobile-hero-img-el" />
             </div>
+            */}
 
             {/* Mobile Hero CTA Button (Mobile Only) */}
             <div className="mobile-hero-cta mobile-only">
