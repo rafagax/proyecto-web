@@ -172,6 +172,11 @@ const Home = () => {
               </a>
             </div>
 
+            {/* Mobile: Hero Image between subtitle and CTA */}
+            <div className="mobile-hero-img mobile-only">
+              <img src={heroImg} alt="AI Technology" className="mobile-hero-img-el" />
+            </div>
+
             {/* Mobile Hero CTA Button (Mobile Only) */}
             <div className="mobile-hero-cta mobile-only">
               <a
@@ -183,24 +188,6 @@ const Home = () => {
                 Send Audit Request
                 <ArrowRight size={18} />
               </a>
-            </div>
-
-            {/* Mobile Hero Features Row (Mobile Only) */}
-            <div className="mobile-hero-features mobile-only">
-              <div className="feature-col">
-                <Target size={22} className="feature-icon" />
-                <span>Custom strategies</span>
-              </div>
-              <div className="feature-col-divider"></div>
-              <div className="feature-col">
-                <BarChart3 size={22} className="feature-icon" />
-                <span>Measurable results</span>
-              </div>
-              <div className="feature-col-divider"></div>
-              <div className="feature-col">
-                <Sparkles size={22} className="feature-icon" />
-                <span>Technology that drives growth</span>
-              </div>
             </div>
 
             {/* Mobile Hero Service Cards List (Mobile Only) */}
@@ -270,7 +257,8 @@ const Home = () => {
               </form>
             </div>
           </div>
-          <div className="hero-image" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          {/* Desktop hero image */}
+          <div className="hero-image desktop-only" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <img src={heroImg} alt="AI Technology" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(0, 229, 255, 0.3))' }} />
           </div>
         </div>
