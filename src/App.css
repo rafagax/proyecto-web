@@ -787,6 +787,58 @@
   }
 }
 
+/* ── Differentiator Diagram & Pulse Animations ── */
+.system-diagram-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.system-pulse {
+  animation: pulse-ring 3.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.85);
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* ── Process Timeline Connection ── */
+@media (min-width: 992px) {
+  .process-timeline-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.15) 20%, rgba(0, 229, 255, 0.15) 80%, transparent);
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+/* ── Hover Micro-animations ── */
+.process-timeline-wrapper > div {
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.process-timeline-wrapper > div:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 229, 255, 0.2) !important;
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+}
+
 /* ==============================
    Mobile Hero — Todo en 1 pantalla
    ============================== */

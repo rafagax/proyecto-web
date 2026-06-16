@@ -10,11 +10,11 @@ import { updateMetaTags } from '../utils/seo';
 const Home = () => {
   useEffect(() => {
     updateMetaTags({
-      title: 'Professional Web Development & Digital Solutions',
-      description: 'Build stunning websites in 7 days with AI integration, local SEO, and business automation. We create landing pages and e-commerce solutions for small businesses and enterprises.',
+      title: 'Premium Web Design, SEO & AI Automation for Growing Businesses | Inversiones Digitales',
+      description: 'Build a high-converting website, grow your visibility on Google, track your KPIs, and automate customer engagement with AI. Book a strategy call.',
       keywords: 'web development, web design, landing pages, SEO, AI chatbots, e-commerce, business websites, digital marketing',
-      ogTitle: 'Transform Your Business with Professional Web Development',
-      ogDescription: 'Get a professional website built in 7 days with modern technology and AI-powered features.',
+      ogTitle: 'Premium Web Design, SEO & AI Automation for Growing Businesses',
+      ogDescription: 'Build a high-converting website, grow your visibility on Google, track your KPIs, and automate customer engagement with AI.',
       canonical: 'https://yourdomain.com/'
     });
   }, []);
@@ -266,23 +266,27 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 2. Authority / Problem-Solution */}
+      {/* 2. Problem / Value Proposition */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>Your Website Should Do <span className="text-gradient">More Than Look Good</span></h2>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', lineHeight: '1.6' }}>
-              A beautiful website is only valuable if it attracts the right visitors, converts them into leads, and gives you clear insight into what is working. We help businesses build a stronger digital presence with strategy, design, SEO, performance tracking, and automation working together.
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
+              Your Website Should Do <span className="text-gradient">More Than Look Good</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', lineHeight: '1.7' }}>
+              A premium website should attract the right audience, convert visitors into qualified leads, and give you clear insight into what is working. We combine design, SEO, performance tracking, and AI automation to create a digital presence built for measurable growth.
             </p>
           </div>
         </div>
       </section>
 
-      {/* 3. Core Services (New) */}
-      <section className="section" id="digital-solutions">
+      {/* 3. Services Grid */}
+      <section className="section" id="services">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}><span className="text-gradient">Digital Solutions</span> Built to Grow Your Business</h2>
+            <h2 style={{ fontSize: '2.5rem' }}>
+              Digital Growth Services for <span className="text-gradient">Ambitious Businesses</span>
+            </h2>
           </div>
 
           <div className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
@@ -290,7 +294,7 @@ const Home = () => {
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Code size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>Web Development & Design</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Premium, responsive websites designed to impress, convert, and support long-term growth.
+                High-end, responsive websites designed to build trust, convert visitors, and support long-term business growth.
               </p>
             </div>
 
@@ -298,7 +302,7 @@ const Home = () => {
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><TrendingUp size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>SEO & Digital Growth</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Improve your visibility, attract qualified traffic, and turn search intent into new business opportunities.
+                Improve your visibility on Google, attract qualified traffic, and turn search intent into real business opportunities.
               </p>
             </div>
 
@@ -306,7 +310,7 @@ const Home = () => {
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><BarChart3 size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>KPI & Performance Indicators</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Understand exactly how your business is performing with clear, actionable data dashboards.
+                Get clear dashboards and performance insights so you always know what is working and where to improve.
               </p>
             </div>
 
@@ -314,55 +318,378 @@ const Home = () => {
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Bot size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>AI Automation & Chatbots</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Engage leads, answer questions, and support customers 24/7 with smart AI-powered automation.
+                Engage leads, answer questions, and support customers 24/7 with intelligent AI-powered automation.
               </p>
             </div>
           </div>
         </div>
       </section>
 
+      {/* 4. Differentiator: Digital Growth System */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', overflow: 'hidden' }}>
+        <div className="container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4rem' }}>
+            <div style={{ flex: '1 1 450px' }}>
+              <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
+                Not Just a Website.<br />
+                <span className="text-gradient">A Digital Growth System.</span>
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem' }}>
+                Your website, SEO, KPIs, and automation should not work separately. We connect them into one clear system designed to attract better visitors, generate more leads, and help you make smarter business decisions.
+              </p>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <a
+                  href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20learn%20more%20about%20your%20Digital%20Growth%20System."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-advisory-btn"
+                  style={{ margin: 0 }}
+                >
+                  Discover the System
+                  <ArrowRight size={17} />
+                </a>
+              </div>
+            </div>
+            
+            <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', height: '380px' }}>
+              {/* Visual System representation using CSS */}
+              <div className="system-diagram-container" style={{ position: 'relative', width: '300px', height: '300px' }}>
+                {/* Center Hub */}
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '90px',
+                  height: '90px',
+                  borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(5, 5, 10, 0.9) 70%)',
+                  border: '2px dashed var(--accent-cyan)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 0 30px rgba(0, 229, 255, 0.3)',
+                  zIndex: 2
+                }}>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#fff', textAlign: 'center' }}>SYSTEM</span>
+                </div>
 
+                {/* Web Node */}
+                <div style={{
+                  position: 'absolute',
+                  top: '10%',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '30px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(0, 229, 255, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  zIndex: 3
+                }}>
+                  <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
+                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>Web Design</span>
+                </div>
 
+                {/* SEO Node */}
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  right: '-10%',
+                  transform: 'translateY(-50%)',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '30px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(0, 229, 255, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  zIndex: 3
+                }}>
+                  <TrendingUp size={16} style={{ color: 'var(--accent-cyan)' }} />
+                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>SEO</span>
+                </div>
+
+                {/* KPI Node */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '10%',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '30px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(0, 229, 255, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  zIndex: 3
+                }}>
+                  <BarChart3 size={16} style={{ color: 'var(--accent-cyan)' }} />
+                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>KPI Dashboards</span>
+                </div>
+
+                {/* AI Node */}
+                <div style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '-10%',
+                  transform: 'translateY(-50%)',
+                  padding: '0.75rem 1.25rem',
+                  borderRadius: '30px',
+                  background: 'rgba(255,255,255,0.03)',
+                  border: '1px solid rgba(0, 229, 255, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                  zIndex: 3
+                }}>
+                  <Bot size={16} style={{ color: 'var(--accent-cyan)' }} />
+                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>AI Automation</span>
+                </div>
+
+                {/* Animated Ring */}
+                <div className="system-pulse" style={{
+                  position: 'absolute',
+                  top: '5%',
+                  left: '5%',
+                  width: '90%',
+                  height: '90%',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(0, 229, 255, 0.1)',
+                  zIndex: 1
+                }}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Why Work With Us */}
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2.5rem' }}>
+              Strategy, Design, Data and Automation — <span className="text-gradient">Working Together</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '1.5rem auto 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
+              We don't build isolated components. We build an integrated system where each pillar reinforces the others to scale your revenue.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
+            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Target size={24} style={{ color: 'var(--accent-cyan)' }} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>Strategy First</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Aligning your online presence with clear, quantifiable business objectives before writing a single line of code.
+              </p>
+            </div>
+
+            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Sparkles size={24} style={{ color: 'var(--accent-cyan)' }} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>Premium Design</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Bespoke user experiences designed to project luxury, build credibility, and convert traffic into leads.
+              </p>
+            </div>
+
+            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <BarChart3 size={24} style={{ color: 'var(--accent-cyan)' }} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>Real-time Data</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Custom KPI tracking dashboards that show you exactly where your clients come from and which channels yield ROI.
+              </p>
+            </div>
+
+            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
+              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
+                <Bot size={24} style={{ color: 'var(--accent-cyan)' }} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>AI Automation</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Automating initial engagement and scheduling with smart agents that respond within seconds, day or night.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Process Flow */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+            <h2 style={{ fontSize: '2.5rem' }}>
+              Our Simple <span className="text-gradient">3-Step Process</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: '1rem' }}>
+              How we take your digital presence from where it is to where it needs to be.
+            </p>
+          </div>
+
+          <div className="process-timeline-wrapper" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', position: 'relative' }}>
+            {/* Step 1 */}
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)' }}>
+              <div style={{ position: 'absolute', top: '-25px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.15)', fontStyle: 'italic', fontFamily: 'monospace' }}>01</div>
+              <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Discover</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                We analyze your business model, audit competitors, perform keyword research, and structure your key performance metrics (KPIs) to align on a digital growth map.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)' }}>
+              <div style={{ position: 'absolute', top: '-25px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.15)', fontStyle: 'italic', fontFamily: 'monospace' }}>02</div>
+              <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Build</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                We design and code your custom, high-speed website, optimize it for Google local SEO, and set up your automated AI customer service agents and tracking.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)' }}>
+              <div style={{ position: 'absolute', top: '-25px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.15)', fontStyle: 'italic', fontFamily: 'monospace' }}>03</div>
+              <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Optimize</h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                After launch, we connect your live metrics dashboard, monitor page speed, refine SEO keywords, and fine-tune your chatbot responses to continuously boost conversions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Who It's For */}
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2.5rem' }}>
+              Who Is This <span className="text-gradient">Growth System For?</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0', fontSize: '1.1rem' }}>
+              We partner with professionals ready to invest in a stronger, automated digital presence.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <User size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+              <div>
+                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Business Owners</h4>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <Activity size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+              <div>
+                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Consultants</h4>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <Zap size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+              <div>
+                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Service Providers</h4>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <TrendingUp size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+              <div>
+                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Growing Companies</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Trust / Proof Pillars */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '2rem' }}>
+              Built for <span className="text-gradient">Performance and Integrity</span>
+            </h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'center' }}>
+            <div style={{ padding: '1rem' }}>
+              <Zap size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
+              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>High Performance</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Fast load speeds and fluid user interfaces.</p>
+            </div>
+            <div style={{ padding: '1rem' }}>
+              <CheckCircle2 size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
+              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Absolute Clarity</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>No confusing jargon—just transparent metrics.</p>
+            </div>
+            <div style={{ padding: '1rem' }}>
+              <TrendingUp size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
+              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>SEO Foundations</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Built from day one to rank higher on Google search.</p>
+            </div>
+            <div style={{ padding: '1rem' }}>
+              <Target size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
+              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Conversion Strategy</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Every section is structured to turn visitors into leads.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Testimonials Carousel */}
       <TestimonialsCarousel />
 
-      {/* CTA Section */}
+      {/* Final CTA Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Let's Build Something Great</h2>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 2rem', fontSize: '1.1rem' }}>
-            Ready to transform your digital presence? Get in touch with our team for a personalized consultation and free strategy session.
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
+            Ready to Build a <span className="text-gradient">Smarter Digital Presence?</span>
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto 2rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
+            Book your free audit and strategy session today. We'll identify local search opportunities, audit site speed, and outline a custom digital growth blueprint for your business.
           </p>
-        </div>
-      </section>
-
-      {/* Final CTA Section */}
-      <section className="section">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Websites Delivered in 7 Days</h2>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto 2rem', fontSize: '1.1rem' }}>
-            Don't let another day go by without a professional online presence. Contact us today and our team will reach out within 24 hours with a personalized strategy.
-          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
+            <a
+              href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20request%20a%20free%20audit%20and%20strategy%20session."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp-large"
+              style={{ padding: '1rem 2rem', borderRadius: '10px' }}
+            >
+              Get Your Free Audit
+            </a>
+          </div>
+          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ padding: '2.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
               <MessageCircle size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>WhatsApp</h3>
-              <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}>
+              <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 +58 414 473 5431
               </a>
             </div>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ padding: '2.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
               <Mail size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>Email</h3>
-              <a href="mailto:inversionesdigitales@hotmail.es" style={{ color: 'var(--accent-cyan)', textDecoration: 'none' }}>
+              <a href="mailto:inversionesdigitales@hotmail.es" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 inversionesdigitales@hotmail.es
               </a>
             </div>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div style={{ padding: '2.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
               <MapPin size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>Location</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>
+              <p style={{ color: 'var(--text-secondary)', fontWeight: '600', margin: 0 }}>
                 Maracay, Aragua, Venezuela
               </p>
             </div>
@@ -372,17 +699,6 @@ const Home = () => {
 
       {/* Blog Carousel Component */}
       <BlogCarousel />
-
-      {/* CTA Button Section */}
-      <section className="section" style={{ backgroundColor: 'transparent', paddingTop: '2rem', paddingBottom: '2rem' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div className="hero-buttons">
-            <a href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20web%20development%20services." target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
-              Start Your Free Audit
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Form Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
