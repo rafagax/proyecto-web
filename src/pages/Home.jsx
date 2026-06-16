@@ -266,83 +266,63 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="section" id="services">
+      {/* 2. Authority / Problem-Solution */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>Our <span className="text-gradient">Core Services</span></h2>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>
-              Complete digital solutions designed to accelerate your business growth and maximize online visibility.
+          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>Your Website Should Do <span className="text-gradient">More Than Look Good</span></h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', lineHeight: '1.6' }}>
+              A beautiful website is only valuable if it attracts the right visitors, converts them into leads, and gives you clear insight into what is working. We help businesses build a stronger digital presence with strategy, design, SEO, performance tracking, and automation working together.
             </p>
-          </div>
-
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon"><Bot size={24} /></div>
-              <h3>Professional Digital Presence</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                We design and build stunning, modern websites that establish your brand authority, build customer trust, and showcase professionalism from the first interaction, driving more conversions and customer loyalty.
-              </p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-icon"><Cpu size={24} /></div>
-              <h3>Lightning-Fast Web Development</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                High-performance, fully responsive websites built and deployed in <strong style={{ color: 'var(--accent-cyan)' }}>7 business days</strong>, using cutting-edge technologies optimized for speed, security, and mobile-first design.
-              </p>
-            </div>
-
-            <div className="service-card">
-              <div className="service-icon"><Activity size={24} /></div>
-              <h3>SEO & Growth Strategy</h3>
-              <p style={{ color: 'var(--text-secondary)' }}>
-                Data-driven SEO and local marketing strategies that position your business at the top of Google search results, attract qualified leads, and generate sustainable revenue growth in your market.
-              </p>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-            <Link to="/services" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              View All Services <ArrowRight size={18} />
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Decision CTA Section */}
-      <section className="decision-cta-section">
-        <div className="decision-cta-glow"></div>
+      {/* 3. Core Services (New) */}
+      <section className="section" id="digital-solutions">
         <div className="container">
-          <div className="decision-cta-wrapper">
-            <div className="decision-cta-badge">
-              <Zap size={14} />
-              <span>Ready to scale?</span>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <h2 style={{ fontSize: '2.5rem' }}><span className="text-gradient">Digital Solutions</span> Built to Grow Your Business</h2>
+          </div>
+
+          <div className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
+            <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
+              <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Code size={32} /></div>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>Web Development & Design</h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                Premium, responsive websites designed to impress, convert, and support long-term growth.
+              </p>
             </div>
-            <h2 className="decision-cta-title">
-              Stop Guessing.<br />
-              <span className="text-gradient">Start Deciding with Data.</span>
-            </h2>
-            <p className="decision-cta-subtitle">
-              Join hundreds of businesses that use our AI-powered analytics to make faster, smarter decisions — and dominate their market.
-            </p>
-            <div className="decision-cta-pills">
-              <span className="decision-pill"><CheckCircle2 size={15} /> No commitment required</span>
-              <span className="decision-pill"><CheckCircle2 size={15} /> Results in 7 days</span>
-              <span className="decision-pill"><CheckCircle2 size={15} /> Free strategy session</span>
+
+            <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
+              <div className="service-icon" style={{ marginBottom: '1.5rem' }}><TrendingUp size={32} /></div>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>SEO & Digital Growth</h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                Improve your visibility, attract qualified traffic, and turn search intent into new business opportunities.
+              </p>
             </div>
-            <a
-              href="https://wa.me/584144735431?text=Hello,%20I%20want%20to%20start%20making%20data-driven%20decisions%20for%20my%20business.%20Can%20we%20schedule%20a%20free%20session?"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="decision-cta-btn"
-            >
-              <span>Make the Decision Now</span>
-              <ArrowRight size={20} />
-            </a>
+
+            <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
+              <div className="service-icon" style={{ marginBottom: '1.5rem' }}><BarChart3 size={32} /></div>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>KPI & Performance Indicators</h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                Understand exactly how your business is performing with clear, actionable data dashboards.
+              </p>
+            </div>
+
+            <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
+              <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Bot size={32} /></div>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>AI Automation & Chatbots</h3>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+                Engage leads, answer questions, and support customers 24/7 with smart AI-powered automation.
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
+
+
 
       {/* Testimonials Carousel */}
       <TestimonialsCarousel />
