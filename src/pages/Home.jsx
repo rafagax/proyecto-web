@@ -353,8 +353,8 @@ const Home = () => {
             
             <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', height: '380px' }}>
               {/* Visual System representation using CSS */}
-              <div className="system-diagram-container" style={{ position: 'relative', width: '300px', height: '300px' }}>
-                {/* Center Hub */}
+              <div className="system-diagram-container">
+                {/* Static Center Hub */}
                 <div style={{
                   position: 'absolute',
                   top: '50%',
@@ -369,102 +369,88 @@ const Home = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   boxShadow: '0 0 30px rgba(0, 229, 255, 0.3)',
-                  zIndex: 2
+                  zIndex: 10
                 }}>
                   <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#fff', textAlign: 'center' }}>SYSTEM</span>
                 </div>
 
-                {/* Web Node */}
-                <div style={{
-                  position: 'absolute',
-                  top: '10%',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  padding: '0.75rem 1.25rem',
-                  borderRadius: '30px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(0, 229, 255, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                  zIndex: 3
-                }}>
-                  <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>Web Design</span>
-                </div>
+                {/* Rotating Orbit Container */}
+                <div className="orbit-container">
+                  {/* Web Node */}
+                  <div style={{ position: 'absolute', top: '0', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                    <div className="orbiting-node" style={{
+                      padding: '0.75rem 1.25rem',
+                      borderRadius: '30px',
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>Web Design</span>
+                    </div>
+                  </div>
 
-                {/* SEO Node */}
-                <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: '-10%',
-                  transform: 'translateY(-50%)',
-                  padding: '0.75rem 1.25rem',
-                  borderRadius: '30px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(0, 229, 255, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                  zIndex: 3
-                }}>
-                  <TrendingUp size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>SEO</span>
-                </div>
+                  {/* SEO Node */}
+                  <div style={{ position: 'absolute', top: '50%', left: '100%', transform: 'translate(-50%, -50%)' }}>
+                    <div className="orbiting-node" style={{
+                      padding: '0.75rem 1.25rem',
+                      borderRadius: '30px',
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      <TrendingUp size={16} style={{ color: 'var(--accent-cyan)' }} />
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>SEO</span>
+                    </div>
+                  </div>
 
-                {/* KPI Node */}
-                <div style={{
-                  position: 'absolute',
-                  bottom: '10%',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  padding: '0.75rem 1.25rem',
-                  borderRadius: '30px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(0, 229, 255, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                  zIndex: 3
-                }}>
-                  <BarChart3 size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>KPI Dashboards</span>
-                </div>
+                  {/* KPI Node */}
+                  <div style={{ position: 'absolute', top: '100%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+                    <div className="orbiting-node" style={{
+                      padding: '0.75rem 1.25rem',
+                      borderRadius: '30px',
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      <BarChart3 size={16} style={{ color: 'var(--accent-cyan)' }} />
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>KPI Dashboards</span>
+                    </div>
+                  </div>
 
-                {/* AI Node */}
-                <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '-10%',
-                  transform: 'translateY(-50%)',
-                  padding: '0.75rem 1.25rem',
-                  borderRadius: '30px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(0, 229, 255, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                  zIndex: 3
-                }}>
-                  <Bot size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>AI Automation</span>
-                </div>
+                  {/* AI Node */}
+                  <div style={{ position: 'absolute', top: '50%', left: '0', transform: 'translate(-50%, -50%)' }}>
+                    <div className="orbiting-node" style={{
+                      padding: '0.75rem 1.25rem',
+                      borderRadius: '30px',
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      whiteSpace: 'nowrap'
+                    }}>
+                      <Bot size={16} style={{ color: 'var(--accent-cyan)' }} />
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>AI Automation</span>
+                    </div>
+                  </div>
 
-                {/* Animated Ring */}
-                <div className="system-pulse" style={{
-                  position: 'absolute',
-                  top: '5%',
-                  left: '5%',
-                  width: '90%',
-                  height: '90%',
-                  borderRadius: '50%',
-                  border: '1px solid rgba(0, 229, 255, 0.1)',
-                  zIndex: 1
-                }}></div>
+                  {/* Animated Ring */}
+                  <div className="system-pulse"></div>
+                </div>
               </div>
             </div>
           </div>
