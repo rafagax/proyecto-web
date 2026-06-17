@@ -32,6 +32,7 @@ const serviceItems = [
 export const ServicesMegaMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
@@ -44,16 +45,39 @@ export const ServicesMegaMenu = () => {
     }, 200);
   };
 
+  // Keyboard accessibility: open while any element inside has focus,
+  // close when focus leaves the menu or Escape is pressed.
+  const handleFocus = () => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    setIsOpen(true);
+  };
+
+  const handleBlur = (e) => {
+    if (!wrapperRef.current?.contains(e.relatedTarget)) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Escape') setIsOpen(false);
+  };
+
   return (
     <div
+      ref={wrapperRef}
       style={{ position: 'relative', display: 'inline-block' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onKeyDown={handleKeyDown}
     >
-      {/* Services Trigger (clickable → /services, hover → dropdown) */}
+      {/* Services Trigger (clickable → /services, hover/focus → dropdown) */}
       <Link
         to="/services"
         className="services-trigger"
+        aria-haspopup="true"
+        aria-expanded={isOpen}
         style={{
           background: 'transparent',
           border: 'none',

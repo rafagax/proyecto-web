@@ -272,8 +272,8 @@ const Home = () => {
             </div>
           </div>
           {/* Desktop hero image */}
-          <div className="hero-image desktop-only" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={heroImg} alt="AI Technology" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
+          <div className="hero-image desktop-only hero-img-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <img src={heroImg} alt="AI Technology" className="hero-float" fetchPriority="high" decoding="async" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
           </div>
         </div>
       </section>
@@ -281,7 +281,7 @@ const Home = () => {
       {/* 2. Problem / Value Proposition */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', paddingBottom: '2rem' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
               Your Website Should Do <span className="text-gradient">More Than Look Good</span>
             </h2>
@@ -295,8 +295,8 @@ const Home = () => {
       {/* 3. Services Grid */}
       <section className="section" id="services" style={{ paddingTop: '2rem' }}>
         <div className="container">
-          <div className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
-            <Link to="/services/web-development-design" className="service-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+          <div className="services-grid reveal-group" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
+            <Link to="/services/web-development-design" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Code size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>Web Development & Design</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -305,7 +305,7 @@ const Home = () => {
               <div className="service-highlight">Built fast — ready in 7 days or less</div>
             </Link>
 
-            <Link to="/services/seo-digital-growth" className="service-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to="/services/seo-digital-growth" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><TrendingUp size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>SEO & Digital Growth</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -314,7 +314,7 @@ const Home = () => {
               <div className="service-highlight">Optimized to compete in local search</div>
             </Link>
 
-            <Link to="/services/kpi-dashboards" className="service-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to="/services/kpi-dashboards" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><BarChart3 size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>KPI Dashboards & Analytics</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -323,7 +323,7 @@ const Home = () => {
               <div className="service-highlight">Know what's working, in real time</div>
             </Link>
 
-            <Link to="/services/ai-automation-chatbots" className="service-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to="/services/ai-automation-chatbots" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Bot size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>AI Automation & Chatbots</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -339,7 +339,7 @@ const Home = () => {
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', overflow: 'hidden' }}>
         <div className="container">
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4rem' }}>
-            <div style={{ flex: '1 1 450px' }}>
+            <div className="reveal-left" style={{ flex: '1 1 450px' }}>
               <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
                 Not Just a Website.<br />
                 <span className="text-gradient">A Digital Growth System.</span>
@@ -361,7 +361,7 @@ const Home = () => {
               </div>
             </div>
             
-            <div style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', height: '380px' }}>
+            <div className="reveal-right" style={{ flex: '1 1 400px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', height: '380px' }}>
               {/* Visual System representation using CSS */}
               <div className="system-diagram-container">
                 {/* Static Center Hub */}
@@ -468,9 +468,9 @@ const Home = () => {
       </section>
 
       {/* 5. Core Offerings — What We Actually Build */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', overflow: 'hidden' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>What We Build</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
               Everything Your Digital Presence Needs to <span className="text-gradient">Grow</span>
@@ -479,7 +479,7 @@ const Home = () => {
 
           {/* Offering 1 — Web Development */}
           <div className="feature-row">
-            <div className="feature-text">
+            <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><Code size={16} /> Web Development &amp; Design</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
                 A fast, premium website built to <span className="text-gradient">convert</span>
@@ -496,7 +496,7 @@ const Home = () => {
                 Explore Web Development <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="feature-visual feature-visual-image">
+            <div className="feature-visual feature-visual-image reveal-right">
               {/* Premium corporate website image */}
               <img
                 src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900&h=650&fit=crop&q=80"
@@ -514,7 +514,7 @@ const Home = () => {
 
           {/* Offering 2 — SEO */}
           <div className="feature-row reverse">
-            <div className="feature-text">
+            <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><TrendingUp size={16} /> SEO &amp; Digital Growth</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
                 Improve visibility and attract <span className="text-gradient">qualified traffic</span>
@@ -531,7 +531,7 @@ const Home = () => {
                 Explore SEO &amp; Growth <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="feature-visual">
+            <div className="feature-visual reveal-right">
               {/* Search ranking mockup */}
               <div style={{ width: '82%', maxWidth: '340px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px', borderRadius: 30, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', marginBottom: 28 }}>
@@ -551,7 +551,7 @@ const Home = () => {
 
           {/* Offering 3 — AI WhatsApp Agents */}
           <div className="feature-row">
-            <div className="feature-text">
+            <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><Bot size={16} /> AI Automation &amp; Chatbots</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
                 Respond faster with <span className="text-gradient">intelligent automation</span>
@@ -568,19 +568,19 @@ const Home = () => {
                 Explore AI Automation <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="feature-visual">
+            <div className="feature-visual reveal-right">
               {/* WhatsApp chat mockup */}
               <div style={{ width: '82%', maxWidth: '320px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'rgba(255,255,255,0.07)', color: '#fff', fontSize: '0.85rem', lineHeight: 1.45 }}>
+                <div className="chat-bubble" style={{ transitionDelay: '0.05s', alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'rgba(255,255,255,0.07)', color: '#fff', fontSize: '0.85rem', lineHeight: 1.45 }}>
                   Hi! Do you have availability this week? 👋
                 </div>
-                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
+                <div className="chat-bubble" style={{ transitionDelay: '0.15s', alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
                   Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
                 </div>
-                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
+                <div className="chat-bubble" style={{ transitionDelay: '0.25s', alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
                   Great — you're booked. Here's a quick price list meanwhile 📋
                 </div>
-                <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+                <div className="chat-bubble" style={{ transitionDelay: '0.35s', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
                   <Bot size={14} /> AI agent replied in 8 seconds
                 </div>
               </div>
@@ -589,7 +589,7 @@ const Home = () => {
 
           {/* Offering 4 — KPI Dashboards & Analytics */}
           <div className="feature-row reverse">
-            <div className="feature-text">
+            <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><BarChart3 size={16} /> KPI Dashboards &amp; Analytics</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
                 Track the numbers that <span className="text-gradient">actually matter</span>
@@ -606,7 +606,7 @@ const Home = () => {
                 Explore KPI Dashboards <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="feature-visual">
+            <div className="feature-visual reveal-right">
               {/* KPI dashboard mockup */}
               <div style={{ width: '86%', maxWidth: '360px', display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <div style={{ display: 'flex', gap: 12 }}>
@@ -628,7 +628,7 @@ const Home = () => {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 76 }}>
                     {[42, 55, 48, 66, 72, 100].map((h, i) => (
-                      <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '5px 5px 0 0', background: i === 5 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'rgba(255,255,255,0.08)' }}></div>
+                      <div key={i} className="bar-rise" style={{ flex: 1, height: `${h}%`, transitionDelay: `${i * 25}ms`, borderRadius: '5px 5px 0 0', background: i === 5 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'rgba(255,255,255,0.08)' }}></div>
                     ))}
                   </div>
                 </div>
@@ -641,7 +641,7 @@ const Home = () => {
       {/* 7. How It Works — 3-Step Process */}
       <section className="section">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>How It Works</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
               From First Idea to Website Launch — in <span className="text-gradient">3 Simple Steps</span>
@@ -651,9 +651,9 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="process-timeline-wrapper" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', position: 'relative' }}>
+          <div className="process-timeline-wrapper reveal-group" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', position: 'relative' }}>
             {steps.map((step) => (
-              <div key={step.number} style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
+              <div key={step.number} className="reveal-card" style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
                 <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(77, 148, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>{step.number}</div>
                 <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>{step.title}</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
@@ -668,7 +668,7 @@ const Home = () => {
       {/* Why Choose Us — Concrete Benefits */}
       <section className="section">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Why Choose Us</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
               What You Actually <span className="text-gradient">Get</span>
@@ -678,9 +678,9 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="benefit-grid">
+          <div className="benefit-grid reveal-group">
             {benefits.map(({ icon: Icon, title, text, mobileHide }) => (
-              <article key={title} className={`benefit-card${mobileHide ? ' desktop-only' : ''}`}>
+              <article key={title} className={`benefit-card reveal-card${mobileHide ? ' desktop-only' : ''}`}>
                 <div className="benefit-card-head">
                   <span className="benefit-icon"><Icon size={22} strokeWidth={1.7} /></span>
                   <h3>{title}</h3>
@@ -697,7 +697,7 @@ const Home = () => {
 
       {/* Final CTA Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
+        <div className="container reveal" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
             Ready to Build a <span className="text-gradient">Smarter Digital Presence?</span>
           </h2>
@@ -750,7 +750,7 @@ const Home = () => {
       {/* 8. Pricing Teaser (light) */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 2.5rem', borderRadius: '20px', border: '1px solid rgba(77, 148, 255, 0.15)', background: 'linear-gradient(180deg, rgba(77, 148, 255, 0.05), rgba(255, 255, 255, 0.01))' }}>
+          <div className="reveal" style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 2.5rem', borderRadius: '20px', border: '1px solid rgba(77, 148, 255, 0.15)', background: 'linear-gradient(180deg, rgba(77, 148, 255, 0.05), rgba(255, 255, 255, 0.01))' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Transparent Pricing</span>
             <h2 style={{ fontSize: '2.3rem', marginBottom: '1rem', lineHeight: 1.2 }}>
               Professional websites starting from <span className="text-gradient">$299</span>
@@ -769,7 +769,7 @@ const Home = () => {
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
           {/* Persuasive lead-in */}
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Final Step</span>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: 1.2 }}>
               Ready for a system that <span className="text-gradient">sells for you?</span>
@@ -778,7 +778,7 @@ const Home = () => {
               Let's talk about your project. In your free consultation we'll dig into your current needs and map out the best digital strategy to accelerate your growth — no strings attached.
             </p>
           </div>
-          <div style={{ maxWidth: '600px', margin: '0 auto' }}>
+          <div className="reveal" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
                 <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Full Name</label>

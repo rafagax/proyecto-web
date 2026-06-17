@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -15,10 +16,62 @@ import KPI from './pages/KPI';
 import Chatbot from './components/Chatbot';
 import './App.css';
 
+// Reveals `.reveal` elements once as they enter the viewport, using a single
+// IntersectionObserver (no constant scroll listeners). Re-scans on route change.
+function ScrollRevealManager() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Simple directional reveals (fade-up / -left / -right) reveal themselves.
+    const simple = document.querySelectorAll(
+      '.reveal:not(.is-visible), .reveal-left:not(.is-visible), .reveal-right:not(.is-visible)'
+    );
+    // Card groups stagger their .reveal-card children with a tiny delay.
+    const groups = document.querySelectorAll('.reveal-group:not(.is-revealed)');
+    if (!simple.length && !groups.length) return;
+
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      simple.forEach((el) => el.classList.add('is-visible'));
+      groups.forEach((g) => {
+        g.classList.add('is-revealed');
+        g.querySelectorAll('.reveal-card').forEach((c) => c.classList.add('is-visible'));
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          if (el.classList.contains('reveal-group')) {
+            el.classList.add('is-revealed');
+            el.querySelectorAll('.reveal-card').forEach((card, i) => {
+              window.setTimeout(() => card.classList.add('is-visible'), Math.min(i, 8) * 40);
+            });
+          } else {
+            el.classList.add('is-visible');
+          }
+          observer.unobserve(el);
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+    );
+
+    simple.forEach((el) => observer.observe(el));
+    groups.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+  return null;
+}
+
 function App() {
   return (
     <Router>
       <div className="app-container">
+        <ScrollRevealManager />
         <Navbar />
         <main>
           <Routes>

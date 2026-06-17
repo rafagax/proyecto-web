@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import logoImg from '../assets/logo sin fondo.png';
+import logoImg from '../assets/logo sin fondo.webp';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
 
 const Navbar = () => {
