@@ -99,17 +99,17 @@ const Navbar = () => {
             <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }}>
               Services
             </div>
-            <Link to="/services/custom-ux-ui" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              We Create Your Professional Website
+            <Link to="/services/web-development" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              Web Development & Design
             </Link>
-            <Link to="/services/seo-positioning" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              Rank #1 on Google - Local SEO
+            <Link to="/services/seo" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              SEO & Digital Growth
             </Link>
-            <Link to="/services/maintenance-updates" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              Website Management & Maintenance
+            <Link to="/services/kpi-dashboards" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              KPI & Performance Indicators
             </Link>
-            <Link to="/services/whatsapp-ai-agents" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              AI Automation - Sell 24/7 on WhatsApp
+            <Link to="/services/ai-automation" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+              AI Automation & Chatbots
             </Link>
           </div>
 

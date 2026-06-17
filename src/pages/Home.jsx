@@ -22,7 +22,7 @@ const Home = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    service: '',
+    phone: '',
     message: ''
   });
 
@@ -33,12 +33,12 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, service, message } = formData;
-    const phone = '584144735431';
-    const text = `Hello, my name is ${name}. My email is ${email}. I'm interested in: ${service}. My message: ${message}`;
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    const { name, email, phone, message } = formData;
+    const businessPhone = '584144735431';
+    const text = `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`;
+    const whatsappUrl = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
-    setFormData({ name: '', email: '', service: '', message: '' });
+    setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
   const testimonials = [
@@ -152,7 +152,7 @@ const Home = () => {
 
             {/* Mobile Hero Service Cards List (Mobile Only) */}
             <div className="mobile-hero-services mobile-only">
-              <Link to="/services/custom-ux-ui" className="mobile-service-card">
+              <Link to="/services/web-development" className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <Code size={18} />
                 </div>
@@ -163,7 +163,7 @@ const Home = () => {
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
 
-              <Link to="/services/seo-positioning" className="mobile-service-card">
+              <Link to="/services/seo" className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <TrendingUp size={18} />
                 </div>
@@ -185,7 +185,7 @@ const Home = () => {
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
 
-              <Link to="/services/whatsapp-ai-agents" className="mobile-service-card">
+              <Link to="/services/ai-automation" className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <Bot size={18} />
                 </div>
@@ -225,7 +225,7 @@ const Home = () => {
       </section>
 
       {/* 2. Problem / Value Proposition */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', paddingBottom: '2rem' }}>
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
@@ -239,9 +239,10 @@ const Home = () => {
       </section>
 
       {/* 3. Services Grid */}
-      <section className="section" id="services">
+      <section className="section" id="services" style={{ paddingTop: '2rem' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          {/* Heading hidden on desktop, visible on mobile */}
+          <div className="mobile-only" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ fontSize: '2.5rem' }}>
               Digital Growth Services for <span className="text-gradient">Ambitious Businesses</span>
             </h2>
@@ -444,7 +445,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> Loads in under 2 seconds on any device</li>
                 <li><CheckCircle2 size={18} /> Clear calls-to-action that drive WhatsApp leads</li>
               </ul>
-              <Link to="/services/custom-ux-ui" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to="/services/web-development" className="hero-advisory-btn" style={{ margin: 0 }}>
                 Explore Web Development <ArrowRight size={16} />
               </Link>
             </div>
@@ -479,7 +480,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> Keyword &amp; competitor research that targets buyers</li>
                 <li><CheckCircle2 size={18} /> Built to rank from day one, not months later</li>
               </ul>
-              <Link to="/services/seo-positioning" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to="/services/seo" className="hero-advisory-btn" style={{ margin: 0 }}>
                 Explore SEO &amp; Growth <ArrowRight size={16} />
               </Link>
             </div>
@@ -516,7 +517,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> Answers FAQs, quotes prices &amp; books appointments</li>
                 <li><CheckCircle2 size={18} /> Trained on your business, in your tone of voice</li>
               </ul>
-              <Link to="/services/whatsapp-ai-agents" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to="/services/ai-automation" className="hero-advisory-btn" style={{ margin: 0 }}>
                 Explore AI Agents <ArrowRight size={16} />
               </Link>
             </div>
@@ -719,13 +720,14 @@ const Home = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Service of Interest</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Phone Number</label>
                 <input
-                  type="text"
-                  name="service"
-                  placeholder="e.g. Business Plan"
-                  value={formData.service}
+                  type="tel"
+                  name="phone"
+                  placeholder="Your phone number"
+                  value={formData.phone}
                   onChange={handleInputChange}
+                  required
                   style={{
                     width: '100%',
                     padding: '0.75rem',
@@ -761,8 +763,8 @@ const Home = () => {
 
               <button
                 type="submit"
-                className="btn-whatsapp-large"
-                style={{ width: '100%' }}
+                className="hero-advisory-btn"
+                style={{ width: '100%', justifyContent: 'center' }}
               >
                 Get My Free Digital Strategy
               </button>

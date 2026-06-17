@@ -4,251 +4,75 @@ import { CheckCircle2, ArrowRight, Clock, Zap, Target, BarChart3 } from 'lucide-
 import { updateMetaTags, addServiceSchema } from '../utils/seo';
 
 const serviceDetails = {
-  'custom-ux-ui': {
-    title: 'Custom Web Design & UX',
-    description: 'Professional custom web design tailored to your brand identity and user experience.',
-    benefits: ['Unique brand identity', 'Intuitive user experience', 'Modern design trends', 'Mobile responsive', 'Fast loading times'],
-    process: ['Discovery & Strategy', 'Wireframing', 'Design & Prototyping', 'User Testing', 'Development & Launch'],
+  'web-development': {
+    title: 'Web Development & Design',
+    description: 'Custom, high-performance websites designed to build trust, convert visitors, and grow your business — built mobile-first and ready in days.',
+    benefits: ['Custom brand-aligned design', 'Mobile-first & responsive', 'Fast loading & optimized', 'Ongoing maintenance & support', 'SEO-ready structure'],
+    process: ['Discovery & Strategy', 'Design & Prototyping', 'Development', 'Testing & QA', 'Launch & Support'],
     timeline: '7-14 days',
-    price: 'Starting at $500',
+    price: 'Starting at $299',
     features: [
       'Custom visual design aligned with your brand',
-      'Fully responsive on all devices',
-      'Optimized for user engagement',
-      'Modern UI/UX best practices',
-      'Accessibility standards compliance',
-      'SEO-friendly structure'
+      'Fully responsive on all devices (mobile-first)',
+      'Loads in under 2 seconds, performance-optimized',
+      'SEO-friendly, accessible code',
+      'Website maintenance, updates & backups',
+      'Priority technical support'
     ]
   },
-  'responsive-web': {
-    title: 'Responsive Web Development',
-    description: 'Build fast, modern websites that work perfectly on all devices.',
-    benefits: ['Mobile-first approach', 'Fast performance', 'Clean code', 'Easy maintenance', 'Future-proof technology'],
-    process: ['Requirements Analysis', 'Architecture Design', 'Development', 'Testing', 'Deployment'],
-    timeline: '7 days',
-    price: 'Starting at $299',
-    features: [
-      'React.js & modern frameworks',
-      'Mobile-first responsive design',
-      'Optimized for speed and performance',
-      'Cross-browser compatibility',
-      'Clean, maintainable code',
-      'Future-ready technology stack'
-    ]
-  },
-  'maintenance-updates': {
-    title: 'Website Maintenance & Updates',
-    description: 'Keep your website secure, fast, and updated with regular maintenance services.',
-    benefits: ['Constant security', 'Regular backups', 'Performance monitoring', 'Bug fixes', 'Feature updates'],
-    process: ['Monitoring', 'Maintenance', 'Updates', 'Optimization', 'Reporting'],
-    timeline: 'Ongoing',
-    price: 'Starting at $99/month',
-    features: [
-      'Daily security monitoring',
-      'Automatic backups',
-      'Performance optimization',
-      'Bug fixes & patches',
-      'Software updates',
-      'Monthly performance reports'
-    ]
-  },
-  'performance-optimization': {
-    title: 'Website Performance Optimization',
-    description: 'Boost your website speed and performance for better user experience and rankings.',
-    benefits: ['Faster load times', 'Better SEO rankings', 'Higher conversions', 'Improved UX', 'Reduced bounce rate'],
-    process: ['Audit & Analysis', 'Optimization Strategy', 'Implementation', 'Testing', 'Monitoring'],
-    timeline: '3-5 days',
-    price: 'Starting at $299',
-    features: [
-      'Comprehensive speed audit',
-      'Image optimization',
-      'Code minification & caching',
-      'CDN integration',
-      'Database optimization',
-      'Performance monitoring dashboard'
-    ]
-  },
-  'whatsapp-ai-agents': {
-    title: 'AI WhatsApp Agents',
-    description: 'Automate customer support and lead generation with intelligent WhatsApp bots.',
-    benefits: ['24/7 availability', 'Instant responses', 'Lead capture', 'Cost reduction', 'Increased conversions'],
-    process: ['Requirement Gathering', 'Bot Configuration', 'Integration', 'Training & Testing', 'Deployment'],
-    timeline: '5-7 days',
-    price: 'Starting at $399/month',
-    features: [
-      'Natural language processing',
-      'Automated lead capture',
-      'FAQ automation',
-      'Order tracking integration',
-      'Seamless handoff to humans',
-      'Analytics & reporting'
-    ]
-  },
-  'workflow-automation': {
-    title: 'Business Process Automation',
-    description: 'Automate repetitive tasks and workflows to increase productivity and reduce errors.',
-    benefits: ['Time savings', 'Error reduction', 'Cost efficiency', 'Scalability', 'Better reporting'],
-    process: ['Process Analysis', 'Automation Design', 'Implementation', 'Testing', 'Training'],
-    timeline: '7-14 days',
-    price: 'Starting at $299/month',
-    features: [
-      'Email automation workflows',
-      'CRM integration',
-      'Task automation',
-      'Data synchronization',
-      'Performance monitoring',
-      'Custom reporting'
-    ]
-  },
-  'system-integration': {
-    title: 'API & System Integration',
-    description: 'Connect your business systems seamlessly with custom API integrations.',
-    benefits: ['Data synchronization', 'Reduced manual work', 'Better data flow', 'System compatibility', 'Scalable infrastructure'],
-    process: ['API Analysis', 'Integration Design', 'Development', 'Testing', 'Deployment'],
-    timeline: '7-21 days',
-    price: 'Starting at $499',
-    features: [
-      'Custom API development',
-      'Third-party service integration',
-      'Real-time data sync',
-      'Secure authentication',
-      'Error handling & logging',
-      'API documentation'
-    ]
-  },
-  'seo-positioning': {
-    title: 'Local SEO & Web Positioning',
-    description: 'Rank higher on Google and attract local customers searching for your services.',
-    benefits: ['Higher rankings', 'Local visibility', 'Organic traffic', 'Lead generation', 'Cost-effective marketing'],
-    process: ['Keyword Research', 'On-page Optimization', 'Local SEO Setup', 'Link Building', 'Monitoring'],
+  'seo': {
+    title: 'SEO & Digital Growth',
+    description: 'Rank higher on Google, attract qualified local traffic, and turn searches into customers — backed by analytics and clear monthly reporting.',
+    benefits: ['Higher Google rankings', 'Qualified local traffic', 'Content that ranks', 'Clear analytics & reports', 'Long-term organic growth'],
+    process: ['Keyword & Competitor Research', 'On-page Optimization', 'Local SEO & Content', 'Tracking & Analytics', 'Monthly Reporting'],
     timeline: 'Ongoing (results in 30-60 days)',
-    price: 'Starting at $299/month',
+    price: 'Starting at $300/month',
     features: [
       'Keyword research & strategy',
-      'On-page optimization',
-      'Google Business Profile setup',
-      'Local citation building',
-      'Link building strategy',
-      'Monthly ranking reports'
-    ]
-  },
-  'traffic-analytics': {
-    title: 'Traffic & User Analytics',
-    description: 'Understand your website visitors with detailed analytics and insights.',
-    benefits: ['Better understanding of users', 'Data-driven decisions', 'Optimization opportunities', 'ROI tracking', 'Competitive insights'],
-    process: ['Setup & Configuration', 'Data Collection', 'Analysis', 'Reporting', 'Recommendations'],
-    timeline: 'Ongoing',
-    price: 'Starting at $149/month',
-    features: [
-      'Google Analytics 4 setup',
-      'Conversion tracking',
-      'User behavior analysis',
-      'Traffic source identification',
-      'Custom dashboards',
-      'Monthly performance reports'
-    ]
-  },
-  'technical-support': {
-    title: 'Technical Support',
-    description: 'Reliable technical support to keep your website running smoothly at all times.',
-    benefits: ['Fast response times', 'Expert assistance', 'Minimal downtime', 'Peace of mind', 'Proactive monitoring'],
-    process: ['Issue Reporting', 'Diagnosis', 'Resolution', 'Testing', 'Documentation'],
-    timeline: 'Same-day response',
-    price: 'Starting at $79/month',
-    features: [
-      'Priority email & chat support',
-      'Bug diagnosis and fixing',
-      'Hosting & domain assistance',
-      'Error monitoring & alerts',
-      'Emergency response',
-      'Monthly support summary'
-    ]
-  },
-  'conversational-solutions': {
-    title: 'Lead Capture & Conversational Solutions',
-    description: 'Turn website visitors into leads with intelligent conversational forms and flows.',
-    benefits: ['Higher lead conversion', 'Automated qualification', 'Personalized experience', '24/7 availability', 'CRM integration'],
-    process: ['Strategy Design', 'Flow Development', 'Integration', 'Testing', 'Launch & Optimize'],
-    timeline: '5-10 days',
-    price: 'Starting at $349',
-    features: [
-      'Custom lead capture flows',
-      'Multi-step conversational forms',
-      'Automated lead qualification',
-      'CRM & email integration',
-      'Real-time lead notifications',
-      'Conversion analytics'
-    ]
-  },
-  'custom-chatbots': {
-    title: 'WhatsApp Integration & Custom Chatbots',
-    description: 'Connect your business to WhatsApp with smart chatbots that handle inquiries automatically.',
-    benefits: ['Instant customer responses', 'Reduced workload', 'Higher engagement', 'Lead capture', 'Seamless handoff'],
-    process: ['Requirements', 'Bot Design', 'WhatsApp Setup', 'Testing', 'Go Live'],
-    timeline: '5-7 days',
-    price: 'Starting at $299/month',
-    features: [
-      'WhatsApp Business API integration',
-      'Custom chatbot flows',
-      'Automated FAQ responses',
-      'Lead capture & routing',
-      'Human handoff when needed',
-      'Chat analytics & reporting'
+      'On-page & technical optimization',
+      'Google Business Profile & local SEO',
+      'SEO-optimized content & blog articles',
+      'Analytics & conversion tracking (GA4)',
+      'Monthly ranking & performance reports'
     ]
   },
   'kpi-dashboards': {
-    title: 'KPI & Performance Dashboards',
-    description: 'Visualize your business metrics with custom dashboards that make data-driven decisions easy.',
-    benefits: ['Real-time data visibility', 'Better decisions', 'Team alignment', 'Goal tracking', 'Instant reporting'],
-    process: ['KPI Definition', 'Data Source Setup', 'Dashboard Design', 'Testing', 'Training'],
+    title: 'KPI & Performance Indicators',
+    description: 'Custom dashboards that turn your data into clear, real-time insights — so you always know what is working and where to grow.',
+    benefits: ['Real-time data visibility', 'Data-driven decisions', 'Goal & sales tracking', 'Team alignment', 'Instant reporting'],
+    process: ['KPI Definition', 'Data Source Setup', 'Dashboard Design', 'Testing & Training', 'Ongoing Review'],
     timeline: '7-14 days',
     price: 'Starting at $399',
     features: [
       'Custom KPI dashboard design',
       'Multi-source data integration',
-      'Real-time data updates',
-      'Goal tracking & alerts',
-      'Team sharing & permissions',
-      'Export & reporting tools'
+      'Real-time updates & alerts',
+      'Sales, revenue & growth metrics',
+      'Customer behavior insights',
+      'Monthly performance reports'
     ]
   },
-  'performance-reports': {
-    title: 'Monthly Performance Reports',
-    description: 'Stay informed with detailed monthly reports covering your website traffic, SEO, and business metrics.',
-    benefits: ['Full visibility', 'Actionable insights', 'Progress tracking', 'Informed strategy', 'Time savings'],
-    process: ['Data Collection', 'Analysis', 'Report Generation', 'Review Call', 'Action Planning'],
-    timeline: 'Monthly delivery',
-    price: 'Starting at $99/month',
+  'ai-automation': {
+    title: 'AI Automation & Chatbots',
+    description: 'Smart WhatsApp agents and automations that reply in seconds, qualify leads, and sell for you 24/7 — even while you sleep.',
+    benefits: ['24/7 instant replies', 'Automated lead capture', 'More sales, less manual work', 'Seamless human handoff', 'Connected to your systems'],
+    process: ['Requirements & Strategy', 'Bot & Flow Design', 'WhatsApp & System Integration', 'Training & Testing', 'Launch & Optimize'],
+    timeline: '5-7 days',
+    price: 'Starting at $399/month',
     features: [
-      'Traffic & user behavior summary',
-      'SEO ranking updates',
-      'Conversion rate analysis',
-      'Goal progress tracking',
-      'Competitor snapshot',
-      'Next-month action recommendations'
-    ]
-  },
-  'content-strategy': {
-    title: 'Content Marketing & Strategy',
-    description: 'Attract and retain your target audience with a content strategy that drives organic growth.',
-    benefits: ['Organic traffic growth', 'Brand authority', 'Lead generation', 'Long-term ROI', 'Audience trust'],
-    process: ['Audience Research', 'Content Planning', 'Creation', 'Publishing', 'Performance Review'],
-    timeline: 'Ongoing',
-    price: 'Starting at $249/month',
-    features: [
-      'Content strategy & editorial calendar',
-      'SEO-optimized blog articles',
-      'Social media content',
-      'Email newsletter copy',
-      'Content performance tracking',
-      'Monthly content review'
+      'AI WhatsApp agent that answers & sells 24/7',
+      'Automated lead capture & qualification',
+      'FAQ, pricing & appointment booking',
+      'Workflow & process automation',
+      'CRM & system integrations',
+      'Seamless handoff to humans + analytics'
     ]
   },
 };
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
-  const service = serviceDetails[serviceId] || serviceDetails['custom-ux-ui'];
+  const service = serviceDetails[serviceId] || serviceDetails['web-development'];
 
   useEffect(() => {
     updateMetaTags({
