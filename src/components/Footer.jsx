@@ -66,7 +66,7 @@ const Footer = () => {
           <p style={{ margin: 0, fontSize: '0.85rem', textAlign: 'center' }}>
             CEO:{' '}
             <a href="https://portafolio-kpi-jv.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: '#ffffff', fontWeight: '600' }}>
-              Ing. Jesús Vásquez
+              Eng. Jesús Vásquez
             </a>
           </p>
         </div>

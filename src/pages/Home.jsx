@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Cpu, Bot, Zap, Activity, CheckCircle2, MessageCircle, Mail, MapPin, Calendar, User, ChevronLeft, ChevronRight, Target, BarChart3, Sparkles, Code, TrendingUp } from 'lucide-react';
+import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Search } from 'lucide-react';
 import heroImg from '../assets/Hero2.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
@@ -457,178 +457,236 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. Why Work With Us */}
+      {/* 5. Results / Outcomes Band */}
       <section className="section">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>
-              Strategy, Design, Data and Automation — <span className="text-gradient">Working Together</span>
-            </h2>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '1.5rem auto 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
-              We don't build isolated components. We build an integrated system where each pillar reinforces the others to scale your revenue.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
-              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                <Target size={24} style={{ color: 'var(--accent-cyan)' }} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>Strategy First</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Aligning your online presence with clear, quantifiable business objectives before writing a single line of code.
-              </p>
+          <div className="home-stats">
+            <div className="home-stat">
+              <div className="home-stat-number text-gradient">7 Days</div>
+              <div className="home-stat-label">Average time to launch your new website</div>
             </div>
-
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
-              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                <Sparkles size={24} style={{ color: 'var(--accent-cyan)' }} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>Premium Design</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Bespoke user experiences designed to project luxury, build credibility, and convert traffic into leads.
-              </p>
+            <div className="home-stat">
+              <div className="home-stat-number text-gradient">24/7</div>
+              <div className="home-stat-label">AI agents replying and selling for you</div>
             </div>
-
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
-              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                <BarChart3 size={24} style={{ color: 'var(--accent-cyan)' }} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>Real-time Data</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Custom KPI tracking dashboards that show you exactly where your clients come from and which channels yield ROI.
-              </p>
+            <div className="home-stat">
+              <div className="home-stat-number text-gradient">&lt;60s</div>
+              <div className="home-stat-label">Response time to every new WhatsApp lead</div>
             </div>
-
-            <div style={{ padding: '2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', transition: 'all 0.3s ease' }}>
-              <div style={{ width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0, 229, 255, 0.1)', display: 'flex', alignItems: 'center', justifySelf: 'start', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                <Bot size={24} style={{ color: 'var(--accent-cyan)' }} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: '#fff' }}>AI Automation</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Automating initial engagement and scheduling with smart agents that respond within seconds, day or night.
-              </p>
+            <div className="home-stat">
+              <div className="home-stat-number text-gradient">100%</div>
+              <div className="home-stat-label">Custom-coded, mobile-first &amp; SEO-ready</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6. Process Flow */}
+      {/* 6. Core Offerings — What We Actually Build */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>What We Build</span>
+            <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
+              Three Things That Turn Your Website Into a <span className="text-gradient">Sales Machine</span>
+            </h2>
+          </div>
+
+          {/* Offering 1 — Web Development */}
+          <div className="feature-row">
+            <div className="feature-text">
+              <span className="feature-eyebrow"><Code size={16} /> Web Development &amp; Design</span>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+                A fast, premium website built to <span className="text-gradient">convert</span>
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                We hand-code every site for speed, trust, and conversions — no bloated templates. Designed mobile-first and engineered to turn visitors into paying customers.
+              </p>
+              <ul className="feature-bullets">
+                <li><CheckCircle2 size={18} /> Custom design tailored to your brand identity</li>
+                <li><CheckCircle2 size={18} /> Loads in under 2 seconds on any device</li>
+                <li><CheckCircle2 size={18} /> Clear calls-to-action that drive WhatsApp leads</li>
+              </ul>
+              <Link to="/services/custom-ux-ui" className="hero-advisory-btn" style={{ margin: 0 }}>
+                Explore Web Development <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="feature-visual">
+              {/* Browser window mockup */}
+              <div style={{ width: '82%', maxWidth: '360px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0b0b14', boxShadow: '0 24px 60px rgba(0,0,0,0.55)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '10px 12px', background: 'rgba(255,255,255,0.04)' }}>
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57' }} />
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
+                  <span style={{ marginLeft: 'auto', width: '45%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)' }} />
+                </div>
+                <div style={{ padding: '20px' }}>
+                  <div style={{ width: '62%', height: 16, borderRadius: 4, background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-blue))', marginBottom: 14 }} />
+                  <div style={{ width: '100%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)', marginBottom: 8 }} />
+                  <div style={{ width: '92%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)', marginBottom: 8 }} />
+                  <div style={{ width: '70%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)', marginBottom: 20 }} />
+                  <div style={{ width: '46%', height: 34, borderRadius: 8, background: 'var(--accent-cyan)' }} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Offering 2 — SEO */}
+          <div className="feature-row reverse">
+            <div className="feature-text">
+              <span className="feature-eyebrow"><TrendingUp size={16} /> SEO &amp; Digital Growth</span>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+                Get found first when customers <span className="text-gradient">search for you</span>
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                We optimize your site to climb Google for the searches that bring real buyers in your area — so you attract qualified traffic instead of paying for every click.
+              </p>
+              <ul className="feature-bullets">
+                <li><CheckCircle2 size={18} /> Local SEO to dominate your city &amp; niche</li>
+                <li><CheckCircle2 size={18} /> Keyword &amp; competitor research that targets buyers</li>
+                <li><CheckCircle2 size={18} /> Built to rank from day one, not months later</li>
+              </ul>
+              <Link to="/services/seo-positioning" className="hero-advisory-btn" style={{ margin: 0 }}>
+                Explore SEO &amp; Growth <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="feature-visual">
+              {/* Search ranking mockup */}
+              <div style={{ width: '82%', maxWidth: '340px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px', borderRadius: 30, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', marginBottom: 28 }}>
+                  <Search size={16} style={{ color: 'var(--accent-cyan)' }} />
+                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>best [your service] near me</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12, height: 130 }}>
+                  {[40, 58, 74, 100].map((h, i) => (
+                    <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '6px 6px 0 0', background: i === 3 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'rgba(255,255,255,0.08)', position: 'relative' }}>
+                      {i === 3 && <span style={{ position: 'absolute', top: -26, left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>#1</span>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Offering 3 — AI WhatsApp Agents */}
+          <div className="feature-row">
+            <div className="feature-text">
+              <span className="feature-eyebrow"><Bot size={16} /> AI Automation &amp; WhatsApp Agents</span>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+                An AI agent that <span className="text-gradient">answers and sells</span> for you, 24/7
+              </h3>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                We build smart WhatsApp agents that reply in seconds, answer questions, qualify leads, and book appointments — even while you sleep. Stop losing sales to slow replies.
+              </p>
+              <ul className="feature-bullets">
+                <li><CheckCircle2 size={18} /> Instant replies that capture every lead</li>
+                <li><CheckCircle2 size={18} /> Answers FAQs, quotes prices &amp; books appointments</li>
+                <li><CheckCircle2 size={18} /> Trained on your business, in your tone of voice</li>
+              </ul>
+              <Link to="/services/whatsapp-ai-agents" className="hero-advisory-btn" style={{ margin: 0 }}>
+                Explore AI Agents <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="feature-visual">
+              {/* WhatsApp chat mockup */}
+              <div style={{ width: '82%', maxWidth: '320px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'rgba(255,255,255,0.07)', color: '#fff', fontSize: '0.85rem', lineHeight: 1.45 }}>
+                  Hi! Do you have availability this week? 👋
+                </div>
+                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #00e5ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
+                  Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
+                </div>
+                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #00e5ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
+                  Great — you're booked. Here's a quick price list meanwhile 📋
+                </div>
+                <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
+                  <Bot size={14} /> AI agent replied in 8 seconds
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. How It Works — 3-Step Process */}
+      <section className="section">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>How It Works</span>
             <h2 style={{ fontSize: '2.5rem' }}>
-              Our Simple <span className="text-gradient">3-Step Process</span>
+              From Idea to Live in <span className="text-gradient">3 Simple Steps</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginTop: '1rem' }}>
-              How we take your digital presence from where it is to where it needs to be.
+              A clear, no-stress process that takes you from where you are to a digital presence that sells.
             </p>
           </div>
 
           <div className="process-timeline-wrapper" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', position: 'relative' }}>
             {/* Step 1 */}
-            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)' }}>
-              <div style={{ position: 'absolute', top: '-25px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.15)', fontStyle: 'italic', fontFamily: 'monospace' }}>01</div>
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(0, 229, 255, 0.1)' }}>
+              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>01</div>
               <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Discover</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                We analyze your business model, audit competitors, perform keyword research, and structure your key performance metrics (KPIs) to align on a digital growth map.
+                We learn your business, study your competitors, and pinpoint the searches and questions your customers use — so every decision is built around real demand.
               </p>
             </div>
 
             {/* Step 2 */}
-            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)' }}>
-              <div style={{ position: 'absolute', top: '-25px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.15)', fontStyle: 'italic', fontFamily: 'monospace' }}>02</div>
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(0, 229, 255, 0.1)' }}>
+              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>02</div>
               <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Build</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                We design and code your custom, high-speed website, optimize it for Google local SEO, and set up your automated AI customer service agents and tracking.
+                We design and code your fast, mobile-first website, optimize it for Google, and set up your AI WhatsApp agent so it's ready to answer and sell from day one.
               </p>
             </div>
 
             {/* Step 3 */}
-            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.03)' }}>
-              <div style={{ position: 'absolute', top: '-25px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.15)', fontStyle: 'italic', fontFamily: 'monospace' }}>03</div>
-              <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Optimize</h3>
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(0, 229, 255, 0.1)' }}>
+              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>03</div>
+              <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Grow</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                After launch, we connect your live metrics dashboard, monitor page speed, refine SEO keywords, and fine-tune your chatbot responses to continuously boost conversions.
+                After launch we monitor performance, refine your SEO, and fine-tune your AI agent's replies — continuously improving so you capture more leads and close more sales.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. Who It's For */}
-      <section className="section">
+      {/* 8. Pricing Teaser */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Transparent Pricing</span>
             <h2 style={{ fontSize: '2.5rem' }}>
-              Who Is This <span className="text-gradient">Growth System For?</span>
+              Simple Plans, <span className="text-gradient">No Surprises</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0', fontSize: '1.1rem' }}>
-              We partner with professionals ready to invest in a stronger, automated digital presence.
+              Start with a one-time build and add monthly growth services whenever you're ready.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <User size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
-              <div>
-                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Business Owners</h4>
+          <div className="pricing-grid">
+            {pricingPlans.map((plan) => (
+              <div key={plan.name} className={`pricing-card${plan.popular ? ' popular' : ''}`}>
+                {plan.popular && <div className="popular-badge">Most Popular</div>}
+                <h3>{plan.name}</h3>
+                <p style={{ color: 'var(--text-secondary)' }}>{plan.subtitle}</p>
+                <div className={`price-amount${plan.popular ? ' text-gradient' : ''}`}>{plan.price}</div>
+                <ul className="price-features">
+                  {plan.features.map((feature, i) => (
+                    <li key={i}><CheckCircle2 size={18} /> {feature}</li>
+                  ))}
+                </ul>
+                <Link to="/pricing" className={`btn ${plan.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>
+                  View Plan
+                </Link>
               </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <Activity size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
-              <div>
-                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Consultants</h4>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <Zap size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
-              <div>
-                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Service Providers</h4>
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1.5rem', backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-              <TrendingUp size={24} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
-              <div>
-                <h4 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '600' }}>Growing Companies</h4>
-              </div>
-            </div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      {/* 8. Trust / Proof Pillars */}
-      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2rem' }}>
-              Built for <span className="text-gradient">Performance and Integrity</span>
-            </h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'center' }}>
-            <div style={{ padding: '1rem' }}>
-              <Zap size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>High Performance</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Fast load speeds and fluid user interfaces.</p>
-            </div>
-            <div style={{ padding: '1rem' }}>
-              <CheckCircle2 size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Absolute Clarity</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>No confusing jargon—just transparent metrics.</p>
-            </div>
-            <div style={{ padding: '1rem' }}>
-              <TrendingUp size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>SEO Foundations</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Built from day one to rank higher on Google search.</p>
-            </div>
-            <div style={{ padding: '1rem' }}>
-              <Target size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h4 style={{ color: '#fff', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Conversion Strategy</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Every section is structured to turn visitors into leads.</p>
-            </div>
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <Link to="/pricing" className="hero-advisory-btn" style={{ margin: 0 }}>
+              See All Plans &amp; Monthly Services <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

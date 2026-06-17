@@ -335,13 +335,13 @@
     display: none !important;
   }
 
-  /* En móvil: ocultar advisory button y botón WhatsApp del hero */
+  /* On mobile: hide the advisory button and the hero WhatsApp button */
   .hero-advisory-wrap,
   .hero-buttons-desktop {
     display: none !important;
   }
 
-  /* Quitar minHeight para que el hero quepa en pantalla */
+  /* Remove minHeight so the hero fits on screen */
   .hero-content-responsive {
     min-height: unset !important;
     padding-top: 1rem !important;
@@ -895,11 +895,11 @@
 }
 
 /* ==============================
-   Mobile Hero — Todo en 1 pantalla
+   Mobile Hero — Everything in 1 screen
    ============================== */
 @media (max-width: 768px) {
 
-  /* Título más compacto y centrado */
+  /* More compact, centered title */
   .hero-title {
     font-size: clamp(1.3rem, 5.5vw, 1.75rem) !important;
     white-space: nowrap;
@@ -908,7 +908,7 @@
     text-align: center !important;
   }
 
-  /* Subtítulo compacto y justificado */
+  /* Compact, justified subtitle */
   .hero-subtitle {
     font-size: 0.82rem !important;
     margin-bottom: 0.6rem !important;
@@ -918,19 +918,19 @@
     margin-right: auto !important;
   }
 
-  /* Formulario compacto */
+  /* Compact form */
   .hero-contact-form {
     margin-top: 0.4rem !important;
     max-width: 100% !important;
     width: 100% !important;
   }
 
-  /* Título del formulario - OCULTO en móvil para que empiece directo con los campos */
+  /* Form title - HIDDEN on mobile so it starts directly with the fields */
   .hero-contact-form h3 {
     display: none !important;
   }
 
-  /* Inputs del formulario */
+  /* Form inputs */
   .hero-contact-form input,
   .hero-contact-form textarea {
     padding: 0.55rem 0.75rem !important;
@@ -938,19 +938,19 @@
     border-radius: 8px !important;
   }
 
-  /* Textarea más corto */
+  /* Shorter textarea */
   .hero-contact-form textarea {
     rows: 2;
     height: 58px !important;
     resize: none !important;
   }
 
-  /* Gap del form más corto */
+  /* Shorter form gap */
   .hero-contact-form form {
     gap: 0.45rem !important;
   }
 
-  /* Botón submit compacto */
+  /* Compact submit button */
   .hero-contact-form button[type="submit"] {
     padding: 0.65rem !important;
     font-size: 0.88rem !important;
@@ -2372,7 +2372,7 @@
   }
 }
 
-/* Desktop - mostrar botón WhatsApp */
+/* Desktop - show WhatsApp button */
 @media (min-width: 769px) {
   .hero-contact-form {
     display: none !important;
@@ -2408,7 +2408,7 @@
     box-shadow: 0 6px 25px rgba(0, 229, 255, 0.4) !important;
   }
 
-  /* Mostrar botón WhatsApp flotante en móvil */
+  /* Show floating WhatsApp button on mobile */
   .floating-whatsapp {
     display: flex !important;
     z-index: 1200 !important;
@@ -2950,5 +2950,139 @@
     opacity: 0.7;
     flex-shrink: 0;
     margin-left: auto;
+  }
+}
+
+/* ==============================
+   Home — Results Stats Band
+   ============================== */
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  border-radius: 18px;
+  padding: 2.75rem 2rem;
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.05), rgba(255, 255, 255, 0.01));
+}
+
+.home-stat {
+  text-align: center;
+  position: relative;
+}
+
+.home-stat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -0.75rem;
+  top: 15%;
+  height: 70%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.home-stat-number {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.home-stat-label {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+  .home-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 1rem;
+    padding: 2rem 1.25rem;
+  }
+
+  .home-stat:nth-child(2)::after {
+    display: none;
+  }
+}
+
+/* ==============================
+   Home — Core Offering Feature Rows
+   ============================== */
+.feature-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
+}
+
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.feature-row:last-child {
+  margin-bottom: 0;
+}
+
+.feature-row.reverse .feature-visual {
+  order: -1;
+}
+
+.feature-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 1.75rem 0 2rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.feature-bullets li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.feature-bullets li svg {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-visual {
+  position: relative;
+  min-height: 320px;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  background: radial-gradient(circle at 30% 20%, rgba(0, 229, 255, 0.12), rgba(5, 5, 10, 0.55) 65%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 860px) {
+  .feature-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .feature-row.reverse .feature-visual {
+    order: 0;
+  }
+
+  .feature-visual {
+    min-height: 240px;
   }
 }
