@@ -664,8 +664,17 @@ const Home = () => {
       {/* Contact Form Section */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
+          {/* Persuasive lead-in */}
+          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem' }}>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Final Step</span>
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: 1.2 }}>
+              Ready for a system that <span className="text-gradient">sells for you?</span>
+            </h2>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7 }}>
+              Let's talk about your project. In your free consultation we'll dig into your current needs and map out the best digital strategy to accelerate your growth — no strings attached.
+            </p>
+          </div>
           <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center' }}>Schedule Free Consultation</h2>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
                 <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Full Name</label>
@@ -755,7 +764,7 @@ const Home = () => {
                 className="btn-whatsapp-large"
                 style={{ width: '100%' }}
               >
-                Schedule Free Consultation
+                Get My Free Digital Strategy
               </button>
             </form>
           </div>
