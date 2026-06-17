@@ -7,10 +7,9 @@
   padding: 1.1rem 0;
   z-index: 100;
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: rgba(5, 5, 8, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(77, 148, 255, 0.08);
+  background: #0b0b14;
+  border-bottom: 1px solid rgba(77, 148, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .navbar::before {
@@ -28,11 +27,9 @@
 }
 
 .navbar.scrolled {
-  background: rgba(5, 5, 8, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(77, 148, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+  background: #0b0b14;
+  border-bottom: 1px solid rgba(77, 148, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
