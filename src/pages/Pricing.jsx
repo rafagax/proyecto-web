@@ -100,12 +100,11 @@ const Pricing = () => {
             </p>
 
             <div className="pricing-grid">
-              {/* SEO Service — Most Popular */}
-              <div className="pricing-card popular">
-                <div className="popular-badge">Most Popular</div>
+              {/* SEO Service */}
+              <div className="pricing-card">
                 <h3>SEO Optimization</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>Rank higher on Google</p>
-                <div className="price-amount text-gradient">$300<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <div className="price-amount">$300<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
                 <ul className="price-features">
                   <li><CheckCircle2 size={18} /> Keyword Research & Strategy</li>
                   <li><CheckCircle2 size={18} /> On-Page Optimization</li>
@@ -116,14 +115,15 @@ const Pricing = () => {
                   <li><CheckCircle2 size={18} /> 10+ Pages Optimized</li>
                   <li><CheckCircle2 size={18} /> Priority Support</li>
                 </ul>
-                <Link to="/contact" className="btn btn-primary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
+                <Link to="/contact" className="btn btn-secondary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
               </div>
 
-              {/* Website Management Service */}
-              <div className="pricing-card">
+              {/* Website Management Service — Most Popular */}
+              <div className="pricing-card popular">
+                <div className="popular-badge">Most Popular</div>
                 <h3>Website Management</h3>
                 <p style={{ color: 'var(--text-secondary)' }}>Keep your site running smoothly</p>
-                <div className="price-amount">$400<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
+                <div className="price-amount text-gradient">$400<span style={{ fontSize: '0.65rem', color: 'var(--text-secondary)', fontWeight: '500' }}>/month</span></div>
                 <ul className="price-features">
                   <li><CheckCircle2 size={18} /> Daily Security Monitoring</li>
                   <li><CheckCircle2 size={18} /> Automatic Backups</li>
@@ -134,7 +134,7 @@ const Pricing = () => {
                   <li><CheckCircle2 size={18} /> Bug Fixes & Support</li>
                   <li><CheckCircle2 size={18} /> Monthly Performance Report</li>
                 </ul>
-                <Link to="/contact" className="btn btn-secondary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
+                <Link to="/contact" className="btn btn-primary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
               </div>
 
               {/* KPI Service */}
