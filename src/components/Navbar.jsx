@@ -94,6 +94,15 @@ const Navbar = () => {
         </div>
 
         <nav className="mobile-menu-nav">
+          {/* Home */}
+          <Link
+            to="/"
+            className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Home
+          </Link>
+
           {/* Services Section in Mobile - First Priority */}
           <div>
             <Link to="/services" className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
