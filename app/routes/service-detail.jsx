@@ -13,6 +13,16 @@ export function meta({ params }) {
     { property: 'og:title', content: s.h1 },
     { property: 'og:description', content: s.metaDescription },
     { tagName: 'link', rel: 'canonical', href: `https://yourdomain.com/services/${canonicalSlug}` },
+    {
+      'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: s.eyebrow,
+        description: s.metaDescription,
+        areaServed: ['VE', 'US', 'ES'],
+        provider: { '@type': 'Organization', name: 'Digital Investments' },
+      },
+    },
   ];
 }
 

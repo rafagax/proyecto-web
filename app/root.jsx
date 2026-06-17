@@ -39,6 +39,24 @@ const orgSchema = {
   },
 };
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Digital Investments',
+  image: 'https://yourdomain.com/og-image.webp',
+  description: 'Premium web development, SEO, KPI dashboards and AI automation services.',
+  telephone: '+584144735431',
+  email: 'inversionesdigitales@hotmail.es',
+  priceRange: '$299–$1500',
+  areaServed: { '@type': 'GeoShape', addressCountry: ['VE', 'US', 'ES'] },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Maracay',
+    addressRegion: 'Aragua',
+    addressCountry: 'VE',
+  },
+};
+
 // Reveals .reveal / .reveal-left / .reveal-right once on viewport enter and
 // staggers .reveal-card children of .reveal-group. Single IntersectionObserver,
 // re-scans on route change. (Effects only run in the browser — SSG/prerender safe.)
@@ -99,14 +117,18 @@ export function Layout({ children }) {
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Digital Investments" />
-        <meta property="og:image" content="https://yourdomain.com/og-image.png" />
+        <meta property="og:image" content="https://yourdomain.com/og-image.webp" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://yourdomain.com/og-image.png" />
+        <meta name="twitter:image" content="https://yourdomain.com/og-image.webp" />
         <Meta />
         <Links />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         {/* If JS is disabled, never keep reveal content hidden */}
         <noscript>

@@ -1,4 +1,16 @@
-import FAQs from '../../src/pages/FAQs.jsx';
+import FAQs, { faqCategories } from '../../src/pages/FAQs.jsx';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqCategories
+    .flatMap((c) => c.items)
+    .map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: { '@type': 'Answer', text: item.answer },
+    })),
+};
 
 export function meta() {
   return [
@@ -14,6 +26,7 @@ export function meta() {
       content: 'Clear answers about our web development, SEO, KPI dashboards and AI automation services, plus pricing and process.',
     },
     { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/faqs' },
+    { 'script:ld+json': faqSchema },
   ];
 }
 

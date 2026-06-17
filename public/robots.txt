@@ -1,4 +1,4 @@
-# Robots.txt for Digital Solutions Pro
+# Robots.txt for Digital Investments
 # Allow search engines to crawl all pages
 
 User-agent: *

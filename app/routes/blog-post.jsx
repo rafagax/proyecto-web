@@ -14,6 +14,18 @@ export function meta({ params }) {
     { property: 'og:description', content: post.excerpt },
     { property: 'og:image', content: post.image },
     { tagName: 'link', rel: 'canonical', href: `https://yourdomain.com/blog/${post.slug}` },
+    {
+      'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.excerpt,
+        image: post.image,
+        author: { '@type': 'Organization', name: 'Digital Investments' },
+        publisher: { '@type': 'Organization', name: 'Digital Investments' },
+        mainEntityOfPage: `https://yourdomain.com/blog/${post.slug}`,
+      },
+    },
   ];
 }
 

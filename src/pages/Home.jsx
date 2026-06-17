@@ -187,7 +187,7 @@ const Home = () => {
             {/* Mobile: Hero Image between subtitle and CTA */}
             {/*
             <div className="mobile-hero-img mobile-only">
-              <img src={heroImg} alt="AI Technology" className="mobile-hero-img-el" />
+              <img src={heroImg} alt="Web development, AI automation, SEO and KPI dashboards illustration" className="mobile-hero-img-el" />
             </div>
             */}
 
@@ -273,7 +273,7 @@ const Home = () => {
           </div>
           {/* Desktop hero image */}
           <div className="hero-image desktop-only hero-img-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={heroImg} alt="AI Technology" className="hero-float" fetchPriority="high" decoding="async" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
+            <img src={heroImg} alt="Web development, AI automation, SEO and KPI dashboards illustration" className="hero-float" fetchPriority="high" decoding="async" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
           </div>
         </div>
       </section>

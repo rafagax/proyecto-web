@@ -3,7 +3,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { updateMetaTags, addFAQSchema } from '../utils/seo';
 
-const faqCategories = [
+export const faqCategories = [
   {
     category: 'Web Development & Design',
     items: [

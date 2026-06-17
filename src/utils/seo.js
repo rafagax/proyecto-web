@@ -7,60 +7,10 @@
 // head imperatively here would fight React Router's <Meta> on the client.
 export const updateMetaTags = () => {};
 
-// Schema.org JSON-LD helpers
-export const addServiceSchema = (serviceName, description, price) => {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: serviceName,
-    description: description,
-    provider: {
-      '@type': 'Organization',
-      name: 'Digital Investments'
-    },
-    ...(price && { price: price })
-  };
-
-  addJSONLD(schema);
-};
-
-export const addFAQSchema = (faqs) => {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map(faq => ({
-      '@type': 'Question',
-      name: faq.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.answer
-      }
-    }))
-  };
-
-  addJSONLD(schema);
-};
-
-export const addArticleSchema = (article) => {
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: article.title,
-    description: article.description,
-    image: article.image,
-    datePublished: article.publishedDate,
-    author: {
-      '@type': 'Organization',
-      name: 'Digital Investments'
-    }
-  };
-
-  addJSONLD(schema);
-};
-
-const addJSONLD = (schema) => {
-  const script = document.createElement('script');
-  script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
-};
+// Schema.org JSON-LD is now emitted directly in the prerendered HTML via React
+// Router per-route `meta` exports (`script:ld+json`). These are kept as no-ops so
+// existing page imports/calls don't break and we don't inject duplicate structured
+// data on the client.
+export const addServiceSchema = () => {};
+export const addFAQSchema = () => {};
+export const addArticleSchema = () => {};
