@@ -4,6 +4,9 @@ import { testimonials } from '../data/testimonials';
 
 export const TestimonialsCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  // Start at 3 to match the server/prerendered render, then adjust on the client
+  // (avoids a hydration mismatch). Also keeps it responsive on resize.
+  const [visibleCount, setVisibleCount] = useState(3);
 
   // Autoplay carousel
   useEffect(() => {
@@ -11,6 +14,13 @@ export const TestimonialsCarousel = () => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 6000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const update = () => setVisibleCount(getVisibleCount());
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
   }, []);
 
   const handlePrevious = () => {
@@ -30,7 +40,6 @@ export const TestimonialsCarousel = () => {
     return 3;
   };
 
-  const visibleCount = getVisibleCount();
   const displayCount = visibleCount === 3 ? 3 : visibleCount;
 
   return (

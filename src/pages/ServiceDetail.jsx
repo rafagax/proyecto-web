@@ -15,13 +15,13 @@ const SERVICE_ORDER = [
 
 // Redirect-style aliases so previously published URLs keep resolving,
 // while the canonical tag always points to the new clean URL.
-const aliasMap = {
+export const aliasMap = {
   'web-development': 'web-development-design',
   'seo': 'seo-digital-growth',
   'ai-automation': 'ai-automation-chatbots',
 };
 
-const serviceDetails = {
+export const serviceDetails = {
   'web-development-design': {
     Icon: Code,
     eyebrow: 'Web Development & Design',
