@@ -14,6 +14,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     service: '',
     message: ''
   });
@@ -25,10 +26,10 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, service, message } = formData;
-    const phone = '584144735431';
-    const text = `Hello, my name is ${name}. My email is ${email}. I'm interested in: ${service}. My message: ${message}`;
-    const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    const { name, email, phone, message } = formData;
+    const businessPhone = '584144735431';
+    const text = `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`;
+    const whatsappUrl = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
   };
 
@@ -51,7 +52,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="section" style={{ paddingTop: '0rem' }}>
+      <section className="section" style={{ paddingTop: '3rem' }}>
         <div className="container">
           <div className="contact-container">
             <div className="contact-info">
@@ -85,7 +86,7 @@ const Contact = () => {
               </div>
 
               <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(77, 148, 255, 0.08) 100%)', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(77, 148, 255,0.2)' }}>
-                <p style={{ color: 'var(--accent-cyan)', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.9rem' }}>⚡ Lightning-Fast Response</p>
+                <p style={{ color: 'var(--accent-cyan)', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Lightning-Fast Response</p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>
                   We typically respond within <strong style={{ color: '#fff' }}>2–4 hours</strong> during business hours. Leave us a message and let's start building your digital empire!
                 </p>
@@ -112,6 +113,18 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="you@email.com"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Your phone number"
                   required
                 />
               </div>
