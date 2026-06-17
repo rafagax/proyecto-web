@@ -473,7 +473,7 @@ const Home = () => {
           <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>What We Build</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
-              Four Services That Turn Your Digital Presence Into a <span className="text-gradient">Growth System</span>
+              Everything Your Digital Presence Needs to <span className="text-gradient">Grow</span>
             </h2>
           </div>
 
@@ -681,8 +681,10 @@ const Home = () => {
           <div className="benefit-grid">
             {benefits.map(({ icon: Icon, title, text, mobileHide }) => (
               <article key={title} className={`benefit-card${mobileHide ? ' desktop-only' : ''}`}>
-                <div className="benefit-icon"><Icon size={30} strokeWidth={1.6} /></div>
-                <h3>{title}</h3>
+                <div className="benefit-card-head">
+                  <span className="benefit-icon"><Icon size={22} strokeWidth={1.7} /></span>
+                  <h3>{title}</h3>
+                </div>
                 <p>{text}</p>
               </article>
             ))}
@@ -744,11 +746,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Blog Carousel Component — desktop only (kept lean on mobile; full blog lives at /blog) */}
-      <div className="desktop-only">
-        <BlogCarousel />
-      </div>
 
       {/* 8. Pricing Teaser (light) */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
@@ -878,6 +875,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Blog Carousel Component — placed last so it doesn't interrupt the conversion flow; desktop only (full blog lives at /blog) */}
+      <div className="desktop-only">
+        <BlogCarousel />
+      </div>
     </div>
   );
 };
