@@ -1,69 +1,11 @@
 // SEO utilities for managing meta tags and structured data
 
-export const updateMetaTags = (config) => {
-  const {
-    title,
-    description,
-    keywords,
-    ogTitle,
-    ogDescription,
-    ogImage = 'https://yourdomain.com/og-image.png',
-    canonical
-  } = config;
-
-  // Update title — if the page already provides a branded title (contains "|"),
-  // use it verbatim to avoid a doubled brand suffix; otherwise append the brand.
-  if (title) {
-    document.title = title.includes('|') ? title : `${title} | Digital Investments`;
-  }
-
-  // Update or create meta description
-  let metaDescription = document.querySelector('meta[name="description"]');
-  if (!metaDescription) {
-    metaDescription = document.createElement('meta');
-    metaDescription.setAttribute('name', 'description');
-    document.head.appendChild(metaDescription);
-  }
-  metaDescription.setAttribute('content', description || '');
-
-  // Update or create meta keywords
-  let metaKeywords = document.querySelector('meta[name="keywords"]');
-  if (!metaKeywords) {
-    metaKeywords = document.createElement('meta');
-    metaKeywords.setAttribute('name', 'keywords');
-    document.head.appendChild(metaKeywords);
-  }
-  metaKeywords.setAttribute('content', keywords || '');
-
-  // Update OG tags
-  updateOGTag('og:title', ogTitle || title || '');
-  updateOGTag('og:description', ogDescription || description || '');
-  updateOGTag('og:image', ogImage);
-
-  // Update canonical
-  if (canonical) {
-    let canonicalLink = document.querySelector('link[rel="canonical"]');
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.setAttribute('href', canonical);
-  }
-
-  // Scroll to top
-  window.scrollTo(0, 0);
-};
-
-const updateOGTag = (property, content) => {
-  let ogTag = document.querySelector(`meta[property="${property}"]`);
-  if (!ogTag) {
-    ogTag = document.createElement('meta');
-    ogTag.setAttribute('property', property);
-    document.head.appendChild(ogTag);
-  }
-  ogTag.setAttribute('content', content);
-};
+// NOTE: The document head (title, description, og, canonical) is now managed by
+// React Router's per-route `meta` exports in framework mode (SSG/prerender), so
+// the head is correct in the prerendered HTML for crawlers and link-preview bots.
+// This is kept as a no-op so existing page imports/calls don't break; managing the
+// head imperatively here would fight React Router's <Meta> on the client.
+export const updateMetaTags = () => {};
 
 // Schema.org JSON-LD helpers
 export const addServiceSchema = (serviceName, description, price) => {

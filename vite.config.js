@@ -1,36 +1,8 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { reactRouter } from '@react-router/dev/vite';
+import { defineConfig } from 'vite';
 
-// https://vite.dev/config/
+// React Router framework mode (SSG via prerender). The reactRouter() plugin
+// handles React, routing, the document and the production build.
 export default defineConfig({
-  plugins: [react()],
-  build: {
-    // Optimize bundle size
-    minify: 'esbuild',
-    // Generate source maps for production debugging
-    sourcemap: false,
-    // Chunk size for better caching
-    chunkSizeWarningLimit: 500,
-    rollupOptions: {
-      output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules/lucide-react')) {
-            return 'lucide';
-          }
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom')) {
-            return 'vendor';
-          }
-        }
-      }
-    }
-  },
-  // Optimize dependencies
-  optimizeDeps: {
-    include: [
-      'react',
-      'react-dom',
-      'react-router-dom',
-      'lucide-react'
-    ]
-  }
-})
+  plugins: [reactRouter()],
+});
