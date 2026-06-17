@@ -241,13 +241,6 @@ const Home = () => {
       {/* 3. Services Grid */}
       <section className="section" id="services" style={{ paddingTop: '2rem' }}>
         <div className="container">
-          {/* Heading hidden on desktop, visible on mobile */}
-          <div className="mobile-only" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontSize: '2.5rem' }}>
-              Digital Growth Services for <span className="text-gradient">Ambitious Businesses</span>
-            </h2>
-          </div>
-
           <div className="services-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
             <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Code size={32} /></div>
