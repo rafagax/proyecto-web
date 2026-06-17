@@ -21,63 +21,14 @@
 
   <!-- Service Details -->
   <url>
-    <loc>https://yourdomain.com/services/custom-ux-ui</loc>
+    <loc>https://yourdomain.com/services/web-development-design</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://yourdomain.com/services/responsive-web</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/maintenance-updates</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/performance-optimization</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/whatsapp-ai-agents</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/workflow-automation</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/system-integration</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/seo-positioning</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://yourdomain.com/services/traffic-analytics</loc>
+    <loc>https://yourdomain.com/services/seo-digital-growth</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -85,6 +36,13 @@
 
   <url>
     <loc>https://yourdomain.com/services/kpi-dashboards</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://yourdomain.com/services/ai-automation-chatbots</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

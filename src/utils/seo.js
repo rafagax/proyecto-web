@@ -11,9 +11,10 @@ export const updateMetaTags = (config) => {
     canonical
   } = config;
 
-  // Update title
+  // Update title — if the page already provides a branded title (contains "|"),
+  // use it verbatim to avoid a doubled brand suffix; otherwise append the brand.
   if (title) {
-    document.title = `${title} | Digital Solutions Pro`;
+    document.title = title.includes('|') ? title : `${title} | Digital Investments`;
   }
 
   // Update or create meta description
@@ -73,7 +74,7 @@ export const addServiceSchema = (serviceName, description, price) => {
     description: description,
     provider: {
       '@type': 'Organization',
-      name: 'Digital Solutions Pro'
+      name: 'Digital Investments'
     },
     ...(price && { price: price })
   };
@@ -108,7 +109,7 @@ export const addArticleSchema = (article) => {
     datePublished: article.publishedDate,
     author: {
       '@type': 'Organization',
-      name: 'Digital Solutions Pro'
+      name: 'Digital Investments'
     }
   };
 

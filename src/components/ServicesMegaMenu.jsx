@@ -5,27 +5,27 @@ import { Link } from 'react-router-dom';
 const serviceItems = [
   {
     title: 'Web Development & Design',
-    description: 'Professional websites built for growth',
+    description: 'Premium websites built for speed, trust, and conversions.',
     icon: <Code size={20} />,
-    path: '/services/web-development',
+    path: '/services/web-development-design',
   },
   {
     title: 'SEO & Digital Growth',
-    description: 'Rank higher and attract more customers',
+    description: 'Improve visibility, attract qualified traffic, and grow organically.',
     icon: <TrendingUp size={20} />,
-    path: '/services/seo',
+    path: '/services/seo-digital-growth',
   },
   {
-    title: 'KPI & Performance Indicators',
-    description: 'Know exactly how your business performs',
+    title: 'KPI Dashboards & Analytics',
+    description: 'Track leads, sales, and business performance with clarity.',
     icon: <BarChart3 size={20} />,
     path: '/services/kpi-dashboards',
   },
   {
     title: 'AI Automation & Chatbots',
-    description: 'Reply and sell 24/7 on WhatsApp',
+    description: 'Automate replies, qualify leads, and support customers 24/7.',
     icon: <Bot size={20} />,
-    path: '/services/ai-automation',
+    path: '/services/ai-automation-chatbots',
   },
 ];
 
@@ -50,8 +50,9 @@ export const ServicesMegaMenu = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Services Button */}
-      <button
+      {/* Services Trigger (clickable → /services, hover → dropdown) */}
+      <Link
+        to="/services"
         className="services-trigger"
         style={{
           background: 'transparent',
@@ -65,6 +66,7 @@ export const ServicesMegaMenu = () => {
           display: 'inline-flex',
           alignItems: 'center',
           gap: '6px',
+          textDecoration: 'none',
           transition: 'all 0.3s ease',
         }}
         onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; }}
@@ -72,7 +74,7 @@ export const ServicesMegaMenu = () => {
       >
         Services
         <ChevronDown size={14} style={{ transition: 'transform 0.3s ease', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
-      </button>
+      </Link>
 
       {/* Dropdown */}
       {isOpen && (

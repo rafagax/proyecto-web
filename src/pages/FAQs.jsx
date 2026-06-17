@@ -3,46 +3,111 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { updateMetaTags, addFAQSchema } from '../utils/seo';
 
-const faqs = [
+const faqCategories = [
   {
-    question: "How long does it take to build my website?",
-    answer: "Our standard delivery time is 7 business days for Landing Pages and Business sites. E-Commerce projects typically take 14–21 days depending on complexity. We always keep you updated throughout the process.",
+    category: 'Web Development & Design',
+    items: [
+      {
+        question: 'How long does it take to build a professional website?',
+        answer: "Most professional websites are ready in about 7 days or less, depending on the number of pages and how much of your content is prepared. Larger projects with custom features or e-commerce can take a little longer. We agree on a clear timeline before we start and keep you updated at every phase.",
+      },
+      {
+        question: 'What makes a premium website different from a basic website?',
+        answer: 'A premium website is built around your business goals rather than a generic template. It loads fast, works flawlessly on every device, communicates your value clearly, and is structured to guide visitors toward contacting you. The difference shows in performance, trust, and the quality of the leads it generates.',
+      },
+      {
+        question: 'Will my website be mobile-friendly?',
+        answer: 'Yes. Every site we build is designed mobile-first, so it looks sharp and works smoothly on phones, tablets, and desktops. Since most visitors browse on mobile, we treat the mobile experience as a priority, not an afterthought.',
+      },
+      {
+        question: 'Can you connect WhatsApp, forms, or booking links?',
+        answer: 'Absolutely. We set up contact forms, click-to-chat WhatsApp links, and booking or calendar links so visitors can reach you in the way that suits them best. Capturing leads cleanly is part of every build.',
+      },
+    ],
   },
   {
-    question: "What do I need to provide to get started?",
-    answer: "To get started, we'll need your brand assets (logo, colors if available), any photos or content you want to include, and a brief description of your business and goals. Don't worry if you don't have everything — we can guide you through it.",
+    category: 'SEO & Digital Growth',
+    items: [
+      {
+        question: 'How long does SEO take to show results?',
+        answer: 'SEO is a medium-term investment. Early improvements in structure and visibility can appear within the first weeks, while stronger, more competitive results typically build over a few months. We focus on steady, durable growth rather than short-lived spikes.',
+      },
+      {
+        question: 'Do you guarantee first-page rankings?',
+        answer: "No reputable provider can guarantee a specific ranking, because search results depend on factors outside anyone's control. What we can do is apply proven, up-to-date SEO practices designed to improve your visibility and help you compete for the searches that matter most to your business.",
+      },
+      {
+        question: 'Can you help my business appear in local searches?',
+        answer: 'Yes. Local SEO is one of our core strengths. We optimize your website and local signals so your business is easier to find when nearby customers search for the services you offer.',
+      },
+      {
+        question: 'What is included in your SEO service?',
+        answer: 'Our SEO service includes an audit and opportunity analysis, keyword and competitor research, on-page and technical improvements, local SEO, a content strategy for growth, and performance tracking so you can see how your visibility is developing.',
+      },
+    ],
   },
   {
-    question: "Do you offer hosting and domain services?",
-    answer: "Yes! Our Business and E-Commerce plans include domain registration and hosting for the first year. After that, renewal costs are very affordable and we'll help you manage everything.",
+    category: 'KPI Dashboards & Analytics',
+    items: [
+      {
+        question: 'What KPIs should my business track?',
+        answer: 'It depends on your goals, but most businesses benefit from tracking leads, sales, conversion rate, traffic sources, and campaign performance. During setup we help you identify the handful of metrics that genuinely drive your decisions, so your dashboard stays clear instead of cluttered.',
+      },
+      {
+        question: 'Can you track leads, sales, and marketing performance?',
+        answer: "Yes. We build dashboards that bring leads, sales, and marketing results into one clear view, so you can see what's working and where to focus without digging through separate tools.",
+      },
+      {
+        question: 'Do I need a dashboard if I already have Google Analytics?',
+        answer: "Google Analytics is powerful but not always easy to act on. A KPI dashboard distills the numbers that matter for your business into a clear, owner-friendly view — often combining website data with leads and sales that Analytics alone doesn't capture.",
+      },
+      {
+        question: 'Can dashboards be customized to my business?',
+        answer: "Yes. Every dashboard is built around your specific goals, data sources, and the way you like to review performance. It's tailored to your business, not a fixed template.",
+      },
+    ],
   },
   {
-    question: "Will my website be mobile-friendly?",
-    answer: "Absolutely. All our websites are built with a mobile-first approach, meaning they look and work perfectly on smartphones, tablets and desktops. Over 60% of web traffic comes from mobile devices — we take that seriously.",
+    category: 'AI Automation & Chatbots',
+    items: [
+      {
+        question: 'What can an AI chatbot do for my business?',
+        answer: 'An AI chatbot can answer common questions instantly, qualify leads, share information about your services, collect contact details, and guide prospects toward booking or buying — at any hour, without you having to reply manually.',
+      },
+      {
+        question: 'Can an AI agent reply on WhatsApp?',
+        answer: 'Yes. WhatsApp automation is one of the most popular setups we build. Your AI agent can respond to inquiries in seconds, handle frequently asked questions, and keep conversations moving even outside working hours.',
+      },
+      {
+        question: 'Can the chatbot book appointments or qualify leads?',
+        answer: 'Yes. We design flows that qualify leads by asking the right questions and can handle appointment requests, so the conversations that reach you are already organized and ready to act on.',
+      },
+      {
+        question: 'What happens if the AI cannot answer a question?',
+        answer: 'We build in a clear escalation path. When a question falls outside what the AI should handle, the conversation is handed over to a human, so customers always receive a proper answer.',
+      },
+    ],
   },
   {
-    question: "What is SEO and why do I need it?",
-    answer: "SEO (Search Engine Optimization) is the process of optimizing your website so it appears higher in Google search results. This means more people find your business organically without paying for ads. Local SEO specifically targets clients in your geographic area.",
-  },
-  {
-    question: "Can you integrate a chatbot or WhatsApp automation?",
-    answer: "Yes! We specialize in AI chatbot integration and WhatsApp automation. These tools allow you to respond to client inquiries 24/7 automatically, capture leads, and route conversations — all without you lifting a finger.",
-  },
-  {
-    question: "Do you offer post-launch support?",
-    answer: "Yes. The Business plan includes 3 months of priority support, and the E-Commerce plan includes 1 month. We also offer ongoing maintenance packages for clients who want continued support after that period.",
-  },
-  {
-    question: "Can I update my website content myself?",
-    answer: "We can build your site with a content management system (CMS) so you can update text, images and products yourself without needing a developer. Just let us know during the consultation.",
-  },
-  {
-    question: "Do you work with clients outside of Venezuela?",
-    answer: "Absolutely! We have clients in the United States and Spain, and we work remotely with businesses anywhere in the world. All communication is done via WhatsApp, email or video call.",
-  },
-  {
-    question: "How do I pay? Do you accept international payments?",
-    answer: "We accept international payments via bank transfer, PayPal, Zelle, and cryptocurrency. We'll discuss the best payment method for you during the initial consultation. A 50% deposit is required to start the project.",
+    category: 'Pricing & Process',
+    items: [
+      {
+        question: 'Do you offer a free audit?',
+        answer: 'Yes. We offer a free, no-obligation audit where we review your current website or digital presence and highlight practical opportunities to improve. It is a useful starting point whether or not you decide to work with us.',
+      },
+      {
+        question: 'What happens during the strategy session?',
+        answer: 'We learn about your business and goals, review your current situation, and outline the most effective approach for you. You leave with clear next steps and a realistic understanding of timelines and scope.',
+      },
+      {
+        question: 'Can I start with one service and add more later?',
+        answer: 'Absolutely. Many clients start with a website and later add SEO, KPI dashboards, or AI automation as they grow. Each service works well on its own and even better as part of a connected system.',
+      },
+      {
+        question: 'Do you offer support after launch?',
+        answer: "Yes. We stay available after launch for updates, fixes, and improvements. We don't disappear once your project goes live.",
+      },
+    ],
   },
 ];
 
@@ -81,7 +146,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
     </button>
     <div
       style={{
-        maxHeight: isOpen ? '400px' : '0',
+        maxHeight: isOpen ? '500px' : '0',
         overflow: 'hidden',
         transition: 'max-height 0.4s ease',
       }}
@@ -94,20 +159,20 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
 );
 
 const FAQs = () => {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openKey, setOpenKey] = useState(null);
 
   useEffect(() => {
     updateMetaTags({
-      title: 'Frequently Asked Questions | Web Development & Services',
-      description: 'Get answers to common questions about web development, pricing, timeline, and our services. Learn how we can help your business grow online.',
-      keywords: 'FAQ, web development questions, pricing questions, service questions, support',
-      canonical: 'https://yourdomain.com/faqs'
+      title: 'Frequently Asked Questions | Web Development, SEO, KPI & AI | Digital Investments',
+      description: 'Answers to common questions about web development, SEO, KPI dashboards, AI automation, pricing, and our process — so you can decide with confidence.',
+      keywords: 'FAQ, web development questions, SEO questions, KPI dashboard questions, AI automation questions, pricing, process',
+      canonical: 'https://yourdomain.com/faqs',
     });
-    addFAQSchema(faqs);
+    addFAQSchema(faqCategories.flatMap((c) => c.items));
   }, []);
 
-  const handleToggle = (idx) => {
-    setOpenIndex(openIndex === idx ? null : idx);
+  const handleToggle = (key) => {
+    setOpenKey(openKey === key ? null : key);
   };
 
   return (
@@ -122,25 +187,33 @@ const FAQs = () => {
           <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
             Frequently Asked <span className="text-gradient">Questions</span>
           </h1>
-          <p className="hero-subtitle" style={{ maxWidth: '650px', margin: '0 auto' }}>
-            Everything you need to know about our services, process and pricing. Can't find your answer? Reach out to us directly.
+          <p className="hero-subtitle" style={{ maxWidth: '680px', margin: '0 auto' }}>
+            Clear answers about our web development, SEO, KPI dashboards, and AI automation services — plus pricing and how we work. Can't find your answer? Reach out and we'll help.
           </p>
         </div>
       </section>
 
-      {/* FAQ List */}
+      {/* FAQ Categories */}
       <section className="section" style={{ paddingTop: '2rem' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {faqs.map((faq, idx) => (
-              <FAQItem
-                key={idx}
-                faq={faq}
-                isOpen={openIndex === idx}
-                onClick={() => handleToggle(idx)}
-              />
-            ))}
-          </div>
+        <div className="container" style={{ maxWidth: '820px' }}>
+          {faqCategories.map((group, ci) => (
+            <div key={group.category} style={{ marginBottom: ci === faqCategories.length - 1 ? 0 : '3.5rem' }}>
+              <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem', color: '#fff' }}>{group.category}</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {group.items.map((faq, qi) => {
+                  const key = `${ci}-${qi}`;
+                  return (
+                    <FAQItem
+                      key={key}
+                      faq={faq}
+                      isOpen={openKey === key}
+                      onClick={() => handleToggle(key)}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -150,8 +223,8 @@ const FAQs = () => {
           <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
             Still have <span className="text-gradient">questions?</span>
           </h2>
-          <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
-            Our team is happy to answer any questions you have. Reach out on WhatsApp or schedule a free consultation call.
+          <p style={{ color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
+            Our team is happy to answer anything you'd like to know. Reach out on WhatsApp or book a free strategy session.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a

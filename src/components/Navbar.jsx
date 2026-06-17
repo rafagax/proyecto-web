@@ -96,19 +96,19 @@ const Navbar = () => {
         <nav className="mobile-menu-nav">
           {/* Services Section in Mobile - First Priority */}
           <div>
-            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }}>
+            <Link to="/services" className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
               Services
-            </div>
-            <Link to="/services/web-development" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            </Link>
+            <Link to="/services/web-development-design" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               Web Development & Design
             </Link>
-            <Link to="/services/seo" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/services/seo-digital-growth" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               SEO & Digital Growth
             </Link>
             <Link to="/services/kpi-dashboards" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              KPI & Performance Indicators
+              KPI Dashboards & Analytics
             </Link>
-            <Link to="/services/ai-automation" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/services/ai-automation-chatbots" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               AI Automation & Chatbots
             </Link>
           </div>

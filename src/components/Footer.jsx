@@ -13,7 +13,7 @@ const Footer = () => {
               Inversiones<span className="text-gradient">Digitales</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1.5rem', maxWidth: '350px' }}>
-              We transform your vision into an extraordinary digital experience. Specialists in high-performance web design and development.
+              We transform your vision into a high-performance digital experience. Specialists in premium web development, SEO, KPI dashboards and AI automation.
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><MessageCircle size={20} /></a>
