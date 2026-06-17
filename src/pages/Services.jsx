@@ -16,7 +16,7 @@ const services = [
     title: 'Fast & Professional Web Development',
     description: 'We create multi-device websites delivered in just 7 days, using the latest frameworks and technologies to ensure performance, reliability and scalability.',
     benefits: ['Delivery in 7 business days', 'React / Next.js powered', 'Performance optimized', 'Cross-browser compatible'],
-    color: '#00e5ff',
+    color: '#4d94ff',
   },
   {
     icon: <Activity size={32} />,
@@ -30,7 +30,7 @@ const services = [
     title: 'AI Chatbot Integration',
     description: 'We integrate intelligent AI chatbots into your website that attend to clients 24/7, answer common questions, and route leads to WhatsApp automatically.',
     benefits: ['24/7 customer attendance', 'WhatsApp integration', 'Lead capture automation', 'Custom conversation flows'],
-    color: '#00e5ff',
+    color: '#4d94ff',
   },
   {
     icon: <Zap size={32} />,
@@ -44,7 +44,7 @@ const services = [
     title: 'SEO & Content Strategy',
     description: 'We develop a full SEO and content strategy to make your business discoverable online, driving organic traffic that converts into paying customers.',
     benefits: ['Technical SEO audit', 'Content planning', 'On-page optimization', 'Monthly reporting'],
-    color: '#00e5ff',
+    color: '#4d94ff',
   },
 ];
 

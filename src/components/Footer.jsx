@@ -3,7 +3,7 @@ import { Globe, Mail, MessageCircle, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="footer" style={{ borderTop: '2px solid rgba(0, 229, 255, 0.1)', background: 'linear-gradient(to bottom, var(--bg-secondary), #000)' }}>
+    <footer className="footer" style={{ borderTop: '2px solid rgba(77, 148, 255, 0.1)', background: 'linear-gradient(to bottom, var(--bg-secondary), #000)' }}>
       <div className="container">
         <div className="footer-content" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', padding: '0' }}>
           
@@ -16,9 +16,9 @@ const Footer = () => {
               We transform your vision into an extraordinary digital experience. Specialists in high-performance web design and development.
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(0, 229, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><MessageCircle size={20} /></a>
-              <a href="mailto:inversionesdigitales@hotmail.es" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(0, 229, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><Mail size={20} /></a>
-              <a href="#" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(0, 229, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><Globe size={20} /></a>
+              <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><MessageCircle size={20} /></a>
+              <a href="mailto:inversionesdigitales@hotmail.es" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><Mail size={20} /></a>
+              <a href="#" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='rgba(255,255,255,0.05)'}><Globe size={20} /></a>
             </div>
           </div>
 

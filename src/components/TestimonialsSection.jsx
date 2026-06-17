@@ -16,7 +16,7 @@ const testimonials = [
     quote: "Thanks to the AI automation they implemented, I answer WhatsApp inquiries effortlessly. My sales went up 40% in the first month.",
     initial: "D",
     service: "AI Automation",
-    color: "#00e5ff",
+    color: "#4d94ff",
   },
   {
     name: "Miguel Ángel Torres",
@@ -32,7 +32,7 @@ const testimonials = [
     quote: "I wasn't showing up on Google at all. Now I'm the top result in my city. The local SEO work they did was extraordinary.",
     initial: "V",
     service: "SEO + Web",
-    color: "#00e5ff",
+    color: "#4d94ff",
   },
   // USA x2
   {
@@ -49,7 +49,7 @@ const testimonials = [
     quote: "My business visibility skyrocketed after their local SEO work. I went from being invisible online to getting 3–4 new clients per week.",
     initial: "S",
     service: "Local SEO",
-    color: "#00e5ff",
+    color: "#4d94ff",
   },
   // Spain x2
   {
@@ -66,7 +66,7 @@ const testimonials = [
     quote: "I needed an online store and they set it up in record time. The post-sale support was also excellent. My business grew remarkably.",
     initial: "L",
     service: "E-Commerce",
-    color: "#00e5ff",
+    color: "#4d94ff",
   },
   // USA x3
   {

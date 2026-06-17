@@ -41,48 +41,6 @@ const Home = () => {
     setFormData({ name: '', email: '', service: '', message: '' });
   };
 
-  const pricingPlans = [
-    {
-      name: 'Starter',
-      subtitle: 'Ideal to get started',
-      price: '$299',
-      features: [
-        '5-Section Landing Page',
-        'Responsive Design',
-        'WhatsApp Button',
-        'Contact Form',
-        'Local SEO Positioning'
-      ],
-      popular: false
-    },
-    {
-      name: 'Business',
-      subtitle: 'For growing businesses',
-      price: '$599',
-      features: [
-        'Multi-Page Website (Up to 5)',
-        'Premium Responsive Design',
-        'Advanced SEO Optimization',
-        'Social Media Integration',
-        'Domain & Hosting for 1 Year'
-      ],
-      popular: true
-    },
-    {
-      name: 'E-Commerce',
-      subtitle: 'Sell your products online',
-      price: '$1500',
-      features: [
-        'Full Online Store',
-        'Payment Gateways',
-        'Admin Dashboard',
-        'First 20 Products Uploaded',
-        'Priority Support 1 Month'
-      ],
-      popular: false
-    }
-  ];
-
   const testimonials = [
     {
       text: 'In 7 days I had my website up and running and receiving clients. The team was incredibly professional and handled everything I asked for.',
@@ -250,10 +208,10 @@ const Home = () => {
                 const text = `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`;
                 window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
               }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
-                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
-                <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(0, 229, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
-                <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#00e5ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(0, 229, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
+                <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
+                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
+                <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
+                <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#4d94ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(77, 148, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
                   Get Your Free Audit
                 </button>
               </form>
@@ -261,7 +219,7 @@ const Home = () => {
           </div>
           {/* Desktop hero image */}
           <div className="hero-image desktop-only" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={heroImg} alt="AI Technology" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(0, 229, 255, 0.3))' }} />
+            <img src={heroImg} alt="AI Technology" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
           </div>
         </div>
       </section>
@@ -296,6 +254,7 @@ const Home = () => {
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
                 High-end, responsive websites designed to build trust, convert visitors, and support long-term business growth.
               </p>
+              <div className="service-highlight">We build your website in just 7 days</div>
             </div>
 
             <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
@@ -304,6 +263,7 @@ const Home = () => {
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
                 Improve your visibility on Google, attract qualified traffic, and turn search intent into real business opportunities.
               </p>
+              <div className="service-highlight">Rank #1 in your city and get found first</div>
             </div>
 
             <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
@@ -312,6 +272,7 @@ const Home = () => {
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
                 Get clear dashboards and performance insights so you always know what is working and where to improve.
               </p>
+              <div className="service-highlight">Know what's working, in real time</div>
             </div>
 
             <div className="service-card" style={{ padding: '2.5rem 2rem' }}>
@@ -320,6 +281,7 @@ const Home = () => {
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
                 Engage leads, answer questions, and support customers 24/7 with intelligent AI-powered automation.
               </p>
+              <div className="service-highlight">A 24/7 AI agent selling for you</div>
             </div>
           </div>
         </div>
@@ -363,12 +325,12 @@ const Home = () => {
                   width: '90px',
                   height: '90px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(0, 229, 255, 0.2) 0%, rgba(5, 5, 10, 0.9) 70%)',
+                  background: 'radial-gradient(circle, rgba(77, 148, 255, 0.2) 0%, rgba(5, 5, 10, 0.9) 70%)',
                   border: '2px dashed var(--accent-cyan)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  boxShadow: '0 0 30px rgba(0, 229, 255, 0.3)',
+                  boxShadow: '0 0 30px rgba(77, 148, 255, 0.3)',
                   zIndex: 10
                 }}>
                   <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#fff', textAlign: 'center' }}>SYSTEM</span>
@@ -382,7 +344,7 @@ const Home = () => {
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
                       background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -400,7 +362,7 @@ const Home = () => {
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
                       background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -418,7 +380,7 @@ const Home = () => {
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
                       background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -436,7 +398,7 @@ const Home = () => {
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
                       background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid rgba(0, 229, 255, 0.2)',
+                      border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
@@ -457,31 +419,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. Results / Outcomes Band */}
-      <section className="section">
-        <div className="container">
-          <div className="home-stats">
-            <div className="home-stat">
-              <div className="home-stat-number text-gradient">7 Days</div>
-              <div className="home-stat-label">Average time to launch your new website</div>
-            </div>
-            <div className="home-stat">
-              <div className="home-stat-number text-gradient">24/7</div>
-              <div className="home-stat-label">AI agents replying and selling for you</div>
-            </div>
-            <div className="home-stat">
-              <div className="home-stat-number text-gradient">&lt;60s</div>
-              <div className="home-stat-label">Response time to every new WhatsApp lead</div>
-            </div>
-            <div className="home-stat">
-              <div className="home-stat-number text-gradient">100%</div>
-              <div className="home-stat-label">Custom-coded, mobile-first &amp; SEO-ready</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 6. Core Offerings — What We Actually Build */}
+      {/* 5. Core Offerings — What We Actually Build */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
@@ -510,22 +448,18 @@ const Home = () => {
                 Explore Web Development <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="feature-visual">
-              {/* Browser window mockup */}
-              <div style={{ width: '82%', maxWidth: '360px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', background: '#0b0b14', boxShadow: '0 24px 60px rgba(0,0,0,0.55)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '10px 12px', background: 'rgba(255,255,255,0.04)' }}>
-                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#ff5f57' }} />
-                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#febc2e' }} />
-                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#28c840' }} />
-                  <span style={{ marginLeft: 'auto', width: '45%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)' }} />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <div style={{ width: '62%', height: 16, borderRadius: 4, background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-blue))', marginBottom: 14 }} />
-                  <div style={{ width: '100%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)', marginBottom: 8 }} />
-                  <div style={{ width: '92%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)', marginBottom: 8 }} />
-                  <div style={{ width: '70%', height: 8, borderRadius: 4, background: 'rgba(255,255,255,0.08)', marginBottom: 20 }} />
-                  <div style={{ width: '46%', height: 34, borderRadius: 8, background: 'var(--accent-cyan)' }} />
-                </div>
+            <div className="feature-visual feature-visual-image">
+              {/* Premium corporate website image */}
+              <img
+                src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900&h=650&fit=crop&q=80"
+                alt="Premium corporate website design on screen"
+                loading="lazy"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: '#fff', fontWeight: 700, fontSize: '1rem' }}>
+                <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
+                Premium corporate websites
               </div>
             </div>
           </div>
@@ -592,10 +526,10 @@ const Home = () => {
                 <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'rgba(255,255,255,0.07)', color: '#fff', fontSize: '0.85rem', lineHeight: 1.45 }}>
                   Hi! Do you have availability this week? 👋
                 </div>
-                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #00e5ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
+                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
                   Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
                 </div>
-                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #00e5ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
+                <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
                   Great — you're booked. Here's a quick price list meanwhile 📋
                 </div>
                 <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
@@ -622,8 +556,8 @@ const Home = () => {
 
           <div className="process-timeline-wrapper" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', position: 'relative' }}>
             {/* Step 1 */}
-            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(0, 229, 255, 0.1)' }}>
-              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>01</div>
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
+              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(77, 148, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>01</div>
               <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Discover</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 We learn your business, study your competitors, and pinpoint the searches and questions your customers use — so every decision is built around real demand.
@@ -631,8 +565,8 @@ const Home = () => {
             </div>
 
             {/* Step 2 */}
-            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(0, 229, 255, 0.1)' }}>
-              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>02</div>
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
+              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(77, 148, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>02</div>
               <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Build</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 We design and code your fast, mobile-first website, optimize it for Google, and set up your AI WhatsApp agent so it's ready to answer and sell from day one.
@@ -640,8 +574,8 @@ const Home = () => {
             </div>
 
             {/* Step 3 */}
-            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(0, 229, 255, 0.1)' }}>
-              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(0, 229, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>03</div>
+            <div style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
+              <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(77, 148, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>03</div>
               <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>Grow</h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 After launch we monitor performance, refine your SEO, and fine-tune your AI agent's replies — continuously improving so you capture more leads and close more sales.
@@ -651,41 +585,19 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 8. Pricing Teaser */}
+      {/* 8. Pricing Teaser (light) */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+          <div style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 2.5rem', borderRadius: '20px', border: '1px solid rgba(77, 148, 255, 0.15)', background: 'linear-gradient(180deg, rgba(77, 148, 255, 0.05), rgba(255, 255, 255, 0.01))' }}>
             <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Transparent Pricing</span>
-            <h2 style={{ fontSize: '2.5rem' }}>
-              Simple Plans, <span className="text-gradient">No Surprises</span>
+            <h2 style={{ fontSize: '2.3rem', marginBottom: '1rem', lineHeight: 1.2 }}>
+              Professional websites starting from <span className="text-gradient">$299</span>
             </h2>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1rem auto 0', fontSize: '1.1rem' }}>
-              Start with a one-time build and add monthly growth services whenever you're ready.
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 2rem' }}>
+              Simple, transparent pricing with no hidden fees. Start with a one-time build and add monthly SEO, management, or AI services whenever you're ready.
             </p>
-          </div>
-
-          <div className="pricing-grid">
-            {pricingPlans.map((plan) => (
-              <div key={plan.name} className={`pricing-card${plan.popular ? ' popular' : ''}`}>
-                {plan.popular && <div className="popular-badge">Most Popular</div>}
-                <h3>{plan.name}</h3>
-                <p style={{ color: 'var(--text-secondary)' }}>{plan.subtitle}</p>
-                <div className={`price-amount${plan.popular ? ' text-gradient' : ''}`}>{plan.price}</div>
-                <ul className="price-features">
-                  {plan.features.map((feature, i) => (
-                    <li key={i}><CheckCircle2 size={18} /> {feature}</li>
-                  ))}
-                </ul>
-                <Link to="/pricing" className={`btn ${plan.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>
-                  View Plan
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             <Link to="/pricing" className="hero-advisory-btn" style={{ margin: 0 }}>
-              See All Plans &amp; Monthly Services <ArrowRight size={16} />
+              See Plans &amp; Pricing <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -708,10 +620,15 @@ const Home = () => {
               href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20request%20a%20free%20audit%20and%20strategy%20session."
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-whatsapp-large"
-              style={{ padding: '1rem 2rem', borderRadius: '10px' }}
+              className="hero-advisory-btn"
             >
+              <span className="hero-advisory-btn-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L13.09 8.26L19 6L15.45 11.13L22 12L15.45 12.87L19 18L13.09 15.74L12 22L10.91 15.74L5 18L8.55 12.87L2 12L8.55 11.13L5 6L10.91 8.26L12 2Z" fill="currentColor" />
+                </svg>
+              </span>
               Get Your Free Audit
+              <ArrowRight size={17} />
             </a>
           </div>
           

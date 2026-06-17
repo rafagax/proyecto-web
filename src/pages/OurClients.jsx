@@ -11,7 +11,7 @@ const clients = [
     initial: "B",
     service: "E-Commerce Fashion",
     result: "+150% sales growth",
-    color: "#00e5ff",
+    color: "#4d94ff",
     website: "https://bikinislborgina.vercel.app/",
     websiteLabel: "View Site"
   },
@@ -35,7 +35,7 @@ const clients = [
     initial: "S",
     service: "B2B Solutions",
     result: "+85% qualified leads",
-    color: "#00e5ff",
+    color: "#4d94ff",
     website: "https://solucionescofer.com/",
     websiteLabel: "View Site"
   },
@@ -57,7 +57,7 @@ const clients = [
     initial: "D",
     service: "AI Automation",
     result: "+40% sales in month 1",
-    color: "#00e5ff",
+    color: "#4d94ff",
   },
   {
     name: "James Rodríguez",
@@ -77,7 +77,7 @@ const clients = [
     initial: "S",
     service: "Local SEO",
     result: "3–4 new clients/week",
-    color: "#00e5ff",
+    color: "#4d94ff",
   },
   {
     name: "Carlos Fernández",
@@ -129,7 +129,7 @@ const RatingBar = ({ label, pct }) => (
           height: '100%',
           borderRadius: '4px',
           background: 'var(--accent-gradient)',
-          boxShadow: '0 0 8px rgba(0,229,255,0.4)',
+          boxShadow: '0 0 8px rgba(77, 148, 255,0.4)',
         }}
       />
     </div>
@@ -186,7 +186,7 @@ const OurClients = () => {
             gap: '3rem',
             alignItems: 'center',
             background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(0,229,255,0.12)',
+            border: '1px solid rgba(77, 148, 255,0.12)',
             borderRadius: '20px',
             padding: 'clamp(2rem, 5vw, 3.5rem)',
             backdropFilter: 'blur(12px)',
@@ -199,7 +199,7 @@ const OurClients = () => {
                 display: 'inline-block',
                 padding: '6px 18px',
                 borderRadius: '30px',
-                border: '1px solid rgba(0,229,255,0.25)',
+                border: '1px solid rgba(77, 148, 255,0.25)',
                 fontSize: '0.78rem',
                 fontWeight: '700',
                 letterSpacing: '0.12em',
@@ -230,7 +230,7 @@ const OurClients = () => {
                   {/* Stars */}
                   <div style={{ display: 'flex', gap: '3px', marginTop: '6px' }}>
                     {[1,2,3,4,5].map(i => (
-                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i <= 5 ? '#00e5ff' : 'rgba(255,255,255,0.2)'}>
+                      <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i <= 5 ? '#4d94ff' : 'rgba(255,255,255,0.2)'}>
                         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                       </svg>
                     ))}

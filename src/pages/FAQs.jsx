@@ -50,7 +50,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
   <div
     style={{
       background: 'var(--bg-secondary)',
-      border: `1px solid ${isOpen ? 'rgba(0, 229, 255, 0.3)' : 'rgba(255, 255, 255, 0.06)'}`,
+      border: `1px solid ${isOpen ? 'rgba(77, 148, 255, 0.3)' : 'rgba(255, 255, 255, 0.06)'}`,
       borderRadius: 'var(--border-radius-md)',
       overflow: 'hidden',
       transition: 'border-color 0.3s ease',

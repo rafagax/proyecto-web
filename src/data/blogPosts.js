@@ -7,7 +7,7 @@ export const blogPosts = [
     category: 'Web Development',
     date: 'June 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=500&fit=crop&q=80',
     content: 'In 2025, your website is your digital storefront.',
   },
   {
@@ -18,7 +18,7 @@ export const blogPosts = [
     category: 'SEO',
     date: 'May 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.pexels.com/photos/3873474/pexels-photo-3873474.jpeg',
+    image: 'https://images.pexels.com/photos/3873474/pexels-photo-3873474.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop',
     content: 'Local SEO is the fastest way to attract customers.',
   },
   {
@@ -29,7 +29,7 @@ export const blogPosts = [
     category: 'AI & Automation',
     date: 'April 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop',
     content: 'Imagine having a sales team that never sleeps.',
   },
   {
@@ -40,7 +40,7 @@ export const blogPosts = [
     category: 'E-Commerce',
     date: 'March 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg',
+    image: 'https://images.pexels.com/photos/3962286/pexels-photo-3962286.jpeg?auto=compress&cs=tinysrgb&w=800&h=500&fit=crop',
     content: 'E-commerce is essential for your business.',
   },
   {
@@ -51,7 +51,7 @@ export const blogPosts = [
     category: 'Performance',
     date: 'February 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=500&fit=crop&q=80',
     content: 'Speed is a ranking factor and drives conversions.',
   },
   {
@@ -62,7 +62,7 @@ export const blogPosts = [
     category: 'Web Design',
     date: 'January 2025',
     author: 'Digital Solutions Pro',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=500&fit=crop&q=80',
     content: 'Mobile-first design ensures your users have the best experience on any device.',
   },
 ];

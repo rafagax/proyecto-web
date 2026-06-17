@@ -91,7 +91,7 @@ const Pricing = () => {
           </div>
 
           {/* Monthly Services Section */}
-          <div style={{ marginTop: '5rem', paddingTop: '3rem', borderTop: '1px solid rgba(0, 229, 255, 0.15)' }}>
+          <div style={{ marginTop: '5rem', paddingTop: '3rem', borderTop: '1px solid rgba(77, 148, 255, 0.15)' }}>
             <h2 style={{ fontSize: '2.2rem', textAlign: 'center', marginBottom: '1rem' }}>
               Monthly <span className="text-gradient">Services</span>
             </h2>
@@ -158,7 +158,7 @@ const Pricing = () => {
           </div>
 
           {/* Custom Plan CTA */}
-          <div style={{ marginTop: '5rem', background: 'var(--bg-secondary)', borderRadius: 'var(--border-radius-md)', padding: '4rem 3rem', textAlign: 'center', border: '1px solid rgba(0, 229, 255, 0.15)' }}>
+          <div style={{ marginTop: '5rem', background: 'var(--bg-secondary)', borderRadius: 'var(--border-radius-md)', padding: '4rem 3rem', textAlign: 'center', border: '1px solid rgba(77, 148, 255, 0.15)' }}>
             <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Need a <span className="text-gradient">Custom Plan?</span></h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '550px', margin: '0 auto 2rem', lineHeight: '1.7' }}>
               Every business is unique. If none of the above plans fit your needs, let's talk and we'll build a tailored solution for you.

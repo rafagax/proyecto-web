@@ -284,7 +284,7 @@ const ServiceDetail = () => {
       <section className="section" style={{ paddingTop: '2rem', background: 'var(--bg-secondary)' }}>
         <div className="container">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
-            <div style={{ background: 'var(--bg-primary)', padding: '2rem', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(0,229,255,0.1)' }}>
+            <div style={{ background: 'var(--bg-primary)', padding: '2rem', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(77, 148, 255,0.1)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
                 <Clock size={24} color="var(--accent-cyan)" />
                 <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>TIMELINE</h3>
@@ -292,7 +292,7 @@ const ServiceDetail = () => {
               <p style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}>{service.timeline}</p>
             </div>
 
-            <div style={{ background: 'var(--bg-primary)', padding: '2rem', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(0,229,255,0.1)' }}>
+            <div style={{ background: 'var(--bg-primary)', padding: '2rem', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(77, 148, 255,0.1)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
                 <Target size={24} color="var(--accent-cyan)" />
                 <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>PRICING</h3>
@@ -300,7 +300,7 @@ const ServiceDetail = () => {
               <p style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}>{service.price}</p>
             </div>
 
-            <div style={{ background: 'var(--bg-primary)', padding: '2rem', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(0,229,255,0.1)' }}>
+            <div style={{ background: 'var(--bg-primary)', padding: '2rem', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(77, 148, 255,0.1)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '1rem' }}>
                 <Zap size={24} color="var(--accent-cyan)" />
                 <h3 style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', margin: 0 }}>BENEFITS</h3>
@@ -358,7 +358,7 @@ const ServiceDetail = () => {
                     fontWeight: '700',
                     color: 'white',
                     margin: '0 auto 1rem',
-                    boxShadow: '0 8px 20px rgba(0, 229, 255, 0.3)',
+                    boxShadow: '0 8px 20px rgba(77, 148, 255, 0.3)',
                   }}
                 >
                   {idx + 1}

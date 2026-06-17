@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 
 export const BlogCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Autoplay carousel
+  // Autoplay carousel (pauses on hover)
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % blogPosts.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused]);
 
   const handlePrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
@@ -41,7 +43,11 @@ export const BlogCarousel = () => {
         <h2>From Our <span className="text-gradient">Blog</span></h2>
         <p>Learn industry insights, strategies, and tips to grow your business online.</p>
 
-        <div className="blog-carousel-wrapper">
+        <div
+          className="blog-carousel-wrapper"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Previous Button */}
           <button
             onClick={handlePrevious}
@@ -57,9 +63,11 @@ export const BlogCarousel = () => {
               {blogPosts.map((post, index) => {
                 // Check if post should be visible (with infinite loop)
                 let isVisible = false;
+                let position = 0;
                 for (let i = 0; i < displayCount; i++) {
                   if ((currentIndex + i) % blogPosts.length === index) {
                     isVisible = true;
+                    position = i;
                     break;
                   }
                 }
@@ -70,18 +78,26 @@ export const BlogCarousel = () => {
                     className={`blog-carousel-card-small ${isVisible ? 'visible' : ''}`}
                     style={{
                       opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? 'translateX(0)' : 'translateX(20px)',
-                      transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
+                      transition: 'opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                      transitionDelay: isVisible ? `${position * 0.08}s` : '0s',
                       display: isVisible ? 'flex' : 'none',
                     }}
                   >
-                    <img
-                      src={post.image}
-                      alt={post.title}
-                      className="blog-card-image-small"
-                    />
+                    <div className="blog-card-image-wrap">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="blog-card-image-small"
+                        loading="lazy"
+                      />
+                      <span className="blog-category-overlay">{post.category}</span>
+                    </div>
                     <div className="blog-carousel-card-content-small">
-                      <div className="blog-category">{post.category}</div>
+                      <div className="blog-card-meta">
+                        <Calendar size={14} />
+                        <span>{post.date}</span>
+                      </div>
                       <h3>{post.title}</h3>
                       <p className="blog-excerpt">{post.excerpt}</p>
                       <Link to={`/blog/${post.slug}`} className="read-more">

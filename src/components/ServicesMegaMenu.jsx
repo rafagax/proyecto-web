@@ -180,7 +180,7 @@ export const ServicesMegaMenu = () => {
           background: rgba(10, 10, 12, 0.95);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(0, 229, 255, 0.15);
+          border: 1px solid rgba(77, 148, 255, 0.15);
           border-radius: 16px;
           overflow: hidden;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -205,7 +205,7 @@ export const ServicesMegaMenu = () => {
           flex-direction: column;
           width: 35%;
           background: rgba(0, 0, 0, 0.2);
-          border-right: 1px solid rgba(0, 229, 255, 0.1);
+          border-right: 1px solid rgba(77, 148, 255, 0.1);
           padding: 16px 0;
           gap: 0;
         }
@@ -227,12 +227,12 @@ export const ServicesMegaMenu = () => {
         }
 
         .services-category-item:hover {
-          background: rgba(0, 229, 255, 0.05);
+          background: rgba(77, 148, 255, 0.05);
           color: #fff;
         }
 
         .services-category-item.active {
-          background: rgba(0, 229, 255, 0.1);
+          background: rgba(77, 148, 255, 0.1);
           color: var(--accent-cyan);
           border-left-color: var(--accent-cyan);
         }
@@ -342,7 +342,7 @@ export const ServicesMegaMenu = () => {
           gap: 12px;
           padding: 14px 16px;
           background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(0, 229, 255, 0.1);
+          border: 1px solid rgba(77, 148, 255, 0.1);
           border-radius: 10px;
           text-decoration: none;
           color: #fff;
@@ -353,8 +353,8 @@ export const ServicesMegaMenu = () => {
         }
 
         .services-item-link:hover {
-          background: rgba(0, 229, 255, 0.08);
-          border-color: rgba(0, 229, 255, 0.3);
+          background: rgba(77, 148, 255, 0.08);
+          border-color: rgba(77, 148, 255, 0.3);
           transform: translateX(4px);
         }
 

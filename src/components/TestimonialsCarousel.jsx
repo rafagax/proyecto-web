@@ -73,38 +73,28 @@ export const TestimonialsCarousel = () => {
                       display: isVisible ? 'flex' : 'none',
                     }}
                   >
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.title}
-                      className="testimonial-image"
-                    />
-                    <div className="testimonial-content">
-                      <div className="testimonial-category">
-                        {testimonial.category}
-                      </div>
-                      <h3 className="testimonial-title">{testimonial.title}</h3>
-                      <p className="testimonial-summary">
-                        {testimonial.summary}
-                      </p>
+                    <span className="tm-quote-mark" aria-hidden="true">&rdquo;</span>
+                    <span className="tm-service-tag">{testimonial.service}</span>
 
-                      <div className="testimonial-rating">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star key={i} size={16} fill="var(--accent-cyan)" />
-                        ))}
-                      </div>
+                    <div className="testimonial-rating">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star key={i} size={16} fill="#FFD700" />
+                      ))}
+                    </div>
 
-                      <div className="testimonial-footer">
-                        <div className="testimonial-author-section">
-                          <p className="testimonial-author">
-                            {testimonial.author}
-                          </p>
-                          <p className="testimonial-location">
-                            {testimonial.location}
-                          </p>
-                        </div>
-                        <span className="testimonial-readtime">
-                          {testimonial.readTime}
-                        </span>
+                    <p className="tm-quote">{testimonial.quote}</p>
+
+                    <div className="tm-person">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="tm-avatar"
+                        loading="lazy"
+                      />
+                      <div className="tm-person-info">
+                        <p className="tm-name">{testimonial.name}</p>
+                        <p className="tm-role">{testimonial.role}</p>
+                        <p className="tm-location">{testimonial.location}</p>
                       </div>
                     </div>
                   </div>
