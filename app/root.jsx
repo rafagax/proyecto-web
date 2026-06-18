@@ -113,6 +113,14 @@ export function Layout({ children }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Failsafe: if the JS bundle hasn't taken over within 4s (slow/failed
+            network), reveal all scroll-reveal content so nothing stays hidden. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.setTimeout(function(){if(!window.__appReady){document.documentElement.classList.remove('reveal-ready');}},4000);",
+          }}
+        />
         <meta name="theme-color" content="#000000" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta property="og:type" content="website" />
