@@ -124,10 +124,10 @@ export const ServicesMegaMenu = () => {
           transform: translateX(-50%);
           z-index: 9999;
           width: 340px;
-          background: rgba(10, 10, 12, 0.97);
+          background: var(--bg-navbar);
           backdrop-filter: blur(16px);
           -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(77, 148, 255, 0.15);
+          border: 1px solid var(--border-subtle);
           border-radius: 14px;
           padding: 0.5rem;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
@@ -174,7 +174,7 @@ export const ServicesMegaMenu = () => {
         .services-dropdown-text h4 {
           font-size: 0.92rem;
           font-weight: 600;
-          color: #fff;
+          color: var(--text-primary);
           margin: 0 0 2px;
         }
 

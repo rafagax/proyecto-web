@@ -109,10 +109,17 @@ function ScrollRevealManager() {
 
 export function Layout({ children }) {
   return (
-    <html lang="en" className="reveal-ready">
+    <html lang="en" className="reveal-ready" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Apply the saved theme before first paint (default = dark) to avoid a flash. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{if(localStorage.getItem('theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}})();",
+          }}
+        />
         {/* Failsafe: if the JS bundle hasn't taken over within 4s (slow/failed
             network), reveal all scroll-reveal content so nothing stays hidden. */}
         <script
@@ -143,7 +150,7 @@ export function Layout({ children }) {
           <style>{`.reveal,.reveal-left,.reveal-right,.reveal-card,.bar-rise,.chat-bubble{opacity:1!important;transform:none!important}`}</style>
         </noscript>
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <ScrollRestoration />
         <Scripts />

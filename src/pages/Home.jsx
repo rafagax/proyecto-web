@@ -252,7 +252,7 @@ const Home = () => {
             </div>
 
             <div className="hero-contact-form desktop-only" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
-              <h3 style={{ color: '#fff', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>Get Your Free Audit</h3>
+              <h3 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>Get Your Free Audit</h3>
               <form onSubmit={(e) => {
                 e.preventDefault();
                 const phone = e.target.phone?.value || '';
@@ -262,9 +262,9 @@ const Home = () => {
                 const text = `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`;
                 window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
               }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
-                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%' }} />
-                <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'rgba(255, 255, 255, 0.05)', color: '#fff', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
+                <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
+                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
+                <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
                 <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#4d94ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(77, 148, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
                   Get Your Free Audit
                 </button>
@@ -381,7 +381,7 @@ const Home = () => {
                   boxShadow: '0 0 30px rgba(77, 148, 255, 0.3)',
                   zIndex: 10
                 }}>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#fff', textAlign: 'center' }}>SYSTEM</span>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--text-primary)', textAlign: 'center' }}>SYSTEM</span>
                 </div>
 
                 {/* Rotating Orbit Container */}
@@ -391,7 +391,7 @@ const Home = () => {
                     <div className="orbiting-node" style={{
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
-                      background: 'rgba(255,255,255,0.03)',
+                      background: 'var(--bg-card)',
                       border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
@@ -409,7 +409,7 @@ const Home = () => {
                     <div className="orbiting-node" style={{
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
-                      background: 'rgba(255,255,255,0.03)',
+                      background: 'var(--bg-card)',
                       border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
@@ -427,7 +427,7 @@ const Home = () => {
                     <div className="orbiting-node" style={{
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
-                      background: 'rgba(255,255,255,0.03)',
+                      background: 'var(--bg-card)',
                       border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
@@ -445,7 +445,7 @@ const Home = () => {
                     <div className="orbiting-node" style={{
                       padding: '0.75rem 1.25rem',
                       borderRadius: '30px',
-                      background: 'rgba(255,255,255,0.03)',
+                      background: 'var(--bg-card)',
                       border: '1px solid rgba(77, 148, 255, 0.2)',
                       display: 'flex',
                       alignItems: 'center',
@@ -481,7 +481,7 @@ const Home = () => {
           <div className="feature-row">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><Code size={16} /> Web Development &amp; Design</span>
-              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 A fast, premium website built to <span className="text-gradient">convert</span>
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
@@ -505,7 +505,7 @@ const Home = () => {
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: '#fff', fontWeight: 700, fontSize: '1rem' }}>
+              <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
                 <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
                 Premium corporate websites
               </div>
@@ -516,7 +516,7 @@ const Home = () => {
           <div className="feature-row reverse">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><TrendingUp size={16} /> SEO &amp; Digital Growth</span>
-              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 Improve visibility and attract <span className="text-gradient">qualified traffic</span>
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
@@ -534,13 +534,13 @@ const Home = () => {
             <div className="feature-visual reveal-right">
               {/* Search ranking mockup */}
               <div style={{ width: '82%', maxWidth: '340px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px', borderRadius: 30, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', marginBottom: 28 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px', borderRadius: 30, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', marginBottom: 28 }}>
                   <Search size={16} style={{ color: 'var(--accent-cyan)' }} />
                   <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>best [your service] near me</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12, height: 130 }}>
                   {[40, 58, 74, 100].map((h, i) => (
-                    <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '6px 6px 0 0', background: i === 3 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'rgba(255,255,255,0.08)', position: 'relative' }}>
+                    <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '6px 6px 0 0', background: i === 3 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'var(--border-subtle)', position: 'relative' }}>
                       {i === 3 && <span style={{ position: 'absolute', top: -26, left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>#1</span>}
                     </div>
                   ))}
@@ -553,7 +553,7 @@ const Home = () => {
           <div className="feature-row">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><Bot size={16} /> AI Automation &amp; Chatbots</span>
-              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 Respond faster with <span className="text-gradient">intelligent automation</span>
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
@@ -571,7 +571,7 @@ const Home = () => {
             <div className="feature-visual reveal-right">
               {/* WhatsApp chat mockup */}
               <div style={{ width: '82%', maxWidth: '320px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div className="chat-bubble" style={{ transitionDelay: '0.05s', alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'rgba(255,255,255,0.07)', color: '#fff', fontSize: '0.85rem', lineHeight: 1.45 }}>
+                <div className="chat-bubble" style={{ transitionDelay: '0.05s', alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.85rem', lineHeight: 1.45 }}>
                   Hi! Do you have availability this week? 👋
                 </div>
                 <div className="chat-bubble" style={{ transitionDelay: '0.15s', alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
@@ -591,7 +591,7 @@ const Home = () => {
           <div className="feature-row reverse">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><BarChart3 size={16} /> KPI Dashboards &amp; Analytics</span>
-              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: '#fff' }}>
+              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 Track the numbers that <span className="text-gradient">actually matter</span>
               </h3>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
@@ -610,25 +610,25 @@ const Home = () => {
               {/* KPI dashboard mockup */}
               <div style={{ width: '86%', maxWidth: '360px', display: 'flex', flexDirection: 'column', gap: 14 }}>
                 <div style={{ display: 'flex', gap: 12 }}>
-                  <div style={{ flex: 1, padding: '14px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ flex: 1, padding: '14px 16px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
                     <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>Leads</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>248</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>248</div>
                     <div style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700, marginTop: 6 }}>▲ 18% this month</div>
                   </div>
-                  <div style={{ flex: 1, padding: '14px 16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ flex: 1, padding: '14px 16px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
                     <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>Conversion</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#fff', lineHeight: 1 }}>6.4%</div>
+                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>6.4%</div>
                     <div style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700, marginTop: 6 }}>▲ 1.2 pts</div>
                   </div>
                 </div>
-                <div style={{ padding: '16px', borderRadius: 12, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                <div style={{ padding: '16px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                     <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Leads by month</span>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700 }}><TrendingUp size={13} /> Trending up</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 76 }}>
                     {[42, 55, 48, 66, 72, 100].map((h, i) => (
-                      <div key={i} className="bar-rise" style={{ flex: 1, height: `${h}%`, transitionDelay: `${i * 25}ms`, borderRadius: '5px 5px 0 0', background: i === 5 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'rgba(255,255,255,0.08)' }}></div>
+                      <div key={i} className="bar-rise" style={{ flex: 1, height: `${h}%`, transitionDelay: `${i * 25}ms`, borderRadius: '5px 5px 0 0', background: i === 5 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'var(--border-subtle)' }}></div>
                     ))}
                   </div>
                 </div>
@@ -653,9 +653,9 @@ const Home = () => {
 
           <div className="process-timeline-wrapper reveal-group" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', gap: '3rem', position: 'relative' }}>
             {steps.map((step) => (
-              <div key={step.number} className="reveal-card" style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
+              <div key={step.number} className="reveal-card" style={{ flex: '1 1 280px', position: 'relative', padding: '2.25rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '14px', border: '1px solid rgba(77, 148, 255, 0.1)' }}>
                 <div style={{ position: 'absolute', top: '-22px', left: '2rem', fontSize: '3rem', fontWeight: '900', color: 'rgba(77, 148, 255, 0.18)', fontStyle: 'italic', fontFamily: 'monospace' }}>{step.number}</div>
-                <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: '#fff' }}>{step.title}</h3>
+                <h3 style={{ fontSize: '1.35rem', marginTop: '1rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>{step.title}</h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                   {step.text}
                 </p>
@@ -722,21 +722,21 @@ const Home = () => {
           </div>
           
           <div className="home-contact-grid desktop-only" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
-            <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <MessageCircle size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>WhatsApp</h3>
               <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 +58 414 473 5431
               </a>
             </div>
-            <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <Mail size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>Email</h3>
               <a href="mailto:inversionesdigitales@hotmail.es" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 inversionesdigitales@hotmail.es
               </a>
             </div>
-            <div className="home-contact-card desktop-only" style={{ padding: '2.5rem 2rem', backgroundColor: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div className="home-contact-card desktop-only" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <MapPin size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>Location</h3>
               <p style={{ color: 'var(--text-secondary)', fontWeight: '600', margin: 0 }}>
@@ -793,9 +793,9 @@ const Home = () => {
                     width: '100%',
                     padding: '0.75rem',
                     borderRadius: '6px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    backgroundColor: 'rgba(255,255,255,0.02)',
-                    color: '#fff',
+                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: 'var(--bg-card)',
+                    color: 'var(--text-primary)',
                     fontSize: '1rem'
                   }}
                 />
@@ -814,9 +814,9 @@ const Home = () => {
                     width: '100%',
                     padding: '0.75rem',
                     borderRadius: '6px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    backgroundColor: 'rgba(255,255,255,0.02)',
-                    color: '#fff',
+                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: 'var(--bg-card)',
+                    color: 'var(--text-primary)',
                     fontSize: '1rem'
                   }}
                 />
@@ -835,9 +835,9 @@ const Home = () => {
                     width: '100%',
                     padding: '0.75rem',
                     borderRadius: '6px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    backgroundColor: 'rgba(255,255,255,0.02)',
-                    color: '#fff',
+                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: 'var(--bg-card)',
+                    color: 'var(--text-primary)',
                     fontSize: '1rem'
                   }}
                 />
@@ -855,9 +855,9 @@ const Home = () => {
                     width: '100%',
                     padding: '0.75rem',
                     borderRadius: '6px',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    backgroundColor: 'rgba(255,255,255,0.02)',
-                    color: '#fff',
+                    border: '1px solid var(--border-subtle)',
+                    backgroundColor: 'var(--bg-card)',
+                    color: 'var(--text-primary)',
                     fontSize: '1rem',
                     fontFamily: 'inherit'
                   }}

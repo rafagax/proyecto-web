@@ -1,11 +1,20 @@
 :root {
+  /* ===== DARK THEME (default) ===== */
   --bg-primary: #000000;
   --bg-secondary: #050508;
   --bg-tertiary: #0a0a10;
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --bg-navbar: rgba(15, 15, 25, 1);
+
   --text-primary: #ffffff;
   --text-secondary: #a0aab5;
 
-  /* Tech Blue Theme */
+  --border-subtle: rgba(77, 148, 255, 0.1);
+  --border-accent: rgba(77, 148, 255, 0.4);
+
+  --shadow-navbar: 0 4px 20px rgba(0, 0, 0, 0.35);
+
+  /* Tech Blue accents (shared by both themes) */
   --accent-blue: #0066ff;
   --accent-cyan: #4d94ff;
   --accent-blue-light: #4d94ff;
@@ -22,6 +31,28 @@
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-lg: 24px;
+}
+
+/* ===== LIGHT THEME (toggle on) ===== */
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f7fb;
+  --bg-tertiary: #eef2f8;
+  --bg-card: #ffffff;
+  --bg-navbar: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #0b1020;
+  --text-secondary: #566072;
+
+  --border-subtle: rgba(13, 17, 38, 0.08);
+  --border-accent: rgba(0, 102, 255, 0.25);
+
+  --shadow-navbar: 0 4px 20px rgba(13, 17, 38, 0.08);
+}
+
+/* Smooth cross-fade when toggling themes */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
@@ -128,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-secondary {
   background: rgba(77, 148, 255, 0.08);
-  color: white;
+  color: var(--text-primary);
   backdrop-filter: blur(15px);
   border: 1.5px solid rgba(77, 148, 255, 0.3);
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);

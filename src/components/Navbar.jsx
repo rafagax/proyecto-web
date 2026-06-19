@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import logoImg from '../assets/logo sin fondo.webp';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,6 +75,8 @@ const Navbar = () => {
             <Link to="/contact" className={`btn btn-contact-header ${location.pathname === '/contact' ? 'active' : ''}`}>
               Contact
             </Link>
+
+            <ThemeToggle />
           </nav>
 
           <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)}>
@@ -88,9 +91,12 @@ const Navbar = () => {
           <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
             <img src={logoImg} alt="Digital Investments Logo" className="mobile-nav-logo" />
           </Link>
-          <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
-            <X size={32} />
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <ThemeToggle />
+            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
+              <X size={32} />
+            </button>
+          </div>
         </div>
 
         <nav className="mobile-menu-nav">
