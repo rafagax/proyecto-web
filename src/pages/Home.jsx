@@ -332,6 +332,14 @@ const Home = () => {
               <div className="service-highlight">A 24/7 AI agent working for you</div>
             </Link>
           </div>
+
+          {/* Section CTA — explore all services */}
+          <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
+            <Link to="/services" className="hero-advisory-btn" style={{ margin: 0 }}>
+              Explore All Our Services
+              <ArrowRight size={17} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -661,6 +669,20 @@ const Home = () => {
                 </p>
               </div>
             ))}
+          </div>
+
+          {/* Section CTA — start the project */}
+          <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
+            <a
+              href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20start%20my%20website%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-advisory-btn"
+              style={{ margin: 0 }}
+            >
+              Start Your Project
+              <ArrowRight size={17} />
+            </a>
           </div>
         </div>
       </section>
