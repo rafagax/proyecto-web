@@ -79,9 +79,12 @@ const Navbar = () => {
             <ThemeToggle />
           </nav>
 
-          <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)}>
-            <Menu size={28} />
-          </button>
+          <div className="navbar-mobile-actions">
+            <ThemeToggle className="theme-toggle-mobile" />
+            <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)}>
+              <Menu size={28} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -91,12 +94,9 @@ const Navbar = () => {
           <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
             <img src={logoImg} alt="Digital Investments Logo" className="mobile-nav-logo" />
           </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <ThemeToggle />
-            <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
-              <X size={32} />
-            </button>
-          </div>
+          <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
+            <X size={32} />
+          </button>
         </div>
 
         <nav className="mobile-menu-nav">

@@ -109,27 +109,30 @@
   transform-origin: left;
 }
 
-/* Theme toggle button */
+/* Theme toggle — subtle icon-only button (not a CTA) */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
   border-radius: 50%;
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+  /* Circle visible from the start */
+  background: rgba(127, 127, 127, 0.1);
+  border: 1px solid var(--border-accent);
   cursor: pointer;
   flex-shrink: 0;
-  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  box-sizing: border-box;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease,
+    transform 0.3s ease;
 }
 
+/* Hover effect: gentle spin + soft ring */
 .theme-toggle:hover {
-  color: var(--accent-cyan);
-  border-color: var(--border-accent);
-  background: rgba(77, 148, 255, 0.08);
-  transform: translateY(-1px);
+  background: rgba(127, 127, 127, 0.16);
+  box-shadow: 0 0 0 4px rgba(127, 127, 127, 0.08);
+  transform: rotate(25deg);
 }
 
 /* Mega Menu Desktop */
@@ -291,9 +294,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(77, 148, 255, 0.1);
+  background: linear-gradient(135deg, #4d94ff 0%, #0066ff 100%);
   color: #fff;
-  border: 1px solid rgba(77, 148, 255, 0.45);
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px rgba(0, 102, 255, 0.35);
   padding: 10px 10px;
   border-radius: 8px;
   font-weight: 600;
@@ -326,6 +330,17 @@
   font-size: 1.5rem;
 }
 
+/* Mobile actions row (theme toggle + hamburger). Hidden on desktop. */
+.navbar-mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.theme-toggle-mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .navbar-links {
     display: none;
@@ -333,6 +348,10 @@
 
   .menu-toggle {
     display: block;
+  }
+
+  .theme-toggle-mobile {
+    display: inline-flex;
   }
 
   .hero-image {
