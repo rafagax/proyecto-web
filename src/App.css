@@ -3348,13 +3348,22 @@
    Web Development & Design — dedicated service page (Stitch-based design)
    ========================================================================== */
 
-/* Hero layout */
+/* Hero layout — desktop: text + CTA stacked on the left, image on the right.
+   Grid areas let us reorder to text → image → CTA on mobile. */
 .wdd-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  column-gap: 4rem;
+  row-gap: 1.5rem;
   align-items: center;
+  grid-template-areas:
+    "text image"
+    "cta  image";
 }
+
+.wdd-hero-text { grid-area: text; }
+.wdd-hero-img { grid-area: image; }
+.wdd-hero-cta { grid-area: cta; }
 
 .wdd-hero-img img {
   width: 100%;
@@ -3730,16 +3739,25 @@
 .wdd-mscroll-dup { display: none; }
 
 @media (max-width: 768px) {
-  /* Clear the fixed navbar. The hero lost its eyebrow, so the h1 needs top
-     space to not tuck under the navbar. */
+  /* Fill the first screen so the next section doesn't peek above the fold,
+     and vertically center the content below the navbar. */
   .hero.wdd-hero-section {
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
     padding-top: 100px !important;
   }
 
-  /* Smaller, cleaner hero title — wraps instead of cutting off on the right */
+  /* Smaller, cleaner hero title — wraps instead of cutting off on the right.
+     white-space + text-align override a global mobile rule (.hero-title) that
+     forced the title to a single centered line (the real cause of the cut). */
   .wdd-hero-section .hero-title {
     font-size: 2.1rem !important;
     line-height: 1.15 !important;
+    white-space: normal !important;
+    text-align: left !important;
     overflow-wrap: break-word;
   }
 
@@ -3799,7 +3817,25 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .wdd-hero,
+  /* Hero stacks as flex column: text → image → CTA (DOM order).
+     Flex (not grid) avoids the image forcing the column wider than the viewport.
+     align-items: stretch is REQUIRED — otherwise items inherit center from the
+     base grid rule and the h1 sizes to its (one-line) content and overflows. */
+  .wdd-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  /* Belt-and-suspenders: keep the title within the column and wrapping */
+  .wdd-hero-text {
+    width: 100%;
+  }
+  .wdd-hero-section .hero-title {
+    max-width: 100%;
+  }
+
   .wdd-two-col {
     grid-template-columns: 1fr;
     gap: 2.5rem;

@@ -98,23 +98,24 @@ const WebDevDesignDetail = ({ otherServices = [] }) => {
         <div className="hero-bg-glow"></div>
         <div className="container">
           <div className="wdd-hero">
-            <div className="reveal-left">
+            <div className="reveal-left wdd-hero-text">
               <h1 className="hero-title" style={{ fontSize: 'clamp(2.4rem, 5vw, 3.6rem)', lineHeight: 1.12, marginBottom: '1.5rem' }}>
                 Web Design &amp; Development That Helps Your <span className="text-gradient">Business Grow</span>
               </h1>
               <p className="hero-subtitle" style={{ fontSize: '1.12rem', lineHeight: 1.7, maxWidth: '560px', margin: 0 }}>
                 We create modern, responsive, and conversion-focused websites designed to represent your brand, attract the right audience, and turn visitors into customers.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>
-                <a href={wa("Hello, I'd like to get a free quote for a website.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                  Get a Free Quote <ArrowRight size={16} />
-                </a>
-              </div>
             </div>
 
-            {/* Hero image */}
+            {/* Hero image — between subtitle and CTA on mobile, on the right on desktop */}
             <div className="reveal-right wdd-hero-img">
               <img src={heroImg} alt="Modern, responsive, conversion-focused website design" fetchPriority="high" decoding="async" />
+            </div>
+
+            <div className="wdd-hero-cta">
+              <a href={wa("Hello, I'd like to get a free quote for a website.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+                Get a Free Quote <ArrowRight size={16} />
+              </a>
             </div>
           </div>
         </div>
