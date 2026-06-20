@@ -3342,6 +3342,13 @@
   align-items: center;
 }
 
+.wdd-hero-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+
 .wdd-pulse {
   width: 8px;
   height: 8px;
@@ -3569,15 +3576,23 @@
 }
 
 .wdd-feature-icon {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
-  color: #fff;
+  color: var(--accent-cyan);
+  background: rgba(77, 148, 255, 0.08);
+  border: 1px solid rgba(77, 148, 255, 0.2);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.wdd-feature-card:hover .wdd-feature-icon {
   background: var(--accent-gradient);
+  color: #fff;
+  border-color: transparent;
 }
 
 /* Advanced features grid */
@@ -3682,6 +3697,36 @@
     linear-gradient(90deg, rgba(77, 148, 255, 0.07) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
+}
+
+/* Mobile auto-scroll carousel — hidden on desktop, shown on mobile */
+.wdd-mscroll { display: none; }
+.wdd-mscroll-dup { display: none; }
+
+@media (max-width: 768px) {
+  /* Hide the desktop grid, show the swipeable carousel instead */
+  .wdd-only-desktop { display: none !important; }
+
+  .wdd-mscroll {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -2rem;
+    padding: 0.5rem 2rem 1rem;
+  }
+  .wdd-mscroll::-webkit-scrollbar { display: none; }
+
+  /* display:contents so the duplicated cards join the same flex row (seamless loop) */
+  .wdd-mscroll-dup { display: contents; }
+
+  .wdd-mscroll .wdd-feature-card,
+  .wdd-mscroll .wdd-process-card {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+  }
 }
 
 /* Responsive */

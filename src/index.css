@@ -233,3 +233,18 @@ html {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
+
+/* Light mode: dark thumb so the scrollbar is visible on a light background */
+html[data-theme="light"] {
+  scrollbar-color: rgba(13, 17, 38, 0.3) transparent;
+}
+html[data-theme="light"]::-webkit-scrollbar-thumb {
+  background: rgba(13, 17, 38, 0.25);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+html[data-theme="light"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 17, 38, 0.42);
+  background-clip: padding-box;
+}
