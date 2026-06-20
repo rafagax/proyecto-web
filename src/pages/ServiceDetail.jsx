@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, Code, TrendingUp, BarChart3, Bot } from 'lucide-react';
 import { updateMetaTags, addServiceSchema } from '../utils/seo';
+import WebDevDesignDetail from './WebDevDesignDetail';
 
 const WHATSAPP_PHONE = '584144735431';
 
@@ -203,6 +204,11 @@ const ServiceDetail = () => {
   }, [activeSlug, service]);
 
   const ctaHref = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(service.ctaMessage)}`;
+
+  // The first service uses a dedicated, richer layout (Stitch-based design).
+  if (activeSlug === 'web-development-design') {
+    return <WebDevDesignDetail service={service} ctaHref={ctaHref} otherServices={otherServices} />;
+  }
 
   return (
     <div className="animate-fade-in">
