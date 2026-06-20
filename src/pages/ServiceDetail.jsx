@@ -3,6 +3,9 @@ import { useParams, Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, Code, TrendingUp, BarChart3, Bot } from 'lucide-react';
 import { updateMetaTags, addServiceSchema } from '../utils/seo';
 import WebDevDesignDetail from './WebDevDesignDetail';
+import SeoDigitalGrowthDetail from './SeoDigitalGrowthDetail';
+import KpiDashboardsDetail from './KpiDashboardsDetail';
+import AiAutomationChatbotsDetail from './AiAutomationChatbotsDetail';
 
 const WHATSAPP_PHONE = '584144735431';
 
@@ -205,9 +208,18 @@ const ServiceDetail = () => {
 
   const ctaHref = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(service.ctaMessage)}`;
 
-  // The first service uses a dedicated, richer layout (Stitch-based design).
+  // Dedicated, richer layouts per service.
   if (activeSlug === 'web-development-design') {
     return <WebDevDesignDetail service={service} ctaHref={ctaHref} otherServices={otherServices} />;
+  }
+  if (activeSlug === 'seo-digital-growth') {
+    return <SeoDigitalGrowthDetail service={service} ctaHref={ctaHref} otherServices={otherServices} />;
+  }
+  if (activeSlug === 'kpi-dashboards') {
+    return <KpiDashboardsDetail service={service} ctaHref={ctaHref} otherServices={otherServices} />;
+  }
+  if (activeSlug === 'ai-automation-chatbots') {
+    return <AiAutomationChatbotsDetail service={service} ctaHref={ctaHref} otherServices={otherServices} />;
   }
 
   return (

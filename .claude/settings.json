@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Read(//c/Users/nombr/Documents/GitHub/pediatra/components/**)",
-      "PowerShell(npx eslint src/components/MobileAutoCarousel.jsx)"
+      "PowerShell(npx eslint src/components/MobileAutoCarousel.jsx)",
+      "PowerShell(npx eslint src/pages/SeoDigitalGrowthDetail.jsx src/pages/ServiceDetail.jsx)",
+      "PowerShell(npx eslint src/pages/KpiDashboardsDetail.jsx src/pages/AiAutomationChatbotsDetail.jsx)"
     ]
   }
 }
