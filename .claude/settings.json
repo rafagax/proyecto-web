@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/nombr/Documents/GitHub/pediatra/components/**)",
+      "PowerShell(npx eslint src/components/MobileAutoCarousel.jsx)"
+    ]
+  }
+}

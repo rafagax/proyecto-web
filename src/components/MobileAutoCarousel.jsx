@@ -8,19 +8,20 @@ import { useRef, useEffect } from 'react';
 // Auto-scroll pauses while the user is touching/hovering and resumes shortly
 // after they let go. No React state is touched in the effect — it only mutates
 // scrollLeft — so it stays cheap and lint-clean.
-const MobileAutoCarousel = ({ children, speed = 0.7 }) => {
+const MobileAutoCarousel = ({ children, speed = 1.1 }) => {
   const ref = useRef(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Only run the auto-scroll on mobile widths.
-    if (!window.matchMedia('(max-width: 768px)').matches) return;
 
     let raf;
     let paused = false;
     let resumeTimer;
 
+    // Continuous leftward marquee. Runs every frame; the scroll only actually
+    // advances when the track is visible and overflowing (mobile only — on
+    // desktop .wdd-mscroll is display:none, so scrollWidth === clientWidth === 0).
     const tick = () => {
       if (!paused && el.scrollWidth > el.clientWidth) {
         el.scrollLeft += speed;
@@ -38,13 +39,15 @@ const MobileAutoCarousel = ({ children, speed = 0.7 }) => {
       clearTimeout(resumeTimer);
       resumeTimer = setTimeout(() => {
         paused = false;
-      }, 2500);
+      }, 800);
     };
 
+    // Touch-only: pause while the user drags, resume shortly after they let go.
+    // (No mouse listeners — mobile browsers fire an emulated mouseenter without a
+    // matching mouseleave, which would leave the marquee paused forever.)
     el.addEventListener('touchstart', pause, { passive: true });
     el.addEventListener('touchend', scheduleResume, { passive: true });
-    el.addEventListener('mouseenter', pause);
-    el.addEventListener('mouseleave', scheduleResume);
+    el.addEventListener('touchcancel', scheduleResume, { passive: true });
 
     raf = requestAnimationFrame(tick);
     return () => {
@@ -52,8 +55,7 @@ const MobileAutoCarousel = ({ children, speed = 0.7 }) => {
       clearTimeout(resumeTimer);
       el.removeEventListener('touchstart', pause);
       el.removeEventListener('touchend', scheduleResume);
-      el.removeEventListener('mouseenter', pause);
-      el.removeEventListener('mouseleave', scheduleResume);
+      el.removeEventListener('touchcancel', scheduleResume);
     };
   }, [speed]);
 

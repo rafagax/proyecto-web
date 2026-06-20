@@ -45,10 +45,10 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
 // site's brand identity (CSS variables, Navbar/Footer, accent gradient).
 const WebDevDesignDetail = ({ otherServices = [] }) => {
   const customPoints = [
-    'Unique design aligned with your brand identity',
-    'Clear messaging and professional structure',
-    'Built to support conversions and business growth',
-    'Flexible layout for future updates and expansion',
+    'Unique design aligned with your brand',
+    'Clear messaging and structure',
+    'Built to convert and grow',
+    'Flexible for future updates',
   ];
 
   const responsivePoints = [
@@ -129,7 +129,7 @@ const WebDevDesignDetail = ({ otherServices = [] }) => {
                 Custom Websites Built Around <span className="text-gradient">Your Brand</span>
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                Your website should be more than just an online presence. It should reflect your brand, communicate your value clearly, and guide visitors toward taking action. We design and develop custom websites tailored to your business goals, audience, and industry.
+                More than an online presence — we design and develop custom websites that reflect your brand, communicate your value clearly, and turn visitors into customers.
               </p>
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {customPoints.map((p) => <li key={p}>{p}</li>)}
@@ -262,7 +262,7 @@ const WebDevDesignDetail = ({ otherServices = [] }) => {
             {process.map((p) => <ProcessCard key={p.n} {...p} reveal />)}
           </div>
           {/* Mobile: swipeable auto-scrolling carousel */}
-          <MobileAutoCarousel speed={0.6}>
+          <MobileAutoCarousel speed={0.95}>
             {process.map((p) => <ProcessCard key={p.n} {...p} />)}
           </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>

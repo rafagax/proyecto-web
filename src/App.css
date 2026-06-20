@@ -3790,28 +3790,42 @@
     padding-bottom: 1.25rem !important;
   }
 
+  /* Shorter image panels on mobile so two-column sections fit the screen */
+  .wdd-imgpanel {
+    aspect-ratio: 16 / 10;
+  }
+
   /* Hide the desktop grid, show the swipeable carousel instead */
   .wdd-only-desktop { display: none !important; }
 
+  /* Smooth continuous marquee (no snap), full-bleed, with faded edges —
+     matches the reference site's card-carousel style. */
   .wdd-mscroll {
     display: flex;
-    gap: 1rem;
+    gap: 1.25rem;
     overflow-x: auto;
-    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     margin: 0 -2rem;
-    padding: 0.5rem 2rem 1rem;
+    /* vertical padding so card shadows / hover lift aren't clipped */
+    padding: 1rem 0;
+    /* fade the cards in/out at the left and right edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
   }
   .wdd-mscroll::-webkit-scrollbar { display: none; }
 
   /* display:contents so the duplicated cards join the same flex row (seamless loop) */
   .wdd-mscroll-dup { display: contents; }
 
+  /* Fixed-width cards (consistent size + peek), like the reference.
+     Stronger, clearly visible frame around each card. */
   .wdd-mscroll .wdd-feature-card,
   .wdd-mscroll .wdd-process-card {
-    flex: 0 0 78%;
-    scroll-snap-align: center;
+    flex: 0 0 300px;
+    user-select: none;
+    border: 1.5px solid var(--border-accent);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   }
 }
 
@@ -3838,7 +3852,7 @@
 
   .wdd-two-col {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
 
   .wdd-why-card { padding: 1.75rem; }
