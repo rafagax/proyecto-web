@@ -55,7 +55,7 @@
 
 @media (max-width: 768px) {
   .header-logo {
-    height: 70px;
+    height: 58px;
   }
 }
 
@@ -1487,6 +1487,20 @@
 .floating-whatsapp:hover {
   animation-play-state: paused;
   transform: scale(1.1) translateY(-5px);
+}
+
+/* Smaller, less invasive floating WhatsApp on mobile */
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    width: 56px;
+    height: 56px;
+    bottom: 16px;
+    right: 16px;
+  }
+  .floating-whatsapp svg {
+    width: 26px;
+    height: 26px;
+  }
 }
 
 @keyframes anti-gravity {
@@ -3346,7 +3360,19 @@
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 18px;
+  border-radius: 22px;
+}
+
+/* Let grid items shrink below their content/image size so nothing forces the
+   column wider than the viewport (prevents horizontal overflow on mobile). */
+.wdd-hero > *,
+.wdd-two-col > * {
+  min-width: 0;
+}
+
+.wdd-hero-img img,
+.wdd-imgpanel img {
+  max-width: 100%;
 }
 
 .wdd-pulse {
@@ -3704,6 +3730,48 @@
 .wdd-mscroll-dup { display: none; }
 
 @media (max-width: 768px) {
+  /* Clear the fixed navbar. The hero lost its eyebrow, so the h1 needs top
+     space to not tuck under the navbar. */
+  .hero.wdd-hero-section {
+    padding-top: 100px !important;
+  }
+
+  /* Smaller, cleaner hero title — wraps instead of cutting off on the right */
+  .wdd-hero-section .hero-title {
+    font-size: 2.1rem !important;
+    line-height: 1.15 !important;
+    overflow-wrap: break-word;
+  }
+
+  /* Left-aligned, compact subtitle (override the global justified style) */
+  .wdd-page .hero-subtitle {
+    text-align: left !important;
+    font-size: 0.95rem !important;
+    line-height: 1.55 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Bring the hero image closer to the CTA */
+  .wdd-page .wdd-hero {
+    gap: 1.25rem;
+  }
+
+  /* Lighter hero CTA button */
+  .wdd-hero-section .hero-advisory-btn {
+    padding: 0.7rem 1.4rem !important;
+  }
+
+  /* Tighter vertical rhythm between sections on mobile (default is 5rem each side) */
+  .wdd-page .section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .wdd-page .hero.wdd-hero-section {
+    padding-bottom: 1.25rem !important;
+  }
+
   /* Hide the desktop grid, show the swipeable carousel instead */
   .wdd-only-desktop { display: none !important; }
 

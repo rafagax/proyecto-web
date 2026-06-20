@@ -247,26 +247,27 @@
   justify-content: center;
 }
 
-@media (max-width: 480px) {
-  /* Move chatbot to bottom-right and use compact sizes */
+@media (max-width: 768px) {
+  /* Keep the chatbot bottom-left (WhatsApp lives bottom-right) and make it
+     discreet so it doesn't dominate the screen or overlap content. */
   #ka-chatbot-container {
-    left: auto;
-    right: 12px;
-    bottom: 12px;
+    left: 14px;
+    right: auto;
+    bottom: 14px;
     z-index: 1400;
   }
 
   #ka-chatbot-window {
-    width: 320px;
-    height: 480px;
-    left: auto;
-    right: 0;
-    bottom: 72px;
+    width: min(320px, calc(100vw - 28px));
+    height: 470px;
+    left: 0;
+    right: auto;
+    bottom: 64px;
   }
 
-  /* Smaller chatbot toggle for small devices */
+  /* Smaller, more discreet chatbot toggle */
   #ka-chatbot-toggle {
-    width: 44px;
-    height: 44px;
+    width: 56px;
+    height: 56px;
   }
 }

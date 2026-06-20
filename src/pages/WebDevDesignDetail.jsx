@@ -92,9 +92,9 @@ const WebDevDesignDetail = ({ otherServices = [] }) => {
   ];
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in wdd-page">
       {/* 1. Hero */}
-      <section className="hero" style={{ paddingTop: '170px', paddingBottom: '4rem', overflow: 'hidden' }}>
+      <section className="hero wdd-hero-section" style={{ paddingTop: '170px', paddingBottom: '4rem', overflow: 'hidden' }}>
         <div className="hero-bg-glow"></div>
         <div className="container">
           <div className="wdd-hero">
