@@ -11,8 +11,9 @@ import {
 import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import kpiDashImg from '../assets/kpidasboard.webp';
-import financeImg from '../assets/imagefinanciera.webp';
+import financeImg from '../assets/kpi financiero.webp';
 import callCenterImg from '../assets/kpi call center.webp';
+import operationalImg from '../assets/kpi operational.webp';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
@@ -30,79 +31,6 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
     <div className="wdd-process-n">{n}</div>
     <h3 style={{ fontSize: '1.15rem', margin: '0.75rem 0 0.5rem', color: 'var(--text-primary)' }}>{title}</h3>
     <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 }}>{text}</p>
-  </div>
-);
-
-// Reusable panel styling for the CSS mockups.
-const panelStyle = {
-  borderRadius: 20,
-  border: '1px solid var(--border-subtle)',
-  background: 'radial-gradient(circle at 30% 20%, rgba(77,148,255,0.12), var(--bg-card) 70%)',
-  padding: '1.75rem',
-};
-
-const statTile = {
-  flex: 1,
-  padding: '14px 16px',
-  borderRadius: 12,
-  background: 'var(--bg-card)',
-  border: '1px solid var(--border-subtle)',
-};
-
-const barFill = 'linear-gradient(90deg, #4d94ff, #0066ff)';
-
-// Performance trend mockup — SVG area/line chart + channel breakdown (relative
-// bars only, no result claims).
-const trendChannels = [
-  { label: 'Organic', w: '74%' },
-  { label: 'Paid ads', w: '48%' },
-  { label: 'Direct', w: '58%' },
-];
-
-const TrendPanel = () => (
-  <div role="img" aria-label="Executive dashboard showing a performance trend over the last six months and a breakdown of traffic channels" style={panelStyle}>
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-      <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>Performance trend</span>
-      <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5, fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700 }}>
-        <TrendingUp size={13} /> Last 6 months
-      </span>
-    </div>
-
-    <div style={{ padding: 14, borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', marginBottom: 18 }}>
-      <svg viewBox="0 0 320 130" width="100%" style={{ display: 'block' }} preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="kpiTrendFill" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#4d94ff" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#4d94ff" stopOpacity="0" />
-          </linearGradient>
-          <linearGradient id="kpiTrendLine" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#4d94ff" />
-            <stop offset="100%" stopColor="#0066ff" />
-          </linearGradient>
-        </defs>
-        {/* subtle grid */}
-        {[30, 60, 90].map((y) => (
-          <line key={y} x1="10" y1={y} x2="310" y2={y} stroke="var(--border-subtle)" strokeWidth="1" />
-        ))}
-        <path d="M10,95 L70,80 L130,85 L190,60 L250,50 L310,30 L310,120 L10,120 Z" fill="url(#kpiTrendFill)" />
-        <path d="M10,95 L70,80 L130,85 L190,60 L250,50 L310,30" fill="none" stroke="url(#kpiTrendLine)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        {[[10, 95], [70, 80], [130, 85], [190, 60], [250, 50], [310, 30]].map(([cx, cy]) => (
-          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="3.5" fill="#0a0a10" stroke="#4d94ff" strokeWidth="2" />
-        ))}
-      </svg>
-    </div>
-
-    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 10 }}>Traffic by channel</div>
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 9 }}>
-      {trendChannels.map((c) => (
-        <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span style={{ fontSize: '0.74rem', color: 'var(--text-primary)', width: 80, flexShrink: 0 }}>{c.label}</span>
-          <div style={{ flex: 1, height: 7, borderRadius: 5, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: c.w, background: barFill, borderRadius: 5 }}></div>
-          </div>
-        </div>
-      ))}
-    </div>
   </div>
 );
 
@@ -204,8 +132,8 @@ const KpiDashboardsDetail = ({ otherServices = [] }) => {
               </a>
             </div>
             {/* Financial / analytics image */}
-            <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src={financeImg} alt="Financial analytics report with charts and business performance data" loading="lazy" />
+            <div className="reveal-right wdd-col-img">
+              <img src={financeImg} alt="Financial analytics report with charts and business performance data" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
@@ -229,22 +157,9 @@ const KpiDashboardsDetail = ({ otherServices = [] }) => {
                 Build My Dashboard <ArrowRight size={16} />
               </a>
             </div>
-            {/* CSS KPI tiles mockup */}
-            <div className="reveal-right wdd-col-img" style={panelStyle} role="img" aria-label="Dashboard showing traffic, leads, revenue and conversion metrics in summary tiles">
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-                {[
-                  { label: 'Traffic', value: '12.4k', delta: '▲ 32%' },
-                  { label: 'Leads', value: '248', delta: '▲ 18%' },
-                  { label: 'Revenue', value: '$9.1k', delta: '▲ 21%' },
-                  { label: 'Conversion', value: '6.4%', delta: '▲ 1.2 pts' },
-                ].map((t) => (
-                  <div key={t.label} style={statTile}>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>{t.label}</div>
-                    <div style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>{t.value}</div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--accent-cyan)', fontWeight: 700, marginTop: 6 }}>{t.delta}</div>
-                  </div>
-                ))}
-              </div>
+            {/* Call center / dashboard image */}
+            <div className="reveal-right wdd-col-img">
+              <img src={callCenterImg} alt="Customer support call center team monitoring business KPIs on screens" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
@@ -268,9 +183,9 @@ const KpiDashboardsDetail = ({ otherServices = [] }) => {
                 Start Tracking What Matters <ArrowRight size={16} />
               </a>
             </div>
-            {/* Performance trend mockup */}
+            {/* Operational KPI image */}
             <div className="reveal-right wdd-col-img">
-              <TrendPanel />
+              <img src={operationalImg} alt="Operational KPI dashboard showing performance trends and business metrics" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>

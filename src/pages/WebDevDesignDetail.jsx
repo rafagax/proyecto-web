@@ -187,8 +187,8 @@ const WebDevDesignDetail = ({ otherServices = [] }) => {
                 Build Your Online Store <ArrowRight size={16} />
               </a>
             </div>
-            <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src={storeImg} alt="Ecommerce online store dashboard and product layout" loading="lazy" onError={onImgError} />
+            <div className="reveal-right wdd-col-img">
+              <img src={storeImg} alt="Ecommerce online store dashboard and product layout" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
