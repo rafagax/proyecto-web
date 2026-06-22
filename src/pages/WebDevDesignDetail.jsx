@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import heroImg from '../assets/herodevelop12.webp';
 import responsiveImg from '../assets/developwebhero.webp';
+import storeImg from '../assets/tiendachica.webp';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
 
 const WHATSAPP_PHONE = '584144735431';
@@ -187,7 +188,7 @@ const WebDevDesignDetail = ({ otherServices = [] }) => {
               </a>
             </div>
             <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1100&q=80&fit=crop" alt="Ecommerce online store dashboard and product layout" loading="lazy" onError={onImgError} />
+              <img src={storeImg} alt="Ecommerce online store dashboard and product layout" loading="lazy" onError={onImgError} />
             </div>
           </div>
         </div>

@@ -1119,6 +1119,31 @@
   box-shadow: 0 8px 20px rgba(77, 148, 255, 0.2);
 }
 
+/* ==============================
+   Services page (/services) only:
+   show the highlighted outline by DEFAULT (no hover needed),
+   and use a different effect on hover (soft fill + glow, no lift).
+   ============================== */
+.svc-page-card {
+  border-color: var(--border-accent);
+  box-shadow: 0 0 0 1px rgba(77, 148, 255, 0.12),
+    0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Top accent line stays visible from the start */
+.svc-page-card::after {
+  transform: scaleX(1);
+}
+
+/* Hover = a distinct effect: brighter border, gentle inner fill and glow */
+.svc-page-card:hover {
+  transform: none;
+  border-color: rgba(77, 148, 255, 0.7);
+  background: rgba(77, 148, 255, 0.05);
+  box-shadow: 0 0 0 1px rgba(77, 148, 255, 0.35),
+    0 0 35px rgba(77, 148, 255, 0.18);
+}
+
 /* Why Choose Us — Benefit Cards */
 .benefit-grid {
   display: grid;

@@ -1,22 +1,24 @@
 import {
   ArrowRight,
   Check,
+  CheckCheck,
   Bot,
   MessageCircle,
   Target,
   CalendarClock,
   MessageSquare,
   Headset,
+  Phone,
+  Video,
+  LayoutGrid,
+  DollarSign,
+  Volume2,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
-
-const onImgError = (e) => {
-  e.currentTarget.style.display = 'none';
-};
 
 const FeatureCard = ({ Icon, title, text, reveal = false }) => (
   <div className={`wdd-feature-card${reveal ? ' reveal-card' : ''}`}>
@@ -41,32 +43,104 @@ const panelStyle = {
   padding: '1.75rem',
 };
 
-const bubbleIn = {
-  alignSelf: 'flex-start',
-  maxWidth: '82%',
-  padding: '11px 15px',
-  borderRadius: '16px 16px 16px 4px',
-  background: 'var(--bg-card)',
-  border: '1px solid var(--border-subtle)',
-  color: 'var(--text-primary)',
-  fontSize: '0.85rem',
-  lineHeight: 1.45,
-};
+// Classic WhatsApp-style chat mockup (green theme). Rendered as a vector/CSS
+// "phone screen" so it looks identical in light or dark site themes, stays
+// crisp at any size, and adds no image weight. `aria-label` provides the
+// accessible/SEO description in place of an <img alt>.
+const WaChat = ({ messages, label }) => (
+  <div
+    role="img"
+    aria-label={label}
+    style={{
+      width: '100%',
+      maxWidth: 380,
+      margin: '0 auto',
+      borderRadius: 18,
+      overflow: 'hidden',
+      border: '1px solid var(--border-subtle)',
+      boxShadow: '0 18px 45px rgba(0,0,0,0.30)',
+    }}
+  >
+    {/* Header */}
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 14px', background: '#075E54' }}>
+      <div style={{ width: 38, height: 38, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+        <Bot size={20} />
+      </div>
+      <div style={{ lineHeight: 1.25 }}>
+        <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem' }}>AI Assistant</div>
+        <div style={{ color: '#a7d7cf', fontSize: '0.72rem' }}>online</div>
+      </div>
+      <div style={{ marginLeft: 'auto', display: 'flex', gap: 14, color: '#cfe9e3' }}>
+        <Video size={16} />
+        <Phone size={16} />
+      </div>
+    </div>
 
-const bubbleOut = {
-  alignSelf: 'flex-end',
-  maxWidth: '82%',
-  padding: '11px 15px',
-  borderRadius: '16px 16px 4px 16px',
-  background: 'linear-gradient(135deg, #4d94ff, #0066ff)',
-  color: '#05050a',
-  fontSize: '0.85rem',
-  fontWeight: 500,
-  lineHeight: 1.45,
-};
+    {/* Conversation */}
+    <div style={{ background: '#ECE5DD', padding: '16px 12px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+      {messages.map((m, i) => (
+        <div
+          key={i}
+          style={{
+            alignSelf: m.out ? 'flex-end' : 'flex-start',
+            maxWidth: '82%',
+            padding: '6px 9px 17px',
+            borderRadius: m.out ? '10px 10px 2px 10px' : '10px 10px 10px 2px',
+            background: m.out ? '#DCF8C6' : '#FFFFFF',
+            color: '#111B21',
+            fontSize: '0.82rem',
+            lineHeight: 1.4,
+            position: 'relative',
+            boxShadow: '0 1px 1px rgba(0,0,0,0.10)',
+          }}
+        >
+          {m.text}
+          <span style={{ position: 'absolute', right: 9, bottom: 4, fontSize: '0.6rem', color: '#667781', display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+            {m.time}
+            {m.out && <CheckCheck size={13} color="#34B7F1" />}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const trainItems = [
+  { Icon: LayoutGrid, label: 'Your services & offerings' },
+  { Icon: DollarSign, label: 'Pricing & packages' },
+  { Icon: MessageSquare, label: 'Frequently asked questions' },
+  { Icon: Volume2, label: 'Your brand tone of voice' },
+  { Icon: Headset, label: 'Human handoff rules' },
+];
+
+// "Trained on your business" panel — a config-style card showing the sources
+// the assistant is trained on (no photos, no invented metrics).
+const TrainPanel = () => (
+  <div role="img" aria-label="Panel showing an AI assistant trained on the business's services, pricing, FAQs, tone of voice and human handoff rules" style={panelStyle}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
+      <div style={{ width: 40, height: 40, borderRadius: 12, background: 'var(--accent-gradient)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+        <Bot size={22} />
+      </div>
+      <div style={{ lineHeight: 1.25 }}>
+        <div style={{ fontWeight: 700, color: 'var(--text-primary)', fontSize: '0.95rem' }}>AI Assistant</div>
+        <div style={{ fontSize: '0.74rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>Trained on your business</div>
+      </div>
+    </div>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+      {trainItems.map(({ Icon, label }) => (
+        <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '11px 13px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
+          <span style={{ display: 'inline-flex', color: 'var(--accent-cyan)', flexShrink: 0 }}><Icon size={18} /></span>
+          <span style={{ color: 'var(--text-primary)', fontSize: '0.88rem', fontWeight: 500 }}>{label}</span>
+          <span style={{ marginLeft: 'auto', display: 'inline-flex', color: '#25D366', flexShrink: 0 }}><Check size={16} /></span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 // Dedicated landing page for "AI Automation & Chatbots" — same theme/structure
-// as the other service pages, with AI-specific content and CSS chat mockups.
+// as the other service pages, with AI-specific content and WhatsApp-style chat
+// mockups.
 const AiAutomationChatbotsDetail = ({ otherServices = [] }) => {
   const fastPoints = [
     'Instant replies, 24/7',
@@ -130,16 +204,17 @@ const AiAutomationChatbotsDetail = ({ otherServices = [] }) => {
               </p>
             </div>
 
-            {/* Hero visual — CSS chat mockup */}
-            <div className="reveal-right wdd-hero-img" style={panelStyle}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={bubbleIn}>Hi! Do you have availability this week? 👋</div>
-                <div style={bubbleOut}>Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅</div>
-                <div style={bubbleOut}>Great — you're booked. Here's a quick price list meanwhile 📋</div>
-                <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                  <Bot size={14} /> AI agent replied in 8 seconds
-                </div>
-              </div>
+            {/* Hero visual — WhatsApp chat mockup */}
+            <div className="reveal-right wdd-hero-img">
+              <WaChat
+                label="WhatsApp chat showing an AI assistant answering a customer and booking an appointment automatically"
+                messages={[
+                  { text: 'Hi! Are you open this week? 👋', time: '10:02' },
+                  { text: "Hi! Yes — we're open Mon–Sat. Want me to book you in?", time: '10:02', out: true },
+                  { text: 'Yes, Thursday afternoon', time: '10:03' },
+                  { text: "Done ✅ You're booked for Thursday at 3:00 PM.", time: '10:03', out: true },
+                ]}
+              />
             </div>
 
             <div className="wdd-hero-cta">
@@ -169,8 +244,16 @@ const AiAutomationChatbotsDetail = ({ otherServices = [] }) => {
                 Respond Faster, Sell More <ArrowRight size={16} />
               </a>
             </div>
-            <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=1100&q=80&fit=crop" alt="Customer messaging on a smartphone" loading="lazy" onError={onImgError} />
+            <div className="reveal-right wdd-col-img">
+              <WaChat
+                label="WhatsApp chat showing an AI assistant instantly replying to a new lead and qualifying them"
+                messages={[
+                  { text: 'Hi, do you do kitchen remodels?', time: '18:41' },
+                  { text: 'Yes! Could you tell me your city and budget so I can help faster?', time: '18:41', out: true },
+                  { text: 'Miami, around $8k', time: '18:42' },
+                  { text: "Perfect — I've saved your details and a specialist will follow up shortly. ✅", time: '18:42', out: true },
+                ]}
+              />
             </div>
           </div>
         </div>
@@ -194,17 +277,17 @@ const AiAutomationChatbotsDetail = ({ otherServices = [] }) => {
                 Automate My WhatsApp <ArrowRight size={16} />
               </a>
             </div>
-            {/* CSS chat snippet mockup */}
-            <div className="reveal-right wdd-col-img" style={panelStyle}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={bubbleIn}>Do you open on Saturdays? 🙌</div>
-                <div style={bubbleOut}>Yes! Saturdays 9am–2pm. Want me to reserve a slot for you?</div>
-                <div style={bubbleIn}>Perfect, 10am please.</div>
-                <div style={bubbleOut}>Done ✅ You're booked for Saturday at 10am. See you then!</div>
-                <div style={{ alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                  <CalendarClock size={14} /> Appointment booked automatically
-                </div>
-              </div>
+            {/* WhatsApp chat mockup — booking + handoff */}
+            <div className="reveal-right wdd-col-img">
+              <WaChat
+                label="WhatsApp chat showing an AI assistant reserving a Saturday appointment and handing off to the team"
+                messages={[
+                  { text: 'Do you open on Saturdays? 🙌', time: '09:15' },
+                  { text: 'Yes! Saturdays 9 AM–2 PM. Want me to reserve a slot?', time: '09:15', out: true },
+                  { text: '10 AM please', time: '09:16' },
+                  { text: "Reserved ✅ I'll connect you with our team to confirm.", time: '09:16', out: true },
+                ]}
+              />
             </div>
           </div>
         </div>
@@ -228,8 +311,8 @@ const AiAutomationChatbotsDetail = ({ otherServices = [] }) => {
                 Train My AI Assistant <ArrowRight size={16} />
               </a>
             </div>
-            <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1100&q=80&fit=crop" alt="AI assistant supporting a business conversation" loading="lazy" onError={onImgError} />
+            <div className="reveal-right wdd-col-img">
+              <TrainPanel />
             </div>
           </div>
         </div>

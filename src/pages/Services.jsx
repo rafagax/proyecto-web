@@ -83,7 +83,7 @@ const Services = () => {
             {services.map((service, idx) => (
               <div
                 key={idx}
-                className="service-card"
+                className="service-card svc-page-card"
                 style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
               >
                 <div
