@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import kpiDashImg from '../assets/kpidasboard.webp';
 import financeImg from '../assets/imagefinanciera.webp';
+import callCenterImg from '../assets/kpi call center.webp';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
