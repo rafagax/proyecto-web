@@ -10,7 +10,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
+import seoMainImg from '../assets/seoimagen.webp';
 import seoHeroImg from '../assets/seo imagen setion.webp';
+import seoLocalImg from '../assets/servicioseoimagenes.webp';
+import seoTechImg from '../assets/seoimagen3.webp';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
@@ -110,7 +113,7 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
               className="reveal-right wdd-hero-img"
               style={{ borderRadius: 22, overflow: 'hidden', background: 'radial-gradient(circle at 30% 20%, rgba(77,148,255,0.18), var(--bg-card) 70%)' }}
             >
-              <img src={seoHeroImg} alt="SEO analytics dashboard showing search growth" fetchPriority="high" decoding="async" onError={onImgError} />
+              <img src={seoMainImg} alt="SEO analytics dashboard showing search growth" fetchPriority="high" decoding="async" onError={onImgError} />
             </div>
 
             <div className="wdd-hero-cta">
@@ -140,8 +143,8 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
                 Start Ranking Higher <ArrowRight size={16} />
               </a>
             </div>
-            <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1100&q=80&fit=crop" alt="Search analytics and keyword research on a laptop" loading="lazy" onError={onImgError} />
+            <div className="reveal-right wdd-col-img">
+              <img src={seoHeroImg} alt="Search analytics and keyword research on a laptop" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
@@ -165,24 +168,9 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
                 Improve My Rankings <ArrowRight size={16} />
               </a>
             </div>
-            {/* Search-ranking mockup (CSS) — on-theme and always renders */}
-            <div
-              className="reveal-right wdd-col-img"
-              style={{ borderRadius: 20, border: '1px solid var(--border-subtle)', background: 'radial-gradient(circle at 30% 20%, rgba(77,148,255,0.12), var(--bg-card) 70%)', padding: '2.5rem 2rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              <div style={{ width: '100%', maxWidth: 320 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px', borderRadius: 30, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', marginBottom: 28 }}>
-                  <Search size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>best [your service] near me</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12, height: 130 }}>
-                  {[40, 58, 74, 100].map((h, i) => (
-                    <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '6px 6px 0 0', background: i === 3 ? 'var(--accent-gradient)' : 'var(--border-subtle)', position: 'relative' }}>
-                      {i === 3 && <span style={{ position: 'absolute', top: -26, left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>#1</span>}
-                    </div>
-                  ))}
-                </div>
-              </div>
+            {/* Technical SEO image */}
+            <div className="reveal-right wdd-col-img">
+              <img src={seoTechImg} alt="Technical SEO performance and search ranking improvements" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
@@ -206,8 +194,8 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
                 Boost My Local SEO <ArrowRight size={16} />
               </a>
             </div>
-            <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1100&q=80&fit=crop" alt="Local search growth and performance analytics" loading="lazy" onError={onImgError} />
+            <div className="reveal-right wdd-col-img">
+              <img src={seoLocalImg} alt="Local search growth and performance analytics" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
