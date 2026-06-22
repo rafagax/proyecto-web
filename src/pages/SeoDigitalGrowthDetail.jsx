@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
+import seoHeroImg from '../assets/seo imagen setion.webp';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
@@ -109,7 +110,7 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
               className="reveal-right wdd-hero-img"
               style={{ borderRadius: 22, overflow: 'hidden', background: 'radial-gradient(circle at 30% 20%, rgba(77,148,255,0.18), var(--bg-card) 70%)' }}
             >
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80&fit=crop" alt="SEO analytics dashboard showing search growth" fetchPriority="high" decoding="async" onError={onImgError} />
+              <img src={seoHeroImg} alt="SEO analytics dashboard showing search growth" fetchPriority="high" decoding="async" onError={onImgError} />
             </div>
 
             <div className="wdd-hero-cta">
