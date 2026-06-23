@@ -384,7 +384,7 @@ const Home = () => {
                   width: '90px',
                   height: '90px',
                   borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(77, 148, 255, 0.2) 0%, rgba(5, 5, 10, 0.9) 70%)',
+                  background: 'radial-gradient(circle, rgba(120, 180, 255, 0.95) 0%, rgba(0, 92, 230, 0.95) 72%)',
                   border: '2px dashed var(--accent-cyan)',
                   display: 'flex',
                   alignItems: 'center',
@@ -392,7 +392,7 @@ const Home = () => {
                   boxShadow: '0 0 30px rgba(77, 148, 255, 0.3)',
                   zIndex: 10
                 }}>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: 'var(--text-primary)', textAlign: 'center' }}>SYSTEM</span>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#ffffff', textAlign: 'center' }}>SYSTEM</span>
                 </div>
 
                 {/* Rotating Orbit Container */}
@@ -407,7 +407,7 @@ const Home = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      boxShadow: '0 6px 20px rgba(0, 102, 255, 0.15)',
                       whiteSpace: 'nowrap'
                     }}>
                       <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
@@ -425,7 +425,7 @@ const Home = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      boxShadow: '0 6px 20px rgba(0, 102, 255, 0.15)',
                       whiteSpace: 'nowrap'
                     }}>
                       <TrendingUp size={16} style={{ color: 'var(--accent-cyan)' }} />
@@ -443,7 +443,7 @@ const Home = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      boxShadow: '0 6px 20px rgba(0, 102, 255, 0.15)',
                       whiteSpace: 'nowrap'
                     }}>
                       <BarChart3 size={16} style={{ color: 'var(--accent-cyan)' }} />
@@ -461,7 +461,7 @@ const Home = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '8px',
-                      boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                      boxShadow: '0 6px 20px rgba(0, 102, 255, 0.15)',
                       whiteSpace: 'nowrap'
                     }}>
                       <Bot size={16} style={{ color: 'var(--accent-cyan)' }} />

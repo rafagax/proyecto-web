@@ -18,7 +18,7 @@ const SunIcon = ({ size = 18 }) => (
 );
 
 // Custom moon: clean filled crescent.
-const MoonIcon = ({ size = 18, fill = '#566072' }) => (
+const MoonIcon = ({ size = 18, fill = '#0066ff' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M20.5 14.8A8.6 8.6 0 1 1 9.2 3.5a6.7 6.7 0 0 0 11.3 11.3z" fill={fill} />
   </svg>

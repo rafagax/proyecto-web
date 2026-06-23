@@ -119,7 +119,7 @@
   padding: 0;
   border-radius: 50%;
   /* Circle visible from the start */
-  background: rgba(127, 127, 127, 0.1);
+  background: rgba(77, 148, 255, 0.12);
   border: 1px solid var(--border-accent);
   cursor: pointer;
   flex-shrink: 0;
@@ -130,8 +130,8 @@
 
 /* Hover effect: gentle spin + soft ring */
 .theme-toggle:hover {
-  background: rgba(127, 127, 127, 0.16);
-  box-shadow: 0 0 0 4px rgba(127, 127, 127, 0.08);
+  background: rgba(77, 148, 255, 0.18);
+  box-shadow: 0 0 0 4px rgba(77, 148, 255, 0.12);
   transform: rotate(25deg);
 }
 
@@ -3762,6 +3762,13 @@
   overflow: hidden;
   background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(0, 38, 97, 0.55) 100%);
   border: 1px solid rgba(77, 148, 255, 0.3);
+}
+
+/* Light mode: airy, light-blue card (matches the home pricing teaser) instead
+   of the dark navy gradient. */
+[data-theme="light"] .wdd-cta {
+  background: linear-gradient(180deg, rgba(77, 148, 255, 0.08) 0%, rgba(77, 148, 255, 0.02) 100%);
+  border-color: rgba(77, 148, 255, 0.22);
 }
 
 .wdd-cta-grid {
