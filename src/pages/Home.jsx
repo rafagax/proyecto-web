@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Search, Gauge, MonitorSmartphone, SearchCheck, ListChecks, Goal, Headset } from 'lucide-react';
 import heroImg from '../assets/Hero2.webp';
+import webDevImg from '../assets/imagenwebdevelop.webp';
+import kpiHomeImg from '../assets/kpidasboardhome.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
@@ -507,7 +509,7 @@ const Home = () => {
             <div className="feature-visual feature-visual-image reveal-right">
               {/* Premium corporate website image */}
               <img
-                src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900&h=650&fit=crop&q=80"
+                src={webDevImg}
                 alt="Premium corporate website design on screen"
                 loading="lazy"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
@@ -577,19 +579,30 @@ const Home = () => {
               </Link>
             </div>
             <div className="feature-visual reveal-right">
-              {/* WhatsApp chat mockup */}
-              <div style={{ width: '82%', maxWidth: '320px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div className="chat-bubble" style={{ transitionDelay: '0.05s', alignSelf: 'flex-start', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 16px 4px', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.85rem', lineHeight: 1.45 }}>
-                  Hi! Do you have availability this week? 👋
+              {/* WhatsApp-style chat mockup (classic green) */}
+              <div role="img" aria-label="WhatsApp chat showing an AI assistant answering a customer and booking an appointment" style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 13px', background: '#075E54' }}>
+                  <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+                    <Bot size={18} />
+                  </div>
+                  <div style={{ lineHeight: 1.2 }}>
+                    <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.85rem' }}>AI Assistant</div>
+                    <div style={{ color: '#a7d7cf', fontSize: '0.68rem' }}>online</div>
+                  </div>
                 </div>
-                <div className="chat-bubble" style={{ transitionDelay: '0.15s', alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
-                  Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
-                </div>
-                <div className="chat-bubble" style={{ transitionDelay: '0.25s', alignSelf: 'flex-end', maxWidth: '82%', padding: '11px 15px', borderRadius: '16px 16px 4px 16px', background: 'linear-gradient(135deg, #4d94ff, #0066ff)', color: '#05050a', fontSize: '0.85rem', fontWeight: 500, lineHeight: 1.45 }}>
-                  Great — you're booked. Here's a quick price list meanwhile 📋
-                </div>
-                <div className="chat-bubble" style={{ transitionDelay: '0.35s', alignSelf: 'flex-start', display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                  <Bot size={14} /> AI agent replied in 8 seconds
+                <div style={{ background: '#ECE5DD', padding: '14px 11px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 10px 2px', background: '#fff', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
+                    Hi! Do you have availability this week? 👋
+                    <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02</span>
+                  </div>
+                  <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
+                    Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
+                    <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
+                  </div>
+                  <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
+                    Great — you're booked. Here's a quick price list meanwhile 📋
+                    <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:03 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -615,32 +628,8 @@ const Home = () => {
               </Link>
             </div>
             <div className="feature-visual reveal-right">
-              {/* KPI dashboard mockup */}
-              <div style={{ width: '86%', maxWidth: '360px', display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div style={{ display: 'flex', gap: 12 }}>
-                  <div style={{ flex: 1, padding: '14px 16px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>Leads</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>248</div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700, marginTop: 6 }}>▲ 18% this month</div>
-                  </div>
-                  <div style={{ flex: 1, padding: '14px 16px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', marginBottom: 6 }}>Conversion</div>
-                    <div style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-primary)', lineHeight: 1 }}>6.4%</div>
-                    <div style={{ fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700, marginTop: 6 }}>▲ 1.2 pts</div>
-                  </div>
-                </div>
-                <div style={{ padding: '16px', borderRadius: 12, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Leads by month</span>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: '0.72rem', color: 'var(--accent-cyan)', fontWeight: 700 }}><TrendingUp size={13} /> Trending up</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, height: 76 }}>
-                    {[42, 55, 48, 66, 72, 100].map((h, i) => (
-                      <div key={i} className="bar-rise" style={{ flex: 1, height: `${h}%`, transitionDelay: `${i * 25}ms`, borderRadius: '5px 5px 0 0', background: i === 5 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'var(--border-subtle)' }}></div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {/* KPI dashboard image */}
+              <img src={kpiHomeImg} alt="KPI dashboard showing leads, sales and performance metrics" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
