@@ -111,7 +111,7 @@ const Navbar = () => {
 
           {/* Services Section in Mobile - First Priority */}
           <div>
-            <Link to="/services" className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: '#fff', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/services" className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-primary)', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
               Services
             </Link>
             <Link to="/services/web-development-design" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
