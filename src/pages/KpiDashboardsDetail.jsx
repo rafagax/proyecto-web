@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import kpiDashImg from '../assets/kpidasboard.webp';
 import financeImg from '../assets/kpi financiero.webp';
-import callCenterImg from '../assets/kpi call center.webp';
+import callCenterImg from '../assets/kpidasboardhome.webp';
 import operationalImg from '../assets/kpi operational.webp';
 
 const WHATSAPP_PHONE = '584144735431';
@@ -159,7 +159,7 @@ const KpiDashboardsDetail = ({ otherServices = [] }) => {
             </div>
             {/* Call center / dashboard image */}
             <div className="reveal-right wdd-col-img">
-              <img src={callCenterImg} alt="Customer support call center team monitoring business KPIs on screens" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
+              <img src={callCenterImg} alt="KPI dashboard showing leads, sales and performance metrics" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
