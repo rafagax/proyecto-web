@@ -115,7 +115,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
   <div
     style={{
       background: 'var(--bg-secondary)',
-      border: `1px solid ${isOpen ? 'rgba(77, 148, 255, 0.3)' : 'rgba(255, 255, 255, 0.06)'}`,
+      border: `1px solid ${isOpen ? 'rgba(77, 148, 255, 0.3)' : 'var(--border-subtle)'}`,
       borderRadius: 'var(--border-radius-md)',
       overflow: 'hidden',
       transition: 'border-color 0.3s ease',
@@ -130,7 +130,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
         alignItems: 'center',
         padding: '1.5rem 2rem',
         background: 'transparent',
-        color: 'white',
+        color: 'var(--text-primary)',
         textAlign: 'left',
         cursor: 'pointer',
         gap: '1rem',
@@ -184,7 +184,7 @@ const FAQs = () => {
           <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
             Got Questions?
           </span>
-          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+          <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
             Frequently Asked <span className="text-gradient">Questions</span>
           </h1>
           <p className="hero-subtitle" style={{ maxWidth: '680px', margin: '0 auto' }}>
@@ -198,7 +198,7 @@ const FAQs = () => {
         <div className="container" style={{ maxWidth: '820px' }}>
           {faqCategories.map((group, ci) => (
             <div key={group.category} style={{ marginBottom: ci === faqCategories.length - 1 ? 0 : '3.5rem' }}>
-              <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem', color: '#fff' }}>{group.category}</h2>
+              <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>{group.category}</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {group.items.map((faq, qi) => {
                   const key = `${ci}-${qi}`;

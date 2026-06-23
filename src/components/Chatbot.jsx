@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import './Chatbot.css';
-import chatbotImg from '../assets/chatbot-imagen.webp';
+import chatbotImg from '../assets/ia-bot-transparent.png';
 
 const whatsappNumber = '584144735431';
 const emailContact = 'inversionesdigitales@hotmail.es';

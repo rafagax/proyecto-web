@@ -28,7 +28,7 @@ const clients = [
     websiteLabel: "View Site"
   },
   {
-    name: "José Cofer",
+    name: "Abg. Victor Correa",
     business: "Soluciones Cofer",
     location: "Venezuela 🇻🇪",
     quote: "The team delivered a professional B2B website that clearly communicates our services. Lead generation increased significantly and we're closing more deals with serious clients.",

@@ -42,7 +42,7 @@ const Contact = () => {
           <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
             Let's Talk
           </span>
-          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+          <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
             Get in <span className="text-gradient">Touch</span>
           </h1>
           <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>

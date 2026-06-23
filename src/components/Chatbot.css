@@ -13,15 +13,15 @@
 
 #ka-chatbot-container {
   position: fixed;
-  bottom: 22px;
-  left: 22px;
+  bottom: 25px;
+  right: 25px;
   z-index: 999999;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 #ka-chatbot-toggle {
-  width: 110px;
-  height: 110px;
+  width: 60px;
+  height: 60px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -67,8 +67,8 @@
 
 #ka-chatbot-window {
   position: absolute;
-  bottom: 95px;
-  left: 0;
+  bottom: 75px;
+  right: 0;
   width: 370px;
   height: 540px;
   background: var(--ka-bg);
@@ -79,7 +79,7 @@
   flex-direction: column;
   overflow: hidden;
   transition: opacity 0.25s ease, transform 0.25s ease;
-  transform-origin: bottom left;
+  transform-origin: bottom right;
 }
 
 #ka-chatbot-window.ka-hidden {
@@ -251,17 +251,17 @@
   /* Keep the chatbot bottom-left (WhatsApp lives bottom-right) and make it
      discreet so it doesn't dominate the screen or overlap content. */
   #ka-chatbot-container {
-    left: 14px;
-    right: auto;
-    bottom: 14px;
+    right: 18px;
+    left: auto;
+    bottom: 18px;
     z-index: 1400;
   }
 
   #ka-chatbot-window {
     width: min(320px, calc(100vw - 28px));
     height: 470px;
-    left: 0;
-    right: auto;
+    right: 0;
+    left: auto;
     bottom: 64px;
   }
 

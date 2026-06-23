@@ -947,11 +947,18 @@
 
   /* More compact, centered title */
   .hero-title {
-    font-size: clamp(2rem, 6vw, 2.4rem) !important;
-    white-space: normal;
+    font-size: clamp(1.3rem, 5.5vw, 1.75rem) !important;
+    white-space: nowrap;
     margin-bottom: 0.6rem !important;
     line-height: 1.15 !important;
     text-align: center !important;
+  }
+
+  /* Section-header pages only (Blog, FAQs, Pricing, Services, Contact):
+     bigger, wrapping title on mobile — scoped so it never touches the home. */
+  .hero .page-hero-title {
+    font-size: clamp(2rem, 6vw, 2.4rem) !important;
+    white-space: normal !important;
   }
 
   /* Compact, justified subtitle */
@@ -1476,7 +1483,7 @@
 /* Floating Elements */
 .floating-whatsapp {
   position: fixed;
-  bottom: 25px;
+  bottom: 100px;
   right: 25px;
   width: 60px;
   height: 60px;
@@ -1554,7 +1561,6 @@
 
 /* Blog Styles */
 .blog-page {
-  padding-top: 120px;
   min-height: 100vh;
 }
 
@@ -2608,15 +2614,16 @@
     z-index: 1200 !important;
     width: 56px !important;
     height: 56px !important;
-    bottom: 18px !important;
+    bottom: 90px !important;
     right: 18px !important;
   }
 
-  /* Mantener chatbot en esquina inferior derecha */
+  /* Chatbot justo debajo del botón de WhatsApp (mismo lado, apilados) */
   #ka-chatbot-container {
     position: fixed !important;
-    bottom: 20px !important;
-    right: 20px !important;
+    bottom: 18px !important;
+    right: 18px !important;
+    left: auto !important;
     z-index: 999 !important;
   }
 }
@@ -2640,16 +2647,21 @@
   .floating-whatsapp {
     width: 48px !important;
     height: 48px !important;
-    bottom: 12px !important;
+    bottom: 74px !important;
     right: 12px !important;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
   }
 
-  /* ensure chatbot toggle doesn't overlap hero buttons */
+  /* Chatbot debajo del WhatsApp (mismo lado), mismo tamaño */
   #ka-chatbot-container {
-    left: 12px !important;
+    right: 12px !important;
+    left: auto !important;
     bottom: 12px !important;
     z-index: 1200 !important;
+  }
+  #ka-chatbot-toggle {
+    width: 48px !important;
+    height: 48px !important;
   }
 }
 

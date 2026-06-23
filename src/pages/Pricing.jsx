@@ -21,7 +21,7 @@ const Pricing = () => {
           <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
             Transparent Pricing
           </span>
-          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+          <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
             Plans & <span className="text-gradient">Pricing</span>
           </h1>
           <p className="hero-subtitle" style={{ maxWidth: '650px', margin: '0 auto' }}>
