@@ -124,14 +124,17 @@ export const ServicesMegaMenu = () => {
           transform: translateX(-50%);
           z-index: 9999;
           width: 340px;
-          background: var(--bg-navbar);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
+          background: #11131c;
           border: 1px solid var(--border-subtle);
           border-radius: 14px;
           padding: 0.5rem;
           box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
           animation: servicesDropdownIn 0.22s ease-out forwards;
+        }
+
+        [data-theme="light"] .services-dropdown {
+          background: #ffffff;
+          box-shadow: 0 25px 50px -12px rgba(13, 17, 38, 0.18);
         }
 
         @keyframes servicesDropdownIn {
