@@ -88,7 +88,7 @@ const Contact = () => {
               <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(77, 148, 255, 0.08) 100%)', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(77, 148, 255,0.2)' }}>
                 <p style={{ color: 'var(--accent-cyan)', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Lightning-Fast Response</p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                  We typically respond within <strong style={{ color: '#fff' }}>2–4 hours</strong> during business hours. Leave us a message and let's start building your digital empire!
+                  We typically respond within <strong style={{ color: 'var(--text-primary)' }}>2–4 hours</strong> during business hours. Leave us a message and let's start building your digital empire!
                 </p>
               </div>
             </div>

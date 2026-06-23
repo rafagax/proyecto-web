@@ -76,14 +76,14 @@ const BlogPost = () => {
             {post.content.split('\n\n').map((paragraph, idx) => {
               if (paragraph.startsWith('###')) {
                 return (
-                  <h3 key={idx} style={{ fontSize: '1.2rem', marginTop: '1.5rem', marginBottom: '0.75rem', color: '#fff' }}>
+                  <h3 key={idx} style={{ fontSize: '1.2rem', marginTop: '1.5rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
                     {paragraph.replace('###', '').trim()}
                   </h3>
                 );
               }
               if (paragraph.startsWith('##')) {
                 return (
-                  <h2 key={idx} style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: '#fff' }}>
+                  <h2 key={idx} style={{ fontSize: '1.5rem', marginTop: '2rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>
                     {paragraph.replace('##', '').trim()}
                   </h2>
                 );
@@ -109,7 +109,7 @@ const BlogPost = () => {
 
           {/* CTA Section */}
           <div className="blog-post-cta">
-            <h3 style={{ color: '#fff', marginBottom: '1rem' }}>Ready to take your business online?</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Ready to take your business online?</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
               Get a professional website built in just 7 days. Let's transform your digital presence.
             </p>

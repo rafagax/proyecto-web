@@ -3235,12 +3235,19 @@
   position: relative;
   min-height: 320px;
   border-radius: 20px;
-  border: 1px solid rgba(77, 148, 255, 0.15);
-  background: radial-gradient(circle at 30% 20%, rgba(77, 148, 255, 0.12), rgba(5, 5, 10, 0.55) 65%);
+  border: none;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
+}
+
+/* The corporate-website photo still needs the rounded frame to clip its
+   absolutely-positioned image. */
+.feature-visual.feature-visual-image {
   overflow: hidden;
+  border: 1px solid rgba(77, 148, 255, 0.15);
 }
 
 @media (max-width: 860px) {
