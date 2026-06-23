@@ -66,7 +66,7 @@ const Pricing = () => {
                 <li><CheckCircle2 size={18} /> Domain & Hosting for 1 Year</li>
                 <li><CheckCircle2 size={18} /> WhatsApp Chatbot</li>
                 <li><CheckCircle2 size={18} /> Google My Business Setup</li>
-                <li><CheckCircle2 size={18} /> Priority Support (3 Months)</li>
+                <li><CheckCircle2 size={18} /> Priority Support (1 Month)</li>
               </ul>
               <Link to="/contact" className="btn btn-primary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
             </div>
@@ -84,7 +84,7 @@ const Pricing = () => {
                 <li><CheckCircle2 size={18} /> Inventory Management</li>
                 <li><CheckCircle2 size={18} /> Order Tracking System</li>
                 <li><CheckCircle2 size={18} /> SEO for Products</li>
-                <li><CheckCircle2 size={18} /> Priority Support (1 Month)</li>
+                <li><CheckCircle2 size={18} /> Priority Support (2 Months)</li>
               </ul>
               <Link to="/contact" className="btn btn-secondary" style={{ width: '100%', marginTop: 'auto' }}>Get Started</Link>
             </div>

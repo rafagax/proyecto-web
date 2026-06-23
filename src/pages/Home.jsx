@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Search, Gauge, MonitorSmartphone, SearchCheck, ListChecks, Goal, Headset } from 'lucide-react';
+import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Gauge, MonitorSmartphone, SearchCheck, ListChecks, Goal, Headset } from 'lucide-react';
 import heroImg from '../assets/Hero2.webp';
 import webDevImg from '../assets/imagenwebdevelop.webp';
-import kpiHomeImg from '../assets/kpidasboardhome.webp';
+import kpiHomeImg from '../assets/kpi call center.webp';
+import seoDigitalImg from '../assets/seoimagendigital.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
@@ -542,20 +543,8 @@ const Home = () => {
               </Link>
             </div>
             <div className="feature-visual reveal-right">
-              {/* Search ranking mockup */}
-              <div style={{ width: '82%', maxWidth: '340px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '11px 16px', borderRadius: 30, background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', marginBottom: 28 }}>
-                  <Search size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>best [your service] near me</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'flex-end', gap: 12, height: 130 }}>
-                  {[40, 58, 74, 100].map((h, i) => (
-                    <div key={i} style={{ flex: 1, height: `${h}%`, borderRadius: '6px 6px 0 0', background: i === 3 ? 'linear-gradient(180deg, var(--accent-cyan), var(--accent-blue))' : 'var(--border-subtle)', position: 'relative' }}>
-                      {i === 3 && <span style={{ position: 'absolute', top: -26, left: '50%', transform: 'translateX(-50%)', fontSize: '0.75rem', fontWeight: 800, color: 'var(--accent-cyan)' }}>#1</span>}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* SEO & Digital Growth image */}
+              <img src={seoDigitalImg} alt="SEO and digital growth — search visibility and qualified traffic" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
 
@@ -629,7 +618,7 @@ const Home = () => {
             </div>
             <div className="feature-visual reveal-right">
               {/* KPI dashboard image */}
-              <img src={kpiHomeImg} alt="KPI dashboard showing leads, sales and performance metrics" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <img src={kpiHomeImg} alt="Customer support call center team monitoring business KPIs" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
