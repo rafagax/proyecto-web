@@ -947,8 +947,8 @@
 
   /* More compact, centered title */
   .hero-title {
-    font-size: clamp(1.3rem, 5.5vw, 1.75rem) !important;
-    white-space: nowrap;
+    font-size: clamp(2rem, 6vw, 2.4rem) !important;
+    white-space: normal;
     margin-bottom: 0.6rem !important;
     line-height: 1.15 !important;
     text-align: center !important;

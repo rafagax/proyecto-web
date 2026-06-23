@@ -15,10 +15,15 @@ const Blog = () => {
 
   return (
     <div className="blog-page">
-      <section className="blog-header">
-        <div className="container">
-          <h1>Digital Solutions Blog</h1>
-          <p>Tips, insights, and strategies for growing your business online.</p>
+      <section className="hero" style={{ minHeight: '40vh', paddingTop: '180px', paddingBottom: '4rem' }}>
+        <div className="hero-bg-glow"></div>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <h1 className="hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+            Digital Solutions <span className="text-gradient">Blog</span>
+          </h1>
+          <p className="hero-subtitle" style={{ maxWidth: '650px', margin: '0 auto' }}>
+            Tips, insights, and strategies for growing your business online.
+          </p>
         </div>
       </section>
       <section className="blog-section">
