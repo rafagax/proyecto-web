@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import logoImg from '../assets/logo sin fondo.webp';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
 import ThemeToggle from './ThemeToggle';
 
@@ -44,9 +43,7 @@ const Navbar = () => {
     <>
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
-          <Link to="/" className="navbar-logo">
-            <img src={logoImg} alt="Digital Investments Logo" className="header-logo" />
-          </Link>
+          <Link to="/" className="navbar-logo" />
 
           <nav className="navbar-links">
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
@@ -91,9 +88,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
-          <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)}>
-            <img src={logoImg} alt="Digital Investments Logo" className="mobile-nav-logo" />
-          </Link>
+          <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)} />
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
             <X size={32} />
           </button>
