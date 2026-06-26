@@ -6,7 +6,7 @@ import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 export const BlogCarousel = () => {
   const { content } = useLocalizedContent();
-  const { section, categories } = content.blog;
+  const { section, categories, posts } = content.blog;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -75,6 +75,10 @@ export const BlogCarousel = () => {
                   }
                 }
 
+                const localized = posts[post.slug] || {};
+                const title = localized.title || post.title;
+                const excerpt = localized.excerpt || post.excerpt;
+
                 return (
                   <div
                     key={post.id}
@@ -90,7 +94,7 @@ export const BlogCarousel = () => {
                     <div className="blog-card-image-wrap">
                       <img
                         src={post.image}
-                        alt={post.title}
+                        alt={title}
                         className="blog-card-image-small"
                         loading="lazy"
                       />
@@ -101,8 +105,8 @@ export const BlogCarousel = () => {
                         <Calendar size={14} />
                         <span>{post.date}</span>
                       </div>
-                      <h3>{post.title}</h3>
-                      <p className="blog-excerpt">{post.excerpt}</p>
+                      <h3>{title}</h3>
+                      <p className="blog-excerpt">{excerpt}</p>
                       <Link to={`/blog/${post.slug}`} className="read-more">
                         {section.readMore} <ArrowRight size={18} />
                       </Link>

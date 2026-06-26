@@ -3,12 +3,12 @@ import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
-    { title: 'Blog — Web Development, SEO & AI Insights | Digital Investments' },
+    { title: 'Blog — Web Development, SEO & AI Insights | InversionesDigitales' },
     {
       name: 'description',
       content: 'Learn about web development, SEO strategies, AI chatbots, and digital marketing tips for your business.',
     },
-    { property: 'og:title', content: 'Blog | Digital Investments' },
+    { property: 'og:title', content: 'Blog | InversionesDigitales' },
     {
       property: 'og:description',
       content: 'Web development, SEO, AI automation and digital marketing insights for growing businesses.',

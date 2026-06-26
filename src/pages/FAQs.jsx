@@ -56,7 +56,7 @@ const FAQs = () => {
 
   useEffect(() => {
     updateMetaTags({
-      title: 'Frequently Asked Questions | Web Development, SEO, KPI & AI | Digital Investments',
+      title: 'Frequently Asked Questions | Web Development, SEO, KPI & AI | InversionesDigitales',
       description: 'Answers to common questions about web development, SEO, KPI dashboards, AI automation, pricing, and our process — so you can decide with confidence.',
       keywords: 'FAQ, web development questions, SEO questions, KPI dashboard questions, AI automation questions, pricing, process',
       canonical: 'https://yourdomain.com/faqs',

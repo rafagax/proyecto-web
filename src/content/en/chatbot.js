@@ -4,9 +4,9 @@
 export default {
   ui: {
     openAria: 'Open chat',
-    avatarAlt: 'Virtual Assistant Digital Investments',
+    avatarAlt: 'Virtual Assistant InversionesDigitales',
     headerTitle: 'Virtual Assistant',
-    headerSubtitle: 'Digital Investments',
+    headerSubtitle: 'InversionesDigitales',
     closeAria: 'Close chat',
     typing: 'The assistant is typing...',
     placeholder: 'Type your question here...',
@@ -21,7 +21,7 @@ export default {
   intents: [
     {
       keywords: ['hi', 'hello', 'hey', 'greetings', 'help', 'info', 'information', 'assistance', 'support'],
-      response: `Hello! 👋 I'm the virtual assistant for Digital Investments.\n\nI can help you with information about web creation, plans, pricing, 7-day delivery, local SEO, AI integration, chatbots, online stores, and contact details.\n\nWhat type of website do you need for your business?`,
+      response: `Hello! 👋 I'm the virtual assistant for InversionesDigitales.\n\nI can help you with information about web creation, plans, pricing, 7-day delivery, local SEO, AI integration, chatbots, online stores, and contact details.\n\nWhat type of website do you need for your business?`,
     },
     {
       keywords: ['7 days', 'seven days', 'time', 'how long', 'delivery', 'fast', 'quick', 'timeline', 'deadline'],
@@ -29,11 +29,11 @@ export default {
     },
     {
       keywords: ['who are you', 'company', 'digital investments', 'about us', 'what do you do'],
-      response: `We are Digital Investments, specialists in high-performance web design and development.\n\nWe transform your vision into a professional, modern, and strategic digital experience so your business gains presence, trust, and more sales opportunities.`,
+      response: `We are InversionesDigitales, specialists in high-performance web design and development.\n\nWe transform your vision into a professional, modern, and strategic digital experience so your business gains presence, trust, and more sales opportunities.`,
     },
     {
       keywords: ['website', 'web site', 'web page', 'web', 'want a website', 'build website', 'create website', 'need website', 'web development'],
-      response: `Excellent choice! 🚀\n\nAt Digital Investments we create modern, fast, and strategic websites for your business to transmit professionalism and attract more customers.\n\nWe can develop Landing Pages, Business Websites, or Online Stores in record time.\n\nWould you like to schedule a **FREE CONSULTATION** on WhatsApp to advise you on your project?\n\n Click here to chat:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+schedule+a+free+consultation`,
+      response: `Excellent choice! 🚀\n\nAt InversionesDigitales we create modern, fast, and strategic websites for your business to transmit professionalism and attract more customers.\n\nWe can develop Landing Pages, Business Websites, or Online Stores in record time.\n\nWould you like to schedule a **FREE CONSULTATION** on WhatsApp to advise you on your project?\n\n Click here to chat:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+schedule+a+free+consultation`,
     },
     {
       keywords: ['services', 'what do you offer', 'include', 'benefits', 'digital solutions'],

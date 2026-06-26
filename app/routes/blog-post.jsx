@@ -5,10 +5,10 @@ import { blogPosts } from '../../src/data/blogPosts.js';
 export function meta({ params }) {
   const post = blogPosts.find((p) => p.slug === params.slug);
   if (!post) {
-    return [{ title: 'Blog | Digital Investments' }];
+    return [{ title: 'Blog | InversionesDigitales' }];
   }
   return [
-    { title: `${post.title} | Digital Investments` },
+    { title: `${post.title} | InversionesDigitales` },
     { name: 'description', content: post.excerpt },
     { property: 'og:type', content: 'article' },
     { property: 'og:title', content: post.title },
@@ -22,8 +22,8 @@ export function meta({ params }) {
         headline: post.title,
         description: post.excerpt,
         image: post.image,
-        author: { '@type': 'Organization', name: 'Digital Investments' },
-        publisher: { '@type': 'Organization', name: 'Digital Investments' },
+        author: { '@type': 'Organization', name: 'InversionesDigitales' },
+        publisher: { '@type': 'Organization', name: 'InversionesDigitales' },
         mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
       },
     },

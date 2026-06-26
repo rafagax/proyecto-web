@@ -14,7 +14,7 @@ export function meta({ location }) {
   const seo =
     locale === 'en'
       ? {
-          title: 'Web Development, AI Automation, SEO & KPI Dashboards | Digital Investments',
+          title: 'Web Development, AI Automation, SEO & KPI Dashboards | InversionesDigitales',
           description:
             'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
           shareTitle: 'Web Development, AI Automation, SEO & KPI Dashboards',

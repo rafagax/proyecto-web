@@ -3,13 +3,13 @@ import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
-    { title: 'Plans & Pricing — Websites from $299 | Digital Investments' },
+    { title: 'Plans & Pricing — Websites from $299 | InversionesDigitales' },
     {
       name: 'description',
       content:
         'Simple, transparent pricing for websites, SEO, KPI dashboards, and AI automation. Professional websites starting from $299, with no hidden fees.',
     },
-    { property: 'og:title', content: 'Plans & Pricing | Digital Investments' },
+    { property: 'og:title', content: 'Plans & Pricing | InversionesDigitales' },
     {
       property: 'og:description',
       content: 'Transparent pricing with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',

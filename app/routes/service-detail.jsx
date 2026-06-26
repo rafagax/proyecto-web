@@ -22,7 +22,7 @@ export function meta({ params }) {
         name: s.eyebrow,
         description: s.metaDescription,
         areaServed: ['VE', 'US', 'ES'],
-        provider: { '@type': 'Organization', name: 'Digital Investments' },
+        provider: { '@type': 'Organization', name: 'InversionesDigitales' },
       },
     },
   ];

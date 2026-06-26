@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     updateMetaTags({
-      title: 'Web Development, AI Automation, SEO & KPI Dashboards | Digital Investments',
+      title: 'Web Development, AI Automation, SEO & KPI Dashboards | InversionesDigitales',
       description: 'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
       keywords: 'web development, web design, SEO, KPI dashboards, analytics, AI automation, chatbots, WhatsApp automation, business websites',
       ogTitle: 'Web Development, AI Automation, SEO & KPI Dashboards',

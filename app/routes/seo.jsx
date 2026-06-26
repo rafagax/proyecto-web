@@ -3,7 +3,7 @@ import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
-    { title: 'SEO & Digital Growth | Digital Investments' },
+    { title: 'SEO & Digital Growth | InversionesDigitales' },
     {
       name: 'description',
       content:

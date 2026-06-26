@@ -5,7 +5,7 @@ import { updateMetaTags } from '../utils/seo';
 const KPI = () => {
   useEffect(() => {
     updateMetaTags({
-      title: 'KPI & Analytics Dashboard | Digital Investments',
+      title: 'KPI & Analytics Dashboard | InversionesDigitales',
       description: 'Track your business performance with our advanced KPI and analytics dashboard.',
       keywords: 'kpi, analytics, dashboard, performance metrics, business intelligence',
       canonical: 'https://yourdomain.com/kpi'

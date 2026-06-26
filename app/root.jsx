@@ -28,7 +28,7 @@ export const links = () => [
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Digital Investments',
+  name: 'InversionesDigitales',
   url: SITE_URL,
   description: 'Premium web development, SEO, KPI dashboards and AI automation for growing businesses.',
   logo: absoluteUrl('/logo.png'),
@@ -44,7 +44,7 @@ const orgSchema = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'Digital Investments',
+  name: 'InversionesDigitales',
   image: absoluteUrl('/og-image.webp'),
   description: 'Premium web development, SEO, KPI dashboards and AI automation services.',
   telephone: '+584144735431',
@@ -136,7 +136,7 @@ export function Layout({ children }) {
         <meta name="theme-color" content="#000000" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Digital Investments" />
+        <meta property="og:site_name" content="InversionesDigitales" />
         <meta property="og:image" content={absoluteUrl('/og-image.webp')} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={absoluteUrl('/og-image.webp')} />
