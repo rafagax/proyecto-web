@@ -2,5 +2,6 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "react-router build",
   "outputDirectory": "build/client",
+  "redirects": [{ "source": "/en", "destination": "/en/", "permanent": true }],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

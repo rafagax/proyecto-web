@@ -2,28 +2,41 @@ import Home from '../../src/pages/Home.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 
-// NOTE: title/description/OG are still English for both locales — Spanish SEO copy
-// for the Home is pending approval (reported, not invented here). Only the canonical
-// and hreflang alternates are locale-aware in this commit.
+// Locale-aware SEO for the Home. English keeps the exact original copy; Spanish uses
+// the approved Spanish copy (brand: InversionesDigitales). Canonical + hreflang are
+// per-locale; the global og:image/twitter:image live in app/root.jsx.
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
   const esHref = absoluteUrl('/');
   const enHref = absoluteUrl('/en/');
   const canonical = locale === 'en' ? enHref : esHref;
 
+  const seo =
+    locale === 'en'
+      ? {
+          title: 'Web Development, AI Automation, SEO & KPI Dashboards | Digital Investments',
+          description:
+            'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
+          shareTitle: 'Web Development, AI Automation, SEO & KPI Dashboards',
+          shareDescription:
+            'Premium web development, AI automation, SEO, and KPI dashboards built to help growing businesses look professional, get found, and convert better.',
+        }
+      : {
+          title: 'Desarrollo web, IA, SEO y KPI | InversionesDigitales',
+          description:
+            'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
+          shareTitle: 'Desarrollo web, IA, SEO y dashboards de KPI | InversionesDigitales',
+          shareDescription:
+            'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
+        };
+
   return [
-    { title: 'Web Development, AI Automation, SEO & KPI Dashboards | Digital Investments' },
-    {
-      name: 'description',
-      content:
-        'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
-    },
-    { property: 'og:title', content: 'Web Development, AI Automation, SEO & KPI Dashboards' },
-    {
-      property: 'og:description',
-      content:
-        'Premium web development, AI automation, SEO, and KPI dashboards built to help growing businesses look professional, get found, and convert better.',
-    },
+    { title: seo.title },
+    { name: 'description', content: seo.description },
+    { property: 'og:title', content: seo.shareTitle },
+    { property: 'og:description', content: seo.shareDescription },
+    { name: 'twitter:title', content: seo.shareTitle },
+    { name: 'twitter:description', content: seo.shareDescription },
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },

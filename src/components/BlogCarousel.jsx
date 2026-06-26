@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 export const BlogCarousel = () => {
+  const { content } = useLocalizedContent();
+  const { section, categories } = content.blog;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -40,8 +43,8 @@ export const BlogCarousel = () => {
   return (
     <section className="blog-carousel-section">
       <div className="container">
-        <h2>From Our <span className="text-gradient">Blog</span></h2>
-        <p>Learn industry insights, strategies, and tips to grow your business online.</p>
+        <h2>{section.heading.before}<span className="text-gradient">{section.heading.accent}</span></h2>
+        <p>{section.subtitle}</p>
 
         <div
           className="blog-carousel-wrapper"
@@ -52,7 +55,7 @@ export const BlogCarousel = () => {
           <button
             onClick={handlePrevious}
             className="carousel-nav-btn blog-carousel-prev"
-            aria-label="Previous article"
+            aria-label={section.prevLabel}
           >
             <ChevronLeft size={24} />
           </button>
@@ -91,7 +94,7 @@ export const BlogCarousel = () => {
                         className="blog-card-image-small"
                         loading="lazy"
                       />
-                      <span className="blog-category-overlay">{post.category}</span>
+                      <span className="blog-category-overlay">{categories[post.category] || post.category}</span>
                     </div>
                     <div className="blog-carousel-card-content-small">
                       <div className="blog-card-meta">
@@ -101,7 +104,7 @@ export const BlogCarousel = () => {
                       <h3>{post.title}</h3>
                       <p className="blog-excerpt">{post.excerpt}</p>
                       <Link to={`/blog/${post.slug}`} className="read-more">
-                        Read More <ArrowRight size={18} />
+                        {section.readMore} <ArrowRight size={18} />
                       </Link>
                     </div>
                   </div>
@@ -114,7 +117,7 @@ export const BlogCarousel = () => {
           <button
             onClick={handleNext}
             className="carousel-nav-btn blog-carousel-next"
-            aria-label="Next article"
+            aria-label={section.nextLabel}
           >
             <ChevronRight size={24} />
           </button>
@@ -135,7 +138,7 @@ export const BlogCarousel = () => {
                 key={idx}
                 className={`indicator ${isActive ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(idx)}
-                aria-label={`Go to article ${idx + 1}`}
+                aria-label={`${section.indicatorLabel} ${idx + 1}`}
               />
             );
           })}
@@ -143,7 +146,7 @@ export const BlogCarousel = () => {
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <Link to="/blog" className="btn-secondary">
-            View All Articles
+            {section.viewAll}
           </Link>
         </div>
       </div>

@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
-import { testimonials } from '../data/testimonials';
+import { testimonials as testimonialPeople } from '../data/testimonials';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 export const TestimonialsCarousel = () => {
+  const { content } = useLocalizedContent();
+  const { section, items } = content.testimonials;
+  const testimonials = testimonialPeople.map((person, i) => ({ ...person, ...items[i] }));
   const [currentIndex, setCurrentIndex] = useState(0);
   // Start at 3 to match the server/prerendered render, then adjust on the client
   // (avoids a hydration mismatch). Also keeps it responsive on resize.
@@ -45,15 +49,15 @@ export const TestimonialsCarousel = () => {
   return (
     <section className="testimonials-carousel-section">
       <div className="container">
-        <h2>What Our Clients Say</h2>
-        <p>Real stories from businesses we've helped transform</p>
+        <h2>{section.heading}</h2>
+        <p>{section.subtitle}</p>
 
         <div className="testimonials-carousel-wrapper">
           {/* Previous Button */}
           <button
             onClick={handlePrevious}
             className="carousel-nav-btn testimonials-prev"
-            aria-label="Previous testimonial"
+            aria-label={section.prevLabel}
           >
             <ChevronLeft size={24} />
           </button>
@@ -116,7 +120,7 @@ export const TestimonialsCarousel = () => {
           <button
             onClick={handleNext}
             className="carousel-nav-btn testimonials-next"
-            aria-label="Next testimonial"
+            aria-label={section.nextLabel}
           >
             <ChevronRight size={24} />
           </button>
@@ -137,7 +141,7 @@ export const TestimonialsCarousel = () => {
                 key={idx}
                 className={`indicator ${isActive ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(idx)}
-                aria-label={`Go to testimonial ${idx + 1}`}
+                aria-label={`${section.indicatorLabel} ${idx + 1}`}
               />
             );
           })}
