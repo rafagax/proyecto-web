@@ -3266,6 +3266,30 @@
   }
 }
 
+/* Inline mobile image for feature blocks — hidden on larger screens,
+   where the side image (direct child of .feature-row) is used instead. */
+.mobile-feature-img {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  /* Featured Web Dev section: tighter vertical padding; the default 80px
+     top/bottom leaves too much empty space on small screens. */
+  .section.wd-featured {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* On phones every feature block reads title → image → paragraph → bullets → CTA:
+     hide the side image and reveal the inline one placed right under the title. */
+  .feature-row > .feature-visual {
+    display: none;
+  }
+  .feature-row .feature-text .mobile-feature-img {
+    display: block;
+  }
+}
+
 /* ==============================
    Premium motion & microinteractions
    Fast, polished reveals (transform + opacity only, no layout props).

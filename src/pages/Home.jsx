@@ -295,6 +295,60 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Featured Offering — Web Development & Design (most requested product, surfaced early) */}
+      <section className="section wd-featured" style={{ overflow: 'hidden' }}>
+        <div className="container">
+          <div className="feature-row">
+            <div className="feature-text reveal-left">
+              <span className="feature-eyebrow"><Code size={16} /> Web Development &amp; Design</span>
+              <h2 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
+                A fast, premium website built to <span className="text-gradient">convert</span>
+              </h2>
+              {/* Mobile-only image: sits between the title and the paragraph so phones
+                  see the visual early (title → image → paragraph → bullets → CTA). */}
+              <div className="feature-visual feature-visual-image mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
+                <img
+                  src={webDevImg}
+                  alt="Premium corporate website design on screen"
+                  loading="lazy"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
+                  <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
+                  Premium corporate websites
+                </div>
+              </div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
+                We design and develop responsive websites that communicate your value clearly, build trust, and guide visitors toward action.
+              </p>
+              <ul className="feature-bullets">
+                <li><CheckCircle2 size={18} /> Custom design tailored to your brand</li>
+                <li><CheckCircle2 size={18} /> Fast, mobile-first development</li>
+                <li><CheckCircle2 size={18} /> Clear calls to action for more enquiries</li>
+              </ul>
+              <Link to="/services/web-development-design" className="hero-advisory-btn" style={{ margin: 0 }}>
+                Explore Web Development <ArrowRight size={16} />
+              </Link>
+            </div>
+            <div className="feature-visual feature-visual-image reveal-right">
+              {/* Premium corporate website image */}
+              <img
+                src={webDevImg}
+                alt="Premium corporate website design on screen"
+                loading="lazy"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
+                <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
+                Premium corporate websites
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 3. Services Grid */}
       <section className="section" id="services" style={{ paddingTop: '2rem' }}>
         <div className="container">
@@ -488,48 +542,17 @@ const Home = () => {
             </h2>
           </div>
 
-          {/* Offering 1 — Web Development */}
-          <div className="feature-row">
-            <div className="feature-text reveal-left">
-              <span className="feature-eyebrow"><Code size={16} /> Web Development &amp; Design</span>
-              <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
-                A fast, premium website built to <span className="text-gradient">convert</span>
-              </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We design and develop responsive websites that communicate your value clearly, build trust, and guide visitors toward action.
-              </p>
-              <ul className="feature-bullets">
-                <li><CheckCircle2 size={18} /> Custom design tailored to your brand</li>
-                <li><CheckCircle2 size={18} /> Fast, mobile-first development</li>
-                <li><CheckCircle2 size={18} /> Clear calls to action for more enquiries</li>
-              </ul>
-              <Link to="/services/web-development-design" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Explore Web Development <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div className="feature-visual feature-visual-image reveal-right">
-              {/* Premium corporate website image */}
-              <img
-                src={webDevImg}
-                alt="Premium corporate website design on screen"
-                loading="lazy"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
-                <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
-                Premium corporate websites
-              </div>
-            </div>
-          </div>
-
-          {/* Offering 2 — SEO */}
+          {/* Offering 1 — SEO */}
           <div className="feature-row reverse">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><TrendingUp size={16} /> SEO &amp; Digital Growth</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 Improve visibility and attract <span className="text-gradient">qualified traffic</span>
               </h3>
+              {/* Mobile-only image: title → image → paragraph on phones */}
+              <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
+                <img src={seoDigitalImg} alt="SEO and digital growth — search visibility and qualified traffic" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 We optimize your website and search presence so the right people can find your business when they are actively looking for your services.
               </p>
@@ -548,13 +571,41 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Offering 3 — AI WhatsApp Agents */}
+          {/* Offering 2 — AI WhatsApp Agents */}
           <div className="feature-row">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><Bot size={16} /> AI Automation &amp; Chatbots</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 Respond faster with <span className="text-gradient">intelligent automation</span>
               </h3>
+              {/* Mobile-only chat mockup: title → mockup → paragraph on phones */}
+              <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
+                <div role="img" aria-label="WhatsApp chat showing an AI assistant answering a customer and booking an appointment" style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 13px', background: '#075E54' }}>
+                    <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+                      <Bot size={18} />
+                    </div>
+                    <div style={{ lineHeight: 1.2 }}>
+                      <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.85rem' }}>AI Assistant</div>
+                      <div style={{ color: '#a7d7cf', fontSize: '0.68rem' }}>online</div>
+                    </div>
+                  </div>
+                  <div style={{ background: '#ECE5DD', padding: '14px 11px', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 10px 2px', background: '#fff', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
+                      Hi! Do you have availability this week? 👋
+                      <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02</span>
+                    </div>
+                    <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
+                      Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
+                      <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
+                    </div>
+                    <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
+                      Great — you're booked. Here's a quick price list meanwhile 📋
+                      <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:03 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 We build AI-powered chat and WhatsApp systems that answer questions, qualify leads, and support customers around the clock.
               </p>
@@ -597,13 +648,17 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Offering 4 — KPI Dashboards & Analytics */}
+          {/* Offering 3 — KPI Dashboards & Analytics */}
           <div className="feature-row reverse">
             <div className="feature-text reveal-left">
               <span className="feature-eyebrow"><BarChart3 size={16} /> KPI Dashboards &amp; Analytics</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 Track the numbers that <span className="text-gradient">actually matter</span>
               </h3>
+              {/* Mobile-only image: title → image → paragraph on phones */}
+              <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
+                <img src={kpiHomeImg} alt="Customer support call center team monitoring business KPIs" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 We create clear dashboards that help you understand leads, sales, website performance, and marketing results without confusion.
               </p>
