@@ -9,6 +9,7 @@ import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
 import { updateMetaTags } from '../utils/seo';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const Home = () => {
   const { locale, content } = useLocalizedContent();
@@ -119,7 +120,7 @@ const Home = () => {
 
             {/* Mobile Hero Service Cards List (Mobile Only) */}
             <div className="mobile-hero-services mobile-only">
-              <Link to="/services/web-development-design" className="mobile-service-card">
+              <Link to={getLocalizedPath('svc-web', locale)} className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <Code size={18} />
                 </div>
@@ -240,7 +241,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> {home.featured.bullets[1]}</li>
                 <li><CheckCircle2 size={18} /> {home.featured.bullets[2]}</li>
               </ul>
-              <Link to="/services/web-development-design" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to={getLocalizedPath('svc-web', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
                 {home.featured.cta} <ArrowRight size={16} />
               </Link>
             </div>
@@ -266,7 +267,7 @@ const Home = () => {
       <section className="section" id="services" style={{ paddingTop: '2rem' }}>
         <div className="container">
           <div className="services-grid reveal-group" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
-            <Link to="/services/web-development-design" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to={getLocalizedPath('svc-web', locale)} className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Code size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.web.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -305,7 +306,7 @@ const Home = () => {
 
           {/* Section CTA — explore all services */}
           <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
-            <Link to="/services" className="hero-advisory-btn" style={{ margin: 0 }}>
+            <Link to={getLocalizedPath('services', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
               {home.servicesGrid.cta}
               <ArrowRight size={17} />
             </Link>

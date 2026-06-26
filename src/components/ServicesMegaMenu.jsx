@@ -2,16 +2,19 @@ import { useState, useRef } from 'react';
 import { Code, TrendingUp, BarChart3, Bot, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 export const ServicesMegaMenu = () => {
-  const { content } = useLocalizedContent();
+  const { locale, content } = useLocalizedContent();
   const { nav, services } = content.common;
+  // Web Development & Design is bilingual: link to the locale-correct path from the
+  // manifest. SEO/KPI/AI are not migrated yet, so they keep their legacy URLs.
   const serviceItems = [
     {
       title: services.web.title,
       description: services.web.description,
       icon: <Code size={20} />,
-      path: '/services/web-development-design',
+      path: getLocalizedPath('svc-web', locale),
     },
     {
       title: services.seo.title,
@@ -74,9 +77,9 @@ export const ServicesMegaMenu = () => {
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
     >
-      {/* Services Trigger (clickable → /services, hover/focus → dropdown) */}
+      {/* Services Trigger (clickable → locale services index, hover/focus → dropdown) */}
       <Link
-        to="/services"
+        to={getLocalizedPath('services', locale)}
         className="services-trigger"
         aria-haspopup="true"
         aria-expanded={isOpen}

@@ -15,10 +15,12 @@ import esBlog from '../content/es/blog.js';
 import enBlog from '../content/en/blog.js';
 import esChatbot from '../content/es/chatbot.js';
 import enChatbot from '../content/en/chatbot.js';
+import esServices from '../content/es/services.js';
+import enServices from '../content/en/services.js';
 
 const BUNDLES = {
-  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot },
-  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot },
+  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices },
+  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices },
 };
 
 // Return the content bundle for a locale. Unknown/undefined locales fall back to

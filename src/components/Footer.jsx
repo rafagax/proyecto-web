@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Globe, Mail, MessageCircle, MapPin } from 'lucide-react';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const Footer = () => {
-  const { content } = useLocalizedContent();
+  const { locale, content } = useLocalizedContent();
   const { nav, footer } = content.common;
   return (
     <footer className="footer" style={{ borderTop: '2px solid rgba(77, 148, 255, 0.1)', background: 'linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))' }}>
@@ -31,7 +32,7 @@ const Footer = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="footer-links">
                 <Link to="/">{nav.home}</Link>
-                <Link to="/services">{nav.services}</Link>
+                <Link to={getLocalizedPath('services', locale)}>{nav.services}</Link>
                 <Link to="/pricing">{nav.pricing}</Link>
               </div>
               <div className="footer-links">

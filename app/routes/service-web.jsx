@@ -1,15 +1,16 @@
-import Services from '../../src/pages/Services.jsx';
+import WebDevDesignDetail from '../../src/pages/WebDevDesignDetail.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for the bilingual Services index (/servicios and /en/services).
+// Locale-aware meta for the bilingual Web Development & Design detail
+// (/servicios/desarrollo-web and /en/services/web-development).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/servicios');
-  const enHref = absoluteUrl('/en/services');
+  const esHref = absoluteUrl('/servicios/desarrollo-web');
+  const enHref = absoluteUrl('/en/services/web-development');
   const canonical = locale === 'en' ? enHref : esHref;
-  const m = getContent(locale).services.indexMeta;
+  const m = getContent(locale).services.webMeta;
 
   return [
     { title: m.title },
@@ -22,7 +23,17 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    {
+      'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: m.schemaName,
+        description: m.description,
+        areaServed: ['VE', 'US', 'ES'],
+        provider: { '@type': 'Organization', name: 'InversionesDigitales' },
+      },
+    },
   ];
 }
 
-export default Services;
+export default WebDevDesignDetail;

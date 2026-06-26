@@ -25,12 +25,26 @@ export const links = () => [
   { rel: 'apple-touch-icon', href: '/favicon.svg' },
 ];
 
-const orgSchema = {
+// Localized descriptions for the global structured data. Spanish reuses the approved
+// Home description; English keeps the exact current text. Everything else (brand,
+// endpoints, phone, address, IDs) is unchanged and shared across locales.
+const SCHEMA_DESCRIPTION = {
+  org: {
+    en: 'Premium web development, SEO, KPI dashboards and AI automation for growing businesses.',
+    es: 'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
+  },
+  localBusiness: {
+    en: 'Premium web development, SEO, KPI dashboards and AI automation services.',
+    es: 'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
+  },
+};
+
+const orgSchema = (lang) => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'InversionesDigitales',
   url: SITE_URL,
-  description: 'Premium web development, SEO, KPI dashboards and AI automation for growing businesses.',
+  description: SCHEMA_DESCRIPTION.org[lang] || SCHEMA_DESCRIPTION.org.en,
   logo: absoluteUrl('/logo.png'),
   contactPoint: {
     '@type': 'ContactPoint',
@@ -39,14 +53,14 @@ const orgSchema = {
     areaServed: ['VE', 'US', 'ES'],
     availableLanguage: 'English',
   },
-};
+});
 
-const localBusinessSchema = {
+const localBusinessSchema = (lang) => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'InversionesDigitales',
   image: absoluteUrl('/og-image.webp'),
-  description: 'Premium web development, SEO, KPI dashboards and AI automation services.',
+  description: SCHEMA_DESCRIPTION.localBusiness[lang] || SCHEMA_DESCRIPTION.localBusiness.en,
   telephone: '+584144735431',
   email: 'inversionesdigitales@hotmail.es',
   priceRange: '$299–$1500',
@@ -57,7 +71,7 @@ const localBusinessSchema = {
     addressRegion: 'Aragua',
     addressCountry: 'VE',
   },
-};
+});
 
 // Reveals .reveal / .reveal-left / .reveal-right once on viewport enter and
 // staggers .reveal-card children of .reveal-group. Single IntersectionObserver,
@@ -144,11 +158,11 @@ export function Layout({ children }) {
         <Links />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema(lang)) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema(lang)) }}
         />
         {/* If JS is disabled, never keep reveal content hidden */}
         <noscript>

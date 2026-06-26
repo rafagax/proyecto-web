@@ -81,6 +81,16 @@ export function getEquivalentPath(path, toLang) {
   return null;
 }
 
+/**
+ * Canonical path for a manifest key in a given language (or null if the key is
+ * unknown). Lets components build locale-correct internal links from the manifest
+ * (source of truth) instead of concatenating `/en` or translating slugs by hand.
+ */
+export function getLocalizedPath(key, lang) {
+  const entry = routeManifest.find((r) => r.key === key);
+  return entry ? entry[lang] : null;
+}
+
 /** Canonical, published URLs only — drives the prerender list and the sitemap. */
 export function getPrerenderPaths() {
   const pages = routeManifest.flatMap((r) => [r.es, r.en]);

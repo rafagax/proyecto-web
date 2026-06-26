@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "react-router build",
   "outputDirectory": "build/client",
-  "redirects": [{ "source": "/en", "destination": "/en/", "permanent": true }],
+  "redirects": [
+    { "source": "/en", "destination": "/en/", "permanent": true },
+    { "source": "/services", "destination": "/servicios", "permanent": true },
+    { "source": "/services/web-development-design", "destination": "/servicios/desarrollo-web", "permanent": true }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

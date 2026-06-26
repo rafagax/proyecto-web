@@ -5,9 +5,10 @@ import { ServicesMegaMenu } from './ServicesMegaMenu';
 import ThemeToggle from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const Navbar = () => {
-  const { content } = useLocalizedContent();
+  const { locale, content } = useLocalizedContent();
   const { nav, services } = content.common;
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -106,10 +107,10 @@ const Navbar = () => {
 
           {/* Services Section in Mobile - First Priority */}
           <div>
-            <Link to="/services" className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-primary)', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to={getLocalizedPath('services', locale)} className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-primary)', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
               {nav.services}
             </Link>
-            <Link to="/services/web-development-design" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to={getLocalizedPath('svc-web', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               {services.web.title}
             </Link>
             <Link to="/services/seo-digital-growth" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
