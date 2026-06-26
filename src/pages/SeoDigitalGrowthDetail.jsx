@@ -7,6 +7,8 @@ import {
   MapPin,
   PenLine,
   BarChart3,
+  Code,
+  Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
@@ -14,18 +16,16 @@ import seoMainImg from '../assets/seoimagen.webp';
 import seoHeroImg from '../assets/seo imagen setion.webp';
 import seoLocalImg from '../assets/servicioseoimagenes.webp';
 import seoTechImg from '../assets/seoimagen3.webp';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
 
-// Branded fallback if a stock image fails to load — degrade to a clean panel
-// instead of a broken-image icon.
 const onImgError = (e) => {
   e.currentTarget.style.display = 'none';
 };
 
-// Capability card — `reveal` adds the scroll-reveal animation (used in the
-// desktop grid; omitted in the mobile carousel so cards never stay hidden).
 const FeatureCard = ({ Icon, title, text, reveal = false }) => (
   <div className={`wdd-feature-card${reveal ? ' reveal-card' : ''}`}>
     <div className="wdd-feature-icon"><Icon size={22} strokeWidth={1.7} /></div>
@@ -42,55 +42,27 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
   </div>
 );
 
+// Structural per-section/visual data (identical across locales): images, the
+// reverse layout flag, the alternating background, the capability/other-service
+// icons. Text comes from localized content.
+const capabilityIcons = [Search, FileText, Gauge, MapPin, PenLine, BarChart3];
+const sectionImages = [seoHeroImg, seoTechImg, seoLocalImg];
+const sectionReverse = [false, true, false];
+const sectionBg = [{ background: 'var(--bg-secondary)' }, undefined, { background: 'var(--bg-secondary)' }];
+const colImgStyle = { width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' };
+const otherDefs = [
+  { Icon: Code, key: 'svc-web' },
+  { Icon: BarChart3, key: 'svc-kpi' },
+  { Icon: Bot, key: 'svc-ai' },
+];
+
 // Dedicated landing page for "SEO & Digital Growth" — same theme/structure as
-// the Web Development page, with SEO-specific content and visuals.
-const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
-  const foundPoints = [
-    'Keyword & competitor research',
-    'On-page SEO optimization',
-    'Content built to rank',
-    'Higher visibility on Google',
-  ];
-
-  const technicalPoints = [
-    'Site speed optimization',
-    'Clean, crawlable structure',
-    'Metadata & schema markup',
-    'Mobile-first indexing',
-  ];
-
-  const localPoints = [
-    'Google Business Profile optimization',
-    'Local keyword targeting',
-    'Maps & local pack ranking',
-    'Reviews & reputation signals',
-    'Location-based content',
-  ];
-
-  const capabilities = [
-    { Icon: Search, title: 'Keyword Research', text: 'We find the terms your customers actually search so you target real demand.' },
-    { Icon: FileText, title: 'On-Page SEO', text: 'Optimized titles, headings, content, and internal links built to rank.' },
-    { Icon: Gauge, title: 'Technical SEO', text: 'Fast, crawlable, well-structured pages that search engines reward.' },
-    { Icon: MapPin, title: 'Local SEO', text: 'Show up on Google Maps and the local pack for customers near you.' },
-    { Icon: PenLine, title: 'Content Strategy', text: 'A content plan that attracts qualified traffic and builds authority.' },
-    { Icon: BarChart3, title: 'Analytics & Tracking', text: 'Clear reporting so you see rankings, traffic, and results over time.' },
-  ];
-
-  const whyPoints = [
-    'Personalized strategy from audit to results',
-    'White-hat, sustainable SEO methods',
-    'Clear, transparent reporting',
-    'Focus on traffic that actually converts',
-    'Built for long-term organic growth',
-  ];
-
-  const process = [
-    { n: '01', title: 'SEO Audit', text: 'We analyze your site, competitors, and current visibility to find opportunities.' },
-    { n: '02', title: 'Keyword Research', text: 'We map the search terms and intent that bring qualified customers.' },
-    { n: '03', title: 'On-Page & Technical', text: 'We optimize content, structure, speed, and metadata to rank.' },
-    { n: '04', title: 'Local & Content', text: 'We strengthen local presence and publish content that attracts traffic.' },
-    { n: '05', title: 'Track & Report', text: 'We measure rankings, traffic, and leads — and keep improving.' },
-  ];
+// the other service pages, content-driven from the locale bundle.
+const SeoDigitalGrowthDetail = () => {
+  const { locale, content } = useLocalizedContent();
+  const t = content.serviceSeo;
+  const contactPath = getLocalizedPath('contact', locale);
+  const others = otherDefs.map((d, i) => ({ ...d, ...t.others[i] }));
 
   return (
     <div className="animate-fade-in wdd-page">
@@ -101,130 +73,78 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
           <div className="wdd-hero">
             <div className="reveal-left wdd-hero-text">
               <h1 className="hero-title" style={{ fontSize: 'clamp(2.4rem, 5vw, 3.6rem)', lineHeight: 1.12, marginBottom: '1.5rem' }}>
-                SEO &amp; Digital <span className="text-gradient">Growth</span>
+                {t.hero.title.before}<span className="text-gradient">{t.hero.title.accent}</span>{t.hero.title.after}
               </h1>
               <p className="hero-subtitle" style={{ fontSize: '1.12rem', lineHeight: 1.7, maxWidth: '560px', margin: 0 }}>
-                We help your business rank higher on Google, attract qualified traffic, and turn search intent into real customers.
+                {t.hero.subtitle}
               </p>
             </div>
 
-            {/* Hero image — between subtitle and CTA on mobile, on the right on desktop */}
             <div
               className="reveal-right wdd-hero-img"
               style={{ borderRadius: 22, overflow: 'hidden', background: 'radial-gradient(circle at 30% 20%, rgba(77,148,255,0.18), var(--bg-card) 70%)' }}
             >
-              <img src={seoMainImg} alt="SEO analytics dashboard showing search growth" fetchPriority="high" decoding="async" onError={onImgError} />
+              <img src={seoMainImg} alt={t.hero.alt} fetchPriority="high" decoding="async" onError={onImgError} />
             </div>
 
             <div className="wdd-hero-cta">
-              <a href={wa("Hello, I'd like to get a free SEO audit for my business.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Get a Free SEO Audit <ArrowRight size={16} />
+              <a href={wa(t.hero.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+                {t.hero.cta} <ArrowRight size={16} />
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 2. Get Found */}
-      <section className="section" style={{ background: 'var(--bg-secondary)' }}>
-        <div className="container">
-          <div className="wdd-two-col" style={{ alignItems: 'center' }}>
-            <div className="reveal-left">
-              <h2 style={{ fontSize: '2.2rem', marginBottom: '1.25rem', lineHeight: 1.25 }}>
-                Get Found by the People Already <span className="text-gradient">Searching</span>
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                The best traffic comes from people already looking for what you offer. We optimize your website and content so the right customers find you first on Google.
-              </p>
-              <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
-                {foundPoints.map((p) => <li key={p}>{p}</li>)}
-              </ul>
-              <a href={wa("Hello, I'd like to start ranking higher on Google.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Start Ranking Higher <ArrowRight size={16} />
-              </a>
-            </div>
-            <div className="reveal-right wdd-col-img">
-              <img src={seoHeroImg} alt="Search analytics and keyword research on a laptop" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Technical SEO */}
-      <section className="section">
-        <div className="container">
-          <div className="wdd-two-col reverse" style={{ alignItems: 'center' }}>
-            <div className="reveal-left">
-              <h2 style={{ fontSize: '2.2rem', marginBottom: '1.25rem', lineHeight: 1.25 }}>
-                Technical SEO That's Fast and Built to <span className="text-gradient">Rank</span>
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                Search engines reward fast, well-structured sites. We fix the technical foundations so your pages load quickly, get indexed, and climb the rankings.
-              </p>
-              <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
-                {technicalPoints.map((p) => <li key={p}>{p}</li>)}
-              </ul>
-              <a href={wa("Hello, I'd like to improve my technical SEO and rankings.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Improve My Rankings <ArrowRight size={16} />
-              </a>
-            </div>
-            {/* Technical SEO image */}
-            <div className="reveal-right wdd-col-img">
-              <img src={seoTechImg} alt="Technical SEO performance and search ranking improvements" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
+      {/* 2-4. Alternating two-column sections */}
+      {t.sections.map((s, i) => (
+        <section key={i} className="section" style={sectionBg[i]}>
+          <div className="container">
+            <div className={`wdd-two-col${sectionReverse[i] ? ' reverse' : ''}`} style={{ alignItems: 'center' }}>
+              <div className="reveal-left">
+                <h2 style={{ fontSize: '2.2rem', marginBottom: '1.25rem', lineHeight: 1.25 }}>
+                  {s.heading.before}<span className="text-gradient">{s.heading.accent}</span>{s.heading.after}
+                </h2>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
+                  {s.copy}
+                </p>
+                <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
+                  {s.points.map((p) => <li key={p}>{p}</li>)}
+                </ul>
+                <a href={wa(s.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+                  {s.cta} <ArrowRight size={16} />
+                </a>
+              </div>
+              <div className="reveal-right wdd-col-img">
+                <img src={sectionImages[i]} alt={s.alt} loading="lazy" onError={onImgError} style={colImgStyle} />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 4. Local SEO */}
-      <section className="section" style={{ background: 'var(--bg-secondary)' }}>
-        <div className="container">
-          <div className="wdd-two-col" style={{ alignItems: 'center' }}>
-            <div className="reveal-left">
-              <h2 style={{ fontSize: '2.2rem', marginBottom: '1.25rem', lineHeight: 1.25 }}>
-                Dominate Local Search in <span className="text-gradient">Your Area</span>
-              </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '1.75rem' }}>
-                If your customers are nearby, local SEO puts your business on the map. We optimize your local presence so you show up when people search for services near them.
-              </p>
-              <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
-                {localPoints.map((p) => <li key={p}>{p}</li>)}
-              </ul>
-              <a href={wa("Hello, I'd like to boost my local SEO.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Boost My Local SEO <ArrowRight size={16} />
-              </a>
-            </div>
-            <div className="reveal-right wdd-col-img">
-              <img src={seoLocalImg} alt="Local search growth and performance analytics" loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* 5. Capabilities */}
       <section className="section">
         <div className="container">
           <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 3.5rem' }} className="reveal">
             <h2 style={{ fontSize: '2.3rem', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Everything Your SEO Needs to <span className="text-gradient">Grow</span>
+              {t.capabilities.heading.before}<span className="text-gradient">{t.capabilities.heading.accent}</span>{t.capabilities.heading.after}
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-              Strategy, content, and technical expertise working together to grow your visibility, traffic, and qualified leads.
+              {t.capabilities.copy}
             </p>
           </div>
 
-          {/* Desktop: unified grid */}
           <div className="wdd-feature-grid wdd-only-desktop reveal-group">
-            {capabilities.map((c) => <FeatureCard key={c.title} {...c} reveal />)}
+            {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} reveal />)}
           </div>
-          {/* Mobile: swipeable auto-scrolling carousel */}
           <MobileAutoCarousel>
-            {capabilities.map((c) => <FeatureCard key={c.title} {...c} />)}
+            {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} />)}
           </MobileAutoCarousel>
 
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa("Hello, I'd like to grow my organic traffic with SEO.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              Grow My Organic Traffic <ArrowRight size={16} />
+            <a href={wa(t.capabilities.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+              {t.capabilities.cta} <ArrowRight size={16} />
             </a>
           </div>
         </div>
@@ -236,18 +156,18 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
           <div className="wdd-two-col" style={{ alignItems: 'center' }}>
             <div className="reveal-left">
               <h2 style={{ fontSize: '2.2rem', marginBottom: '1.25rem', lineHeight: 1.25 }}>
-                Why Work With Our <span className="text-gradient">SEO Team?</span>
+                {t.why.heading.before}<span className="text-gradient">{t.why.heading.accent}</span>{t.why.heading.after}
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
-                We combine strategy, technical expertise, and content to grow your visibility — focused on real results: more traffic, more leads, more sales. Our process is transparent and built around your goals.
+                {t.why.copy}
               </p>
-              <a href={wa("Hello, I'd like to talk about growing my business with SEO.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Let's Talk About Your Growth <ArrowRight size={16} />
+              <a href={wa(t.why.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+                {t.why.cta} <ArrowRight size={16} />
               </a>
             </div>
             <div className="reveal-right">
               <div className="wdd-why-card">
-                {whyPoints.map((p) => (
+                {t.why.points.map((p) => (
                   <div key={p} className="wdd-why-row">
                     <span className="wdd-check"><Check size={16} /></span>
                     <span style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{p}</span>
@@ -264,20 +184,18 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3.5rem' }} className="reveal">
             <h2 style={{ fontSize: '2.3rem', lineHeight: 1.2 }}>
-              Our <span className="text-gradient">SEO Process</span>
+              {t.process.heading.before}<span className="text-gradient">{t.process.heading.accent}</span>{t.process.heading.after}
             </h2>
           </div>
-          {/* Desktop: grid */}
           <div className="wdd-process wdd-only-desktop reveal-group">
-            {process.map((p) => <ProcessCard key={p.n} {...p} reveal />)}
+            {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} reveal />)}
           </div>
-          {/* Mobile: swipeable auto-scrolling carousel */}
           <MobileAutoCarousel speed={0.95}>
-            {process.map((p) => <ProcessCard key={p.n} {...p} />)}
+            {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} />)}
           </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa("Hello, I'd like to start the SEO process for my business.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              Start the Process <ArrowRight size={16} />
+            <a href={wa(t.process.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+              {t.process.cta} <ArrowRight size={16} />
             </a>
           </div>
         </div>
@@ -290,17 +208,17 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
             <div className="wdd-cta-grid"></div>
             <div style={{ position: 'relative', zIndex: 1, maxWidth: '680px', margin: '0 auto', textAlign: 'center' }}>
               <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.6rem)', marginBottom: '1.25rem', lineHeight: 1.2 }}>
-                Ready to Rank Higher and <span className="text-gradient">Grow Your Traffic?</span>
+                {t.finalCta.heading.before}<span className="text-gradient">{t.finalCta.heading.accent}</span>{t.finalCta.heading.after}
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.08rem', lineHeight: 1.7, marginBottom: '2.25rem' }}>
-                Let's build an SEO strategy that gets your business found, drives qualified traffic, and turns searches into customers.
+                {t.finalCta.copy}
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-                <a href={wa("Hello, I'd like to get a free SEO audit for my business.")} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                  Get a Free SEO Audit <ArrowRight size={16} />
+                <a href={wa(t.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+                  {t.finalCta.primary} <ArrowRight size={16} />
                 </a>
-                <Link to="/contact" className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
-                  Contact Us Today
+                <Link to={contactPath} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                  {t.finalCta.secondary}
                 </Link>
               </div>
             </div>
@@ -309,24 +227,24 @@ const SeoDigitalGrowthDetail = ({ otherServices = [] }) => {
       </section>
 
       {/* Explore other services — internal linking (SEO) */}
-      {otherServices.length > 0 && (
+      {others.length > 0 && (
         <section className="section">
           <div className="container">
             <h2 style={{ fontSize: '2rem', marginBottom: '2.5rem', textAlign: 'center' }}>
-              Explore Our Other <span className="text-gradient">Services</span>
+              {t.otherHeading.before}<span className="text-gradient">{t.otherHeading.accent}</span>{t.otherHeading.after}
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {otherServices.map((other) => {
+              {others.map((other) => {
                 const OtherIcon = other.Icon;
                 return (
-                  <Link key={other.slug} to={`/services/${other.slug}`} className="service-card" style={{ padding: '2rem 1.75rem', display: 'block', textDecoration: 'none' }}>
+                  <Link key={other.key} to={getLocalizedPath(other.key, locale)} className="service-card" style={{ padding: '2rem 1.75rem', display: 'block', textDecoration: 'none' }}>
                     <div className="service-icon" style={{ marginBottom: '1.25rem', width: '50px', height: '50px' }}>
                       <OtherIcon size={26} />
                     </div>
-                    <h3 style={{ fontSize: '1.15rem', marginBottom: '0.6rem', color: 'var(--text-primary)' }}>{other.eyebrow}</h3>
+                    <h3 style={{ fontSize: '1.15rem', marginBottom: '0.6rem', color: 'var(--text-primary)' }}>{other.title}</h3>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1rem' }}>{other.short}</p>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--accent-cyan)', fontWeight: 600, fontSize: '0.9rem' }}>
-                      Learn more <ArrowRight size={15} />
+                      {t.otherLearnMore} <ArrowRight size={15} />
                     </span>
                   </Link>
                 );

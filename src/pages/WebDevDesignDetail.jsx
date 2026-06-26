@@ -49,9 +49,9 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
 // copy comes from localized content, matched by index/order).
 const capabilityIcons = [Palette, MessageSquare, MousePointerClick, Target, Search, BarChart3];
 const otherDefs = [
-  { Icon: TrendingUp, path: '/services/seo-digital-growth' },
-  { Icon: BarChart3, path: '/services/kpi-dashboards' },
-  { Icon: Bot, path: '/services/ai-automation-chatbots' },
+  { Icon: TrendingUp, key: 'svc-seo' },
+  { Icon: BarChart3, key: 'svc-kpi' },
+  { Icon: Bot, key: 'svc-ai' },
 ];
 
 // Dedicated landing page for "Web Design & Development".
@@ -287,7 +287,7 @@ const WebDevDesignDetail = () => {
               {others.map((other) => {
                 const OtherIcon = other.Icon;
                 return (
-                  <Link key={other.path} to={other.path} className="service-card" style={{ padding: '2rem 1.75rem', display: 'block', textDecoration: 'none' }}>
+                  <Link key={other.key} to={getLocalizedPath(other.key, locale)} className="service-card" style={{ padding: '2rem 1.75rem', display: 'block', textDecoration: 'none' }}>
                     <div className="service-icon" style={{ marginBottom: '1.25rem', width: '50px', height: '50px' }}>
                       <OtherIcon size={26} />
                     </div>

@@ -25,10 +25,16 @@ import esFaqs from '../content/es/faqs.js';
 import enFaqs from '../content/en/faqs.js';
 import esContact from '../content/es/contact.js';
 import enContact from '../content/en/contact.js';
+import esServiceSeo from '../content/es/serviceSeo.js';
+import enServiceSeo from '../content/en/serviceSeo.js';
+import esServiceKpi from '../content/es/serviceKpi.js';
+import enServiceKpi from '../content/en/serviceKpi.js';
+import esServiceAi from '../content/es/serviceAi.js';
+import enServiceAi from '../content/en/serviceAi.js';
 
 const BUNDLES = {
-  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices, pricing: esPricing, clients: esClients, faqs: esFaqs, contact: esContact },
-  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices, pricing: enPricing, clients: enClients, faqs: enFaqs, contact: enContact },
+  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices, pricing: esPricing, clients: esClients, faqs: esFaqs, contact: esContact, serviceSeo: esServiceSeo, serviceKpi: esServiceKpi, serviceAi: esServiceAi },
+  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices, pricing: enPricing, clients: enClients, faqs: enFaqs, contact: enContact, serviceSeo: enServiceSeo, serviceKpi: enServiceKpi, serviceAi: enServiceAi },
 };
 
 // Return the content bundle for a locale. Unknown/undefined locales fall back to

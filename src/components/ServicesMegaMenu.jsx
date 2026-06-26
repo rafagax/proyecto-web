@@ -20,19 +20,19 @@ export const ServicesMegaMenu = () => {
       title: services.seo.title,
       description: services.seo.description,
       icon: <TrendingUp size={20} />,
-      path: '/services/seo-digital-growth',
+      path: getLocalizedPath('svc-seo', locale),
     },
     {
       title: services.kpi.title,
       description: services.kpi.description,
       icon: <BarChart3 size={20} />,
-      path: '/services/kpi-dashboards',
+      path: getLocalizedPath('svc-kpi', locale),
     },
     {
       title: services.ai.title,
       description: services.ai.description,
       icon: <Bot size={20} />,
-      path: '/services/ai-automation-chatbots',
+      path: getLocalizedPath('svc-ai', locale),
     },
   ];
   const [isOpen, setIsOpen] = useState(false);

@@ -11,9 +11,14 @@ export default [
   // Bilingual Web Development & Design detail (same module; locale from the URL).
   route('servicios/desarrollo-web', 'routes/service-web.jsx', { id: 'svc-web-es' }),
   route('en/services/web-development', 'routes/service-web.jsx', { id: 'svc-web-en' }),
-  // Legacy English service-detail pages still served for SEO/KPI/AI (not yet migrated).
-  // /services and /services/web-development-design are 301'd in vercel.json.
-  route('services/:serviceId', 'routes/service-detail.jsx'),
+  // Bilingual SEO / KPI / AI service details (same module each; locale from the URL).
+  // The legacy /services/<slug>, /seo and /kpi URLs are 301'd in vercel.json.
+  route('servicios/seo', 'routes/service-seo.jsx', { id: 'svc-seo-es' }),
+  route('en/services/seo', 'routes/service-seo.jsx', { id: 'svc-seo-en' }),
+  route('servicios/dashboards-kpi', 'routes/service-kpi.jsx', { id: 'svc-kpi-es' }),
+  route('en/services/kpi-dashboards', 'routes/service-kpi.jsx', { id: 'svc-kpi-en' }),
+  route('servicios/automatizacion-ia', 'routes/service-ai.jsx', { id: 'svc-ai-es' }),
+  route('en/services/ai-automation', 'routes/service-ai.jsx', { id: 'svc-ai-en' }),
   // Bilingual core pages (same module each; locale derived from the URL). The legacy
   // English URLs (/pricing, /our-clients, /faqs, /contact) are 301'd in vercel.json.
   route('precios', 'routes/pricing.jsx', { id: 'pricing-es' }),
@@ -27,7 +32,5 @@ export default [
   route('blog', 'routes/blog.jsx'),
   route('blog/:slug', 'routes/blog-post.jsx'),
   route('about', 'routes/home.jsx', { id: 'about' }),
-  route('seo', 'routes/seo.jsx'),
-  route('kpi', 'routes/kpi.jsx'),
   route('*', 'routes/catch-all.jsx'),
 ];

@@ -122,13 +122,13 @@ const Navbar = () => {
             <Link to={getLocalizedPath('svc-web', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               {services.web.title}
             </Link>
-            <Link to="/services/seo-digital-growth" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to={getLocalizedPath('svc-seo', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               {services.seo.title}
             </Link>
-            <Link to="/services/kpi-dashboards" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to={getLocalizedPath('svc-kpi', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               {services.kpi.title}
             </Link>
-            <Link to="/services/ai-automation-chatbots" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
+            <Link to={getLocalizedPath('svc-ai', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
               {services.ai.title}
             </Link>
           </div>

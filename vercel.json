@@ -10,7 +10,16 @@
     { "source": "/our-clients", "destination": "/clientes", "permanent": true },
     { "source": "/clients", "destination": "/clientes", "permanent": true },
     { "source": "/faqs", "destination": "/preguntas-frecuentes", "permanent": true },
-    { "source": "/contact", "destination": "/contacto", "permanent": true }
+    { "source": "/contact", "destination": "/contacto", "permanent": true },
+    { "source": "/seo", "destination": "/servicios/seo", "permanent": true },
+    { "source": "/kpi", "destination": "/servicios/dashboards-kpi", "permanent": true },
+    { "source": "/services/seo-digital-growth", "destination": "/servicios/seo", "permanent": true },
+    { "source": "/services/seo", "destination": "/servicios/seo", "permanent": true },
+    { "source": "/services/kpi-dashboards", "destination": "/servicios/dashboards-kpi", "permanent": true },
+    { "source": "/services/kpi", "destination": "/servicios/dashboards-kpi", "permanent": true },
+    { "source": "/services/ai-automation-chatbots", "destination": "/servicios/automatizacion-ia", "permanent": true },
+    { "source": "/services/ai-automation", "destination": "/servicios/automatizacion-ia", "permanent": true },
+    { "source": "/services/web-development", "destination": "/servicios/desarrollo-web", "permanent": true }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

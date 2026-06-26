@@ -131,7 +131,7 @@ const Home = () => {
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
 
-              <Link to="/services/seo-digital-growth" className="mobile-service-card">
+              <Link to={getLocalizedPath('svc-seo', locale)} className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <TrendingUp size={18} />
                 </div>
@@ -142,7 +142,7 @@ const Home = () => {
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
 
-              <Link to="/services/kpi-dashboards" className="mobile-service-card">
+              <Link to={getLocalizedPath('svc-kpi', locale)} className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <BarChart3 size={18} />
                 </div>
@@ -153,7 +153,7 @@ const Home = () => {
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
 
-              <Link to="/services/ai-automation-chatbots" className="mobile-service-card">
+              <Link to={getLocalizedPath('svc-ai', locale)} className="mobile-service-card">
                 <div className="service-card-icon-box">
                   <Bot size={18} />
                 </div>
@@ -276,7 +276,7 @@ const Home = () => {
               <div className="service-highlight">{home.servicesGrid.web.highlight}</div>
             </Link>
 
-            <Link to="/services/seo-digital-growth" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to={getLocalizedPath('svc-seo', locale)} className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><TrendingUp size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.seo.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -285,7 +285,7 @@ const Home = () => {
               <div className="service-highlight">{home.servicesGrid.seo.highlight}</div>
             </Link>
 
-            <Link to="/services/kpi-dashboards" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to={getLocalizedPath('svc-kpi', locale)} className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><BarChart3 size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.kpi.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -294,7 +294,7 @@ const Home = () => {
               <div className="service-highlight">{home.servicesGrid.kpi.highlight}</div>
             </Link>
 
-            <Link to="/services/ai-automation-chatbots" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
+            <Link to={getLocalizedPath('svc-ai', locale)} className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Bot size={32} /></div>
               <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.ai.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
@@ -475,7 +475,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> {home.build.seo.bullets[1]}</li>
                 <li><CheckCircle2 size={18} /> {home.build.seo.bullets[2]}</li>
               </ul>
-              <Link to="/services/seo-digital-growth" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to={getLocalizedPath('svc-seo', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
                 {home.build.seo.cta} <ArrowRight size={16} />
               </Link>
             </div>
@@ -528,7 +528,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> {home.build.ai.bullets[1]}</li>
                 <li><CheckCircle2 size={18} /> {home.build.ai.bullets[2]}</li>
               </ul>
-              <Link to="/services/ai-automation-chatbots" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to={getLocalizedPath('svc-ai', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
                 {home.build.ai.cta} <ArrowRight size={16} />
               </Link>
             </div>
@@ -581,7 +581,7 @@ const Home = () => {
                 <li><CheckCircle2 size={18} /> {home.build.kpi.bullets[1]}</li>
                 <li><CheckCircle2 size={18} /> {home.build.kpi.bullets[2]}</li>
               </ul>
-              <Link to="/services/kpi-dashboards" className="hero-advisory-btn" style={{ margin: 0 }}>
+              <Link to={getLocalizedPath('svc-kpi', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
                 {home.build.kpi.cta} <ArrowRight size={16} />
               </Link>
             </div>
