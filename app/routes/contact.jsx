@@ -1,20 +1,27 @@
 import Contact from '../../src/pages/Contact.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
+import { getLocaleFromPath } from '../../src/i18n/locale.js';
+import { getContent } from '../../src/i18n/content.js';
 
-export function meta() {
+// Locale-aware meta for /contacto and /en/contact (same module; locale from the URL).
+export function meta({ location }) {
+  const locale = getLocaleFromPath(location.pathname);
+  const esHref = absoluteUrl('/contacto');
+  const enHref = absoluteUrl('/en/contact');
+  const canonical = locale === 'en' ? enHref : esHref;
+  const m = getContent(locale).contact.meta;
+
   return [
-    { title: 'Contact Us — Free Web Strategy Consultation | InversionesDigitales' },
-    {
-      name: 'description',
-      content:
-        'Ready to grow your business? Contact us for a free consultation. We usually respond within a few hours via WhatsApp, email, or phone.',
-    },
-    { property: 'og:title', content: 'Contact Us | InversionesDigitales' },
-    {
-      property: 'og:description',
-      content: 'Book a free consultation and strategy session for your website, SEO, KPI dashboards, or AI automation.',
-    },
-    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/contact') },
+    { title: m.title },
+    { name: 'description', content: m.description },
+    { property: 'og:title', content: m.ogTitle },
+    { property: 'og:description', content: m.ogDescription },
+    { name: 'twitter:title', content: m.ogTitle },
+    { name: 'twitter:description', content: m.ogDescription },
+    { tagName: 'link', rel: 'canonical', href: canonical },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
   ];
 }
 

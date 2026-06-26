@@ -27,7 +27,7 @@ export const routeManifest = [
   { key: 'svc-ai',   es: '/servicios/automatizacion-ia', en: '/en/services/ai-automation',    type: 'service', sitemap: true }, // targeting SEO pendiente
   { key: 'pricing',  es: '/precios',                     en: '/en/pricing',                   type: 'page',    sitemap: true },
   { key: 'contact',  es: '/contacto',                    en: '/en/contact',                   type: 'page',    sitemap: true },
-  { key: 'clients',  es: '/clientes',                    en: '/en/our-clients',               type: 'page',    sitemap: true },
+  { key: 'clients',  es: '/clientes',                    en: '/en/clients',                   type: 'page',    sitemap: true },
   { key: 'faqs',     es: '/preguntas-frecuentes',        en: '/en/faqs',                      type: 'page',    sitemap: true },
   { key: 'blog',     es: '/blog',                        en: '/en/blog',                      type: 'page',    sitemap: true },
 ];

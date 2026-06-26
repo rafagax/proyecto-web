@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { updateMetaTags, addFAQSchema } from '../utils/seo';
-import { faqCategories } from '../data/faqs';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
+
+const WHATSAPP_PHONE = '584144735431';
 
 const FAQItem = ({ faq, isOpen, onClick }) => (
   <div
@@ -52,17 +54,9 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
 );
 
 const FAQs = () => {
+  const { locale, content } = useLocalizedContent();
+  const t = content.faqs;
   const [openKey, setOpenKey] = useState(null);
-
-  useEffect(() => {
-    updateMetaTags({
-      title: 'Frequently Asked Questions | Web Development, SEO, KPI & AI | InversionesDigitales',
-      description: 'Answers to common questions about web development, SEO, KPI dashboards, AI automation, pricing, and our process — so you can decide with confidence.',
-      keywords: 'FAQ, web development questions, SEO questions, KPI dashboard questions, AI automation questions, pricing, process',
-      canonical: 'https://yourdomain.com/faqs',
-    });
-    addFAQSchema(faqCategories.flatMap((c) => c.items));
-  }, []);
 
   const handleToggle = (key) => {
     setOpenKey(openKey === key ? null : key);
@@ -75,13 +69,13 @@ const FAQs = () => {
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ textAlign: 'center' }}>
           <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
-            Got Questions?
+            {t.hero.eyebrow}
           </span>
           <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
-            Frequently Asked <span className="text-gradient">Questions</span>
+            {t.hero.title.before}<span className="text-gradient">{t.hero.title.accent}</span>{t.hero.title.after}
           </h1>
           <p className="hero-subtitle" style={{ maxWidth: '680px', margin: '0 auto' }}>
-            Clear answers about our web development, SEO, KPI dashboards, and AI automation services — plus pricing and how we work. Can't find your answer? Reach out and we'll help.
+            {t.hero.subtitle}
           </p>
         </div>
       </section>
@@ -89,8 +83,8 @@ const FAQs = () => {
       {/* FAQ Categories */}
       <section className="section" style={{ paddingTop: '2rem' }}>
         <div className="container" style={{ maxWidth: '820px' }}>
-          {faqCategories.map((group, ci) => (
-            <div key={group.category} style={{ marginBottom: ci === faqCategories.length - 1 ? 0 : '3.5rem' }}>
+          {t.categories.map((group, ci) => (
+            <div key={group.category} style={{ marginBottom: ci === t.categories.length - 1 ? 0 : '3.5rem' }}>
               <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>{group.category}</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {group.items.map((faq, qi) => {
@@ -114,23 +108,23 @@ const FAQs = () => {
       <section className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>
-            Still have <span className="text-gradient">questions?</span>
+            {t.cta.heading.before}<span className="text-gradient">{t.cta.heading.accent}</span>{t.cta.heading.after}
           </h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '520px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
-            Our team is happy to answer anything you'd like to know. Reach out on WhatsApp or book a free strategy session.
+            {t.cta.copy}
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a
-              href="https://wa.me/584144735431?text=Hello!%20I%20have%20some%20questions%20about%20your%20services."
+              href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(t.cta.waQuote)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"
               style={{ padding: '16px 40px', fontSize: '1.05rem' }}
             >
-              Chat on WhatsApp
+              {t.cta.whatsapp}
             </a>
-            <Link to="/contact" className="btn btn-secondary" style={{ padding: '16px 40px', fontSize: '1.05rem' }}>
-              Send a Message
+            <Link to={getLocalizedPath('contact', locale)} className="btn btn-secondary" style={{ padding: '16px 40px', fontSize: '1.05rem' }}>
+              {t.cta.sendMessage}
             </Link>
           </div>
         </div>

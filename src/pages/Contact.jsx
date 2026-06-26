@@ -1,16 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { MessageCircle, Mail, MapPin } from 'lucide-react';
-import { updateMetaTags } from '../utils/seo';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 const Contact = () => {
-  useEffect(() => {
-    updateMetaTags({
-      title: 'Contact Us | Get Your Free Web Strategy Consultation',
-      description: 'Ready to transform your business? Contact us for a free consultation. We respond within 2 hours. WhatsApp, email, and phone support available.',
-      keywords: 'contact us, free consultation, web development quote, business consultation, digital strategy',
-      canonical: 'https://yourdomain.com/contact'
-    });
-  }, []);
+  const { content } = useLocalizedContent();
+  const t = content.contact;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,7 +23,11 @@ const Contact = () => {
     e.preventDefault();
     const { name, email, phone, message } = formData;
     const businessPhone = '584144735431';
-    const text = `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`;
+    const text = t.form.waTemplate
+      .replace('{name}', name)
+      .replace('{email}', email)
+      .replace('{phone}', phone)
+      .replace('{message}', message);
     const whatsappUrl = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -40,13 +39,13 @@ const Contact = () => {
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ textAlign: 'center' }}>
           <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
-            Let's Talk
+            {t.hero.eyebrow}
           </span>
           <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
-            Get in <span className="text-gradient">Touch</span>
+            {t.hero.title.before}<span className="text-gradient">{t.hero.title.accent}</span>{t.hero.title.after}
           </h1>
           <p className="hero-subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>
-            Ready to start your project? Write to us and a professional will get back to you as soon as possible — usually within a few hours.
+            {t.hero.subtitle}
           </p>
         </div>
       </section>
@@ -56,15 +55,15 @@ const Contact = () => {
         <div className="container">
           <div className="contact-container">
             <div className="contact-info">
-              <h3 style={{ fontSize: '1.8rem', lineHeight: '1.2' }}>Professional Websites in <span className="text-gradient">7 Days</span></h3>
+              <h3 style={{ fontSize: '1.8rem', lineHeight: '1.2' }}>{t.info.heading.before}<span className="text-gradient">{t.info.heading.accent}</span>{t.info.heading.after}</h3>
               <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', lineHeight: '1.6', fontSize: '1.05rem' }}>
-                Don't let another day pass without a professional online presence. Our team will analyze your needs and create a customized strategy to help you stand out and dominate your market.
+                {t.info.copy}
               </p>
 
               <div className="contact-item">
                 <div className="contact-icon"><MessageCircle size={24} /></div>
                 <div>
-                  <h4 style={{ marginBottom: '0.2rem' }}>WhatsApp</h4>
+                  <h4 style={{ marginBottom: '0.2rem' }}>{t.info.whatsappLabel}</h4>
                   <p style={{ color: 'var(--text-secondary)' }}>+58 414 473 5431</p>
                 </div>
               </div>
@@ -72,7 +71,7 @@ const Contact = () => {
               <div className="contact-item">
                 <div className="contact-icon"><Mail size={24} /></div>
                 <div>
-                  <h4 style={{ marginBottom: '0.2rem' }}>Email</h4>
+                  <h4 style={{ marginBottom: '0.2rem' }}>{t.info.emailLabel}</h4>
                   <p style={{ color: 'var(--text-secondary)' }}>inversionesdigitales@hotmail.es</p>
                 </div>
               </div>
@@ -80,63 +79,63 @@ const Contact = () => {
               <div className="contact-item">
                 <div className="contact-icon"><MapPin size={24} /></div>
                 <div>
-                  <h4 style={{ marginBottom: '0.2rem' }}>Location</h4>
+                  <h4 style={{ marginBottom: '0.2rem' }}>{t.info.locationLabel}</h4>
                   <p style={{ color: 'var(--text-secondary)' }}>Maracay, Aragua, Venezuela</p>
                 </div>
               </div>
 
               <div style={{ marginTop: '2rem', padding: '1.5rem', background: 'linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(77, 148, 255, 0.08) 100%)', borderRadius: 'var(--border-radius-md)', border: '1px solid rgba(77, 148, 255,0.2)' }}>
-                <p style={{ color: 'var(--accent-cyan)', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.9rem' }}>Lightning-Fast Response</p>
+                <p style={{ color: 'var(--accent-cyan)', fontWeight: '700', marginBottom: '0.5rem', fontSize: '0.9rem' }}>{t.info.fastResponseTitle}</p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                  We typically respond within <strong style={{ color: 'var(--text-primary)' }}>2–4 hours</strong> during business hours. Leave us a message and let's start building your digital empire!
+                  {t.info.fastResponseBefore}<strong style={{ color: 'var(--text-primary)' }}>{t.info.fastResponseStrong}</strong>{t.info.fastResponseAfter}
                 </p>
               </div>
             </div>
 
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label>Full Name</label>
+                <label>{t.form.nameLabel}</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  placeholder="Your name"
+                  placeholder={t.form.namePlaceholder}
                   required
                 />
               </div>
               <div className="form-group">
-                <label>Email Address</label>
+                <label>{t.form.emailLabel}</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  placeholder="you@email.com"
+                  placeholder={t.form.emailPlaceholder}
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label>Phone Number</label>
+                <label>{t.form.phoneLabel}</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  placeholder="Your phone number"
+                  placeholder={t.form.phonePlaceholder}
                   required
                 />
               </div>
 
               <div className="form-group">
-                <label>Message</label>
+                <label>{t.form.messageLabel}</label>
                 <textarea
                   rows="4"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us a bit about your project..."
+                  placeholder={t.form.messagePlaceholder}
                   required
                 ></textarea>
               </div>
@@ -145,7 +144,7 @@ const Contact = () => {
                 className="btn btn-primary"
                 style={{ marginTop: '1.5rem', padding: '18px', fontSize: '1.1rem', fontWeight: '700', width: '100%', boxShadow: '0 10px 25px rgba(77, 148, 255, 0.4)', letterSpacing: '0.5px' }}
               >
-                Schedule Free Strategy Call
+                {t.form.submit}
               </button>
             </form>
           </div>

@@ -17,10 +17,18 @@ import esChatbot from '../content/es/chatbot.js';
 import enChatbot from '../content/en/chatbot.js';
 import esServices from '../content/es/services.js';
 import enServices from '../content/en/services.js';
+import esPricing from '../content/es/pricing.js';
+import enPricing from '../content/en/pricing.js';
+import esClients from '../content/es/clients.js';
+import enClients from '../content/en/clients.js';
+import esFaqs from '../content/es/faqs.js';
+import enFaqs from '../content/en/faqs.js';
+import esContact from '../content/es/contact.js';
+import enContact from '../content/en/contact.js';
 
 const BUNDLES = {
-  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices },
-  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices },
+  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices, pricing: esPricing, clients: esClients, faqs: esFaqs, contact: esContact },
+  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices, pricing: enPricing, clients: enClients, faqs: enFaqs, contact: enContact },
 };
 
 // Return the content bundle for a locale. Unknown/undefined locales fall back to

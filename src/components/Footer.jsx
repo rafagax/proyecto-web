@@ -31,14 +31,14 @@ const Footer = () => {
             <h3 style={{ fontSize: '1.2rem', color: 'var(--text-primary)', borderBottom: '1px solid var(--border-subtle)', paddingBottom: '0.5rem', display: 'inline-block' }}>{footer.explore}</h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
               <div className="footer-links">
-                <Link to="/">{nav.home}</Link>
+                <Link to={getLocalizedPath('home', locale)}>{nav.home}</Link>
                 <Link to={getLocalizedPath('services', locale)}>{nav.services}</Link>
-                <Link to="/pricing">{nav.pricing}</Link>
+                <Link to={getLocalizedPath('pricing', locale)}>{nav.pricing}</Link>
               </div>
               <div className="footer-links">
-                <Link to="/our-clients">{footer.ourClients}</Link>
-                <Link to="/faqs">{footer.faqs}</Link>
-                <Link to="/contact">{nav.contact}</Link>
+                <Link to={getLocalizedPath('clients', locale)}>{footer.ourClients}</Link>
+                <Link to={getLocalizedPath('faqs', locale)}>{footer.faqs}</Link>
+                <Link to={getLocalizedPath('contact', locale)}>{nav.contact}</Link>
               </div>
             </div>
           </div>

@@ -1,105 +1,26 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { updateMetaTags } from '../utils/seo';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
-const clients = [
-  {
-    name: "Georgina López",
-    business: "Bikinis L.B. Orgina",
-    location: "Venezuela 🇻🇪",
-    quote: "They transformed my fashion business with a beautiful e-commerce site. The website helped me reach customers internationally. Sales increased 150% in the first 3 months!",
-    initial: "B",
-    service: "E-Commerce Fashion",
-    result: "+150% sales growth",
-    color: "#4d94ff",
-    website: "https://bikinislborgina.vercel.app/",
-    websiteLabel: "View Site"
-  },
-  {
-    name: "Diego García",
-    business: "DragastroPedia Aragua",
-    location: "Aragua, Venezuela 🇻🇪",
-    quote: "Our restaurant directory needed a modern platform. They built a professional site that showcases all our partner restaurants perfectly. We've tripled our partnerships!",
-    initial: "D",
-    service: "Directory Platform",
-    result: "3x partnership growth",
-    color: "#0066ff",
-    website: "https://dragastropedia-aragua.com/",
-    websiteLabel: "View Site"
-  },
-  {
-    name: "Abg. Victor Correa",
-    business: "Soluciones Cofer",
-    location: "Venezuela 🇻🇪",
-    quote: "The team delivered a professional B2B website that clearly communicates our services. Lead generation increased significantly and we're closing more deals with serious clients.",
-    initial: "S",
-    service: "B2B Solutions",
-    result: "+85% qualified leads",
-    color: "#4d94ff",
-    website: "https://solucionescofer.com/",
-    websiteLabel: "View Site"
-  },
-  {
-    name: "Rafael Martínez",
-    business: "Tech Services Valencia",
-    location: "Valencia, Venezuela 🇻🇪",
-    quote: "In 7 days I had my website up and running and receiving clients. The team was incredibly professional and handled everything I asked for.",
-    initial: "R",
-    service: "Landing Page",
-    result: "+60% more inquiries",
-    color: "#0066ff",
-  },
-  {
-    name: "Daniela Suárez",
-    business: "Beauty Studio Maracay",
-    location: "Maracay, Venezuela 🇻🇪",
-    quote: "Thanks to the AI automation they implemented, I answer WhatsApp inquiries effortlessly. My sales went up 40% in the first month.",
-    initial: "D",
-    service: "AI Automation",
-    result: "+40% sales in month 1",
-    color: "#4d94ff",
-  },
-  {
-    name: "James Rodríguez",
-    business: "JR Consulting Group",
-    location: "Miami, Florida 🇺🇸",
-    quote: "I needed a bilingual website for my Hispanic audience and they delivered perfectly. The design is clean, fast and professional. Highly recommended!",
-    initial: "J",
-    service: "Bilingual Web",
-    result: "Doubled online reach",
-    color: "#0066ff",
-  },
-  {
-    name: "Sofia Mendez",
-    business: "Sofia's Legal Services",
-    location: "Houston, Texas 🇺🇸",
-    quote: "My business visibility skyrocketed after their local SEO work. I went from being invisible online to getting 3–4 new clients per week.",
-    initial: "S",
-    service: "Local SEO",
-    result: "3–4 new clients/week",
-    color: "#4d94ff",
-  },
-  {
-    name: "Carlos Fernández",
-    business: "CF Digital Agency",
-    location: "Madrid, Spain 🇪🇸",
-    quote: "I hired the service from Spain and the experience was flawless. They delivered ahead of schedule and the design exceeded my expectations.",
-    initial: "C",
-    service: "Professional Web",
-    result: "Ahead of schedule",
-    color: "#0066ff",
-  },
-  {
-    name: "Miguel Ángel Torres",
-    business: "Torres Auto Parts",
-    location: "Maturín, Venezuela 🇻🇪",
-    quote: "The chatbot they integrated handles clients while I sleep. It's an investment that paid for itself in less than a month.",
-    initial: "M",
-    service: "AI Chatbot",
-    result: "ROI in 30 days",
-    color: "#0066ff",
-  },
+// Structural client data (not translated): names, businesses, locations, initials,
+// colors and website URLs. The translatable quote/result/service come from content
+// and are merged by index.
+const CLIENTS = [
+  { name: 'Georgina López', business: 'Bikinis L.B. Orgina', location: 'Venezuela 🇻🇪', initial: 'B', color: '#4d94ff', website: 'https://bikinislborgina.vercel.app/' },
+  { name: 'Diego García', business: 'DragastroPedia Aragua', location: 'Aragua, Venezuela 🇻🇪', initial: 'D', color: '#0066ff', website: 'https://dragastropedia-aragua.com/' },
+  { name: 'Abg. Victor Correa', business: 'Soluciones Cofer', location: 'Venezuela 🇻🇪', initial: 'S', color: '#4d94ff', website: 'https://solucionescofer.com/' },
+  { name: 'Rafael Martínez', business: 'Tech Services Valencia', location: 'Valencia, Venezuela 🇻🇪', initial: 'R', color: '#0066ff' },
+  { name: 'Daniela Suárez', business: 'Beauty Studio Maracay', location: 'Maracay, Venezuela 🇻🇪', initial: 'D', color: '#4d94ff' },
+  { name: 'James Rodríguez', business: 'JR Consulting Group', location: 'Miami, Florida 🇺🇸', initial: 'J', color: '#0066ff' },
+  { name: 'Sofia Mendez', business: "Sofia's Legal Services", location: 'Houston, Texas 🇺🇸', initial: 'S', color: '#4d94ff' },
+  { name: 'Carlos Fernández', business: 'CF Digital Agency', location: 'Madrid, Spain 🇪🇸', initial: 'C', color: '#0066ff' },
+  { name: 'Miguel Ángel Torres', business: 'Torres Auto Parts', location: 'Maturín, Venezuela 🇻🇪', initial: 'M', color: '#0066ff' },
 ];
+
+// Rating bar widths and stat values (structural, identical across locales). Labels come
+// from localized content, matched by index.
+const ratingPct = [98, 96, 94, 99];
+const statValues = ['4.9/5', '50+', '3', '100%'];
 
 const StarRating = () => (
   <div style={{ display: "flex", gap: "2px", color: "#FFD700", marginBottom: "0.75rem" }}>
@@ -110,14 +31,6 @@ const StarRating = () => (
     ))}
   </div>
 );
-
-/* ---- Rating bar widths ---- */
-const ratingCategories = [
-  { label: 'Quality',          pct: 98 },
-  { label: 'Schedule',         pct: 96 },
-  { label: 'Cost',             pct: 94 },
-  { label: 'Willing to Refer', pct: 99 },
-];
 
 const RatingBar = ({ label, pct }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -140,14 +53,9 @@ const RatingBar = ({ label, pct }) => (
 );
 
 const OurClients = () => {
-  useEffect(() => {
-    updateMetaTags({
-      title: 'Client Testimonials | Success Stories & Reviews',
-      description: 'See what our 50+ satisfied clients say about our web development and digital services. Real results from real businesses.',
-      keywords: 'testimonials, client reviews, success stories, web development reviews, digital agency reviews',
-      canonical: 'https://yourdomain.com/our-clients'
-    });
-  }, []);
+  const { locale, content } = useLocalizedContent();
+  const t = content.clients;
+  const clients = CLIENTS.map((c, i) => ({ ...c, ...t.clients[i] }));
 
   return (
     <div className="animate-fade-in">
@@ -207,14 +115,14 @@ const OurClients = () => {
                 textTransform: 'uppercase',
                 marginBottom: '1.25rem',
               }}>
-                Testimonials
+                {t.hero.badge}
               </span>
               <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '0.75rem' }}>
-                What Others Said<br />
-                <span className="text-gradient">About Us</span>
+                {t.hero.title.before}<br />
+                <span className="text-gradient">{t.hero.title.accent}</span>{t.hero.title.after}
               </h1>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', maxWidth: '340px' }}>
-                Businesses from Venezuela, the USA &amp; Spain trust us to build their digital presence.
+                {t.hero.subtitle}
               </p>
             </div>
 
@@ -223,7 +131,7 @@ const OurClients = () => {
               {/* Overall score */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                 <div>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Overall Review Rating</p>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.82rem', marginBottom: '0.2rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{t.hero.overallLabel}</p>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px' }}>
                     <span style={{ fontSize: '3.5rem', fontWeight: '900', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>4.9</span>
                   </div>
@@ -240,8 +148,8 @@ const OurClients = () => {
 
               {/* Category bars */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {ratingCategories.map((cat) => (
-                  <RatingBar key={cat.label} {...cat} />
+                {t.hero.ratingCategories.map((label, i) => (
+                  <RatingBar key={label} label={label} pct={ratingPct[i]} />
                 ))}
               </div>
             </div>
@@ -257,15 +165,10 @@ const OurClients = () => {
             borderRadius: '16px',
             padding: '2rem',
           }}>
-            {[
-              { value: '4.9/5', label: 'Google Rating' },
-              { value: '50+',   label: 'Happy Clients' },
-              { value: '3',     label: 'Countries Served' },
-              { value: '100%',  label: 'Satisfaction Rate' },
-            ].map((stat, i) => (
+            {t.hero.stats.map((label, i) => (
               <div key={i} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '800', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{stat.value}</div>
-                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.25rem' }}>{stat.label}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: '800', background: 'var(--accent-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{statValues[i]}</div>
+                <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.25rem' }}>{label}</div>
               </div>
             ))}
           </div>
@@ -284,9 +187,9 @@ const OurClients = () => {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: '0.7rem', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                    Verified Review
+                    {t.card.verifiedReview}
                   </span>
-                  <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-cyan)' }}>Google</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--accent-cyan)' }}>{t.card.google}</span>
                 </div>
 
                 <StarRating />
@@ -324,7 +227,7 @@ const OurClients = () => {
                   }}>
                     {client.service}
                   </span>
-                  
+
                   {client.website && (
                     <a
                       href={client.website}
@@ -339,7 +242,7 @@ const OurClients = () => {
                         '--hover-border': `${client.color}80`
                       }}
                     >
-                      🔗 {client.websiteLabel || 'View Site'}
+                      🔗 {t.card.viewSite}
                     </a>
                   )}
                 </div>
@@ -353,13 +256,13 @@ const OurClients = () => {
       <section className="section" style={{ background: 'var(--bg-secondary)' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>
-            Be our next <span className="text-gradient">success story</span>
+            {t.cta.heading.before}<span className="text-gradient">{t.cta.heading.accent}</span>{t.cta.heading.after}
           </h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '550px', margin: '0 auto 2.5rem', lineHeight: '1.7' }}>
-            From fashion e-commerce to B2B platforms and restaurant directories — we've helped 60+ businesses across Venezuela, USA, and Spain transform their digital presence. Your success story could be next!
+            {t.cta.copy}
           </p>
-          <Link to="/contact" className="btn btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
-            Schedule Free Consultation
+          <Link to={getLocalizedPath('contact', locale)} className="btn btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
+            {t.cta.button}
           </Link>
         </div>
       </section>

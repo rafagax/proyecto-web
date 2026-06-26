@@ -14,14 +14,19 @@ export default [
   // Legacy English service-detail pages still served for SEO/KPI/AI (not yet migrated).
   // /services and /services/web-development-design are 301'd in vercel.json.
   route('services/:serviceId', 'routes/service-detail.jsx'),
-  route('pricing', 'routes/pricing.jsx'),
+  // Bilingual core pages (same module each; locale derived from the URL). The legacy
+  // English URLs (/pricing, /our-clients, /faqs, /contact) are 301'd in vercel.json.
+  route('precios', 'routes/pricing.jsx', { id: 'pricing-es' }),
+  route('en/pricing', 'routes/pricing.jsx', { id: 'pricing-en' }),
+  route('clientes', 'routes/our-clients.jsx', { id: 'clients-es' }),
+  route('en/clients', 'routes/our-clients.jsx', { id: 'clients-en' }),
+  route('preguntas-frecuentes', 'routes/faqs.jsx', { id: 'faqs-es' }),
+  route('en/faqs', 'routes/faqs.jsx', { id: 'faqs-en' }),
+  route('contacto', 'routes/contact.jsx', { id: 'contact-es' }),
+  route('en/contact', 'routes/contact.jsx', { id: 'contact-en' }),
   route('blog', 'routes/blog.jsx'),
   route('blog/:slug', 'routes/blog-post.jsx'),
-  route('contact', 'routes/contact.jsx'),
-  route('contacto', 'routes/contact.jsx', { id: 'contact-es' }),
-  route('our-clients', 'routes/our-clients.jsx'),
   route('about', 'routes/home.jsx', { id: 'about' }),
-  route('faqs', 'routes/faqs.jsx'),
   route('seo', 'routes/seo.jsx'),
   route('kpi', 'routes/kpi.jsx'),
   route('*', 'routes/catch-all.jsx'),

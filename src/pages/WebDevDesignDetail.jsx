@@ -16,6 +16,7 @@ import responsiveImg from '../assets/developwebhero.webp';
 import storeImg from '../assets/tiendachica.webp';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const WHATSAPP_PHONE = '584144735431';
 const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
@@ -59,7 +60,7 @@ const otherDefs = [
 const WebDevDesignDetail = () => {
   const { locale, content } = useLocalizedContent();
   const wd = content.services.webDetail;
-  const contactPath = locale === 'en' ? '/contact' : '/contacto';
+  const contactPath = getLocalizedPath('contact', locale);
   const others = otherDefs.map((d, i) => ({ ...d, ...wd.others[i] }));
 
   return (

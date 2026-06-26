@@ -1,6 +1,7 @@
 import { Bot, Cpu, Activity, Zap, Search, MessageSquare, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 // Icons + accent colors per card (structural — copy comes from localized content,
 // matched by index). Order kept identical to the original layout.
@@ -16,8 +17,8 @@ const cardVisuals = [
 const Services = () => {
   const { locale, content } = useLocalizedContent();
   const t = content.services.index;
-  // Locale-correct internal links using existing routes only.
-  const contactPath = locale === 'en' ? '/contact' : '/contacto';
+  // Locale-correct internal links from the manifest.
+  const contactPath = getLocalizedPath('contact', locale);
 
   return (
     <div className="animate-fade-in">
@@ -93,7 +94,7 @@ const Services = () => {
             <Link to={contactPath} className="btn btn-primary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
               {t.cta.primary}
             </Link>
-            <Link to="/pricing" className="btn btn-secondary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
+            <Link to={getLocalizedPath('pricing', locale)} className="btn btn-secondary" style={{ padding: '16px 40px', fontSize: '1.1rem' }}>
               {t.cta.secondary}
             </Link>
           </div>

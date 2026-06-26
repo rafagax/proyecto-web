@@ -1,20 +1,27 @@
 import OurClients from '../../src/pages/OurClients.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
+import { getLocaleFromPath } from '../../src/i18n/locale.js';
+import { getContent } from '../../src/i18n/content.js';
 
-export function meta() {
+// Locale-aware meta for /clientes and /en/clients (same module; locale from the URL).
+export function meta({ location }) {
+  const locale = getLocaleFromPath(location.pathname);
+  const esHref = absoluteUrl('/clientes');
+  const enHref = absoluteUrl('/en/clients');
+  const canonical = locale === 'en' ? enHref : esHref;
+  const m = getContent(locale).clients.meta;
+
   return [
-    { title: 'Client Testimonials — Success Stories & Reviews | InversionesDigitales' },
-    {
-      name: 'description',
-      content:
-        'See what our clients say about our web development and digital services. Real results from real businesses.',
-    },
-    { property: 'og:title', content: 'Client Success Stories | InversionesDigitales' },
-    {
-      property: 'og:description',
-      content: 'Real results from businesses we have helped with web development, SEO, and AI automation.',
-    },
-    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/our-clients') },
+    { title: m.title },
+    { name: 'description', content: m.description },
+    { property: 'og:title', content: m.ogTitle },
+    { property: 'og:description', content: m.ogDescription },
+    { name: 'twitter:title', content: m.ogTitle },
+    { name: 'twitter:description', content: m.ogDescription },
+    { tagName: 'link', rel: 'canonical', href: canonical },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
   ];
 }
 

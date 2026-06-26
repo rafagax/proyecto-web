@@ -10,6 +10,15 @@ import { getLocalizedPath } from '../../app/route-manifest.js';
 const Navbar = () => {
   const { locale, content } = useLocalizedContent();
   const { nav, services } = content.common;
+  // Locale-correct paths for the shared nav links (built from the manifest, never by
+  // concatenating /en). Blog stays /blog until it is migrated.
+  const navPath = {
+    home: getLocalizedPath('home', locale),
+    clients: getLocalizedPath('clients', locale),
+    pricing: getLocalizedPath('pricing', locale),
+    faqs: getLocalizedPath('faqs', locale),
+    contact: getLocalizedPath('contact', locale),
+  };
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -42,21 +51,21 @@ const Navbar = () => {
     <>
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
-          <Link to="/" className="navbar-logo" />
+          <Link to={navPath.home} className="navbar-logo" />
 
           <nav className="navbar-links">
-            <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
+            <Link to={navPath.home} className={location.pathname === navPath.home ? 'active' : ''}>
               {nav.home}
             </Link>
 
-            <Link to="/our-clients" className={location.pathname === '/our-clients' ? 'active' : ''}>
+            <Link to={navPath.clients} className={location.pathname === navPath.clients ? 'active' : ''}>
               {nav.clients}
             </Link>
 
             {/* Services Mega Menu */}
             <ServicesMegaMenu />
 
-            <Link to="/pricing" className={location.pathname === '/pricing' ? 'active' : ''}>
+            <Link to={navPath.pricing} className={location.pathname === navPath.pricing ? 'active' : ''}>
               {nav.pricing}
             </Link>
 
@@ -64,11 +73,11 @@ const Navbar = () => {
               {nav.blog}
             </Link>
 
-            <Link to="/faqs" className={location.pathname === '/faqs' ? 'active' : ''}>
+            <Link to={navPath.faqs} className={location.pathname === navPath.faqs ? 'active' : ''}>
               {nav.faqs}
             </Link>
 
-            <Link to="/contact" className={`btn btn-contact-header ${location.pathname === '/contact' ? 'active' : ''}`}>
+            <Link to={navPath.contact} className={`btn btn-contact-header ${location.pathname === navPath.contact ? 'active' : ''}`}>
               {nav.contact}
             </Link>
 
@@ -89,7 +98,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
-          <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)} />
+          <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} />
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />
           </button>
@@ -98,8 +107,8 @@ const Navbar = () => {
         <nav className="mobile-menu-nav">
           {/* Home */}
           <Link
-            to="/"
-            className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
+            to={navPath.home}
+            className={`mobile-menu-item ${location.pathname === navPath.home ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             {nav.home}
@@ -126,8 +135,8 @@ const Navbar = () => {
 
           {/* Clients - High Conversion Priority */}
           <Link
-            to="/our-clients"
-            className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
+            to={navPath.clients}
+            className={`mobile-menu-item ${location.pathname === navPath.clients ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             {nav.clients}
@@ -135,8 +144,8 @@ const Navbar = () => {
 
           {/* Pricing - High Conversion Priority */}
           <Link
-            to="/pricing"
-            className={`mobile-menu-item ${location.pathname === '/pricing' ? 'active' : ''}`}
+            to={navPath.pricing}
+            className={`mobile-menu-item ${location.pathname === navPath.pricing ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             {nav.pricing}
@@ -144,8 +153,8 @@ const Navbar = () => {
 
           {/* Contact Us - CTA Priority */}
           <Link
-            to="/contact"
-            className={`mobile-menu-item contact-link ${location.pathname === '/contact' ? 'active' : ''}`}
+            to={navPath.contact}
+            className={`mobile-menu-item contact-link ${location.pathname === navPath.contact ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             {nav.contactUs}
@@ -153,8 +162,8 @@ const Navbar = () => {
 
           {/* FAQs - Medium Priority */}
           <Link
-            to="/faqs"
-            className={`mobile-menu-item ${location.pathname === '/faqs' ? 'active' : ''}`}
+            to={navPath.faqs}
+            className={`mobile-menu-item ${location.pathname === navPath.faqs ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             {nav.faqs}

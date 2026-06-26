@@ -727,7 +727,7 @@ const Home = () => {
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 2rem' }}>
               {home.pricing.description}
             </p>
-            <Link to="/pricing" className="hero-advisory-btn" style={{ margin: 0 }}>
+            <Link to={getLocalizedPath('pricing', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
               {home.pricing.cta} <ArrowRight size={16} />
             </Link>
           </div>

@@ -5,7 +5,12 @@
   "redirects": [
     { "source": "/en", "destination": "/en/", "permanent": true },
     { "source": "/services", "destination": "/servicios", "permanent": true },
-    { "source": "/services/web-development-design", "destination": "/servicios/desarrollo-web", "permanent": true }
+    { "source": "/services/web-development-design", "destination": "/servicios/desarrollo-web", "permanent": true },
+    { "source": "/pricing", "destination": "/precios", "permanent": true },
+    { "source": "/our-clients", "destination": "/clientes", "permanent": true },
+    { "source": "/clients", "destination": "/clientes", "permanent": true },
+    { "source": "/faqs", "destination": "/preguntas-frecuentes", "permanent": true },
+    { "source": "/contact", "destination": "/contacto", "permanent": true }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
