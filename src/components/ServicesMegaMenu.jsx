@@ -1,35 +1,37 @@
 import { useState, useRef } from 'react';
 import { Code, TrendingUp, BarChart3, Bot, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const serviceItems = [
-  {
-    title: 'Web Development & Design',
-    description: 'Premium websites built for speed, trust, and conversions.',
-    icon: <Code size={20} />,
-    path: '/services/web-development-design',
-  },
-  {
-    title: 'SEO & Digital Growth',
-    description: 'Improve visibility, attract qualified traffic, and grow organically.',
-    icon: <TrendingUp size={20} />,
-    path: '/services/seo-digital-growth',
-  },
-  {
-    title: 'KPI Dashboards & Analytics',
-    description: 'Track leads, sales, and business performance with clarity.',
-    icon: <BarChart3 size={20} />,
-    path: '/services/kpi-dashboards',
-  },
-  {
-    title: 'AI Automation & Chatbots',
-    description: 'Automate replies, qualify leads, and support customers 24/7.',
-    icon: <Bot size={20} />,
-    path: '/services/ai-automation-chatbots',
-  },
-];
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 export const ServicesMegaMenu = () => {
+  const { content } = useLocalizedContent();
+  const { nav, services } = content.common;
+  const serviceItems = [
+    {
+      title: services.web.title,
+      description: services.web.description,
+      icon: <Code size={20} />,
+      path: '/services/web-development-design',
+    },
+    {
+      title: services.seo.title,
+      description: services.seo.description,
+      icon: <TrendingUp size={20} />,
+      path: '/services/seo-digital-growth',
+    },
+    {
+      title: services.kpi.title,
+      description: services.kpi.description,
+      icon: <BarChart3 size={20} />,
+      path: '/services/kpi-dashboards',
+    },
+    {
+      title: services.ai.title,
+      description: services.ai.description,
+      icon: <Bot size={20} />,
+      path: '/services/ai-automation-chatbots',
+    },
+  ];
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -96,7 +98,7 @@ export const ServicesMegaMenu = () => {
         onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; }}
         onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; }}
       >
-        Services
+        {nav.services}
         <ChevronDown size={14} style={{ transition: 'transform 0.3s ease', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
       </Link>
 

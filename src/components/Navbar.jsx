@@ -3,8 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
 import ThemeToggle from './ThemeToggle';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 const Navbar = () => {
+  const { content } = useLocalizedContent();
+  const { nav, services } = content.common;
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
@@ -41,38 +45,40 @@ const Navbar = () => {
 
           <nav className="navbar-links">
             <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
-              Home
+              {nav.home}
             </Link>
 
             <Link to="/our-clients" className={location.pathname === '/our-clients' ? 'active' : ''}>
-              Clients
+              {nav.clients}
             </Link>
 
             {/* Services Mega Menu */}
             <ServicesMegaMenu />
 
             <Link to="/pricing" className={location.pathname === '/pricing' ? 'active' : ''}>
-              Pricing
+              {nav.pricing}
             </Link>
 
             <Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>
-              Blog
+              {nav.blog}
             </Link>
 
             <Link to="/faqs" className={location.pathname === '/faqs' ? 'active' : ''}>
-              FAQs
+              {nav.faqs}
             </Link>
 
             <Link to="/contact" className={`btn btn-contact-header ${location.pathname === '/contact' ? 'active' : ''}`}>
-              Contact
+              {nav.contact}
             </Link>
+
+            <LanguageSwitcher />
 
             <ThemeToggle />
           </nav>
 
           <div className="navbar-mobile-actions">
             <ThemeToggle className="theme-toggle-mobile" />
-            <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)}>
+            <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)} aria-label={nav.openMenu}>
               <Menu size={28} />
             </button>
           </div>
@@ -83,7 +89,7 @@ const Navbar = () => {
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
           <Link to="/" className="navbar-logo" onClick={() => setMobileMenuOpen(false)} />
-          <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)}>
+          <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />
           </button>
         </div>
@@ -95,25 +101,25 @@ const Navbar = () => {
             className={`mobile-menu-item ${location.pathname === '/' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Home
+            {nav.home}
           </Link>
 
           {/* Services Section in Mobile - First Priority */}
           <div>
             <Link to="/services" className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-primary)', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
-              Services
+              {nav.services}
             </Link>
             <Link to="/services/web-development-design" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              Web Development & Design
+              {services.web.title}
             </Link>
             <Link to="/services/seo-digital-growth" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              SEO & Digital Growth
+              {services.seo.title}
             </Link>
             <Link to="/services/kpi-dashboards" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              KPI Dashboards & Analytics
+              {services.kpi.title}
             </Link>
             <Link to="/services/ai-automation-chatbots" className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              AI Automation & Chatbots
+              {services.ai.title}
             </Link>
           </div>
 
@@ -123,7 +129,7 @@ const Navbar = () => {
             className={`mobile-menu-item ${location.pathname === '/our-clients' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Clients
+            {nav.clients}
           </Link>
 
           {/* Pricing - High Conversion Priority */}
@@ -132,7 +138,7 @@ const Navbar = () => {
             className={`mobile-menu-item ${location.pathname === '/pricing' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Pricing
+            {nav.pricing}
           </Link>
 
           {/* Contact Us - CTA Priority */}
@@ -141,7 +147,7 @@ const Navbar = () => {
             className={`mobile-menu-item contact-link ${location.pathname === '/contact' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Contact Us
+            {nav.contactUs}
           </Link>
 
           {/* FAQs - Medium Priority */}
@@ -150,7 +156,7 @@ const Navbar = () => {
             className={`mobile-menu-item ${location.pathname === '/faqs' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            FAQs
+            {nav.faqs}
           </Link>
 
           {/* Blog - Lower Priority */}
@@ -159,8 +165,13 @@ const Navbar = () => {
             className={`mobile-menu-item ${location.pathname === '/blog' ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            Blog
+            {nav.blog}
           </Link>
+
+          {/* Language switcher */}
+          <div className="mobile-menu-item" style={{ paddingTop: '0.5rem' }}>
+            <LanguageSwitcher onNavigate={() => setMobileMenuOpen(false)} />
+          </div>
         </nav>
       </div>
     </>

@@ -17,6 +17,7 @@ export default {
   async prerender() {
     return [
       '/',
+      '/en',
       '/services',
       '/pricing',
       '/blog',

@@ -8,8 +8,12 @@ import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
 import { updateMetaTags } from '../utils/seo';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
 const Home = () => {
+  const { locale, content } = useLocalizedContent();
+  const { common, home } = content;
+
   useEffect(() => {
     updateMetaTags({
       title: 'Web Development, AI Automation, SEO & KPI Dashboards | Digital Investments',
@@ -37,64 +41,28 @@ const Home = () => {
     e.preventDefault();
     const { name, email, phone, message } = formData;
     const businessPhone = '584144735431';
-    const text = `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`;
+    const text =
+      locale === 'en'
+        ? `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`
+        : `Hola, mi nombre es ${name}. Mi correo es ${email}. Mi teléfono es ${phone}. Mi mensaje: ${message}`;
     const whatsappUrl = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
   const benefits = [
-    {
-      icon: Gauge,
-      title: 'Fast-Loading Websites',
-      text: 'Optimized structure, clean code and lightweight pages so your visitors don\'t wait — and Google can reward better performance.'
-    },
-    {
-      icon: MonitorSmartphone,
-      title: 'Responsive Design',
-      text: 'Your website will look sharp and work smoothly on mobiles, tablets and desktops, where most customers actually browse.',
-      mobileHide: true
-    },
-    {
-      icon: SearchCheck,
-      title: 'SEO-Ready Structure',
-      text: 'Clean headings, metadata, semantic HTML and performance best practices to help your business get discovered online.'
-    },
-    {
-      icon: ListChecks,
-      title: 'Clear Delivery Process',
-      text: 'You always know what\'s being built, what comes next and when each phase will be delivered. No confusion, no surprises.',
-      mobileHide: true
-    },
-    {
-      icon: Goal,
-      title: 'Conversion-Focused Layouts',
-      text: 'Every section is designed with a purpose: guide visitors, build trust and turn interest into real enquiries.',
-      mobileHide: true
-    },
-    {
-      icon: Headset,
-      title: 'Support After Launch',
-      text: 'We don\'t disappear after publishing. You get help with fixes, updates and improvements to keep your website running smoothly.'
-    }
+    { icon: Gauge, title: home.benefits.items.fast.title, text: home.benefits.items.fast.text },
+    { icon: MonitorSmartphone, title: home.benefits.items.responsive.title, text: home.benefits.items.responsive.text, mobileHide: true },
+    { icon: SearchCheck, title: home.benefits.items.seoReady.title, text: home.benefits.items.seoReady.text },
+    { icon: ListChecks, title: home.benefits.items.deliveryProcess.title, text: home.benefits.items.deliveryProcess.text, mobileHide: true },
+    { icon: Goal, title: home.benefits.items.conversion.title, text: home.benefits.items.conversion.text, mobileHide: true },
+    { icon: Headset, title: home.benefits.items.support.title, text: home.benefits.items.support.text },
   ];
 
   const steps = [
-    {
-      number: '01',
-      title: 'Discover',
-      text: 'We learn about your business, your goals and the customers you want to reach. Then we define the right structure, content and strategy for your website.'
-    },
-    {
-      number: '02',
-      title: 'Build',
-      text: 'We design and develop a fast, mobile-first website with clear messaging, strong visuals and SEO-ready foundations — built to look professional from day one.'
-    },
-    {
-      number: '03',
-      title: 'Launch & Improve',
-      text: 'Your website is ready to go live in 7 days or less. We publish it, connect the essentials and stay available for updates, fixes and improvements as your business grows.'
-    }
+    { number: '01', title: home.process.steps.discover.title, text: home.process.steps.discover.text },
+    { number: '02', title: home.process.steps.build.title, text: home.process.steps.build.text },
+    { number: '03', title: home.process.steps.launch.title, text: home.process.steps.launch.text },
   ];
 
   return (
@@ -105,16 +73,16 @@ const Home = () => {
         <div className="container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start', justifyContent: 'space-between', gap: '2rem', paddingBottom: '4rem' }}>
           <div className="hero-content hero-content-responsive" style={{ flex: '1 1 400px', textAlign: 'left', margin: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', paddingTop: '2rem', minHeight: '600px' }}>
             <h1 className="hero-title" style={{ lineHeight: 1.1, marginBottom: '2rem' }}>
-              Web Development,<br className="mobile-only-break" /> <span className="text-gradient">AI Automation</span>,<br className="mobile-only-break" /> SEO &amp; <span className="text-gradient">KPI Dashboards</span>
+              {home.hero.title.before}<br className="mobile-only-break" /><span className="text-gradient">{home.hero.title.accent1}</span>{home.hero.title.middle}<br className="mobile-only-break" /><span className="text-gradient">{home.hero.title.accent2}</span>
             </h1>
             <p className="hero-subtitle" style={{ fontSize: '1.1rem', maxWidth: '550px', marginLeft: 0, marginBottom: '2rem' }}>
-              We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.
+              {home.hero.subtitle}
             </p >
 
             {/* Hero CTA - Free Advisory (Desktop Only) */}
             <div className="hero-advisory-wrap desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
               <a
-                href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20get%20a%20free%20advisory%20session%20for%20my%20business."
+                href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.advisory)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hero-advisory-btn"
@@ -124,7 +92,7 @@ const Home = () => {
                     <path d="M12 2L13.09 8.26L19 6L15.45 11.13L22 12L15.45 12.87L19 18L13.09 15.74L12 22L10.91 15.74L5 18L8.55 12.87L2 12L8.55 11.13L5 6L10.91 8.26L12 2Z" fill="currentColor" />
                   </svg>
                 </span>
-                Get Your Free Audit
+                {home.cta.freeAudit}
                 <ArrowRight size={17} />
               </a>
             </div>
@@ -132,19 +100,19 @@ const Home = () => {
             {/* Mobile: Hero Image between subtitle and CTA */}
             {/*
             <div className="mobile-hero-img mobile-only">
-              <img src={heroImg} alt="Web development, AI automation, SEO and KPI dashboards illustration" className="mobile-hero-img-el" />
+              <img src={heroImg} alt={home.hero.imageAlt} className="mobile-hero-img-el" />
             </div>
             */}
 
             {/* Mobile Hero CTA Button (Mobile Only) */}
             <div className="mobile-hero-cta mobile-only">
               <a
-                href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20request%20a%20free%20audit%20for%20my%20business."
+                href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.audit)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-mobile-audit"
               >
-                Get Your Free Audit
+                {home.cta.freeAudit}
                 <ArrowRight size={18} />
               </a>
             </div>
@@ -156,8 +124,8 @@ const Home = () => {
                   <Code size={18} />
                 </div>
                 <div className="service-card-text">
-                  <h4>Web Development & Design</h4>
-                  <p>Premium websites built to convert</p>
+                  <h4>{common.services.web.title}</h4>
+                  <p>{home.hero.cards.web.tagline}</p>
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
@@ -167,8 +135,8 @@ const Home = () => {
                   <TrendingUp size={18} />
                 </div>
                 <div className="service-card-text">
-                  <h4>SEO & Digital Growth</h4>
-                  <p>Get found and attract qualified traffic</p>
+                  <h4>{common.services.seo.title}</h4>
+                  <p>{home.hero.cards.seo.tagline}</p>
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
@@ -178,8 +146,8 @@ const Home = () => {
                   <BarChart3 size={18} />
                 </div>
                 <div className="service-card-text">
-                  <h4>KPI Dashboards & Analytics</h4>
-                  <p>Track the numbers that matter</p>
+                  <h4>{common.services.kpi.title}</h4>
+                  <p>{home.hero.cards.kpi.tagline}</p>
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
@@ -189,36 +157,39 @@ const Home = () => {
                   <Bot size={18} />
                 </div>
                 <div className="service-card-text">
-                  <h4>AI Automation & Chatbots</h4>
-                  <p>Respond faster, 24/7</p>
+                  <h4>{common.services.ai.title}</h4>
+                  <p>{home.hero.cards.ai.tagline}</p>
                 </div>
                 <ChevronRight size={18} className="service-card-arrow" />
               </Link>
             </div>
 
             <div className="hero-contact-form desktop-only" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
-              <h3 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>Get Your Free Audit</h3>
+              <h3 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>{home.cta.freeAudit}</h3>
               <form onSubmit={(e) => {
                 e.preventDefault();
                 const phone = e.target.phone?.value || '';
                 const email = e.target.email?.value || '';
                 const message = e.target.message?.value || '';
                 const waPhone = '584144735431';
-                const text = `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`;
+                const text =
+                  locale === 'en'
+                    ? `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`
+                    : `📱 Teléfono: ${phone}\n📧 Correo: ${email}\n💬 Mensaje: ${message}`;
                 window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
               }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <input type="tel" name="phone" placeholder="Your phone number" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
-                <input type="email" name="email" placeholder="Your email" required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
-                <textarea name="message" placeholder="What service do you need or why are you contacting us?" required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
+                <input type="tel" name="phone" placeholder={home.hero.form.phonePlaceholder} required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
+                <input type="email" name="email" placeholder={home.hero.form.emailPlaceholder} required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
+                <textarea name="message" placeholder={home.hero.form.messagePlaceholder} required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
                 <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#4d94ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(77, 148, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
-                  Get Your Free Audit
+                  {home.cta.freeAudit}
                 </button>
               </form>
             </div>
           </div>
           {/* Desktop hero image */}
           <div className="hero-image desktop-only hero-img-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={heroImg} alt="Web development, AI automation, SEO and KPI dashboards illustration" className="hero-float" fetchPriority="high" decoding="async" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
+            <img src={heroImg} alt={home.hero.imageAlt} className="hero-float" fetchPriority="high" decoding="async" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
           </div>
         </div>
       </section>
@@ -228,10 +199,10 @@ const Home = () => {
         <div className="container">
           <div className="reveal" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
-              Your Website Should Do <span className="text-gradient">More Than Look Good</span>
+              {home.value.title.before}<span className="text-gradient">{home.value.title.accent}</span>{home.value.title.after}
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', lineHeight: '1.7' }}>
-              A premium website should attract the right audience, convert visitors into qualified leads, and give you clear insight into what is working. We combine design, SEO, performance tracking, and AI automation to create a digital presence built for measurable growth.
+              {home.value.description}
             </p>
           </div>
         </div>
@@ -242,42 +213,42 @@ const Home = () => {
         <div className="container">
           <div className="feature-row">
             <div className="feature-text reveal-left">
-              <span className="feature-eyebrow"><Code size={16} /> Web Development &amp; Design</span>
+              <span className="feature-eyebrow"><Code size={16} /> {common.services.web.title}</span>
               <h2 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
-                A fast, premium website built to <span className="text-gradient">convert</span>
+                {home.featured.title.before}<span className="text-gradient">{home.featured.title.accent}</span>{home.featured.title.after}
               </h2>
               {/* Mobile-only image: sits between the title and the paragraph so phones
                   see the visual early (title → image → paragraph → bullets → CTA). */}
               <div className="feature-visual feature-visual-image mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
                 <img
                   src={webDevImg}
-                  alt="Premium corporate website design on screen"
+                  alt={home.featured.imageAlt}
                   loading="lazy"
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
                 <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
                   <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  Premium corporate websites
+                  {home.featured.imageCaption}
                 </div>
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We design and develop responsive websites that communicate your value clearly, build trust, and guide visitors toward action.
+                {home.featured.description}
               </p>
               <ul className="feature-bullets">
-                <li><CheckCircle2 size={18} /> Custom design tailored to your brand</li>
-                <li><CheckCircle2 size={18} /> Fast, mobile-first development</li>
-                <li><CheckCircle2 size={18} /> Clear calls to action for more enquiries</li>
+                <li><CheckCircle2 size={18} /> {home.featured.bullets[0]}</li>
+                <li><CheckCircle2 size={18} /> {home.featured.bullets[1]}</li>
+                <li><CheckCircle2 size={18} /> {home.featured.bullets[2]}</li>
               </ul>
               <Link to="/services/web-development-design" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Explore Web Development <ArrowRight size={16} />
+                {home.featured.cta} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="feature-visual feature-visual-image reveal-right">
               {/* Premium corporate website image */}
               <img
                 src={webDevImg}
-                alt="Premium corporate website design on screen"
+                alt={home.featured.imageAlt}
                 loading="lazy"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
@@ -297,45 +268,45 @@ const Home = () => {
           <div className="services-grid reveal-group" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 450px), 1fr))', gap: '2rem' }}>
             <Link to="/services/web-development-design" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Code size={32} /></div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>Web Development & Design</h3>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.web.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                High-end, responsive websites designed to build trust, convert visitors, and support long-term business growth.
+                {home.servicesGrid.web.description}
               </p>
-              <div className="service-highlight">Built fast — ready in 7 days or less</div>
+              <div className="service-highlight">{home.servicesGrid.web.highlight}</div>
             </Link>
 
             <Link to="/services/seo-digital-growth" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><TrendingUp size={32} /></div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>SEO & Digital Growth</h3>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.seo.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Improve your visibility on Google, attract qualified traffic, and turn search intent into real business opportunities.
+                {home.servicesGrid.seo.description}
               </p>
-              <div className="service-highlight">Optimized to compete in local search</div>
+              <div className="service-highlight">{home.servicesGrid.seo.highlight}</div>
             </Link>
 
             <Link to="/services/kpi-dashboards" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><BarChart3 size={32} /></div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>KPI Dashboards & Analytics</h3>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.kpi.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Get clear dashboards and performance insights so you always know what is working and where to improve.
+                {home.servicesGrid.kpi.description}
               </p>
-              <div className="service-highlight">Know what's working, in real time</div>
+              <div className="service-highlight">{home.servicesGrid.kpi.highlight}</div>
             </Link>
 
             <Link to="/services/ai-automation-chatbots" className="service-card reveal-card" style={{ padding: '2.5rem 2rem', display: 'block', textDecoration: 'none' }}>
               <div className="service-icon" style={{ marginBottom: '1.5rem' }}><Bot size={32} /></div>
-              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>AI Automation & Chatbots</h3>
+              <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem' }}>{common.services.ai.title}</h3>
               <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                Engage leads, answer questions, and support customers 24/7 with intelligent AI-powered automation.
+                {home.servicesGrid.ai.description}
               </p>
-              <div className="service-highlight">A 24/7 AI agent working for you</div>
+              <div className="service-highlight">{home.servicesGrid.ai.highlight}</div>
             </Link>
           </div>
 
           {/* Section CTA — explore all services */}
           <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginTop: '3rem' }}>
             <Link to="/services" className="hero-advisory-btn" style={{ margin: 0 }}>
-              Explore All Our Services
+              {home.servicesGrid.cta}
               <ArrowRight size={17} />
             </Link>
           </div>
@@ -348,21 +319,21 @@ const Home = () => {
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '4rem' }}>
             <div className="reveal-left" style={{ flex: '1 1 450px' }}>
               <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
-                Not Just a Website.<br />
-                <span className="text-gradient">A Digital Growth System.</span>
+                {home.system.title.before}<br />
+                <span className="text-gradient">{home.system.title.accent}</span>{home.system.title.after}
               </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', lineHeight: '1.7', marginBottom: '2rem' }}>
-                Your website, SEO, KPIs, and automation should not work separately. We connect them into one clear system designed to attract better visitors, generate more leads, and help you make smarter business decisions.
+                {home.system.description}
               </p>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <a
-                  href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20learn%20more%20about%20your%20Digital%20Growth%20System."
+                  href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.system)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hero-advisory-btn"
                   style={{ margin: 0 }}
                 >
-                  Discover the System
+                  {home.system.cta}
                   <ArrowRight size={17} />
                 </a>
               </div>
@@ -388,7 +359,7 @@ const Home = () => {
                   boxShadow: '0 0 30px rgba(77, 148, 255, 0.3)',
                   zIndex: 10
                 }}>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#ffffff', textAlign: 'center' }}>SYSTEM</span>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 'bold', color: '#ffffff', textAlign: 'center' }}>{home.system.diagram.center}</span>
                 </div>
 
                 {/* Rotating Orbit Container */}
@@ -407,7 +378,7 @@ const Home = () => {
                       whiteSpace: 'nowrap'
                     }}>
                       <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
-                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>Web Design</span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{home.system.diagram.web}</span>
                     </div>
                   </div>
 
@@ -425,7 +396,7 @@ const Home = () => {
                       whiteSpace: 'nowrap'
                     }}>
                       <TrendingUp size={16} style={{ color: 'var(--accent-cyan)' }} />
-                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>SEO</span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{home.system.diagram.seo}</span>
                     </div>
                   </div>
 
@@ -443,7 +414,7 @@ const Home = () => {
                       whiteSpace: 'nowrap'
                     }}>
                       <BarChart3 size={16} style={{ color: 'var(--accent-cyan)' }} />
-                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>KPI Dashboards</span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{home.system.diagram.kpi}</span>
                     </div>
                   </div>
 
@@ -461,7 +432,7 @@ const Home = () => {
                       whiteSpace: 'nowrap'
                     }}>
                       <Bot size={16} style={{ color: 'var(--accent-cyan)' }} />
-                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>AI Automation</span>
+                      <span style={{ fontSize: '0.85rem', fontWeight: '600' }}>{home.system.diagram.ai}</span>
                     </div>
                   </div>
 
@@ -478,51 +449,51 @@ const Home = () => {
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)', overflow: 'hidden' }}>
         <div className="container">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
-            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>What We Build</span>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>{home.build.eyebrow}</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
-              Everything Your Digital Presence Needs to <span className="text-gradient">Grow</span>
+              {home.build.title.before}<span className="text-gradient">{home.build.title.accent}</span>{home.build.title.after}
             </h2>
           </div>
 
           {/* Offering 1 — SEO */}
           <div className="feature-row reverse">
             <div className="feature-text reveal-left">
-              <span className="feature-eyebrow"><TrendingUp size={16} /> SEO &amp; Digital Growth</span>
+              <span className="feature-eyebrow"><TrendingUp size={16} /> {common.services.seo.title}</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
-                Improve visibility and attract <span className="text-gradient">qualified traffic</span>
+                {home.build.seo.title.before}<span className="text-gradient">{home.build.seo.title.accent}</span>{home.build.seo.title.after}
               </h3>
               {/* Mobile-only image: title → image → paragraph on phones */}
               <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img src={seoDigitalImg} alt="SEO and digital growth — search visibility and qualified traffic" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+                <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We optimize your website and search presence so the right people can find your business when they are actively looking for your services.
+                {home.build.seo.description}
               </p>
               <ul className="feature-bullets">
-                <li><CheckCircle2 size={18} /> Local and organic SEO strategy</li>
-                <li><CheckCircle2 size={18} /> Keyword and competitor research</li>
-                <li><CheckCircle2 size={18} /> On-page and technical SEO foundations</li>
+                <li><CheckCircle2 size={18} /> {home.build.seo.bullets[0]}</li>
+                <li><CheckCircle2 size={18} /> {home.build.seo.bullets[1]}</li>
+                <li><CheckCircle2 size={18} /> {home.build.seo.bullets[2]}</li>
               </ul>
               <Link to="/services/seo-digital-growth" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Explore SEO &amp; Growth <ArrowRight size={16} />
+                {home.build.seo.cta} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="feature-visual reveal-right">
               {/* SEO & Digital Growth image */}
-              <img src={seoDigitalImg} alt="SEO and digital growth — search visibility and qualified traffic" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
 
           {/* Offering 2 — AI WhatsApp Agents */}
           <div className="feature-row">
             <div className="feature-text reveal-left">
-              <span className="feature-eyebrow"><Bot size={16} /> AI Automation &amp; Chatbots</span>
+              <span className="feature-eyebrow"><Bot size={16} /> {common.services.ai.title}</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
-                Respond faster with <span className="text-gradient">intelligent automation</span>
+                {home.build.ai.title.before}<span className="text-gradient">{home.build.ai.title.accent}</span>{home.build.ai.title.after}
               </h3>
               {/* Mobile-only chat mockup: title → mockup → paragraph on phones */}
               <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <div role="img" aria-label="WhatsApp chat showing an AI assistant answering a customer and booking an appointment" style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
+                <div role="img" aria-label={home.build.ai.mockupAria} style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 13px', background: '#075E54' }}>
                     <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
                       <Bot size={18} />
@@ -534,55 +505,55 @@ const Home = () => {
                   </div>
                   <div style={{ background: '#ECE5DD', padding: '14px 11px', display: 'flex', flexDirection: 'column', gap: 8 }}>
                     <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 10px 2px', background: '#fff', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                      Hi! Do you have availability this week? 👋
+                      {home.build.ai.mockup.msg1}
                       <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02</span>
                     </div>
                     <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                      Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
+                      {home.build.ai.mockup.msg2}
                       <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
                     </div>
                     <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                      Great — you're booked. Here's a quick price list meanwhile 📋
+                      {home.build.ai.mockup.msg3}
                       <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:03 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
                     </div>
                   </div>
                 </div>
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We build AI-powered chat and WhatsApp systems that answer questions, qualify leads, and support customers around the clock.
+                {home.build.ai.description}
               </p>
               <ul className="feature-bullets">
-                <li><CheckCircle2 size={18} /> Instant replies for common questions</li>
-                <li><CheckCircle2 size={18} /> Lead qualification and appointment flows</li>
-                <li><CheckCircle2 size={18} /> Custom responses trained on your business</li>
+                <li><CheckCircle2 size={18} /> {home.build.ai.bullets[0]}</li>
+                <li><CheckCircle2 size={18} /> {home.build.ai.bullets[1]}</li>
+                <li><CheckCircle2 size={18} /> {home.build.ai.bullets[2]}</li>
               </ul>
               <Link to="/services/ai-automation-chatbots" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Explore AI Automation <ArrowRight size={16} />
+                {home.build.ai.cta} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="feature-visual reveal-right">
               {/* WhatsApp-style chat mockup (classic green) */}
-              <div role="img" aria-label="WhatsApp chat showing an AI assistant answering a customer and booking an appointment" style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
+              <div role="img" aria-label={home.build.ai.mockupAria} style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 13px', background: '#075E54' }}>
                   <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
                     <Bot size={18} />
                   </div>
                   <div style={{ lineHeight: 1.2 }}>
-                    <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.85rem' }}>AI Assistant</div>
-                    <div style={{ color: '#a7d7cf', fontSize: '0.68rem' }}>online</div>
+                    <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.85rem' }}>{home.build.ai.mockup.assistant}</div>
+                    <div style={{ color: '#a7d7cf', fontSize: '0.68rem' }}>{home.build.ai.mockup.online}</div>
                   </div>
                 </div>
                 <div style={{ background: '#ECE5DD', padding: '14px 11px', display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 10px 2px', background: '#fff', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                    Hi! Do you have availability this week? 👋
+                    {home.build.ai.mockup.msg1}
                     <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02</span>
                   </div>
                   <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                    Yes! I can book you for Thursday at 3pm. Shall I confirm it? ✅
+                    {home.build.ai.mockup.msg2}
                     <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
                   </div>
                   <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                    Great — you're booked. Here's a quick price list meanwhile 📋
+                    {home.build.ai.mockup.msg3}
                     <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:03 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
                   </div>
                 </div>
@@ -593,29 +564,29 @@ const Home = () => {
           {/* Offering 3 — KPI Dashboards & Analytics */}
           <div className="feature-row reverse">
             <div className="feature-text reveal-left">
-              <span className="feature-eyebrow"><BarChart3 size={16} /> KPI Dashboards &amp; Analytics</span>
+              <span className="feature-eyebrow"><BarChart3 size={16} /> {common.services.kpi.title}</span>
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
-                Track the numbers that <span className="text-gradient">actually matter</span>
+                {home.build.kpi.title.before}<span className="text-gradient">{home.build.kpi.title.accent}</span>{home.build.kpi.title.after}
               </h3>
               {/* Mobile-only image: title → image → paragraph on phones */}
               <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img src={kpiHomeImg} alt="Customer support call center team monitoring business KPIs" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+                <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
-                We create clear dashboards that help you understand leads, sales, website performance, and marketing results without confusion.
+                {home.build.kpi.description}
               </p>
               <ul className="feature-bullets">
-                <li><CheckCircle2 size={18} /> Lead and sales tracking</li>
-                <li><CheckCircle2 size={18} /> Marketing performance visibility</li>
-                <li><CheckCircle2 size={18} /> Clear reports for better decisions</li>
+                <li><CheckCircle2 size={18} /> {home.build.kpi.bullets[0]}</li>
+                <li><CheckCircle2 size={18} /> {home.build.kpi.bullets[1]}</li>
+                <li><CheckCircle2 size={18} /> {home.build.kpi.bullets[2]}</li>
               </ul>
               <Link to="/services/kpi-dashboards" className="hero-advisory-btn" style={{ margin: 0 }}>
-                Explore KPI Dashboards <ArrowRight size={16} />
+                {home.build.kpi.cta} <ArrowRight size={16} />
               </Link>
             </div>
             <div className="feature-visual reveal-right">
               {/* KPI dashboard image */}
-              <img src={kpiHomeImg} alt="Customer support call center team monitoring business KPIs" loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
@@ -625,12 +596,12 @@ const Home = () => {
       <section className="section">
         <div className="container">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
-            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>How It Works</span>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>{home.process.eyebrow}</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
-              From First Idea to Website Launch — in <span className="text-gradient">3 Simple Steps</span>
+              {home.process.title.before}<span className="text-gradient">{home.process.title.accent}</span>{home.process.title.after}
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '640px', margin: '1rem auto 0', lineHeight: 1.7 }}>
-              A clear, guided process that turns your idea into a professional website ready to attract customers and grow your business.
+              {home.process.subtitle}
             </p>
           </div>
 
@@ -649,13 +620,13 @@ const Home = () => {
           {/* Section CTA — start the project */}
           <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
             <a
-              href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20start%20my%20website%20project."
+              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.project)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-advisory-btn"
               style={{ margin: 0 }}
             >
-              Start Your Project
+              {home.process.cta}
               <ArrowRight size={17} />
             </a>
           </div>
@@ -666,12 +637,12 @@ const Home = () => {
       <section className="section">
         <div className="container">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: '4.5rem' }}>
-            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Why Choose Us</span>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>{home.benefits.eyebrow}</span>
             <h2 style={{ fontSize: '2.5rem', lineHeight: 1.2 }}>
-              What You Actually <span className="text-gradient">Get</span>
+              {home.benefits.title.before}<span className="text-gradient">{home.benefits.title.accent}</span>{home.benefits.title.after}
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '640px', margin: '1rem auto 0', lineHeight: 1.7 }}>
-              No vague promises — just a clear, reliable web solution built to help your business look professional, load fast, and convert better.
+              {home.benefits.subtitle}
             </p>
           </div>
 
@@ -696,14 +667,14 @@ const Home = () => {
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container reveal" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-            Ready to Build a <span className="text-gradient">Smarter Digital Presence?</span>
+            {home.finalCta.title.before}<span className="text-gradient">{home.finalCta.title.accent}</span>{home.finalCta.title.after}
           </h2>
           <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto 2rem', fontSize: '1.1rem', lineHeight: '1.6' }}>
-            Book your free audit and strategy session today. We'll identify local search opportunities, audit site speed, and outline a custom digital growth blueprint for your business.
+            {home.finalCta.description}
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
             <a
-              href="https://wa.me/584144735431?text=Hello,%20I%20would%20like%20to%20request%20a%20free%20audit%20and%20strategy%20session."
+              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.auditStrategy)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-advisory-btn"
@@ -713,7 +684,7 @@ const Home = () => {
                   <path d="M12 2L13.09 8.26L19 6L15.45 11.13L22 12L15.45 12.87L19 18L13.09 15.74L12 22L10.91 15.74L5 18L8.55 12.87L2 12L8.55 11.13L5 6L10.91 8.26L12 2Z" fill="currentColor" />
                 </svg>
               </span>
-              Get Your Free Audit
+              {home.cta.freeAudit}
               <ArrowRight size={17} />
             </a>
           </div>
@@ -721,21 +692,21 @@ const Home = () => {
           <div className="home-contact-grid desktop-only" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '3rem' }}>
             <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <MessageCircle size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h3>WhatsApp</h3>
+              <h3>{home.finalCta.contact.whatsappLabel}</h3>
               <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 +58 414 473 5431
               </a>
             </div>
             <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <Mail size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h3>Email</h3>
+              <h3>{home.finalCta.contact.emailLabel}</h3>
               <a href="mailto:inversionesdigitales@hotmail.es" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 inversionesdigitales@hotmail.es
               </a>
             </div>
             <div className="home-contact-card desktop-only" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <MapPin size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
-              <h3>Location</h3>
+              <h3>{home.finalCta.contact.locationLabel}</h3>
               <p style={{ color: 'var(--text-secondary)', fontWeight: '600', margin: 0 }}>
                 Maracay, Aragua, Venezuela
               </p>
@@ -748,15 +719,15 @@ const Home = () => {
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container">
           <div className="reveal" style={{ maxWidth: '760px', margin: '0 auto', textAlign: 'center', padding: '3.5rem 2.5rem', borderRadius: '20px', border: '1px solid rgba(77, 148, 255, 0.15)', background: 'linear-gradient(180deg, rgba(77, 148, 255, 0.05), rgba(255, 255, 255, 0.01))' }}>
-            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Transparent Pricing</span>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>{home.pricing.eyebrow}</span>
             <h2 style={{ fontSize: '2.3rem', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Professional websites starting from <span className="text-gradient">$299</span>
+              {home.pricing.title.before}<span className="text-gradient">{home.pricing.title.accent}</span>{home.pricing.title.after}
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 2rem' }}>
-              Simple, transparent pricing with no hidden fees. Start with a one-time build and add monthly SEO, management, or AI services whenever you're ready.
+              {home.pricing.description}
             </p>
             <Link to="/pricing" className="hero-advisory-btn" style={{ margin: 0 }}>
-              See Plans &amp; Pricing <ArrowRight size={16} />
+              {home.pricing.cta} <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -767,22 +738,22 @@ const Home = () => {
         <div className="container">
           {/* Persuasive lead-in */}
           <div className="reveal" style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 3rem' }}>
-            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>Final Step</span>
+            <span className="feature-eyebrow" style={{ justifyContent: 'center' }}>{home.contactForm.eyebrow}</span>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Ready for a system that <span className="text-gradient">sells for you?</span>
+              {home.contactForm.title.before}<span className="text-gradient">{home.contactForm.title.accent}</span>{home.contactForm.title.after}
             </h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.7 }}>
-              Let's talk about your project. In your free consultation we'll dig into your current needs and map out the best digital strategy to accelerate your growth — no strings attached.
+              {home.contactForm.description}
             </p>
           </div>
           <div className="reveal" style={{ maxWidth: '600px', margin: '0 auto' }}>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Full Name</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>{home.contactForm.name.label}</label>
                 <input
                   type="text"
                   name="name"
-                  placeholder="Your name"
+                  placeholder={home.contactForm.name.placeholder}
                   value={formData.name}
                   onChange={handleInputChange}
                   required
@@ -799,11 +770,11 @@ const Home = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Email Address</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>{home.contactForm.email.label}</label>
                 <input
                   type="email"
                   name="email"
-                  placeholder="you@email.com"
+                  placeholder={home.contactForm.email.placeholder}
                   value={formData.email}
                   onChange={handleInputChange}
                   required
@@ -820,11 +791,11 @@ const Home = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Phone Number</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>{home.contactForm.phone.label}</label>
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="Your phone number"
+                  placeholder={home.contactForm.phone.placeholder}
                   value={formData.phone}
                   onChange={handleInputChange}
                   required
@@ -841,10 +812,10 @@ const Home = () => {
               </div>
 
               <div>
-                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>Message</label>
+                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500' }}>{home.contactForm.message.label}</label>
                 <textarea
                   name="message"
-                  placeholder="Tell us a bit about your project..."
+                  placeholder={home.contactForm.message.placeholder}
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="4"
@@ -866,7 +837,7 @@ const Home = () => {
                 className="hero-advisory-btn"
                 style={{ width: '100%', justifyContent: 'center' }}
               >
-                Get My Free Digital Strategy
+                {home.contactForm.submit}
               </button>
             </form>
           </div>

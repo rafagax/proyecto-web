@@ -2,6 +2,9 @@ import { index, route } from '@react-router/dev/routes';
 
 export default [
   index('routes/home.jsx'),
+  // English Home. Same module as `/`; the active locale is derived from the URL
+  // (getLocaleFromPath) at render time, so this renders the English Home.
+  route('en', 'routes/home.jsx', { id: 'home-en' }),
   route('services', 'routes/services.jsx'),
   route('services/:serviceId', 'routes/service-detail.jsx'),
   route('pricing', 'routes/pricing.jsx'),

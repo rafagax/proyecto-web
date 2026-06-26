@@ -15,6 +15,7 @@ import Navbar from '../src/components/Navbar';
 import Footer from '../src/components/Footer';
 import Chatbot from '../src/components/Chatbot';
 import { SITE_URL, absoluteUrl } from '../src/config/site.js';
+import { getLocaleFromPath } from '../src/i18n/locale.js';
 
 // Site-wide <link> tags (favicon, font preconnects).
 export const links = () => [
@@ -109,8 +110,11 @@ function ScrollRevealManager() {
 }
 
 export function Layout({ children }) {
+  // The document language is derived from the URL (es at the root, en under /en/).
+  const { pathname } = useLocation();
+  const lang = getLocaleFromPath(pathname);
   return (
-    <html lang="en" className="reveal-ready" suppressHydrationWarning>
+    <html lang={lang} className="reveal-ready" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
