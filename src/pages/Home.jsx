@@ -7,7 +7,6 @@ import seoDigitalImg from '../assets/seoimagendigital.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
-import { blogPosts } from '../data/blogPosts';
 import { updateMetaTags } from '../utils/seo';
 
 const Home = () => {
@@ -43,63 +42,6 @@ const Home = () => {
     window.open(whatsappUrl, '_blank');
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
-
-  const testimonials = [
-    {
-      text: 'In 7 days I had my website up and running and receiving clients. The team was incredibly professional and handled everything I asked for.',
-      author: 'Rafael Martínez',
-      location: 'Valencia, Venezuela 🇻🇪',
-      service: 'Landing Page'
-    },
-    {
-      text: 'Thanks to the AI automation they implemented, I answer WhatsApp inquiries effortlessly. My sales went up 40% in the first month.',
-      author: 'Daniela Suárez',
-      location: 'Maracay, Venezuela 🇻🇪',
-      service: 'AI Automation'
-    },
-    {
-      text: 'The chatbot they integrated handles clients while I sleep. It\'s an investment that paid for itself in less than a month.',
-      author: 'Miguel Ángel Torres',
-      location: 'Maturín, Venezuela 🇻🇪',
-      service: 'AI Chatbot'
-    },
-    {
-      text: 'I wasn\'t showing up on Google at all. Now I\'m the top result in my city. The local SEO work they did was extraordinary.',
-      author: 'Valentina Castro',
-      location: 'Los Teques, Venezuela 🇻🇪',
-      service: 'SEO + Web'
-    },
-    {
-      text: 'I needed a bilingual website for my Hispanic audience and they delivered perfectly. The design is clean, fast and professional. Highly recommended!',
-      author: 'James Rodríguez',
-      location: 'Miami, Florida 🇺🇸',
-      service: 'Bilingual Web'
-    },
-    {
-      text: 'My business visibility skyrocketed after their local SEO work. I went from being invisible online to getting 3–4 new clients per week.',
-      author: 'Sofia Mendez',
-      location: 'Houston, Texas 🇺🇸',
-      service: 'Local SEO'
-    },
-    {
-      text: 'I hired the service from Spain and the experience was flawless. They delivered ahead of schedule and the design exceeded my expectations.',
-      author: 'Carlos Fernández',
-      location: 'Madrid, Spain 🇪🇸',
-      service: 'Professional Web'
-    },
-    {
-      text: 'I needed an online store and they set it up in record time. The post-sale support was also excellent. My business grew remarkably.',
-      author: 'Lucía Herrera',
-      location: 'Barcelona, Spain 🇪🇸',
-      service: 'E-Commerce'
-    },
-    {
-      text: 'They built my website in less than a week and the results were immediate. My restaurant started getting online reservations right away. Amazing team!',
-      author: 'Carlos Pérez',
-      location: 'New York, NY 🇺🇸',
-      service: 'Web + SEO'
-    }
-  ];
 
   const benefits = [
     {

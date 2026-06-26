@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
 import ThemeToggle from './ThemeToggle';
 
@@ -30,14 +30,6 @@ const Navbar = () => {
       document.documentElement.classList.remove('mobile-menu-open');
     }
   }, [mobileMenuOpen]);
-
-  const mainLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Clients', path: '/our-clients' },
-    { name: 'Pricing', path: '/pricing' },
-    { name: 'Blog', path: '/blog' },
-    { name: 'FAQs', path: '/faqs' }
-  ];
 
   return (
     <>

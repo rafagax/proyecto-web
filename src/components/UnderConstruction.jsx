@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Wrench, ArrowLeft } from 'lucide-react';
 import './UnderConstruction.css';

@@ -45,7 +45,7 @@ const ThemeToggle = ({ className = '' }) => {
     }
     try {
       localStorage.setItem('theme', next);
-    } catch (e) {
+    } catch {
       /* localStorage unavailable — ignore */
     }
     const meta = document.querySelector('meta[name="theme-color"]');
