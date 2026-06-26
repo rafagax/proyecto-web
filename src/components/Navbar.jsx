@@ -89,6 +89,7 @@ const Navbar = () => {
 
           <div className="navbar-mobile-actions">
             <ThemeToggle className="theme-toggle-mobile" />
+            <LanguageSwitcher />
             <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)} aria-label={nav.openMenu}>
               <Menu size={28} />
             </button>

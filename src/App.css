@@ -330,9 +330,11 @@
   font-size: 1.5rem;
 }
 
-/* Mobile actions row (theme toggle + hamburger). Hidden on desktop. */
+/* Mobile actions row (theme toggle + language switcher + hamburger). The whole
+   group is shown only on mobile (revealed in the <=768px block below); on desktop
+   these controls live in .navbar-links instead. */
 .navbar-mobile-actions {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.7rem;
 }
@@ -344,6 +346,10 @@
 @media (max-width: 768px) {
   .navbar-links {
     display: none;
+  }
+
+  .navbar-mobile-actions {
+    display: flex;
   }
 
   .menu-toggle {
