@@ -6,7 +6,7 @@
 //      bundles get the SAME literal, so prerender and hydration stay in sync).
 //   2. globalThis.process.env.SITE_URL  → for Node build scripts that run outside Vite.
 //   3. Local fallback                   → ONLY for local dev / local builds. A deployed
-//      (Vercel/CI) production build with no domain configured FAILS instead of silently
+//      (Vercel or REQUIRE_SITE_URL=1) build with no domain configured FAILS instead of silently
 //      emitting localhost canonicals. The vercel.app domain is never used automatically.
 //
 // Safe in every environment (Vite dev, React Router build, prerender, browser, Node):
@@ -22,9 +22,12 @@ const nodeEnv =
 const configuredUrl =
   (viteEnv && viteEnv.VITE_SITE_URL) || (nodeEnv && nodeEnv.SITE_URL) || '';
 
-// A deployed/CI production build (Vercel sets VERCEL, CI sets CI) MUST use a real
-// domain. A plain local build may fall back to localhost for testing.
-const isDeployBuild = Boolean(nodeEnv && (nodeEnv.VERCEL || nodeEnv.CI));
+// A deploy build MUST use a real domain. Triggered ONLY by Vercel (VERCEL) or an
+// explicit REQUIRE_SITE_URL=1. A generic CI run (e.g. CI=true to lint/build a PR) is
+// NOT treated as a deploy and may fall back to localhost.
+const isDeployBuild = Boolean(
+  nodeEnv && (nodeEnv.VERCEL || nodeEnv.REQUIRE_SITE_URL === '1')
+);
 
 // Provisional local domain — used only for local dev / local builds.
 const FALLBACK_URL = 'http://localhost:5173';
