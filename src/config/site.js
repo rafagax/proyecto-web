@@ -2,28 +2,68 @@
 // hreflang, Open Graph, JSON-LD and the sitemap generator.
 //
 // Resolution order:
-//   1. import.meta.env.VITE_SITE_URL    → baked in by Vite at build time (server +
-//      client bundles receive the SAME literal, so prerender and hydration stay in sync).
-//   2. globalThis.process.env.SITE_URL  → for Node build scripts that run outside Vite
-//      (e.g. the future sitemap / postbuild step).
-//   3. Local fallback                   → provisional until the production domain is provided.
+//   1. import.meta.env.VITE_SITE_URL    → set at build time by Vite (server + client
+//      bundles get the SAME literal, so prerender and hydration stay in sync).
+//   2. globalThis.process.env.SITE_URL  → for Node build scripts that run outside Vite.
+//   3. Local fallback                   → ONLY for local dev / local builds. A deployed
+//      (Vercel/CI) production build with no domain configured FAILS instead of silently
+//      emitting localhost canonicals. The vercel.app domain is never used automatically.
 //
-// Commit 1 is additive: nothing imports this file yet, so site behavior is unchanged.
+// Safe in every environment (Vite dev, React Router build, prerender, browser, Node):
+// `import.meta.env` and `process` are read behind typeof/optional guards, so the browser
+// never runs Node-only logic and Node never depends on browser globals.
 
-const viteEnvUrl =
-  typeof import.meta !== 'undefined' && import.meta.env
-    ? import.meta.env.VITE_SITE_URL
-    : undefined;
-
+const viteEnv =
+  typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env : undefined;
 const nodeEnv =
   typeof globalThis !== 'undefined' && globalThis.process ? globalThis.process.env : undefined;
-const nodeEnvUrl = nodeEnv ? nodeEnv.SITE_URL : undefined;
 
-// Provisional local domain — replace by setting VITE_SITE_URL (and SITE_URL for the
-// Node build scripts) once the production domain is confirmed.
+// Configured domain: the Vite-exposed value wins, then a Node-only SITE_URL.
+const configuredUrl =
+  (viteEnv && viteEnv.VITE_SITE_URL) || (nodeEnv && nodeEnv.SITE_URL) || '';
+
+// A deployed/CI production build (Vercel sets VERCEL, CI sets CI) MUST use a real
+// domain. A plain local build may fall back to localhost for testing.
+const isDeployBuild = Boolean(nodeEnv && (nodeEnv.VERCEL || nodeEnv.CI));
+
+// Provisional local domain — used only for local dev / local builds.
 const FALLBACK_URL = 'http://localhost:5173';
 
-export const SITE_URL = (viteEnvUrl || nodeEnvUrl || FALLBACK_URL).replace(/\/+$/, '');
+// An accepted SITE_URL must be an absolute http(s) URL with no embedded credentials.
+// https is recommended in production; http is intended only for localhost.
+function isValidSiteUrl(value) {
+  let parsed;
+  try {
+    parsed = new URL(value);
+  } catch {
+    return false;
+  }
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return false;
+  if (parsed.username || parsed.password) return false;
+  return true;
+}
+
+function resolveSiteUrl() {
+  if (configuredUrl) {
+    if (!isValidSiteUrl(configuredUrl)) {
+      throw new Error(
+        `Invalid SITE_URL: ${JSON.stringify(configuredUrl)}.\n` +
+          'It must be an absolute http(s) URL without credentials, e.g. https://example.com.'
+      );
+    }
+    return configuredUrl;
+  }
+  if (isDeployBuild) {
+    throw new Error(
+      'SITE_URL is required for production builds.\n' +
+        'Set VITE_SITE_URL to the final public domain.'
+    );
+  }
+  return FALLBACK_URL;
+}
+
+// Normalized without a trailing slash so absoluteUrl() never produces "//".
+export const SITE_URL = resolveSiteUrl().replace(/\/+$/, '');
 
 // Build an absolute URL from a path, using SITE_URL as the base. SITE_URL is
 // already normalized without a trailing slash, so this never produces a double
