@@ -3012,6 +3012,11 @@
     text-align: left !important;
     margin-bottom: 20px !important;
     margin-left: -20px;
+    /* Allow long lines (e.g. "automatización con IA, SEO") to wrap instead of
+       being clipped off the right edge on mobile. The <br> breaks still apply;
+       this only adds soft-wrapping when a line is wider than the screen. */
+    white-space: normal !important;
+    overflow-wrap: break-word;
   }
 
   /* ── Subtitle ── */
