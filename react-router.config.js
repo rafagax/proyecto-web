@@ -30,7 +30,9 @@ export default {
       '/contacto',
       '/en/contact',
       '/blog',
+      '/en/blog',
       ...blogPosts.map((p) => `/blog/${p.slug}`),
+      ...blogPosts.map((p) => `/en/blog/${p.slug}`),
     ];
   },
 };

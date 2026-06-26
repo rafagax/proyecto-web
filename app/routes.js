@@ -29,8 +29,12 @@ export default [
   route('en/faqs', 'routes/faqs.jsx', { id: 'faqs-en' }),
   route('contacto', 'routes/contact.jsx', { id: 'contact-es' }),
   route('en/contact', 'routes/contact.jsx', { id: 'contact-en' }),
-  route('blog', 'routes/blog.jsx'),
-  route('blog/:slug', 'routes/blog-post.jsx'),
+  // Bilingual blog index + articles (same modules; locale from the URL). Slugs are
+  // identical across languages.
+  route('blog', 'routes/blog.jsx', { id: 'blog-es' }),
+  route('en/blog', 'routes/blog.jsx', { id: 'blog-en' }),
+  route('blog/:slug', 'routes/blog-post.jsx', { id: 'blog-post-es' }),
+  route('en/blog/:slug', 'routes/blog-post.jsx', { id: 'blog-post-en' }),
   route('about', 'routes/home.jsx', { id: 'about' }),
   route('*', 'routes/catch-all.jsx'),
 ];

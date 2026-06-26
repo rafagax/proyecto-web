@@ -3,9 +3,10 @@ import { ChevronLeft, ChevronRight, ArrowRight, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { blogPostPath, getLocalizedPath } from '../../app/route-manifest.js';
 
 export const BlogCarousel = () => {
-  const { content } = useLocalizedContent();
+  const { locale, content } = useLocalizedContent();
   const { section, categories, posts } = content.blog;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -107,7 +108,7 @@ export const BlogCarousel = () => {
                       </div>
                       <h3>{title}</h3>
                       <p className="blog-excerpt">{excerpt}</p>
-                      <Link to={`/blog/${post.slug}`} className="read-more">
+                      <Link to={blogPostPath(post.slug, locale)} className="read-more">
                         {section.readMore} <ArrowRight size={18} />
                       </Link>
                     </div>
@@ -149,7 +150,7 @@ export const BlogCarousel = () => {
         </div>
 
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-          <Link to="/blog" className="btn-secondary">
+          <Link to={getLocalizedPath('blog', locale)} className="btn-secondary">
             {section.viewAll}
           </Link>
         </div>

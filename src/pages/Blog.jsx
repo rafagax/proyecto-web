@@ -1,17 +1,12 @@
-﻿import { useEffect } from 'react';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
-import { updateMetaTags } from '../utils/seo';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { blogPostPath } from '../../app/route-manifest.js';
 
 const Blog = () => {
-  useEffect(() => {
-    updateMetaTags({
-      title: 'Web Development Tips & Digital Marketing Blog',
-      description: 'Learn about web development, SEO strategies, AI chatbots, and digital marketing tips for your business.',
-      keywords: 'web development blog, SEO tips, digital marketing, web design, AI chatbots',
-    });
-  }, []);
+  const { locale, content } = useLocalizedContent();
+  const t = content.blog;
 
   return (
     <div className="blog-page">
@@ -19,51 +14,54 @@ const Blog = () => {
         <div className="hero-bg-glow"></div>
         <div className="container" style={{ textAlign: 'center' }}>
           <span style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
-            Insights & Tips
+            {t.index.eyebrow}
           </span>
           <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
-            Digital Solutions <span className="text-gradient">Blog</span>
+            {t.index.title.before}<span className="text-gradient">{t.index.title.accent}</span>{t.index.title.after}
           </h1>
           <p className="hero-subtitle" style={{ maxWidth: '650px', margin: '0 auto' }}>
-            Tips, insights, and strategies for growing your business online.
+            {t.index.subtitle}
           </p>
         </div>
       </section>
       <section className="blog-section">
         <div className="container">
           <div className="blog-grid">
-            {blogPosts.map((post) => (
-              <article key={post.id} className="blog-card">
-                <img src={post.image} alt={post.title} className="blog-card-image" />
-                <div className="blog-category">{post.category}</div>
-                <h2>{post.title}</h2>
-                <p className="blog-excerpt">{post.excerpt}</p>
-                <div className="blog-meta">
-                  <div className="meta-item">
-                    <User size={16} />
-                    <span>{post.author}</span>
+            {blogPosts.map((post) => {
+              const lp = t.posts[post.slug];
+              return (
+                <article key={post.id} className="blog-card">
+                  <img src={post.image} alt={lp.title} className="blog-card-image" />
+                  <div className="blog-category">{t.categories[post.category] || post.category}</div>
+                  <h2>{lp.title}</h2>
+                  <p className="blog-excerpt">{lp.excerpt}</p>
+                  <div className="blog-meta">
+                    <div className="meta-item">
+                      <User size={16} />
+                      <span>{post.author}</span>
+                    </div>
+                    <div className="meta-item">
+                      <Calendar size={16} />
+                      <span>{lp.date}</span>
+                    </div>
                   </div>
-                  <div className="meta-item">
-                    <Calendar size={16} />
-                    <span>{post.date}</span>
-                  </div>
-                </div>
-                <Link to={`/blog/${post.slug}`} className="read-more">
-                  Read More <ArrowRight size={18} />
-                </Link>
-              </article>
-            ))}
+                  <Link to={blogPostPath(post.slug, locale)} className="read-more">
+                    {t.section.readMore} <ArrowRight size={18} />
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
       <section className="newsletter-section">
         <div className="container">
-          <h2>Subscribe to Our Newsletter</h2>
-          <p>Get the latest web development tips and digital marketing strategies.</p>
+          <h2>{t.index.newsletter.heading}</h2>
+          <p>{t.index.newsletter.copy}</p>
           <form className="newsletter-form">
-            <input type="email" placeholder="Enter your email" required />
+            <input type="email" placeholder={t.index.newsletter.placeholder} required />
             <button type="submit" className="btn btn-primary">
-              Subscribe
+              {t.index.newsletter.button}
             </button>
           </form>
         </div>

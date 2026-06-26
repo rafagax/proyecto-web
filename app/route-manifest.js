@@ -32,16 +32,16 @@ export const routeManifest = [
   { key: 'blog',     es: '/blog',                        en: '/en/blog',                      type: 'page',    sitemap: true },
 ];
 
-// Blog articles — translated per post. `published[lang]` controls prerender,
-// sitemap inclusion and whether the switcher offers the equivalent in that
-// language. ES slugs are provisional. Today only the English posts exist.
+// Blog articles. Slugs are identical in both languages (approved decision): the same
+// existing English slug lives at /blog/<slug> (es) and /en/blog/<slug> (en). Both
+// languages are published, so every article has a full ES↔EN equivalent.
 export const articles = [
-  { key: 'why-website-2025', en: 'why-your-business-needs-website-2025',  es: 'por-que-tu-negocio-necesita-pagina-web', published: { en: true, es: false } },
-  { key: 'local-seo',        en: 'local-seo-rank-number-one-city-google', es: 'seo-local-aparecer-primero-en-google',   published: { en: true, es: false } },
-  { key: 'ai-chatbots',      en: 'ai-chatbots-24-7-sales-tool',           es: 'chatbots-ia-vender-24-7',                published: { en: true, es: false } },
-  { key: 'online-store-7d',  en: 'launch-online-store-7-days',            es: 'lanzar-tienda-online-en-7-dias',         published: { en: true, es: false } },
-  { key: 'core-web-vitals',  en: 'web-performance-core-web-vitals',       es: 'rendimiento-web-core-web-vitals',        published: { en: true, es: false } },
-  { key: 'mobile-first',     en: 'mobile-first-design-strategy',          es: 'estrategia-diseno-mobile-first',         published: { en: true, es: false } },
+  { key: 'why-website-2025', en: 'why-your-business-needs-website-2025',  es: 'why-your-business-needs-website-2025',  published: { en: true, es: true } },
+  { key: 'local-seo',        en: 'local-seo-rank-number-one-city-google', es: 'local-seo-rank-number-one-city-google', published: { en: true, es: true } },
+  { key: 'ai-chatbots',      en: 'ai-chatbots-24-7-sales-tool',           es: 'ai-chatbots-24-7-sales-tool',           published: { en: true, es: true } },
+  { key: 'online-store-7d',  en: 'launch-online-store-7-days',            es: 'launch-online-store-7-days',            published: { en: true, es: true } },
+  { key: 'core-web-vitals',  en: 'web-performance-core-web-vitals',       es: 'web-performance-core-web-vitals',       published: { en: true, es: true } },
+  { key: 'mobile-first',     en: 'mobile-first-design-strategy',          es: 'mobile-first-design-strategy',          published: { en: true, es: true } },
 ];
 
 // ── Helpers (pure; safe both at build time and in the browser) ──
@@ -53,6 +53,11 @@ const stripTrailingSlash = (p) => {
 
 export const articlePath = (article, lang) =>
   lang === 'en' ? `/en/blog/${article.en}` : `/blog/${article.es}`;
+
+/** Localized URL for a blog post by slug (slugs are identical across languages). */
+export function blogPostPath(slug, lang) {
+  return lang === 'en' ? `/en/blog/${slug}` : `/blog/${slug}`;
+}
 
 /**
  * Given any known path, return its equivalent in `toLang`, or `null` when there

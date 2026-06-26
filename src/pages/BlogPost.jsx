@@ -1,63 +1,56 @@
-import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
-import { updateMetaTags } from '../utils/seo';
+import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const post = blogPosts.find(p => p.slug === slug);
-
-  useEffect(() => {
-    if (post) {
-      updateMetaTags({
-        title: post.title,
-        description: post.excerpt,
-        keywords: `${post.category}, ${post.title.toLowerCase()}`,
-        ogTitle: post.title,
-        ogDescription: post.excerpt,
-      });
-    }
-  }, [post]);
+  const { locale, content } = useLocalizedContent();
+  const t = content.blog;
+  const post = blogPosts.find((p) => p.slug === slug);
+  const blogIndex = getLocalizedPath('blog', locale);
 
   if (!post) {
     return (
       <div className="blog-page" style={{ paddingTop: '120px', minHeight: '100vh' }}>
         <div className="container" style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Post Not Found</h1>
+          <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>{t.article.notFound.title}</h1>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-            Sorry, we couldn't find the article you're looking for.
+            {t.article.notFound.copy}
           </p>
-          <Link to="/blog" className="btn-secondary">
-            ← Back to Blog
+          <Link to={blogIndex} className="btn-secondary">
+            ← {t.article.backToBlog}
           </Link>
         </div>
       </div>
     );
   }
 
+  const lp = t.posts[post.slug];
+
   return (
     <div className="blog-page">
       {/* Hero Image */}
       <div className="blog-post-hero">
-        <img src={post.image} alt={post.title} style={{ width: '100%', height: '400px', objectFit: 'cover' }} />
+        <img src={post.image} alt={lp.title} style={{ width: '100%', height: '400px', objectFit: 'cover' }} />
       </div>
 
       {/* Article Content */}
       <article className="blog-post-article">
         <div className="container" style={{ maxWidth: '800px' }}>
           {/* Back Button */}
-          <Link to="/blog" className="blog-post-back">
-            <ArrowLeft size={18} /> Back to Blog
+          <Link to={blogIndex} className="blog-post-back">
+            <ArrowLeft size={18} /> {t.article.backToBlog}
           </Link>
 
           {/* Category & Meta */}
           <div className="blog-post-meta-top">
-            <span className="blog-category">{post.category}</span>
+            <span className="blog-category">{t.categories[post.category] || post.category}</span>
           </div>
 
           {/* Title */}
-          <h1 className="blog-post-title">{post.title}</h1>
+          <h1 className="blog-post-title">{lp.title}</h1>
 
           {/* Author & Date */}
           <div className="blog-post-info">
@@ -67,13 +60,13 @@ const BlogPost = () => {
             </div>
             <div className="meta-item">
               <Calendar size={18} />
-              <span>{post.date}</span>
+              <span>{lp.date}</span>
             </div>
           </div>
 
           {/* Content */}
           <div className="blog-post-content">
-            {post.content.split('\n\n').map((paragraph, idx) => {
+            {lp.content.split('\n\n').map((paragraph, idx) => {
               if (paragraph.startsWith('###')) {
                 return (
                   <h3 key={idx} style={{ fontSize: '1.2rem', marginTop: '1.5rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
@@ -109,19 +102,19 @@ const BlogPost = () => {
 
           {/* CTA Section */}
           <div className="blog-post-cta">
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Ready to take your business online?</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>{t.article.ctaHeading}</h3>
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-              Get a professional website built in just 7 days. Let's transform your digital presence.
+              {t.article.ctaCopy}
             </p>
             <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
-              Get Started Now
+              {t.article.ctaButton}
             </a>
           </div>
 
           {/* Back Button */}
           <div style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            <Link to="/blog" className="btn-secondary">
-              ← Back to Blog
+            <Link to={blogIndex} className="btn-secondary">
+              ← {t.article.backToBlog}
             </Link>
           </div>
         </div>

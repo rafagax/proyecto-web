@@ -1,19 +1,27 @@
 import Blog from '../../src/pages/Blog.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
+import { getLocaleFromPath } from '../../src/i18n/locale.js';
+import { getContent } from '../../src/i18n/content.js';
 
-export function meta() {
+// Locale-aware meta for the bilingual blog index (/blog and /en/blog).
+export function meta({ location }) {
+  const locale = getLocaleFromPath(location.pathname);
+  const esHref = absoluteUrl('/blog');
+  const enHref = absoluteUrl('/en/blog');
+  const canonical = locale === 'en' ? enHref : esHref;
+  const m = getContent(locale).blog.indexMeta;
+
   return [
-    { title: 'Blog — Web Development, SEO & AI Insights | InversionesDigitales' },
-    {
-      name: 'description',
-      content: 'Learn about web development, SEO strategies, AI chatbots, and digital marketing tips for your business.',
-    },
-    { property: 'og:title', content: 'Blog | InversionesDigitales' },
-    {
-      property: 'og:description',
-      content: 'Web development, SEO, AI automation and digital marketing insights for growing businesses.',
-    },
-    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/blog') },
+    { title: m.title },
+    { name: 'description', content: m.description },
+    { property: 'og:title', content: m.ogTitle },
+    { property: 'og:description', content: m.ogDescription },
+    { name: 'twitter:title', content: m.ogTitle },
+    { name: 'twitter:description', content: m.ogDescription },
+    { tagName: 'link', rel: 'canonical', href: canonical },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
   ];
 }
 

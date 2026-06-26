@@ -18,6 +18,7 @@ const Navbar = () => {
     pricing: getLocalizedPath('pricing', locale),
     faqs: getLocalizedPath('faqs', locale),
     contact: getLocalizedPath('contact', locale),
+    blog: getLocalizedPath('blog', locale),
   };
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,7 +70,7 @@ const Navbar = () => {
               {nav.pricing}
             </Link>
 
-            <Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>
+            <Link to={navPath.blog} className={location.pathname.startsWith(navPath.blog) ? 'active' : ''}>
               {nav.blog}
             </Link>
 
@@ -171,8 +172,8 @@ const Navbar = () => {
 
           {/* Blog - Lower Priority */}
           <Link
-            to="/blog"
-            className={`mobile-menu-item ${location.pathname === '/blog' ? 'active' : ''}`}
+            to={navPath.blog}
+            className={`mobile-menu-item ${location.pathname.startsWith(navPath.blog) ? 'active' : ''}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             {nav.blog}
