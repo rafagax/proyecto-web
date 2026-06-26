@@ -18,6 +18,8 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
+    // Route changes must close the mobile navigation menu.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMobileMenuOpen(false);
   }, [location]);
 

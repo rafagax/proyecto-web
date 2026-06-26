@@ -16,6 +16,15 @@ export const TestimonialsCarousel = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Determine how many cards to show based on screen size
+  const getVisibleCount = () => {
+    if (typeof window === 'undefined') return 3;
+    const width = window.innerWidth;
+    if (width < 768) return 1;
+    if (width < 1024) return 2;
+    return 3;
+  };
+
   useEffect(() => {
     const update = () => setVisibleCount(getVisibleCount());
     update();
@@ -29,15 +38,6 @@ export const TestimonialsCarousel = () => {
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  // Determine how many cards to show based on screen size
-  const getVisibleCount = () => {
-    if (typeof window === 'undefined') return 3;
-    const width = window.innerWidth;
-    if (width < 768) return 1;
-    if (width < 1024) return 2;
-    return 3;
   };
 
   const displayCount = visibleCount === 3 ? 3 : visibleCount;

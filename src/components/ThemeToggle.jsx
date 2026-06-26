@@ -33,6 +33,8 @@ const ThemeToggle = ({ className = '' }) => {
   useEffect(() => {
     const current =
       document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    // Sync React state with the theme applied by the pre-paint script.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(current);
   }, []);
 
