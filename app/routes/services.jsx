@@ -1,4 +1,5 @@
 import Services from '../../src/pages/Services.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
@@ -13,7 +14,7 @@ export function meta() {
       property: 'og:description',
       content: 'Premium web development, SEO, KPI dashboards, and AI automation for growing businesses.',
     },
-    { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/services' },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/services') },
   ];
 }
 

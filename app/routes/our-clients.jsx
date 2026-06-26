@@ -1,4 +1,5 @@
 import OurClients from '../../src/pages/OurClients.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
@@ -13,7 +14,7 @@ export function meta() {
       property: 'og:description',
       content: 'Real results from businesses we have helped with web development, SEO, and AI automation.',
     },
-    { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/our-clients' },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/our-clients') },
   ];
 }
 

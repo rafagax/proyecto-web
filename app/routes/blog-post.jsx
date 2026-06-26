@@ -1,4 +1,5 @@
 import BlogPost from '../../src/pages/BlogPost.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 import { blogPosts } from '../../src/data/blogPosts.js';
 
 export function meta({ params }) {
@@ -13,7 +14,7 @@ export function meta({ params }) {
     { property: 'og:title', content: post.title },
     { property: 'og:description', content: post.excerpt },
     { property: 'og:image', content: post.image },
-    { tagName: 'link', rel: 'canonical', href: `https://yourdomain.com/blog/${post.slug}` },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl(`/blog/${post.slug}`) },
     {
       'script:ld+json': {
         '@context': 'https://schema.org',
@@ -23,7 +24,7 @@ export function meta({ params }) {
         image: post.image,
         author: { '@type': 'Organization', name: 'Digital Investments' },
         publisher: { '@type': 'Organization', name: 'Digital Investments' },
-        mainEntityOfPage: `https://yourdomain.com/blog/${post.slug}`,
+        mainEntityOfPage: absoluteUrl(`/blog/${post.slug}`),
       },
     },
   ];

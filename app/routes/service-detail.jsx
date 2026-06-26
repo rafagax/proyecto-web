@@ -1,4 +1,5 @@
 import ServiceDetail from '../../src/pages/ServiceDetail.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 import { serviceDetails, aliasMap } from '../../src/data/serviceDetails.js';
 
 export function meta({ params }) {
@@ -13,7 +14,7 @@ export function meta({ params }) {
     { name: 'description', content: s.metaDescription },
     { property: 'og:title', content: s.h1 },
     { property: 'og:description', content: s.metaDescription },
-    { tagName: 'link', rel: 'canonical', href: `https://yourdomain.com/services/${canonicalSlug}` },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl(`/services/${canonicalSlug}`) },
     {
       'script:ld+json': {
         '@context': 'https://schema.org',

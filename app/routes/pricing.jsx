@@ -1,4 +1,5 @@
 import Pricing from '../../src/pages/Pricing.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
@@ -13,7 +14,7 @@ export function meta() {
       property: 'og:description',
       content: 'Transparent pricing with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',
     },
-    { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/pricing' },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/pricing') },
   ];
 }
 

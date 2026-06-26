@@ -24,3 +24,15 @@ const nodeEnvUrl = nodeEnv ? nodeEnv.SITE_URL : undefined;
 const FALLBACK_URL = 'http://localhost:5173';
 
 export const SITE_URL = (viteEnvUrl || nodeEnvUrl || FALLBACK_URL).replace(/\/+$/, '');
+
+// Build an absolute URL from a path, using SITE_URL as the base. SITE_URL is
+// already normalized without a trailing slash, so this never produces a double
+// slash after the domain:
+//   absoluteUrl('/')        -> `${SITE_URL}/`
+//   absoluteUrl('/contact') -> `${SITE_URL}/contact`
+//   absoluteUrl('contact')  -> `${SITE_URL}/contact`
+//   absoluteUrl('/en/')     -> `${SITE_URL}/en/`
+export const absoluteUrl = (path = '/') => {
+  const normalizedPath = String(path || '/');
+  return `${SITE_URL}${normalizedPath.startsWith('/') ? normalizedPath : `/${normalizedPath}`}`;
+};

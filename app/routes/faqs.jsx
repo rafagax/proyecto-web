@@ -1,4 +1,5 @@
 import FAQs from '../../src/pages/FAQs.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 import { faqCategories } from '../../src/data/faqs.js';
 
 const faqSchema = {
@@ -26,7 +27,7 @@ export function meta() {
       property: 'og:description',
       content: 'Clear answers about our web development, SEO, KPI dashboards and AI automation services, plus pricing and process.',
     },
-    { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/faqs' },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/faqs') },
     { 'script:ld+json': faqSchema },
   ];
 }

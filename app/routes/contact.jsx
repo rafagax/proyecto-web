@@ -1,4 +1,5 @@
 import Contact from '../../src/pages/Contact.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
@@ -13,7 +14,7 @@ export function meta() {
       property: 'og:description',
       content: 'Book a free consultation and strategy session for your website, SEO, KPI dashboards, or AI automation.',
     },
-    { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/contact' },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/contact') },
   ];
 }
 

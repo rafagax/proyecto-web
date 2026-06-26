@@ -1,4 +1,5 @@
 import Blog from '../../src/pages/Blog.jsx';
+import { absoluteUrl } from '../../src/config/site.js';
 
 export function meta() {
   return [
@@ -12,7 +13,7 @@ export function meta() {
       property: 'og:description',
       content: 'Web development, SEO, AI automation and digital marketing insights for growing businesses.',
     },
-    { tagName: 'link', rel: 'canonical', href: 'https://yourdomain.com/blog' },
+    { tagName: 'link', rel: 'canonical', href: absoluteUrl('/blog') },
   ];
 }
 

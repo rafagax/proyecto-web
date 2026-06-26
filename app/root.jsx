@@ -14,6 +14,7 @@ import '../src/App.css';
 import Navbar from '../src/components/Navbar';
 import Footer from '../src/components/Footer';
 import Chatbot from '../src/components/Chatbot';
+import { SITE_URL, absoluteUrl } from '../src/config/site.js';
 
 // Site-wide <link> tags (favicon, font preconnects).
 export const links = () => [
@@ -27,9 +28,9 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Digital Investments',
-  url: 'https://yourdomain.com',
+  url: SITE_URL,
   description: 'Premium web development, SEO, KPI dashboards and AI automation for growing businesses.',
-  logo: 'https://yourdomain.com/logo.png',
+  logo: absoluteUrl('/logo.png'),
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
@@ -43,7 +44,7 @@ const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Digital Investments',
-  image: 'https://yourdomain.com/og-image.webp',
+  image: absoluteUrl('/og-image.webp'),
   description: 'Premium web development, SEO, KPI dashboards and AI automation services.',
   telephone: '+584144735431',
   email: 'inversionesdigitales@hotmail.es',
@@ -132,9 +133,9 @@ export function Layout({ children }) {
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Digital Investments" />
-        <meta property="og:image" content="https://yourdomain.com/og-image.webp" />
+        <meta property="og:image" content={absoluteUrl('/og-image.webp')} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://yourdomain.com/og-image.webp" />
+        <meta name="twitter:image" content={absoluteUrl('/og-image.webp')} />
         <Meta />
         <Links />
         <script
