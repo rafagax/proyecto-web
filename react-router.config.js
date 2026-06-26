@@ -33,6 +33,10 @@ export default {
       '/en/blog',
       ...blogPosts.map((p) => `/blog/${p.slug}`),
       ...blogPosts.map((p) => `/en/blog/${p.slug}`),
+      // Localized 404 documents — served with a real HTTP 404 by vercel.json routes.
+      // They are NOT canonical routes and are NOT added to the sitemap.
+      '/404',
+      '/en/404',
     ];
   },
 };

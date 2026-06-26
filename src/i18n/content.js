@@ -31,10 +31,12 @@ import esServiceKpi from '../content/es/serviceKpi.js';
 import enServiceKpi from '../content/en/serviceKpi.js';
 import esServiceAi from '../content/es/serviceAi.js';
 import enServiceAi from '../content/en/serviceAi.js';
+import esNotFound from '../content/es/notFound.js';
+import enNotFound from '../content/en/notFound.js';
 
 const BUNDLES = {
-  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices, pricing: esPricing, clients: esClients, faqs: esFaqs, contact: esContact, serviceSeo: esServiceSeo, serviceKpi: esServiceKpi, serviceAi: esServiceAi },
-  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices, pricing: enPricing, clients: enClients, faqs: enFaqs, contact: enContact, serviceSeo: enServiceSeo, serviceKpi: enServiceKpi, serviceAi: enServiceAi },
+  es: { common: esCommon, home: esHome, testimonials: esTestimonials, blog: esBlog, chatbot: esChatbot, services: esServices, pricing: esPricing, clients: esClients, faqs: esFaqs, contact: esContact, serviceSeo: esServiceSeo, serviceKpi: esServiceKpi, serviceAi: esServiceAi, notFound: esNotFound },
+  en: { common: enCommon, home: enHome, testimonials: enTestimonials, blog: enBlog, chatbot: enChatbot, services: enServices, pricing: enPricing, clients: enClients, faqs: enFaqs, contact: enContact, serviceSeo: enServiceSeo, serviceKpi: enServiceKpi, serviceAi: enServiceAi, notFound: enNotFound },
 };
 
 // Return the content bundle for a locale. Unknown/undefined locales fall back to
