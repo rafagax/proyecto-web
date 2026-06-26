@@ -7,10 +7,12 @@
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from './locale.js';
 import esCommon from '../content/es/common.js';
 import enCommon from '../content/en/common.js';
+import esHome from '../content/es/home.js';
+import enHome from '../content/en/home.js';
 
 const BUNDLES = {
-  es: { common: esCommon },
-  en: { common: enCommon },
+  es: { common: esCommon, home: esHome },
+  en: { common: enCommon, home: enHome },
 };
 
 // Return the content bundle for a locale. Unknown/undefined locales fall back to
