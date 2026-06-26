@@ -148,7 +148,8 @@ export function Layout({ children }) {
           }}
         />
         <meta name="theme-color" content="#000000" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        {/* No global robots directive: valid pages are indexable by default. Only the
+            404 route emits robots=noindex,nofollow (app/routes/not-found.jsx). */}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="InversionesDigitales" />
         <meta property="og:image" content={absoluteUrl('/og-image.webp')} />
