@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Gauge, MonitorSmartphone, SearchCheck, ListChecks, Goal, Headset } from 'lucide-react';
 import heroImg from '../assets/Hero2.webp';
 import webDevImg from '../assets/imagenwebdevelop.webp';
@@ -7,24 +7,12 @@ import seoDigitalImg from '../assets/seoimagendigital.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
-import { updateMetaTags } from '../utils/seo';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
 
 const Home = () => {
   const { locale, content } = useLocalizedContent();
   const { common, home } = content;
-
-  useEffect(() => {
-    updateMetaTags({
-      title: 'Web Development, AI Automation, SEO & KPI Dashboards | InversionesDigitales',
-      description: 'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
-      keywords: 'web development, web design, SEO, KPI dashboards, analytics, AI automation, chatbots, WhatsApp automation, business websites',
-      ogTitle: 'Web Development, AI Automation, SEO & KPI Dashboards',
-      ogDescription: 'Premium web development, AI automation, SEO, and KPI dashboards built to help growing businesses look professional, get found, and convert better.',
-      canonical: 'https://yourdomain.com/'
-    });
-  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
