@@ -1,4 +1,5 @@
-import FAQs, { faqCategories } from '../../src/pages/FAQs.jsx';
+import FAQs from '../../src/pages/FAQs.jsx';
+import { faqCategories } from '../../src/data/faqs.js';
 
 const faqSchema = {
   '@context': 'https://schema.org',

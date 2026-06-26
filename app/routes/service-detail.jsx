@@ -1,4 +1,5 @@
-import ServiceDetail, { serviceDetails, aliasMap } from '../../src/pages/ServiceDetail.jsx';
+import ServiceDetail from '../../src/pages/ServiceDetail.jsx';
+import { serviceDetails, aliasMap } from '../../src/data/serviceDetails.js';
 
 export function meta({ params }) {
   const requested = params.serviceId;
