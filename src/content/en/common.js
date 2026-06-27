@@ -1,5 +1,5 @@
-// English shared navigation / footer / language copy. Commit 4 is content-only —
-// not connected to any component yet. Mirrors the current visible English text.
+// English shared navigation / footer / language copy. Mirrors the current visible
+// English text.
 export default {
   language: {
     esName: 'Español',

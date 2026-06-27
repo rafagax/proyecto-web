@@ -1,4 +1,4 @@
-// English Home page copy. Commit 5 is content-only — not connected to Home.jsx yet.
+// English Home page copy.
 // Segmented headings store the gradient part under an `accent` key (or accent1/accent2
 // for the hero). Concatenating the segment values reconstructs the exact visible text;
 // no HTML/JSX is stored here. Mirrors the current visible English text exactly.

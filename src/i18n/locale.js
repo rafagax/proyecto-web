@@ -1,11 +1,9 @@
 // Locale infrastructure — language is determined EXCLUSIVELY by the URL path.
 // No window / document / navigator / cookies / IP / browser detection.
 //
-// IMPORTANT: every helper here receives a PATHNAME only (e.g. '/en/services'),
+// IMPORTANT: every helper here receives a PATHNAME only (e.g. '/es/servicios'),
 // never a full URL, query string or hash. Callers must strip origin/search/hash
 // before calling (e.g. use `location.pathname`, not `location.href`).
-//
-// Commit 3 is additive: nothing imports this yet.
 
 // Single source of truth for supported languages. English is the default and
 // lives at the root (no prefix); Spanish lives under the `/es` first segment.

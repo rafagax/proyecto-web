@@ -1,8 +1,5 @@
 // Locale content bundles. Static imports only (no async/dynamic import, no
 // window/document/navigator) so this is safe during prerender and in the browser.
-//
-// Commit 3 is additive: nothing imports this yet, and the bundles hold only a
-// minimal placeholder (languageName) — no real translated content.
 
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from './locale.js';
 import esCommon from '../content/es/common.js';

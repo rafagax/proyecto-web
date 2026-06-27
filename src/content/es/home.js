@@ -1,5 +1,5 @@
-// Spanish (neutral) Home page copy. Commit 5 is content-only — not connected to
-// Home.jsx yet. Segmented headings store the gradient part under an `accent` key
+// Spanish (neutral) Home page copy. Segmented headings store the gradient part
+// under an `accent` key
 // (or accent1/accent2 for the hero); concatenating the segments rebuilds the visible
 // text. No HTML/JSX is stored here. Mismas claves que en/home.js.
 export default {

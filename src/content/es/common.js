@@ -1,5 +1,4 @@
-// Spanish (neutral) shared navigation / footer / language copy. Commit 4 is
-// content-only — not connected to any component yet.
+// Spanish (neutral) shared navigation / footer / language copy.
 export default {
   language: {
     esName: 'Español',

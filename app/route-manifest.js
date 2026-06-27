@@ -7,9 +7,7 @@
 // place is what lets the switcher jump to the SAME page in the other language
 // instead of always returning to the home page.
 //
-// Commit 1 is additive: nothing imports this file yet, so site behavior is
-// unchanged. Slugs marked "provisional" are pending Spanish keyword research and
-// may change before launch.
+// Slugs marked "provisional" are pending Spanish keyword research and may change.
 
 import { SITE_URL } from '../src/config/site.js';
 export { SITE_URL };
