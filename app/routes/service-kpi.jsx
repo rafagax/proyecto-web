@@ -3,11 +3,11 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for /servicios/dashboards-kpi and /en/services/kpi-dashboards.
+// Locale-aware meta for /services/kpi-dashboards and /es/servicios/dashboards-kpi.
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/servicios/dashboards-kpi');
-  const enHref = absoluteUrl('/en/services/kpi-dashboards');
+  const esHref = absoluteUrl('/es/servicios/dashboards-kpi');
+  const enHref = absoluteUrl('/services/kpi-dashboards');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).serviceKpi.meta;
 
@@ -21,7 +21,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
     {
       'script:ld+json': {
         '@context': 'https://schema.org',

@@ -3,11 +3,11 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for the bilingual Services index (/servicios and /en/services).
+// Locale-aware meta for the bilingual Services index (/services and /es/servicios).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/servicios');
-  const enHref = absoluteUrl('/en/services');
+  const esHref = absoluteUrl('/es/servicios');
+  const enHref = absoluteUrl('/services');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).services.indexMeta;
 
@@ -21,7 +21,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
   ];
 }
 

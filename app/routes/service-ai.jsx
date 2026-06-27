@@ -3,11 +3,11 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for /servicios/automatizacion-ia and /en/services/ai-automation.
+// Locale-aware meta for /services/ai-automation and /es/servicios/automatizacion-ia.
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/servicios/automatizacion-ia');
-  const enHref = absoluteUrl('/en/services/ai-automation');
+  const esHref = absoluteUrl('/es/servicios/automatizacion-ia');
+  const enHref = absoluteUrl('/services/ai-automation');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).serviceAi.meta;
 
@@ -21,7 +21,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
     {
       'script:ld+json': {
         '@context': 'https://schema.org',

@@ -3,11 +3,11 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for /clientes and /en/clients (same module; locale from the URL).
+// Locale-aware meta for /clients and /es/clientes (same module; locale from the URL).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/clientes');
-  const enHref = absoluteUrl('/en/clients');
+  const esHref = absoluteUrl('/es/clientes');
+  const enHref = absoluteUrl('/clients');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).clients.meta;
 
@@ -21,7 +21,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
   ];
 }
 

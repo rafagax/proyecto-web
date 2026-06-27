@@ -6,7 +6,7 @@ import { blogPosts } from '../../src/data/blogPosts.js';
 import { blogPostPath } from '../route-manifest.js';
 
 // Locale-aware meta + BlogPosting JSON-LD for each article. Slugs are identical in
-// both languages, so the ES/EN pair shares the slug at /blog/<slug> and /en/blog/<slug>.
+// both languages, so the EN/ES pair shares the slug at /blog/<slug> and /es/blog/<slug>.
 export function meta({ params, location }) {
   const locale = getLocaleFromPath(location.pathname);
   const content = getContent(locale);
@@ -33,7 +33,7 @@ export function meta({ params, location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
     {
       'script:ld+json': {
         '@context': 'https://schema.org',

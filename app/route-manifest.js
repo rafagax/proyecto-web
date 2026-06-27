@@ -1,6 +1,6 @@
 // Single source of truth for the bilingual route structure.
-//   - Spanish (neutral) lives at the root:        /, /servicios, /contacto, ...
-//   - English lives under /en/:                   /en/, /en/services, /en/contact, ...
+//   - English (primary) lives at the root:        /, /services, /contact, ...
+//   - Spanish lives under /es/:                    /es/, /es/servicios, /es/contacto, ...
 //
 // Everything downstream derives from this manifest: the ES|EN language switcher,
 // the prerender list, the sitemap, canonicals and hreflang. Keeping it in one
@@ -15,25 +15,26 @@ import { SITE_URL } from '../src/config/site.js';
 export { SITE_URL };
 
 export const LOCALES = ['es', 'en'];
-export const DEFAULT_LOCALE = 'es';
+export const DEFAULT_LOCALE = 'en';
 
-// Paired pages — each exists in both languages (es ↔ en).
+// Paired pages — each exists in both languages. English (primary) is at the root,
+// Spanish is prefixed under /es/.
 export const routeManifest = [
-  { key: 'home',     es: '/',                            en: '/en/',                          type: 'page',    sitemap: true },
-  { key: 'services', es: '/servicios',                   en: '/en/services',                  type: 'page',    sitemap: true },
-  { key: 'svc-web',  es: '/servicios/desarrollo-web',    en: '/en/services/web-development',  type: 'service', sitemap: true }, // slug ES provisional
-  { key: 'svc-seo',  es: '/servicios/seo',               en: '/en/services/seo',              type: 'service', sitemap: true }, // targeting SEO pendiente
-  { key: 'svc-kpi',  es: '/servicios/dashboards-kpi',    en: '/en/services/kpi-dashboards',   type: 'service', sitemap: true }, // targeting SEO pendiente
-  { key: 'svc-ai',   es: '/servicios/automatizacion-ia', en: '/en/services/ai-automation',    type: 'service', sitemap: true }, // targeting SEO pendiente
-  { key: 'pricing',  es: '/precios',                     en: '/en/pricing',                   type: 'page',    sitemap: true },
-  { key: 'contact',  es: '/contacto',                    en: '/en/contact',                   type: 'page',    sitemap: true },
-  { key: 'clients',  es: '/clientes',                    en: '/en/clients',                   type: 'page',    sitemap: true },
-  { key: 'faqs',     es: '/preguntas-frecuentes',        en: '/en/faqs',                      type: 'page',    sitemap: true },
-  { key: 'blog',     es: '/blog',                        en: '/en/blog',                      type: 'page',    sitemap: true },
+  { key: 'home',     en: '/',                         es: '/es/',                             type: 'page',    sitemap: true },
+  { key: 'services', en: '/services',                 es: '/es/servicios',                    type: 'page',    sitemap: true },
+  { key: 'svc-web',  en: '/services/web-development',  es: '/es/servicios/desarrollo-web',    type: 'service', sitemap: true }, // slug ES provisional
+  { key: 'svc-seo',  en: '/services/seo',             es: '/es/servicios/seo',                type: 'service', sitemap: true }, // targeting SEO pendiente
+  { key: 'svc-kpi',  en: '/services/kpi-dashboards',  es: '/es/servicios/dashboards-kpi',     type: 'service', sitemap: true }, // targeting SEO pendiente
+  { key: 'svc-ai',   en: '/services/ai-automation',   es: '/es/servicios/automatizacion-ia',  type: 'service', sitemap: true }, // targeting SEO pendiente
+  { key: 'pricing',  en: '/pricing',                  es: '/es/precios',                      type: 'page',    sitemap: true },
+  { key: 'contact',  en: '/contact',                  es: '/es/contacto',                     type: 'page',    sitemap: true },
+  { key: 'clients',  en: '/clients',                  es: '/es/clientes',                     type: 'page',    sitemap: true },
+  { key: 'faqs',     en: '/faqs',                     es: '/es/preguntas-frecuentes',         type: 'page',    sitemap: true },
+  { key: 'blog',     en: '/blog',                     es: '/es/blog',                         type: 'page',    sitemap: true },
 ];
 
 // Blog articles. Slugs are identical in both languages (approved decision): the same
-// existing English slug lives at /blog/<slug> (es) and /en/blog/<slug> (en). Both
+// existing English slug lives at /blog/<slug> (en) and /es/blog/<slug> (es). Both
 // languages are published, so every article has a full ES↔EN equivalent.
 export const articles = [
   { key: 'why-website-2025', en: 'why-your-business-needs-website-2025',  es: 'why-your-business-needs-website-2025',  published: { en: true, es: true } },
@@ -52,11 +53,11 @@ const stripTrailingSlash = (p) => {
 };
 
 export const articlePath = (article, lang) =>
-  lang === 'en' ? `/en/blog/${article.en}` : `/blog/${article.es}`;
+  lang === 'es' ? `/es/blog/${article.es}` : `/blog/${article.en}`;
 
 /** Localized URL for a blog post by slug (slugs are identical across languages). */
 export function blogPostPath(slug, lang) {
-  return lang === 'en' ? `/en/blog/${slug}` : `/blog/${slug}`;
+  return lang === 'es' ? `/es/blog/${slug}` : `/blog/${slug}`;
 }
 
 /**

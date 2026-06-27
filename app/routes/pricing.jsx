@@ -3,11 +3,11 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for /precios and /en/pricing (same module; locale from the URL).
+// Locale-aware meta for /pricing and /es/precios (same module; locale from the URL).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/precios');
-  const enHref = absoluteUrl('/en/pricing');
+  const esHref = absoluteUrl('/es/precios');
+  const enHref = absoluteUrl('/pricing');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).pricing.meta;
 
@@ -21,7 +21,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
   ];
 }
 

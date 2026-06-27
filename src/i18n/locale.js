@@ -7,10 +7,10 @@
 //
 // Commit 3 is additive: nothing imports this yet.
 
-// Single source of truth for supported languages. Spanish is the default and
-// lives at the root (no prefix); English lives under the `/en` first segment.
+// Single source of truth for supported languages. English is the default and
+// lives at the root (no prefix); Spanish lives under the `/es` first segment.
 export const SUPPORTED_LOCALES = Object.freeze(['es', 'en']);
-export const DEFAULT_LOCALE = 'es';
+export const DEFAULT_LOCALE = 'en';
 
 // Detect the locale from a pathname. A locale is recognized ONLY when the first
 // path segment is EXACTLY one of SUPPORTED_LOCALES — never via substring match,
@@ -34,11 +34,11 @@ export function removeLocalePrefix(pathname) {
 }
 
 // Build the pathname for a target locale. Throws on an unsupported locale.
-// Removes any existing supported prefix first, then adds '/en' only for English
-// (the default locale 'es' stays at the root, with no prefix).
+// Removes any existing supported prefix first, then adds '/es' only for Spanish
+// (the default locale 'en' stays at the root, with no prefix).
 //
 // NOTE: this is a low-level PREFIX helper. It does NOT translate slugs
-// (addLocaleToPath('/servicios', 'en') -> '/en/servicios', NOT '/en/services').
+// (addLocaleToPath('/services', 'es') -> '/es/services', NOT '/es/servicios').
 // Slug-correct equivalents live in app/route-manifest.js (getEquivalentPath).
 export function addLocaleToPath(pathname, locale) {
   if (!SUPPORTED_LOCALES.includes(locale)) {

@@ -3,11 +3,11 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 
-// Locale-aware meta for the bilingual blog index (/blog and /en/blog).
+// Locale-aware meta for the bilingual blog index (/blog and /es/blog).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/blog');
-  const enHref = absoluteUrl('/en/blog');
+  const esHref = absoluteUrl('/es/blog');
+  const enHref = absoluteUrl('/blog');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).blog.indexMeta;
 
@@ -21,7 +21,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
   ];
 }
 

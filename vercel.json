@@ -3,25 +3,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build/client",
   "routes": [
-    { "src": "^/en$", "status": 308, "headers": { "Location": "/en/" } },
-    { "src": "^/services$", "status": 308, "headers": { "Location": "/servicios" } },
-    { "src": "^/services/web-development-design$", "status": 308, "headers": { "Location": "/servicios/desarrollo-web" } },
-    { "src": "^/services/web-development$", "status": 308, "headers": { "Location": "/servicios/desarrollo-web" } },
-    { "src": "^/services/seo-digital-growth$", "status": 308, "headers": { "Location": "/servicios/seo" } },
-    { "src": "^/services/seo$", "status": 308, "headers": { "Location": "/servicios/seo" } },
-    { "src": "^/services/kpi-dashboards$", "status": 308, "headers": { "Location": "/servicios/dashboards-kpi" } },
-    { "src": "^/services/kpi$", "status": 308, "headers": { "Location": "/servicios/dashboards-kpi" } },
-    { "src": "^/services/ai-automation-chatbots$", "status": 308, "headers": { "Location": "/servicios/automatizacion-ia" } },
-    { "src": "^/services/ai-automation$", "status": 308, "headers": { "Location": "/servicios/automatizacion-ia" } },
-    { "src": "^/seo$", "status": 308, "headers": { "Location": "/servicios/seo" } },
-    { "src": "^/kpi$", "status": 308, "headers": { "Location": "/servicios/dashboards-kpi" } },
-    { "src": "^/pricing$", "status": 308, "headers": { "Location": "/precios" } },
-    { "src": "^/our-clients$", "status": 308, "headers": { "Location": "/clientes" } },
-    { "src": "^/clients$", "status": 308, "headers": { "Location": "/clientes" } },
-    { "src": "^/faqs$", "status": 308, "headers": { "Location": "/preguntas-frecuentes" } },
-    { "src": "^/contact$", "status": 308, "headers": { "Location": "/contacto" } },
+    { "src": "^/es$", "status": 308, "headers": { "Location": "/es/" } },
     { "handle": "filesystem" },
-    { "src": "^/en(/.*)?$", "status": 404, "dest": "/en/404/index.html" },
+    { "src": "^/es(/.*)?$", "status": 404, "dest": "/es/404/index.html" },
     { "src": "^/.*$", "status": 404, "dest": "/404/index.html" }
   ]
 }

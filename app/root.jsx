@@ -124,7 +124,7 @@ function ScrollRevealManager() {
 }
 
 export function Layout({ children }) {
-  // The document language is derived from the URL (es at the root, en under /en/).
+  // The document language is derived from the URL (en at the root, es under /es/).
   const { pathname } = useLocation();
   const lang = getLocaleFromPath(pathname);
   return (

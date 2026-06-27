@@ -41,9 +41,6 @@ const xmlEscape = (s) =>
     .replace(/'/g, '&apos;');
 
 // ── Validation (counts/expectations derived from the manifest, never hardcoded) ──
-const LEGACY_EXACT = new Set(['/seo', '/kpi', '/pricing', '/contact', '/faqs', '/our-clients', '/clients']);
-const isLegacy = (p) => LEGACY_EXACT.has(p) || p === '/services' || p.startsWith('/services/');
-
 const problems = [];
 const locs = [];
 const seen = new Set();
@@ -53,7 +50,6 @@ for (const pair of pairs) {
   if (!en) problems.push(`pair missing en: ${JSON.stringify(pair)}`);
   for (const p of [es, en]) {
     if (!p || !p.startsWith('/')) { problems.push(`path not absolute: ${JSON.stringify(p)}`); continue; }
-    if (isLegacy(p)) problems.push(`legacy path in sitemap: ${p}`);
     const url = abs(p);
     if (url.replace(/^https?:\/\//, '').includes('//')) problems.push(`double slash: ${url}`);
     if (seen.has(url)) problems.push(`duplicate loc: ${url}`);
@@ -62,13 +58,13 @@ for (const pair of pairs) {
   }
 }
 
-// ── Build sitemap.xml: one <url> per canonical URL, each with es/en/x-default(=es) ──
+// ── Build sitemap.xml: one <url> per canonical URL, each with es/en/x-default(=en) ──
 const urlBlock = (loc, esUrl, enUrl) =>
   `  <url>\n` +
   `    <loc>${xmlEscape(loc)}</loc>\n` +
   `    <xhtml:link rel="alternate" hreflang="es" href="${xmlEscape(esUrl)}" />\n` +
   `    <xhtml:link rel="alternate" hreflang="en" href="${xmlEscape(enUrl)}" />\n` +
-  `    <xhtml:link rel="alternate" hreflang="x-default" href="${xmlEscape(esUrl)}" />\n` +
+  `    <xhtml:link rel="alternate" hreflang="x-default" href="${xmlEscape(enUrl)}" />\n` +
   `  </url>`;
 
 const urlEntries = pairs.flatMap(({ es, en }) => {

@@ -7,8 +7,8 @@ import { getLocaleFromPath } from '../../src/i18n/locale.js';
 // per-locale; the global og:image/twitter:image live in app/root.jsx.
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
-  const esHref = absoluteUrl('/');
-  const enHref = absoluteUrl('/en/');
+  const esHref = absoluteUrl('/es/');
+  const enHref = absoluteUrl('/');
   const canonical = locale === 'en' ? enHref : esHref;
 
   const seo =
@@ -40,7 +40,7 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'canonical', href: canonical },
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
-    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: esHref },
+    { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
   ];
 }
 
