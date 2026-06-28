@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   Links,
   Meta,
@@ -78,14 +78,30 @@ const localBusinessSchema = (lang) => ({
 // re-scans on route change. (Effects only run in the browser — SSG/prerender safe.)
 function ScrollRevealManager() {
   const location = useLocation();
+  const firstRun = useRef(true);
 
   useEffect(() => {
+    const isNav = !firstRun.current;
+    firstRun.current = false;
+
+    // After the first page load, stop gating content behind the scroll-reveal
+    // animation. Client-side navigation (e.g. switching ES/EN) remounts sections whose
+    // reveal animation can't be reliably re-triggered (the content mounts a frame or
+    // two after the route changes, so the IntersectionObserver misses it and the
+    // sections stay stuck hidden at opacity 0). Removing `reveal-ready` from <html>
+    // makes ALL current and future reveal content visible, so nothing is ever hidden
+    // after a navigation. The first load still animates.
+    if (isNav) {
+      document.documentElement.classList.remove('reveal-ready');
+      return undefined;
+    }
+
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const simple = document.querySelectorAll(
       '.reveal:not(.is-visible), .reveal-left:not(.is-visible), .reveal-right:not(.is-visible)'
     );
     const groups = document.querySelectorAll('.reveal-group:not(.is-revealed)');
-    if (!simple.length && !groups.length) return;
+    if (!simple.length && !groups.length) return undefined;
 
     if (reduceMotion || !('IntersectionObserver' in window)) {
       simple.forEach((el) => el.classList.add('is-visible'));
@@ -93,7 +109,7 @@ function ScrollRevealManager() {
         g.classList.add('is-revealed');
         g.querySelectorAll('.reveal-card').forEach((c) => c.classList.add('is-visible'));
       });
-      return;
+      return undefined;
     }
 
     const observer = new IntersectionObserver(
