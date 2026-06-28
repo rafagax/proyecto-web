@@ -45,6 +45,7 @@ export function LanguageSwitcher({ onNavigate }) {
           <Link
             key={o.code}
             to={o.href}
+            preventScrollReset
             onClick={onNavigate}
             aria-current={active ? 'page' : undefined}
             style={{

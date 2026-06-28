@@ -25,7 +25,7 @@ export default {
   },
   clients: [
     { quote: 'They transformed my fashion business with a beautiful e-commerce site. The website helped me reach customers internationally. Sales increased 150% in the first 3 months!', result: '+150% sales growth', service: 'E-Commerce Fashion' },
-    { quote: "Our restaurant directory needed a modern platform. They built a professional site that showcases all our partner restaurants perfectly. We've tripled our partnerships!", result: '3x partnership growth', service: 'Directory Platform' },
+    { quote: 'As a pediatric gastroenterologist I needed a professional website where parents could find my services and book a consultation with confidence. The site feels trustworthy and approachable, and I now get more new patients every week.', result: 'More new patients weekly', service: 'Professional Medical Web' },
     { quote: "The team delivered a professional B2B website that clearly communicates our services. Lead generation increased significantly and we're closing more deals with serious clients.", result: '+85% qualified leads', service: 'B2B Solutions' },
     { quote: 'In 7 days I had my website up and running and receiving clients. The team was incredibly professional and handled everything I asked for.', result: '+60% more inquiries', service: 'Landing Page' },
     { quote: 'Thanks to the AI automation they implemented, I answer WhatsApp inquiries effortlessly. My sales went up 40% in the first month.', result: '+40% sales in month 1', service: 'AI Automation' },
@@ -36,7 +36,7 @@ export default {
   ],
   cta: {
     heading: { before: 'Be our next ', accent: 'success story', after: '' },
-    copy: "From fashion e-commerce to B2B platforms and restaurant directories — we've helped 60+ businesses across Venezuela, USA, and Spain transform their digital presence. Your success story could be next!",
+    copy: "From fashion e-commerce to B2B platforms and medical practices — we've helped 60+ businesses across Venezuela, USA, and Spain transform their digital presence. Your success story could be next!",
     button: 'Schedule Free Consultation',
   },
 };

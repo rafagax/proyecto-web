@@ -23,7 +23,7 @@ export default {
   },
   clients: [
     { quote: 'Transformaron mi negocio de moda con una hermosa tienda online. La página web me ayudó a llegar a clientes de forma internacional. ¡Las ventas aumentaron 150% en los primeros 3 meses!', result: '+150% de crecimiento en ventas', service: 'Moda E-Commerce' },
-    { quote: 'Nuestro directorio de restaurantes necesitaba una plataforma moderna. Construyeron un sitio profesional que muestra a todos nuestros restaurantes aliados a la perfección. ¡Triplicamos nuestras alianzas!', result: '3x crecimiento en alianzas', service: 'Plataforma de directorio' },
+    { quote: 'Como gastropediatra necesitaba una página profesional donde los padres encontraran mis servicios y pudieran agendar una consulta con confianza. El sitio transmite seriedad y cercanía, y ahora recibo más pacientes nuevos cada semana.', result: 'Más pacientes nuevos cada semana', service: 'Web médica profesional' },
     { quote: 'El equipo entregó una página web B2B profesional que comunica con claridad nuestros servicios. La generación de contactos aumentó de forma significativa y estamos cerrando más tratos con clientes serios.', result: '+85% de contactos calificados', service: 'Soluciones B2B' },
     { quote: 'En 7 días tenía mi página web en línea y recibiendo clientes. El equipo fue increíblemente profesional y se encargó de todo lo que pedí.', result: '+60% más consultas', service: 'Landing page' },
     { quote: 'Gracias a la automatización con IA que implementaron, respondo las consultas de WhatsApp sin esfuerzo. Mis ventas subieron 40% en el primer mes.', result: '+40% de ventas en el primer mes', service: 'Automatización con IA' },
@@ -34,7 +34,7 @@ export default {
   ],
   cta: {
     heading: { before: 'Sé nuestro próximo ', accent: 'caso de éxito', after: '' },
-    copy: 'Desde e-commerce de moda hasta plataformas B2B y directorios de restaurantes — hemos ayudado a más de 60 negocios en Venezuela, Estados Unidos y España a transformar su presencia digital. ¡Tu caso de éxito podría ser el próximo!',
+    copy: 'Desde e-commerce de moda hasta plataformas B2B y consultorios médicos — hemos ayudado a más de 60 negocios en Venezuela, Estados Unidos y España a transformar su presencia digital. ¡Tu caso de éxito podría ser el próximo!',
     button: 'Agenda una consulta gratuita',
   },
 };
