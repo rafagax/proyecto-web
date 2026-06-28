@@ -6,8 +6,8 @@ import { getLocalizedPath } from '../../app/route-manifest.js';
 // colors and website URLs. The translatable quote/result/service come from content
 // and are merged by index.
 const CLIENTS = [
-  { name: 'Georgina López', business: 'Bikinis L.B. Orgina', location: 'Venezuela 🇻🇪', initial: 'B', color: '#4d94ff', website: 'https://bikinislborgina.vercel.app/' },
-  { name: 'Diego García', business: 'DragastroPedia Aragua', location: 'Aragua, Venezuela 🇻🇪', initial: 'D', color: '#0066ff', website: 'https://dragastropedia-aragua.com/' },
+  { name: 'Georgina Machado', business: 'Bikinis L.B. Orgina', location: 'Venezuela 🇻🇪', initial: 'B', color: '#4d94ff', website: 'https://bikinislborgina.vercel.app/' },
+  { name: 'Dra. Katherine Ainslie', business: 'DragastroPedia Aragua', location: 'Aragua, Venezuela 🇻🇪', initial: 'D', color: '#0066ff', website: 'https://dragastropedia-aragua.com/' },
   { name: 'Abg. Victor Correa', business: 'Soluciones Cofer', location: 'Venezuela 🇻🇪', initial: 'S', color: '#4d94ff', website: 'https://solucionescofer.com/' },
   { name: 'Rafael Martínez', business: 'Tech Services Valencia', location: 'Valencia, Venezuela 🇻🇪', initial: 'R', color: '#0066ff' },
   { name: 'Daniela Suárez', business: 'Beauty Studio Maracay', location: 'Maracay, Venezuela 🇻🇪', initial: 'D', color: '#4d94ff' },
