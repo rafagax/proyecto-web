@@ -34,6 +34,8 @@ export default [
   route('es/blog', 'routes/blog.jsx', { id: 'blog-es' }),
   route('blog/:slug', 'routes/blog-post.jsx', { id: 'blog-post-en' }),
   route('es/blog/:slug', 'routes/blog-post.jsx', { id: 'blog-post-es' }),
+  // Standalone CEO portfolio page (opens from the footer in a new tab).
+  route('jvportafolio', 'routes/jv-portfolio.jsx'),
   // Catch-all for unknown URLs → localized NotFound. The real HTTP 404 status is
   // served by Vercel from the prerendered /404 and /es/404 documents (vercel.json).
   route('*', 'routes/not-found.jsx'),

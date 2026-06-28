@@ -69,7 +69,7 @@ const Footer = () => {
           <span className="footer-separator">|</span>
           <p style={{ margin: 0, fontSize: '0.85rem', textAlign: 'center' }}>
             {footer.ceoLabel}{' '}
-            <a href="https://portafolio-kpi-jv.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontWeight: '600' }}>
+            <a href="/jvportafolio" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontWeight: '600' }}>
               {footer.ceoName}
             </a>
           </p>

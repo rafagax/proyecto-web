@@ -205,17 +205,22 @@ export default function App() {
   // The chatbot keeps its conversation in component state and persists across
   // navigation. Keying it by locale remounts it (fresh, in the new language) when the
   // user switches ES/EN, so a greeting captured in the previous language never lingers.
-  const lang = getLocaleFromPath(useLocation().pathname);
+  const { pathname } = useLocation();
+  const lang = getLocaleFromPath(pathname);
   const wa = WHATSAPP[lang] || WHATSAPP.en;
+  // The CEO portfolio (/jvportafolio) is a standalone page: no site nav / footer /
+  // chatbot / WhatsApp button — just the portfolio content (opens in its own tab).
+  const standalone = pathname === '/jvportafolio';
   return (
     <>
       <ScrollRevealManager />
-      <Navbar />
+      {!standalone && <Navbar />}
       <main>
         <Outlet />
       </main>
-      <Footer />
+      {!standalone && <Footer />}
 
+      {!standalone && (<>
       {/* Floating WhatsApp button */}
       <a
         href={`https://wa.me/584144735431?text=${encodeURIComponent(wa.message)}`}
@@ -229,6 +234,7 @@ export default function App() {
         </svg>
       </a>
       <Chatbot key={lang} />
+      </>)}
     </>
   );
 }
