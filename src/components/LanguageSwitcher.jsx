@@ -1,20 +1,24 @@
 import { Link, useLocation } from 'react-router-dom';
+import { Globe } from 'lucide-react';
 import { getEquivalentPath } from '../../app/route-manifest.js';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
-// Discreet ES | EN language switcher. The active language is derived from the URL;
-// each option links to the equivalent page from the route manifest (never invents a
-// URL). When a language has no registered equivalent for the current page, that
-// option is hidden rather than falling back to the home page. Styled inline to reuse
-// the navbar's visual language without touching CSS.
+// Language switcher: a globe + a pill toggle showing BOTH languages by name
+// (Español | English) with the active one highlighted as a filled pill. The active
+// language is derived from the URL; each option links to the equivalent page from the
+// route manifest (never invents a URL). When a language has no registered equivalent
+// for the current page, that option is hidden. Styled inline to reuse the navbar's
+// visuals without touching CSS. Names are autonyms (same in any locale).
 export function LanguageSwitcher({ onNavigate }) {
   const { pathname } = useLocation();
   const { locale, content } = useLocalizedContent();
   const { language } = content.common;
 
+  // English first (the primary market), then Español. The active language shows as a
+  // filled pill; the other stays visible so a visitor can switch without opening a menu.
   const options = [
-    { code: 'es', label: language.codeEs, href: getEquivalentPath(pathname, 'es') },
-    { code: 'en', label: language.codeEn, href: getEquivalentPath(pathname, 'en') },
+    { code: 'en', label: 'English', href: getEquivalentPath(pathname, 'en') },
+    { code: 'es', label: 'Español', href: getEquivalentPath(pathname, 'es') },
   ].filter((o) => o.href);
 
   if (options.length === 0) return null;
@@ -22,31 +26,43 @@ export function LanguageSwitcher({ onNavigate }) {
   return (
     <div
       aria-label={language.switchLabel}
-      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.92rem', lineHeight: 1 }}
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '4px',
+        padding: '3px 4px 3px 9px',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: '999px',
+        background: 'var(--bg-card)',
+        fontSize: '0.8rem',
+        lineHeight: 1,
+      }}
     >
-      {options.map((o, i) => (
-        <span key={o.code} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-          {i > 0 && (
-            <span aria-hidden="true" style={{ color: 'var(--text-secondary)', opacity: 0.5 }}>
-              |
-            </span>
-          )}
+      <Globe size={15} aria-hidden="true" style={{ color: 'var(--text-secondary)', flexShrink: 0 }} />
+      {options.map((o) => {
+        const active = locale === o.code;
+        return (
           <Link
+            key={o.code}
             to={o.href}
             onClick={onNavigate}
-            aria-current={locale === o.code ? 'page' : undefined}
+            aria-current={active ? 'page' : undefined}
             style={{
-              color: locale === o.code ? 'var(--accent-cyan)' : 'var(--text-secondary)',
-              fontWeight: locale === o.code ? 700 : 500,
+              padding: '4px 9px',
+              borderRadius: '999px',
+              background: active ? 'var(--accent-cyan)' : 'transparent',
+              color: active ? '#fff' : 'var(--text-secondary)',
+              fontWeight: active ? 700 : 500,
               textDecoration: 'none',
-              letterSpacing: '0.3px',
-              transition: 'color 0.3s ease',
+              letterSpacing: '0.2px',
+              whiteSpace: 'nowrap',
+              transition: 'background 0.25s ease, color 0.25s ease',
             }}
           >
             {o.label}
           </Link>
-        </span>
-      ))}
+        );
+      })}
     </div>
   );
 }
