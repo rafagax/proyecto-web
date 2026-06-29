@@ -40,20 +40,39 @@
   align-items: center;
 }
 
-/* Webraf logo — the dark/light version is swapped by the active theme. */
+/* Webraf logo — horizontal on desktop, compact square on mobile (so the hamburger
+   fits), each swapped dark/light by the active theme. All hidden by default; the
+   matching one is shown below. */
 .navbar-logo img {
-  height: 46px;
   width: auto;
-  display: block;
-}
-.navbar-logo .logo-light {
   display: none;
 }
-[data-theme='light'] .navbar-logo .logo-dark {
+.navbar-logo .logo-h.logo-dark {
+  display: block;
+  height: 54px;
+}
+[data-theme='light'] .navbar-logo .logo-h.logo-dark {
   display: none;
 }
-[data-theme='light'] .navbar-logo .logo-light {
+[data-theme='light'] .navbar-logo .logo-h.logo-light {
   display: block;
+  height: 54px;
+}
+@media (max-width: 768px) {
+  .navbar-logo .logo-h {
+    display: none !important;
+  }
+  .navbar-logo .logo-sq.logo-dark {
+    display: block;
+    height: 40px;
+  }
+  [data-theme='light'] .navbar-logo .logo-sq.logo-dark {
+    display: none;
+  }
+  [data-theme='light'] .navbar-logo .logo-sq.logo-light {
+    display: block;
+    height: 40px;
+  }
 }
 
 .header-logo {
