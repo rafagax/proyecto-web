@@ -40,6 +40,22 @@
   align-items: center;
 }
 
+/* Webraf logo — the dark/light version is swapped by the active theme. */
+.navbar-logo img {
+  height: 46px;
+  width: auto;
+  display: block;
+}
+.navbar-logo .logo-light {
+  display: none;
+}
+[data-theme='light'] .navbar-logo .logo-dark {
+  display: none;
+}
+[data-theme='light'] .navbar-logo .logo-light {
+  display: block;
+}
+
 .header-logo {
   height: 88px;
   width: auto;

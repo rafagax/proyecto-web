@@ -6,6 +6,8 @@ import ThemeToggle from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import logoDark from '../assets/webraf1.webp';
+import logoLight from '../assets/webraf2.webp';
 
 const Navbar = () => {
   const { locale, content } = useLocalizedContent();
@@ -52,7 +54,10 @@ const Navbar = () => {
     <>
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
-          <Link to={navPath.home} className="navbar-logo" />
+          <Link to={navPath.home} className="navbar-logo" aria-label="Webraf — Web Development">
+            <img src={logoDark} alt="Webraf" className="logo-dark" />
+            <img src={logoLight} alt="Webraf" className="logo-light" />
+          </Link>
 
           <nav className="navbar-links">
             <Link to={navPath.home} className={location.pathname === navPath.home ? 'active' : ''}>
@@ -100,7 +105,10 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
-          <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} />
+          <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} aria-label="Webraf — Web Development">
+            <img src={logoDark} alt="Webraf" className="logo-dark" />
+            <img src={logoLight} alt="Webraf" className="logo-light" />
+          </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />
           </button>
