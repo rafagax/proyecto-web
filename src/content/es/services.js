@@ -3,10 +3,10 @@
 // { before, accent, after }. Plain strings only — no functions/JSX.
 export default {
   indexMeta: {
-    title: 'Nuestros servicios — Web, SEO, KPI y automatización con IA | InversionesDigitales',
+    title: 'Nuestros servicios — Web, SEO, KPI y automatización con IA | Webraf — Web Development',
     description:
       'Explora nuestros servicios: desarrollo y diseño web premium, SEO y crecimiento digital, dashboards de KPI y analítica, y automatización con IA y chatbots.',
-    ogTitle: 'Nuestros servicios | InversionesDigitales',
+    ogTitle: 'Nuestros servicios | Webraf — Web Development',
     ogDescription: 'Desarrollo web premium, SEO, dashboards de KPI y automatización con IA para negocios en crecimiento.',
   },
   index: {
@@ -61,7 +61,7 @@ export default {
     },
   },
   webMeta: {
-    title: 'Servicios de desarrollo y diseño web premium | InversionesDigitales',
+    title: 'Servicios de desarrollo y diseño web premium | Webraf — Web Development',
     description:
       'Servicios de desarrollo y diseño web premium para negocios que necesitan páginas web rápidas, responsivas y orientadas a conversión, creadas para generar confianza y atraer clientes potenciales calificados.',
     ogTitle: 'Desarrollo y diseño web premium para negocios en crecimiento',

@@ -2,7 +2,7 @@
 // as en/serviceKpi.js.
 export default {
   meta: {
-    title: 'Dashboards de KPI y analítica para el crecimiento del negocio | InversionesDigitales',
+    title: 'Dashboards de KPI y analítica para el crecimiento del negocio | Webraf — Web Development',
     description:
       'Dashboards de KPI y sistemas de analítica a medida que ayudan a los negocios a controlar contactos, ventas, rendimiento de marketing y métricas de crecimiento en tiempo real.',
     ogTitle: 'Dashboards de KPI y analítica para decisiones de negocio más inteligentes',

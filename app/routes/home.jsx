@@ -3,7 +3,7 @@ import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 
 // Locale-aware SEO for the Home. English keeps the exact original copy; Spanish uses
-// the approved Spanish copy (brand: InversionesDigitales). Canonical + hreflang are
+// the approved Spanish copy (brand: Webraf). Canonical + hreflang are
 // per-locale; the global og:image/twitter:image live in app/root.jsx.
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
@@ -14,7 +14,7 @@ export function meta({ location }) {
   const seo =
     locale === 'en'
       ? {
-          title: 'Web Development, AI Automation, SEO & KPI Dashboards | InversionesDigitales',
+          title: 'Web Development, AI Automation, SEO & KPI Dashboards | Webraf — Web Development',
           description:
             'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
           shareTitle: 'Web Development, AI Automation, SEO & KPI Dashboards',
@@ -22,10 +22,10 @@ export function meta({ location }) {
             'Premium web development, AI automation, SEO, and KPI dashboards built to help growing businesses look professional, get found, and convert better.',
         }
       : {
-          title: 'Desarrollo web, IA, SEO y KPI | InversionesDigitales',
+          title: 'Desarrollo web, IA, SEO y KPI | Webraf — Web Development',
           description:
             'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
-          shareTitle: 'Desarrollo web, IA, SEO y dashboards de KPI | InversionesDigitales',
+          shareTitle: 'Desarrollo web, IA, SEO y dashboards de KPI | Webraf — Web Development',
           shareDescription:
             'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
         };

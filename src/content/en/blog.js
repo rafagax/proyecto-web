@@ -4,9 +4,9 @@
 // images, authors and external URLs stay in src/data/blogPosts.js. Strings only.
 export default {
   indexMeta: {
-    title: 'Blog — Web Development, SEO & AI Insights | InversionesDigitales',
+    title: 'Blog — Web Development, SEO & AI Insights | Webraf — Web Development',
     description: 'Learn about web development, SEO strategies, AI chatbots, and digital marketing tips for your business.',
-    ogTitle: 'Blog | InversionesDigitales',
+    ogTitle: 'Blog | Webraf — Web Development',
     ogDescription: 'Web development, SEO, AI automation and digital marketing insights for growing businesses.',
   },
   index: {

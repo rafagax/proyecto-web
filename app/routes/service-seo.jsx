@@ -29,7 +29,7 @@ export function meta({ location }) {
         name: m.schemaName,
         description: m.description,
         areaServed: ['VE', 'US', 'ES'],
-        provider: { '@type': 'Organization', name: 'InversionesDigitales' },
+        provider: { '@type': 'Organization', name: 'Webraf' },
       },
     },
   ];

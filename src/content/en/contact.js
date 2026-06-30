@@ -4,10 +4,10 @@
 // component fills in — no functions in content. Plain strings only.
 export default {
   meta: {
-    title: 'Contact Us — Free Web Strategy Consultation | InversionesDigitales',
+    title: 'Contact Us — Free Web Strategy Consultation | Webraf — Web Development',
     description:
       'Ready to grow your business? Contact us for a free consultation. We usually respond within a few hours via WhatsApp, email, or phone.',
-    ogTitle: 'Contact Us | InversionesDigitales',
+    ogTitle: 'Contact Us | Webraf — Web Development',
     ogDescription: 'Book a free consultation and strategy session for your website, SEO, KPI dashboards, or AI automation.',
   },
   hero: {

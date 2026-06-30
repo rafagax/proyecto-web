@@ -22,7 +22,7 @@ export function meta({ params, location }) {
   const canonical = locale === 'en' ? enHref : esHref;
 
   return [
-    { title: `${localized.title} | InversionesDigitales` },
+    { title: `${localized.title} | Webraf — Web Development` },
     { name: 'description', content: localized.excerpt },
     { property: 'og:type', content: 'article' },
     { property: 'og:title', content: localized.title },
@@ -42,8 +42,8 @@ export function meta({ params, location }) {
         description: localized.excerpt,
         image: post.image,
         inLanguage: locale,
-        author: { '@type': 'Organization', name: 'InversionesDigitales' },
-        publisher: { '@type': 'Organization', name: 'InversionesDigitales' },
+        author: { '@type': 'Organization', name: 'Webraf' },
+        publisher: { '@type': 'Organization', name: 'Webraf' },
         mainEntityOfPage: canonical,
       },
     },

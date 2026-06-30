@@ -2,10 +2,10 @@
 // and form logic stay in Contact.jsx. `form.waTemplate` uses the same tokens.
 export default {
   meta: {
-    title: 'Contáctanos — Consultoría gratuita de estrategia web | InversionesDigitales',
+    title: 'Contáctanos — Consultoría gratuita de estrategia web | Webraf — Web Development',
     description:
       '¿Listo para hacer crecer tu negocio? Contáctanos para una consulta gratuita. Normalmente respondemos en pocas horas por WhatsApp, correo o teléfono.',
-    ogTitle: 'Contáctanos | InversionesDigitales',
+    ogTitle: 'Contáctanos | Webraf — Web Development',
     ogDescription: 'Agenda una consulta y sesión de estrategia gratuita para tu página web, SEO, dashboards de KPI o automatización con IA.',
   },
   hero: {

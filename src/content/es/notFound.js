@@ -1,6 +1,6 @@
 // Spanish (neutral) copy for the localized 404 page. Same keys/order as en/notFound.js.
 export default {
-  metaTitle: 'Página no encontrada | InversionesDigitales',
+  metaTitle: 'Página no encontrada | Webraf — Web Development',
   metaDescription: 'La página que buscas no existe, cambió de ubicación o ya no está disponible.',
   eyebrow: 'Error 404',
   title: 'Página no encontrada',

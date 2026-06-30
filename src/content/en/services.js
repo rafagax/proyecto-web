@@ -3,10 +3,10 @@
 // renders inside the text-gradient span. Plain strings only — no functions/JSX.
 export default {
   indexMeta: {
-    title: 'Our Services — Web, SEO, KPI & AI Automation | InversionesDigitales',
+    title: 'Our Services — Web, SEO, KPI & AI Automation | Webraf — Web Development',
     description:
       'Explore our services: premium web development & design, SEO & digital growth, KPI dashboards & analytics, and AI automation & chatbots.',
-    ogTitle: 'Our Services | InversionesDigitales',
+    ogTitle: 'Our Services | Webraf — Web Development',
     ogDescription: 'Premium web development, SEO, KPI dashboards, and AI automation for growing businesses.',
   },
   index: {
@@ -61,7 +61,7 @@ export default {
     },
   },
   webMeta: {
-    title: 'Premium Web Development & Design Services | InversionesDigitales',
+    title: 'Premium Web Development & Design Services | Webraf — Web Development',
     description:
       'Premium web development and design services for businesses that need fast, responsive, conversion-focused websites built to earn trust and generate qualified leads.',
     ogTitle: 'Premium Web Development & Design for Growing Businesses',

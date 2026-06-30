@@ -5,9 +5,9 @@
 export default {
   ui: {
     openAria: 'Abrir chat',
-    avatarAlt: 'Asistente virtual de InversionesDigitales',
+    avatarAlt: 'Asistente virtual de Webraf',
     headerTitle: 'Asistente virtual',
-    headerSubtitle: 'InversionesDigitales',
+    headerSubtitle: 'Webraf',
     closeAria: 'Cerrar chat',
     typing: 'El asistente está escribiendo...',
     placeholder: 'Escribe tu pregunta aquí...',
@@ -18,11 +18,11 @@ export default {
     { label: 'Planes y precios', value: 'Cuáles son los planes y precios' },
     { label: 'Tiempo de entrega', value: 'Cuánto tarda' },
   ],
-  fallback: `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Planes Inicial, Empresarial y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrados\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Correo: inversionesdigitales@hotmail.es\n\nCuéntame un poco sobre lo que necesitas y te ayudo.`,
+  fallback: `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Planes Inicial, Empresarial y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrados\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Correo: go@webraf.com\n\nCuéntame un poco sobre lo que necesitas y te ayudo.`,
   intents: [
     {
       keywords: ['hola', 'buenas', 'hey', 'saludos', 'ayuda', 'info', 'informacion', 'información', 'asistencia', 'soporte'],
-      response: `¡Hola! 👋 Soy el asistente virtual de InversionesDigitales.\n\nPuedo ayudarte con información sobre creación de páginas web, planes, precios, entrega en 7 días, SEO local, integración de IA, chatbots, tiendas online y datos de contacto.\n\n¿Qué tipo de página web necesitas para tu negocio?`,
+      response: `¡Hola! 👋 Soy el asistente virtual de Webraf.\n\nPuedo ayudarte con información sobre creación de páginas web, planes, precios, entrega en 7 días, SEO local, integración de IA, chatbots, tiendas online y datos de contacto.\n\n¿Qué tipo de página web necesitas para tu negocio?`,
     },
     {
       keywords: ['7 dias', '7 días', 'siete dias', 'tiempo', 'cuanto tarda', 'cuánto tarda', 'entrega', 'rapido', 'rápido', 'plazo'],
@@ -30,11 +30,11 @@ export default {
     },
     {
       keywords: ['quienes son', 'quiénes son', 'empresa', 'inversionesdigitales', 'sobre nosotros', 'que hacen', 'qué hacen'],
-      response: `Somos InversionesDigitales, especialistas en diseño y desarrollo web de alto rendimiento.\n\nTransformamos tu visión en una experiencia digital profesional, moderna y estratégica para que tu negocio gane presencia, confianza y más oportunidades de venta.`,
+      response: `Somos Webraf, especialistas en diseño y desarrollo web de alto rendimiento.\n\nTransformamos tu visión en una experiencia digital profesional, moderna y estratégica para que tu negocio gane presencia, confianza y más oportunidades de venta.`,
     },
     {
       keywords: ['pagina web', 'página web', 'sitio web', 'web', 'quiero una web', 'crear web', 'necesito web', 'desarrollo web', 'landing'],
-      response: `¡Excelente elección! 🚀\n\nEn InversionesDigitales creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, páginas web empresariales o tiendas online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATUITA** por WhatsApp para asesorarte con tu proyecto?\n\n Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+consulta+gratuita`,
+      response: `¡Excelente elección! 🚀\n\nEn Webraf creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, páginas web empresariales o tiendas online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATUITA** por WhatsApp para asesorarte con tu proyecto?\n\n Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+consulta+gratuita`,
     },
     {
       keywords: ['servicios', 'que ofrecen', 'qué ofrecen', 'incluye', 'beneficios', 'soluciones digitales'],
@@ -70,7 +70,7 @@ export default {
     },
     {
       keywords: ['whatsapp', 'contacto', 'asesor', 'humano', 'correo', 'email', 'llamar', 'cotizar', 'agendar', 'consulta gratuita'],
-      response: `Por supuesto, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Correo: inversionesdigitales@hotmail.es\n📍 Ubicación: Maracay, Aragua, Venezuela\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/584144735431\n\nCuéntanos qué tipo de página web necesitas y con gusto te ayudamos.`,
+      response: `Por supuesto, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Correo: go@webraf.com\n📍 Ubicación: Maracay, Aragua, Venezuela\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/584144735431\n\nCuéntanos qué tipo de página web necesitas y con gusto te ayudamos.`,
     },
     {
       keywords: ['ubicacion', 'ubicación', 'donde estan', 'dónde están', 'maracay', 'venezuela', 'aragua'],

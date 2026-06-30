@@ -689,8 +689,8 @@ const Home = () => {
             <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <Mail size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>{home.finalCta.contact.emailLabel}</h3>
-              <a href="mailto:inversionesdigitales@hotmail.es" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
-                inversionesdigitales@hotmail.es
+              <a href="mailto:go@webraf.com" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
+                go@webraf.com
               </a>
             </div>
             <div className="home-contact-card desktop-only" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>

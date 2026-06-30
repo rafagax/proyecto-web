@@ -82,7 +82,7 @@ const sitemap =
 
 // ── Build robots.txt (sitemap URL from the same SITE_URL) ──
 const robots =
-  `# Robots.txt for InversionesDigitales\n` +
+  `# Robots.txt for Webraf\n` +
   `User-agent: *\n` +
   `Allow: /\n` +
   `\n` +

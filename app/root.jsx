@@ -42,7 +42,7 @@ const SCHEMA_DESCRIPTION = {
 const orgSchema = (lang) => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'InversionesDigitales',
+  name: 'Webraf',
   url: SITE_URL,
   description: SCHEMA_DESCRIPTION.org[lang] || SCHEMA_DESCRIPTION.org.en,
   logo: absoluteUrl('/logo.png'),
@@ -58,11 +58,11 @@ const orgSchema = (lang) => ({
 const localBusinessSchema = (lang) => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'InversionesDigitales',
+  name: 'Webraf',
   image: absoluteUrl('/og-image.webp'),
   description: SCHEMA_DESCRIPTION.localBusiness[lang] || SCHEMA_DESCRIPTION.localBusiness.en,
   telephone: '+584144735431',
-  email: 'inversionesdigitales@hotmail.es',
+  email: 'go@webraf.com',
   priceRange: '$299–$1500',
   areaServed: { '@type': 'GeoShape', addressCountry: ['VE', 'US', 'ES'] },
   address: {
@@ -167,7 +167,7 @@ export function Layout({ children }) {
         {/* No global robots directive: valid pages are indexable by default. Only the
             404 route emits robots=noindex,nofollow (app/routes/not-found.jsx). */}
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="InversionesDigitales" />
+        <meta property="og:site_name" content="Webraf" />
         <meta property="og:image" content={absoluteUrl('/og-image.webp')} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={absoluteUrl('/og-image.webp')} />

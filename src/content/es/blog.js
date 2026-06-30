@@ -2,9 +2,9 @@
 // external URLs stay in src/data/blogPosts.js; only translatable text lives here.
 export default {
   indexMeta: {
-    title: 'Blog — Desarrollo web, SEO e ideas de IA | InversionesDigitales',
+    title: 'Blog — Desarrollo web, SEO e ideas de IA | Webraf — Web Development',
     description: 'Aprende sobre desarrollo web, estrategias de SEO, chatbots con IA y consejos de marketing digital para tu negocio.',
-    ogTitle: 'Blog | InversionesDigitales',
+    ogTitle: 'Blog | Webraf — Web Development',
     ogDescription: 'Ideas de desarrollo web, SEO, automatización con IA y marketing digital para negocios en crecimiento.',
   },
   index: {
