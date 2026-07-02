@@ -18,7 +18,7 @@ export default {
     { label: 'Planes y precios', value: 'Cuáles son los planes y precios' },
     { label: 'Tiempo de entrega', value: 'Cuánto tarda' },
   ],
-  fallback: `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Planes Inicial, Empresarial y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrados\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Correo: go@webraf.com\n\nCuéntame un poco sobre lo que necesitas y te ayudo.`,
+  fallback: `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Planes Inicial, Empresarial y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrados\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Correo: contact@webraf.com\n\nCuéntame un poco sobre lo que necesitas y te ayudo.`,
   intents: [
     {
       keywords: ['hola', 'buenas', 'hey', 'saludos', 'ayuda', 'info', 'informacion', 'información', 'asistencia', 'soporte'],
@@ -70,7 +70,7 @@ export default {
     },
     {
       keywords: ['whatsapp', 'contacto', 'asesor', 'humano', 'correo', 'email', 'llamar', 'cotizar', 'agendar', 'consulta gratuita'],
-      response: `Por supuesto, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Correo: go@webraf.com\n📍 Ubicación: Maracay, Aragua, Venezuela\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/584144735431\n\nCuéntanos qué tipo de página web necesitas y con gusto te ayudamos.`,
+      response: `Por supuesto, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Correo: contact@webraf.com\n📍 Ubicación: Maracay, Aragua, Venezuela\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/584144735431\n\nCuéntanos qué tipo de página web necesitas y con gusto te ayudamos.`,
     },
     {
       keywords: ['ubicacion', 'ubicación', 'donde estan', 'dónde están', 'maracay', 'venezuela', 'aragua'],

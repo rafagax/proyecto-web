@@ -72,7 +72,7 @@ const Contact = () => {
                 <div className="contact-icon"><Mail size={24} /></div>
                 <div>
                   <h4 style={{ marginBottom: '0.2rem' }}>{t.info.emailLabel}</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}>go@webraf.com</p>
+                  <p style={{ color: 'var(--text-secondary)' }}>contact@webraf.com</p>
                 </div>
               </div>
 

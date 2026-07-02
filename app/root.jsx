@@ -62,7 +62,7 @@ const localBusinessSchema = (lang) => ({
   image: absoluteUrl('/og-image.webp'),
   description: SCHEMA_DESCRIPTION.localBusiness[lang] || SCHEMA_DESCRIPTION.localBusiness.en,
   telephone: '+584144735431',
-  email: 'go@webraf.com',
+  email: 'contact@webraf.com',
   priceRange: '$299–$1500',
   areaServed: { '@type': 'GeoShape', addressCountry: ['VE', 'US', 'ES'] },
   address: {

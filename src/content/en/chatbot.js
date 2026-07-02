@@ -17,7 +17,7 @@ export default {
     { label: 'Plans & Pricing', value: 'What are the plans and pricing' },
     { label: 'Delivery Time', value: 'How long does it take' },
   ],
-  fallback: `Thank you for writing to me. I can help you with information about:\n\n✅ Website creation\n✅ Starter, Business, and E-Commerce Plans\n✅ 7-day delivery\n✅ Local SEO and Google\n✅ Integrated chatbot and AI\n✅ WhatsApp, forms, and contact\n\n WhatsApp: +58 414 473 5431\n📧 Email: go@webraf.com\n\nTell me a bit about what you need and I'll help you.`,
+  fallback: `Thank you for writing to me. I can help you with information about:\n\n✅ Website creation\n✅ Starter, Business, and E-Commerce Plans\n✅ 7-day delivery\n✅ Local SEO and Google\n✅ Integrated chatbot and AI\n✅ WhatsApp, forms, and contact\n\n WhatsApp: +58 414 473 5431\n📧 Email: contact@webraf.com\n\nTell me a bit about what you need and I'll help you.`,
   intents: [
     {
       keywords: ['hi', 'hello', 'hey', 'greetings', 'help', 'info', 'information', 'assistance', 'support'],
@@ -69,7 +69,7 @@ export default {
     },
     {
       keywords: ['whatsapp', 'contact', 'advisor', 'human', 'email', 'call', 'quote', 'schedule', 'free consultation'],
-      response: `Of course, you can contact us directly for free advice.\n\n WhatsApp: +58 414 473 5431\n📧 Email: go@webraf.com\n📍 Location: Maracay, Aragua, Venezuela\n\nYou can also message us on WhatsApp here:\nhttps://wa.me/584144735431\n\nTell us what type of website you need and we'll be happy to help.`,
+      response: `Of course, you can contact us directly for free advice.\n\n WhatsApp: +58 414 473 5431\n📧 Email: contact@webraf.com\n📍 Location: Maracay, Aragua, Venezuela\n\nYou can also message us on WhatsApp here:\nhttps://wa.me/584144735431\n\nTell us what type of website you need and we'll be happy to help.`,
     },
     {
       keywords: ['location', 'where are you', 'maracay', 'venezuela', 'aragua'],

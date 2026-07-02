@@ -21,7 +21,7 @@ const Footer = () => {
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
               <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><MessageCircle size={20} /></a>
-              <a href="mailto:go@webraf.com" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><Mail size={20} /></a>
+              <a href="mailto:contact@webraf.com" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><Mail size={20} /></a>
               <a href="#" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><Globe size={20} /></a>
             </div>
           </div>
@@ -49,7 +49,7 @@ const Footer = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'var(--text-secondary)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <Mail size={16} color="var(--accent-cyan)" />
-                <span>go@webraf.com</span>
+                <span>contact@webraf.com</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <MessageCircle size={16} color="var(--accent-cyan)" />
