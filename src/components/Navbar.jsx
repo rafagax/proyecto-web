@@ -6,10 +6,18 @@ import ThemeToggle from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
-import logoHDark from '../assets/webraf-h-dark.webp';
-import logoHLight from '../assets/webraf-h-light.webp';
-import logoSqDark from '../assets/webraf-sq-dark.webp';
-import logoSqLight from '../assets/webraf-sq-light.webp';
+
+// Logos live in /public/logos (static) rather than as ES imports on purpose: importing
+// them made React Router auto-emit <link rel="preload" as="image"> for all four variants
+// in every page's <head>, competing with the hero image (the LCP). Static paths are not
+// preloaded, so the hero wins. The four <img> below are still all rendered and CSS picks
+// the right one per theme/breakpoint (no hydration flash).
+const LOGO = {
+  hDark: '/logos/webraf-h-dark.webp',
+  hLight: '/logos/webraf-h-light.webp',
+  sqDark: '/logos/webraf-sq-dark.webp',
+  sqLight: '/logos/webraf-sq-light.webp',
+};
 
 const Navbar = () => {
   const { locale, content } = useLocalizedContent();
@@ -59,10 +67,10 @@ const Navbar = () => {
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to={navPath.home} className="navbar-logo" aria-label="Webraf — Web Development">
-            <img src={logoHDark} alt="Webraf" className="logo-h logo-dark" />
-            <img src={logoHLight} alt="Webraf" className="logo-h logo-light" />
-            <img src={logoSqDark} alt="Webraf" className="logo-sq logo-dark" />
-            <img src={logoSqLight} alt="Webraf" className="logo-sq logo-light" />
+            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" loading="lazy" />
+            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" loading="lazy" />
+            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" loading="lazy" />
+            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" loading="lazy" />
           </Link>
 
           <nav className="navbar-links">
@@ -111,10 +119,10 @@ const Navbar = () => {
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
           <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} aria-label="Webraf — Web Development">
-            <img src={logoHDark} alt="Webraf" className="logo-h logo-dark" />
-            <img src={logoHLight} alt="Webraf" className="logo-h logo-light" />
-            <img src={logoSqDark} alt="Webraf" className="logo-sq logo-dark" />
-            <img src={logoSqLight} alt="Webraf" className="logo-sq logo-light" />
+            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" loading="lazy" />
+            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" loading="lazy" />
+            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" loading="lazy" />
+            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" loading="lazy" />
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />

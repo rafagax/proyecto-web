@@ -8,7 +8,7 @@ import imgMobileFirst from '../assets/blog-mobile-first.webp';
 export const blogPosts = [
   {
     id: 1,
-    slug: 'why-your-business-needs-website-2025',
+    slug: 'why-your-business-needs-a-website',
     title: 'Why Your Business Needs a Website in 2026',
     excerpt: 'A professional website is no longer optional—it\'s essential for business success. Learn why and how to get started.',
     category: 'Web Development',

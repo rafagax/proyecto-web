@@ -100,7 +100,7 @@ const Chatbot = () => {
   return (
     <div id="ka-chatbot-container">
       <button id="ka-chatbot-toggle" aria-label={cb.ui.openAria} onClick={toggleChat}>
-        <img src={chatbotImg} alt={cb.ui.avatarAlt} id="ka-avatar-img" />
+        <img src={chatbotImg} alt={cb.ui.avatarAlt} id="ka-avatar-img" loading="lazy" />
         <span id="ka-chatbot-pulse"></span>
       </button>
 

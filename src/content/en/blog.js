@@ -50,7 +50,7 @@ export default {
     'Web Design': 'Web Design',
   },
   posts: {
-    'why-your-business-needs-website-2025': {
+    'why-your-business-needs-a-website': {
       title: 'Why Your Business Needs a Website in 2026',
       excerpt: 'A professional website is no longer optional — it is the foundation of a credible, findable business. Here is why, and how to start right.',
       date: 'June 2026',

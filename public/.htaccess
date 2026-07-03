@@ -29,6 +29,10 @@ ErrorDocument 404 /404/index.html
   # RewriteCond %{HTTPS} !=on
   # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
+  # --- Legacy blog slug -> year-less canonical slug (301) ---------------
+  RewriteRule ^blog/why-your-business-needs-website-2025/?$ /blog/why-your-business-needs-a-website [R=301,L]
+  RewriteRule ^es/blog/why-your-business-needs-website-2025/?$ /es/blog/why-your-business-needs-a-website [R=301,L]
+
   # --- Serve real existing files directly (JS, CSS, images, sitemap...) -
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^ - [L]

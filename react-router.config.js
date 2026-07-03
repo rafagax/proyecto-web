@@ -33,8 +33,9 @@ export default {
       '/es/blog',
       ...blogPosts.map((p) => `/blog/${p.slug}`),
       ...blogPosts.map((p) => `/es/blog/${p.slug}`),
-      // Standalone CEO portfolio page (linked from the footer).
+      // Bilingual author page (Jesús Vásquez).
       '/jvportafolio',
+      '/es/jvportafolio',
       // Localized 404 documents — served with a real HTTP 404 by vercel.json routes.
       // They are NOT canonical routes and are NOT added to the sitemap.
       '/404',

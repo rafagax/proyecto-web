@@ -48,7 +48,7 @@ export default {
     'Web Design': 'Diseño web',
   },
   posts: {
-    'why-your-business-needs-website-2025': {
+    'why-your-business-needs-a-website': {
       title: 'Por qué tu negocio necesita una página web en 2026',
       excerpt: 'Una página web profesional ya no es opcional: es la base de un negocio creíble y fácil de encontrar. Aquí te explicamos por qué y cómo empezar bien.',
       date: 'Junio 2026',

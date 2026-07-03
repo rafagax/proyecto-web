@@ -29,13 +29,14 @@ export const routeManifest = [
   { key: 'clients',  en: '/clients',                  es: '/es/clientes',                     type: 'page',    sitemap: true },
   { key: 'faqs',     en: '/faqs',                     es: '/es/preguntas-frecuentes',         type: 'page',    sitemap: true },
   { key: 'blog',     en: '/blog',                     es: '/es/blog',                         type: 'page',    sitemap: true },
+  { key: 'jvportafolio', en: '/jvportafolio',         es: '/es/jvportafolio',                 type: 'page',    sitemap: true },
 ];
 
 // Blog articles. Slugs are identical in both languages (approved decision): the same
 // existing English slug lives at /blog/<slug> (en) and /es/blog/<slug> (es). Both
 // languages are published, so every article has a full ES↔EN equivalent.
 export const articles = [
-  { key: 'why-website-2025', en: 'why-your-business-needs-website-2025',  es: 'why-your-business-needs-website-2025',  published: { en: true, es: true } },
+  { key: 'why-website-2025', en: 'why-your-business-needs-a-website',  es: 'why-your-business-needs-a-website',  published: { en: true, es: true } },
   { key: 'local-seo',        en: 'local-seo-rank-number-one-city-google', es: 'local-seo-rank-number-one-city-google', published: { en: true, es: true } },
   { key: 'ai-chatbots',      en: 'ai-chatbots-24-7-sales-tool',           es: 'ai-chatbots-24-7-sales-tool',           published: { en: true, es: true } },
   { key: 'online-store-7d',  en: 'launch-online-store-7-days',            es: 'launch-online-store-7-days',            published: { en: true, es: true } },

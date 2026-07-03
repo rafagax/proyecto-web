@@ -202,19 +202,15 @@ export default function App() {
   const { pathname } = useLocation();
   const lang = getLocaleFromPath(pathname);
   const wa = WHATSAPP[lang] || WHATSAPP.en;
-  // The CEO portfolio (/jvportafolio) is a standalone page: no site nav / footer /
-  // chatbot / WhatsApp button — just the portfolio content (opens in its own tab).
-  const standalone = pathname === '/jvportafolio';
   return (
     <>
       <ScrollRevealManager />
-      {!standalone && <Navbar />}
+      <Navbar />
       <main>
         <Outlet />
       </main>
-      {!standalone && <Footer />}
+      <Footer />
 
-      {!standalone && (<>
       {/* Floating WhatsApp button */}
       <a
         href={`https://wa.me/584144735431?text=${encodeURIComponent(wa.message)}`}
@@ -228,7 +224,6 @@ export default function App() {
         </svg>
       </a>
       <Chatbot key={lang} />
-      </>)}
     </>
   );
 }
