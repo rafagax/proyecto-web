@@ -6,6 +6,8 @@ export default {
     codeEs: 'ES',
     codeEn: 'EN',
     switchLabel: 'Cambiar idioma',
+    switchToEs: 'Cambiar a español',
+    switchToEn: 'Switch to English',
   },
 
   nav: {

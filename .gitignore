@@ -19,6 +19,9 @@ build
 # MCP config (contains API keys — do not commit)
 .mcp.json
 
+# Telegram bot secret (token) — NEVER commit; lives only on the server
+public/telegram-secret.php
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -3,19 +3,59 @@ import { Globe } from 'lucide-react';
 import { getEquivalentPath } from '../../app/route-manifest.js';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
-// Language switcher: a globe + a pill toggle showing BOTH languages by name
-// (Español | English) with the active one highlighted as a filled pill. The active
-// language is derived from the URL; each option links to the equivalent page from the
-// route manifest (never invents a URL). When a language has no registered equivalent
-// for the current page, that option is hidden. Styled inline to reuse the navbar's
-// visuals without touching CSS. Names are autonyms (same in any locale).
-export function LanguageSwitcher({ onNavigate }) {
+// Language switcher. Two presentations, SAME link logic (getEquivalentPath — never
+// invents a URL; hidden when the current page has no equivalent):
+//   • variant="compact" (mobile header): a single pill showing the language you can
+//     switch TO (Español on English pages, English on Spanish pages) so the option is
+//     always visible with one tap.
+//   • variant="full" (default, desktop + mobile menu settings row): both languages as
+//     pills (English · Español) with the active one highlighted.
+export function LanguageSwitcher({ onNavigate, variant = 'full' }) {
   const { pathname } = useLocation();
   const { locale, content } = useLocalizedContent();
   const { language } = content.common;
 
-  // English first (the primary market), then Español. The active language shows as a
-  // filled pill; the other stays visible so a visitor can switch without opening a menu.
+  if (variant === 'compact') {
+    const other = locale === 'es' ? 'en' : 'es';
+    const href = getEquivalentPath(pathname, other);
+    if (!href) return null;
+    const otherLabel = other === 'es' ? language.esName : language.enName; // destination autonym
+    const aria = other === 'es' ? language.switchToEs : language.switchToEn;
+    return (
+      <Link
+        to={href}
+        preventScrollReset
+        onClick={onNavigate}
+        aria-label={aria}
+        lang={other}
+        className="lang-pill-compact"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '6px',
+          minHeight: '44px',
+          padding: '0 14px',
+          border: '1px solid var(--border-subtle)',
+          borderRadius: '999px',
+          background: 'var(--bg-card)',
+          color: 'var(--text-primary)',
+          fontSize: '0.85rem',
+          fontWeight: 700,
+          letterSpacing: '0.2px',
+          textDecoration: 'none',
+          lineHeight: 1,
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <Globe size={15} aria-hidden="true" style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+        {otherLabel}
+      </Link>
+    );
+  }
+
+  // Full variant: English first (primary market), then Español. The active language shows
+  // as a filled pill; the other stays visible so a visitor can switch in one tap.
   const options = [
     { code: 'en', label: 'English', href: getEquivalentPath(pathname, 'en') },
     { code: 'es', label: 'Español', href: getEquivalentPath(pathname, 'es') },

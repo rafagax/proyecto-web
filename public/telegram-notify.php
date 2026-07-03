@@ -2,22 +2,28 @@
 /**
  * Telegram lead notifier for webraf.com
  * ------------------------------------------------------------------
- * The website contact forms POST here (same origin). This forwards the
- * lead to YOUR Telegram via a bot. The website visitor never needs
- * Telegram — only you receive the message. The bot token stays here on
- * the server (never exposed in the browser / site code).
+ * The website contact forms POST here (same origin) and this forwards the
+ * lead to YOUR Telegram via a bot. The visitor never needs Telegram.
  *
- * SETUP (one time):
- *   1. In Telegram, open @BotFather -> /newbot -> copy the TOKEN.
- *   2. Open your new bot and press Start (send it any message).
- *   3. Message @userinfobot to get your numeric chat id.
- *   4. Paste both values below.
+ * The bot token + chat id live in telegram-secret.php — a SEPARATE file that is
+ * gitignored and must NEVER be committed. Copy telegram-secret.sample.php to
+ * telegram-secret.php (same folder) and paste your real values there.
  */
 
-$BOT_TOKEN = '8983423848:AAER4hLIAjCuvt5Yykqg6JC0YDWNrNt4cgw'; // de @BotFather
-$CHAT_ID   = '1343242556';                                     // chat id (Erudrait)
+$BOT_TOKEN = '';
+$CHAT_ID   = '';
+$secretFile = __DIR__ . '/telegram-secret.php';
+if (file_exists($secretFile)) {
+    require $secretFile;
+}
 
 header('Content-Type: application/json; charset=utf-8');
+
+if ($BOT_TOKEN === '' || $CHAT_ID === '') {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Telegram not configured']);
+    exit;
+}
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);

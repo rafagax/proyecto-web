@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
 import ThemeToggle from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -14,6 +14,7 @@ import logoSqLight from '../assets/webraf-sq-light.webp';
 const Navbar = () => {
   const { locale, content } = useLocalizedContent();
   const { nav, services } = content.common;
+  const { home } = content;
   // Locale-correct paths for the shared nav links (built from the manifest, never by
   // concatenating /en). Blog stays /blog until it is migrated.
   const navPath = {
@@ -26,6 +27,7 @@ const Navbar = () => {
   };
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -97,8 +99,7 @@ const Navbar = () => {
           </nav>
 
           <div className="navbar-mobile-actions">
-            <ThemeToggle className="theme-toggle-mobile" />
-            <LanguageSwitcher />
+            <LanguageSwitcher variant="compact" />
             <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)} aria-label={nav.openMenu}>
               <Menu size={28} />
             </button>
@@ -121,7 +122,7 @@ const Navbar = () => {
         </div>
 
         <nav className="mobile-menu-nav">
-          {/* Home */}
+          {/* 1. Home */}
           <Link
             to={navPath.home}
             className={`mobile-menu-item ${location.pathname === navPath.home ? 'active' : ''}`}
@@ -130,26 +131,43 @@ const Navbar = () => {
             {nav.home}
           </Link>
 
-          {/* Services Section in Mobile - First Priority */}
-          <div>
-            <Link to={getLocalizedPath('services', locale)} className="mobile-menu-item" style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-primary)', paddingLeft: '1rem', paddingBottom: '0.5rem' }} onClick={() => setMobileMenuOpen(false)}>
+          {/* 2. Services — accordion (same links as the desktop dropdown) */}
+          <div className="mobile-menu-dropdown-container">
+            <button
+              type="button"
+              className="mobile-menu-item dropdown-toggle"
+              aria-expanded={servicesOpen}
+              onClick={() => setServicesOpen((v) => !v)}
+            >
               {nav.services}
-            </Link>
-            <Link to={getLocalizedPath('svc-web', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              {services.web.title}
-            </Link>
-            <Link to={getLocalizedPath('svc-seo', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              {services.seo.title}
-            </Link>
-            <Link to={getLocalizedPath('svc-kpi', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              {services.kpi.title}
-            </Link>
-            <Link to={getLocalizedPath('svc-ai', locale)} className="mobile-menu-item" style={{ paddingLeft: '2rem', fontSize: '0.85rem' }} onClick={() => setMobileMenuOpen(false)}>
-              {services.ai.title}
-            </Link>
+              <ChevronDown
+                size={20}
+                className="chevron-icon"
+                style={{ transform: servicesOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+              />
+            </button>
+            <div className={`mobile-mega-submenu ${servicesOpen ? 'open' : ''}`}>
+              <div className="mobile-submenu-col">
+                <Link to={getLocalizedPath('services', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {nav.services}
+                </Link>
+                <Link to={getLocalizedPath('svc-web', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {services.web.title}
+                </Link>
+                <Link to={getLocalizedPath('svc-seo', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {services.seo.title}
+                </Link>
+                <Link to={getLocalizedPath('svc-kpi', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {services.kpi.title}
+                </Link>
+                <Link to={getLocalizedPath('svc-ai', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {services.ai.title}
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* Clients - High Conversion Priority */}
+          {/* 3. Clients */}
           <Link
             to={navPath.clients}
             className={`mobile-menu-item ${location.pathname === navPath.clients ? 'active' : ''}`}
@@ -158,7 +176,7 @@ const Navbar = () => {
             {nav.clients}
           </Link>
 
-          {/* Pricing - High Conversion Priority */}
+          {/* 4. Pricing */}
           <Link
             to={navPath.pricing}
             className={`mobile-menu-item ${location.pathname === navPath.pricing ? 'active' : ''}`}
@@ -167,25 +185,7 @@ const Navbar = () => {
             {nav.pricing}
           </Link>
 
-          {/* Contact Us - CTA Priority */}
-          <Link
-            to={navPath.contact}
-            className={`mobile-menu-item contact-link ${location.pathname === navPath.contact ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {nav.contactUs}
-          </Link>
-
-          {/* FAQs - Medium Priority */}
-          <Link
-            to={navPath.faqs}
-            className={`mobile-menu-item ${location.pathname === navPath.faqs ? 'active' : ''}`}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {nav.faqs}
-          </Link>
-
-          {/* Blog - Lower Priority */}
+          {/* 5. Blog */}
           <Link
             to={navPath.blog}
             className={`mobile-menu-item ${location.pathname.startsWith(navPath.blog) ? 'active' : ''}`}
@@ -194,9 +194,37 @@ const Navbar = () => {
             {nav.blog}
           </Link>
 
-          {/* Language switcher */}
-          <div className="mobile-menu-item" style={{ paddingTop: '0.5rem' }}>
-            <LanguageSwitcher onNavigate={() => setMobileMenuOpen(false)} />
+          {/* 6. FAQs */}
+          <Link
+            to={navPath.faqs}
+            className={`mobile-menu-item ${location.pathname === navPath.faqs ? 'active' : ''}`}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {nav.faqs}
+          </Link>
+
+          {/* Footer: CTA button + Contact link + settings row (language + theme) */}
+          <div className="mobile-menu-footer">
+            <a
+              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.audit)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary mobile-menu-cta"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {home.cta.freeAudit} <ArrowRight size={18} />
+            </a>
+            <Link
+              to={navPath.contact}
+              className={`mobile-menu-item contact-link ${location.pathname === navPath.contact ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {nav.contactUs}
+            </Link>
+            <div className="mobile-menu-settings">
+              <LanguageSwitcher variant="full" onNavigate={() => setMobileMenuOpen(false)} />
+              <ThemeToggle />
+            </div>
           </div>
         </nav>
       </div>
