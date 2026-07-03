@@ -3,6 +3,16 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { testimonials as testimonialPeople } from '../data/testimonials';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 
+// Initials avatar (no external stock photos): first letters of the name + a stable
+// colour derived from the name. Replaces the previous randomuser.me placeholder faces.
+const initialsOf = (name = '') =>
+  name.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+const colorOf = (name = '') => {
+  let h = 0;
+  for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
+  return `hsl(${h}, 55%, 42%)`;
+};
+
 export const TestimonialsCarousel = () => {
   const { content } = useLocalizedContent();
   const { section, items } = content.testimonials;
@@ -98,12 +108,22 @@ export const TestimonialsCarousel = () => {
                     <p className="tm-quote">{testimonial.quote}</p>
 
                     <div className="tm-person">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
+                      <div
                         className="tm-avatar"
-                        loading="lazy"
-                      />
+                        style={{
+                          background: colorOf(testimonial.name),
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: '#fff',
+                          fontWeight: 700,
+                          fontSize: '1.1rem',
+                          letterSpacing: '0.5px',
+                        }}
+                        aria-hidden="true"
+                      >
+                        {initialsOf(testimonial.name)}
+                      </div>
                       <div className="tm-person-info">
                         <p className="tm-name">{testimonial.name}</p>
                         <p className="tm-role">{testimonial.role}</p>

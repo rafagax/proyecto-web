@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Gauge, MonitorSmartphone, SearchCheck, ListChecks, Goal, Headset } from 'lucide-react';
 import heroImg from '../assets/Hero2.webp';
 import webDevImg from '../assets/imagenwebdevelop.webp';
-import kpiHomeImg from '../assets/kpi call center.webp';
+import kpiHomeImg from '../assets/kpi-call-center.webp';
 import seoDigitalImg from '../assets/seoimagendigital.webp';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { sendContactEmail, BUSINESS_WHATSAPP } from '../config/forms.js';
 
 const Home = () => {
   const { locale, content } = useLocalizedContent();
@@ -20,23 +21,64 @@ const Home = () => {
     phone: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle');       // main contact form
+  const [heroStatus, setHeroStatus] = useState('idle'); // hero mini form
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // Main contact form → send email via Web3Forms (falls back to WhatsApp button).
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.botcheck?.checked) return; // honeypot
     const { name, email, phone, message } = formData;
-    const businessPhone = '584144735431';
+    // 1) Open WhatsApp right away (synchronous → avoids the popup blocker).
+    window.open(whatsappHref(), '_blank');
+    setStatus('sending');
+    try {
+      // 2 + 3) Email (Web3Forms) + Telegram (inside sendContactEmail).
+      await sendContactEmail({ name, email, phone, message, page: 'Home' });
+      setStatus('sent');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  const whatsappHref = () => {
+    const { name, email, phone, message } = formData;
     const text =
       locale === 'en'
         ? `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`
         : `Hola, mi nombre es ${name}. Mi correo es ${email}. Mi teléfono es ${phone}. Mi mensaje: ${message}`;
-    const whatsappUrl = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, '_blank');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    return `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(text)}`;
+  };
+
+  // Hero mini form (uncontrolled inputs) → send email via Web3Forms.
+  const handleHeroSubmit = async (e) => {
+    e.preventDefault();
+    if (e.target.botcheck?.checked) return; // honeypot
+    const form = e.target;
+    const phone = form.phone?.value || '';
+    const email = form.email?.value || '';
+    const message = form.message?.value || '';
+    // 1) Open WhatsApp right away (synchronous → avoids the popup blocker).
+    const waText =
+      locale === 'en'
+        ? `Hello, my email is ${email}. My phone is ${phone}. My message: ${message}`
+        : `Hola, mi correo es ${email}. Mi teléfono es ${phone}. Mi mensaje: ${message}`;
+    window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(waText)}`, '_blank');
+    setHeroStatus('sending');
+    try {
+      // 2 + 3) Email (Web3Forms) + Telegram (inside sendContactEmail).
+      await sendContactEmail({ email, phone, message, page: 'Home (hero)' });
+      setHeroStatus('sent');
+      form.reset();
+    } catch {
+      setHeroStatus('error');
+    }
   };
 
   const benefits = [
@@ -155,24 +197,16 @@ const Home = () => {
 
             <div className="hero-contact-form desktop-only" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
               <h3 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>{home.cta.freeAudit}</h3>
-              <form onSubmit={(e) => {
-                e.preventDefault();
-                const phone = e.target.phone?.value || '';
-                const email = e.target.email?.value || '';
-                const message = e.target.message?.value || '';
-                const waPhone = '584144735431';
-                const text =
-                  locale === 'en'
-                    ? `📱 Phone: ${phone}\n📧 Email: ${email}\n💬 Message: ${message}`
-                    : `📱 Teléfono: ${phone}\n📧 Correo: ${email}\n💬 Mensaje: ${message}`;
-                window.open(`https://wa.me/${waPhone}?text=${encodeURIComponent(text)}`, '_blank');
-              }} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <form onSubmit={handleHeroSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <input type="tel" name="phone" placeholder={home.hero.form.phonePlaceholder} required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
                 <input type="email" name="email" placeholder={home.hero.form.emailPlaceholder} required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
                 <textarea name="message" placeholder={home.hero.form.messagePlaceholder} required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
-                <button type="submit" style={{ padding: '1rem', borderRadius: '10px', background: '#4d94ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(77, 148, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
-                  {home.cta.freeAudit}
+                <input type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" style={{ display: 'none' }} aria-hidden="true" />
+                <button type="submit" disabled={heroStatus === 'sending'} style={{ padding: '1rem', borderRadius: '10px', background: '#4d94ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: heroStatus === 'sending' ? 'wait' : 'pointer', opacity: heroStatus === 'sending' ? 0.7 : 1, transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(77, 148, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
+                  {heroStatus === 'sending' ? home.hero.form.sending : home.cta.freeAudit}
                 </button>
+                {heroStatus === 'sent' && <div className="form-status success">{home.hero.form.success}</div>}
+                {heroStatus === 'error' && <div className="form-status error">{home.hero.form.error}</div>}
               </form>
             </div>
           </div>
@@ -697,7 +731,7 @@ const Home = () => {
               <MapPin size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>{home.finalCta.contact.locationLabel}</h3>
               <p style={{ color: 'var(--text-secondary)', fontWeight: '600', margin: 0 }}>
-                Maracay, Aragua, Venezuela
+                {locale === 'en' ? 'Remote · Worldwide' : 'Remoto · Todo el mundo'}
               </p>
             </div>
           </div>
@@ -821,13 +855,19 @@ const Home = () => {
                 />
               </div>
 
+              <input type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" style={{ display: 'none' }} aria-hidden="true" />
+
               <button
                 type="submit"
                 className="hero-advisory-btn"
-                style={{ width: '100%', justifyContent: 'center' }}
+                disabled={status === 'sending'}
+                style={{ width: '100%', justifyContent: 'center', opacity: status === 'sending' ? 0.7 : 1, cursor: status === 'sending' ? 'wait' : 'pointer' }}
               >
-                {home.contactForm.submit}
+                {status === 'sending' ? home.contactForm.sending : home.contactForm.submit}
               </button>
+
+              {status === 'sent' && <div className="form-status success">{home.contactForm.success}</div>}
+              {status === 'error' && <div className="form-status error">{home.contactForm.error}</div>}
             </form>
           </div>
         </div>

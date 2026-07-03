@@ -2,10 +2,10 @@
 // locations, website URLs, percentages and stat values stay in OurClients.jsx.
 export default {
   meta: {
-    title: 'Testimonios de clientes — Casos de éxito y reseñas | Webraf — Web Development',
+    title: 'Testimonios de clientes — Casos de éxito y reseñas | Webraf',
     description:
       'Mira lo que dicen nuestros clientes sobre nuestros servicios de desarrollo web y digitales. Resultados reales de negocios reales.',
-    ogTitle: 'Casos de éxito de clientes | Webraf — Web Development',
+    ogTitle: 'Casos de éxito de clientes | Webraf',
     ogDescription: 'Resultados reales de negocios a los que hemos ayudado con desarrollo web, SEO y automatización con IA.',
   },
   hero: {

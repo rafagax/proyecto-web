@@ -14,7 +14,7 @@ const Footer = () => {
           {/* Brand Col */}
           <div className="footer-col">
             <h2 style={{ fontSize: '1.8rem', letterSpacing: '-0.5px', marginBottom: '1rem', color: 'var(--text-primary)' }}>
-              Inversiones<span className="text-gradient">Digitales</span>
+              Web<span className="text-gradient">raf</span>
             </h2>
             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '1.5rem', maxWidth: '350px' }}>
               {footer.tagline}
@@ -57,7 +57,7 @@ const Footer = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <MapPin size={16} color="var(--accent-cyan)" />
-                <span>Maracay, Aragua, Venezuela</span>
+                <span>{locale === 'en' ? 'Remote · Worldwide' : 'Remoto · Todo el mundo'}</span>
               </div>
             </div>
           </div>
@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom-bar">
-          <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Ied.</p>
+          <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Webraf</p>
           <span className="footer-separator">|</span>
           <p style={{ margin: 0, fontSize: '0.85rem', textAlign: 'center' }}>
             {footer.ceoLabel}{' '}

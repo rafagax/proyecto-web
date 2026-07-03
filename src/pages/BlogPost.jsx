@@ -100,6 +100,17 @@ const BlogPost = () => {
             })}
           </div>
 
+          {/* Author bio (E-E-A-T) */}
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginTop: '2.5rem', padding: '1.5rem', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', borderRadius: '12px' }}>
+            <div aria-hidden="true" style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'var(--accent-cyan)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '1.1rem', flexShrink: 0 }}>
+              {t.article.authorName.split(' ').map((w) => w[0]).slice(0, 2).join('')}
+            </div>
+            <div>
+              <p style={{ margin: 0, fontWeight: 700, color: 'var(--text-primary)' }}>{t.article.authorName}</p>
+              <p style={{ margin: '0.25rem 0 0', color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>{t.article.authorBio}</p>
+            </div>
+          </div>
+
           {/* CTA Section */}
           <div className="blog-post-cta">
             <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>{t.article.ctaHeading}</h3>

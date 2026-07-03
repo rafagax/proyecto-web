@@ -3,10 +3,10 @@
 // in sync. Plain strings only — no functions/JSX.
 export default {
   meta: {
-    title: 'Frequently Asked Questions — Web, SEO, KPI & AI | Webraf — Web Development',
+    title: 'Frequently Asked Questions — Web, SEO, KPI & AI | Webraf',
     description:
       'Answers to common questions about web development, SEO, KPI dashboards, AI automation, pricing, and our process.',
-    ogTitle: 'FAQs | Webraf — Web Development',
+    ogTitle: 'FAQs | Webraf',
     ogDescription: 'Clear answers about our web development, SEO, KPI dashboards and AI automation services, plus pricing and process.',
   },
   hero: {

@@ -4,10 +4,10 @@
 // component fills in — no functions in content. Plain strings only.
 export default {
   meta: {
-    title: 'Contact Us — Free Web Strategy Consultation | Webraf — Web Development',
+    title: 'Contact Us — Free Web Strategy Consultation | Webraf',
     description:
       'Ready to grow your business? Contact us for a free consultation. We usually respond within a few hours via WhatsApp, email, or phone.',
-    ogTitle: 'Contact Us | Webraf — Web Development',
+    ogTitle: 'Contact Us | Webraf',
     ogDescription: 'Book a free consultation and strategy session for your website, SEO, KPI dashboards, or AI automation.',
   },
   hero: {
@@ -38,6 +38,10 @@ export default {
     messageLabel: 'Message',
     messagePlaceholder: 'Tell us a bit about your project...',
     submit: 'Schedule Free Strategy Call',
+    sending: 'Sending...',
+    success: "Sent! We'll get back to you shortly. ✓",
+    error: 'Could not send. Please try again or message us on WhatsApp.',
+    whatsappButton: 'Or message us on WhatsApp',
     waTemplate: 'Hello, my name is {name}. My email is {email}. My phone is {phone}. My message: {message}',
   },
 };

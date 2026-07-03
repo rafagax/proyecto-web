@@ -22,7 +22,7 @@ export function meta({ params, location }) {
   const canonical = locale === 'en' ? enHref : esHref;
 
   return [
-    { title: `${localized.title} | Webraf — Web Development` },
+    { title: `${localized.title} | Webraf` },
     { name: 'description', content: localized.excerpt },
     { property: 'og:type', content: 'article' },
     { property: 'og:title', content: localized.title },
@@ -42,8 +42,13 @@ export function meta({ params, location }) {
         description: localized.excerpt,
         image: post.image,
         inLanguage: locale,
-        author: { '@type': 'Organization', name: 'Webraf' },
-        publisher: { '@type': 'Organization', name: 'Webraf' },
+        author: { '@type': 'Person', name: content.blog.article.authorName },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Webraf',
+          logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') },
+        },
+        datePublished: localized.date,
         mainEntityOfPage: canonical,
       },
     },

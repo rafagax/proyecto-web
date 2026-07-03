@@ -16,7 +16,7 @@ export default {
     {
       role: 'Founder, Estudio Bella',
       service: 'Local SEO',
-      quote: 'We went from page three of Google to the top result for "beauty salon in Maracay". My calendar is now booked weeks ahead. Their SEO work genuinely moved the needle.',
+      quote: 'We went from page three of Google to the top result for "beauty salon near me". My calendar is now booked weeks ahead. Their SEO work genuinely moved the needle.',
     },
     {
       role: 'Director, TorreTech Solutions',

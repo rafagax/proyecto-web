@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroImg from '../assets/herodevelop12.webp';
+import customImg from '../assets/web-dev-custom.webp';
 import responsiveImg from '../assets/developwebhero.webp';
 import storeImg from '../assets/tiendachica.webp';
 import MobileAutoCarousel from '../components/MobileAutoCarousel';
@@ -112,7 +113,7 @@ const WebDevDesignDetail = () => {
               </a>
             </div>
             <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1100&q=80&fit=crop" alt={wd.custom.alt} loading="lazy" onError={onImgError} />
+              <img src={customImg} alt={wd.custom.alt} loading="lazy" />
             </div>
           </div>
         </div>

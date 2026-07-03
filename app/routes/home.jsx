@@ -14,18 +14,18 @@ export function meta({ location }) {
   const seo =
     locale === 'en'
       ? {
-          title: 'Web Development, AI Automation, SEO & KPI Dashboards | Webraf — Web Development',
+          title: 'Web Development, SEO & AI Automation | Webraf',
           description:
-            'Premium web development, AI automation, SEO, and KPI dashboards for growing businesses. Build a fast, conversion-focused website and turn your digital presence into a growth system.',
+            'Premium web development, AI automation, SEO & KPI dashboards for growing businesses — fast, conversion-focused sites that turn visitors into customers.',
           shareTitle: 'Web Development, AI Automation, SEO & KPI Dashboards',
           shareDescription:
             'Premium web development, AI automation, SEO, and KPI dashboards built to help growing businesses look professional, get found, and convert better.',
         }
       : {
-          title: 'Desarrollo web, IA, SEO y KPI | Webraf — Web Development',
+          title: 'Desarrollo Web, SEO y Automatización con IA | Webraf',
           description:
             'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
-          shareTitle: 'Desarrollo web, IA, SEO y dashboards de KPI | Webraf — Web Development',
+          shareTitle: 'Desarrollo web, IA, SEO y dashboards de KPI | Webraf',
           shareDescription:
             'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
         };

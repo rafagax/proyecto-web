@@ -3,10 +3,10 @@
 // Plain strings only — no functions/JSX/booleans.
 export default {
   meta: {
-    title: 'Plans & Pricing — Websites from $299 | Webraf — Web Development',
+    title: 'Plans & Pricing — Websites from $299 | Webraf',
     description:
       'Simple, transparent pricing for websites, SEO, KPI dashboards, and AI automation. Professional websites starting from $299, with no hidden fees.',
-    ogTitle: 'Plans & Pricing | Webraf — Web Development',
+    ogTitle: 'Plans & Pricing | Webraf',
     ogDescription: 'Transparent pricing with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',
   },
   hero: {

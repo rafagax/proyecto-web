@@ -4,10 +4,10 @@
 // index for `clients`. Plain strings only — no functions/JSX.
 export default {
   meta: {
-    title: 'Client Testimonials — Success Stories & Reviews | Webraf — Web Development',
+    title: 'Client Testimonials — Success Stories & Reviews | Webraf',
     description:
       'See what our clients say about our web development and digital services. Real results from real businesses.',
-    ogTitle: 'Client Success Stories | Webraf — Web Development',
+    ogTitle: 'Client Success Stories | Webraf',
     ogDescription: 'Real results from businesses we have helped with web development, SEO, and AI automation.',
   },
   hero: {

@@ -4,7 +4,7 @@
 // aria labels, headings, etc.). Strings only — no functions/JSX/booleans.
 export default {
   meta: {
-    title: 'AI Automation & Chatbots for Businesses | WhatsApp AI Agents',
+    title: 'AI Automation & WhatsApp Chatbots | Webraf',
     description:
       'AI automation and chatbot services for businesses that want faster replies, lead qualification, appointment booking, and 24/7 customer support.',
     ogTitle: 'AI Automation & Chatbots That Help You Respond Faster and Convert More Leads',

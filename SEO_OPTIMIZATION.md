@@ -101,7 +101,7 @@
 
 2. **Update contact information**:
    - Phone number: `+584144735431` → Your phone
-   - Email: `inversionesdigitales@hotmail.es` → Your email
+   - Email: `contact@webraf.com`
    - Address: Update in Contact page
    - WhatsApp: Update all WhatsApp links
 

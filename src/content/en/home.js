@@ -27,6 +27,10 @@ export default {
       phonePlaceholder: 'Your phone number',
       emailPlaceholder: 'Your email',
       messagePlaceholder: 'What service do you need or why are you contacting us?',
+      sending: 'Sending...',
+      success: "Sent! We'll be in touch shortly. ✓",
+      error: 'Could not send. Try WhatsApp below.',
+      whatsappButton: 'Send via WhatsApp',
     },
   },
 
@@ -210,6 +214,10 @@ export default {
     phone: { label: 'Phone Number', placeholder: 'Your phone number' },
     message: { label: 'Message', placeholder: 'Tell us a bit about your project...' },
     submit: 'Get My Free Digital Strategy',
+    sending: 'Sending...',
+    success: "Sent! We'll get back to you shortly. ✓",
+    error: 'Could not send. Please try again or message us on WhatsApp.',
+    whatsappButton: 'Or message us on WhatsApp',
   },
 
   whatsapp: {

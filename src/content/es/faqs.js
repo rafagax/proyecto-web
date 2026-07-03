@@ -2,10 +2,10 @@
 // en/faqs.js (5 categories × 4 items). Faithful translation; no new questions/claims.
 export default {
   meta: {
-    title: 'Preguntas frecuentes — Web, SEO, KPI e IA | Webraf — Web Development',
+    title: 'Preguntas frecuentes — Web, SEO, KPI e IA | Webraf',
     description:
       'Respuestas a las preguntas más comunes sobre desarrollo web, SEO, dashboards de KPI, automatización con IA, precios y nuestro proceso.',
-    ogTitle: 'Preguntas frecuentes | Webraf — Web Development',
+    ogTitle: 'Preguntas frecuentes | Webraf',
     ogDescription: 'Respuestas claras sobre nuestros servicios de desarrollo web, SEO, dashboards de KPI y automatización con IA, además de precios y proceso.',
   },
   hero: {

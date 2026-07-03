@@ -69,11 +69,11 @@ export default {
     },
     {
       keywords: ['whatsapp', 'contact', 'advisor', 'human', 'email', 'call', 'quote', 'schedule', 'free consultation'],
-      response: `Of course, you can contact us directly for free advice.\n\n WhatsApp: +58 414 473 5431\n📧 Email: contact@webraf.com\n📍 Location: Maracay, Aragua, Venezuela\n\nYou can also message us on WhatsApp here:\nhttps://wa.me/584144735431\n\nTell us what type of website you need and we'll be happy to help.`,
+      response: `Of course, you can contact us directly for free advice.\n\n WhatsApp: +58 414 473 5431\n📧 Email: contact@webraf.com\n📍 Coverage: 100% remote, worldwide\n\nYou can also message us on WhatsApp here:\nhttps://wa.me/584144735431\n\nTell us what type of website you need and we'll be happy to help.`,
     },
     {
       keywords: ['location', 'where are you', 'maracay', 'venezuela', 'aragua'],
-      response: `We are located in Maracay, Aragua, Venezuela.\n\nWe can also serve remote projects for clients in Venezuela, United States, Spain, and other countries.`,
+      response: `We work 100% remotely.\n\nWe serve clients worldwide — the United States, Spain, Latin America, and beyond.`,
     },
     {
       keywords: ['clients', 'testimonials', 'reviews', 'opinions', 'google reviews', 'ratings'],

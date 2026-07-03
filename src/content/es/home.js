@@ -27,6 +27,10 @@ export default {
       phonePlaceholder: 'Tu número de teléfono',
       emailPlaceholder: 'Tu correo',
       messagePlaceholder: '¿Qué servicio necesitas o por qué nos contactas?',
+      sending: 'Enviando...',
+      success: '¡Enviado! Te contactaremos muy pronto. ✓',
+      error: 'No se pudo enviar. Prueba por WhatsApp abajo.',
+      whatsappButton: 'Enviar por WhatsApp',
     },
   },
 
@@ -210,6 +214,10 @@ export default {
     phone: { label: 'Número de teléfono', placeholder: 'Tu número de teléfono' },
     message: { label: 'Mensaje', placeholder: 'Cuéntanos un poco sobre tu proyecto...' },
     submit: 'Obtén tu estrategia digital gratuita',
+    sending: 'Enviando...',
+    success: '¡Enviado! Te responderemos muy pronto. ✓',
+    error: 'No se pudo enviar. Intenta de nuevo o escríbenos por WhatsApp.',
+    whatsappButton: 'O escríbenos por WhatsApp',
   },
 
   whatsapp: {

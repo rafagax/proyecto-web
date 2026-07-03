@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { MessageCircle, Mail, MapPin } from 'lucide-react';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
+import { sendContactEmail, BUSINESS_WHATSAPP } from '../config/forms.js';
 
 const Contact = () => {
-  const { content } = useLocalizedContent();
+  const { locale, content } = useLocalizedContent();
   const t = content.contact;
 
   const [formData, setFormData] = useState({
@@ -13,23 +14,40 @@ const Contact = () => {
     service: '',
     message: ''
   });
+  const [status, setStatus] = useState('idle'); // idle | sending | sent | error
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (e.target.botcheck?.checked) return; // honeypot: silently drop bots
     const { name, email, phone, message } = formData;
-    const businessPhone = '584144735431';
+    // 1) Open WhatsApp right away — must be synchronous inside the click handler
+    //    or the browser's popup blocker will swallow it.
+    window.open(whatsappHref(), '_blank');
+    setStatus('sending');
+    try {
+      // 2 + 3) Email (Web3Forms) + Telegram notification (inside sendContactEmail).
+      await sendContactEmail({ name, email, phone, message, page: 'Contacto' });
+      setStatus('sent');
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  // WhatsApp fallback link built from the same fields the visitor typed.
+  const whatsappHref = () => {
+    const { name, email, phone, message } = formData;
     const text = t.form.waTemplate
       .replace('{name}', name)
       .replace('{email}', email)
       .replace('{phone}', phone)
       .replace('{message}', message);
-    const whatsappUrl = `https://wa.me/${businessPhone}?text=${encodeURIComponent(text)}`;
-    window.open(whatsappUrl, '_blank');
+    return `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(text)}`;
   };
 
   return (
@@ -80,7 +98,7 @@ const Contact = () => {
                 <div className="contact-icon"><MapPin size={24} /></div>
                 <div>
                   <h4 style={{ marginBottom: '0.2rem' }}>{t.info.locationLabel}</h4>
-                  <p style={{ color: 'var(--text-secondary)' }}>Maracay, Aragua, Venezuela</p>
+                  <p style={{ color: 'var(--text-secondary)' }}>{locale === 'en' ? 'Remote · Worldwide' : 'Remoto · Todo el mundo'}</p>
                 </div>
               </div>
 
@@ -139,13 +157,20 @@ const Contact = () => {
                   required
                 ></textarea>
               </div>
+              {/* Honeypot — hidden from users, catches bots */}
+              <input type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" style={{ display: 'none' }} aria-hidden="true" />
+
               <button
                 type="submit"
                 className="btn btn-primary"
-                style={{ marginTop: '1.5rem', padding: '18px', fontSize: '1.1rem', fontWeight: '700', width: '100%', boxShadow: '0 10px 25px rgba(77, 148, 255, 0.4)', letterSpacing: '0.5px' }}
+                disabled={status === 'sending'}
+                style={{ marginTop: '1.5rem', padding: '18px', fontSize: '1.1rem', fontWeight: '700', width: '100%', boxShadow: '0 10px 25px rgba(77, 148, 255, 0.4)', letterSpacing: '0.5px', opacity: status === 'sending' ? 0.7 : 1, cursor: status === 'sending' ? 'wait' : 'pointer' }}
               >
-                {t.form.submit}
+                {status === 'sending' ? t.form.sending : t.form.submit}
               </button>
+
+              {status === 'sent' && <div className="form-status success">{t.form.success}</div>}
+              {status === 'error' && <div className="form-status error">{t.form.error}</div>}
             </form>
           </div>
         </div>

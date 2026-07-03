@@ -2,10 +2,10 @@
 // positions stay in Pricing.jsx (structural). Same keys/order as en/pricing.js.
 export default {
   meta: {
-    title: 'Planes y precios — Páginas web desde $299 | Webraf — Web Development',
+    title: 'Planes y precios — Páginas web desde $299 | Webraf',
     description:
       'Precios simples y transparentes para páginas web, SEO, dashboards de KPI y automatización con IA. Páginas web profesionales desde $299, sin costos ocultos.',
-    ogTitle: 'Planes y precios | Webraf — Web Development',
+    ogTitle: 'Planes y precios | Webraf',
     ogDescription: 'Precios transparentes y sin costos ocultos. Páginas web desde $299, además de servicios mensuales de SEO, gestión e IA.',
   },
   hero: {

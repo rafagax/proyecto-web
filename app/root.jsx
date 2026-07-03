@@ -50,27 +50,21 @@ const orgSchema = (lang) => ({
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
     telephone: '+584144735431',
-    areaServed: ['VE', 'US', 'ES'],
+    areaServed: 'Worldwide',
     availableLanguage: ['English', 'Spanish'],
   },
 });
 
 const localBusinessSchema = (lang) => ({
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   name: 'Webraf',
   image: absoluteUrl('/og-image.webp'),
   description: SCHEMA_DESCRIPTION.localBusiness[lang] || SCHEMA_DESCRIPTION.localBusiness.en,
   telephone: '+584144735431',
   email: 'contact@webraf.com',
   priceRange: '$299–$1500',
-  areaServed: { '@type': 'GeoShape', addressCountry: ['VE', 'US', 'ES'] },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Maracay',
-    addressRegion: 'Aragua',
-    addressCountry: 'VE',
-  },
+  areaServed: 'Worldwide',
 });
 
 // Reveals .reveal / .reveal-left / .reveal-right once on viewport enter and

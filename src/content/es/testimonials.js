@@ -17,7 +17,7 @@ export default {
     {
       role: 'Fundadora, Estudio Bella',
       service: 'SEO local',
-      quote: 'Pasamos de la página tres de Google al primer resultado para "salón de belleza en Maracay". Ahora tengo la agenda llena con semanas de anticipación. Su trabajo de SEO marcó una diferencia real.',
+      quote: 'Pasamos de la página tres de Google al primer resultado para "salón de belleza cerca de mí". Ahora tengo la agenda llena con semanas de anticipación. Su trabajo de SEO marcó una diferencia real.',
     },
     {
       role: 'Director, TorreTech Solutions',

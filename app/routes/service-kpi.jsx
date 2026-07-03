@@ -28,7 +28,7 @@ export function meta({ location }) {
         '@type': 'Service',
         name: m.schemaName,
         description: m.description,
-        areaServed: ['VE', 'US', 'ES'],
+        areaServed: 'Worldwide',
         provider: { '@type': 'Organization', name: 'Webraf' },
       },
     },

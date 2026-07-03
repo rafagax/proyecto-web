@@ -29,7 +29,7 @@ export default {
       response: `Tu diseño web puede estar listo en solo 7 días, según el tipo de proyecto, la cantidad de secciones y la información que necesites incluir.\n\nTrabajamos con un proceso rápido, organizado y profesional para que empieces a mostrar tu negocio en internet lo antes posible.`,
     },
     {
-      keywords: ['quienes son', 'quiénes son', 'empresa', 'inversionesdigitales', 'sobre nosotros', 'que hacen', 'qué hacen'],
+      keywords: ['quienes son', 'quiénes son', 'empresa', 'webraf', 'sobre nosotros', 'que hacen', 'qué hacen'],
       response: `Somos Webraf, especialistas en diseño y desarrollo web de alto rendimiento.\n\nTransformamos tu visión en una experiencia digital profesional, moderna y estratégica para que tu negocio gane presencia, confianza y más oportunidades de venta.`,
     },
     {
@@ -70,11 +70,11 @@ export default {
     },
     {
       keywords: ['whatsapp', 'contacto', 'asesor', 'humano', 'correo', 'email', 'llamar', 'cotizar', 'agendar', 'consulta gratuita'],
-      response: `Por supuesto, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Correo: contact@webraf.com\n📍 Ubicación: Maracay, Aragua, Venezuela\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/584144735431\n\nCuéntanos qué tipo de página web necesitas y con gusto te ayudamos.`,
+      response: `Por supuesto, puedes contactarnos directamente para recibir asesoría gratuita.\n\n WhatsApp: +58 414 473 5431\n📧 Correo: contact@webraf.com\n📍 Cobertura: 100% remoto, en todo el mundo\n\nTambién puedes escribirnos por WhatsApp aquí:\nhttps://wa.me/584144735431\n\nCuéntanos qué tipo de página web necesitas y con gusto te ayudamos.`,
     },
     {
       keywords: ['ubicacion', 'ubicación', 'donde estan', 'dónde están', 'maracay', 'venezuela', 'aragua'],
-      response: `Estamos ubicados en Maracay, Aragua, Venezuela.\n\nTambién atendemos proyectos remotos para clientes en Venezuela, Estados Unidos, España y otros países.`,
+      response: `Trabajamos 100% de forma remota.\n\nAtendemos clientes en todo el mundo — Estados Unidos, España, Latinoamérica y más.`,
     },
     {
       keywords: ['clientes', 'testimonios', 'reseñas', 'opiniones', 'reseñas de google', 'calificaciones'],

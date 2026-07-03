@@ -2,7 +2,7 @@
 // as en/serviceSeo.js. Images/icons/structure stay in the component.
 export default {
   meta: {
-    title: 'Servicios de SEO y crecimiento digital | Posiciónate más alto y atrae mejores clientes',
+    title: 'Servicios de SEO y crecimiento digital | Webraf',
     description:
       'Servicios de SEO y crecimiento digital diseñados para ayudar a tu negocio a mejorar su visibilidad en Google, atraer tráfico calificado y convertir la intención de búsqueda en oportunidades reales.',
     ogTitle: 'Servicios de SEO y crecimiento digital para negocios que quieren ser encontrados',

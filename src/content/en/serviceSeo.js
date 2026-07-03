@@ -3,7 +3,7 @@
 // translatable text. Segmented headings use { before, accent, after }. Strings only.
 export default {
   meta: {
-    title: 'SEO & Digital Growth Services | Rank Higher and Attract Better Leads',
+    title: 'SEO & Digital Growth Services | Webraf',
     description:
       'SEO and digital growth services designed to help businesses improve Google visibility, attract qualified traffic, and turn search intent into real opportunities.',
     ogTitle: 'SEO & Digital Growth Services for Businesses That Want to Be Found',

@@ -2,7 +2,7 @@
 // as en/serviceAi.js. Message times/direction and icons stay in the component.
 export default {
   meta: {
-    title: 'Automatización con IA y chatbots para negocios | Agentes de IA en WhatsApp',
+    title: 'Automatización con IA y chatbots | Webraf',
     description:
       'Servicios de automatización con IA y chatbots para negocios que quieren respuestas más rápidas, calificación de contactos, agendamiento de citas y atención al cliente 24/7.',
     ogTitle: 'Automatización con IA y chatbots que te ayudan a responder más rápido y convertir más contactos',

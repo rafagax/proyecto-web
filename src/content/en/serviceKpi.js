@@ -2,7 +2,7 @@
 // stay in KpiDashboardsDetail.jsx. Strings only — no functions/JSX.
 export default {
   meta: {
-    title: 'KPI Dashboards & Analytics for Business Growth | Webraf — Web Development',
+    title: 'KPI Dashboards & Analytics | Webraf',
     description:
       'Custom KPI dashboards and analytics systems that help businesses track leads, sales, marketing performance, and growth metrics in real time.',
     ogTitle: 'KPI Dashboards & Analytics for Smarter Business Decisions',
