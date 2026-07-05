@@ -56,5 +56,15 @@ export default {
     directContact: 'Direct Contact',
     ceoLabel: 'CEO:',
     ceoName: 'Eng. Jesús Vásquez',
+    privacy: 'Privacy Policy',
+  },
+
+  cookies: {
+    message:
+      'We use cookies to analyze traffic and improve your experience. You can accept or reject non-essential (analytics & advertising) cookies.',
+    accept: 'Accept',
+    reject: 'Reject',
+    learnMore: 'Privacy Policy',
+    aria: 'Cookie consent',
   },
 };

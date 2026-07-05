@@ -67,6 +67,10 @@ const Footer = () => {
         <div className="footer-bottom-bar">
           <p style={{ margin: 0 }}>&copy; {new Date().getFullYear()} Webraf</p>
           <span className="footer-separator">|</span>
+          <Link to={getLocalizedPath('privacy', locale)} style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
+            {footer.privacy}
+          </Link>
+          <span className="footer-separator">|</span>
           <p style={{ margin: 0, fontSize: '0.85rem', textAlign: 'center' }}>
             {footer.ceoLabel}{' '}
             <a href="/jvportafolio" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', fontWeight: '600' }}>

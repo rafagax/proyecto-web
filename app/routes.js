@@ -37,6 +37,9 @@ export default [
   // Bilingual author page (Jesús Vásquez). Same module; locale from the URL.
   route('jvportafolio', 'routes/jv-portfolio.jsx', { id: 'jvportafolio-en' }),
   route('es/jvportafolio', 'routes/jv-portfolio.jsx', { id: 'jvportafolio-es' }),
+  // Bilingual Privacy Policy (same module; locale from the URL).
+  route('privacy', 'routes/privacy.jsx', { id: 'privacy-en' }),
+  route('es/privacidad', 'routes/privacy.jsx', { id: 'privacy-es' }),
   // Catch-all for unknown URLs → localized NotFound. The real HTTP 404 status is
   // served by Vercel from the prerendered /404 and /es/404 documents (vercel.json).
   route('*', 'routes/not-found.jsx'),

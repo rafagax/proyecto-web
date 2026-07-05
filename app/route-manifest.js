@@ -30,6 +30,7 @@ export const routeManifest = [
   { key: 'faqs',     en: '/faqs',                     es: '/es/preguntas-frecuentes',         type: 'page',    sitemap: true },
   { key: 'blog',     en: '/blog',                     es: '/es/blog',                         type: 'page',    sitemap: true },
   { key: 'jvportafolio', en: '/jvportafolio',         es: '/es/jvportafolio',                 type: 'page',    sitemap: true },
+  { key: 'privacy',      en: '/privacy',              es: '/es/privacidad',                   type: 'legal',   sitemap: true },
 ];
 
 // Blog articles. Slugs are identical in both languages (approved decision): the same

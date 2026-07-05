@@ -36,6 +36,9 @@ export default {
       // Bilingual author page (Jesús Vásquez).
       '/jvportafolio',
       '/es/jvportafolio',
+      // Bilingual Privacy Policy.
+      '/privacy',
+      '/es/privacidad',
       // Localized 404 documents — served with a real HTTP 404 by vercel.json routes.
       // They are NOT canonical routes and are NOT added to the sitemap.
       '/404',

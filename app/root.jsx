@@ -14,6 +14,7 @@ import '../src/App.css';
 import Navbar from '../src/components/Navbar';
 import Footer from '../src/components/Footer';
 import Chatbot from '../src/components/Chatbot';
+import CookieBanner from '../src/components/CookieBanner';
 import { SITE_URL, absoluteUrl } from '../src/config/site.js';
 import { getLocaleFromPath } from '../src/i18n/locale.js';
 
@@ -142,6 +143,20 @@ export function Layout({ children }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Google Analytics (gtag.js) — GA4 property G-NHBD8R7RQY, with Consent
+            Mode v2. Analytics/ads storage default to "denied" until the visitor
+            accepts via the cookie banner; a stored "granted" is re-applied here
+            before the first hit so returning visitors are measured immediately. */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHBD8R7RQY"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}" +
+              "gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});" +
+              "try{if(localStorage.getItem('cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}}catch(e){}" +
+              "gtag('js',new Date());gtag('config','G-NHBD8R7RQY');",
+          }}
+        />
         {/* Apply the saved theme before first paint (default = dark) to avoid a flash. */}
         <script
           dangerouslySetInnerHTML={{
@@ -224,6 +239,7 @@ export default function App() {
         </svg>
       </a>
       <Chatbot key={lang} />
+      <CookieBanner />
     </>
   );
 }
