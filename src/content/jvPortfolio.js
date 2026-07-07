@@ -2,6 +2,8 @@
 // One object per locale, picked by the component via useLocalizedContent's locale.
 // Facts, figures, dates and links are the SAME in both languages (only translated).
 
+import seoProofImg from '../assets/mejorasseoindicadores.webp';
+
 // Verifiable external links (same for both locales). Used in the hero buttons, the
 // "Verifiable links" section and the JSON-LD `sameAs`.
 export const AUTHOR_LINKS = {
@@ -12,12 +14,49 @@ export const AUTHOR_LINKS = {
 
 export const AUTHOR_PHOTO = '/Rafagaxjv/jesus.webp';
 
+const stackItems = {
+  en: [
+    { name: 'HTML5', category: 'Markup', icon: 'html5' },
+    { name: 'CSS3', category: 'Styling', icon: 'css3' },
+    { name: 'JavaScript', category: 'Language', icon: 'javascript' },
+    { name: 'React', category: 'Framework', icon: 'react' },
+    { name: 'Node.js', category: 'Runtime', icon: 'nodejs' },
+    { name: 'Bootstrap', category: 'CSS Framework', icon: 'bootstrap' },
+    { name: 'WordPress', category: 'CMS Specialist', icon: 'wordpress', highlight: true },
+    { name: 'Power BI', category: 'Analytics', icon: 'powerbi' },
+    { name: 'Git', category: 'Version Control', icon: 'git' },
+    { name: 'GitHub', category: 'Collaboration', icon: 'github' },
+    { name: 'VS Code', category: 'IDE', icon: 'vscode' },
+    { name: 'API Integration', category: 'Backend', icon: 'api' },
+    { name: 'Technical SEO', category: 'Optimization', icon: 'seo' },
+    { name: 'Core Web Vitals', category: 'Performance', icon: 'cwv' },
+    { name: 'AI Workflows', category: 'Automation', icon: 'ai' },
+  ],
+  es: [
+    { name: 'HTML5', category: 'Marcado', icon: 'html5' },
+    { name: 'CSS3', category: 'Estilos', icon: 'css3' },
+    { name: 'JavaScript', category: 'Lenguaje', icon: 'javascript' },
+    { name: 'React', category: 'Framework', icon: 'react' },
+    { name: 'Node.js', category: 'Runtime', icon: 'nodejs' },
+    { name: 'Bootstrap', category: 'Framework CSS', icon: 'bootstrap' },
+    { name: 'WordPress', category: 'Especialista CMS', icon: 'wordpress', highlight: true },
+    { name: 'Power BI', category: 'Analítica', icon: 'powerbi' },
+    { name: 'Git', category: 'Control de versiones', icon: 'git' },
+    { name: 'GitHub', category: 'Colaboración', icon: 'github' },
+    { name: 'VS Code', category: 'IDE', icon: 'vscode' },
+    { name: 'Integración de APIs', category: 'Backend', icon: 'api' },
+    { name: 'SEO Técnico', category: 'Optimización', icon: 'seo' },
+    { name: 'Core Web Vitals', category: 'Rendimiento', icon: 'cwv' },
+    { name: 'Flujos con IA', category: 'Automatización', icon: 'ai' },
+  ],
+};
+
 const content = {
   en: {
     meta: {
       title: 'Jesús Vásquez — Front-End Developer & Technical SEO Specialist | Webraf',
       description:
-        'Electronics Engineer and Front-End Developer with 4+ years building fast, SEO-optimized websites and KPI dashboards. The expert behind Webraf.',
+        'Electronics Engineer and Front-End Developer with 5+ years building fast, SEO-optimized websites and KPI dashboards. The expert behind Webraf.',
     },
     photoAlt: 'Jesús Vásquez, Electronics Engineer and Front-End Developer, founder of Webraf',
     hero: {
@@ -25,9 +64,10 @@ const content = {
       tagline: 'Electronics Engineer · Front-End Developer · Technical SEO Specialist',
       badges: {
         location: 'Maracay, Venezuela · International remote work',
-        experience: '4+ years of experience',
+        experience: '5+ years of experience',
         languages: 'Native Spanish · English C1',
       },
+      trustBadges: ['5+ years', '100+ client projects', 'WordPress Specialist'],
       linkedin: 'View LinkedIn',
       github: 'View GitHub',
       contact: 'Contact',
@@ -35,22 +75,22 @@ const content = {
     about: {
       heading: 'About Me',
       paragraphs: [
-        "I'm an Electronics Engineer and Front-End Web Developer with 4+ years of experience building fast, accessible, search-optimized websites. I'm the founder and technical lead of Webraf, where I combine three disciplines that rarely meet in one person: front-end development (HTML, CSS, JavaScript, React), technical SEO, and data analysis with KPI dashboards in Power BI.",
-        "I currently work as Web Development Coordinator at WebSell, where I run on-page and technical SEO audits, optimize load times and Core Web Vitals, oversee front-end architecture, and implement security protocols — including cleaning and recovering sites compromised by malware. Through end-to-end technical and on-page SEO strategies, we've ranked client sites among the top two Google results for their target searches.",
-        'Previously I led the Management Indicators Department at Sisprot Global Fiber, where I built JavaScript and React applications to automate data collection and visualization, and coordinated a 15-person team using Power BI and AI tools. I believe in continuous learning and in building user-centered solutions that are measurable and verifiable.',
+        "I'm an Electronics Engineer, Front-End Web Developer and Technical SEO Specialist with 5+ years of experience building fast, accessible and search-optimized websites. I founded Webraf to combine development, technical SEO, analytics and AI-assisted workflows into practical digital solutions for businesses.",
+        'In my agency work, I supported more than 100 client projects, handling technical and on-page SEO audits, Core Web Vitals improvements, front-end fixes, CMS optimizations and security recovery for compromised websites.',
+        'I combine development, data and AI to build solutions you can measure — not just launch and forget.',
       ],
     },
     experience: {
       heading: 'Professional Experience',
       roles: [
         {
-          company: 'WebSell',
+          company: 'Web Development Agency',
           title: 'Web Development Coordinator',
           period: '2025–Present · Maracay, Venezuela',
           bullets: [
             'On-page and technical SEO audits and optimization to grow organic visibility.',
             'Load time, UX and Core Web Vitals optimization.',
-            'Front-end architecture oversight (HTML, CSS, JavaScript, PHP) and CMS integrations.',
+            'Front-end architecture oversight (HTML, CSS, JavaScript) and WordPress CMS integrations.',
             'Web security: cleaning malware-compromised sites and recovering after incidents, reducing downtime.',
           ],
         },
@@ -79,10 +119,37 @@ const content = {
     results: {
       heading: 'Measurable Results',
       cards: [
-        { value: 'Top 2 on Google', label: 'Client sites ranked among the top two results for their target searches.' },
-        { value: '90+ PageSpeed', label: 'Score maintained on audited and optimized sites (PageSpeed Insights).' },
-        { value: '+300% productivity', label: 'On the sales team I coordinated using data and AI tools.' },
-        { value: '−25% errors', label: 'In planning and inventory after implementing digital tools.' },
+        {
+          value: 'Top 1 on Google',
+          label: 'Multiple client sites reached #1 positions on Google for target searches through technical SEO, on-page optimization and performance improvements.',
+          icon: 'trending',
+        },
+        {
+          value: '90+ PageSpeed',
+          label: 'Score maintained on audited and optimized sites (PageSpeed Insights).',
+          icon: 'gauge',
+        },
+        {
+          value: '+300% productivity',
+          label: 'On the sales team I coordinated using data and AI tools.',
+          icon: 'chart',
+        },
+        {
+          value: '−25% errors',
+          label: 'In planning and inventory after implementing digital tools.',
+          icon: 'shield',
+        },
+      ],
+    },
+    proofOfWork: {
+      heading: 'Proof of Work',
+      subtitle: 'Real SEO and performance improvements from client projects — measurable, not theoretical.',
+      items: [
+        {
+          src: seoProofImg,
+          alt: 'SEO and performance metrics dashboard showing improved search rankings and Core Web Vitals scores',
+          caption: 'SEO rankings and performance indicators after technical optimization',
+        },
       ],
     },
     education: {
@@ -99,7 +166,15 @@ const content = {
     },
     stack: {
       heading: 'Tech Stack',
-      items: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Bootstrap', 'WordPress', 'PHP', 'Power BI', 'Git', 'GitHub', 'VS Code', 'API integration', 'AI workflows (Claude, Gemini, ChatGPT)'],
+      subtitle: 'Technologies and disciplines I use daily across development, SEO and analytics.',
+      items: stackItems.en,
+      carouselLabel: 'Technologies in motion',
+    },
+    aiSkills: {
+      heading: 'AI-Assisted Development',
+      description:
+        'AI-assisted development workflows with ChatGPT, Claude, Gemini, Cursor, Codex CLI, Gemini CLI and Antigravity, including terminal-based coding, debugging, documentation and automation support.',
+      chips: ['Cursor', 'Codex CLI', 'Gemini CLI', 'Antigravity'],
     },
     links: {
       heading: 'Verifiable Links',
@@ -109,9 +184,9 @@ const content = {
       portfolio: 'Portfolio (Vercel)',
     },
     cta: {
-      heading: 'Want me to apply this experience to your project?',
-      text: 'Explore what Webraf can do for your business, or reach out directly.',
-      services: 'See SEO services',
+      heading: 'Want me to build or improve your website?',
+      text: "Explore Webraf's web development services or contact me directly to discuss your project.",
+      services: 'See Web Development Services',
       contact: 'Contact me',
     },
   },
@@ -120,7 +195,7 @@ const content = {
     meta: {
       title: 'Jesús Vásquez — Desarrollador Front-End y Especialista en SEO Técnico | Webraf',
       description:
-        'Ingeniero Electrónico y Desarrollador Front-End con más de 4 años creando sitios web rápidos y optimizados para SEO, y dashboards de KPI. El experto detrás de Webraf.',
+        'Ingeniero Electrónico y Desarrollador Front-End con más de 5 años creando sitios web rápidos y optimizados para SEO, y dashboards de KPI. El experto detrás de Webraf.',
     },
     photoAlt: 'Jesús Vásquez, Ingeniero Electrónico y Desarrollador Front-End, fundador de Webraf',
     hero: {
@@ -128,9 +203,10 @@ const content = {
       tagline: 'Ingeniero Electrónico · Desarrollador Front-End · Especialista en SEO Técnico',
       badges: {
         location: 'Maracay, Venezuela · Trabajo remoto internacional',
-        experience: 'Más de 4 años de experiencia',
+        experience: 'Más de 5 años de experiencia',
         languages: 'Español nativo · Inglés C1',
       },
+      trustBadges: ['5+ años', '100+ proyectos', 'Especialista WordPress'],
       linkedin: 'Ver LinkedIn',
       github: 'Ver GitHub',
       contact: 'Contactar',
@@ -138,22 +214,22 @@ const content = {
     about: {
       heading: 'Sobre mí',
       paragraphs: [
-        'Soy Ingeniero Electrónico y Desarrollador Web Front-End con más de 4 años de experiencia construyendo sitios web rápidos, accesibles y optimizados para buscadores. Soy el fundador y responsable técnico de Webraf, donde combino tres disciplinas que rara vez se encuentran en una sola persona: desarrollo front-end (HTML, CSS, JavaScript, React), SEO técnico y análisis de datos con dashboards de KPI en Power BI.',
-        'Actualmente me desempeño como Coordinador de Desarrollo Web en WebSell, donde ejecuto auditorías SEO on-page y técnicas, optimizo tiempos de carga y Core Web Vitals, superviso la arquitectura front-end e implemento protocolos de seguridad, incluyendo la limpieza y recuperación de sitios comprometidos por malware. Gracias a estrategias integrales de SEO técnico y on-page, hemos posicionado sitios de clientes entre los dos primeros resultados de Google en sus búsquedas objetivo.',
-        'Antes lideré el Departamento de Indicadores de Gestión en Sisprot Global Fiber, donde desarrollé aplicaciones en JavaScript y React para automatizar la recopilación y visualización de datos, y coordiné un equipo de 15 personas apoyándome en Power BI y herramientas de inteligencia artificial. Creo en el aprendizaje continuo y en construir soluciones centradas en el usuario, medibles y verificables.',
+        'Soy Ingeniero Electrónico, Desarrollador Web Front-End y Especialista en SEO Técnico con más de 5 años de experiencia construyendo sitios web rápidos, accesibles y optimizados para buscadores. Fundé Webraf para combinar desarrollo, SEO técnico, analítica y flujos asistidos por IA en soluciones digitales prácticas para negocios.',
+        'En mi trabajo en agencia, apoyé más de 100 proyectos de clientes, realizando auditorías SEO técnicas y on-page, mejoras de Core Web Vitals, correcciones front-end, optimizaciones en CMS y recuperación de sitios comprometidos por malware.',
+        'Combino desarrollo, datos e IA para crear soluciones que puedes medir — no solo lanzar y olvidar.',
       ],
     },
     experience: {
       heading: 'Experiencia profesional',
       roles: [
         {
-          company: 'WebSell',
+          company: 'Agencia de desarrollo web',
           title: 'Coordinador de Desarrollo Web',
           period: '2025–Actualidad · Maracay, Venezuela',
           bullets: [
             'Auditorías y optimización SEO on-page y técnica para incrementar la visibilidad orgánica.',
             'Optimización de tiempos de carga, UX y Core Web Vitals.',
-            'Supervisión de arquitectura front-end (HTML, CSS, JavaScript, PHP) e integraciones en CMS.',
+            'Supervisión de arquitectura front-end (HTML, CSS, JavaScript) e integraciones en WordPress.',
             'Seguridad web: limpieza de sitios comprometidos por malware y recuperación tras incidentes, reduciendo el tiempo de inactividad.',
           ],
         },
@@ -182,10 +258,37 @@ const content = {
     results: {
       heading: 'Resultados medibles',
       cards: [
-        { value: 'Top 2 en Google', label: 'Sitios de clientes posicionados entre los dos primeros resultados en sus búsquedas objetivo.' },
-        { value: '+90 en PageSpeed', label: 'Puntuación mantenida en los sitios auditados y optimizados (PageSpeed Insights).' },
-        { value: '+300% productividad', label: 'En el equipo de ventas que coordiné con herramientas de datos e IA.' },
-        { value: '−25% de errores', label: 'En planificación e inventario tras implementar herramientas digitales.' },
+        {
+          value: 'Top 1 en Google',
+          label: 'Varios sitios de clientes alcanzaron la posición #1 en Google para búsquedas objetivo mediante SEO técnico, optimización on-page y mejoras de rendimiento.',
+          icon: 'trending',
+        },
+        {
+          value: '+90 en PageSpeed',
+          label: 'Puntuación mantenida en los sitios auditados y optimizados (PageSpeed Insights).',
+          icon: 'gauge',
+        },
+        {
+          value: '+300% productividad',
+          label: 'En el equipo de ventas que coordiné con herramientas de datos e IA.',
+          icon: 'chart',
+        },
+        {
+          value: '−25% de errores',
+          label: 'En planificación e inventario tras implementar herramientas digitales.',
+          icon: 'shield',
+        },
+      ],
+    },
+    proofOfWork: {
+      heading: 'Trabajo comprobable',
+      subtitle: 'Mejoras reales de SEO y rendimiento en proyectos de clientes — medibles, no teóricas.',
+      items: [
+        {
+          src: seoProofImg,
+          alt: 'Panel de métricas SEO y rendimiento mostrando mejoras en posiciones de búsqueda y Core Web Vitals',
+          caption: 'Indicadores de posicionamiento y rendimiento tras optimización técnica',
+        },
       ],
     },
     education: {
@@ -202,7 +305,15 @@ const content = {
     },
     stack: {
       heading: 'Stack tecnológico',
-      items: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Bootstrap', 'WordPress', 'PHP', 'Power BI', 'Git', 'GitHub', 'VS Code', 'Integración de APIs', 'Flujos con IA (Claude, Gemini, ChatGPT)'],
+      subtitle: 'Tecnologías y disciplinas que uso a diario en desarrollo, SEO y analítica.',
+      items: stackItems.es,
+      carouselLabel: 'Tecnologías en movimiento',
+    },
+    aiSkills: {
+      heading: 'Desarrollo asistido por IA',
+      description:
+        'Flujos de desarrollo asistidos por IA con ChatGPT, Claude, Gemini, Cursor, Codex CLI, Gemini CLI y Antigravity, incluyendo codificación en terminal, depuración, documentación y soporte de automatización.',
+      chips: ['Cursor', 'Codex CLI', 'Gemini CLI', 'Antigravity'],
     },
     links: {
       heading: 'Enlaces verificables',
@@ -212,9 +323,9 @@ const content = {
       portfolio: 'Portafolio (Vercel)',
     },
     cta: {
-      heading: '¿Quieres que aplique esta experiencia a tu proyecto?',
-      text: 'Conoce lo que Webraf puede hacer por tu negocio, o escríbeme directamente.',
-      services: 'Ver servicios de SEO',
+      heading: '¿Quieres que construya o mejore tu sitio web?',
+      text: 'Explora los servicios de desarrollo web de Webraf o escríbeme directamente para hablar de tu proyecto.',
+      services: 'Ver servicios de desarrollo web',
       contact: 'Escríbeme',
     },
   },
