@@ -25,7 +25,12 @@ import { OG_IMAGE } from './og.js';
 // Site-wide <link> tags (favicons). No font preconnects: the site uses system fonts
 // only, so connections to Google Fonts would be opened and never used.
 export const links = () => [
-  { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+  // Brand favicons generated from the Webraf square logo (scripts/gen-favicons.mjs).
+  // The 48px PNG doubles as Google's SERP favicon (min 48×48 required).
+  { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+  { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16.png' },
+  { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
+  { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/favicon-48.png' },
   // iOS home-screen icon must be a PNG (Safari ignores SVG here) — 180×180.
   { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
 ];
