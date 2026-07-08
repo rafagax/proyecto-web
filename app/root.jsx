@@ -59,6 +59,7 @@ const orgSchema = (lang) => ({
   email: 'contact@webraf.com',
   telephone: '+584144735431',
   areaServed: 'Worldwide',
+  knowsLanguage: ['en', 'es'],
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
@@ -153,8 +154,11 @@ export function Layout({ children }) {
         {/* Google Analytics (gtag.js) — GA4 property G-NHBD8R7RQY, with Consent
             Mode v2. Analytics/ads storage default to "denied" until the visitor
             accepts via the cookie banner; a stored "granted" is re-applied here
-            before the first hit so returning visitors are measured immediately. */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NHBD8R7RQY"></script>
+            before the first hit so returning visitors are measured immediately.
+            The dataLayer/gtag() stub and every consent/config call below stay
+            INLINE (they must run before any hit); only the ~177KB gtag.js
+            download is deferred (next script) so it never competes with the
+            LCP. Everything queued here is replayed when the script arrives. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
@@ -162,6 +166,23 @@ export function Layout({ children }) {
               "gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});" +
               "try{if(localStorage.getItem('cookie-consent')==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}}catch(e){}" +
               "gtag('js',new Date());gtag('config','G-NHBD8R7RQY');",
+          }}
+        />
+        {/* Deferred gtag.js loader: inject the external script only on the first
+            user interaction (pointerdown/keydown/scroll, once) or after 3.5s of
+            idle, whichever comes first. PageSpeed flagged gtag.js as the largest
+            unused JS at startup; deferring it frees bandwidth/CPU for the LCP
+            without losing hits (they queue in dataLayer, see stub above). The
+            `d` guard makes the load idempotent across the racing triggers. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){var d=false;function l(){if(d)return;d=true;" +
+              "var s=document.createElement('script');s.async=true;" +
+              "s.src='https://www.googletagmanager.com/gtag/js?id=G-NHBD8R7RQY';" +
+              "document.head.appendChild(s);}" +
+              "['pointerdown','keydown','scroll'].forEach(function(e){window.addEventListener(e,l,{once:true,passive:true});});" +
+              "window.setTimeout(l,3500);})();",
           }}
         />
         {/* Apply the saved theme before first paint (default = dark) to avoid a flash. */}

@@ -2992,12 +2992,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
   }
 }
 
-/* Inline mobile image for feature blocks — hidden on larger screens,
-   where the side image (direct child of .feature-row) is used instead. */
-.mobile-feature-img {
-  display: none;
-}
-
 @media (max-width: 600px) {
   /* Featured Web Dev section: tighter vertical padding; the default 80px
      top/bottom leaves too much empty space on small screens. */
@@ -3006,13 +3000,40 @@ body.cookie-consent-open #ka-chatbot-toggle {
     padding-bottom: 2.5rem;
   }
 
-  /* On phones every feature block reads title → image → paragraph → bullets → CTA:
-     hide the side image and reveal the inline one placed right under the title. */
-  .feature-row > .feature-visual {
-    display: none;
+  /* On phones every feature block reads title → image → paragraph → bullets → CTA
+     with a SINGLE copy of the visual in the DOM (SEO dedup — no hidden duplicate).
+     The text column unwraps (display: contents) so its children and the side
+     visual share one flex column, and `order` slots the visual under the title. */
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    /* Base rule sets align-items: center (grid block axis); on this flex
+       column that would center children horizontally — reset to stretch. */
+    align-items: stretch;
+    gap: 0; /* spacing comes from the elements' own margins, as before */
   }
-  .feature-row .feature-text .mobile-feature-img {
-    display: block;
+  .feature-row > .feature-text {
+    display: contents;
+  }
+  .feature-text > .feature-eyebrow,
+  .feature-text > h2,
+  .feature-text > h3 {
+    order: -2;
+  }
+  .feature-row > .feature-visual,
+  .feature-row.reverse > .feature-visual {
+    order: -1;
+    width: 100%;
+    min-height: 0; /* plain images keep their natural height on phones */
+    margin-bottom: 1.5rem;
+  }
+  /* The framed photo variant needs an explicit box for its absolute image */
+  .feature-row > .feature-visual.feature-visual-image {
+    min-height: 240px;
+  }
+  /* CTA links keep their natural inline width (flex items would stretch) */
+  .feature-text > a {
+    align-self: flex-start;
   }
 }
 
@@ -3502,5 +3523,51 @@ body.cookie-consent-open #ka-chatbot-toggle {
 @media (max-width: 768px) {
   .hero:has(.page-hero-title) {
     padding-top: 108px !important;
+  }
+}
+
+/* ==========================================================================
+   DOM dedup (SEO) — service-page capability/process blocks render ONCE.
+   Desktop keeps the grid; on mobile the SAME grid becomes a swipeable
+   horizontal scroll-snap carousel (replaces the old MobileAutoCarousel,
+   which kept a hidden duplicate grid + a cloned card track in the DOM).
+   ========================================================================== */
+@media (max-width: 768px) {
+  .wdd-feature-grid,
+  .wdd-process {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 2rem;
+    scrollbar-width: none;
+    /* Full-bleed strip; side padding matches the 2rem container padding */
+    margin: 0 -2rem;
+    padding: 1rem 2rem;
+    /* Fade cards in/out at the edges — same look as the previous carousel */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+  }
+
+  .wdd-feature-grid::-webkit-scrollbar,
+  .wdd-process::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fixed-width cards (consistent size + peek of the next card) */
+  .wdd-feature-grid .wdd-feature-card,
+  .wdd-process .wdd-process-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    user-select: none;
+  }
+
+  /* Cards live in a horizontal strip: never gate them behind the vertical
+     scroll-reveal, or the ones off-screen to the right would stay invisible. */
+  .reveal-ready .wdd-feature-grid .reveal-card,
+  .reveal-ready .wdd-process .reveal-card {
+    opacity: 1;
+    transform: none;
   }
 }

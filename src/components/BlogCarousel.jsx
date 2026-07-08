@@ -141,7 +141,8 @@ export const BlogCarousel = () => {
                       </div>
                       <h3>{title}</h3>
                       <p className="blog-excerpt">{excerpt}</p>
-                      <Link to={blogPostPath(post.slug, locale)} className="read-more">
+                      {/* Visible text stays "Read More"; aria-label makes the link name descriptive. */}
+                      <Link to={blogPostPath(post.slug, locale)} className="read-more" aria-label={`${section.readMore}: ${title}`}>
                         {section.readMore} <ArrowRight size={18} />
                       </Link>
                     </div>

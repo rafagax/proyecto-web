@@ -186,7 +186,12 @@ const Chatbot = () => {
         aria-controls="ka-chatbot-window"
         onClick={toggleChat}
       >
-        <img src={chatbotImg} alt={cb.ui.avatarAlt} id="ka-avatar-img" width={120} height={120} />
+        {/* loading="lazy" stops React's SSR from emitting a <link rel="preload">
+            for this avatar in every page's <head> (it competed with the hero/LCP
+            for bandwidth). The launcher sits inside the initial viewport, so the
+            lazy image still loads right away once layout is known — just without
+            an early head preload. */}
+        <img src={chatbotImg} alt={cb.ui.avatarAlt} id="ka-avatar-img" width={120} height={120} loading="lazy" />
         <span id="ka-chatbot-pulse"></span>
       </button>
 

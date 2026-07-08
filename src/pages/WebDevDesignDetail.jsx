@@ -15,7 +15,6 @@ import heroImg from '../assets/herodevelop12.webp';
 import customImg from '../assets/web-dev-custom.webp';
 import responsiveImg from '../assets/developwebhero.webp';
 import storeImg from '../assets/tiendachica.webp';
-import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
 
@@ -200,14 +199,10 @@ const WebDevDesignDetail = () => {
             </p>
           </div>
 
-          {/* Desktop: unified grid */}
-          <div className="wdd-feature-grid wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-feature-grid reveal-group">
             {wd.essentials.capabilities.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} reveal />)}
           </div>
-          {/* Mobile: swipeable auto-scrolling carousel */}
-          <MobileAutoCarousel>
-            {wd.essentials.capabilities.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} />)}
-          </MobileAutoCarousel>
 
           {/* Single CTA for the section */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
@@ -251,14 +246,10 @@ const WebDevDesignDetail = () => {
               {wd.process.heading.before}<span className="text-gradient">{wd.process.heading.accent}</span>{wd.process.heading.after}
             </h2>
           </div>
-          {/* Desktop: grid */}
-          <div className="wdd-process wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-process reveal-group">
             {wd.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} reveal />)}
           </div>
-          {/* Mobile: swipeable auto-scrolling carousel */}
-          <MobileAutoCarousel speed={0.95}>
-            {wd.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} />)}
-          </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             {primaryCta(wd.process.cta, wd.process.waQuote)}
           </div>

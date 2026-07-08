@@ -7,11 +7,14 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
 
-// Logos live in /public/logos (static) rather than as ES imports on purpose: importing
-// them made React Router auto-emit <link rel="preload" as="image"> for all four variants
-// in every page's <head>, competing with the hero image (the LCP). Static paths are not
-// preloaded, so the hero wins. The four <img> below are still all rendered and CSS picks
-// the right one per theme/breakpoint (no hydration flash).
+// Logos live in /public/logos (static paths, not ES imports). NOTE: React 19's SSR
+// auto-emits <link rel="preload" as="image"> in the prerendered <head> for EVERY
+// eagerly rendered <img> regardless of how the src is referenced — the only opt-outs
+// at the <img> level are loading="lazy", fetchPriority="low", or a <picture>/<noscript>
+// ancestor. None of the four variants should ever be preloaded (they compete with the
+// hero image, the LCP, for bandwidth), hence the loading/fetchPriority attributes on
+// the <img> tags below. The four <img> are still all rendered and CSS picks the right
+// one per theme/breakpoint (no hydration flash).
 const LOGO = {
   hDark: '/logos/webraf-h-dark.webp',
   hLight: '/logos/webraf-h-light.webp',
@@ -105,11 +108,17 @@ const Navbar = () => {
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to={navPath.home} className="navbar-logo" aria-label="Webraf — Web Development">
-            {/* Above the fold on every page: no lazy; intrinsic dims prevent CLS. */}
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} />
+            {/* Dark variants (default theme) stay eager — above the fold on every
+                page — but fetchPriority="low" stops React's SSR preload and keeps
+                these small webps from competing with the hero (LCP) for bandwidth.
+                Light variants are display:none until the user switches theme, so
+                loading="lazy" means the browser never downloads them (and never
+                preloads them) unless/until they become visible. Intrinsic
+                width/height prevent CLS in all four. */}
+            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} fetchPriority="low" />
+            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} loading="lazy" />
+            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} fetchPriority="low" />
+            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} loading="lazy" />
           </Link>
 
           <nav className="navbar-links" aria-label={locale === 'es' ? 'Principal' : 'Main'}>
@@ -171,11 +180,17 @@ const Navbar = () => {
       >
         <div className="mobile-menu-header">
           <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} aria-label="Webraf — Web Development">
-            {/* Above the fold on every page: no lazy; intrinsic dims prevent CLS. */}
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} />
+            {/* Dark variants (default theme) stay eager — above the fold on every
+                page — but fetchPriority="low" stops React's SSR preload and keeps
+                these small webps from competing with the hero (LCP) for bandwidth.
+                Light variants are display:none until the user switches theme, so
+                loading="lazy" means the browser never downloads them (and never
+                preloads them) unless/until they become visible. Intrinsic
+                width/height prevent CLS in all four. */}
+            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} fetchPriority="low" />
+            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} loading="lazy" />
+            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} fetchPriority="low" />
+            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} loading="lazy" />
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />

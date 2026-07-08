@@ -11,7 +11,6 @@ import {
   Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import seoMainImg from '../assets/seoimagen.webp';
 import seoHeroImg from '../assets/seo imagen setion.webp';
 import seoLocalImg from '../assets/servicioseoimagenes.webp';
@@ -158,12 +157,10 @@ const SeoDigitalGrowthDetail = () => {
             </p>
           </div>
 
-          <div className="wdd-feature-grid wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-feature-grid reveal-group">
             {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} reveal />)}
           </div>
-          <MobileAutoCarousel>
-            {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} />)}
-          </MobileAutoCarousel>
 
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             {primaryCta(t.capabilities.cta, t.capabilities.waQuote)}
@@ -206,12 +203,10 @@ const SeoDigitalGrowthDetail = () => {
               {t.process.heading.before}<span className="text-gradient">{t.process.heading.accent}</span>{t.process.heading.after}
             </h2>
           </div>
-          <div className="wdd-process wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-process reveal-group">
             {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} reveal />)}
           </div>
-          <MobileAutoCarousel speed={0.95}>
-            {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} />)}
-          </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
             {primaryCta(t.process.cta, t.process.waQuote)}
           </div>

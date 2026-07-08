@@ -194,23 +194,6 @@ const Home = () => {
               <h2 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 {home.featured.title.before}<span className="text-gradient">{home.featured.title.accent}</span>{home.featured.title.after}
               </h2>
-              {/* Mobile-only image: sits between the title and the paragraph so phones
-                  see the visual early (title → image → paragraph → bullets → CTA). */}
-              <div className="feature-visual feature-visual-image mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img
-                  src={webDevImg}
-                  alt={home.featured.imageAlt}
-                  loading="lazy"
-                  width="1672"
-                  height="941"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
-                <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
-                  <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
-                  {home.featured.imageCaption}
-                </div>
-              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 {home.featured.description}
               </p>
@@ -223,6 +206,9 @@ const Home = () => {
                 {home.featured.cta} <ArrowRight size={16} />
               </Link>
             </div>
+            {/* Single visual copy: right column on desktop, repositioned between
+                title and paragraph on phones via CSS (see the max-600px
+                .feature-row rules in App.css) — no duplicated DOM/text. */}
             <div className="feature-visual feature-visual-image reveal-right">
               {/* Premium corporate website image */}
               <img
@@ -236,7 +222,7 @@ const Home = () => {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
                 <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
-                Premium corporate websites
+                {home.featured.imageCaption}
               </div>
             </div>
           </div>
@@ -443,10 +429,6 @@ const Home = () => {
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 {home.build.seo.title.before}<span className="text-gradient">{home.build.seo.title.accent}</span>{home.build.seo.title.after}
               </h3>
-              {/* Mobile-only image: title → image → paragraph on phones */}
-              <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" width="1672" height="941" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
-              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 {home.build.seo.description}
               </p>
@@ -472,34 +454,6 @@ const Home = () => {
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 {home.build.ai.title.before}<span className="text-gradient">{home.build.ai.title.accent}</span>{home.build.ai.title.after}
               </h3>
-              {/* Mobile-only chat mockup: title → mockup → paragraph on phones */}
-              <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <div role="img" aria-label={home.build.ai.mockupAria} style={{ width: '100%', maxWidth: 320, margin: '0 auto', borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: '0 18px 45px rgba(0,0,0,0.30)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 13px', background: '#075E54' }}>
-                    <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#128C7E', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
-                      <Bot size={18} />
-                    </div>
-                    <div style={{ lineHeight: 1.2 }}>
-                      <div style={{ color: '#fff', fontWeight: 600, fontSize: '0.85rem' }}>AI Assistant</div>
-                      <div style={{ color: '#a7d7cf', fontSize: '0.68rem' }}>online</div>
-                    </div>
-                  </div>
-                  <div style={{ background: '#ECE5DD', padding: '14px 11px', display: 'flex', flexDirection: 'column', gap: 8 }}>
-                    <div style={{ alignSelf: 'flex-start', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 10px 2px', background: '#fff', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                      {home.build.ai.mockup.msg1}
-                      <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02</span>
-                    </div>
-                    <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                      {home.build.ai.mockup.msg2}
-                      <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:02 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
-                    </div>
-                    <div style={{ alignSelf: 'flex-end', maxWidth: '82%', padding: '6px 9px 16px', borderRadius: '10px 10px 2px 10px', background: '#DCF8C6', color: '#111B21', fontSize: '0.8rem', lineHeight: 1.4, position: 'relative', boxShadow: '0 1px 1px rgba(0,0,0,0.10)' }}>
-                      {home.build.ai.mockup.msg3}
-                      <span style={{ position: 'absolute', right: 8, bottom: 4, fontSize: '0.58rem', color: '#667781' }}>10:03 <span style={{ color: '#34B7F1' }}>✓✓</span></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 {home.build.ai.description}
               </p>
@@ -549,10 +503,6 @@ const Home = () => {
               <h3 style={{ fontSize: '1.9rem', marginBottom: '1rem', lineHeight: 1.25, color: 'var(--text-primary)' }}>
                 {home.build.kpi.title.before}<span className="text-gradient">{home.build.kpi.title.accent}</span>{home.build.kpi.title.after}
               </h3>
-              {/* Mobile-only image: title → image → paragraph on phones */}
-              <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" width="1639" height="960" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
-              </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 {home.build.kpi.description}
               </p>

@@ -26,7 +26,7 @@ export default {
     {
       heading: { before: 'Que te encuentren las personas que ya están ', accent: 'buscando', after: '' },
       copy: 'El mejor tráfico proviene de personas que ya buscan lo que ofreces. Optimizamos tu página web y tu contenido para que los clientes adecuados te encuentren primero en Google.',
-      points: ['Investigación de palabras clave y competencia', 'Optimización SEO on-page', 'Contenido creado para posicionar', 'Mayor visibilidad en Google'],
+      points: ['Análisis de palabras clave y competencia', 'Optimización SEO on-page', 'Contenido creado para posicionar', 'Mayor visibilidad en Google'],
       cta: 'Empieza a posicionarte más alto',
       waQuote: 'Hola, me gustaría empezar a posicionarme más alto en Google.',
       alt: 'Analítica de búsqueda e investigación de palabras clave en una laptop',
@@ -73,7 +73,7 @@ export default {
     heading: { before: 'Nuestro ', accent: 'proceso de SEO', after: '' },
     steps: [
       { title: 'Auditoría SEO', text: 'Analizamos tu sitio, tu competencia y tu visibilidad actual para encontrar oportunidades.' },
-      { title: 'Investigación de palabras clave', text: 'Mapeamos los términos de búsqueda y la intención que traen clientes calificados.' },
+      { title: 'Estudio de palabras clave', text: 'Mapeamos los términos de búsqueda y la intención que traen clientes calificados.' },
       { title: 'On-page y técnico', text: 'Optimizamos contenido, estructura, velocidad y metadatos para posicionar.' },
       { title: 'Local y contenido', text: 'Fortalecemos la presencia local y publicamos contenido que atrae tráfico.' },
       { title: 'Medir y reportar', text: 'Medimos posiciones, tráfico y contactos — y seguimos mejorando.' },

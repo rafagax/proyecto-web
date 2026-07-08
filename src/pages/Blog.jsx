@@ -27,7 +27,7 @@ const Blog = () => {
       <section className="blog-section">
         <div className="container">
           <div className="blog-grid">
-            {blogPosts.map((post) => {
+            {blogPosts.map((post, cardIndex) => {
               // Locale content is keyed by that locale's own slug (ES slugs are translated).
               const lp = t.posts[localizedSlug(post.slug, locale)];
               const postUrl = blogPostPath(post.slug, locale);
@@ -35,7 +35,9 @@ const Blog = () => {
                 <article key={post.id} className="blog-card">
                   {/* Image link is a duplicate of the title link → hidden from AT/tab order. */}
                   <Link to={postUrl} aria-hidden="true" tabIndex={-1}>
-                    <img src={post.image} alt={lp.imageAlt || `${t.article.imageAltPrefix} ${lp.title}`} className="blog-card-image" />
+                    {/* First card is the page's LCP candidate: stays eager (and keeps its
+                        SSR preload). The rest lazy-load so they don't compete with it. */}
+                    <img src={post.image} alt={lp.imageAlt || `${t.article.imageAltPrefix} ${lp.title}`} className="blog-card-image" loading={cardIndex === 0 ? undefined : 'lazy'} />
                   </Link>
                   <div className="blog-category">{t.categories[post.category] || post.category}</div>
                   {/* Title is the main link: descriptive anchor text for the post. */}
@@ -55,7 +57,8 @@ const Blog = () => {
                       <span>{lp.date}</span>
                     </div>
                   </div>
-                  <Link to={postUrl} className="read-more">
+                  {/* Visible text stays "Read More"; aria-label makes the link name descriptive. */}
+                  <Link to={postUrl} className="read-more" aria-label={`${t.section.readMore}: ${lp.title}`}>
                     {t.section.readMore} <ArrowRight size={18} />
                   </Link>
                 </article>
