@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { testimonials as testimonialPeople } from '../data/testimonials';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
@@ -17,52 +17,81 @@ export const TestimonialsCarousel = () => {
   const { content } = useLocalizedContent();
   const { section, items } = content.testimonials;
   const testimonials = testimonialPeople.map((person, i) => ({ ...person, ...items[i] }));
+  const sectionRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  // Autoplay never starts under prefers-reduced-motion and stops permanently
+  // after any manual navigation (WCAG 2.2.2 Pause, Stop, Hide).
+  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
   // Start at 3 to match the server/prerendered render, then adjust on the client
   // (avoids a hydration mismatch). Also keeps it responsive on resize.
   const [visibleCount, setVisibleCount] = useState(3);
 
-  // Autoplay carousel
+  // Only autoplay while the section is actually on screen.
   useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Autoplay carousel (pauses on hover/focus, stops after manual navigation).
+  // Never starts under prefers-reduced-motion (WCAG 2.2.2 Pause, Stop, Hide).
+  useEffect(() => {
+    if (!autoplayEnabled || isPaused || !isInView) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, []);
+  }, [autoplayEnabled, isPaused, isInView, testimonials.length]);
 
-  // Determine how many cards to show based on screen size
-  const getVisibleCount = () => {
-    if (typeof window === 'undefined') return 3;
-    const width = window.innerWidth;
-    if (width < 768) return 1;
-    if (width < 1024) return 2;
-    return 3;
-  };
-
+  // Determine how many cards to show based on screen size (client-only)
   useEffect(() => {
-    const update = () => setVisibleCount(getVisibleCount());
+    const update = () => {
+      const width = window.innerWidth;
+      setVisibleCount(width < 768 ? 1 : width < 1024 ? 2 : 3);
+    };
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
   }, []);
 
+  const stopAutoplay = () => setAutoplayEnabled(false);
+
   const handlePrevious = () => {
+    stopAutoplay();
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   const handleNext = () => {
+    stopAutoplay();
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
 
-  const displayCount = visibleCount === 3 ? 3 : visibleCount;
+  const displayCount = visibleCount;
+
+  const pauseProps = {
+    onMouseEnter: () => setIsPaused(true),
+    onMouseLeave: () => setIsPaused(false),
+    onFocus: () => setIsPaused(true),
+    onBlur: (e) => {
+      if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false);
+    },
+  };
 
   return (
-    <section className="testimonials-carousel-section">
+    <section className="testimonials-carousel-section" ref={sectionRef}>
       <div className="container">
         <h2>{section.heading}</h2>
         <p>{section.subtitle}</p>
 
-        <div className="testimonials-carousel-wrapper">
+        <div className="testimonials-carousel-wrapper" {...pauseProps}>
           {/* Previous Button */}
           <button
             onClick={handlePrevious}
@@ -99,7 +128,11 @@ export const TestimonialsCarousel = () => {
                     <span className="tm-quote-mark" aria-hidden="true">&rdquo;</span>
                     <span className="tm-service-tag">{testimonial.service}</span>
 
-                    <div className="testimonial-rating">
+                    <div
+                      className="testimonial-rating"
+                      role="img"
+                      aria-label={`${testimonial.rating} ${section.ratingLabel}`}
+                    >
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} size={16} fill="#FFD700" />
                       ))}
@@ -147,7 +180,7 @@ export const TestimonialsCarousel = () => {
         </div>
 
         {/* Indicators */}
-        <div className="carousel-indicators-testimonials">
+        <div className="carousel-indicators-testimonials" {...pauseProps}>
           {testimonials.map((_, idx) => {
             let isActive = false;
             for (let i = 0; i < displayCount; i++) {
@@ -160,7 +193,10 @@ export const TestimonialsCarousel = () => {
               <button
                 key={idx}
                 className={`indicator ${isActive ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(idx)}
+                onClick={() => {
+                  stopAutoplay();
+                  setCurrentIndex(idx);
+                }}
                 aria-label={`${section.indicatorLabel} ${idx + 1}`}
               />
             );

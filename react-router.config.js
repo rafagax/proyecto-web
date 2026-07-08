@@ -1,4 +1,5 @@
 import { blogPosts } from './src/data/blogPosts.js';
+import { blogPostPath } from './app/route-manifest.js';
 
 /** @type {import('@react-router/dev/config').Config} */
 export default {
@@ -31,15 +32,20 @@ export default {
       '/es/contacto',
       '/blog',
       '/es/blog',
-      ...blogPosts.map((p) => `/blog/${p.slug}`),
-      ...blogPosts.map((p) => `/es/blog/${p.slug}`),
+      // ES slugs are translated (route-manifest is the single source of truth),
+      // so resolve each path through blogPostPath instead of reusing the EN slug.
+      ...blogPosts.map((p) => blogPostPath(p.slug, 'en')),
+      ...blogPosts.map((p) => blogPostPath(p.slug, 'es')),
       // Bilingual author page (Jesús Vásquez).
       '/jvportafolio',
       '/es/jvportafolio',
       // Bilingual Privacy Policy.
       '/privacy',
       '/es/privacidad',
-      // Localized 404 documents — served with a real HTTP 404 by vercel.json routes.
+      // Localized 404 documents — served with a real HTTP 404 by Apache/cPanel:
+      // public/.htaccess points ErrorDocument at /404.html (a flat copy of
+      // /404/index.html made postbuild) and scripts/generate-seo-files.mjs writes
+      // build/client/es/.htaccess so /es/* errors get the Spanish 404.
       // They are NOT canonical routes and are NOT added to the sitemap.
       '/404',
       '/es/404',

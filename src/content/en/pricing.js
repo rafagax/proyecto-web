@@ -17,6 +17,7 @@ export default {
   },
   popularBadge: 'Most Popular',
   getStarted: 'Get Started',
+  notIncludedLabel: 'Not included:',
   plans: [
     {
       name: 'Starter',
@@ -34,6 +35,24 @@ export default {
       features: ['Full Online Store', 'Payment Gateway Integration', 'Admin Dashboard', 'First 20 Products Uploaded', 'Inventory Management', 'Order Tracking System', 'SEO for Products', 'Priority Support (2 Months)'],
     },
   ],
+  // Trust strip under the plan cards. Only commitments already published elsewhere
+  // on the site (FAQs, plan features) — no invented guarantees.
+  trust: {
+    items: [
+      {
+        title: 'Free, no-obligation audit',
+        text: 'Start with a free audit of your website or digital presence — a useful starting point whether or not you decide to work with us.',
+      },
+      {
+        title: 'No hidden fees',
+        text: 'The price you see is the price you pay. We agree on a clear timeline and scope before we start.',
+      },
+      {
+        title: 'Support after launch',
+        text: "We stay available after launch for updates, fixes, and improvements. We don't disappear once your project goes live.",
+      },
+    ],
+  },
   monthly: {
     heading: { before: 'Monthly ', accent: 'Services', after: '' },
     subtitle: 'Ongoing monthly services to keep your business growing and performing at its best.',

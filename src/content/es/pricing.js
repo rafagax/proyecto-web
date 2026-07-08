@@ -2,11 +2,11 @@
 // positions stay in Pricing.jsx (structural). Same keys/order as en/pricing.js.
 export default {
   meta: {
-    title: 'Planes y precios — Páginas web desde $299 | Webraf',
+    title: 'Planes y precios — Sitios web desde $299 | Webraf',
     description:
-      'Precios simples y transparentes para páginas web, SEO, dashboards de KPI y automatización con IA. Páginas web profesionales desde $299, sin costos ocultos.',
+      'Precios simples y transparentes para sitios web, SEO, dashboards de KPI y automatización con IA. Sitios web profesionales desde $299, sin costos ocultos.',
     ogTitle: 'Planes y precios | Webraf',
-    ogDescription: 'Precios transparentes y sin costos ocultos. Páginas web desde $299, además de servicios mensuales de SEO, gestión e IA.',
+    ogDescription: 'Precios transparentes y sin costos ocultos. Sitios web desde $299, además de servicios mensuales de SEO, gestión e IA.',
   },
   hero: {
     eyebrow: 'Precios transparentes',
@@ -16,6 +16,7 @@ export default {
   },
   popularBadge: 'Más popular',
   getStarted: 'Empezar',
+  notIncludedLabel: 'No incluido:',
   plans: [
     {
       name: 'Inicial',
@@ -25,7 +26,7 @@ export default {
     {
       name: 'Empresarial',
       audience: 'Para pymes y negocios de servicios en crecimiento',
-      features: ['Página web multipágina (hasta 5 páginas)', 'Diseño responsivo premium', 'Optimización SEO avanzada', 'Integración de redes sociales', 'Dominio y hosting por 1 año', 'Chatbot de WhatsApp', 'Configuración de Google My Business', 'Soporte prioritario (1 mes)'],
+      features: ['Sitio web multipágina (hasta 5 páginas)', 'Diseño responsivo premium', 'Optimización SEO avanzada', 'Integración de redes sociales', 'Dominio y hosting por 1 año', 'Chatbot de WhatsApp', 'Configuración de Google My Business', 'Soporte prioritario (1 mes)'],
     },
     {
       name: 'E-Commerce',
@@ -33,6 +34,24 @@ export default {
       features: ['Tienda online completa', 'Integración de pasarela de pago', 'Panel de administración', 'Primeros 20 productos cargados', 'Gestión de inventario', 'Sistema de seguimiento de pedidos', 'SEO para productos', 'Soporte prioritario (2 meses)'],
     },
   ],
+  // Trust strip under the plan cards. Only commitments already published elsewhere
+  // on the site (FAQs, plan features) — no invented guarantees.
+  trust: {
+    items: [
+      {
+        title: 'Auditoría gratuita y sin compromiso',
+        text: 'Empieza con una auditoría gratuita de tu sitio web o presencia digital — un buen punto de partida, decidas o no trabajar con nosotros.',
+      },
+      {
+        title: 'Sin costos ocultos',
+        text: 'El precio que ves es el precio que pagas. Acordamos un cronograma y un alcance claros antes de empezar.',
+      },
+      {
+        title: 'Soporte después del lanzamiento',
+        text: 'Seguimos disponibles después del lanzamiento para actualizaciones, correcciones y mejoras. No desaparecemos una vez que tu proyecto está en línea.',
+      },
+    ],
+  },
   monthly: {
     heading: { before: 'Servicios ', accent: 'mensuales', after: '' },
     subtitle: 'Servicios mensuales continuos para mantener tu negocio creciendo y rindiendo al máximo.',

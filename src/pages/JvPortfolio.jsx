@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
-import { Mail, MapPin, Clock, Languages, ExternalLink, GraduationCap, ArrowRight } from 'lucide-react';
+import { Mail, Globe, Clock, Languages, ExternalLink, GraduationCap, ArrowRight } from 'lucide-react';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
 import jvContent, { AUTHOR_LINKS, AUTHOR_PHOTO } from '../content/jvPortfolio.js';
+import './JvPortfolio.css';
+
+// Real KPI dashboards Jesús built (his name appears on each). Reused from src/assets
+// (same fingerprinted module as the KPI service page — no duplication in the build).
+import kpiRevenue from '../assets/kpi financiero.webp';
+import kpiOperations from '../assets/kpi operational.webp';
+import kpiCallCenter from '../assets/kpi-call-center.webp';
+
+const PROOF_IMAGES = [kpiRevenue, kpiOperations, kpiCallCenter];
 
 // Brand icons as inline SVG (this lucide-react build does not export Linkedin/Github).
 const LinkedInIcon = ({ size = 18 }) => (
@@ -16,13 +25,64 @@ const GitHubIcon = ({ size = 18 }) => (
   </svg>
 );
 
+// Line-style glyphs for the tech cards / marquee (currentColor stroke, no dependency).
+const TECH_PATHS = {
+  code: (<><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></>),
+  js: (<><path d="M6 8l4 4-4 4" /><line x1="12" y1="16" x2="18" y2="16" /></>),
+  react: (<><circle cx="12" cy="12" r="1.6" /><ellipse cx="12" cy="12" rx="10" ry="4.2" /><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)" /><ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)" /></>),
+  node: (<path d="M12 2.5l8 4.6v9.8l-8 4.6-8-4.6V7.1l8-4.6z" />),
+  wp: (<><circle cx="12" cy="12" r="9.2" /><path d="M2.8 12h18.4M12 2.8c2.6 2.3 4 5.8 4 9.2s-1.4 6.9-4 9.2c-2.6-2.3-4-5.8-4-9.2s1.4-6.9 4-9.2z" /></>),
+  shopify: (<><path d="M6 8h12l-1 11.5a1 1 0 0 1-1 .9H8a1 1 0 0 1-1-.9L6 8z" /><path d="M9.2 8V6.4a2.8 2.8 0 0 1 5.6 0V8" /></>),
+  bi: (<><path d="M3 21h18" /><rect x="5" y="11" width="3.2" height="8" rx="1" /><rect x="10.4" y="5" width="3.2" height="14" rx="1" /><rect x="15.8" y="14" width="3.2" height="5" rx="1" /></>),
+  git: (<><circle cx="6" cy="7" r="2.2" /><circle cx="6" cy="17" r="2.2" /><circle cx="17" cy="9" r="2.2" /><path d="M6 9.2v5.6M8.9 7.6C13 7.6 15 8.6 15 11.2v.4" /></>),
+  seo: (<><circle cx="11" cy="11" r="7" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></>),
+  gauge: (<><path d="M12 13l3.5-3.5" /><path d="M3.5 18a9 9 0 1 1 17 0" /></>),
+  ai: (<><path d="M12 3l1.8 4.4L18 9l-4.2 1.6L12 15l-1.8-4.4L6 9l4.2-1.6L12 3z" /><path d="M18.5 14.5l.7 1.7 1.8.7-1.8.7-.7 1.7-.7-1.7-1.8-.7 1.8-.7.7-1.7z" /></>),
+};
+
+const ICON_COLOR = {
+  code: '#4d94ff', js: '#e0b400', react: '#12b5cb', node: '#3fb950', wp: '#7c5cff',
+  shopify: '#7ab55c', bi: '#f5a623', git: '#f0603c', github: 'var(--text-primary)',
+  seo: '#2ea043', gauge: '#e0a92e', ai: '#d857c7',
+};
+
+function TechIcon({ icon }) {
+  const color = ICON_COLOR[icon] || 'var(--accent-cyan)';
+  if (icon === 'github') {
+    return (
+      <span className="jv-tech-ico">
+        <span style={{ color, display: 'flex' }}><GitHubIcon size={22} /></span>
+      </span>
+    );
+  }
+  return (
+    <span className="jv-tech-ico">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        {TECH_PATHS[icon] || TECH_PATHS.code}
+      </svg>
+    </span>
+  );
+}
+
+// Small localized eyebrow labels (presentation only) for stronger visual hierarchy.
+const EYEBROWS = {
+  en: { about: 'Profile', exp: 'Experience', results: 'Impact', proof: 'Selected work', edu: 'Credentials', stack: 'Toolbox', ai: 'AI', links: 'Evidence' },
+  es: { about: 'Perfil', exp: 'Experiencia', results: 'Impacto', proof: 'Trabajo destacado', edu: 'Credenciales', stack: 'Herramientas', ai: 'IA', links: 'Evidencia' },
+};
+
+const Eyebrow = ({ children }) => <span className="jv-eyebrow">{children}</span>;
+
 // Author / E-E-A-T page for Jesús Vásquez. Bilingual (locale from the URL), indexable,
 // uses the site's design tokens (--accent-cyan, --bg-card, --border-subtle, .btn) so it
 // respects light/dark and stays responsive. Exactly one <h1> (the name).
+// Motion uses the site's existing scroll-reveal system (.reveal / .reveal-card, driven by
+// the global IntersectionObserver) + a couple of tiny CSS loops — no libraries, and it all
+// honors prefers-reduced-motion, so Core Web Vitals are unaffected.
 export default function JvPortfolio() {
   const { locale } = useLocalizedContent();
   const t = jvContent[locale] || jvContent.en;
-  const seoPath = getLocalizedPath('svc-seo', locale);
+  const eb = EYEBROWS[locale] || EYEBROWS.en;
+  const webPath = getLocalizedPath('svc-web', locale);
   const contactPath = getLocalizedPath('contact', locale);
 
   const cardStyle = {
@@ -53,10 +113,10 @@ export default function JvPortfolio() {
   return (
     <div className="animate-fade-in">
       {/* 1 — Hero */}
-      <section className="section" style={{ paddingTop: '120px', paddingBottom: '2rem' }}>
+      <section className="section jv-hero" style={{ paddingTop: '120px', paddingBottom: '2rem' }}>
         <div className="container">
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem', alignItems: 'center' }}>
-            <div style={{ flex: '0 0 auto', margin: '0 auto' }}>
+            <div className="jv-float" style={{ flex: '0 0 auto', margin: '0 auto' }}>
               <img
                 src={AUTHOR_PHOTO}
                 alt={t.photoAlt}
@@ -77,6 +137,7 @@ export default function JvPortfolio() {
             </div>
 
             <div style={{ flex: '1 1 360px' }}>
+              <span className="jv-founder-badge"><span className="jv-dot" /> {t.hero.founderBadge}</span>
               <h1 style={{ fontSize: 'clamp(2.2rem, 6vw, 3.2rem)', fontWeight: 800, lineHeight: 1.1, margin: '0 0 0.75rem', color: 'var(--text-primary)' }}>
                 {t.hero.name}
               </h1>
@@ -85,7 +146,7 @@ export default function JvPortfolio() {
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1.75rem', color: 'var(--text-secondary)' }}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}><MapPin size={16} style={{ color: 'var(--accent-cyan)' }} /> {t.hero.badges.location}</span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}><Globe size={16} style={{ color: 'var(--accent-cyan)' }} /> {t.hero.badges.location}</span>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}><Clock size={16} style={{ color: 'var(--accent-cyan)' }} /> {t.hero.badges.experience}</span>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}><Languages size={16} style={{ color: 'var(--accent-cyan)' }} /> {t.hero.badges.languages}</span>
               </div>
@@ -108,7 +169,8 @@ export default function JvPortfolio() {
 
       {/* 2 — About */}
       <section className="section" style={{ paddingTop: '2rem' }}>
-        <div className="container" style={{ maxWidth: '820px' }}>
+        <div className="container reveal" style={{ maxWidth: '820px' }}>
+          <Eyebrow>{eb.about}</Eyebrow>
           <h2 style={h2Style}>{t.about.heading}</h2>
           {t.about.paragraphs.map((p, i) => (
             <p key={i} style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '1.05rem', marginBottom: '1.25rem' }}>{p}</p>
@@ -119,10 +181,11 @@ export default function JvPortfolio() {
       {/* 3 — Experience */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container" style={{ maxWidth: '900px' }}>
+          <Eyebrow>{eb.exp}</Eyebrow>
           <h2 style={h2Style}>{t.experience.heading}</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+          <div className="reveal-group" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             {t.experience.roles.map((r, i) => (
-              <div key={i} style={cardStyle}>
+              <div key={i} className="reveal-card" style={cardStyle}>
                 <h3 style={{ fontSize: '1.2rem', margin: '0 0 0.15rem', color: 'var(--text-primary)' }}>{r.title}</h3>
                 <p style={{ color: 'var(--accent-cyan)', fontWeight: 600, margin: '0 0 0.15rem' }}>{r.company}</p>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', margin: '0 0 0.9rem' }}>{r.period}</p>
@@ -138,21 +201,45 @@ export default function JvPortfolio() {
       {/* 4 — Measurable results */}
       <section className="section">
         <div className="container">
-          <h2 style={{ ...h2Style, textAlign: 'center' }}>{t.results.heading}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
+            <Eyebrow>{eb.results}</Eyebrow>
+            <h2 style={{ ...h2Style, marginBottom: 0 }}>{t.results.heading}</h2>
+          </div>
+          <div className="jv-metrics reveal-group">
             {t.results.cards.map((c, i) => (
-              <div key={i} style={{ ...cardStyle, textAlign: 'center' }}>
-                <p style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--accent-cyan)', margin: '0 0 0.5rem' }}>{c.value}</p>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>{c.label}</p>
+              <div key={i} className="jv-metric reveal-card">
+                <p className="jv-metric__value">{c.value}</p>
+                <p className="jv-metric__label">{c.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5 — Education & credentials */}
+      {/* 5 — Proof of work (real Power BI dashboards) */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="container" style={{ maxWidth: '820px' }}>
+        <div className="container" style={{ maxWidth: '1000px' }}>
+          <Eyebrow>{eb.proof}</Eyebrow>
+          <h2 style={{ ...h2Style, marginBottom: '0.6rem' }}>{t.proof.heading}</h2>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem', maxWidth: '70ch' }}>{t.proof.subtitle}</p>
+          <div className="jv-proof-grid reveal-group">
+            {t.proof.items.map((it, i) => (
+              <figure key={i} className="jv-proof-card reveal-card">
+                <div className="jv-proof-figure">
+                  <span className="jv-proof-tag">Power BI</span>
+                  <img src={PROOF_IMAGES[i]} alt={it.alt} loading="lazy" decoding="async" width="640" height="400" />
+                </div>
+                <figcaption className="jv-proof-cap">{it.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6 — Education & credentials */}
+      <section className="section">
+        <div className="container reveal" style={{ maxWidth: '820px' }}>
+          <Eyebrow>{eb.edu}</Eyebrow>
           <h2 style={{ ...h2Style, display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
             <GraduationCap size={26} style={{ color: 'var(--accent-cyan)' }} /> {t.education.heading}
           </h2>
@@ -162,21 +249,57 @@ export default function JvPortfolio() {
         </div>
       </section>
 
-      {/* 6 — Tech stack */}
-      <section className="section">
-        <div className="container" style={{ maxWidth: '820px' }}>
-          <h2 style={h2Style}>{t.stack.heading}</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
-            {t.stack.items.map((s, i) => (
-              <span key={i} style={{ padding: '8px 14px', borderRadius: '999px', background: 'var(--bg-card)', border: '1px solid var(--border-subtle)', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 500 }}>{s}</span>
+      {/* 7 — Tech stack (cards + auto-scrolling marquee) */}
+      <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+        <div className="container" style={{ maxWidth: '960px' }}>
+          <Eyebrow>{eb.stack}</Eyebrow>
+          <h2 style={{ ...h2Style, marginBottom: '0.6rem' }}>{t.stack.heading}</h2>
+          <p style={{ color: 'var(--text-secondary)', marginBottom: '1.75rem' }}>{t.stack.subtitle}</p>
+
+          <div className="jv-tech-grid reveal-group">
+            {t.stack.items.map((s) => (
+              <div key={s.name} className="jv-tech-card reveal-card">
+                <TechIcon icon={s.icon} />
+                <span className="jv-tech-meta">
+                  <span className="jv-tech-name" translate="no">{s.name}</span>
+                  <span className="jv-tech-cat" translate="no">{s.cat}</span>
+                </span>
+              </div>
             ))}
+          </div>
+
+          {/* Auto-scrolling marquee — duplicated set for a seamless loop */}
+          <div className="jv-marquee" aria-hidden="true">
+            <div className="jv-marquee__track" data-dup="">
+              {[...t.stack.items, ...t.stack.items].map((s, i) => (
+                <span key={i} className="jv-chip" translate="no">
+                  <span className="jv-chip-dot" style={{ color: ICON_COLOR[s.icon] || 'var(--accent-cyan)' }} />
+                  {s.name}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 7 — Verifiable links */}
+      {/* 8 — Advanced AI development */}
+      <section className="section">
+        <div className="container reveal" style={{ maxWidth: '900px' }}>
+          <Eyebrow>{eb.ai}</Eyebrow>
+          <h2 style={{ ...h2Style, marginBottom: '1.25rem' }}>{t.ai.heading}</h2>
+          <div className="jv-ai-card">
+            <p className="jv-ai-card__text">{t.ai.text}</p>
+            <div className="jv-ai-tags">
+              {t.ai.tags.map((tag) => <span key={tag} className="jv-ai-tag" translate="no">{tag}</span>)}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 9 — Verifiable links */}
       <section className="section" style={{ backgroundColor: 'var(--bg-secondary)' }}>
-        <div className="container" style={{ maxWidth: '820px' }}>
+        <div className="container reveal" style={{ maxWidth: '820px' }}>
+          <Eyebrow>{eb.links}</Eyebrow>
           <h2 style={h2Style}>{t.links.heading}</h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>{t.links.subtitle}</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
@@ -187,13 +310,13 @@ export default function JvPortfolio() {
         </div>
       </section>
 
-      {/* 8 — Final CTA */}
+      {/* 10 — Final CTA (web development) */}
       <section className="section" style={{ textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '700px' }}>
+        <div className="container reveal" style={{ maxWidth: '700px' }}>
           <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.1rem)', marginBottom: '1rem', color: 'var(--text-primary)' }}>{t.cta.heading}</h2>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1.05rem' }}>{t.cta.text}</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'center' }}>
-            <Link to={seoPath} className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px' }}>
+            <Link to={webPath} className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px' }}>
               {t.cta.services} <ArrowRight size={18} />
             </Link>
             <Link to={contactPath} style={outlineBtn}>

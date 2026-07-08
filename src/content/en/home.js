@@ -8,6 +8,7 @@ export default {
   },
 
   hero: {
+    // Owner's call (2026-07): keep the original service-list H1.
     title: {
       before: 'Web Development, ',
       accent1: 'AI Automation',
@@ -23,15 +24,7 @@ export default {
       kpi: { tagline: 'Track the numbers that matter' },
       ai: { tagline: 'Respond faster, 24/7' },
     },
-    form: {
-      phonePlaceholder: 'Your phone number',
-      emailPlaceholder: 'Your email',
-      messagePlaceholder: 'What service do you need or why are you contacting us?',
-      sending: 'Sending...',
-      success: "Sent! We'll be in touch shortly. ✓",
-      error: 'Could not send. Try WhatsApp below.',
-      whatsappButton: 'Send via WhatsApp',
-    },
+    ctaSecondary: 'Explore Our Services',
   },
 
   value: {
@@ -215,14 +208,13 @@ export default {
     message: { label: 'Message', placeholder: 'Tell us a bit about your project...' },
     submit: 'Get My Free Digital Strategy',
     sending: 'Sending...',
-    success: "Sent! We'll get back to you shortly. ✓",
+    success: "Sent! We'll get back to you within 1 business day. ✓",
     error: 'Could not send. Please try again or message us on WhatsApp.',
     whatsappButton: 'Or message us on WhatsApp',
   },
 
   whatsapp: {
-    advisory: 'Hello, I would like to get a free advisory session for my business.',
-    audit: 'Hello, I would like to request a free audit for my business.',
+    audit: 'Hello, I would like to request a free audit for my business.', // still used by the Navbar CTA
     system: 'Hello, I would like to learn more about your Digital Growth System.',
     project: 'Hello, I would like to start my website project.',
     auditStrategy: 'Hello, I would like to request a free audit and strategy session.',

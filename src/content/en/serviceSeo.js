@@ -3,11 +3,18 @@
 // translatable text. Segmented headings use { before, accent, after }. Strings only.
 export default {
   meta: {
-    title: 'SEO & Digital Growth Services | Webraf',
+    title: 'SEO Services — Rank Higher & Get More Clients | Webraf',
     description:
       'SEO and digital growth services designed to help businesses improve Google visibility, attract qualified traffic, and turn search intent into real opportunities.',
     ogTitle: 'SEO & Digital Growth Services for Businesses That Want to Be Found',
     schemaName: 'SEO & Digital Growth',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): English
+  // pages lead with the contact form and offer WhatsApp as the alternative;
+  // Spanish pages lead with WhatsApp and offer the form.
+  ctaAlt: {
+    whatsapp: 'Prefer WhatsApp? Chat with us',
+    form: 'Prefer the contact form? Tell us about your project',
   },
   hero: {
     title: { before: 'SEO & Digital ', accent: 'Growth', after: '' },

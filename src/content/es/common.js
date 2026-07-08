@@ -46,6 +46,14 @@ export default {
     },
   },
 
+  // Shared by every lead form (contact page, home forms): privacy-consent line
+  // rendered under the submit button, linking to the localized privacy policy.
+  forms: {
+    consentBefore: 'Al enviar, aceptas nuestra ',
+    consentLinkLabel: 'Política de Privacidad',
+    consentAfter: '.',
+  },
+
   footer: {
     tagline:
       'Transformamos tu visión en una experiencia digital de alto rendimiento. Somos especialistas en desarrollo web premium, SEO, dashboards de KPI y automatización con IA.',

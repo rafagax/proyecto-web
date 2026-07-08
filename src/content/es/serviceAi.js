@@ -2,11 +2,18 @@
 // as en/serviceAi.js. Message times/direction and icons stay in the component.
 export default {
   meta: {
-    title: 'Automatización con IA y chatbots | Webraf',
+    title: 'Chatbots con IA y automatización de WhatsApp 24/7 | Webraf',
     description:
-      'Servicios de automatización con IA y chatbots para negocios que quieren respuestas más rápidas, calificación de contactos, agendamiento de citas y atención al cliente 24/7.',
+      'Chatbots con IA y automatización de WhatsApp: respuestas al instante, citas y atención 24/7. Convierte más contactos en clientes. Cuéntanos tu proyecto.',
     ogTitle: 'Automatización con IA y chatbots que te ayudan a responder más rápido y convertir más contactos',
     schemaName: 'Automatización con IA y chatbots',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): Spanish
+  // pages lead with WhatsApp and offer the contact form as the alternative;
+  // English pages lead with the form and offer WhatsApp.
+  ctaAlt: {
+    whatsapp: '¿Prefieres WhatsApp? Escríbenos',
+    form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
   },
   assistantName: 'Asistente de IA',
   online: 'en línea',

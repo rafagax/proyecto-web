@@ -17,15 +17,16 @@ const content = {
     meta: {
       title: 'Jesús Vásquez — Front-End Developer & Technical SEO Specialist | Webraf',
       description:
-        'Electronics Engineer and Front-End Developer with 4+ years building fast, SEO-optimized websites and KPI dashboards. The expert behind Webraf.',
+        'Front-End Developer (React) and Technical SEO Specialist with 5+ years building fast, SEO-optimized websites, KPI dashboards and AI workflows. The expert behind Webraf.',
     },
     photoAlt: 'Jesús Vásquez, Electronics Engineer and Front-End Developer, founder of Webraf',
     hero: {
       name: 'Jesús Vásquez',
       tagline: 'Electronics Engineer · Front-End Developer · Technical SEO Specialist',
+      founderBadge: 'Founder & Technical Lead of Webraf',
       badges: {
-        location: 'Maracay, Venezuela · International remote work',
-        experience: '4+ years of experience',
+        location: 'International remote work',
+        experience: '5+ years of experience',
         languages: 'Native Spanish · English C1',
       },
       linkedin: 'View LinkedIn',
@@ -35,23 +36,23 @@ const content = {
     about: {
       heading: 'About Me',
       paragraphs: [
-        "I'm an Electronics Engineer and Front-End Web Developer with 4+ years of experience building fast, accessible, search-optimized websites. I'm the founder and technical lead of Webraf, where I combine three disciplines that rarely meet in one person: front-end development (HTML, CSS, JavaScript, React), technical SEO, and data analysis with KPI dashboards in Power BI.",
-        "I currently work as Web Development Coordinator at WebSell, where I run on-page and technical SEO audits, optimize load times and Core Web Vitals, oversee front-end architecture, and implement security protocols — including cleaning and recovering sites compromised by malware. Through end-to-end technical and on-page SEO strategies, we've ranked client sites among the top two Google results for their target searches.",
-        'Previously I led the Management Indicators Department at Sisprot Global Fiber, where I built JavaScript and React applications to automate data collection and visualization, and coordinated a 15-person team using Power BI and AI tools. I believe in continuous learning and in building user-centered solutions that are measurable and verifiable.',
+        "I'm an Electronics Engineer, Front-End Web Developer and Technical SEO Specialist with 5+ years of experience. My main focus is front-end development with React — together with JavaScript, HTML and CSS — building fast, accessible and search-optimized websites. I founded Webraf to combine development, technical SEO, analytics and AI-assisted workflows into practical digital solutions for businesses.",
+        'Across agency and freelance work I have supported more than 100 client projects: technical and on-page SEO audits, Core Web Vitals and performance improvements, front-end fixes, and CMS work with WordPress, along with regular site maintenance and security when a project needs it.',
+        "Today I bring development, data and AI together to build solutions that are measurable, verifiable and made to last. If something can be tracked, optimized and improved, that's the work I enjoy most.",
       ],
     },
     experience: {
       heading: 'Professional Experience',
       roles: [
         {
-          company: 'WebSell',
+          company: 'Web Development Agency',
           title: 'Web Development Coordinator',
-          period: '2025–Present · Maracay, Venezuela',
+          period: '2025–Present · Remote',
           bullets: [
             'On-page and technical SEO audits and optimization to grow organic visibility.',
             'Load time, UX and Core Web Vitals optimization.',
-            'Front-end architecture oversight (HTML, CSS, JavaScript, PHP) and CMS integrations.',
-            'Web security: cleaning malware-compromised sites and recovering after incidents, reducing downtime.',
+            'Front-end architecture oversight (HTML, CSS, JavaScript, React) and CMS / WordPress integrations.',
+            'Site maintenance and security, including recovery of compromised sites when needed.',
           ],
         },
         {
@@ -59,7 +60,7 @@ const content = {
           title: 'Front-End Web Developer',
           period: '2021–2026',
           bullets: [
-            'Custom site development with HTML5, CSS3, JavaScript, Bootstrap, Node.js and WordPress.',
+            'Custom site development with React, JavaScript, HTML5, CSS3, Bootstrap, Node.js and WordPress.',
             'Auditing and fixing crawl issues, broken tags and Core Web Vitals, keeping scores above 90 in Google PageSpeed Insights.',
             'Responsive layouts and debugging of layout and JavaScript errors.',
           ],
@@ -69,9 +70,9 @@ const content = {
           title: 'Management Indicators Lead & Sales Lead',
           period: '2023–2025',
           bullets: [
-            'JavaScript and React applications to automate the collection, processing and visualization of management data.',
-            'Dynamic Power BI dashboards and reports for board-level decision-making.',
-            'Coordinated a 15-person team with data- and AI-driven strategies, achieving a 300% increase in sales productivity and a 25% reduction in planning and inventory errors.',
+            'Management control of the company’s departments through Power BI dashboards and reports for board-level decision-making.',
+            'Automated the collection, processing and visualization of management data with JavaScript and React applications.',
+            'Increased the company’s operability and overall productivity by 300% — across departments including sales — with data- and AI-driven strategies, while reducing planning and inventory errors by 25%.',
           ],
         },
       ],
@@ -79,10 +80,29 @@ const content = {
     results: {
       heading: 'Measurable Results',
       cards: [
-        { value: 'Top 2 on Google', label: 'Client sites ranked among the top two results for their target searches.' },
-        { value: '90+ PageSpeed', label: 'Score maintained on audited and optimized sites (PageSpeed Insights).' },
-        { value: '+300% productivity', label: 'On the sales team I coordinated using data and AI tools.' },
-        { value: '−25% errors', label: 'In planning and inventory after implementing digital tools.' },
+        { value: 'Top 1 on Google', label: 'Multiple client sites reached #1 positions on Google for target searches through technical SEO, on-page optimization and performance improvements.' },
+        { value: '100+ clients', label: 'Client projects supported across agency and freelance work — audits, fixes, optimization and maintenance.' },
+        { value: '90+ PageSpeed', label: 'Performance score maintained on audited and optimized sites (PageSpeed Insights).' },
+        { value: '+300% productivity', label: 'Company-wide productivity gain from managing departments (sales included) with Power BI control dashboards.' },
+        { value: '−25% errors', label: 'Fewer planning and inventory errors after centralizing management indicators in Power BI.' },
+      ],
+    },
+    proof: {
+      heading: 'Proof of Work',
+      subtitle: 'Real KPI dashboards I designed and built in Power BI — each one prepared and signed by me.',
+      items: [
+        {
+          alt: 'Revenue and collections KPI dashboard built in Power BI by Jesús Vásquez',
+          caption: 'Revenue & collections dashboard — daily and accumulated income, migrated vs. non-migrated clients.',
+        },
+        {
+          alt: 'Operational command center dashboard built in Power BI by Jesús Vásquez',
+          caption: 'Operational command center — installations by agency, goals and daily performance.',
+        },
+        {
+          alt: 'Call center analytics dashboard built in Power BI by Jesús Vásquez',
+          caption: 'Call center analytics — tickets by agent, channel and shift, with satisfaction and response time.',
+        },
       ],
     },
     education: {
@@ -99,7 +119,40 @@ const content = {
     },
     stack: {
       heading: 'Tech Stack',
-      items: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Bootstrap', 'WordPress', 'PHP', 'Power BI', 'Git', 'GitHub', 'VS Code', 'API integration', 'AI workflows (Claude, Gemini, ChatGPT)'],
+      subtitle: 'The tools I use to design, build, optimize and measure.',
+      items: [
+        { name: 'React', cat: 'Front-end · Main', icon: 'react' },
+        { name: 'JavaScript', cat: 'Front-end', icon: 'js' },
+        { name: 'HTML5', cat: 'Front-end', icon: 'code' },
+        { name: 'CSS3', cat: 'Front-end', icon: 'code' },
+        { name: 'Node.js', cat: 'Runtime', icon: 'node' },
+        { name: 'Bootstrap', cat: 'Front-end', icon: 'code' },
+        { name: 'WordPress', cat: 'CMS', icon: 'wp' },
+        { name: 'Shopify', cat: 'E-commerce', icon: 'shopify' },
+        { name: 'Power BI', cat: 'Data & BI', icon: 'bi' },
+        { name: 'Git', cat: 'Tooling', icon: 'git' },
+        { name: 'GitHub', cat: 'Tooling', icon: 'github' },
+        { name: 'VS Code', cat: 'Tooling', icon: 'code' },
+        { name: 'Technical SEO', cat: 'SEO', icon: 'seo' },
+        { name: 'Core Web Vitals', cat: 'Performance', icon: 'gauge' },
+        { name: 'AI Workflows', cat: 'AI', icon: 'ai' },
+      ],
+    },
+    ai: {
+      heading: 'Advanced AI Development',
+      text: 'I work hands-on with advanced AI development — terminal and command-line coding, building AI agents, and orchestrating automation workflows — applying it across design, debugging, documentation and delivery to move faster without sacrificing quality.',
+      tags: [
+        'AI agent creation',
+        'Terminal-based coding',
+        'Automation workflows',
+        'Claude',
+        'Gemini',
+        'ChatGPT',
+        'Cursor',
+        'OpenAI Codex',
+        'Antigravity',
+        'Prompt engineering',
+      ],
     },
     links: {
       heading: 'Verifiable Links',
@@ -109,9 +162,9 @@ const content = {
       portfolio: 'Portfolio (Vercel)',
     },
     cta: {
-      heading: 'Want me to apply this experience to your project?',
-      text: 'Explore what Webraf can do for your business, or reach out directly.',
-      services: 'See SEO services',
+      heading: 'Want me to build or improve your website?',
+      text: "Explore Webraf's web development services or contact me directly to discuss your project.",
+      services: 'See Web Development Services',
       contact: 'Contact me',
     },
   },
@@ -120,15 +173,16 @@ const content = {
     meta: {
       title: 'Jesús Vásquez — Desarrollador Front-End y Especialista en SEO Técnico | Webraf',
       description:
-        'Ingeniero Electrónico y Desarrollador Front-End con más de 4 años creando sitios web rápidos y optimizados para SEO, y dashboards de KPI. El experto detrás de Webraf.',
+        'Desarrollador Front-End (React) y Especialista en SEO Técnico con más de 5 años creando sitios web rápidos y optimizados, dashboards de KPI y flujos con IA. El experto detrás de Webraf.',
     },
     photoAlt: 'Jesús Vásquez, Ingeniero Electrónico y Desarrollador Front-End, fundador de Webraf',
     hero: {
       name: 'Jesús Vásquez',
       tagline: 'Ingeniero Electrónico · Desarrollador Front-End · Especialista en SEO Técnico',
+      founderBadge: 'Fundador y responsable técnico de Webraf',
       badges: {
-        location: 'Maracay, Venezuela · Trabajo remoto internacional',
-        experience: 'Más de 4 años de experiencia',
+        location: 'Trabajo remoto internacional',
+        experience: 'Más de 5 años de experiencia',
         languages: 'Español nativo · Inglés C1',
       },
       linkedin: 'Ver LinkedIn',
@@ -138,23 +192,23 @@ const content = {
     about: {
       heading: 'Sobre mí',
       paragraphs: [
-        'Soy Ingeniero Electrónico y Desarrollador Web Front-End con más de 4 años de experiencia construyendo sitios web rápidos, accesibles y optimizados para buscadores. Soy el fundador y responsable técnico de Webraf, donde combino tres disciplinas que rara vez se encuentran en una sola persona: desarrollo front-end (HTML, CSS, JavaScript, React), SEO técnico y análisis de datos con dashboards de KPI en Power BI.',
-        'Actualmente me desempeño como Coordinador de Desarrollo Web en WebSell, donde ejecuto auditorías SEO on-page y técnicas, optimizo tiempos de carga y Core Web Vitals, superviso la arquitectura front-end e implemento protocolos de seguridad, incluyendo la limpieza y recuperación de sitios comprometidos por malware. Gracias a estrategias integrales de SEO técnico y on-page, hemos posicionado sitios de clientes entre los dos primeros resultados de Google en sus búsquedas objetivo.',
-        'Antes lideré el Departamento de Indicadores de Gestión en Sisprot Global Fiber, donde desarrollé aplicaciones en JavaScript y React para automatizar la recopilación y visualización de datos, y coordiné un equipo de 15 personas apoyándome en Power BI y herramientas de inteligencia artificial. Creo en el aprendizaje continuo y en construir soluciones centradas en el usuario, medibles y verificables.',
+        'Soy Ingeniero Electrónico, Desarrollador Web Front-End y Especialista en SEO Técnico con más de 5 años de experiencia. Mi enfoque principal es el desarrollo front-end con React —junto con JavaScript, HTML y CSS— para construir sitios web rápidos, accesibles y optimizados para buscadores. Fundé Webraf para combinar desarrollo, SEO técnico, analítica y flujos de trabajo asistidos por IA en soluciones digitales prácticas para negocios.',
+        'Entre trabajo de agencia e independiente he dado soporte a más de 100 proyectos de clientes: auditorías SEO técnicas y on-page, mejoras de Core Web Vitals y rendimiento, correcciones de front-end y trabajo con CMS y WordPress, además del mantenimiento y la seguridad del sitio cuando el proyecto lo requiere.',
+        'Hoy combino desarrollo, datos e IA para crear soluciones medibles, verificables y hechas para durar. Si algo se puede medir, optimizar y mejorar, ese es el trabajo que más disfruto.',
       ],
     },
     experience: {
       heading: 'Experiencia profesional',
       roles: [
         {
-          company: 'WebSell',
+          company: 'Agencia de desarrollo web',
           title: 'Coordinador de Desarrollo Web',
-          period: '2025–Actualidad · Maracay, Venezuela',
+          period: '2025–Actualidad · Remoto',
           bullets: [
             'Auditorías y optimización SEO on-page y técnica para incrementar la visibilidad orgánica.',
             'Optimización de tiempos de carga, UX y Core Web Vitals.',
-            'Supervisión de arquitectura front-end (HTML, CSS, JavaScript, PHP) e integraciones en CMS.',
-            'Seguridad web: limpieza de sitios comprometidos por malware y recuperación tras incidentes, reduciendo el tiempo de inactividad.',
+            'Supervisión de arquitectura front-end (HTML, CSS, JavaScript, React) e integraciones en CMS / WordPress.',
+            'Mantenimiento y seguridad de sitios, incluyendo la recuperación de sitios comprometidos cuando es necesario.',
           ],
         },
         {
@@ -162,7 +216,7 @@ const content = {
           title: 'Desarrollador Web Front-End',
           period: '2021–2026',
           bullets: [
-            'Desarrollo de sitios a medida con HTML5, CSS3, JavaScript, Bootstrap, Node.js y WordPress.',
+            'Desarrollo de sitios a medida con React, JavaScript, HTML5, CSS3, Bootstrap, Node.js y WordPress.',
             'Auditoría y corrección de deficiencias de rastreo, etiquetas defectuosas y Core Web Vitals, manteniendo puntuaciones superiores a 90 en Google PageSpeed Insights.',
             'Maquetación responsive y depuración de errores de maquetación y JavaScript.',
           ],
@@ -172,9 +226,9 @@ const content = {
           title: 'Encargado de Indicadores de Gestión y Líder de Ventas',
           period: '2023–2025',
           bullets: [
-            'Desarrollo de aplicaciones en JavaScript y React para automatizar recopilación, procesamiento y visualización de datos gerenciales.',
-            'Dashboards y reportes dinámicos en Power BI para la toma de decisiones de la junta directiva.',
-            'Coordinación de un equipo de 15 personas con estrategias basadas en datos e IA, logrando un aumento del 300% en la productividad de ventas y una reducción del 25% en errores de planificación e inventario.',
+            'Control de gestión de los departamentos de la empresa mediante dashboards y reportes en Power BI para la toma de decisiones de la junta directiva.',
+            'Automatización de la recopilación, procesamiento y visualización de datos gerenciales con aplicaciones en JavaScript y React.',
+            'Aumento de la operatividad y la productividad general de la empresa en un 300% —en varios departamentos, incluido el de ventas— con estrategias basadas en datos e IA, reduciendo los errores de planificación e inventario en un 25%.',
           ],
         },
       ],
@@ -182,10 +236,29 @@ const content = {
     results: {
       heading: 'Resultados medibles',
       cards: [
-        { value: 'Top 2 en Google', label: 'Sitios de clientes posicionados entre los dos primeros resultados en sus búsquedas objetivo.' },
-        { value: '+90 en PageSpeed', label: 'Puntuación mantenida en los sitios auditados y optimizados (PageSpeed Insights).' },
-        { value: '+300% productividad', label: 'En el equipo de ventas que coordiné con herramientas de datos e IA.' },
-        { value: '−25% de errores', label: 'En planificación e inventario tras implementar herramientas digitales.' },
+        { value: 'Top 1 en Google', label: 'Varios sitios de clientes alcanzaron la posición #1 en Google en sus búsquedas objetivo mediante SEO técnico, optimización on-page y mejoras de rendimiento.' },
+        { value: '+100 clientes', label: 'Proyectos de clientes atendidos entre trabajo de agencia e independiente: auditorías, correcciones, optimización y mantenimiento.' },
+        { value: '+90 en PageSpeed', label: 'Puntuación de rendimiento mantenida en los sitios auditados y optimizados (PageSpeed Insights).' },
+        { value: '+300% productividad', label: 'Aumento de la productividad de la empresa gracias al control de los departamentos (incluido ventas) con dashboards en Power BI.' },
+        { value: '−25% de errores', label: 'Menos errores de planificación e inventario tras centralizar los indicadores de gestión en Power BI.' },
+      ],
+    },
+    proof: {
+      heading: 'Muestra de trabajo',
+      subtitle: 'Dashboards de KPI reales que diseñé y construí en Power BI — cada uno preparado y firmado por mí.',
+      items: [
+        {
+          alt: 'Dashboard de KPI de ingresos y cobranzas construido en Power BI por Jesús Vásquez',
+          caption: 'Dashboard de ingresos y cobranzas — ingresos diarios y acumulados, clientes migrados vs. no migrados.',
+        },
+        {
+          alt: 'Dashboard de centro de mando operativo construido en Power BI por Jesús Vásquez',
+          caption: 'Centro de mando operativo — instalaciones por agencia, metas y desempeño diario.',
+        },
+        {
+          alt: 'Dashboard de analítica de call center construido en Power BI por Jesús Vásquez',
+          caption: 'Analítica de call center — tickets por agente, canal y turno, con satisfacción y tiempo de respuesta.',
+        },
       ],
     },
     education: {
@@ -202,7 +275,40 @@ const content = {
     },
     stack: {
       heading: 'Stack tecnológico',
-      items: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js', 'Bootstrap', 'WordPress', 'PHP', 'Power BI', 'Git', 'GitHub', 'VS Code', 'Integración de APIs', 'Flujos con IA (Claude, Gemini, ChatGPT)'],
+      subtitle: 'Las herramientas con las que diseño, construyo, optimizo y mido.',
+      items: [
+        { name: 'React', cat: 'Front-end · Principal', icon: 'react' },
+        { name: 'JavaScript', cat: 'Front-end', icon: 'js' },
+        { name: 'HTML5', cat: 'Front-end', icon: 'code' },
+        { name: 'CSS3', cat: 'Front-end', icon: 'code' },
+        { name: 'Node.js', cat: 'Runtime', icon: 'node' },
+        { name: 'Bootstrap', cat: 'Front-end', icon: 'code' },
+        { name: 'WordPress', cat: 'CMS', icon: 'wp' },
+        { name: 'Shopify', cat: 'E-commerce', icon: 'shopify' },
+        { name: 'Power BI', cat: 'Datos & BI', icon: 'bi' },
+        { name: 'Git', cat: 'Herramientas', icon: 'git' },
+        { name: 'GitHub', cat: 'Herramientas', icon: 'github' },
+        { name: 'VS Code', cat: 'Herramientas', icon: 'code' },
+        { name: 'SEO Técnico', cat: 'SEO', icon: 'seo' },
+        { name: 'Core Web Vitals', cat: 'Rendimiento', icon: 'gauge' },
+        { name: 'Flujos con IA', cat: 'IA', icon: 'ai' },
+      ],
+    },
+    ai: {
+      heading: 'Desarrollo avanzado con IA',
+      text: 'Trabajo de forma práctica con desarrollo avanzado con IA —programación en terminal y línea de comandos, creación de agentes de IA y orquestación de flujos de trabajo de automatización— aplicándola al diseño, la depuración, la documentación y la entrega para avanzar más rápido sin sacrificar la calidad.',
+      tags: [
+        'Creación de agentes de IA',
+        'Programación en terminal',
+        'Flujos de automatización',
+        'Claude',
+        'Gemini',
+        'ChatGPT',
+        'Cursor',
+        'OpenAI Codex',
+        'Antigravity',
+        'Ingeniería de prompts',
+      ],
     },
     links: {
       heading: 'Enlaces verificables',
@@ -212,9 +318,9 @@ const content = {
       portfolio: 'Portafolio (Vercel)',
     },
     cta: {
-      heading: '¿Quieres que aplique esta experiencia a tu proyecto?',
-      text: 'Conoce lo que Webraf puede hacer por tu negocio, o escríbeme directamente.',
-      services: 'Ver servicios de SEO',
+      heading: '¿Quieres que construya o mejore tu sitio web?',
+      text: 'Conoce los servicios de desarrollo web de Webraf o escríbeme directamente para hablar de tu proyecto.',
+      services: 'Ver servicios de desarrollo web',
       contact: 'Escríbeme',
     },
   },

@@ -33,16 +33,17 @@ export const routeManifest = [
   { key: 'privacy',      en: '/privacy',              es: '/es/privacidad',                   type: 'legal',   sitemap: true },
 ];
 
-// Blog articles. Slugs are identical in both languages (approved decision): the same
-// existing English slug lives at /blog/<slug> (en) and /es/blog/<slug> (es). Both
-// languages are published, so every article has a full ES↔EN equivalent.
+// Blog articles. Slugs are localized per language: the English slug lives at
+// /blog/<en> and the translated Spanish slug at /es/blog/<es>. Both languages are
+// published, so every article has a full ES↔EN equivalent. public/.htaccess 301s
+// the legacy English-slug Spanish URLs to the translated ones.
 export const articles = [
-  { key: 'why-website-2025', en: 'why-your-business-needs-a-website',  es: 'why-your-business-needs-a-website',  published: { en: true, es: true } },
-  { key: 'local-seo',        en: 'local-seo-rank-number-one-city-google', es: 'local-seo-rank-number-one-city-google', published: { en: true, es: true } },
-  { key: 'ai-chatbots',      en: 'ai-chatbots-24-7-sales-tool',           es: 'ai-chatbots-24-7-sales-tool',           published: { en: true, es: true } },
-  { key: 'online-store-7d',  en: 'launch-online-store-7-days',            es: 'launch-online-store-7-days',            published: { en: true, es: true } },
-  { key: 'core-web-vitals',  en: 'web-performance-core-web-vitals',       es: 'web-performance-core-web-vitals',       published: { en: true, es: true } },
-  { key: 'mobile-first',     en: 'mobile-first-design-strategy',          es: 'mobile-first-design-strategy',          published: { en: true, es: true } },
+  { key: 'why-website-2025', en: 'why-your-business-needs-a-website',     es: 'por-que-tu-negocio-necesita-un-sitio-web',      published: { en: true, es: true } },
+  { key: 'local-seo',        en: 'local-seo-rank-number-one-city-google', es: 'seo-local-como-posicionar-tu-negocio-en-google', published: { en: true, es: true } },
+  { key: 'ai-chatbots',      en: 'ai-chatbots-24-7-sales-tool',           es: 'chatbots-ia-ventas-automaticas-24-7',           published: { en: true, es: true } },
+  { key: 'online-store-7d',  en: 'launch-online-store-7-days',            es: 'crear-tienda-online-en-7-dias',                 published: { en: true, es: true } },
+  { key: 'core-web-vitals',  en: 'web-performance-core-web-vitals',       es: 'velocidad-web-core-web-vitals',                 published: { en: true, es: true } },
+  { key: 'mobile-first',     en: 'mobile-first-design-strategy',          es: 'diseno-web-mobile-first',                       published: { en: true, es: true } },
 ];
 
 // ── Helpers (pure; safe both at build time and in the browser) ──
@@ -55,8 +56,24 @@ const stripTrailingSlash = (p) => {
 export const articlePath = (article, lang) =>
   lang === 'es' ? `/es/blog/${article.es}` : `/blog/${article.en}`;
 
-/** Localized URL for a blog post by slug (slugs are identical across languages). */
+/**
+ * Slug of an article in `lang`, given its slug in either language. Slugs differ
+ * per language, so lookups into locale content keyed by slug must go through
+ * this mapping. Unknown slugs are returned unchanged.
+ */
+export function localizedSlug(slug, lang) {
+  const article = articles.find((a) => a.en === slug || a.es === slug);
+  return article ? article[lang] : slug;
+}
+
+/**
+ * Localized URL for a blog post given its slug in either language. Resolves the
+ * article through `articles` (single source of truth) because ES slugs are
+ * translated; unknown slugs fall back to the raw slug so the URL stays stable.
+ */
 export function blogPostPath(slug, lang) {
+  const article = articles.find((a) => a.en === slug || a.es === slug);
+  if (article) return articlePath(article, lang);
   return lang === 'es' ? `/es/blog/${slug}` : `/blog/${slug}`;
 }
 

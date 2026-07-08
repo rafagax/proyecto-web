@@ -1,57 +1,88 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
-import { blogPostPath, getLocalizedPath } from '../../app/route-manifest.js';
+import { blogPostPath, getLocalizedPath, localizedSlug } from '../../app/route-manifest.js';
 
 export const BlogCarousel = () => {
   const { locale, content } = useLocalizedContent();
   const { section, categories, posts } = content.blog;
+  const sectionRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  // Autoplay never starts under prefers-reduced-motion and stops permanently
+  // after any manual navigation (WCAG 2.2.2 Pause, Stop, Hide).
+  const [autoplayEnabled, setAutoplayEnabled] = useState(true);
+  // Start at 3 to match the server/prerendered render, then adjust on the client
+  // (avoids a hydration mismatch). Also keeps it responsive on resize.
+  const [visibleCount, setVisibleCount] = useState(3);
 
-  // Autoplay carousel (pauses on hover)
+  // Only autoplay while the section is actually on screen.
   useEffect(() => {
-    if (isPaused) return;
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setIsInView(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => setIsInView(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Autoplay carousel (pauses on hover/focus, stops after manual navigation).
+  // Never starts under prefers-reduced-motion (WCAG 2.2.2 Pause, Stop, Hide).
+  useEffect(() => {
+    if (!autoplayEnabled || isPaused || !isInView) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % blogPosts.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [autoplayEnabled, isPaused, isInView]);
+
+  // Determine how many cards to show based on screen size (client-only)
+  useEffect(() => {
+    const update = () => {
+      const width = window.innerWidth;
+      setVisibleCount(width < 768 ? 1 : width < 1024 ? 2 : 3);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  const stopAutoplay = () => setAutoplayEnabled(false);
 
   const handlePrevious = () => {
+    stopAutoplay();
     setCurrentIndex((prev) => (prev - 1 + blogPosts.length) % blogPosts.length);
   };
 
   const handleNext = () => {
+    stopAutoplay();
     setCurrentIndex((prev) => (prev + 1) % blogPosts.length);
   };
 
-  const getVisibleCount = () => {
-    if (typeof window === 'undefined') return 3;
-    const width = window.innerWidth;
-    if (width < 768) return 1;
-    if (width < 1024) return 2;
-    return 3;
+  const displayCount = visibleCount;
+
+  const pauseProps = {
+    onMouseEnter: () => setIsPaused(true),
+    onMouseLeave: () => setIsPaused(false),
+    onFocus: () => setIsPaused(true),
+    onBlur: (e) => {
+      if (!e.currentTarget.contains(e.relatedTarget)) setIsPaused(false);
+    },
   };
 
-  const visibleCount = getVisibleCount();
-
-  // Always show 3 on desktop, with infinite loop
-  const displayCount = visibleCount === 3 ? 3 : visibleCount;
-
   return (
-    <section className="blog-carousel-section">
+    <section className="blog-carousel-section" ref={sectionRef}>
       <div className="container">
         <h2>{section.heading.before}<span className="text-gradient">{section.heading.accent}</span></h2>
         <p>{section.subtitle}</p>
 
-        <div
-          className="blog-carousel-wrapper"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+        <div className="blog-carousel-wrapper" {...pauseProps}>
           {/* Previous Button */}
           <button
             onClick={handlePrevious}
@@ -76,9 +107,11 @@ export const BlogCarousel = () => {
                   }
                 }
 
-                const localized = posts[post.slug] || {};
+                // Locale content is keyed by the localized slug (ES slugs are translated).
+                const localized = posts[localizedSlug(post.slug, locale)] || {};
                 const title = localized.title || post.title;
                 const excerpt = localized.excerpt || post.excerpt;
+                const date = localized.date || post.date;
 
                 return (
                   <div
@@ -104,7 +137,7 @@ export const BlogCarousel = () => {
                     <div className="blog-carousel-card-content-small">
                       <div className="blog-card-meta">
                         <Calendar size={14} />
-                        <span>{post.date}</span>
+                        <span>{date}</span>
                       </div>
                       <h3>{title}</h3>
                       <p className="blog-excerpt">{excerpt}</p>
@@ -129,7 +162,7 @@ export const BlogCarousel = () => {
         </div>
 
         {/* Indicators */}
-        <div className="carousel-indicators-blog">
+        <div className="carousel-indicators-blog" {...pauseProps}>
           {blogPosts.map((_, idx) => {
             let isActive = false;
             for (let i = 0; i < displayCount; i++) {
@@ -142,7 +175,10 @@ export const BlogCarousel = () => {
               <button
                 key={idx}
                 className={`indicator ${isActive ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(idx)}
+                onClick={() => {
+                  stopAutoplay();
+                  setCurrentIndex(idx);
+                }}
                 aria-label={`${section.indicatorLabel} ${idx + 1}`}
               />
             );

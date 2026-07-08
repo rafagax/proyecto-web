@@ -34,7 +34,13 @@ export async function sendContactEmail(fields) {
 
   const formData = new FormData();
   formData.append('access_key', WEB3FORMS_ACCESS_KEY);
-  formData.append('subject', 'Nuevo contacto desde webraf.com');
+  // Surface the qualification context (service/plan picked on pricing or service
+  // pages) in the email subject so leads arrive pre-qualified in the inbox.
+  const context = [fields.service, fields.plan].filter(Boolean).join(' / ');
+  formData.append(
+    'subject',
+    context ? `Nuevo contacto desde webraf.com — ${context}` : 'Nuevo contacto desde webraf.com'
+  );
   formData.append('from_name', fields.name || fields.email || 'webraf.com');
   for (const [key, value] of Object.entries(fields)) {
     formData.append(key, value == null ? '' : value);

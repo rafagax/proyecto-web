@@ -80,9 +80,13 @@ const testimonials = [
 ];
 
 const StarRating = () => (
-  <div style={{ display: "flex", gap: "2px", color: "#FFD700", marginBottom: "0.75rem" }}>
+  <div
+    role="img"
+    aria-label="5 out of 5 stars"
+    style={{ display: "flex", gap: "2px", color: "#FFD700", marginBottom: "0.75rem" }}
+  >
     {[1, 2, 3, 4, 5].map((i) => (
-      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
       </svg>
     ))}
@@ -94,13 +98,6 @@ const TestimonialCard = ({ t }) => (
     className="testimonial-card"
     style={{ width: "300px", flexShrink: 0 }}
   >
-    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
-      <span style={{ fontSize: "0.7rem", color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
-        Verified Review
-      </span>
-      <span style={{ fontSize: "0.75rem", fontWeight: "700", color: "var(--accent-cyan)" }}>Google</span>
-    </div>
-
     <StarRating />
 
     <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: "1.6", flex: 1, marginBottom: "1.5rem" }}>
@@ -143,19 +140,50 @@ export function TestimonialsSection() {
   const [isInteracting, setIsInteracting] = useState(false);
 
   useEffect(() => {
-    let animationFrameId;
+    const el = scrollRef.current;
+    if (!el) return;
+
+    // Respect reduced motion: no marquee, manual scroll stays available.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let animationFrameId = 0;
+    let running = false;
     const animateScroll = () => {
-      if (scrollRef.current && !isInteracting) {
-        scrollRef.current.scrollLeft += 1.2;
-        const { scrollLeft, scrollWidth } = scrollRef.current;
-        if (scrollLeft >= scrollWidth / 2) {
-          scrollRef.current.scrollLeft = 0;
+      if (!isInteracting) {
+        el.scrollLeft += 1.2;
+        if (el.scrollLeft >= el.scrollWidth / 2) {
+          el.scrollLeft = 0;
         }
       }
       animationFrameId = requestAnimationFrame(animateScroll);
     };
-    animationFrameId = requestAnimationFrame(animateScroll);
-    return () => cancelAnimationFrame(animationFrameId);
+    const start = () => {
+      if (!running) {
+        running = true;
+        animationFrameId = requestAnimationFrame(animateScroll);
+      }
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(animationFrameId);
+    };
+
+    // Run the loop only while the carousel is actually in the viewport.
+    let observer;
+    if (typeof IntersectionObserver === 'undefined') {
+      start();
+    } else {
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) start();
+        else stop();
+      });
+      observer.observe(el);
+    }
+
+    return () => {
+      stop();
+      if (observer) observer.disconnect();
+    };
   }, [isInteracting]);
 
   return (
@@ -169,10 +197,6 @@ export function TestimonialsSection() {
               Businesses already{" "}
               <span className="text-gradient">growing with us</span>
             </h2>
-          </div>
-          <div className="testimonials-rating-badge">
-            <span style={{ fontWeight: "700", color: "#fff" }}>4.9 / 5</span>
-            <span style={{ color: "var(--text-secondary)" }}> · Google Reviews</span>
           </div>
         </div>
       </div>
@@ -190,9 +214,12 @@ export function TestimonialsSection() {
           {testimonials.map((t, idx) => (
             <TestimonialCard key={`a-${idx}`} t={t} />
           ))}
-          {testimonials.map((t, idx) => (
-            <TestimonialCard key={`b-${idx}`} t={t} />
-          ))}
+          {/* Duplicate copy for the seamless loop — hidden from assistive tech */}
+          <div aria-hidden="true" style={{ display: "contents" }}>
+            {testimonials.map((t, idx) => (
+              <TestimonialCard key={`b-${idx}`} t={t} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

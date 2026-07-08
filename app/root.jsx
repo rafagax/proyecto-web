@@ -6,10 +6,13 @@ import {
   Scripts,
   ScrollRestoration,
   useLocation,
+  useMatches,
+  useRouteError,
 } from 'react-router';
 
 import '../src/index.css';
 import '../src/App.css';
+import './skip-link.css';
 
 import Navbar from '../src/components/Navbar';
 import Footer from '../src/components/Footer';
@@ -17,55 +20,48 @@ import Chatbot from '../src/components/Chatbot';
 import CookieBanner from '../src/components/CookieBanner';
 import { SITE_URL, absoluteUrl } from '../src/config/site.js';
 import { getLocaleFromPath } from '../src/i18n/locale.js';
+import { OG_IMAGE } from './og.js';
 
-// Site-wide <link> tags (favicon, font preconnects).
+// Site-wide <link> tags (favicons). No font preconnects: the site uses system fonts
+// only, so connections to Google Fonts would be opened and never used.
 export const links = () => [
-  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
   { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-  { rel: 'apple-touch-icon', href: '/favicon.svg' },
+  // iOS home-screen icon must be a PNG (Safari ignores SVG here) — 180×180.
+  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
 ];
 
-// Localized descriptions for the global structured data. Spanish reuses the approved
+// Localized description for the global structured data. Spanish reuses the approved
 // Home description; English keeps the exact current text. Everything else (brand,
-// endpoints, phone, address, IDs) is unchanged and shared across locales.
+// endpoints, phone, IDs) is shared across locales.
 const SCHEMA_DESCRIPTION = {
-  org: {
-    en: 'Premium web development, SEO, KPI dashboards and AI automation for growing businesses.',
-    es: 'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
-  },
-  localBusiness: {
-    en: 'Premium web development, SEO, KPI dashboards and AI automation services.',
-    es: 'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
-  },
+  en: 'Premium web development, SEO, KPI dashboards and AI automation for growing businesses.',
+  es: 'Desarrollo web premium, automatización con IA, SEO y dashboards de KPI para atraer clientes, mejorar conversiones y acelerar tu crecimiento.',
 };
 
+// Single consolidated business entity (no physical address: the business is 100%
+// remote/worldwide, so a LocalBusiness/ProfessionalService type would be wrong and
+// would never validate without an address). The @id lets other schema blocks
+// (e.g. BlogPosting.publisher) reference this same entity instead of duplicating it.
 const orgSchema = (lang) => ({
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': `${SITE_URL}/#org`,
   name: 'Webraf',
-  url: SITE_URL,
-  description: SCHEMA_DESCRIPTION.org[lang] || SCHEMA_DESCRIPTION.org.en,
-  logo: absoluteUrl('/logo.png'),
+  url: `${SITE_URL}/`,
+  description: SCHEMA_DESCRIPTION[lang] || SCHEMA_DESCRIPTION.en,
+  logo: { '@type': 'ImageObject', url: absoluteUrl('/logo.png') },
+  image: absoluteUrl(OG_IMAGE.path),
+  email: 'contact@webraf.com',
+  telephone: '+584144735431',
+  areaServed: 'Worldwide',
   contactPoint: {
     '@type': 'ContactPoint',
     contactType: 'Customer Service',
     telephone: '+584144735431',
+    email: 'contact@webraf.com',
     areaServed: 'Worldwide',
     availableLanguage: ['English', 'Spanish'],
   },
-});
-
-const localBusinessSchema = (lang) => ({
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Webraf',
-  image: absoluteUrl('/og-image.webp'),
-  description: SCHEMA_DESCRIPTION.localBusiness[lang] || SCHEMA_DESCRIPTION.localBusiness.en,
-  telephone: '+584144735431',
-  email: 'contact@webraf.com',
-  priceRange: '$299–$1500',
-  areaServed: 'Worldwide',
 });
 
 // Reveals .reveal / .reveal-left / .reveal-right once on viewport enter and
@@ -134,10 +130,16 @@ function ScrollRevealManager() {
   return null;
 }
 
+// Skip-link copy per locale (first tabbable element on every page).
+const SKIP_LINK = { en: 'Skip to content', es: 'Saltar al contenido' };
+
 export function Layout({ children }) {
   // The document language is derived from the URL (en at the root, es under /es/).
   const { pathname } = useLocation();
   const lang = getLocaleFromPath(pathname);
+  // The catch-all 404 route is noindex and shouldn't describe the business entity.
+  const matches = useMatches();
+  const isNotFound = matches.some((m) => m.id === 'routes/not-found');
   return (
     <html lang={lang} className="reveal-ready" suppressHydrationWarning>
       <head>
@@ -175,27 +177,28 @@ export function Layout({ children }) {
         <meta name="theme-color" content="#000000" />
         {/* No global robots directive: valid pages are indexable by default. Only the
             404 route emits robots=noindex,nofollow (app/routes/not-found.jsx). */}
-        <meta property="og:type" content="website" />
+        {/* og:type/og:image/og:url/og:locale are emitted per route via ogTags()
+            (app/og.js) so every document carries exactly ONE of each; only the
+            site-wide constants live here. */}
         <meta property="og:site_name" content="Webraf" />
-        <meta property="og:image" content={absoluteUrl('/og-image.webp')} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content={absoluteUrl('/og-image.webp')} />
         <Meta />
         <Links />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema(lang)) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema(lang)) }}
-        />
+        {!isNotFound && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema(lang)) }}
+          />
+        )}
         {/* If JS is disabled, never keep reveal content hidden */}
         <noscript>
           <style>{`.reveal,.reveal-left,.reveal-right,.reveal-card,.bar-rise,.chat-bubble{opacity:1!important;transform:none!important}`}</style>
         </noscript>
       </head>
       <body suppressHydrationWarning>
+        <a href="#main" className="skip-link">
+          {SKIP_LINK[lang] || SKIP_LINK.en}
+        </a>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -221,7 +224,8 @@ export default function App() {
     <>
       <ScrollRevealManager />
       <Navbar />
-      <main>
+      {/* id + tabIndex make <main> the skip link's focus target (app/skip-link.css). */}
+      <main id="main" tabIndex={-1}>
         <Outlet />
       </main>
       <Footer />
@@ -246,4 +250,45 @@ export default function App() {
 
 export function HydrateFallback() {
   return null;
+}
+
+// Last-resort safety net: without this, an unhandled render/commit error (e.g. the
+// browser's auto-translate feature mutating the DOM out from under React) unmounts
+// the app and leaves a BLANK page. Renders inside <Layout>, self-contained on
+// purpose (no Navbar/Footer — they could be the very thing that crashed).
+const ERROR_COPY = {
+  en: {
+    title: 'Something went wrong',
+    body: 'An unexpected error occurred while displaying this page. If your browser is auto-translating the site, turning translation off usually fixes it — Webraf is available natively in English and Spanish.',
+    reload: 'Reload page',
+    home: 'Go to homepage',
+  },
+  es: {
+    title: 'Algo salió mal',
+    body: 'Ocurrió un error inesperado al mostrar esta página. Si tu navegador está traduciendo el sitio automáticamente, desactivar la traducción suele solucionarlo — Webraf está disponible en español e inglés de forma nativa.',
+    reload: 'Recargar página',
+    home: 'Ir al inicio',
+  },
+};
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+  const { pathname } = useLocation();
+  const lang = getLocaleFromPath(pathname);
+  const t = ERROR_COPY[lang] || ERROR_COPY.en;
+  if (typeof console !== 'undefined') console.error(error);
+  return (
+    <div style={{ minHeight: '70vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', padding: '96px 24px 48px', gap: '1rem' }}>
+      <h1 style={{ fontSize: '1.8rem', margin: 0 }}>{t.title}</h1>
+      <p style={{ maxWidth: '46ch', color: 'var(--text-secondary)', margin: 0 }}>{t.body}</p>
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5rem' }}>
+        <button type="button" className="btn btn-primary" onClick={() => window.location.reload()}>
+          {t.reload}
+        </button>
+        <a href={lang === 'es' ? '/es/' : '/'} className="btn btn-secondary">
+          {t.home}
+        </a>
+      </div>
+    </div>
+  );
 }

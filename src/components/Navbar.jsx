@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
@@ -37,6 +37,8 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const mobileMenuRef = useRef(null);
+  const menuToggleRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,18 +64,55 @@ const Navbar = () => {
     }
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    // While the mobile menu is open: move focus into it, trap Tab inside,
+    // close on Escape, and return focus to the hamburger button on close.
+    if (!mobileMenuOpen) return undefined;
+    const menu = mobileMenuRef.current;
+    // Capture the toggle button now: the ref may have changed by cleanup time.
+    const toggleButton = menuToggleRef.current;
+    const focusableSelector =
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    menu?.querySelector('.mobile-menu-close')?.focus();
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !menu) return;
+      const focusables = Array.from(menu.querySelectorAll(focusableSelector));
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !menu.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !menu.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      toggleButton?.focus();
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to={navPath.home} className="navbar-logo" aria-label="Webraf — Web Development">
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" loading="lazy" />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" loading="lazy" />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" loading="lazy" />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" loading="lazy" />
+            {/* Above the fold on every page: no lazy; intrinsic dims prevent CLS. */}
+            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} />
+            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} />
+            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} />
+            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} />
           </Link>
 
-          <nav className="navbar-links">
+          <nav className="navbar-links" aria-label={locale === 'es' ? 'Principal' : 'Main'}>
             <Link to={navPath.home} className={location.pathname === navPath.home ? 'active' : ''}>
               {nav.home}
             </Link>
@@ -108,28 +147,42 @@ const Navbar = () => {
 
           <div className="navbar-mobile-actions">
             <LanguageSwitcher variant="compact" />
-            <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)} aria-label={nav.openMenu}>
+            <button
+              ref={menuToggleRef}
+              className="menu-toggle"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label={nav.openMenu}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
               <Menu size={28} />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+      {/* Mobile Menu — inert (plus visibility:hidden in CSS) while closed so its
+          links never sit in the tab order or accessibility tree off-screen. */}
+      <div
+        id="mobile-menu"
+        ref={mobileMenuRef}
+        className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}
+        inert={!mobileMenuOpen}
+      >
         <div className="mobile-menu-header">
           <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} aria-label="Webraf — Web Development">
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" loading="lazy" />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" loading="lazy" />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" loading="lazy" />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" loading="lazy" />
+            {/* Above the fold on every page: no lazy; intrinsic dims prevent CLS. */}
+            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} />
+            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} />
+            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} />
+            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} />
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />
           </button>
         </div>
 
-        <nav className="mobile-menu-nav">
+        <nav className="mobile-menu-nav" aria-label={locale === 'es' ? 'Móvil' : 'Mobile'}>
           {/* 1. Home */}
           <Link
             to={navPath.home}
@@ -155,10 +208,9 @@ const Navbar = () => {
               />
             </button>
             <div className={`mobile-mega-submenu ${servicesOpen ? 'open' : ''}`}>
+              {/* Business priority order: flagship service first; the index page moves
+                  to a trailing "view all" link so it doesn't compete for the first tap. */}
               <div className="mobile-submenu-col">
-                <Link to={getLocalizedPath('services', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
-                  {nav.services}
-                </Link>
                 <Link to={getLocalizedPath('svc-web', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
                   {services.web.title}
                 </Link>
@@ -170,6 +222,9 @@ const Navbar = () => {
                 </Link>
                 <Link to={getLocalizedPath('svc-ai', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
                   {services.ai.title}
+                </Link>
+                <Link to={getLocalizedPath('services', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {locale === 'es' ? 'Ver todos los servicios →' : 'View all services →'}
                 </Link>
               </div>
             </div>

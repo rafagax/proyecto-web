@@ -2,6 +2,7 @@ import KpiDashboardsDetail from '../../src/pages/KpiDashboardsDetail.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
+import { ogTags } from '../og.js';
 
 // Locale-aware meta for /services/kpi-dashboards and /es/servicios/dashboards-kpi.
 export function meta({ location }) {
@@ -16,6 +17,7 @@ export function meta({ location }) {
     { name: 'description', content: m.description },
     { property: 'og:title', content: m.ogTitle },
     { property: 'og:description', content: m.description },
+    ...ogTags({ canonical, locale }),
     { name: 'twitter:title', content: m.ogTitle },
     { name: 'twitter:description', content: m.description },
     { tagName: 'link', rel: 'canonical', href: canonical },

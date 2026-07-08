@@ -4,8 +4,9 @@ import { getContent } from '../../src/i18n/content.js';
 
 // Catch-all (splat) route for unknown URLs. Locale comes from the URL. The page is
 // intentionally NOT canonical/indexable: it emits a localized title + robots noindex
-// and NO canonical/hreflang/x-default/JSON-LD. The real HTTP 404 status is served by
-// Vercel (vercel.json routes) from the prerendered /404 and /es/404 documents.
+// and NO canonical/hreflang/x-default/Open Graph/JSON-LD. The real HTTP 404 status is
+// served by Apache (ErrorDocument in public/.htaccess) from the prerendered /404 (EN)
+// and /es/404 (ES) documents.
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
   const m = getContent(locale).notFound;

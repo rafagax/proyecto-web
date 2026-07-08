@@ -1,10 +1,11 @@
 import Home from '../../src/pages/Home.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
+import { ogTags } from '../og.js';
 
 // Locale-aware SEO for the Home. English keeps the exact original copy; Spanish uses
-// the approved Spanish copy (brand: Webraf). Canonical + hreflang are
-// per-locale; the global og:image/twitter:image live in app/root.jsx.
+// the approved Spanish copy (brand: Webraf). Canonical + hreflang are per-locale;
+// og:url/og:type/og:locale/og:image come from ogTags() (app/og.js).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
   const esHref = absoluteUrl('/es/');
@@ -35,6 +36,7 @@ export function meta({ location }) {
     { name: 'description', content: seo.description },
     { property: 'og:title', content: seo.shareTitle },
     { property: 'og:description', content: seo.shareDescription },
+    ...ogTags({ canonical, locale }),
     { name: 'twitter:title', content: seo.shareTitle },
     { name: 'twitter:description', content: seo.shareDescription },
     { tagName: 'link', rel: 'canonical', href: canonical },

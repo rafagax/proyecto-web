@@ -5,9 +5,12 @@ import { useRef, useEffect } from 'react';
 // rendered twice (the second copy is aria-hidden) so the loop has no visible
 // seam. On desktop the whole thing is hidden via CSS (.wdd-mscroll display:none).
 //
-// Auto-scroll pauses while the user is touching/hovering and resumes shortly
-// after they let go. No React state is touched in the effect — it only mutates
-// scrollLeft — so it stays cheap and lint-clean.
+// The rAF loop only runs while the track is on screen (IntersectionObserver) —
+// so it never runs on desktop, where the element is display:none — and it never
+// starts under prefers-reduced-motion (finger swiping still works natively).
+// Auto-scroll pauses while the user is touching and resumes shortly after they
+// let go. No React state is touched in the effect — it only mutates scrollLeft —
+// so it stays cheap and lint-clean.
 const MobileAutoCarousel = ({ children, speed = 1.1 }) => {
   const ref = useRef(null);
 
@@ -15,13 +18,16 @@ const MobileAutoCarousel = ({ children, speed = 1.1 }) => {
     const el = ref.current;
     if (!el) return;
 
-    let raf;
+    // Respect reduced motion: no marquee at all, manual swipe stays available.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let raf = 0;
+    let running = false;
     let paused = false;
     let resumeTimer;
 
-    // Continuous leftward marquee. Runs every frame; the scroll only actually
-    // advances when the track is visible and overflowing (mobile only — on
-    // desktop .wdd-mscroll is display:none, so scrollWidth === clientWidth === 0).
+    // Continuous leftward marquee. Only advances when the track is overflowing
+    // (mobile only — on desktop scrollWidth === clientWidth === 0).
     const tick = () => {
       if (!paused && el.scrollWidth > el.clientWidth) {
         el.scrollLeft += speed;
@@ -30,6 +36,28 @@ const MobileAutoCarousel = ({ children, speed = 1.1 }) => {
       }
       raf = requestAnimationFrame(tick);
     };
+    const start = () => {
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(tick);
+      }
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(raf);
+    };
+
+    // Run the loop only while the carousel is actually in the viewport.
+    let observer;
+    if (typeof IntersectionObserver === 'undefined') {
+      start();
+    } else {
+      observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) start();
+        else stop();
+      });
+      observer.observe(el);
+    }
 
     const pause = () => {
       paused = true;
@@ -49,9 +77,9 @@ const MobileAutoCarousel = ({ children, speed = 1.1 }) => {
     el.addEventListener('touchend', scheduleResume, { passive: true });
     el.addEventListener('touchcancel', scheduleResume, { passive: true });
 
-    raf = requestAnimationFrame(tick);
     return () => {
-      cancelAnimationFrame(raf);
+      stop();
+      if (observer) observer.disconnect();
       clearTimeout(resumeTimer);
       el.removeEventListener('touchstart', pause);
       el.removeEventListener('touchend', scheduleResume);

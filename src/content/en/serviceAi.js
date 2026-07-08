@@ -4,11 +4,18 @@
 // aria labels, headings, etc.). Strings only — no functions/JSX/booleans.
 export default {
   meta: {
-    title: 'AI Automation & WhatsApp Chatbots | Webraf',
+    title: 'AI Chatbots & WhatsApp Automation for 24/7 Sales | Webraf',
     description:
       'AI automation and chatbot services for businesses that want faster replies, lead qualification, appointment booking, and 24/7 customer support.',
     ogTitle: 'AI Automation & Chatbots That Help You Respond Faster and Convert More Leads',
     schemaName: 'AI Automation & Chatbots',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): English
+  // pages lead with the contact form and offer WhatsApp as the alternative;
+  // Spanish pages lead with WhatsApp and offer the form.
+  ctaAlt: {
+    whatsapp: 'Prefer WhatsApp? Chat with us',
+    form: 'Prefer the contact form? Tell us about your project',
   },
   assistantName: 'AI Assistant',
   online: 'online',

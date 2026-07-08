@@ -2,6 +2,7 @@ import FAQs from '../../src/pages/FAQs.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
+import { ogTags } from '../og.js';
 
 // Locale-aware meta + FAQPage JSON-LD for /faqs and /es/preguntas-frecuentes.
 // The structured data is built from the same localized content the page renders,
@@ -30,6 +31,7 @@ export function meta({ location }) {
     { name: 'description', content: faqs.meta.description },
     { property: 'og:title', content: faqs.meta.ogTitle },
     { property: 'og:description', content: faqs.meta.ogDescription },
+    ...ogTags({ canonical, locale }),
     { name: 'twitter:title', content: faqs.meta.ogTitle },
     { name: 'twitter:description', content: faqs.meta.ogDescription },
     { tagName: 'link', rel: 'canonical', href: canonical },

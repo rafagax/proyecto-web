@@ -22,23 +22,23 @@ const Home = () => {
     message: ''
   });
   const [status, setStatus] = useState('idle');       // main contact form
-  const [heroStatus, setHeroStatus] = useState('idle'); // hero mini form
+  const [waLink, setWaLink] = useState('');            // prefilled WhatsApp link, kept for the optional post-submit button
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  // Main contact form → send email via Web3Forms (falls back to WhatsApp button).
+  // Main contact form → send email via Web3Forms (WhatsApp offered as optional follow-up).
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (e.target.botcheck?.checked) return; // honeypot
     const { name, email, phone, message } = formData;
-    // 1) Open WhatsApp right away (synchronous → avoids the popup blocker).
-    window.open(whatsappHref(), '_blank');
+    // Snapshot the prefilled WhatsApp link before the form data is cleared.
+    setWaLink(whatsappHref());
     setStatus('sending');
     try {
-      // 2 + 3) Email (Web3Forms) + Telegram (inside sendContactEmail).
+      // Email (Web3Forms) + Telegram (inside sendContactEmail).
       await sendContactEmail({ name, email, phone, message, page: 'Home' });
       setStatus('sent');
       setFormData({ name: '', email: '', phone: '', message: '' });
@@ -54,31 +54,6 @@ const Home = () => {
         ? `Hello, my name is ${name}. My email is ${email}. My phone is ${phone}. My message: ${message}`
         : `Hola, mi nombre es ${name}. Mi correo es ${email}. Mi teléfono es ${phone}. Mi mensaje: ${message}`;
     return `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(text)}`;
-  };
-
-  // Hero mini form (uncontrolled inputs) → send email via Web3Forms.
-  const handleHeroSubmit = async (e) => {
-    e.preventDefault();
-    if (e.target.botcheck?.checked) return; // honeypot
-    const form = e.target;
-    const phone = form.phone?.value || '';
-    const email = form.email?.value || '';
-    const message = form.message?.value || '';
-    // 1) Open WhatsApp right away (synchronous → avoids the popup blocker).
-    const waText =
-      locale === 'en'
-        ? `Hello, my email is ${email}. My phone is ${phone}. My message: ${message}`
-        : `Hola, mi correo es ${email}. Mi teléfono es ${phone}. Mi mensaje: ${message}`;
-    window.open(`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(waText)}`, '_blank');
-    setHeroStatus('sending');
-    try {
-      // 2 + 3) Email (Web3Forms) + Telegram (inside sendContactEmail).
-      await sendContactEmail({ email, phone, message, page: 'Home (hero)' });
-      setHeroStatus('sent');
-      form.reset();
-    } catch {
-      setHeroStatus('error');
-    }
   };
 
   const benefits = [
@@ -110,14 +85,9 @@ const Home = () => {
               {home.hero.subtitle}
             </p >
 
-            {/* Hero CTA - Free Advisory (Desktop Only) */}
-            <div className="hero-advisory-wrap desktop-only" style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
-              <a
-                href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.advisory)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-advisory-btn"
-              >
+            {/* Hero CTAs — one primary (contact) + one secondary (services), visually distinct (Desktop Only) */}
+            <div className="hero-advisory-wrap desktop-only" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+              <Link to={getLocalizedPath('contact', locale)} className="hero-advisory-btn" style={{ margin: 0 }}>
                 <span className="hero-advisory-btn-icon">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2L13.09 8.26L19 6L15.45 11.13L22 12L15.45 12.87L19 18L13.09 15.74L12 22L10.91 15.74L5 18L8.55 12.87L2 12L8.55 11.13L5 6L10.91 8.26L12 2Z" fill="currentColor" />
@@ -125,7 +95,10 @@ const Home = () => {
                 </span>
                 {home.cta.freeAudit}
                 <ArrowRight size={17} />
-              </a>
+              </Link>
+              <Link to={getLocalizedPath('services', locale)} className="btn btn-secondary" style={{ padding: '14px 30px', fontSize: '1rem' }}>
+                {home.hero.ctaSecondary}
+              </Link>
             </div>
 
             {/* Mobile: Hero Image between subtitle and CTA */}
@@ -135,17 +108,12 @@ const Home = () => {
             </div>
             */}
 
-            {/* Mobile Hero CTA Button (Mobile Only) */}
+            {/* Mobile Hero CTA Button (Mobile Only) — primary CTA to contact */}
             <div className="mobile-hero-cta mobile-only">
-              <a
-                href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.audit)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-mobile-audit"
-              >
+              <Link to={getLocalizedPath('contact', locale)} className="btn-mobile-audit">
                 {home.cta.freeAudit}
                 <ArrowRight size={18} />
-              </a>
+              </Link>
             </div>
 
             {/* Mobile Hero Service Cards List (Mobile Only) */}
@@ -195,24 +163,10 @@ const Home = () => {
               </Link>
             </div>
 
-            <div className="hero-contact-form desktop-only" style={{ marginTop: '1.5rem', width: '100%', maxWidth: '320px', margin: '1.5rem auto 0' }}>
-              <h3 style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: '700', marginBottom: '1.25rem', textAlign: 'center' }}>{home.cta.freeAudit}</h3>
-              <form onSubmit={handleHeroSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <input type="tel" name="phone" placeholder={home.hero.form.phonePlaceholder} required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
-                <input type="email" name="email" placeholder={home.hero.form.emailPlaceholder} required style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%' }} />
-                <textarea name="message" placeholder={home.hero.form.messagePlaceholder} required rows="4" style={{ padding: '0.9rem', borderRadius: '10px', border: '1px solid rgba(77, 148, 255, 0.3)', background: 'var(--bg-card)', color: 'var(--text-primary)', fontSize: '0.9rem', width: '100%', fontFamily: 'inherit', resize: 'none' }} />
-                <input type="checkbox" name="botcheck" tabIndex="-1" autoComplete="off" style={{ display: 'none' }} aria-hidden="true" />
-                <button type="submit" disabled={heroStatus === 'sending'} style={{ padding: '1rem', borderRadius: '10px', background: '#4d94ff', color: '#05050a', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: heroStatus === 'sending' ? 'wait' : 'pointer', opacity: heroStatus === 'sending' ? 0.7 : 1, transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.target.style.boxShadow = '0 8px 25px rgba(77, 148, 255, 0.4)'} onMouseLeave={(e) => e.target.style.boxShadow = 'none'}>
-                  {heroStatus === 'sending' ? home.hero.form.sending : home.cta.freeAudit}
-                </button>
-                {heroStatus === 'sent' && <div className="form-status success">{home.hero.form.success}</div>}
-                {heroStatus === 'error' && <div className="form-status error">{home.hero.form.error}</div>}
-              </form>
-            </div>
           </div>
-          {/* Desktop hero image */}
+          {/* Desktop hero image (LCP) — explicit intrinsic size so the browser reserves space before download */}
           <div className="hero-image desktop-only hero-img-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={heroImg} alt={home.hero.imageAlt} className="hero-float" fetchPriority="high" decoding="async" style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
+            <img src={heroImg} alt={home.hero.imageAlt} className="hero-float" width="1122" height="1402" fetchPriority="high" decoding="async" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
           </div>
         </div>
       </section>
@@ -247,6 +201,8 @@ const Home = () => {
                   src={webDevImg}
                   alt={home.featured.imageAlt}
                   loading="lazy"
+                  width="1672"
+                  height="941"
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
@@ -273,6 +229,8 @@ const Home = () => {
                 src={webDevImg}
                 alt={home.featured.imageAlt}
                 loading="lazy"
+                width="1672"
+                height="941"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
@@ -487,7 +445,7 @@ const Home = () => {
               </h3>
               {/* Mobile-only image: title → image → paragraph on phones */}
               <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+                <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" width="1672" height="941" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 {home.build.seo.description}
@@ -503,7 +461,7 @@ const Home = () => {
             </div>
             <div className="feature-visual reveal-right">
               {/* SEO & Digital Growth image */}
-              <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" width="1672" height="941" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
 
@@ -593,7 +551,7 @@ const Home = () => {
               </h3>
               {/* Mobile-only image: title → image → paragraph on phones */}
               <div className="mobile-feature-img" style={{ marginBottom: '1.5rem' }}>
-                <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+                <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" width="1639" height="960" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
               </div>
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7 }}>
                 {home.build.kpi.description}
@@ -609,7 +567,7 @@ const Home = () => {
             </div>
             <div className="feature-visual reveal-right">
               {/* KPI dashboard image */}
-              <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" width="1639" height="960" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
             </div>
           </div>
         </div>
@@ -866,8 +824,31 @@ const Home = () => {
                 {status === 'sending' ? home.contactForm.sending : home.contactForm.submit}
               </button>
 
-              {status === 'sent' && <div className="form-status success">{home.contactForm.success}</div>}
-              {status === 'error' && <div className="form-status error">{home.contactForm.error}</div>}
+              {/* Privacy-consent line (shared copy with the contact page forms) */}
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', textAlign: 'center', margin: 0, lineHeight: 1.5 }}>
+                {common.forms.consentBefore}
+                <Link to={getLocalizedPath('privacy', locale)} style={{ color: 'var(--accent-cyan)', textDecoration: 'underline' }}>
+                  {common.forms.consentLinkLabel}
+                </Link>
+                {common.forms.consentAfter}
+              </p>
+
+              {status === 'sent' && (
+                <div className="form-status success">
+                  {home.contactForm.success}{' '}
+                  <a href={waLink || `https://wa.me/${BUSINESS_WHATSAPP}`} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', fontWeight: 700, textDecoration: 'underline' }}>
+                    {home.contactForm.whatsappButton}
+                  </a>
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="form-status error">
+                  {home.contactForm.error}{' '}
+                  <a href={waLink || `https://wa.me/${BUSINESS_WHATSAPP}`} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', fontWeight: 700, textDecoration: 'underline' }}>
+                    {home.contactForm.whatsappButton}
+                  </a>
+                </div>
+              )}
             </form>
           </div>
         </div>

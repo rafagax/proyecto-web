@@ -1,0 +1,31 @@
+/* Footer-only styles.
+   The brand wordmark and the column titles are rendered as <div>s (not h2/h3)
+   so the footer stops injecting decorative headings into every page's document
+   outline. These classes replicate the exact heading look they had:
+   - global `h1..h6` rule in index.css (font-family = body stack, weight, line-height)
+   - `.footer-col h3` and the mobile `.footer-col h2` overrides in App.css */
+
+/* Brand wordmark (was an <h2>) */
+.footer-brand-name {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Column titles (were <h3>) — mirrors App.css `.footer-col h3` */
+.footer-col-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  /* Mirrors App.css `.footer-col h2` (!important beats the inline styles,
+     exactly like the original rule did) */
+  .footer-brand-name {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.6rem !important;
+  }
+}

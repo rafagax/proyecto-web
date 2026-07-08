@@ -2,11 +2,18 @@
 // as en/serviceSeo.js. Images/icons/structure stay in the component.
 export default {
   meta: {
-    title: 'Servicios de SEO y crecimiento digital | Webraf',
+    title: 'Posicionamiento web y SEO para conseguir clientes | Webraf',
     description:
-      'Servicios de SEO y crecimiento digital diseñados para ayudar a tu negocio a mejorar su visibilidad en Google, atraer tráfico calificado y convertir la intención de búsqueda en oportunidades reales.',
+      'Posicionamiento web y SEO para tu negocio: SEO técnico, contenidos y palabras clave. Atrae tráfico calificado desde Google y conviértelo en clientes.',
     ogTitle: 'Servicios de SEO y crecimiento digital para negocios que quieren ser encontrados',
     schemaName: 'SEO y crecimiento digital',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): Spanish
+  // pages lead with WhatsApp and offer the contact form as the alternative;
+  // English pages lead with the form and offer WhatsApp.
+  ctaAlt: {
+    whatsapp: '¿Prefieres WhatsApp? Escríbenos',
+    form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
   },
   hero: {
     title: { before: 'SEO y crecimiento ', accent: 'digital', after: '' },

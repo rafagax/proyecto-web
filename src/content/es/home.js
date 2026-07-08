@@ -8,6 +8,7 @@ export default {
   },
 
   hero: {
+    // Owner's call (2026-07): keep the original service-list H1.
     title: {
       before: 'Desarrollo web, ',
       accent1: 'automatización con IA',
@@ -23,15 +24,7 @@ export default {
       kpi: { tagline: 'Controla los números que importan' },
       ai: { tagline: 'Responde más rápido, 24/7' },
     },
-    form: {
-      phonePlaceholder: 'Tu número de teléfono',
-      emailPlaceholder: 'Tu correo',
-      messagePlaceholder: '¿Qué servicio necesitas o por qué nos contactas?',
-      sending: 'Enviando...',
-      success: '¡Enviado! Te contactaremos muy pronto. ✓',
-      error: 'No se pudo enviar. Prueba por WhatsApp abajo.',
-      whatsappButton: 'Enviar por WhatsApp',
-    },
+    ctaSecondary: 'Ver nuestros servicios',
   },
 
   value: {
@@ -215,14 +208,13 @@ export default {
     message: { label: 'Mensaje', placeholder: 'Cuéntanos un poco sobre tu proyecto...' },
     submit: 'Obtén tu estrategia digital gratuita',
     sending: 'Enviando...',
-    success: '¡Enviado! Te responderemos muy pronto. ✓',
+    success: '¡Enviado! Te responderemos en menos de 24 h laborables. ✓',
     error: 'No se pudo enviar. Intenta de nuevo o escríbenos por WhatsApp.',
     whatsappButton: 'O escríbenos por WhatsApp',
   },
 
   whatsapp: {
-    advisory: 'Hola, me gustaría agendar una sesión de asesoría gratuita para mi negocio.',
-    audit: 'Hola, me gustaría solicitar una auditoría gratuita para mi negocio.',
+    audit: 'Hola, me gustaría solicitar una auditoría gratuita para mi negocio.', // still used by the Navbar CTA
     system: 'Hola, me gustaría conocer más sobre tu sistema de crecimiento digital.',
     project: 'Hola, me gustaría iniciar mi proyecto web.',
     auditStrategy: 'Hola, me gustaría solicitar una auditoría y una sesión de estrategia gratuitas.',

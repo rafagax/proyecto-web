@@ -4,6 +4,11 @@ import { getLocalizedPath } from '../../app/route-manifest.js';
 
 // Localized 404 page. Reuses the existing hero/button classes (no new CSS). The
 // Navbar/Footer come from the global layout. Links resolve via the manifest.
+//
+// The contact-link label lives here (both locales) because content/{en,es}/notFound.js
+// doesn't define one yet; move it there if that file grows a `contactButton` key.
+const CONTACT_LABEL = { en: 'Contact us', es: 'Contáctanos' };
+
 const NotFound = () => {
   const { locale, content } = useLocalizedContent();
   const t = content.notFound;
@@ -28,6 +33,9 @@ const NotFound = () => {
             </Link>
             <Link to={getLocalizedPath('services', locale)} className="btn btn-secondary" style={{ padding: '16px 40px', fontSize: '1.05rem' }}>
               {t.secondaryButton}
+            </Link>
+            <Link to={getLocalizedPath('contact', locale)} className="btn btn-secondary" style={{ padding: '16px 40px', fontSize: '1.05rem' }}>
+              {CONTACT_LABEL[locale] || CONTACT_LABEL.en}
             </Link>
           </div>
         </div>

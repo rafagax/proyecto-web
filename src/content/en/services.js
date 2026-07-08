@@ -15,43 +15,65 @@ export default {
     subtitle:
       'We offer complete digital solutions tailored to help your business grow online — from web development and AI automation to SEO and lead generation.',
     cardCta: 'Get this service',
+    // serviceKey maps each card to its detail page in app/route-manifest.js;
+    // detailCta is the descriptive anchor for that link.
     cards: [
       {
         title: 'Professional Digital Presence',
         description:
           'We build a modern, clear and attractive website that strengthens your business image, builds trust with your clients, and makes your brand project professionalism from the very first click.',
         benefits: ['Custom visual design', 'Optimized loading speed', 'Mobile-friendly layout', 'Brand consistency'],
+        serviceKey: 'svc-web',
+        detailCta: 'Explore web development & design',
       },
       {
         title: 'Fast & Professional Web Development',
         description:
           'We create multi-device websites delivered in just 7 days, using the latest frameworks and technologies to ensure performance, reliability and scalability.',
         benefits: ['Delivery in 7 business days', 'React / Next.js powered', 'Performance optimized', 'Cross-browser compatible'],
+        serviceKey: 'svc-web',
+        detailCta: 'See our web development service',
       },
       {
         title: 'Sales Growth & Local SEO',
         description:
           'We apply geo-local positioning strategies so your business ranks first on Google in your city, attracts local clients, and gets recommended by AI assistants.',
         benefits: ['Google Business Profile setup', 'Keyword targeting', 'Local citation building', 'AI recommendation optimization'],
+        serviceKey: 'svc-seo',
+        detailCta: 'Explore our SEO service',
       },
       {
         title: 'AI Chatbot Integration',
         description:
           'We integrate intelligent AI chatbots into your website that attend to clients 24/7, answer common questions, and route leads to WhatsApp automatically.',
         benefits: ['24/7 customer attendance', 'WhatsApp integration', 'Lead capture automation', 'Custom conversation flows'],
+        serviceKey: 'svc-ai',
+        detailCta: 'Explore AI automation & chatbots',
       },
       {
         title: 'Business Automation',
         description:
           'We automate repetitive tasks and workflows so your team focuses on what matters. From WhatsApp responses to CRM integrations and email sequences.',
         benefits: ['WhatsApp auto-responses', 'CRM integration', 'Email marketing automation', 'Workflow optimization'],
+        serviceKey: 'svc-ai',
+        detailCta: 'See our AI automation service',
       },
       {
         title: 'SEO & Content Strategy',
         description:
           'We develop a full SEO and content strategy to make your business discoverable online, driving organic traffic that converts into paying customers.',
         benefits: ['Technical SEO audit', 'Content planning', 'On-page optimization', 'Monthly reporting'],
+        serviceKey: 'svc-seo',
+        detailCta: 'See our SEO & content service',
       },
+    ],
+    // Hub → spoke row: one keyword-anchor link per service detail page.
+    detailLinksHeading: { before: 'Dive deeper into each ', accent: 'service', after: '' },
+    detailLinks: [
+      { key: 'svc-web', label: 'Web Development & Design' },
+      { key: 'svc-seo', label: 'SEO & Digital Growth' },
+      { key: 'svc-kpi', label: 'KPI Dashboards & Analytics' },
+      { key: 'svc-ai', label: 'AI Automation & Chatbots' },
     ],
     cta: {
       heading: { before: 'Ready to ', accent: 'level up?', after: '' },
@@ -70,6 +92,13 @@ export default {
     schemaName: 'Web Development & Design',
   },
   webDetail: {
+    // Secondary-action labels for the market-aware CTAs (contract C2): English
+    // pages lead with the contact form and offer WhatsApp as the alternative;
+    // Spanish pages lead with WhatsApp and offer the form.
+    ctaAlt: {
+      whatsapp: 'Prefer WhatsApp? Chat with us',
+      form: 'Prefer the contact form? Tell us about your project',
+    },
     hero: {
       title: { before: 'Web Design & ', accent: 'Development', after: '' },
       subtitle:
