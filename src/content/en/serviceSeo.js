@@ -3,9 +3,9 @@
 // translatable text. Segmented headings use { before, accent, after }. Strings only.
 export default {
   meta: {
-    title: 'SEO Services — Rank Higher & Get More Clients | Webraf',
+    title: 'SEO Services for Small Business — Rank Higher | Webraf',
     description:
-      'SEO and digital growth services designed to help businesses improve Google visibility, attract qualified traffic, and turn search intent into real opportunities.',
+      'SEO services for small business: improve your Google visibility, attract qualified traffic, and turn searches into customers. Get a free SEO audit.',
     ogTitle: 'SEO & Digital Growth Services for Businesses That Want to Be Found',
     schemaName: 'SEO & Digital Growth',
   },
@@ -18,7 +18,7 @@ export default {
   },
   hero: {
     title: { before: 'SEO & Digital ', accent: 'Growth', after: '' },
-    subtitle: 'We help your business rank higher on Google, attract qualified traffic, and turn search intent into real customers.',
+    subtitle: 'We help small businesses and growing brands rank higher on Google, attract qualified traffic, and turn search intent into real customers.',
     cta: 'Get a Free SEO Audit',
     alt: 'SEO analytics dashboard showing search growth',
     waQuote: "Hello, I'd like to get a free SEO audit for my business.",
@@ -65,7 +65,7 @@ export default {
   },
   why: {
     heading: { before: 'Why Work With Our ', accent: 'SEO Team?', after: '' },
-    copy: 'We combine strategy, technical expertise, and content to grow your visibility — focused on real results: more traffic, more leads, more sales. Our process is transparent and built around your goals.',
+    copy: 'Our SEO services for small business combine strategy, technical expertise, and content to grow your visibility — focused on real results: more traffic, more leads, more sales. Our process is transparent and built around your goals.',
     cta: "Let's Talk About Your Growth",
     waQuote: "Hello, I'd like to talk about growing my business with SEO.",
     points: ['Personalized strategy from audit to results', 'White-hat, sustainable SEO methods', 'Clear, transparent reporting', 'Focus on traffic that actually converts', 'Built for long-term organic growth'],

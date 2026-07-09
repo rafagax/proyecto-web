@@ -3,17 +3,17 @@
 // Plain strings only — no functions/JSX/booleans.
 export default {
   meta: {
-    title: 'Plans & Pricing — Websites from $299 | Webraf',
+    title: 'Website Design Packages & Pricing — From $299 | Webraf',
     description:
-      'Simple, transparent pricing for websites, SEO, KPI dashboards, and AI automation. Professional websites starting from $299, with no hidden fees.',
-    ogTitle: 'Plans & Pricing | Webraf',
-    ogDescription: 'Transparent pricing with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',
+      'Website design packages from $299 with no hidden fees. See how much a website costs for a small business, compare plans, and get started today.',
+    ogTitle: 'Website Design Packages & Pricing | Webraf',
+    ogDescription: 'Transparent website design packages with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',
   },
   hero: {
     eyebrow: 'Transparent Pricing',
-    title: { before: 'Plans & ', accent: 'Pricing', after: '' },
+    title: { before: 'Website Design ', accent: 'Packages & Pricing', after: '' },
     subtitle:
-      'Simple, transparent pricing. No hidden fees. Choose the plan that best fits your business needs and start growing today.',
+      'Simple, transparent website design packages with no hidden fees. Choose the plan that best fits your business needs and start growing today.',
   },
   popularBadge: 'Most Popular',
   getStarted: 'Get Started',
@@ -83,7 +83,7 @@ export default {
   },
   faqTeaser: {
     heading: { before: 'Have ', accent: 'questions?', after: '' },
-    copy: 'Check our FAQ page for answers to the most common questions about our services and pricing.',
+    copy: 'Wondering how much a website costs for a small business? Our FAQ page covers that and the most common questions about our services and pricing.',
     cta: 'View FAQs',
   },
 };

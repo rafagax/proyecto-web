@@ -69,7 +69,7 @@ That around-the-clock availability matters more than most owners realize. Buyers
 
 Studies consistently show that most consumers judge a company's credibility by its website design. A slow, outdated, or missing site quietly tells people you are not serious. A clean, fast, modern site does the opposite: it signals that you are professional and here to stay.
 
-For a small business competing against larger names, that perception gap is often the difference between winning and losing the lead. You cannot out-spend a national brand on advertising, but you absolutely can out-present them with a sharper, faster, more focused website — and buyers reward that.
+For a small business competing against larger names, that perception gap is often the difference between winning and losing the lead. You cannot out-spend a national brand on advertising, but you absolutely can out-present them with a sharper, faster, more focused website — and buyers reward that. You can see what that looks like for real businesses in [the clients we've worked with](/clients).
 
 ## What a modern business website actually needs
 
@@ -142,7 +142,7 @@ If your current site is slow or impossible to edit, fix that first; a [professio
 
 ## Build service pages that answer real questions
 
-The businesses that dominate local search rarely do it with the homepage alone. They win with pages that match exactly what people type: one page per service, each answering the questions a buyer actually has — what is included, how long it takes, what affects the price, and why choose you. Add genuine photos of your work and testimonials from local customers. One strong, specific page beats five thin ones every time.
+The businesses that dominate local search rarely do it with the homepage alone. They win with pages that match exactly what people type: one page per service, each answering the questions a buyer actually has — what is included, how long it takes, what affects the price, and why choose you. Add genuine photos of your work and testimonials from local customers — the same kind of social proof we showcase for [our own clients](/clients). One strong, specific page beats five thin ones every time.
 
 ## Earn local links and mentions
 
@@ -201,7 +201,7 @@ Human energy fluctuates; an AI's does not. It delivers the same helpful, accurat
 
 ## Does the math work?
 
-Run your own numbers instead of trusting anyone's promises. Estimate how many inquiries you currently miss or answer late each month, what fraction of your inquiries typically become customers, and what an average customer is worth. If capturing even a few of those lost conversations would cover the monthly cost of the assistant, everything beyond that is upside — more booked calls, more sales, less admin. For most service businesses with steady inquiry volume, that bar is low.
+Run your own numbers instead of trusting anyone's promises. Estimate how many inquiries you currently miss or answer late each month, what fraction of your inquiries typically become customers, and what an average customer is worth. If capturing even a few of those lost conversations would cover the monthly cost of the assistant, everything beyond that is upside — more booked calls, more sales, less admin. For most service businesses with steady inquiry volume, that bar is low. Many of [the businesses we work with](/clients) fit exactly this profile.
 
 And measure it after launch, not just before. Conversations started, leads captured, appointments booked — if you track those alongside your other business numbers in a [KPI dashboard](/services/kpi-dashboards), you will know within weeks whether the assistant is paying for itself.
 
@@ -253,7 +253,7 @@ Before launch, add the details that make a stranger comfortable typing in their 
 - Fast loading, because a sluggish store feels like an untrustworthy store
 - A few testimonials or reviews if you have them — even from offline customers
 
-None of these are decoration. Each one answers a silent objection a first-time buyer has, and together they are often the difference between a visit and a sale.
+None of these are decoration. Each one answers a silent objection a first-time buyer has, and together they are often the difference between a visit and a sale. For inspiration, see how [the businesses we've built for](/clients) present their proof.
 
 ## Day 7: Launch and promote
 
@@ -321,7 +321,7 @@ Performance and search rankings are tightly linked: page experience is a ranking
 
 ## Measure, fix, repeat
 
-Performance is not a one-time cleanup; it is an ongoing habit. New images get uploaded, new scripts get added, and scores drift — so re-test monthly and after any significant change. The businesses that treat speed as a feature, not an afterthought, are the ones that quietly win more traffic and more sales. Not sure how your site scores or what the results mean? [Send it over](/contact) and we will tell you plainly what is slowing it down and what it would take to fix.`,
+Performance is not a one-time cleanup; it is an ongoing habit. New images get uploaded, new scripts get added, and scores drift — so re-test monthly and after any significant change. The businesses that treat speed as a feature, not an afterthought, are the ones that quietly win more traffic and more sales — a pattern we see again and again across [our clients](/clients). Not sure how your site scores or what the results mean? [Send it over](/contact) and we will tell you plainly what is slowing it down and what it would take to fix.`,
     },
     'mobile-first-design-strategy': {
       title: 'Mobile-First Design: The Future of Web Development',
@@ -387,7 +387,7 @@ Then ask someone outside your business to do the same while you watch. Where the
 
 ## The bottom line
 
-Your customers are already on their phones. Meeting them there with a fast, clean, effortless experience is one of the highest-return decisions you can make — and it is why every site we deliver through our [web development service](/services/web-development) is designed mobile-first from the very first sketch, not adapted as an afterthought. Mobile-first is not a trend; it is simply how good websites are built now. If your current site fails the five-minute audit above, [let's talk](/contact) about what fixing it would take.`,
+Your customers are already on their phones. Meeting them there with a fast, clean, effortless experience is one of the highest-return decisions you can make — and it is why every site we deliver through our [web development service](/services/web-development) is designed mobile-first from the very first sketch, not adapted as an afterthought — you can browse the results across [our clients](/clients). Mobile-first is not a trend; it is simply how good websites are built now. If your current site fails the five-minute audit above, [let's talk](/contact) about what fixing it would take.`,
     },
   },
 };

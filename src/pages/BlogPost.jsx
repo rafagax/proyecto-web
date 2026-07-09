@@ -3,6 +3,7 @@ import { ArrowLeft, Calendar, User } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath, articles } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
 // Minimal inline-markdown support for article bodies: [text](url). Internal URLs
 // (starting with "/") become client-side <Link>s; external ones open in a new tab.
@@ -49,9 +50,10 @@ const BlogPost = () => {
 
   return (
     <div className="blog-page">
-      {/* Hero Image */}
+      {/* Hero Image — sized via .blog-post-hero-img (App.css) so the height can
+          shrink on phones; an inline height can't be overridden by media queries. */}
       <div className="blog-post-hero">
-        <img src={post.image} alt={lp.imageAlt || `${t.article.imageAltPrefix} ${lp.title}`} style={{ width: '100%', height: '400px', objectFit: 'cover' }} />
+        <img src={post.image} alt={lp.imageAlt || `${t.article.imageAltPrefix} ${lp.title}`} className="blog-post-hero-img" />
       </div>
 
       {/* Article Content */}
@@ -100,8 +102,10 @@ const BlogPost = () => {
                 );
               }
               if (paragraph.startsWith('-')) {
+                // Indent comes from .blog-post-content ul (App.css): 2rem on
+                // desktop, reduced on phones — do not hardcode it inline.
                 return (
-                  <ul key={idx} style={{ marginLeft: '2rem', marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+                  <ul key={idx} style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
                     {paragraph.split('\n').map((item, i) => (
                       <li key={i} style={{ marginBottom: '0.5rem', lineHeight: '1.6' }}>
                         {renderInline(item.replace('-', '').trim())}
@@ -135,7 +139,7 @@ const BlogPost = () => {
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
               {t.article.ctaCopy}
             </p>
-            <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
+            <a href={`https://wa.me/${BUSINESS_WHATSAPP}`} target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
               {t.article.ctaButton}
             </a>
           </div>

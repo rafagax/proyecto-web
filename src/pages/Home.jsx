@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { ArrowRight, Bot, CheckCircle2, MessageCircle, Mail, MapPin, ChevronRight, Code, TrendingUp, BarChart3, Gauge, MonitorSmartphone, SearchCheck, ListChecks, Goal, Headset } from 'lucide-react';
+// Each heavy image ships as AVIF (scripts/gen-avif.mjs) with the WebP original
+// as the <picture> fallback. NOTE: wrapping the eager hero in <picture>
+// suppresses React 19's automatic SSR preload — app/routes/home.jsx emits the
+// equivalent manual preload via its links() export.
 import heroImg from '../assets/Hero2.webp';
+import heroAvif from '../assets/Hero2.avif';
 import webDevImg from '../assets/imagenwebdevelop.webp';
+import webDevAvif from '../assets/imagenwebdevelop.avif';
 import kpiHomeImg from '../assets/kpi-call-center.webp';
+import kpiHomeAvif from '../assets/kpi-call-center.avif';
 import seoDigitalImg from '../assets/seoimagendigital.webp';
+import seoDigitalAvif from '../assets/seoimagendigital.avif';
 import { Link } from 'react-router-dom';
 import { TestimonialsCarousel } from '../components/TestimonialsCarousel';
 import { BlogCarousel } from '../components/BlogCarousel';
@@ -166,7 +174,10 @@ const Home = () => {
           </div>
           {/* Desktop hero image (LCP) — explicit intrinsic size so the browser reserves space before download */}
           <div className="hero-image desktop-only hero-img-in" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <img src={heroImg} alt={home.hero.imageAlt} className="hero-float" width="1122" height="1402" fetchPriority="high" decoding="async" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
+            <picture>
+              <source type="image/avif" srcSet={heroAvif} />
+              <img src={heroImg} alt={home.hero.imageAlt} className="hero-float" width="1122" height="1402" fetchPriority="high" decoding="async" style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '500px', objectFit: 'contain', filter: 'drop-shadow(0 0 30px rgba(77, 148, 255, 0.3))' }} />
+            </picture>
           </div>
         </div>
       </section>
@@ -211,14 +222,17 @@ const Home = () => {
                 .feature-row rules in App.css) — no duplicated DOM/text. */}
             <div className="feature-visual feature-visual-image reveal-right">
               {/* Premium corporate website image */}
-              <img
-                src={webDevImg}
-                alt={home.featured.imageAlt}
-                loading="lazy"
-                width="1672"
-                height="941"
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+              <picture>
+                <source type="image/avif" srcSet={webDevAvif} />
+                <img
+                  src={webDevImg}
+                  alt={home.featured.imageAlt}
+                  loading="lazy"
+                  width="1672"
+                  height="941"
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                />
+              </picture>
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(5,5,10,0) 30%, rgba(5,5,10,0.92) 100%)', pointerEvents: 'none' }} />
               <div style={{ position: 'absolute', left: '1.5rem', bottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem' }}>
                 <Code size={16} style={{ color: 'var(--accent-cyan)' }} />
@@ -294,7 +308,7 @@ const Home = () => {
               </p>
               <div style={{ display: 'flex', gap: '1rem' }}>
                 <a
-                  href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.system)}`}
+                  href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(home.whatsapp.system)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hero-advisory-btn"
@@ -443,7 +457,10 @@ const Home = () => {
             </div>
             <div className="feature-visual reveal-right">
               {/* SEO & Digital Growth image */}
-              <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" width="1672" height="941" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <picture>
+                <source type="image/avif" srcSet={seoDigitalAvif} />
+                <img src={seoDigitalImg} alt={home.build.seo.imageAlt} loading="lazy" width="1672" height="941" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              </picture>
             </div>
           </div>
 
@@ -517,7 +534,10 @@ const Home = () => {
             </div>
             <div className="feature-visual reveal-right">
               {/* KPI dashboard image */}
-              <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" width="1639" height="960" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              <picture>
+                <source type="image/avif" srcSet={kpiHomeAvif} />
+                <img src={kpiHomeImg} alt={home.build.kpi.imageAlt} loading="lazy" width="1639" height="960" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 16, border: '1px solid var(--border-subtle)' }} />
+              </picture>
             </div>
           </div>
         </div>
@@ -551,7 +571,7 @@ const Home = () => {
           {/* Section CTA — start the project */}
           <div className="reveal" style={{ display: 'flex', justifyContent: 'center', marginTop: '3.5rem' }}>
             <a
-              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.project)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(home.whatsapp.project)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-advisory-btn"
@@ -605,7 +625,7 @@ const Home = () => {
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
             <a
-              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.auditStrategy)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(home.whatsapp.auditStrategy)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hero-advisory-btn"
@@ -624,7 +644,7 @@ const Home = () => {
             <div className="home-contact-card" style={{ padding: '2.5rem 2rem', backgroundColor: 'var(--bg-card)', borderRadius: '12px', border: '1px solid var(--bg-card)' }}>
               <MessageCircle size={32} style={{ color: 'var(--accent-cyan)', marginBottom: '1rem' }} />
               <h3>{home.finalCta.contact.whatsappLabel}</h3>
-              <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
+              <a href={`https://wa.me/${BUSINESS_WHATSAPP}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-cyan)', textDecoration: 'none', fontWeight: '600' }}>
                 +58 414 473 5431
               </a>
             </div>

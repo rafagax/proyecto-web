@@ -19,6 +19,7 @@ import Footer from '../src/components/Footer';
 import Chatbot from '../src/components/Chatbot';
 import CookieBanner from '../src/components/CookieBanner';
 import { SITE_URL, absoluteUrl } from '../src/config/site.js';
+import { BUSINESS_WHATSAPP } from '../src/config/forms.js';
 import { getLocaleFromPath } from '../src/i18n/locale.js';
 import { OG_IMAGE } from './og.js';
 
@@ -33,6 +34,8 @@ export const links = () => [
   { rel: 'icon', type: 'image/png', sizes: '48x48', href: '/favicon-48.png' },
   // iOS home-screen icon must be a PNG (Safari ignores SVG here) — 180×180.
   { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+  // Web app manifest (public/manifest.webmanifest; icons from scripts/gen-avif.mjs).
+  { rel: 'manifest', href: '/manifest.webmanifest' },
 ];
 
 // Localized description for the global structured data. Spanish reuses the approved
@@ -258,7 +261,7 @@ export default function App() {
 
       {/* Floating WhatsApp button */}
       <a
-        href={`https://wa.me/584144735431?text=${encodeURIComponent(wa.message)}`}
+        href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(wa.message)}`}
         target="_blank"
         rel="noopener noreferrer"
         className="floating-whatsapp"

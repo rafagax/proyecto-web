@@ -2,17 +2,17 @@
 // positions stay in Pricing.jsx (structural). Same keys/order as en/pricing.js.
 export default {
   meta: {
-    title: 'Planes y precios — Sitios web desde $299 | Webraf',
+    title: 'Precio página web — planes claros desde $299 | Webraf',
     description:
-      'Precios simples y transparentes para sitios web, SEO, dashboards de KPI y automatización con IA. Sitios web profesionales desde $299, sin costos ocultos.',
-    ogTitle: 'Planes y precios | Webraf',
-    ogDescription: 'Precios transparentes y sin costos ocultos. Sitios web desde $299, además de servicios mensuales de SEO, gestión e IA.',
+      '¿Buscas el precio de una página web? Planes claros desde $299, sin costes ocultos, y presupuesto a medida para tu pyme. Compara planes y elige el tuyo.',
+    ogTitle: 'Precio de tu página web — planes claros | Webraf',
+    ogDescription: 'Precios transparentes y sin costes ocultos. Páginas web desde $299, además de servicios mensuales de SEO, gestión e IA.',
   },
   hero: {
     eyebrow: 'Precios transparentes',
-    title: { before: 'Planes y ', accent: 'precios', after: '' },
+    title: { before: '¿Cuánto cuesta hacer tu ', accent: 'página web', after: '?' },
     subtitle:
-      'Precios simples y transparentes. Sin costos ocultos. Elige el plan que mejor se adapte a las necesidades de tu negocio y empieza a crecer hoy.',
+      'Aquí tienes el precio de tu página web sin sorpresas: planes claros y sin costes ocultos. Elige el que mejor encaje con tu negocio y empieza a crecer hoy.',
   },
   popularBadge: 'Más popular',
   getStarted: 'Empezar',
@@ -43,8 +43,8 @@ export default {
         text: 'Empieza con una auditoría gratuita de tu sitio web o presencia digital — un buen punto de partida, decidas o no trabajar con nosotros.',
       },
       {
-        title: 'Sin costos ocultos',
-        text: 'El precio que ves es el precio que pagas. Acordamos un cronograma y un alcance claros antes de empezar.',
+        title: 'Sin costes ocultos',
+        text: 'El precio que ves es el precio que pagas. Acordamos un presupuesto, un cronograma y un alcance claros antes de empezar.',
       },
       {
         title: 'Soporte después del lanzamiento',
@@ -76,13 +76,13 @@ export default {
   },
   custom: {
     heading: { before: '¿Necesitas un ', accent: 'plan a medida?', after: '' },
-    copy: 'Cada negocio es único. Si ninguno de los planes anteriores se ajusta a lo que necesitas, hablemos y crearemos una solución a tu medida.',
-    cta: 'Solicita una cotización a medida',
-    waQuote: '¡Hola! Me gustaría una cotización a medida para mi proyecto.',
+    copy: 'Cada negocio es único. Si ninguno de los planes anteriores se ajusta a lo que necesitas, cuéntanos tu proyecto y te preparamos un presupuesto para tu página web a medida, sin compromiso.',
+    cta: 'Pide tu presupuesto a medida',
+    waQuote: '¡Hola! Me gustaría un presupuesto a medida para mi proyecto.',
   },
   faqTeaser: {
     heading: { before: '¿Tienes ', accent: 'preguntas?', after: '' },
-    copy: 'Visita nuestra página de preguntas frecuentes para resolver las dudas más comunes sobre nuestros servicios y precios.',
+    copy: '¿Te preguntas cuánto cuesta hacer una página web o cómo se calcula el presupuesto? En nuestras preguntas frecuentes resolvemos esas dudas y muchas más.',
     cta: 'Ver preguntas frecuentes',
   },
 };

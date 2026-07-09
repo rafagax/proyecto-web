@@ -88,7 +88,9 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* clip (not hidden): hidden turns <body> into its own scroll container, which
+     nested a second vertical scrollbar inside the page on mobile. */
+  overflow-x: clip;
 }
 
 a {

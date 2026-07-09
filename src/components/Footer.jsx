@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Mail, MessageCircle, MapPin } from 'lucide-react';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 import './Footer.css';
 
 const Footer = () => {
@@ -26,7 +27,7 @@ const Footer = () => {
               {footer.tagline}
             </p>
             <div style={{ display: 'flex', gap: '15px' }}>
-              <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" aria-label={locale === 'en' ? 'Chat with us on WhatsApp' : 'Escríbenos por WhatsApp'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><MessageCircle size={20} /></a>
+              <a href={`https://wa.me/${BUSINESS_WHATSAPP}`} target="_blank" rel="noopener noreferrer" aria-label={locale === 'en' ? 'Chat with us on WhatsApp' : 'Escríbenos por WhatsApp'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><MessageCircle size={20} /></a>
               <a href="mailto:contact@webraf.com" aria-label={locale === 'en' ? 'Email us at contact@webraf.com' : 'Escríbenos a contact@webraf.com'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-card)', color: 'var(--accent-cyan)', transition: 'all 0.3s' }} onMouseOver={e => e.currentTarget.style.background='rgba(77, 148, 255, 0.1)'} onMouseOut={e => e.currentTarget.style.background='var(--bg-card)'}><Mail size={20} /></a>
               {/* Third social icon removed: it was a dead href="#" link. Re-add it
                   only when a real social profile URL exists (e.g. in src/config/site.js). */}

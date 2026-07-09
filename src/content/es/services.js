@@ -83,12 +83,12 @@ export default {
     },
   },
   webMeta: {
-    title: 'Servicios de desarrollo y diseño web premium | Webraf',
+    title: 'Diseño web corporativo y de tiendas online | Webraf',
     description:
-      'Diseño y desarrollo web premium: sitios web rápidos, responsivos y orientados a conversión que generan confianza y convierten visitantes en clientes.',
-    ogTitle: 'Desarrollo y diseño web premium para negocios en crecimiento',
+      'Diseño web corporativo y diseño de tienda online: páginas web rápidas y orientadas a conversión que convierten visitas en clientes. Pide presupuesto gratis.',
+    ogTitle: 'Diseño web corporativo y tiendas online para pymes',
     ogDescription:
-      'Servicios de desarrollo y diseño web premium para negocios que necesitan páginas web rápidas, responsivas y orientadas a conversión, creadas para generar confianza y atraer clientes potenciales calificados.',
+      'Diseño web corporativo y de tiendas online para negocios que necesitan páginas web rápidas, responsivas y orientadas a conversión, creadas para generar confianza y atraer clientes potenciales calificados.',
     schemaName: 'Desarrollo y diseño web',
   },
   webDetail: {
@@ -100,17 +100,17 @@ export default {
       form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
     },
     hero: {
-      title: { before: 'Diseño y ', accent: 'desarrollo web', after: '' },
+      title: { before: 'Diseño web corporativo y ', accent: 'tiendas online', after: '' },
       subtitle:
         'Creamos páginas web modernas, responsivas y orientadas a conversión, diseñadas para representar tu marca, atraer al público adecuado y convertir a los visitantes en clientes.',
-      cta: 'Solicita una cotización gratis',
+      cta: 'Pide tu presupuesto gratis',
       alt: 'Diseño de página web moderna, responsiva y orientada a conversión',
-      waQuote: 'Hola, me gustaría obtener una cotización gratis para una página web.',
+      waQuote: 'Hola, me gustaría pedir un presupuesto gratis para una página web.',
     },
     custom: {
       heading: { before: 'Páginas web a medida construidas en torno a ', accent: 'tu marca', after: '' },
       copy:
-        'Más que una presencia en internet: diseñamos y desarrollamos páginas web a medida que reflejan tu marca, comunican tu valor con claridad y convierten a los visitantes en clientes.',
+        'Más que una presencia en internet: nuestro diseño web corporativo crea páginas a medida que reflejan tu marca, comunican tu valor con claridad y convierten a los visitantes en clientes.',
       points: ['Diseño único alineado con tu marca', 'Mensaje y estructura claros', 'Creada para convertir y crecer', 'Flexible para futuras actualizaciones'],
       cta: 'Inicia tu proyecto web',
       waQuote: 'Hola, me gustaría iniciar un proyecto web.',
@@ -128,7 +128,7 @@ export default {
     ecommerce: {
       heading: { before: 'Tiendas online diseñadas para ', accent: 'vender', after: '' },
       copy:
-        'Si tu objetivo es vender en internet, podemos crear una tienda online profesional que facilite mostrar productos, gestionar inventario, procesar pedidos y ofrecer una experiencia de compra segura a tus clientes.',
+        'Si tu objetivo es vender en internet, nuestro servicio de diseño de tienda online crea una tienda profesional que facilita mostrar productos, gestionar inventario, procesar pedidos y ofrecer una experiencia de compra segura a tus clientes.',
       points: [
         'Configuración de catálogo de productos y carrito de compra',
         'Integración de pago seguro',
@@ -185,8 +185,8 @@ export default {
       heading: { before: '¿Listo para crear una página web que ', accent: 'haga crecer tu negocio?', after: '' },
       copy:
         'Creemos una página web profesional que represente tu marca, mejore tu presencia en internet y te ayude a generar más clientes potenciales, ventas y oportunidades.',
-      primary: 'Solicita una cotización gratis',
-      primaryWaQuote: 'Hola, me gustaría obtener una cotización gratis para una página web.',
+      primary: 'Pide tu presupuesto gratis',
+      primaryWaQuote: 'Hola, me gustaría pedir un presupuesto gratis para una página web.',
       secondary: 'Contáctanos hoy',
     },
     otherHeading: { before: 'Explora nuestros otros ', accent: 'servicios', after: '' },

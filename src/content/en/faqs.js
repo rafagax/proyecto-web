@@ -66,6 +66,7 @@ export default {
         { question: 'What happens during the strategy session?', answer: 'We learn about your business and goals, review your current situation, and outline the most effective approach for you. You leave with clear next steps and a realistic understanding of timelines and scope.' },
         { question: 'Can I start with one service and add more later?', answer: 'Absolutely. Many clients start with a website and later add SEO, KPI dashboards, or AI automation as they grow. Each service works well on its own and even better as part of a connected system.' },
         { question: 'Do you offer support after launch?', answer: "Yes. We stay available after launch for updates, fixes, and improvements. We don't disappear once your project goes live." },
+        { question: 'How much does a website cost for a small business?', answer: 'Our professional websites start at $299 for a focused landing page, $599 for a multi-page business website, and $1,500 for a complete online store. The final cost depends on scope — pages, e-commerce features, and integrations — plus optional monthly services like SEO or maintenance. There are no hidden fees: the price we agree on is the price you pay. You can compare every plan on our [Plans & Pricing page](/pricing).' },
       ],
     },
   ],

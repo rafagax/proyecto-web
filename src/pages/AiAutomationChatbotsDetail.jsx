@@ -20,9 +20,9 @@ import {
 import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
 // Discreet secondary-channel link shown under the hero CTA.
 const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };

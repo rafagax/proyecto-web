@@ -6,6 +6,12 @@ import { blogPosts } from '../../src/data/blogPosts.js';
 import { articles, articlePath } from '../route-manifest.js';
 import { ogTags } from '../og.js';
 
+// Breadcrumb labels per locale (paths match app/route-manifest.js).
+const CRUMBS = {
+  en: { home: 'Home', homePath: '/', blog: 'Blog', blogPath: '/blog' },
+  es: { home: 'Inicio', homePath: '/es/', blog: 'Blog', blogPath: '/es/blog' },
+};
+
 // Locale-aware meta + BlogPosting JSON-LD for each article. The article is resolved
 // through the manifest so the lookup keeps working if the ES slugs diverge from the
 // EN ones (the manifest is the single source of truth for both).
@@ -27,6 +33,7 @@ export function meta({ params, location }) {
   // Open Graph requires absolute image URLs, and WhatsApp/LinkedIn scrapers do not
   // render webp — each post ships a pre-generated JPG cover (scripts/gen-blog-og.mjs).
   const shareImage = absoluteUrl(post.ogImage || post.image);
+  const c = CRUMBS[locale] || CRUMBS.en;
 
   return [
     { title: `${localized.title} | Webraf` },
@@ -64,6 +71,17 @@ export function meta({ params, location }) {
         datePublished: post.dateISO,
         dateModified: post.dateModifiedISO,
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+      },
+    },
+    {
+      'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: c.home, item: absoluteUrl(c.homePath) },
+          { '@type': 'ListItem', position: 2, name: c.blog, item: absoluteUrl(c.blogPath) },
+          { '@type': 'ListItem', position: 3, name: localized.title, item: canonical },
+        ],
       },
     },
   ];

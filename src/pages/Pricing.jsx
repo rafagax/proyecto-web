@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
 import './Pricing.css';
-
-const WHATSAPP_PHONE = '584144735431';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
 // Structural per-plan data (identical across locales): price, "popular" flag, the
 // feature indices shown as NOT included, and the service/plan slugs carried to the
@@ -133,7 +132,7 @@ const Pricing = () => {
               {t.custom.copy}
             </p>
             <a
-              href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(t.custom.waQuote)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(t.custom.waQuote)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"

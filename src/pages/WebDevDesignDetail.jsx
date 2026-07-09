@@ -11,15 +11,23 @@ import {
   Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// Each heavy image ships as AVIF (scripts/gen-avif.mjs) with the WebP original
+// as the <picture> fallback. NOTE: wrapping the eager hero in <picture>
+// suppresses React 19's automatic SSR preload — app/routes/service-web.jsx
+// emits the equivalent manual preload via its links() export.
 import heroImg from '../assets/herodevelop12.webp';
+import heroAvif from '../assets/herodevelop12.avif';
 import customImg from '../assets/web-dev-custom.webp';
+import customAvif from '../assets/web-dev-custom.avif';
 import responsiveImg from '../assets/developwebhero.webp';
+import responsiveAvif from '../assets/developwebhero.avif';
 import storeImg from '../assets/tiendachica.webp';
+import storeAvif from '../assets/tiendachica.avif';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
 // Discreet secondary-channel link shown under the hero CTA.
 const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };
@@ -107,7 +115,10 @@ const WebDevDesignDetail = () => {
 
             {/* Hero image — between subtitle and CTA on mobile, on the right on desktop */}
             <div className="reveal-right wdd-hero-img">
-              <img src={heroImg} alt={wd.hero.alt} width={1536} height={1024} fetchPriority="high" decoding="async" />
+              <picture>
+                <source type="image/avif" srcSet={heroAvif} />
+                <img src={heroImg} alt={wd.hero.alt} width={1536} height={1024} fetchPriority="high" decoding="async" />
+              </picture>
             </div>
 
             <div className="wdd-hero-cta">
@@ -135,7 +146,10 @@ const WebDevDesignDetail = () => {
               {primaryCta(wd.custom.cta, wd.custom.waQuote)}
             </div>
             <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src={customImg} alt={wd.custom.alt} width={1100} height={867} loading="lazy" />
+              <picture>
+                <source type="image/avif" srcSet={customAvif} />
+                <img src={customImg} alt={wd.custom.alt} width={1100} height={867} loading="lazy" />
+              </picture>
             </div>
           </div>
         </div>
@@ -158,7 +172,10 @@ const WebDevDesignDetail = () => {
               {primaryCta(wd.responsive.cta, wd.responsive.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img wdd-imgpanel">
-              <img src={responsiveImg} alt={wd.responsive.alt} width={1672} height={941} loading="lazy" />
+              <picture>
+                <source type="image/avif" srcSet={responsiveAvif} />
+                <img src={responsiveImg} alt={wd.responsive.alt} width={1672} height={941} loading="lazy" />
+              </picture>
             </div>
           </div>
         </div>
@@ -181,7 +198,10 @@ const WebDevDesignDetail = () => {
               {primaryCta(wd.ecommerce.cta, wd.ecommerce.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img">
-              <img src={storeImg} alt={wd.ecommerce.alt} width={1448} height={1086} loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
+              <picture>
+                <source type="image/avif" srcSet={storeAvif} />
+                <img src={storeImg} alt={wd.ecommerce.alt} width={1448} height={1086} loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
+              </picture>
             </div>
           </div>
         </div>

@@ -11,15 +11,23 @@ import {
   Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// Each heavy image ships as AVIF (scripts/gen-avif.mjs) with the WebP original
+// as the <picture> fallback. NOTE: wrapping the eager hero in <picture>
+// suppresses React 19's automatic SSR preload — app/routes/service-kpi.jsx
+// emits the equivalent manual preload via its links() export.
 import kpiDashImg from '../assets/kpidasboard.webp';
+import kpiDashAvif from '../assets/kpidasboard.avif';
 import financeImg from '../assets/kpi financiero.webp';
+import financeAvif from '../assets/kpi financiero.avif';
 import callCenterImg from '../assets/kpidasboardhome.webp';
+import callCenterAvif from '../assets/kpidasboardhome.avif';
 import operationalImg from '../assets/kpi operational.webp';
+import operationalAvif from '../assets/kpi operational.avif';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
 // Discreet secondary-channel link shown under the hero CTA.
 const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };
@@ -41,7 +49,12 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
 );
 
 const capabilityIcons = [Target, BarChart3, TrendingUp, LayoutDashboard, Database, FileText];
-const sectionImages = [financeImg, callCenterImg, operationalImg];
+// { webp, avif } pairs, in section order (AVIF served via <picture>, WebP fallback).
+const sectionImages = [
+  { webp: financeImg, avif: financeAvif },
+  { webp: callCenterImg, avif: callCenterAvif },
+  { webp: operationalImg, avif: operationalAvif },
+];
 // Intrinsic dimensions of sectionImages, in order (reserves space before the
 // image loads — avoids CLS).
 const sectionImageSizes = [
@@ -106,7 +119,10 @@ const KpiDashboardsDetail = () => {
             </div>
 
             <div className="reveal-right wdd-hero-img">
-              <img src={kpiDashImg} alt={t.hero.alt} width={1448} height={1086} loading="eager" fetchPriority="high" />
+              <picture>
+                <source type="image/avif" srcSet={kpiDashAvif} />
+                <img src={kpiDashImg} alt={t.hero.alt} width={1448} height={1086} loading="eager" fetchPriority="high" />
+              </picture>
             </div>
 
             <div className="wdd-hero-cta">
@@ -135,7 +151,10 @@ const KpiDashboardsDetail = () => {
                 {primaryCta(s.cta, s.waQuote)}
               </div>
               <div className="reveal-right wdd-col-img">
-                <img src={sectionImages[i]} alt={s.alt} {...sectionImageSizes[i]} loading="lazy" style={colImgStyle} />
+                <picture>
+                  <source type="image/avif" srcSet={sectionImages[i].avif} />
+                  <img src={sectionImages[i].webp} alt={s.alt} {...sectionImageSizes[i]} loading="lazy" style={colImgStyle} />
+                </picture>
               </div>
             </div>
           </div>

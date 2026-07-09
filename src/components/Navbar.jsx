@@ -6,15 +6,19 @@ import ThemeToggle from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
 // Logos live in /public/logos (static paths, not ES imports). NOTE: React 19's SSR
 // auto-emits <link rel="preload" as="image"> in the prerendered <head> for EVERY
 // eagerly rendered <img> regardless of how the src is referenced — the only opt-outs
 // at the <img> level are loading="lazy", fetchPriority="low", or a <picture>/<noscript>
-// ancestor. None of the four variants should ever be preloaded (they compete with the
-// hero image, the LCP, for bandwidth), hence the loading/fetchPriority attributes on
-// the <img> tags below. The four <img> are still all rendered and CSS picks the right
-// one per theme/breakpoint (no hydration flash).
+// ancestor. None of the variants should ever be preloaded (they compete with the
+// hero image, the LCP, for bandwidth) — here the <picture> ancestor suppresses it,
+// and loading/fetchPriority are kept as belt-and-suspenders.
+// One <picture> per theme: <source media> swaps the square (mobile) and horizontal
+// (desktop) file inside a single <img>, so only ONE logo file is requested per theme
+// per load (previously both dark h + sq were always downloaded). CSS still picks the
+// dark/light pair via the logo-dark/logo-light classes (no hydration flash).
 const LOGO = {
   hDark: '/logos/webraf-h-dark.webp',
   hLight: '/logos/webraf-h-light.webp',
@@ -108,17 +112,20 @@ const Navbar = () => {
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to={navPath.home} className="navbar-logo" aria-label="Webraf — Web Development">
-            {/* Dark variants (default theme) stay eager — above the fold on every
-                page — but fetchPriority="low" stops React's SSR preload and keeps
-                these small webps from competing with the hero (LCP) for bandwidth.
-                Light variants are display:none until the user switches theme, so
-                loading="lazy" means the browser never downloads them (and never
-                preloads them) unless/until they become visible. Intrinsic
-                width/height prevent CLS in all four. */}
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} fetchPriority="low" />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} loading="lazy" />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} fetchPriority="low" />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} loading="lazy" />
+            {/* Dark <img> (default theme) stays eager; its <picture> ancestor stops
+                React's SSR preload and the media queries make the browser fetch
+                only the variant for the current breakpoint. The light <img> is
+                display:none until the user switches theme, so loading="lazy" means
+                it is never downloaded unless/until it becomes visible. Intrinsic
+                width/height on <source> and <img> prevent CLS. */}
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqDark} width="240" height="240" />
+              <img src={LOGO.hDark} alt="Webraf" className="logo-img logo-dark" width={480} height={160} fetchPriority="low" />
+            </picture>
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqLight} width="240" height="240" />
+              <img src={LOGO.hLight} alt="Webraf" className="logo-img logo-light" width={480} height={160} loading="lazy" />
+            </picture>
           </Link>
 
           <nav className="navbar-links" aria-label={locale === 'es' ? 'Principal' : 'Main'}>
@@ -180,17 +187,18 @@ const Navbar = () => {
       >
         <div className="mobile-menu-header">
           <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} aria-label="Webraf — Web Development">
-            {/* Dark variants (default theme) stay eager — above the fold on every
-                page — but fetchPriority="low" stops React's SSR preload and keeps
-                these small webps from competing with the hero (LCP) for bandwidth.
-                Light variants are display:none until the user switches theme, so
-                loading="lazy" means the browser never downloads them (and never
-                preloads them) unless/until they become visible. Intrinsic
-                width/height prevent CLS in all four. */}
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" width={480} height={160} fetchPriority="low" />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" width={480} height={160} loading="lazy" />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" width={240} height={240} fetchPriority="low" />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" width={240} height={240} loading="lazy" />
+            {/* Same <picture> mechanics as the header logo above: one file per
+                theme/breakpoint, no SSR preload, light variant lazy until the
+                theme switch makes it visible. Same URLs as the header, so the
+                browser serves these from cache (no extra request). */}
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqDark} width="240" height="240" />
+              <img src={LOGO.hDark} alt="Webraf" className="logo-img logo-dark" width={480} height={160} fetchPriority="low" />
+            </picture>
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqLight} width="240" height="240" />
+              <img src={LOGO.hLight} alt="Webraf" className="logo-img logo-light" width={480} height={160} loading="lazy" />
+            </picture>
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />
@@ -284,7 +292,7 @@ const Navbar = () => {
           {/* Footer: CTA button + Contact link + settings row (language + theme) */}
           <div className="mobile-menu-footer">
             <a
-              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.audit)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(home.whatsapp.audit)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary mobile-menu-cta"

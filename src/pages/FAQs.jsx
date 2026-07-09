@@ -3,8 +3,28 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
+// Minimal inline-markdown links in answers: [text](url). Internal URLs become
+// client-side <Link>s (e.g. the pricing FAQs link to /pricing without reloading).
+// The FAQPage JSON-LD strips this syntax to plain text (app/routes/faqs.jsx).
+const renderAnswer = (answer) => {
+  const parts = String(answer).split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!m) return part;
+    const [, label, url] = m;
+    return url.startsWith('/') ? (
+      <Link key={i} to={url} style={{ color: 'var(--accent-text, var(--accent-cyan))', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+        {label}
+      </Link>
+    ) : (
+      <a key={i} href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-text, var(--accent-cyan))', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+        {label}
+      </a>
+    );
+  });
+};
 
 const FAQItem = ({ faq, isOpen, onClick }) => (
   <div
@@ -47,7 +67,7 @@ const FAQItem = ({ faq, isOpen, onClick }) => (
       }}
     >
       <p style={{ color: 'var(--text-secondary)', padding: '0 2rem 1.75rem', lineHeight: '1.7', fontSize: '0.98rem' }}>
-        {faq.answer}
+        {renderAnswer(faq.answer)}
       </p>
     </div>
   </div>
@@ -115,7 +135,7 @@ const FAQs = () => {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a
-              href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(t.cta.waQuote)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(t.cta.waQuote)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"

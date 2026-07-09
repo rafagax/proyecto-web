@@ -4,9 +4,9 @@
 // aria labels, headings, etc.). Strings only — no functions/JSX/booleans.
 export default {
   meta: {
-    title: 'AI Chatbots & WhatsApp Automation for 24/7 Sales | Webraf',
+    title: 'AI Automation Agency — Chatbots & WhatsApp 24/7 | Webraf',
     description:
-      'AI automation and chatbot services for businesses that want faster replies, lead qualification, appointment booking, and 24/7 customer support.',
+      'AI automation agency for growing businesses: chatbots, WhatsApp automation, lead qualification, and 24/7 support that converts. Tell us your project.',
     ogTitle: 'AI Automation & Chatbots That Help You Respond Faster and Convert More Leads',
     schemaName: 'AI Automation & Chatbots',
   },
@@ -20,7 +20,7 @@ export default {
   assistantName: 'AI Assistant',
   online: 'online',
   hero: {
-    title: { before: 'AI Automation & ', accent: 'Chatbots', after: '' },
+    title: { before: 'AI Automation Agency for ', accent: '24/7 Sales', after: '' },
     subtitle: 'We build AI chatbots and WhatsApp automation that answer instantly, qualify leads, and support your customers 24/7 — even while you sleep.',
     cta: 'Build My AI Assistant',
     waQuote: "Hello, I'd like to build an AI assistant for my business.",
@@ -43,7 +43,7 @@ export default {
     },
     {
       heading: { before: 'WhatsApp Automation That Works While You ', accent: 'Sleep', after: '' },
-      copy: 'Most customers message on WhatsApp. We set up AI that replies, books appointments, and only passes the conversation to you when it really matters.',
+      copy: 'Most customers message on WhatsApp. We set up WhatsApp automation for business that replies, books appointments, and only passes the conversation to you when it really matters.',
       points: ['Automated WhatsApp replies', 'Appointment booking', 'FAQ handling', 'Smart human handoff'],
       cta: 'Automate My WhatsApp',
       waQuote: "Hello, I'd like to automate my WhatsApp with AI.",
@@ -82,7 +82,7 @@ export default {
   },
   why: {
     heading: { before: 'Why Work With Our ', accent: 'AI Team?', after: '' },
-    copy: 'We build AI that actually fits your business — trained on your services, connected to WhatsApp, and tuned over time. Fast replies, qualified leads, and a human handoff when it counts.',
+    copy: "We're an AI automation agency that builds AI to actually fit your business — trained on your services, connected to WhatsApp, and tuned over time. Fast replies, qualified leads, and a human handoff when it counts.",
     cta: "Let's Talk About Automation",
     waQuote: "Hello, I'd like to talk about automating my business with AI.",
     points: ['Custom AI trained on your business', 'Replies in seconds, 24/7', 'Qualifies leads automatically', 'Human handoff when it matters', 'Ongoing tuning and support'],

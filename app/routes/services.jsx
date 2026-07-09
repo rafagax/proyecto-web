@@ -4,6 +4,12 @@ import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
 import { ogTags } from '../og.js';
 
+// Breadcrumb labels per locale (paths match app/route-manifest.js).
+const CRUMBS = {
+  en: { home: 'Home', homePath: '/', page: 'Services' },
+  es: { home: 'Inicio', homePath: '/es/', page: 'Servicios' },
+};
+
 // Locale-aware meta for the bilingual Services index (/services and /es/servicios).
 export function meta({ location }) {
   const locale = getLocaleFromPath(location.pathname);
@@ -11,6 +17,7 @@ export function meta({ location }) {
   const enHref = absoluteUrl('/services');
   const canonical = locale === 'en' ? enHref : esHref;
   const m = getContent(locale).services.indexMeta;
+  const c = CRUMBS[locale] || CRUMBS.en;
 
   return [
     { title: m.title },
@@ -24,6 +31,16 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'alternate', hrefLang: 'es', href: esHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
+    {
+      'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: c.home, item: absoluteUrl(c.homePath) },
+          { '@type': 'ListItem', position: 2, name: c.page, item: canonical },
+        ],
+      },
+    },
   ];
 }
 

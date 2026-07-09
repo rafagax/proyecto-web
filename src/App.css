@@ -40,38 +40,36 @@
   align-items: center;
 }
 
-/* Webraf logo — horizontal on desktop, compact square on mobile (so the hamburger
-   fits), each swapped dark/light by the active theme. All hidden by default; the
-   matching one is shown below. */
+/* Webraf logo — one <picture> per theme in Navbar.jsx: the <source media> swaps
+   the horizontal (desktop) and square (mobile) FILES, so CSS here only handles the
+   dark/light pair. Both theme <img>s render; the active theme's one is shown. */
+.navbar-logo picture {
+  /* Let each <img> participate directly in the .navbar-logo flexbox */
+  display: contents;
+}
 .navbar-logo img {
   width: auto;
   display: none;
 }
-.navbar-logo .logo-h.logo-dark {
+.navbar-logo .logo-img.logo-dark {
   display: block;
   height: 54px;
 }
-[data-theme='light'] .navbar-logo .logo-h.logo-dark {
+[data-theme='light'] .navbar-logo .logo-img.logo-dark {
   display: none;
 }
-[data-theme='light'] .navbar-logo .logo-h.logo-light {
+[data-theme='light'] .navbar-logo .logo-img.logo-light {
   display: block;
   height: 54px;
 }
 @media (max-width: 768px) {
-  .navbar-logo .logo-h {
-    display: none !important;
-  }
-  .navbar-logo .logo-sq.logo-dark {
-    display: block;
-    height: 40px;
-  }
-  [data-theme='light'] .navbar-logo .logo-sq.logo-dark {
-    display: none;
-  }
-  [data-theme='light'] .navbar-logo .logo-sq.logo-light {
-    display: block;
-    height: 40px;
+  /* Square variant (chosen by <source media>). The file has generous transparent
+     padding, so a 48px box renders a ~36-40px visible mark — the previous 40px
+     box made the logo look tiny (owner report 2026-07). Header still fits: the
+     navbar's 1.1rem vertical padding absorbs the extra 8px. */
+  .navbar-logo .logo-img.logo-dark,
+  [data-theme='light'] .navbar-logo .logo-img.logo-light {
+    height: 48px;
   }
 }
 
@@ -1546,7 +1544,9 @@ body.cookie-consent-open #ka-chatbot-toggle {
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* min(100%, 320px): below ~384px viewports the container is narrower than
+     320px — the plain minmax forced a 320px column and horizontal overflow. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -1600,7 +1600,8 @@ body.cookie-consent-open #ka-chatbot-toggle {
 .blog-card h2 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: #fff;
+  /* Theme token (was #fff) — hardcoded white was unreadable in light mode */
+  color: var(--text-primary);
   line-height: 1.4;
   flex-grow: 1;
 }
@@ -2015,7 +2016,8 @@ body.cookie-consent-open #ka-chatbot-toggle {
 .blog-post-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #fff;
+  /* Theme token (was #fff) — hardcoded white was unreadable in light mode */
+  color: var(--text-primary);
   line-height: 1.3;
 }
 
@@ -2048,14 +2050,14 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 .blog-post-content h2 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.8rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .blog-post-content h3 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.3rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
@@ -2085,7 +2087,7 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 .blog-post-cta h3 {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .blog-post-cta p {
@@ -3569,5 +3571,226 @@ body.cookie-consent-open #ka-chatbot-toggle {
   .reveal-ready .wdd-process .reveal-card {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* R3: mobile UX (2026-07) */
+
+/* ── 1.1 Single document scroll ──────────────────────────────────────────────
+   index.css sets body { overflow-x: hidden }. Per the CSS overflow spec, when one
+   axis is not `visible` the other computes visible → auto, so <body> became its
+   OWN scroll container: the page scrolled inside body while html/viewport could
+   still scroll — the "nested scroll" felt on mobile Contact, worst with the
+   keyboard open. `clip` forbids horizontal overflow WITHOUT creating a scroll
+   container, restoring one natural document scroll. App.css loads after
+   index.css, so this wins; older browsers ignore `clip` and keep `hidden`. */
+body {
+  overflow-x: clip;
+}
+
+/* ── 1.1 Contact: one comfortable column on phones ── */
+@media (max-width: 768px) {
+  .contact-container {
+    gap: 2rem;
+  }
+
+  /* The desktop 2.5rem card padding left ~236px-wide inputs on a 380px screen */
+  .contact-form {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ── 1.3 Blog index (/blog, /es/blog) ──
+   .blog-card-image never had sizing rules: the file rendered at natural size and
+   was clipped by the card. Fixed height + cover keeps every card image uniform
+   and inside the card at all widths. */
+.blog-card-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+/* Article hero image (was an inline 400px height in BlogPost.jsx) */
+.blog-post-hero-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  /* Blog index: clean single column with consistent rhythm */
+  .blog-section {
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .blog-grid {
+    gap: 1.25rem;
+  }
+
+  .blog-card {
+    padding: 1.25rem;
+  }
+
+  .blog-card-image {
+    height: 170px;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-excerpt {
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-meta {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Article template */
+  .blog-post-hero-img {
+    height: 220px;
+  }
+
+  .blog-post-article {
+    padding: 2rem 0;
+  }
+
+  /* Overrides the 1.5rem set in the older ≤640px block (this file loads later) —
+     1.6rem reads better on 380-430px screens */
+  .blog-post-title {
+    font-size: 1.6rem;
+  }
+
+  .blog-post-info {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .blog-post-content ul {
+    margin-left: 1.25rem;
+  }
+
+  .blog-post-cta {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ── 1.4 Clients: case-study cards (Problem → Solution → Result → live link) ── */
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.case-study-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: 1.9rem 1.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.case-study-card:hover {
+  border-color: rgba(77, 148, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.case-study-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.case-study-service {
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(77, 148, 255, 0.12);
+  border: 1px solid rgba(77, 148, 255, 0.25);
+  color: var(--accent-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
+}
+
+.case-study-head h3 {
+  font-size: 1.3rem;
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+}
+
+.case-study-client {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.case-study-block h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-text);
+  margin: 0 0 0.35rem;
+}
+
+.case-study-block p {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Optional highlighted metric line — rendered only when the content provides it */
+.case-study-metric {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(77, 148, 255, 0.08);
+  border: 1px solid rgba(77, 148, 255, 0.25);
+  color: var(--accent-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.case-study-live {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 992px) {
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-study-card {
+    padding: 1.5rem 1.25rem;
+  }
+
+  /* Full-width tap target on phones */
+  .case-study-live {
+    align-self: stretch;
   }
 }

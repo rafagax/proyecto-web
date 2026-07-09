@@ -83,12 +83,12 @@ export default {
     },
   },
   webMeta: {
-    title: 'Premium Web Development & Design Services | Webraf',
+    title: 'Website Redesign Services & Web Development | Webraf',
     description:
-      'Premium web development and design services for businesses that need fast, responsive, conversion-focused websites built to earn trust and generate qualified leads.',
-    ogTitle: 'Premium Web Development & Design for Growing Businesses',
+      'Website redesign services and new builds — fast, responsive, conversion-focused website development that earns trust and wins customers. Get a free quote.',
+    ogTitle: 'Website Redesign & Development for Growing Businesses',
     ogDescription:
-      'Premium web development and design services for businesses that need fast, responsive, conversion-focused websites built to earn trust and generate qualified leads.',
+      'Website redesign services and new builds for businesses that need fast, responsive, conversion-focused websites built to earn trust and generate qualified leads.',
     schemaName: 'Web Development & Design',
   },
   webDetail: {
@@ -100,9 +100,9 @@ export default {
       form: 'Prefer the contact form? Tell us about your project',
     },
     hero: {
-      title: { before: 'Web Design & ', accent: 'Development', after: '' },
+      title: { before: 'Web Design, Development & ', accent: 'Redesign', after: '' },
       subtitle:
-        'We create modern, responsive, and conversion-focused websites designed to represent your brand, attract the right audience, and turn visitors into customers.',
+        'Whether you need a brand-new build or a full website redesign, we create modern, responsive, conversion-focused websites designed to represent your brand, attract the right audience, and turn visitors into customers.',
       cta: 'Get a Free Quote',
       alt: 'Modern, responsive, conversion-focused website design',
       waQuote: "Hello, I'd like to get a free quote for a website.",
@@ -110,7 +110,7 @@ export default {
     custom: {
       heading: { before: 'Custom Websites Built Around ', accent: 'Your Brand', after: '' },
       copy:
-        'More than an online presence — we design and develop custom websites that reflect your brand, communicate your value clearly, and turn visitors into customers.',
+        'More than an online presence — we design and develop custom websites that reflect your brand, communicate your value clearly, and turn visitors into customers. Our website redesign services give outdated sites the same treatment: a sharper design, faster performance, and a structure built to convert.',
       points: ['Unique design aligned with your brand', 'Clear messaging and structure', 'Built to convert and grow', 'Flexible for future updates'],
       cta: 'Start Your Website Project',
       waQuote: "Hello, I'd like to start a website project.",

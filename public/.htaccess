@@ -73,29 +73,53 @@ ErrorDocument 404 /404.html
   AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml application/javascript application/json application/xml image/svg+xml
 </IfModule>
 
+# --- MIME types the server may not know out of the box ------------------
+# AVIF (scripts/gen-avif.mjs output) and the web app manifest. Without these
+# some cPanel stacks serve them as text/plain.
+<IfModule mod_mime.c>
+  AddType image/avif                .avif
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
 # --- Cache policy -------------------------------------------------------
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css               "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/avif             "access plus 6 months"
   ExpiresByType image/webp             "access plus 6 months"
   ExpiresByType image/png              "access plus 6 months"
   ExpiresByType image/jpeg             "access plus 6 months"
   ExpiresByType image/svg+xml          "access plus 6 months"
   ExpiresByType font/woff2             "access plus 1 year"
-  # HTML must revalidate so content updates show up immediately.
+  # HTML: max-age=0 here; the effective Cache-Control is the richer one set
+  # by mod_headers below (Header set overrides the mod_expires value).
   ExpiresByType text/html              "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
+  # --- Security headers (site-wide; `always` also covers 404/error docs) --
+  # HSTS only when the request already came in over TLS (the HTTPS env var is
+  # set by Apache/LiteSpeed on secure connections) — sending it on plain HTTP
+  # is invalid per RFC 6797.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  # No Content-Security-Policy on purpose: the app relies on inline scripts
+  # (consent stub, theme, reveal failsafe) that a CSP would block.
+
   # Vite fingerprints everything under /assets/ (name-<hash>.ext), so those
   # files never change in place: cache 1 year and mark immutable (browsers
   # skip revalidation entirely).
   SetEnvIf Request_URI "^/assets/" HASHED_ASSET
   Header set Cache-Control "public, max-age=31536000, immutable" env=HASHED_ASSET
 
-  # Prerendered HTML must always revalidate so deploys show up immediately.
+  # Prerendered HTML: browsers always revalidate (max-age=0) so deploys show
+  # up immediately, while shared caches/CDNs may serve it for up to 1h
+  # (s-maxage) and refresh in the background for a day (SWR).
   <FilesMatch "\.html$">
-    Header set Cache-Control "no-cache"
+    Header set Cache-Control "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400"
   </FilesMatch>
 </IfModule>

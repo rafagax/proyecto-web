@@ -11,15 +11,23 @@ import {
   Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// Each heavy image ships as AVIF (scripts/gen-avif.mjs) with the WebP original
+// as the <picture> fallback. NOTE: wrapping the eager hero in <picture>
+// suppresses React 19's automatic SSR preload — app/routes/service-seo.jsx
+// emits the equivalent manual preload via its links() export.
 import seoMainImg from '../assets/seoimagen.webp';
+import seoMainAvif from '../assets/seoimagen.avif';
 import seoHeroImg from '../assets/seo imagen setion.webp';
+import seoHeroAvif from '../assets/seo imagen setion.avif';
 import seoLocalImg from '../assets/servicioseoimagenes.webp';
+import seoLocalAvif from '../assets/servicioseoimagenes.avif';
 import seoTechImg from '../assets/seoimagen3.webp';
+import seoTechAvif from '../assets/seoimagen3.avif';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
 
 // Discreet secondary-channel link shown under the hero CTA.
 const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };
@@ -48,7 +56,12 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
 // reverse layout flag, the alternating background, the capability/other-service
 // icons. Text comes from localized content.
 const capabilityIcons = [Search, FileText, Gauge, MapPin, PenLine, BarChart3];
-const sectionImages = [seoHeroImg, seoTechImg, seoLocalImg];
+// { webp, avif } pairs, in section order (AVIF served via <picture>, WebP fallback).
+const sectionImages = [
+  { webp: seoHeroImg, avif: seoHeroAvif },
+  { webp: seoTechImg, avif: seoTechAvif },
+  { webp: seoLocalImg, avif: seoLocalAvif },
+];
 const sectionReverse = [false, true, false];
 const sectionBg = [{ background: 'var(--bg-secondary)' }, undefined, { background: 'var(--bg-secondary)' }];
 const colImgStyle = { width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' };
@@ -109,7 +122,10 @@ const SeoDigitalGrowthDetail = () => {
               className="reveal-right wdd-hero-img"
               style={{ borderRadius: 22, overflow: 'hidden', background: 'radial-gradient(circle at 30% 20%, rgba(77,148,255,0.18), var(--bg-card) 70%)' }}
             >
-              <img src={seoMainImg} alt={t.hero.alt} width={1448} height={1086} fetchPriority="high" decoding="async" onError={onImgError} />
+              <picture>
+                <source type="image/avif" srcSet={seoMainAvif} />
+                <img src={seoMainImg} alt={t.hero.alt} width={1448} height={1086} fetchPriority="high" decoding="async" onError={onImgError} />
+              </picture>
             </div>
 
             <div className="wdd-hero-cta">
@@ -138,7 +154,10 @@ const SeoDigitalGrowthDetail = () => {
                 {primaryCta(s.cta, s.waQuote)}
               </div>
               <div className="reveal-right wdd-col-img">
-                <img src={sectionImages[i]} alt={s.alt} width={1448} height={1086} loading="lazy" onError={onImgError} style={colImgStyle} />
+                <picture>
+                  <source type="image/avif" srcSet={sectionImages[i].avif} />
+                  <img src={sectionImages[i].webp} alt={s.alt} width={1448} height={1086} loading="lazy" onError={onImgError} style={colImgStyle} />
+                </picture>
               </div>
             </div>
           </div>

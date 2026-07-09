@@ -16,7 +16,7 @@ export default {
       accent2: 'dashboards de KPI',
     },
     subtitle:
-      'Creamos tu sitio web profesional, optimizamos tu posición en Google y automatizamos tus ventas con IA, mientras estructuramos tus métricas clave (KPIs) para que mantengas el control total de tu crecimiento en tiempo real.',
+      'Diseño web para pymes que quieren resultados: creamos tu página web profesional, optimizamos tu posición en Google y automatizamos tus ventas con IA, mientras estructuramos tus métricas clave (KPIs) para que mantengas el control total de tu crecimiento en tiempo real.',
     imageAlt: 'Ilustración de desarrollo web, automatización con IA, SEO y dashboards de KPI',
     cards: {
       web: { tagline: 'Sitios web premium que convierten' },
@@ -30,13 +30,13 @@ export default {
   value: {
     title: { before: 'Tu sitio web debe hacer ', accent: 'más que verse bien', after: '' },
     description:
-      'Un sitio web premium debe atraer a la audiencia correcta, convertir visitantes en leads calificados y darte una visión clara de qué está funcionando. Combinamos diseño, SEO, seguimiento de rendimiento y automatización con IA para crear una presencia digital pensada para un crecimiento medible.',
+      'Un sitio web premium debe atraer a la audiencia correcta, convertir visitantes en leads calificados y darte una visión clara de qué está funcionando. Combinamos diseño, SEO, seguimiento de rendimiento y automatización con IA para crear una presencia digital pensada para el crecimiento medible de tu pyme.',
   },
 
   featured: {
     title: { before: 'Un sitio web rápido y premium, hecho para ', accent: 'convertir', after: '' },
     description:
-      'Diseñamos y desarrollamos sitios web responsivos que comunican tu valor con claridad, generan confianza y guían a los visitantes hacia la acción.',
+      'Diseño de páginas web profesionales y responsivas que comunican tu valor con claridad, generan confianza y guían a los visitantes hacia la acción.',
     imageAlt: 'Diseño de sitio web corporativo premium en pantalla',
     imageCaption: 'Sitios web corporativos premium',
     bullets: [
@@ -193,7 +193,7 @@ export default {
     eyebrow: 'Precios transparentes',
     title: { before: 'Sitios web profesionales desde ', accent: '$299', after: '' },
     description:
-      'Precios simples y transparentes, sin costos ocultos. Empieza con una creación única y agrega SEO, gestión o servicios de IA mensuales cuando quieras.',
+      'Precios simples y transparentes, sin costes ocultos. Empieza con una creación única y agrega SEO, gestión o servicios de IA mensuales cuando quieras.',
     cta: 'Ver planes y precios',
   },
 

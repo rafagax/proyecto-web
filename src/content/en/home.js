@@ -16,7 +16,7 @@ export default {
       accent2: 'KPI Dashboards',
     },
     subtitle:
-      'We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.',
+      'Web design services for small business owners who want results: we build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.',
     imageAlt: 'Web development, AI automation, SEO and KPI dashboards illustration',
     cards: {
       web: { tagline: 'Premium websites built to convert' },
@@ -36,7 +36,7 @@ export default {
   featured: {
     title: { before: 'A fast, premium website built to ', accent: 'convert', after: '' },
     description:
-      'We design and develop responsive websites that communicate your value clearly, build trust, and guide visitors toward action.',
+      'Our small business website design services deliver responsive sites that communicate your value clearly, build trust, and guide visitors toward action.',
     imageAlt: 'Premium corporate website design on screen',
     imageCaption: 'Premium corporate websites',
     bullets: [

@@ -73,7 +73,7 @@ Compáralo con depender solo del teléfono o de las redes: cada consulta fuera d
 
 Piensa en cómo compras tú: buscas un fontanero, una gestoría o una tienda especializada y, antes de decidirte, echas un vistazo a su web. Si el sitio es lento, está anticuado o directamente no existe, la sensación es inmediata: no parece serio. Un sitio limpio, rápido y actual transmite lo contrario sin decir una palabra: profesionalidad, continuidad y atención al detalle.
 
-Para un negocio pequeño que compite con marcas más grandes, esa percepción es el gran igualador. No puedes tener más oficinas que una multinacional, pero sí puedes tener un [diseño web](/es/servicios/desarrollo-web) más cuidado, más claro y más rápido que el suyo. En internet, quien parece más profesional gana muchas veces el cliente, tenga el tamaño que tenga.
+Para un negocio pequeño que compite con marcas más grandes, esa percepción es el gran igualador. No puedes tener más oficinas que una multinacional, pero sí puedes tener un [diseño web](/es/servicios/desarrollo-web) más cuidado, más claro y más rápido que el suyo. En internet, quien parece más profesional gana muchas veces el cliente, tenga el tamaño que tenga. En [nuestros clientes](/es/clientes) puedes ver ejemplos reales de esa diferencia.
 
 ## Redes sociales sí, pero en terreno propio
 
@@ -159,7 +159,7 @@ El SEO local no es una tarea de una sola vez, sino una ventaja que se acumula: l
 
 ## ¿Prefieres que lo hagamos por ti?
 
-Todo lo anterior está al alcance de cualquier negocio, pero exige método y constancia. Si prefieres invertir ese tiempo en atender a tus clientes, nuestro servicio de [posicionamiento web](/es/servicios/seo) se encarga del perfil, el contenido, la parte técnica y la medición, con informes claros de resultados. [Escríbenos](/es/contacto) y te contamos por dónde empezaríamos en tu caso concreto.`,
+Todo lo anterior está al alcance de cualquier negocio, pero exige método y constancia. Si prefieres invertir ese tiempo en atender a tus clientes, nuestro servicio de [posicionamiento web](/es/servicios/seo) se encarga del perfil, el contenido, la parte técnica y la medición, con informes claros de resultados. Puedes ver con quién trabajamos ya en [nuestros clientes](/es/clientes). [Escríbenos](/es/contacto) y te contamos por dónde empezaríamos en tu caso concreto.`,
     },
     'chatbots-ia-ventas-automaticas-24-7': {
       title: 'Chatbots con IA: el comercial 24/7 que le falta a tu negocio',
@@ -197,7 +197,7 @@ Un apunte que no debes pasar por alto: si el asistente recoge datos personales, 
 
 Aunque casi cualquier negocio con consultas repetitivas se beneficia, hay perfiles donde el efecto se nota desde la primera semana: clínicas y consultas que viven de la agenda, academias y centros de formación que responden las mismas dudas sobre plazas y horarios, inmobiliarias que cualifican interesados antes de enseñar un piso, talleres y servicios técnicos que reciben avisos a cualquier hora, y tiendas online donde una duda sin responder es un carrito abandonado.
 
-El patrón común: mucha consulta parecida, valor alto de cada cliente y horarios de atención limitados. Si te reconoces en dos de las tres, un asistente con IA tiene un caso de negocio claro en tu empresa.
+El patrón común: mucha consulta parecida, valor alto de cada cliente y horarios de atención limitados. Si te reconoces en dos de las tres, un asistente con IA tiene un caso de negocio claro en tu empresa. Entre [nuestros clientes](/es/clientes) encontrarás varios de estos perfiles.
 
 ## Las cuentas salen rápido
 
@@ -253,7 +253,7 @@ Ese último punto se subestima siempre: la velocidad de carga es a la vez experi
 
 ## Día 7: lanza y cuéntalo
 
-Publica y díselo al mundo. Anúncialo a tus contactos, compártelo en tus redes, escribe a tus clientes de siempre y pon el enlace en tu WhatsApp Business y en tu Perfil de Empresa de Google. Tus primeras ventas casi siempre vienen de gente que ya te conoce, y sus opiniones serán la prueba social para los que todavía no.
+Publica y díselo al mundo. Anúncialo a tus contactos, compártelo en tus redes, escribe a tus clientes de siempre y pon el enlace en tu WhatsApp Business y en tu Perfil de Empresa de Google. Tus primeras ventas casi siempre vienen de gente que ya te conoce, y sus opiniones serán la prueba social para los que todavía no. Si quieres ver cómo luce esa prueba social bien presentada, echa un vistazo a [nuestros clientes](/es/clientes).
 
 ## Y después del día 7: la semana dos
 
@@ -285,7 +285,7 @@ Piensa en tu propio comportamiento con el móvil: si una página tarda, no esper
 
 Traducido a negocio: cada segundo de más en tu velocidad de carga son presupuestos que no se piden, carritos que se abandonan y llamadas que no llegan. Y lo más frustrante es que el visitante que se va por lentitud no te lo dice: simplemente desaparece de tus estadísticas.
 
-Hay además un efecto de marca que pocas veces se menciona: la velocidad transmite solvencia. Igual que un local cuidado invita a entrar, un sitio que responde al instante da la sensación de negocio serio y al día. Y al contrario: si tu web se arrastra, el visitante lo proyecta —injustamente o no— sobre la calidad de tu producto o servicio.
+Hay además un efecto de marca que pocas veces se menciona: la velocidad transmite solvencia. Igual que un local cuidado invita a entrar, un sitio que responde al instante da la sensación de negocio serio y al día. Y al contrario: si tu web se arrastra, el visitante lo proyecta —injustamente o no— sobre la calidad de tu producto o servicio. Los sitios de [nuestros clientes](/es/clientes) son una buena muestra de lo que transmite una web rápida y cuidada.
 
 ## Mejoras prácticas que marcan la diferencia
 
@@ -356,7 +356,7 @@ Comprobarlo es fácil y gratuito: abre tu sitio en tu propio teléfono, con dato
 
 ## En resumen
 
-Tus clientes ya están en el móvil; la pregunta es si tu sitio web los recibe bien o les pone cuesta arriba contactarte. Recibirlos con una experiencia rápida, clara y sin fricciones es de las decisiones con mejor retorno que puede tomar una PYME en internet. El mobile-first no es una moda: es, simplemente, cómo se construye hoy un buen sitio web.
+Tus clientes ya están en el móvil; la pregunta es si tu sitio web los recibe bien o les pone cuesta arriba contactarte. Recibirlos con una experiencia rápida, clara y sin fricciones es de las decisiones con mejor retorno que puede tomar una PYME en internet. El mobile-first no es una moda: es, simplemente, cómo se construye hoy un buen sitio web. Los proyectos de [nuestros clientes](/es/clientes) son la mejor prueba.
 
 Si el tuyo se diseñó pensando en el ordenador y el móvil se quedó a medias, es buen momento para replantearlo: nuestro servicio de [diseño y desarrollo web](/es/servicios/desarrollo-web) construye cada proyecto mobile-first desde el primer boceto. Echa un vistazo a los [planes y precios](/es/precios) o [escríbenos](/es/contacto) y revisamos juntos cómo se ve tu sitio en un teléfono real.`,
     },
