@@ -7,6 +7,7 @@ import './JvPortfolio.css';
 
 // Real KPI dashboards Jesús built (his name appears on each). Reused from src/assets
 // (same fingerprinted module as the KPI service page — no duplication in the build).
+import pagespeedShot from '../assets/pagspeeddestok.webp';
 import kpiRevenue from '../assets/kpi financiero.webp';
 import kpiOperations from '../assets/kpi operational.webp';
 import kpiCallCenter from '../assets/kpi-call-center.webp';
@@ -66,8 +67,8 @@ function TechIcon({ icon }) {
 
 // Small localized eyebrow labels (presentation only) for stronger visual hierarchy.
 const EYEBROWS = {
-  en: { about: 'Profile', exp: 'Experience', results: 'Impact', proof: 'Selected work', edu: 'Credentials', stack: 'Toolbox', ai: 'AI', links: 'Evidence' },
-  es: { about: 'Perfil', exp: 'Experiencia', results: 'Impacto', proof: 'Trabajo destacado', edu: 'Credenciales', stack: 'Herramientas', ai: 'IA', links: 'Evidencia' },
+  en: { about: 'Profile', exp: 'Experience', results: 'Impact', perf: 'Performance', proof: 'Selected work', edu: 'Credentials', stack: 'Toolbox', ai: 'AI', links: 'Evidence' },
+  es: { about: 'Perfil', exp: 'Experiencia', results: 'Impacto', perf: 'Rendimiento', proof: 'Trabajo destacado', edu: 'Credenciales', stack: 'Herramientas', ai: 'IA', links: 'Evidencia' },
 };
 
 const Eyebrow = ({ children }) => <span className="jv-eyebrow">{children}</span>;
@@ -212,6 +213,45 @@ export default function JvPortfolio() {
                 <p className="jv-metric__label">{c.label}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 4b — Web performance proof (real PageSpeed audit) — conversion section:
+          evidence that delivered sites hit sub-second loads with near-perfect scores. */}
+      <section className="section">
+        <div className="container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className="reveal-left" style={{ flex: '1 1 380px', maxWidth: '560px' }}>
+              <Eyebrow>{eb.perf}</Eyebrow>
+              <h2 style={{ ...h2Style, marginBottom: '1rem' }}>{t.speed.heading}</h2>
+              <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '1.25rem' }}>{t.speed.copy}</p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', display: 'grid', gap: '0.6rem' }}>
+                {t.speed.points.map((p) => (
+                  <li key={p} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', color: 'var(--text-secondary)', lineHeight: 1.55 }}>
+                    <span aria-hidden="true" style={{ color: 'var(--accent-text, var(--accent-cyan))', fontWeight: 700 }}>✓</span>
+                    {p}
+                  </li>
+                ))}
+              </ul>
+              <Link to={webPath} className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px' }}>
+                {t.speed.cta} <ArrowRight size={17} />
+              </Link>
+            </div>
+            <figure className="reveal-right" style={{ flex: '1 1 340px', maxWidth: '480px', margin: '0 auto' }}>
+              <img
+                src={pagespeedShot}
+                alt={t.speed.alt}
+                width={945}
+                height={831}
+                loading="lazy"
+                decoding="async"
+                style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--border-radius-md)', border: '1px solid var(--border-subtle)' }}
+              />
+              <figcaption style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginTop: '0.6rem', textAlign: 'center' }}>
+                {t.speed.caption}
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>

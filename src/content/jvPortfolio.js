@@ -87,6 +87,18 @@ const content = {
         { value: '−25% errors', label: 'Fewer planning and inventory errors after centralizing management indicators in Power BI.' },
       ],
     },
+    speed: {
+      heading: 'Websites that load in under 1 second',
+      copy: 'Speed is measured, not promised. This is a real Google PageSpeed Insights audit (desktop) of this very website — built with the same optimization process I apply to every client project.',
+      points: [
+        'Performance, Accessibility, Best Practices and SEO scored by Google',
+        'Load time under one second on desktop',
+        'Fast sites rank better on Google and convert more visitors into customers',
+      ],
+      alt: 'Google PageSpeed Insights desktop audit showing near-perfect scores and sub-second load time',
+      caption: 'Real PageSpeed Insights audit (desktop view).',
+      cta: 'I want a site this fast',
+    },
     proof: {
       heading: 'Proof of Work',
       subtitle: 'Real KPI dashboards I designed and built in Power BI — each one prepared and signed by me.',
@@ -242,6 +254,18 @@ const content = {
         { value: '+300% productividad', label: 'Aumento de la productividad de la empresa gracias al control de los departamentos (incluido ventas) con dashboards en Power BI.' },
         { value: '−25% de errores', label: 'Menos errores de planificación e inventario tras centralizar los indicadores de gestión en Power BI.' },
       ],
+    },
+    speed: {
+      heading: 'Páginas web que cargan en menos de 1 segundo',
+      copy: 'La velocidad se mide, no se promete. Esta es una auditoría real de Google PageSpeed Insights (escritorio) de este mismo sitio web — construido con el mismo proceso de optimización que aplico a cada proyecto de cliente.',
+      points: [
+        'Rendimiento, Accesibilidad, Buenas prácticas y SEO medidos por Google',
+        'Tiempo de carga por debajo de 1 segundo en escritorio',
+        'Una web rápida posiciona mejor en Google y convierte más visitas en clientes',
+      ],
+      alt: 'Auditoría de Google PageSpeed Insights en escritorio con puntuaciones casi perfectas y carga inferior a un segundo',
+      caption: 'Auditoría real de PageSpeed Insights (vista de escritorio).',
+      cta: 'Quiero una web así de rápida',
     },
     proof: {
       heading: 'Muestra de trabajo',
