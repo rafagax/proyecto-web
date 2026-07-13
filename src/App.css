@@ -1495,13 +1495,16 @@ body.cookie-consent-open #ka-chatbot-toggle {
   transform: scale(1.1) translateY(-5px);
 }
 
-/* Smaller, less invasive floating WhatsApp on mobile */
+/* Smaller, less invasive floating WhatsApp on mobile/tablet. bottom must clear
+   the chatbot toggle (56px at bottom:18px in this same range — Chatbot.css), or
+   both buttons land on the same spot on tablets (481-768px; phones ≤480px and
+   desktop ≥769px have their own stacked overrides elsewhere). */
 @media (max-width: 768px) {
   .floating-whatsapp {
     width: 56px;
     height: 56px;
-    bottom: 16px;
-    right: 16px;
+    bottom: 90px;
+    right: 18px;
   }
   .floating-whatsapp svg {
     width: 26px;

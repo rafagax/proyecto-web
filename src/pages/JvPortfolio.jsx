@@ -112,7 +112,7 @@ export default function JvPortfolio() {
   };
 
   return (
-    <div className="animate-fade-in">
+    <div className="animate-fade-in jv-page">
       {/* 1 — Hero */}
       <section className="section jv-hero" style={{ paddingTop: '120px', paddingBottom: '2rem' }}>
         <div className="container">

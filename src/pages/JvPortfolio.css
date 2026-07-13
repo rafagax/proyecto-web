@@ -321,3 +321,18 @@
     animation: none;
   }
 }
+
+/* Justified prose (owner request, 2026-07): long resume-style paragraphs read
+   justified like a formal CV. Short UI text (metric cards, gallery captions)
+   stays left-aligned - justify creates ugly word-gaps on 1-2 line blocks.
+   Inline text-align styles (centered section headers) still win over this. */
+.jv-page p {
+  text-align: justify;
+  hyphens: auto;
+}
+.jv-page .jv-metric__value,
+.jv-page .jv-metric__label,
+.jv-page .jv-proof-cap,
+.jv-page figcaption {
+  text-align: left;
+}
