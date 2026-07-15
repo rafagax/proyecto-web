@@ -107,6 +107,8 @@ La buena noticia es que montar un sitio web enfocado y listo para convertir ya n
     'seo-local-como-posicionar-tu-negocio-en-google': {
       title: 'SEO local: cómo posicionar tu negocio en lo más alto de Google',
       excerpt: 'La búsqueda local es donde están los clientes a punto de comprar. Estas son las acciones probadas que llevan tu negocio a lo más alto de Google.',
+      metaTitle: 'SEO local: cómo mejorar tu posición en Google',
+      metaDescription: 'Mejora tu visibilidad local con una guía sobre Perfil de Empresa, reseñas, optimización web y enlaces locales de confianza.',
       date: 'Mayo 2026',
       content: `Cuando alguien busca "cerrajero cerca de mí" o "clínica dental abierta ahora", no está curioseando: está a punto de contratar. El SEO local es la parte del posicionamiento web que se encarga de que tu negocio sea el que aparece, el que recibe la llamada y el que esa persona elige. Y tiene una ventaja enorme para las PYMEs: no compites contra todo internet, sino contra los negocios de tu zona, y la mayoría apenas ha trabajado su presencia en Google. Con unas pocas acciones bien hechas se puede escalar posiciones sorprendentemente rápido.
 
@@ -164,6 +166,8 @@ Todo lo anterior está al alcance de cualquier negocio, pero exige método y con
     'chatbots-ia-ventas-automaticas-24-7': {
       title: 'Chatbots con IA: el comercial 24/7 que le falta a tu negocio',
       excerpt: 'Un chatbot con IA responde al instante, cualifica contactos y reserva citas a cualquier hora, para que no pierdas más clientes por contestar tarde.',
+      metaTitle: 'Chatbots con IA para responder y vender mejor',
+      metaDescription: 'Descubre cómo un chatbot con IA responde preguntas, cualifica contactos, reserva citas y atiende fuera del horario comercial.',
       date: 'Abril 2026',
       content: `La mayoría de las ventas que se pierden por internet no se pierden por el precio, sino por el tiempo de respuesta. Alguien te escribe un martes a las diez de la noche, nadie contesta hasta la mañana siguiente y, para entonces, ya ha contratado al que sí respondió. Los clientes esperan respuestas en minutos, no en horas, y desde luego no "mañana a primera hora". Un chatbot con IA cierra esa brecha: responde al instante, a cualquier hora, con un tono natural y coherente con tu marca.
 
@@ -265,6 +269,8 @@ A partir de ahí, no persigas la perfección: lanza, aprende de pedidos reales y
     },
     'velocidad-web-core-web-vitals': {
       title: 'Velocidad de carga y Core Web Vitals: por qué un sitio web rápido vende más',
+      metaTitle: 'Core Web Vitals: por qué importa la velocidad web',
+      metaDescription: 'Entiende Core Web Vitals, su relación con la experiencia y el SEO, y qué mejoras ayudan a conseguir una web más rápida.',
       excerpt: 'Un sitio web lento pierde ventas y posiciones en silencio. Aprende qué mide Google con los Core Web Vitals y cómo mejorar tu velocidad de carga.',
       date: 'Febrero 2026',
       content: `La velocidad de carga no es un detalle técnico: es una métrica de negocio. Un sitio web lento frustra a los visitantes, los echa antes de que vean lo que ofreces y le dice a Google que tus páginas dan una mala experiencia. Un sitio rápido consigue lo contrario: retiene, convierte mejor y posiciona más alto. En 2026, con la mayoría de las visitas llegando desde el móvil, el rendimiento es una de las ventajas competitivas más claras —y más baratas— que puede tener el sitio web de una PYME.

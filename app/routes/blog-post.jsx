@@ -30,14 +30,16 @@ export function meta({ params, location }) {
   const esHref = absoluteUrl(article ? articlePath(article, 'es') : `/es/blog/${post.slug}`);
   const enHref = absoluteUrl(article ? articlePath(article, 'en') : `/blog/${post.slug}`);
   const canonical = locale === 'en' ? enHref : esHref;
+  const seoTitle = localized.metaTitle || localized.title;
+  const seoDescription = localized.metaDescription || localized.excerpt;
   // Open Graph requires absolute image URLs, and WhatsApp/LinkedIn scrapers do not
   // render webp — each post ships a pre-generated JPG cover (scripts/gen-blog-og.mjs).
   const shareImage = absoluteUrl(post.ogImage || post.image);
   const c = CRUMBS[locale] || CRUMBS.en;
 
   return [
-    { title: `${localized.title} | Webraf` },
-    { name: 'description', content: localized.excerpt },
+    { title: `${seoTitle} | Webraf` },
+    { name: 'description', content: seoDescription },
     { property: 'og:title', content: localized.title },
     { property: 'og:description', content: localized.excerpt },
     ...ogTags({ canonical, locale, type: 'article', image: shareImage }),
@@ -52,7 +54,7 @@ export function meta({ params, location }) {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: localized.title,
-        description: localized.excerpt,
+        description: seoDescription,
         image: shareImage,
         inLanguage: locale,
         author: {

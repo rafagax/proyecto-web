@@ -16,7 +16,7 @@ export default {
     subtitle: 'How we help small businesses and professionals win clients online — from the problem to the result.',
     overallLabel: 'Overall Review Rating',
     ratingCategories: ['Quality', 'Schedule', 'Cost', 'Willing to Refer'],
-    stats: ['Google Rating', 'Direct Clients', 'Countries Served', 'Satisfaction Rate'],
+    stats: ['Client Rating', 'Direct Clients', 'Countries Served', 'Satisfaction Rate'],
   },
   // Case studies (matched by index with CASE_STUDIES in OurClients.jsx).
   // `metric` renders as a highlighted line only
@@ -103,8 +103,6 @@ export default {
     projectsHeading: 'More websites and client projects',
   },
   card: {
-    verifiedReview: 'Verified Review',
-    google: 'Google',
     viewSite: 'View Site',
   },
   clients: [

@@ -15,9 +15,9 @@ export const AUTHOR_PHOTO = '/Rafagaxjv/jesus.webp';
 const content = {
   en: {
     meta: {
-      title: 'Jesús Vásquez — Front-End Developer & Technical SEO Specialist | Webraf',
+      title: 'Jesús Vásquez — Front-End Developer & SEO | Webraf',
       description:
-        'Front-End Developer (React) and Technical SEO Specialist with 5+ years building fast, SEO-optimized websites, KPI dashboards and AI workflows. The expert behind Webraf.',
+        'Meet Jesús Vásquez, Webraf founder and React front-end developer specializing in technical SEO, web performance, KPI dashboards and AI workflows.',
     },
     photoAlt: 'Jesús Vásquez, Electronics Engineer and Front-End Developer, founder of Webraf',
     hero: {
@@ -204,9 +204,9 @@ const content = {
 
   es: {
     meta: {
-      title: 'Jesús Vásquez — Desarrollador Front-End y Especialista en SEO Técnico | Webraf',
+      title: 'Jesús Vásquez — Desarrollador Front-End y SEO | Webraf',
       description:
-        'Desarrollador Front-End (React) y Especialista en SEO Técnico con más de 5 años creando sitios web rápidos y optimizados, dashboards de KPI y flujos con IA. El experto detrás de Webraf.',
+        'Conoce a Jesús Vásquez, fundador de Webraf y desarrollador React especializado en SEO técnico, rendimiento web, dashboards de KPI y flujos con IA.',
     },
     photoAlt: 'Jesús Vásquez, Ingeniero Electrónico y Desarrollador Front-End, fundador de Webraf',
     hero: {

@@ -107,6 +107,8 @@ If you have been putting it off, 2026 is the year to make it the priority it des
     'local-seo-rank-number-one-city-google': {
       title: 'Local SEO: How to Rank #1 in Your City on Google',
       excerpt: 'Local search is where ready-to-buy customers look first. Here is the step-by-step playbook — profile, reviews, on-site SEO, and links — that pushes your business to the top of Google.',
+      metaTitle: 'Local SEO: How to Improve Your Google Rankings',
+      metaDescription: 'Improve local visibility with a practical guide to Google Business Profile, customer reviews, on-page SEO and trusted local links.',
       date: 'May 2026',
       content: `When someone searches for a service "near me," they are usually ready to buy — not just browsing. Local SEO is how you make sure your business is the one they find, call, and choose. The best part: local competition is often far weaker than national competition, so a few focused actions can move you to the top surprisingly fast. Here is the playbook, in the order that gets results.
 
@@ -159,6 +161,8 @@ Everything above is doable yourself if you have the hours and the patience — t
     'ai-chatbots-24-7-sales-tool': {
       title: 'AI Chatbots: The 24/7 Sales Tool Your Business Is Missing',
       excerpt: 'An AI chatbot answers instantly, qualifies leads, and books appointments around the clock — so you never lose a customer to slow replies. Here is how it works and where to start.',
+      metaTitle: 'AI Chatbots for Faster Lead Response',
+      metaDescription: 'Learn how AI chatbots answer common questions, qualify leads, book appointments and support customers outside normal business hours.',
       date: 'April 2026',
       content: `Most leads are lost not because the price was wrong, but because nobody answered fast enough. Customers expect replies in minutes, not hours — and certainly not "tomorrow morning." Every unanswered evening message is a prospect who kept scrolling and found a competitor who did answer. An AI chatbot closes that gap by responding instantly, every hour of every day, in a natural, on-brand voice.
 
@@ -269,6 +273,8 @@ If you want the store built right in that first week — fast, mobile-ready, and
     },
     'web-performance-core-web-vitals': {
       title: 'Web Performance & Core Web Vitals: Why Speed Wins Customers',
+      metaTitle: 'Core Web Vitals: Why Website Speed Matters',
+      metaDescription: 'Understand Core Web Vitals, how website speed affects user experience and SEO, and the practical improvements that make pages load faster.',
       excerpt: 'A slow website quietly loses sales and rankings. Learn the three metrics Google measures, how to test your own site, and the practical fixes that make it fast.',
       date: 'February 2026',
       content: `Speed is not a technical detail — it is a business metric. A slow site frustrates visitors, drives them away, and tells Google your pages are low quality. A fast site does the opposite: it keeps people engaged, converts better, and ranks higher. In 2026, performance is one of the clearest competitive advantages a website can have, precisely because so many business sites are still slow.

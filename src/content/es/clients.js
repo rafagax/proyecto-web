@@ -4,7 +4,7 @@ export default {
   meta: {
     title: 'Casos de estudio y opiniones de clientes | Webraf',
     description:
-      'Tres proyectos reales de clientes — problema, solución y resultado — junto a reseñas de negocios a los que hemos ayudado con desarrollo web, SEO y automatización con IA.',
+      'Proyectos, sitios web y opiniones de clientes de Webraf en desarrollo web, SEO, analítica y automatización con IA.',
     ogTitle: 'Casos de estudio y opiniones de clientes | Webraf',
     ogDescription: 'Proyectos reales, resultados reales: casos de estudio y reseñas de negocios a los que hemos ayudado a crecer en internet.',
   },
@@ -14,7 +14,7 @@ export default {
     subtitle: 'Así ayudamos a pymes y profesionales a conseguir clientes en internet: del problema al resultado.',
     overallLabel: 'Calificación general de reseñas',
     ratingCategories: ['Calidad', 'Cumplimiento de plazos', 'Costo', 'Dispuesto a recomendar'],
-    stats: ['Calificación de Google', 'Clientes directos', 'Países atendidos', 'Tasa de satisfacción'],
+    stats: ['Calificación de clientes', 'Clientes directos', 'Países atendidos', 'Tasa de satisfacción'],
   },
   // Casos de estudio (emparejados por índice con CASE_STUDIES en OurClients.jsx).
   // `metric` solo se muestra si no
@@ -101,8 +101,6 @@ export default {
     projectsHeading: 'Otros sitios web y proyectos de clientes',
   },
   card: {
-    verifiedReview: 'Reseña verificada',
-    google: 'Google',
     viewSite: 'Ver sitio',
   },
   clients: [
