@@ -2,19 +2,103 @@
 // locations, website URLs, percentages and stat values stay in OurClients.jsx.
 export default {
   meta: {
-    title: 'Testimonios de clientes — Casos de éxito y reseñas | Webraf',
+    title: 'Casos de estudio y opiniones de clientes | Webraf',
     description:
-      'Mira lo que dicen nuestros clientes sobre nuestros servicios de desarrollo web y digitales. Resultados reales de negocios reales.',
-    ogTitle: 'Casos de éxito de clientes | Webraf',
-    ogDescription: 'Resultados reales de negocios a los que hemos ayudado con desarrollo web, SEO y automatización con IA.',
+      'Tres proyectos reales de clientes — problema, solución y resultado — junto a reseñas de negocios a los que hemos ayudado con desarrollo web, SEO y automatización con IA.',
+    ogTitle: 'Casos de estudio y opiniones de clientes | Webraf',
+    ogDescription: 'Proyectos reales, resultados reales: casos de estudio y reseñas de negocios a los que hemos ayudado a crecer en internet.',
   },
   hero: {
-    badge: 'Testimonios',
-    title: { before: 'Lo que otros dijeron', accent: 'sobre nosotros', after: '' },
-    subtitle: 'Negocios de Venezuela, Estados Unidos y España confían en nosotros para construir su presencia digital.',
+    badge: 'Casos de estudio',
+    title: { before: 'Proyectos reales, ', accent: 'resultados reales', after: '' },
+    subtitle: 'Así ayudamos a pymes y profesionales a conseguir clientes en internet: del problema al resultado.',
     overallLabel: 'Calificación general de reseñas',
     ratingCategories: ['Calidad', 'Cumplimiento de plazos', 'Costo', 'Dispuesto a recomendar'],
-    stats: ['Calificación de Google', 'Clientes satisfechos', 'Países atendidos', 'Tasa de satisfacción'],
+    stats: ['Calificación de Google', 'Clientes directos', 'Países atendidos', 'Tasa de satisfacción'],
+  },
+  // Casos de estudio (emparejados por índice con CASE_STUDIES en OurClients.jsx).
+  // `metric` solo se muestra si no
+  // está vacío — dejar '' hasta que el dueño aporte cifras REALES.
+  caseStudies: {
+    heading: { before: 'Proyectos web ', accent: 'recientes', after: '' },
+    subtitle: 'Una selección de sitios recientes creados según la marca, el público y los objetivos comerciales de cada cliente.',
+    mobileHeading: 'Sitios web realizados recientemente',
+    languageLabels: {
+      es: 'Sitio web en español',
+      en: 'Sitio web en inglés',
+    },
+    labels: { problem: 'Problema', solution: 'Solución', result: 'Resultado' },
+    liveButton: 'Ver web en vivo',
+    items: [
+      {
+        service: 'Web médica + SEO local',
+        imageAlt: 'Página principal del sitio de gastroenterología pediátrica creado para la Dra. Katherine Ainslie',
+        summary: 'Una web médica confiable que presenta la consulta con claridad y facilita a las familias solicitar una cita.',
+        problem:
+          'Los padres que buscaban una gastroenteróloga pediátrica en Aragua no encontraban información fiable sobre la consulta: los servicios, la ubicación y la forma de pedir cita solo circulaban por redes sociales y el boca a boca.',
+        solution:
+          'Una página web médica profesional que organiza los servicios, las credenciales y las vías de contacto de la consulta, optimizada para las búsquedas locales de su especialidad.',
+        result:
+          'La consulta aparece posicionada en los primeros resultados de Google para su especialidad en Aragua: los padres la encuentran y piden cita directamente desde el buscador.',
+        metric: '', // TODO: dueño — cifras reales (visitas mensuales, citas llegadas desde la web)
+      },
+      {
+        service: 'Web corporativa',
+        imageAlt: 'Sitio web corporativo de servicios jurídicos creado para Soluciones Cofer',
+        summary: 'Una web corporativa profesional que presenta con claridad la experiencia, las áreas de práctica y las vías de contacto.',
+        problem:
+          'El despacho no tenía presencia propia en internet: los clientes potenciales no podían verificar su trayectoria ni sus áreas de práctica antes del primer contacto.',
+        solution:
+          'Una página web corporativa sobria que presenta las áreas de práctica, el perfil del despacho y las vías de contacto, pensada para transmitir confianza profesional.',
+        result:
+          'El despacho cuenta ahora con una presencia profesional verificable que respalda cada recomendación y contacto comercial.',
+        metric: '', // TODO: dueño — cifras reales (consultas recibidas a través de la web)
+      },
+      {
+        service: 'Tienda online',
+        imageAlt: 'Catálogo online de trajes de baño creado para Bikinis L.B. Orgina',
+        summary: 'Un catálogo online vibrante que organiza la colección y ofrece una ruta directa para realizar pedidos.',
+        problem:
+          'La marca de trajes de baño vendía solo por redes sociales: el catálogo era difícil de consultar, los pedidos se gestionaban a mano y no tenía un escaparate propio para llegar a nuevas clientas.',
+        solution:
+          'Una tienda online con la colección organizada en un catálogo fácil de recorrer y un canal directo de pedidos, con un diseño visual fiel a la marca.',
+        result:
+          'Un catálogo que las clientas pueden consultar a cualquier hora y que amplía el alcance de la marca más allá de sus redes sociales.',
+        metric: '', // TODO: dueño — cifras reales (pedidos/ventas procedentes de la web)
+      },
+      {
+        service: 'Web, SEO y gestión del sitio',
+        imageAlt: 'Sitio web para restaurante creado para Briochef en Madrid',
+        summary: 'Una web de restaurante con identidad propia, respaldada por SEO y gestión continua del sitio, con accesos claros para reservas, delivery y contacto.',
+        problem: '',
+        solution: '',
+        result: '',
+        metric: '',
+      },
+      {
+        service: 'Web, SEO y gestión del sitio',
+        imageAlt: 'Catálogo de farmacia online desarrollado para FarmaVital',
+        summary: 'Un catálogo online respaldado por SEO y gestión del sitio, que facilita consultar productos de salud, marcas e información de la tienda.',
+        problem: '',
+        solution: '',
+        result: '',
+        metric: '',
+      },
+      {
+        service: 'Web para eventos',
+        imageAlt: 'Sitio web de espacios para eventos y solicitudes de presupuesto desarrollado para Stage Miami Events',
+        summary: 'Una web de eventos enfocada en conversión que presenta los servicios y facilita solicitar información directamente.',
+        problem: '',
+        solution: '',
+        result: '',
+        metric: '',
+      },
+    ],
+  },
+  testimonials: {
+    heading: { before: 'Lo que dicen ', accent: 'nuestros clientes', after: '' },
+    subtitle: 'Negocios de Venezuela, Estados Unidos y España confían en nosotros para construir su presencia digital.',
+    projectsHeading: 'Otros sitios web y proyectos de clientes',
   },
   card: {
     verifiedReview: 'Reseña verificada',
@@ -34,7 +118,7 @@ export default {
   ],
   cta: {
     heading: { before: 'Sé nuestro próximo ', accent: 'caso de éxito', after: '' },
-    copy: 'Desde e-commerce de moda hasta plataformas B2B y consultorios médicos — hemos ayudado a más de 60 negocios en Venezuela, Estados Unidos y España a transformar su presencia digital. ¡Tu caso de éxito podría ser el próximo!',
+    copy: 'Desde e-commerce de moda hasta plataformas B2B y consultorios médicos: hemos trabajado directamente con más de 60 clientes en Venezuela, Estados Unidos y España. Entre trabajos directos, de agencia y freelance, nuestro fundador ha apoyado más de 100 proyectos de clientes.',
     button: 'Agenda una consulta gratuita',
   },
 };

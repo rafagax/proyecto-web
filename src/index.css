@@ -22,6 +22,13 @@
 
   --accent-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
 
+  /* Accent used AS small text or as the keyboard focus ring — must meet WCAG
+     contrast on the theme background (4.5:1 text / 3:1 ring). On dark, #4d94ff
+     passes (7.0:1 on #000); the light theme overrides these with darker blues.
+     Do NOT restyle --accent-cyan itself: it also paints gradients/buttons. */
+  --accent-text: var(--accent-cyan);
+  --focus-ring: var(--accent-cyan);
+
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
@@ -31,6 +38,16 @@
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-lg: 24px;
+}
+
+/* Mobile: tighter vertical rhythm. Desktop keeps the airy 4/5rem sections, but on
+   phones stacked sections accumulated ~160px of empty space between blocks
+   (owner report 2026-07). Tokens cascade to .section, .footer, etc. */
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 2.25rem;
+    --spacing-xl: 2.75rem;
+  }
 }
 
 /* ===== LIGHT THEME (toggle on) ===== */
@@ -48,6 +65,11 @@
   --border-accent: rgba(0, 102, 255, 0.25);
 
   --shadow-navbar: 0 4px 20px rgba(13, 17, 38, 0.08);
+
+  /* Darker accents for light backgrounds: #2160c4 = 5.9:1 on white / 5.3:1 on
+     --bg-tertiary (AA small text); #0066ff = 4.8:1 on white (ring needs 3:1). */
+  --accent-text: #2160c4;
+  --focus-ring: var(--accent-blue);
 }
 
 /* Smooth cross-fade when toggling themes */
@@ -66,7 +88,9 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  overflow-x: hidden;
+  /* clip (not hidden): hidden turns <body> into its own scroll container, which
+     nested a second vertical scrollbar inside the page on mobile. */
+  overflow-x: clip;
 }
 
 a {
@@ -83,7 +107,14 @@ button {
   cursor: pointer;
   font-family: inherit;
   border: none;
-  outline: none;
+}
+
+/* Keyboard focus indicator (WCAG 2.4.7). :focus-visible — not :focus — so the
+   ring shows for keyboard navigation only, never on mouse click. --focus-ring
+   is theme-aware (see the token definitions above). */
+:where(a, button, input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 /* Typography Utilities */

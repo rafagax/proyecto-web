@@ -15,43 +15,65 @@ export default {
     subtitle:
       'Ofrecemos soluciones digitales completas, pensadas para ayudar a tu negocio a crecer en internet — desde desarrollo web y automatización con IA hasta SEO y generación de clientes potenciales.',
     cardCta: 'Solicitar este servicio',
+    // serviceKey maps each card to its detail page in app/route-manifest.js;
+    // detailCta is the descriptive anchor for that link.
     cards: [
       {
         title: 'Presencia digital profesional',
         description:
           'Creamos una página web moderna, clara y atractiva que fortalece la imagen de tu negocio, genera confianza en tus clientes y hace que tu marca transmita profesionalismo desde el primer clic.',
         benefits: ['Diseño visual a medida', 'Velocidad de carga optimizada', 'Diseño adaptado a móviles', 'Coherencia de marca'],
+        serviceKey: 'svc-web',
+        detailCta: 'Ver diseño y desarrollo web',
       },
       {
         title: 'Desarrollo web rápido y profesional',
         description:
-          'Creamos páginas web multidispositivo entregadas en solo 7 días, usando los frameworks y tecnologías más actuales para garantizar rendimiento, fiabilidad y escalabilidad.',
-        benefits: ['Entrega en 7 días hábiles', 'Hecho con React / Next.js', 'Rendimiento optimizado', 'Compatible con todos los navegadores'],
+          'Creamos sitios web empresariales multidispositivo entregados en 7 días hábiles o menos, usando frameworks y tecnologías modernas para favorecer el rendimiento, la fiabilidad y la escalabilidad.',
+        benefits: ['Entrega en 7 días hábiles o menos', 'Hecho con React / Next.js', 'Rendimiento optimizado', 'Compatible con todos los navegadores'],
+        serviceKey: 'svc-web',
+        detailCta: 'Ver nuestro servicio de desarrollo web',
       },
       {
         title: 'Crecimiento de ventas y SEO local',
         description:
           'Aplicamos estrategias de posicionamiento geolocal para que tu negocio aparezca de primero en Google en tu ciudad, atraiga clientes locales y sea recomendado por los asistentes de IA.',
         benefits: ['Configuración del Perfil de Empresa en Google', 'Selección de palabras clave', 'Creación de citas locales', 'Optimización para recomendación por IA'],
+        serviceKey: 'svc-seo',
+        detailCta: 'Ver nuestro servicio de SEO',
       },
       {
         title: 'Integración de chatbot con IA',
         description:
           'Integramos chatbots inteligentes con IA en tu página web que atienden a los clientes 24/7, responden preguntas frecuentes y derivan los contactos a WhatsApp automáticamente.',
         benefits: ['Atención al cliente 24/7', 'Integración con WhatsApp', 'Captura automática de contactos', 'Flujos de conversación a medida'],
+        serviceKey: 'svc-ai',
+        detailCta: 'Ver automatización con IA y chatbots',
       },
       {
         title: 'Automatización de negocios',
         description:
           'Automatizamos tareas y flujos repetitivos para que tu equipo se concentre en lo que importa. Desde respuestas de WhatsApp hasta integraciones con CRM y secuencias de correo.',
         benefits: ['Respuestas automáticas de WhatsApp', 'Integración con CRM', 'Automatización de email marketing', 'Optimización de flujos de trabajo'],
+        serviceKey: 'svc-ai',
+        detailCta: 'Ver nuestro servicio de automatización con IA',
       },
       {
         title: 'Estrategia de SEO y contenidos',
         description:
           'Desarrollamos una estrategia completa de SEO y contenidos para que tu negocio sea fácil de encontrar en internet, atrayendo tráfico orgánico que se convierte en clientes.',
         benefits: ['Auditoría técnica de SEO', 'Planificación de contenidos', 'Optimización on-page', 'Reportes mensuales'],
+        serviceKey: 'svc-seo',
+        detailCta: 'Ver nuestro servicio de SEO y contenidos',
       },
+    ],
+    // Hub → spoke row: one keyword-anchor link per service detail page.
+    detailLinksHeading: { before: 'Conoce cada ', accent: 'servicio', after: ' a fondo' },
+    detailLinks: [
+      { key: 'svc-web', label: 'Desarrollo y diseño web' },
+      { key: 'svc-seo', label: 'SEO y crecimiento digital' },
+      { key: 'svc-kpi', label: 'Dashboards de KPI y analítica' },
+      { key: 'svc-ai', label: 'Automatización con IA y chatbots' },
     ],
     cta: {
       heading: { before: '¿Listo para ', accent: 'dar el siguiente paso?', after: '' },
@@ -61,27 +83,34 @@ export default {
     },
   },
   webMeta: {
-    title: 'Servicios de desarrollo y diseño web premium | Webraf',
+    title: 'Diseño web corporativo y de tiendas online | Webraf',
     description:
-      'Servicios de desarrollo y diseño web premium para negocios que necesitan páginas web rápidas, responsivas y orientadas a conversión, creadas para generar confianza y atraer clientes potenciales calificados.',
-    ogTitle: 'Desarrollo y diseño web premium para negocios en crecimiento',
+      'Diseño web corporativo y diseño de tienda online: páginas web rápidas y orientadas a conversión que convierten visitas en clientes. Pide presupuesto gratis.',
+    ogTitle: 'Diseño web corporativo y tiendas online para pymes',
     ogDescription:
-      'Servicios de desarrollo y diseño web premium para negocios que necesitan páginas web rápidas, responsivas y orientadas a conversión, creadas para generar confianza y atraer clientes potenciales calificados.',
+      'Diseño web corporativo y de tiendas online para negocios que necesitan páginas web rápidas, responsivas y orientadas a conversión, creadas para generar confianza y atraer clientes potenciales calificados.',
     schemaName: 'Desarrollo y diseño web',
   },
   webDetail: {
+    // Secondary-action labels for the market-aware CTAs (contract C2): Spanish
+    // pages lead with WhatsApp and offer the contact form as the alternative;
+    // English pages lead with the form and offer WhatsApp.
+    ctaAlt: {
+      whatsapp: '¿Prefieres WhatsApp? Escríbenos',
+      form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
+    },
     hero: {
-      title: { before: 'Diseño y ', accent: 'desarrollo web', after: '' },
+      title: { before: 'Diseño web corporativo y ', accent: 'tiendas online', after: '' },
       subtitle:
         'Creamos páginas web modernas, responsivas y orientadas a conversión, diseñadas para representar tu marca, atraer al público adecuado y convertir a los visitantes en clientes.',
-      cta: 'Solicita una cotización gratis',
+      cta: 'Pide tu presupuesto gratis',
       alt: 'Diseño de página web moderna, responsiva y orientada a conversión',
-      waQuote: 'Hola, me gustaría obtener una cotización gratis para una página web.',
+      waQuote: 'Hola, me gustaría pedir un presupuesto gratis para una página web.',
     },
     custom: {
       heading: { before: 'Páginas web a medida construidas en torno a ', accent: 'tu marca', after: '' },
       copy:
-        'Más que una presencia en internet: diseñamos y desarrollamos páginas web a medida que reflejan tu marca, comunican tu valor con claridad y convierten a los visitantes en clientes.',
+        'Más que una presencia en internet: nuestro diseño web corporativo crea páginas a medida que reflejan tu marca, comunican tu valor con claridad y convierten a los visitantes en clientes.',
       points: ['Diseño único alineado con tu marca', 'Mensaje y estructura claros', 'Creada para convertir y crecer', 'Flexible para futuras actualizaciones'],
       cta: 'Inicia tu proyecto web',
       waQuote: 'Hola, me gustaría iniciar un proyecto web.',
@@ -99,7 +128,7 @@ export default {
     ecommerce: {
       heading: { before: 'Tiendas online diseñadas para ', accent: 'vender', after: '' },
       copy:
-        'Si tu objetivo es vender en internet, podemos crear una tienda online profesional que facilite mostrar productos, gestionar inventario, procesar pedidos y ofrecer una experiencia de compra segura a tus clientes.',
+        'Si tu objetivo es vender en internet, nuestro servicio de diseño de tienda online crea una tienda profesional que facilita mostrar productos, gestionar inventario, procesar pedidos y ofrecer una experiencia de compra segura a tus clientes.',
       points: [
         'Configuración de catálogo de productos y carrito de compra',
         'Integración de pago seguro',
@@ -156,8 +185,8 @@ export default {
       heading: { before: '¿Listo para crear una página web que ', accent: 'haga crecer tu negocio?', after: '' },
       copy:
         'Creemos una página web profesional que represente tu marca, mejore tu presencia en internet y te ayude a generar más clientes potenciales, ventas y oportunidades.',
-      primary: 'Solicita una cotización gratis',
-      primaryWaQuote: 'Hola, me gustaría obtener una cotización gratis para una página web.',
+      primary: 'Pide tu presupuesto gratis',
+      primaryWaQuote: 'Hola, me gustaría pedir un presupuesto gratis para una página web.',
       secondary: 'Contáctanos hoy',
     },
     otherHeading: { before: 'Explora nuestros otros ', accent: 'servicios', after: '' },

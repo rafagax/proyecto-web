@@ -4,19 +4,103 @@
 // index for `clients`. Plain strings only — no functions/JSX.
 export default {
   meta: {
-    title: 'Client Testimonials — Success Stories & Reviews | Webraf',
+    title: 'Case Studies & Client Reviews — Real Projects | Webraf',
     description:
-      'See what our clients say about our web development and digital services. Real results from real businesses.',
-    ogTitle: 'Client Success Stories | Webraf',
-    ogDescription: 'Real results from businesses we have helped with web development, SEO, and AI automation.',
+      'Three real client projects — problem, solution and result — plus reviews from businesses we have helped with web development, SEO and AI automation.',
+    ogTitle: 'Case Studies & Client Reviews | Webraf',
+    ogDescription: 'Real projects, real results: case studies and reviews from businesses we have helped grow online.',
   },
   hero: {
-    badge: 'Testimonials',
-    title: { before: 'What Others Said', accent: 'About Us', after: '' },
-    subtitle: 'Businesses from Venezuela, the USA & Spain trust us to build their digital presence.',
+    badge: 'Case Studies',
+    title: { before: 'Real projects, ', accent: 'real results', after: '' },
+    subtitle: 'How we help small businesses and professionals win clients online — from the problem to the result.',
     overallLabel: 'Overall Review Rating',
     ratingCategories: ['Quality', 'Schedule', 'Cost', 'Willing to Refer'],
-    stats: ['Google Rating', 'Happy Clients', 'Countries Served', 'Satisfaction Rate'],
+    stats: ['Google Rating', 'Direct Clients', 'Countries Served', 'Satisfaction Rate'],
+  },
+  // Case studies (matched by index with CASE_STUDIES in OurClients.jsx).
+  // `metric` renders as a highlighted line only
+  // when non-empty — leave '' until the owner provides REAL numbers.
+  caseStudies: {
+    heading: { before: 'Recent website ', accent: 'projects', after: '' },
+    subtitle: 'A selection of recent websites built around each client’s brand, audience, and business goals.',
+    mobileHeading: 'Recently completed websites',
+    languageLabels: {
+      es: 'Spanish-language website',
+      en: 'English-language website',
+    },
+    labels: { problem: 'Problem', solution: 'Solution', result: 'Result' },
+    liveButton: 'View live site',
+    items: [
+      {
+        service: 'Medical website + local SEO',
+        imageAlt: 'Homepage of the pediatric gastroenterology website created for Dr. Katherine Ainslie',
+        summary: 'A trustworthy medical website that presents the practice clearly and makes it easy for families to request an appointment.',
+        problem:
+          'Parents searching for a paediatric gastroenterologist in Aragua could not find reliable information about the practice: services, location and appointment details lived only on social media and word of mouth.',
+        solution:
+          'A professional medical website that organises the services, credentials and contact channels of the practice, optimised for local searches in her specialty.',
+        result:
+          'The practice now appears among the top Google results for her specialty in Aragua — parents find it and book consultations directly from search.',
+        metric: '', // TODO: owner — real figures (monthly visits, appointments coming from the site)
+      },
+      {
+        service: 'Corporate website',
+        imageAlt: 'Corporate legal services website created for Soluciones Cofer',
+        summary: 'A professional corporate website that presents the firm’s experience, practice areas, and contact options with clarity.',
+        problem:
+          'The law firm had no online presence of its own: prospective clients could not verify its track record or practice areas before making first contact.',
+        solution:
+          'A sober corporate website presenting the firm’s practice areas, profile and contact channels, designed to convey professional trust.',
+        result:
+          'The firm now has a verifiable professional presence that backs up every referral and business contact.',
+        metric: '', // TODO: owner — real figures (enquiries received through the site)
+      },
+      {
+        service: 'Online shop',
+        imageAlt: 'Online swimwear catalogue created for Bikinis L.B. Orgina',
+        summary: 'A vibrant online catalogue that organizes the collection and gives customers a direct path to place an order.',
+        problem:
+          'The swimwear brand sold only through social media: the catalogue was hard to browse, orders were handled by hand, and there was no storefront of its own to reach new customers.',
+        solution:
+          'An online shop with the collection organised as an easy-to-browse catalogue and a direct ordering channel, with a visual design true to the brand.',
+        result:
+          'A catalogue customers can browse at any hour, extending the brand’s reach beyond its social media following.',
+        metric: '', // TODO: owner — real figures (orders/sales coming from the site)
+      },
+      {
+        service: 'Website, SEO & management',
+        imageAlt: 'Restaurant website created for Briochef in Madrid',
+        summary: 'A distinctive restaurant website supported by SEO and ongoing website management, with clear paths for reservations, delivery, and contact.',
+        problem: '',
+        solution: '',
+        result: '',
+        metric: '',
+      },
+      {
+        service: 'Website, SEO & management',
+        imageAlt: 'Online pharmacy catalogue developed for FarmaVital',
+        summary: 'A structured online catalogue supported by SEO and website management, helping customers browse products, brands, and store information more easily.',
+        problem: '',
+        solution: '',
+        result: '',
+        metric: '',
+      },
+      {
+        service: 'Events website',
+        imageAlt: 'Event venue and quote-request website developed for Stage Miami Events',
+        summary: 'A conversion-focused events website that showcases venue services and gives prospects a direct way to request information.',
+        problem: '',
+        solution: '',
+        result: '',
+        metric: '',
+      },
+    ],
+  },
+  testimonials: {
+    heading: { before: 'What our clients ', accent: 'say', after: '' },
+    subtitle: 'Businesses from Venezuela, the USA and Spain trust us to build their digital presence.',
+    projectsHeading: 'More websites and client projects',
   },
   card: {
     verifiedReview: 'Verified Review',
@@ -36,7 +120,7 @@ export default {
   ],
   cta: {
     heading: { before: 'Be our next ', accent: 'success story', after: '' },
-    copy: "From fashion e-commerce to B2B platforms and medical practices — we've helped 60+ businesses across Venezuela, USA, and Spain transform their digital presence. Your success story could be next!",
+    copy: "From fashion e-commerce to B2B platforms and medical practices — we've worked directly with 60+ clients across Venezuela, the USA, and Spain. Across direct, agency, and freelance work, our founder has supported 100+ client projects.",
     button: 'Schedule Free Consultation',
   },
 };

@@ -2,11 +2,18 @@
 // as en/serviceKpi.js.
 export default {
   meta: {
-    title: 'Dashboards de KPI y analítica | Webraf',
+    title: 'Dashboards de KPI y analítica — decide con datos | Webraf',
     description:
-      'Dashboards de KPI y sistemas de analítica a medida que ayudan a los negocios a controlar contactos, ventas, rendimiento de marketing y métricas de crecimiento en tiempo real.',
+      'Dashboards de KPI a medida para controlar contactos, ventas y marketing en tiempo real. Toma decisiones con datos claros. Solicita tu propuesta.',
     ogTitle: 'Dashboards de KPI y analítica para decisiones de negocio más inteligentes',
     schemaName: 'Dashboards de KPI y analítica',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): Spanish
+  // pages lead with WhatsApp and offer the contact form as the alternative;
+  // English pages lead with the form and offer WhatsApp.
+  ctaAlt: {
+    whatsapp: '¿Prefieres WhatsApp? Escríbenos',
+    form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
   },
   hero: {
     title: { before: 'Dashboards de KPI y ', accent: 'analítica', after: '' },

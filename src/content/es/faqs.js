@@ -1,5 +1,7 @@
 // Spanish (neutral) FAQ copy (page + FAQPage JSON-LD source). Same keys/order as
-// en/faqs.js (5 categories × 4 items). Faithful translation; no new questions/claims.
+// en/faqs.js. The last category ("Precios y proceso") has 6 items in ES (two extra
+// pricing questions targeting "cuánto cuesta una página web" / "presupuesto de una
+// página web") vs 5 in EN; prices quoted match src/pages/Pricing.jsx.
 export default {
   meta: {
     title: 'Preguntas frecuentes — Web, SEO, KPI e IA | Webraf',
@@ -25,7 +27,7 @@ export default {
     {
       category: 'Desarrollo y diseño web',
       items: [
-        { question: '¿Cuánto tarda en construirse una página web profesional?', answer: 'La mayoría de las páginas web profesionales están listas en unos 7 días o menos, según la cantidad de páginas y qué tan preparado esté tu contenido. Los proyectos más grandes con funciones a medida o e-commerce pueden tardar un poco más. Acordamos un cronograma claro antes de empezar y te mantenemos al tanto en cada fase.' },
+        { question: '¿Cuánto tarda en construirse una página web profesional?', answer: 'La mayoría de los sitios web empresariales estándar están listos en 7 días hábiles o menos, según la cantidad de páginas y qué tan preparado esté tu contenido. Los proyectos más grandes con funciones a medida o e-commerce requieren un plazo mayor. Acordamos un cronograma claro antes de empezar y te mantenemos al tanto en cada fase.' },
         { question: '¿Qué diferencia a una página web premium de una básica?', answer: 'Una página web premium se construye en torno a los objetivos de tu negocio, no a una plantilla genérica. Carga rápido, funciona a la perfección en todos los dispositivos, comunica tu valor con claridad y está estructurada para guiar a los visitantes a contactarte. La diferencia se nota en el rendimiento, la confianza y la calidad de los contactos que genera.' },
         { question: '¿Mi página web será compatible con móviles?', answer: 'Sí. Cada sitio que construimos se diseña con enfoque mobile-first, así que se ve impecable y funciona con fluidez en teléfonos, tabletas y computadoras. Como la mayoría de los visitantes navega desde el móvil, tratamos la experiencia móvil como una prioridad, no como algo secundario.' },
         { question: '¿Pueden conectar WhatsApp, formularios o enlaces de reserva?', answer: 'Por supuesto. Configuramos formularios de contacto, enlaces de WhatsApp con clic para chatear y enlaces de reserva o calendario para que los visitantes te contacten de la forma que prefieran. Captar contactos de forma clara es parte de cada proyecto.' },
@@ -65,6 +67,8 @@ export default {
         { question: '¿Qué ocurre durante la sesión de estrategia?', answer: 'Conocemos tu negocio y tus objetivos, revisamos tu situación actual y trazamos el enfoque más efectivo para ti. Sales con próximos pasos claros y una comprensión realista de los plazos y el alcance.' },
         { question: '¿Puedo empezar con un servicio y agregar más después?', answer: 'Por supuesto. Muchos clientes empiezan con una página web y luego agregan SEO, dashboards de KPI o automatización con IA a medida que crecen. Cada servicio funciona bien por sí solo y aún mejor como parte de un sistema conectado.' },
         { question: '¿Ofrecen soporte después del lanzamiento?', answer: 'Sí. Seguimos disponibles después del lanzamiento para actualizaciones, correcciones y mejoras. No desaparecemos una vez que tu proyecto está en línea.' },
+        { question: '¿Cuánto cuesta una página web?', answer: 'Nuestras páginas web profesionales parten desde $299 para una landing enfocada, desde $599 para una web corporativa multipágina y desde $1,500 para una tienda online completa. El precio final depende del alcance: número de páginas, funciones de e-commerce e integraciones. Sin costes ocultos: el precio que acordamos es el que pagas. Tienes el detalle de cada plan en nuestra [página de precios](/es/precios).' },
+        { question: '¿Cómo se calcula el presupuesto de una página web?', answer: 'El presupuesto de una página web se calcula según el alcance del proyecto: el número de páginas y secciones, si necesitas tienda online o reservas, las integraciones (WhatsApp, pagos, CRM) y los servicios mensuales opcionales como SEO o mantenimiento. Antes de empezar acordamos un presupuesto cerrado y un cronograma claro, sin costes ocultos. Puedes ver los planes orientativos en nuestra [página de precios](/es/precios) y pedir un presupuesto a medida sin compromiso.' },
       ],
     },
   ],

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { ServicesMegaMenu } from './ServicesMegaMenu';
@@ -6,12 +6,19 @@ import ThemeToggle from './ThemeToggle';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-// Logos live in /public/logos (static) rather than as ES imports on purpose: importing
-// them made React Router auto-emit <link rel="preload" as="image"> for all four variants
-// in every page's <head>, competing with the hero image (the LCP). Static paths are not
-// preloaded, so the hero wins. The four <img> below are still all rendered and CSS picks
-// the right one per theme/breakpoint (no hydration flash).
+// Logos live in /public/logos (static paths, not ES imports). NOTE: React 19's SSR
+// auto-emits <link rel="preload" as="image"> in the prerendered <head> for EVERY
+// eagerly rendered <img> regardless of how the src is referenced — the only opt-outs
+// at the <img> level are loading="lazy", fetchPriority="low", or a <picture>/<noscript>
+// ancestor. None of the variants should ever be preloaded (they compete with the
+// hero image, the LCP, for bandwidth) — here the <picture> ancestor suppresses it,
+// and loading/fetchPriority are kept as belt-and-suspenders.
+// One <picture> per theme: <source media> swaps the square (mobile) and horizontal
+// (desktop) file inside a single <img>, so only ONE logo file is requested per theme
+// per load (previously both dark h + sq were always downloaded). CSS still picks the
+// dark/light pair via the logo-dark/logo-light classes (no hydration flash).
 const LOGO = {
   hDark: '/logos/webraf-h-dark.webp',
   hLight: '/logos/webraf-h-light.webp',
@@ -37,6 +44,8 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const location = useLocation();
+  const mobileMenuRef = useRef(null);
+  const menuToggleRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,18 +71,64 @@ const Navbar = () => {
     }
   }, [mobileMenuOpen]);
 
+  useEffect(() => {
+    // While the mobile menu is open: move focus into it, trap Tab inside,
+    // close on Escape, and return focus to the hamburger button on close.
+    if (!mobileMenuOpen) return undefined;
+    const menu = mobileMenuRef.current;
+    // Capture the toggle button now: the ref may have changed by cleanup time.
+    const toggleButton = menuToggleRef.current;
+    const focusableSelector =
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    menu?.querySelector('.mobile-menu-close')?.focus();
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab' || !menu) return;
+      const focusables = Array.from(menu.querySelectorAll(focusableSelector));
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && (document.activeElement === first || !menu.contains(document.activeElement))) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || !menu.contains(document.activeElement))) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      toggleButton?.focus();
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container">
           <Link to={navPath.home} className="navbar-logo" aria-label="Webraf — Web Development">
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" loading="lazy" />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" loading="lazy" />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" loading="lazy" />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" loading="lazy" />
+            {/* Dark <img> (default theme) stays eager; its <picture> ancestor stops
+                React's SSR preload and the media queries make the browser fetch
+                only the variant for the current breakpoint. The light <img> is
+                display:none until the user switches theme, so loading="lazy" means
+                it is never downloaded unless/until it becomes visible. Intrinsic
+                width/height on <source> and <img> prevent CLS. */}
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqDark} width="240" height="240" />
+              <img src={LOGO.hDark} alt="Webraf" className="logo-img logo-dark" width={480} height={160} fetchPriority="low" />
+            </picture>
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqLight} width="240" height="240" />
+              <img src={LOGO.hLight} alt="Webraf" className="logo-img logo-light" width={480} height={160} loading="lazy" />
+            </picture>
           </Link>
 
-          <nav className="navbar-links">
+          <nav className="navbar-links" aria-label={locale === 'es' ? 'Principal' : 'Main'}>
             <Link to={navPath.home} className={location.pathname === navPath.home ? 'active' : ''}>
               {nav.home}
             </Link>
@@ -108,28 +163,49 @@ const Navbar = () => {
 
           <div className="navbar-mobile-actions">
             <LanguageSwitcher variant="compact" />
-            <button className="menu-toggle" onClick={() => setMobileMenuOpen(true)} aria-label={nav.openMenu}>
+            <button
+              ref={menuToggleRef}
+              className="menu-toggle"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label={nav.openMenu}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
               <Menu size={28} />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+      {/* Mobile Menu — inert (plus visibility:hidden in CSS) while closed so its
+          links never sit in the tab order or accessibility tree off-screen. */}
+      <div
+        id="mobile-menu"
+        ref={mobileMenuRef}
+        className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}
+        inert={!mobileMenuOpen}
+      >
         <div className="mobile-menu-header">
           <Link to={navPath.home} className="navbar-logo" onClick={() => setMobileMenuOpen(false)} aria-label="Webraf — Web Development">
-            <img src={LOGO.hDark} alt="Webraf" className="logo-h logo-dark" loading="lazy" />
-            <img src={LOGO.hLight} alt="Webraf" className="logo-h logo-light" loading="lazy" />
-            <img src={LOGO.sqDark} alt="Webraf" className="logo-sq logo-dark" loading="lazy" />
-            <img src={LOGO.sqLight} alt="Webraf" className="logo-sq logo-light" loading="lazy" />
+            {/* Same <picture> mechanics as the header logo above: one file per
+                theme/breakpoint, no SSR preload, light variant lazy until the
+                theme switch makes it visible. Same URLs as the header, so the
+                browser serves these from cache (no extra request). */}
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqDark} width="240" height="240" />
+              <img src={LOGO.hDark} alt="Webraf" className="logo-img logo-dark" width={480} height={160} fetchPriority="low" />
+            </picture>
+            <picture>
+              <source media="(max-width: 768px)" srcSet={LOGO.sqLight} width="240" height="240" />
+              <img src={LOGO.hLight} alt="Webraf" className="logo-img logo-light" width={480} height={160} loading="lazy" />
+            </picture>
           </Link>
           <button className="mobile-menu-close" onClick={() => setMobileMenuOpen(false)} aria-label={nav.closeMenu}>
             <X size={32} />
           </button>
         </div>
 
-        <nav className="mobile-menu-nav">
+        <nav className="mobile-menu-nav" aria-label={locale === 'es' ? 'Móvil' : 'Mobile'}>
           {/* 1. Home */}
           <Link
             to={navPath.home}
@@ -155,10 +231,9 @@ const Navbar = () => {
               />
             </button>
             <div className={`mobile-mega-submenu ${servicesOpen ? 'open' : ''}`}>
+              {/* Business priority order: flagship service first; the index page moves
+                  to a trailing "view all" link so it doesn't compete for the first tap. */}
               <div className="mobile-submenu-col">
-                <Link to={getLocalizedPath('services', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
-                  {nav.services}
-                </Link>
                 <Link to={getLocalizedPath('svc-web', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
                   {services.web.title}
                 </Link>
@@ -170,6 +245,9 @@ const Navbar = () => {
                 </Link>
                 <Link to={getLocalizedPath('svc-ai', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
                   {services.ai.title}
+                </Link>
+                <Link to={getLocalizedPath('services', locale)} className="mobile-submenu-item" onClick={() => setMobileMenuOpen(false)}>
+                  {locale === 'es' ? 'Ver todos los servicios →' : 'View all services →'}
                 </Link>
               </div>
             </div>
@@ -214,7 +292,7 @@ const Navbar = () => {
           {/* Footer: CTA button + Contact link + settings row (language + theme) */}
           <div className="mobile-menu-footer">
             <a
-              href={`https://wa.me/584144735431?text=${encodeURIComponent(home.whatsapp.audit)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(home.whatsapp.audit)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary mobile-menu-cta"

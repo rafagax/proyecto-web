@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import pediatricWebsite from '../assets/pediatra.webp';
+import lawyerWebsite from '../assets/abogado.webp';
+import swimwearWebsite from '../assets/traje de baño.webp';
+import briochefWebsite from '../assets/briocheff.webp';
+import farmavitalWebsite from '../assets/Farmavital.webp';
+import stageMiamiWebsite from '../assets/stagemiami.webp';
 
 // Structural client data (not translated): names, businesses, locations, initials,
 // colors and website URLs. The translatable quote/result/service come from content
@@ -17,10 +24,80 @@ const CLIENTS = [
   { name: 'Miguel Ángel Torres', business: 'Torres Auto Parts', location: 'Maturín, Venezuela 🇻🇪', initial: 'M', color: '#0066ff' },
 ];
 
+// Recent live client projects, ordered by business priority. Structural data
+// only — the translatable
+// service/problem/solution/result copy lives in content/{en,es}/clients.js
+// (caseStudies.items) and is merged by index.
+const CASE_STUDIES = [
+  {
+    business: 'Stage Miami Events',
+    location: 'Miami, Florida',
+    website: 'https://stagemiamievents.com/',
+    image: stageMiamiWebsite,
+    imageWidth: 1468,
+    imageHeight: 728,
+    language: 'en',
+    featured: true,
+    contentIndex: 5,
+  },
+  {
+    business: 'DragastroPedia Aragua',
+    client: 'Dra. Katherine Ainslie',
+    location: 'Aragua, Venezuela',
+    website: 'https://dragastropedia-aragua.com/',
+    image: pediatricWebsite,
+    imageWidth: 1428,
+    imageHeight: 728,
+    language: 'es',
+    contentIndex: 0,
+  },
+  {
+    business: 'Soluciones Cofer',
+    client: 'Abg. Victor Correa',
+    location: 'Venezuela',
+    website: 'https://solucionescofer.com/',
+    image: lawyerWebsite,
+    imageWidth: 1368,
+    imageHeight: 728,
+    language: 'es',
+    contentIndex: 1,
+  },
+  {
+    business: 'Briochef',
+    location: 'Madrid, Spain',
+    website: 'https://briochef.com/',
+    image: briochefWebsite,
+    imageWidth: 1514,
+    imageHeight: 728,
+    language: 'es',
+    contentIndex: 3,
+  },
+  {
+    business: 'FarmaVital',
+    website: 'https://farmavitalgrupo.com/',
+    image: farmavitalWebsite,
+    imageWidth: 1468,
+    imageHeight: 728,
+    language: 'es',
+    contentIndex: 4,
+  },
+  {
+    business: 'Bikinis L.B. Orgina',
+    client: 'Georgina Machado',
+    location: 'Venezuela',
+    website: 'https://bikinislborgina.vercel.app/',
+    image: swimwearWebsite,
+    imageWidth: 1428,
+    imageHeight: 728,
+    language: 'es',
+    contentIndex: 2,
+  },
+];
+
 // Rating bar widths and stat values (structural, identical across locales). Labels come
 // from localized content, matched by index.
 const ratingPct = [98, 96, 94, 99];
-const statValues = ['4.9/5', '50+', '3', '100%'];
+const statValues = ['4.9/5', '60+', '3', '100%'];
 
 const StarRating = () => (
   <div style={{ display: "flex", gap: "2px", color: "#FFD700", marginBottom: "0.75rem" }}>
@@ -56,6 +133,7 @@ const OurClients = () => {
   const { locale, content } = useLocalizedContent();
   const t = content.clients;
   const clients = CLIENTS.map((c, i) => ({ ...c, ...t.clients[i] }));
+  const studies = CASE_STUDIES.map((s) => ({ ...s, ...t.caseStudies.items[s.contentIndex] }));
 
   return (
     <div className="animate-fade-in">
@@ -82,47 +160,111 @@ const OurClients = () => {
         }
       `}</style>
 
-      {/* Page Header */}
-      <section className="hero" style={{ minHeight: '40vh', paddingTop: '180px', paddingBottom: '4rem' }}>
+      {/* Page Header — same pattern as Blog/Contact so the mobile interior-header
+          rules (.hero:has(.page-hero-title)) apply. */}
+      <section className="hero clients-page-hero" style={{ minHeight: '30vh', paddingTop: '160px', paddingBottom: '2rem' }}>
         <div className="hero-bg-glow"></div>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <span className="clients-hero-eyebrow" style={{ fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.25em', color: 'var(--accent-cyan)', display: 'block', marginBottom: '1rem' }}>
+            {t.hero.badge}
+          </span>
+          <h1 className="hero-title page-hero-title" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>
+            {t.hero.title.before}<span className="text-gradient">{t.hero.title.accent}</span>{t.hero.title.after}
+          </h1>
+          <p className="hero-subtitle" style={{ maxWidth: '650px', margin: '0 auto' }}>
+            {t.hero.subtitle}
+          </p>
+        </div>
+      </section>
+
+      {/* ── Case Studies (primary content) ── */}
+      <section className="section clients-projects-section">
+        <div className="container">
+          <h2 className="clients-projects-title">
+            {t.caseStudies.heading.before}<span className="text-gradient">{t.caseStudies.heading.accent}</span>{t.caseStudies.heading.after}
+          </h2>
+          <p className="clients-projects-intro">
+            {t.caseStudies.subtitle}
+          </p>
+
+          <h3 className="clients-projects-mobile-heading">
+            {t.caseStudies.mobileHeading}
+          </h3>
+
+          <div className="case-studies-grid">
+            {studies.map((s) => (
+              <article key={s.website} className={`case-study-card${s.featured ? ' case-study-card--featured' : ''}`}>
+                <a
+                  href={s.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="case-study-visual"
+                  aria-label={`${t.caseStudies.liveButton}: ${s.business}`}
+                >
+                  <img
+                    src={s.image}
+                    alt={s.imageAlt}
+                    width={s.imageWidth}
+                    height={s.imageHeight}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="case-study-visual-label">
+                    {t.caseStudies.languageLabels[s.language]}
+                  </span>
+                </a>
+
+                <div className="case-study-content">
+                  <header className="case-study-head">
+                    <span className="case-study-service">{s.service}</span>
+                    <h3>{s.business}</h3>
+                    {(s.client || s.location) && (
+                      <p className="case-study-client">{[s.client, s.location].filter(Boolean).join(' · ')}</p>
+                    )}
+                  </header>
+
+                  <p className="case-study-summary">{s.summary}</p>
+
+                  <a
+                    href={s.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary case-study-live"
+                  >
+                    {t.caseStudies.liveButton} <ExternalLink size={16} />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials (secondary, below the case studies) ── */}
+      <section className="section" style={{ paddingTop: '2rem' }}>
         <div className="container">
 
-          {/* ── Review Summary Card ── */}
+          {/* Review Summary Card */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: 'clamp(1.5rem, 4vw, 3rem)',
             alignItems: 'center',
             background: 'rgba(255,255,255,0.03)',
             border: '1px solid rgba(77, 148, 255,0.12)',
             borderRadius: '20px',
-            padding: 'clamp(2rem, 5vw, 3.5rem)',
+            padding: 'clamp(1.5rem, 5vw, 3.5rem)',
             backdropFilter: 'blur(12px)',
-            marginBottom: '4rem',
+            marginBottom: '2.5rem',
           }}>
 
-            {/* Left — Title */}
+            {/* Left — Heading */}
             <div>
-              <span style={{
-                display: 'inline-block',
-                padding: '6px 18px',
-                borderRadius: '30px',
-                border: '1px solid rgba(77, 148, 255,0.25)',
-                fontSize: '0.78rem',
-                fontWeight: '700',
-                letterSpacing: '0.12em',
-                color: 'var(--accent-cyan)',
-                textTransform: 'uppercase',
-                marginBottom: '1.25rem',
-              }}>
-                {t.hero.badge}
-              </span>
-              <h1 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '0.75rem' }}>
-                {t.hero.title.before}<br />
-                <span className="text-gradient">{t.hero.title.accent}</span>{t.hero.title.after}
-              </h1>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '800', lineHeight: '1.15', marginBottom: '0.75rem' }}>
+                {t.testimonials.heading.before}<span className="text-gradient">{t.testimonials.heading.accent}</span>{t.testimonials.heading.after}
+              </h2>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.6', maxWidth: '340px' }}>
-                {t.hero.subtitle}
+                {t.testimonials.subtitle}
               </p>
             </div>
 
@@ -155,7 +297,7 @@ const OurClients = () => {
             </div>
           </div>
 
-          {/* ── Stats Strip ── */}
+          {/* Stats Strip */}
           <div style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
@@ -164,6 +306,7 @@ const OurClients = () => {
             border: '1px solid var(--border-subtle)',
             borderRadius: '16px',
             padding: '2rem',
+            marginBottom: '2.5rem',
           }}>
             {t.hero.stats.map((label, i) => (
               <div key={i} style={{ textAlign: 'center' }}>
@@ -172,13 +315,18 @@ const OurClients = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Clients Grid */}
-      <section className="section" style={{ paddingTop: '2rem' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <h2 style={{
+            fontSize: 'clamp(1.8rem, 3vw, 2.4rem)',
+            textAlign: 'center',
+            margin: '0 0 2rem',
+          }}>
+            {t.testimonials.projectsHeading}
+          </h2>
+
+          {/* Testimonial cards — min(100%, 320px) so the column never forces
+              horizontal overflow on narrow phones. */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '2rem' }}>
             {clients.map((client, idx) => (
               <div
                 key={idx}

@@ -1,23 +1,27 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, XCircle, ClipboardCheck, ShieldCheck, LifeBuoy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import './Pricing.css';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-
-// Structural per-plan data (identical across locales): price, "popular" flag, and the
-// feature indices shown muted ("not included"). Text comes from localized content,
-// matched by index — so prices/order never change with language.
+// Structural per-plan data (identical across locales): price, "popular" flag, the
+// feature indices shown as NOT included, and the service/plan slugs carried to the
+// contact page (?service=...&plan=...) so leads arrive pre-qualified. Text comes
+// from localized content, matched by index — so prices/order never change with language.
 const MAIN = [
-  { price: '$299', popular: false, muted: [6, 7] },
-  { price: '$599', popular: true, muted: [] },
-  { price: '$1,500', popular: false, muted: [] },
+  { price: '$299', popular: false, muted: [6, 7], service: 'web-development', plan: 'starter' },
+  { price: '$599', popular: true, muted: [], service: 'web-development', plan: 'business' },
+  { price: '$1,500', popular: false, muted: [], service: 'web-development', plan: 'ecommerce' },
 ];
 const MONTHLY = [
-  { price: '$300', popular: false },
-  { price: '$400', popular: true },
-  { price: '$499', popular: false },
+  { price: '$300', popular: false, service: 'seo', plan: 'seo-optimization' },
+  { price: '$400', popular: true, service: 'web-development', plan: 'website-management' },
+  { price: '$499', popular: false, service: 'kpi-dashboards', plan: 'kpi-analytics' },
 ];
+
+// Icons for the trust strip, matched by index to t.trust.items.
+const TRUST_ICONS = [ClipboardCheck, ShieldCheck, LifeBuoy];
 
 const Pricing = () => {
   const { locale, content } = useLocalizedContent();
@@ -56,11 +60,36 @@ const Pricing = () => {
                   <p style={{ color: 'var(--text-secondary)' }}>{plan.audience}</p>
                   <div className={`price-amount${s.popular ? ' text-gradient' : ''}`}>{s.price}</div>
                   <ul className="price-features">
-                    {plan.features.map((f, fi) => (
-                      <li key={fi} style={s.muted.includes(fi) ? { opacity: 0.4 } : undefined}><CheckCircle2 size={18} /> {f}</li>
-                    ))}
+                    {plan.features.map((f, fi) =>
+                      s.muted.includes(fi) ? (
+                        <li key={fi} className="feature-excluded">
+                          <XCircle size={18} />
+                          <span className="pricing-sr-only">{t.notIncludedLabel} </span>
+                          <s>{f}</s>
+                        </li>
+                      ) : (
+                        <li key={fi}><CheckCircle2 size={18} /> {f}</li>
+                      )
+                    )}
                   </ul>
-                  <Link to={contactPath} className={`btn ${s.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>{t.getStarted}</Link>
+                  <Link to={`${contactPath}?service=${s.service}&plan=${s.plan}`} className={`btn ${s.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>{t.getStarted}</Link>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Trust strip — real commitments already published on the site (FAQs/plans),
+              surfaced at the decision point. No invented guarantees. */}
+          <div className="pricing-trust">
+            {t.trust.items.map((item, i) => {
+              const Icon = TRUST_ICONS[i];
+              return (
+                <div key={item.title} className="pricing-trust-item">
+                  <Icon size={22} />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
                 </div>
               );
             })}
@@ -89,7 +118,7 @@ const Pricing = () => {
                         <li key={fi}><CheckCircle2 size={18} /> {f}</li>
                       ))}
                     </ul>
-                    <Link to={contactPath} className={`btn ${s.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>{t.getStarted}</Link>
+                    <Link to={`${contactPath}?service=${s.service}&plan=${s.plan}`} className={`btn ${s.popular ? 'btn-primary' : 'btn-secondary'}`} style={{ width: '100%', marginTop: 'auto' }}>{t.getStarted}</Link>
                   </div>
                 );
               })}
@@ -103,7 +132,7 @@ const Pricing = () => {
               {t.custom.copy}
             </p>
             <a
-              href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(t.custom.waQuote)}`}
+              href={`https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(t.custom.waQuote)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary"

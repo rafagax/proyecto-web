@@ -26,7 +26,7 @@ export default {
     {
       category: 'Web Development & Design',
       items: [
-        { question: 'How long does it take to build a professional website?', answer: 'Most professional websites are ready in about 7 days or less, depending on the number of pages and how much of your content is prepared. Larger projects with custom features or e-commerce can take a little longer. We agree on a clear timeline before we start and keep you updated at every phase.' },
+        { question: 'How long does it take to build a professional website?', answer: 'Most standard business websites are ready in 7 business days or less, depending on the number of pages and how much of your content is prepared. Larger projects with custom features or e-commerce require a longer timeline. We agree on a clear schedule before we start and keep you updated at every phase.' },
         { question: 'What makes a premium website different from a basic website?', answer: 'A premium website is built around your business goals rather than a generic template. It loads fast, works flawlessly on every device, communicates your value clearly, and is structured to guide visitors toward contacting you. The difference shows in performance, trust, and the quality of the leads it generates.' },
         { question: 'Will my website be mobile-friendly?', answer: 'Yes. Every site we build is designed mobile-first, so it looks sharp and works smoothly on phones, tablets, and desktops. Since most visitors browse on mobile, we treat the mobile experience as a priority, not an afterthought.' },
         { question: 'Can you connect WhatsApp, forms, or booking links?', answer: 'Absolutely. We set up contact forms, click-to-chat WhatsApp links, and booking or calendar links so visitors can reach you in the way that suits them best. Capturing leads cleanly is part of every build.' },
@@ -66,6 +66,7 @@ export default {
         { question: 'What happens during the strategy session?', answer: 'We learn about your business and goals, review your current situation, and outline the most effective approach for you. You leave with clear next steps and a realistic understanding of timelines and scope.' },
         { question: 'Can I start with one service and add more later?', answer: 'Absolutely. Many clients start with a website and later add SEO, KPI dashboards, or AI automation as they grow. Each service works well on its own and even better as part of a connected system.' },
         { question: 'Do you offer support after launch?', answer: "Yes. We stay available after launch for updates, fixes, and improvements. We don't disappear once your project goes live." },
+        { question: 'How much does a website cost for a small business?', answer: 'Our professional websites start at $299 for a focused landing page, $599 for a multi-page business website, and $1,500 for a complete online store. The final cost depends on scope — pages, e-commerce features, and integrations — plus optional monthly services like SEO or maintenance. There are no hidden fees: the price we agree on is the price you pay. You can compare every plan on our [Plans & Pricing page](/pricing).' },
       ],
     },
   ],

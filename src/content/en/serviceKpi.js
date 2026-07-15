@@ -2,11 +2,18 @@
 // stay in KpiDashboardsDetail.jsx. Strings only — no functions/JSX.
 export default {
   meta: {
-    title: 'KPI Dashboards & Analytics | Webraf',
+    title: 'KPI Dashboards & Analytics for Business Growth | Webraf',
     description:
       'Custom KPI dashboards and analytics systems that help businesses track leads, sales, marketing performance, and growth metrics in real time.',
     ogTitle: 'KPI Dashboards & Analytics for Smarter Business Decisions',
     schemaName: 'KPI Dashboards & Analytics',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): English
+  // pages lead with the contact form and offer WhatsApp as the alternative;
+  // Spanish pages lead with WhatsApp and offer the form.
+  ctaAlt: {
+    whatsapp: 'Prefer WhatsApp? Chat with us',
+    form: 'Prefer the contact form? Tell us about your project',
   },
   hero: {
     title: { before: 'KPI Dashboards & ', accent: 'Analytics', after: '' },

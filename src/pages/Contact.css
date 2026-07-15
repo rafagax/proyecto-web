@@ -1,0 +1,45 @@
+/* Contact-page additions on top of the shared form styles in App.css:
+   the service <select>, inline validation errors and the privacy-consent line. */
+
+.contact-form select {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  padding: 12px 16px;
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.contact-form select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+/* Fields flagged invalid on submit (aria-invalid drives both AT and styling) */
+.contact-form input[aria-invalid='true'],
+.contact-form textarea[aria-invalid='true'] {
+  border-color: #ef4444;
+}
+
+.field-error {
+  margin: 0;
+  color: #ef4444;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* Privacy-consent line under the submit button */
+.form-consent {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.5;
+}
+
+.form-consent a {
+  color: var(--accent-cyan);
+  text-decoration: underline;
+}

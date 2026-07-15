@@ -11,16 +11,26 @@ import {
   Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+// Each heavy image ships as AVIF (scripts/gen-avif.mjs) with the WebP original
+// as the <picture> fallback. NOTE: wrapping the eager hero in <picture>
+// suppresses React 19's automatic SSR preload — app/routes/service-web.jsx
+// emits the equivalent manual preload via its links() export.
 import heroImg from '../assets/herodevelop12.webp';
+import heroAvif from '../assets/herodevelop12.avif';
 import customImg from '../assets/web-dev-custom.webp';
+import customAvif from '../assets/web-dev-custom.avif';
 import responsiveImg from '../assets/developwebhero.webp';
+import responsiveAvif from '../assets/developwebhero.avif';
 import storeImg from '../assets/tiendachica.webp';
-import MobileAutoCarousel from '../components/MobileAutoCarousel';
+import storeAvif from '../assets/tiendachica.avif';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+
+// Discreet secondary-channel link shown under the hero CTA.
+const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };
 
 // Branded fallback if a stock image fails to load — degrade to a clean panel
 // instead of a broken-image icon.
@@ -62,7 +72,30 @@ const WebDevDesignDetail = () => {
   const { locale, content } = useLocalizedContent();
   const wd = content.services.webDetail;
   const contactPath = getLocalizedPath('contact', locale);
+  // Deep link to the localized contact form with this service preselected (contract C2).
+  const contactHref = `${contactPath}?service=web-development`;
+  const isEs = locale === 'es';
   const others = otherDefs.map((d, i) => ({ ...d, ...wd.others[i] }));
+
+  // Market-aware CTAs: English visitors (US/UK primary market) get the contact
+  // form as the primary action with WhatsApp as a secondary option; Spanish
+  // visitors keep WhatsApp primary with the form as the alternative.
+  const primaryCta = (label, waQuote) =>
+    isEs ? (
+      <a href={wa(waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+        {label} <ArrowRight size={16} />
+      </a>
+    ) : (
+      <Link to={contactHref} className="hero-advisory-btn" style={{ margin: 0 }}>
+        {label} <ArrowRight size={16} />
+      </Link>
+    );
+  const altCta = (waQuote) =>
+    isEs ? (
+      <Link to={contactHref} style={altCtaStyle}>{wd.ctaAlt.form}</Link>
+    ) : (
+      <a href={wa(waQuote)} target="_blank" rel="noopener noreferrer" style={altCtaStyle}>{wd.ctaAlt.whatsapp}</a>
+    );
 
   return (
     <div className="animate-fade-in wdd-page">
@@ -82,13 +115,15 @@ const WebDevDesignDetail = () => {
 
             {/* Hero image — between subtitle and CTA on mobile, on the right on desktop */}
             <div className="reveal-right wdd-hero-img">
-              <img src={heroImg} alt={wd.hero.alt} fetchPriority="high" decoding="async" />
+              <picture>
+                <source type="image/avif" srcSet={heroAvif} />
+                <img src={heroImg} alt={wd.hero.alt} width={1536} height={1024} fetchPriority="high" decoding="async" />
+              </picture>
             </div>
 
             <div className="wdd-hero-cta">
-              <a href={wa(wd.hero.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {wd.hero.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(wd.hero.cta, wd.hero.waQuote)}
+              <div style={{ marginTop: '0.9rem' }}>{altCta(wd.hero.waQuote)}</div>
             </div>
           </div>
         </div>
@@ -108,12 +143,13 @@ const WebDevDesignDetail = () => {
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {wd.custom.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
-              <a href={wa(wd.custom.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {wd.custom.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(wd.custom.cta, wd.custom.waQuote)}
             </div>
             <div className="reveal-right wdd-imgpanel wdd-col-img">
-              <img src={customImg} alt={wd.custom.alt} loading="lazy" />
+              <picture>
+                <source type="image/avif" srcSet={customAvif} />
+                <img src={customImg} alt={wd.custom.alt} width={1100} height={867} loading="lazy" />
+              </picture>
             </div>
           </div>
         </div>
@@ -133,12 +169,13 @@ const WebDevDesignDetail = () => {
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {wd.responsive.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
-              <a href={wa(wd.responsive.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {wd.responsive.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(wd.responsive.cta, wd.responsive.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img wdd-imgpanel">
-              <img src={responsiveImg} alt={wd.responsive.alt} loading="lazy" />
+              <picture>
+                <source type="image/avif" srcSet={responsiveAvif} />
+                <img src={responsiveImg} alt={wd.responsive.alt} width={1672} height={941} loading="lazy" />
+              </picture>
             </div>
           </div>
         </div>
@@ -158,12 +195,13 @@ const WebDevDesignDetail = () => {
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {wd.ecommerce.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
-              <a href={wa(wd.ecommerce.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {wd.ecommerce.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(wd.ecommerce.cta, wd.ecommerce.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img">
-              <img src={storeImg} alt={wd.ecommerce.alt} loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
+              <picture>
+                <source type="image/avif" srcSet={storeAvif} />
+                <img src={storeImg} alt={wd.ecommerce.alt} width={1448} height={1086} loading="lazy" onError={onImgError} style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' }} />
+              </picture>
             </div>
           </div>
         </div>
@@ -181,20 +219,14 @@ const WebDevDesignDetail = () => {
             </p>
           </div>
 
-          {/* Desktop: unified grid */}
-          <div className="wdd-feature-grid wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-feature-grid reveal-group">
             {wd.essentials.capabilities.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} reveal />)}
           </div>
-          {/* Mobile: swipeable auto-scrolling carousel */}
-          <MobileAutoCarousel>
-            {wd.essentials.capabilities.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} />)}
-          </MobileAutoCarousel>
 
           {/* Single CTA for the section */}
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa(wd.essentials.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              {wd.essentials.cta} <ArrowRight size={16} />
-            </a>
+            {primaryCta(wd.essentials.cta, wd.essentials.waQuote)}
           </div>
         </div>
       </section>
@@ -210,9 +242,7 @@ const WebDevDesignDetail = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                 {wd.why.copy}
               </p>
-              <a href={wa(wd.why.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {wd.why.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(wd.why.cta, wd.why.waQuote)}
             </div>
             <div className="reveal-right">
               <div className="wdd-why-card">
@@ -236,18 +266,12 @@ const WebDevDesignDetail = () => {
               {wd.process.heading.before}<span className="text-gradient">{wd.process.heading.accent}</span>{wd.process.heading.after}
             </h2>
           </div>
-          {/* Desktop: grid */}
-          <div className="wdd-process wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-process reveal-group">
             {wd.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} reveal />)}
           </div>
-          {/* Mobile: swipeable auto-scrolling carousel */}
-          <MobileAutoCarousel speed={0.95}>
-            {wd.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} />)}
-          </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa(wd.process.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              {wd.process.cta} <ArrowRight size={16} />
-            </a>
+            {primaryCta(wd.process.cta, wd.process.waQuote)}
           </div>
         </div>
       </section>
@@ -265,12 +289,16 @@ const WebDevDesignDetail = () => {
                 {wd.finalCta.copy}
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-                <a href={wa(wd.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                  {wd.finalCta.primary} <ArrowRight size={16} />
-                </a>
-                <Link to={contactPath} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
-                  {wd.finalCta.secondary}
-                </Link>
+                {primaryCta(wd.finalCta.primary, wd.finalCta.primaryWaQuote)}
+                {isEs ? (
+                  <Link to={contactHref} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                    {wd.finalCta.secondary}
+                  </Link>
+                ) : (
+                  <a href={wa(wd.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                    {wd.ctaAlt.whatsapp}
+                  </a>
+                )}
               </div>
             </div>
           </div>

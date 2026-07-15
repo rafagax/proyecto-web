@@ -1,9 +1,15 @@
-// Spanish (neutral) blog copy. Same keys/order as en/blog.js. Slugs/ids/images/authors/
-// external URLs stay in src/data/blogPosts.js; only translatable text lives here.
+// Spanish (Spain-neutral) blog copy. Same shape/order as en/blog.js, but `posts` is
+// keyed by the SPANISH slug (the `es` field of each article in app/route-manifest.js).
+// Slugs/ids/images/authors/external URLs stay in src/data/blogPosts.js; only
+// translatable text lives here. Post bodies are NOT literal translations of the EN
+// versions: examples and terminology are adapted to the Spanish market (€, Bizum,
+// RGPD, "posicionamiento web"). Body syntax follows src/pages/BlogPost.jsx:
+// "##"/"###" headings, "-" lists and [text](/path) inline links (links do not
+// render inside headings).
 export default {
   indexMeta: {
     title: 'Blog — Desarrollo web, SEO e ideas de IA | Webraf',
-    description: 'Guías prácticas de desarrollo web, SEO, chatbots con IA, e-commerce y velocidad para hacer crecer tu negocio en internet.',
+    description: 'Guías prácticas de desarrollo web, posicionamiento web, chatbots con IA, tiendas online y velocidad de carga para hacer crecer tu negocio en internet.',
     ogTitle: 'Blog | Webraf',
     ogDescription: 'Ideas de desarrollo web, SEO, automatización con IA y marketing digital para negocios en crecimiento.',
   },
@@ -14,21 +20,24 @@ export default {
     newsletter: {
       heading: 'Suscríbete a nuestro boletín',
       copy: 'Recibe los últimos consejos de desarrollo web y estrategias de marketing digital.',
-      placeholder: 'Ingresa tu correo',
+      placeholder: 'Introduce tu correo',
       button: 'Suscribirse',
     },
   },
   article: {
     backToBlog: 'Volver al blog',
     authorName: 'Jesús Vásquez',
-    authorBio: 'Fundador de Webraf. Ayuda a negocios de todo el mundo a crecer con páginas web rápidas, SEO y automatización con IA.',
+    authorBio: 'Fundador de Webraf. Ayuda a negocios de todo el mundo a crecer con sitios web rápidos, SEO y automatización con IA.',
     ctaHeading: '¿Listo para llevar tu negocio a internet?',
-    ctaCopy: 'Consigue una página web profesional en solo 7 días. Transformemos tu presencia digital.',
+    ctaCopy: 'Consigue un sitio web profesional estándar en 7 días hábiles o menos. Transformemos tu presencia digital.',
     ctaButton: 'Empieza ahora',
     notFound: {
       title: 'Artículo no encontrado',
       copy: 'Lo sentimos, no encontramos el artículo que buscas.',
     },
+    // Prefix for article image alt text ("Ilustración: {title}") so the alt does
+    // not duplicate the H1 verbatim. Per-post `imageAlt` in `posts` overrides it.
+    imageAltPrefix: 'Ilustración:',
   },
   section: {
     heading: { before: 'Desde nuestro ', accent: 'Blog' },
@@ -48,197 +57,308 @@ export default {
     'Web Design': 'Diseño web',
   },
   posts: {
-    'why-your-business-needs-a-website': {
-      title: 'Por qué tu negocio necesita una página web en 2026',
-      excerpt: 'Una página web profesional ya no es opcional: es la base de un negocio creíble y fácil de encontrar. Aquí te explicamos por qué y cómo empezar bien.',
+    'por-que-tu-negocio-necesita-un-sitio-web': {
+      title: 'Por qué tu negocio necesita un sitio web en 2026',
+      excerpt: 'Un sitio web profesional ya no es opcional: es la base de un negocio creíble y fácil de encontrar. Te explicamos por qué y cómo empezar con buen pie.',
       date: 'Junio 2026',
-      content: `En 2026, tu página web es la primera impresión que la mayoría de tus clientes tendrá de tu negocio. Antes de llamarte, escribirte o visitarte, te buscan en Google, y lo que encuentran (o no encuentran) decide si confían en ti. Las redes sociales ayudan, pero son terreno alquilado: el algoritmo cambia, el alcance cae y no eres dueño de tu audiencia. Una página web es el único activo digital que controlas por completo.
+      content: `En 2026, tu sitio web es la primera impresión que la mayoría de tus clientes se lleva de tu negocio. Antes de llamarte, escribirte por WhatsApp o pasarse por tu local u oficina, te buscan en Google. Y lo que encuentran —o lo que no encuentran— decide en segundos si confían en ti o siguen bajando hasta la competencia. Para una PYME o un autónomo en España, donde casi cualquier compra empieza con una búsqueda desde el móvil, no tener un sitio web profesional ya no es un ahorro: es un coste invisible que pagas cada semana en clientes que nunca llegan a conocerte.
 
-## Tu web trabaja mientras duermes
+## Tu sitio web trabaja mientras duermes
 
-Un buen sitio hace tres cosas a la vez: genera confianza, responde preguntas y convierte visitantes en clientes. A diferencia de un vendedor, nunca descansa. Alguien en otra zona horaria puede descubrirte a las 2 de la mañana, leer justo lo que ofreces y agendar una cita, sin que tú muevas un dedo.
+Un buen sitio web hace tres cosas a la vez: genera confianza, responde preguntas y convierte visitas en clientes. A diferencia de un comercial, no libra los domingos ni cierra en agosto. Alguien puede descubrirte un sábado a las once de la noche, leer exactamente qué ofreces, ver ejemplos de tu trabajo y dejarte sus datos o escribirte por WhatsApp sin que tú muevas un dedo. Al día siguiente, en lugar de empezar de cero, empiezas la conversación con alguien que ya te conoce y que ya está medio convencido.
 
-## La credibilidad es el verdadero producto
+Compáralo con depender solo del teléfono o de las redes: cada consulta fuera de horario es una oportunidad que se enfría. Un sitio web bien planteado captura esa demanda a cualquier hora y la convierte en algo accionable: un formulario enviado, una cita reservada, un pedido.
 
-Los estudios muestran una y otra vez que la mayoría de las personas juzga la seriedad de una empresa por su página web. Un sitio lento, anticuado o inexistente le dice a la gente, en silencio, que no eres serio. Un sitio limpio, rápido y moderno dice lo contrario: que eres profesional y estás para quedarte. Para un negocio pequeño que compite con marcas más grandes, esa diferencia de percepción suele decidir quién gana el cliente.
+## La credibilidad se decide en Google
 
-## Qué necesita de verdad una web de negocio
+Piensa en cómo compras tú: buscas un fontanero, una gestoría o una tienda especializada y, antes de decidirte, echas un vistazo a su web. Si el sitio es lento, está anticuado o directamente no existe, la sensación es inmediata: no parece serio. Un sitio limpio, rápido y actual transmite lo contrario sin decir una palabra: profesionalidad, continuidad y atención al detalle.
 
-No necesitas un sitio enorme ni complicado. Necesitas uno enfocado que cubra lo esencial:
+Para un negocio pequeño que compite con marcas más grandes, esa percepción es el gran igualador. No puedes tener más oficinas que una multinacional, pero sí puedes tener un [diseño web](/es/servicios/desarrollo-web) más cuidado, más claro y más rápido que el suyo. En internet, quien parece más profesional gana muchas veces el cliente, tenga el tamaño que tenga. En [nuestros clientes](/es/clientes) puedes ver ejemplos reales de esa diferencia.
 
-- Un titular claro que diga qué haces y a quién ayudas
-- Carga rápida en el móvil (la mayoría de tus visitantes usa el teléfono)
-- Formas obvias de contactarte: WhatsApp, formulario o correo
-- Pruebas: testimonios, resultados o logos de clientes
-- SEO básico para que puedan encontrarte en Google
+## Redes sociales sí, pero en terreno propio
 
-## Ser dueño de tu presencia gana a alquilarla
+Instagram, TikTok o LinkedIn son escaparates estupendos, pero son terreno alquilado: el algoritmo cambia, el alcance cae y tu cuenta puede quedar limitada de un día para otro sin que puedas hacer nada. Tu sitio web es el único activo digital que controlas al cien por cien: el contenido, el diseño, los datos de tus visitas y la relación con tu audiencia te pertenecen.
 
-Cuando tu negocio vive solo en redes sociales, estás a un cambio de políticas de perder tu alcance. Una web más una lista de correos significa que la relación con tu audiencia te pertenece. Todo lo demás —anuncios, redes, referidos— debería apuntar a esa base.
+La estrategia sensata no es elegir entre web o redes, sino usar las redes (y los anuncios, y el boca a boca) para llevar gente a tu terreno: tu sitio web y tu lista de correo. Ahí es donde se cierra la venta y donde nadie puede cambiarte las reglas a mitad de partido.
 
-## El costo de esperar
+## Qué necesita de verdad el sitio web de una PYME
 
-Cada semana sin un sitio profesional es una semana de clientes que se van con la competencia, más fácil de encontrar y de confiar. La buena noticia: una web enfocada y lista para convertir se construye en días, no en meses. Si lo has estado posponiendo, 2026 es el año de darle la prioridad que merece.`,
+No hace falta un sitio enorme ni carísimo. Hace falta uno enfocado que cubra lo esencial:
+
+- Un titular claro que diga qué haces, para quién y por qué eres la mejor opción
+- Velocidad de carga rápida en el móvil, que es desde donde te visitará la mayoría
+- Formas evidentes de contacto: WhatsApp, formulario, teléfono o correo
+- Pruebas de confianza: opiniones de clientes, casos reales o logotipos de empresas con las que trabajas
+- Una base de [posicionamiento web](/es/servicios/seo) para que Google te muestre cuando alguien busca lo que ofreces
+- Textos legales al día (aviso legal, privacidad conforme al RGPD), que además transmiten seriedad
+
+Cinco o seis páginas bien pensadas convierten más que veinte improvisadas.
+
+## ¿Y cuánto cuesta?
+
+Menos de lo que la mayoría imagina, sobre todo si lo comparas con lo que cuesta no tenerlo. Un solo cliente nuevo al mes suele pagar de sobra la inversión en un sitio web profesional. Lo importante es la relación entre lo que pagas y lo que el sitio hace por ti: un sitio bonito que no convierte es un gasto; un sitio enfocado que genera consultas es una inversión con retorno medible. Si quieres cifras concretas, en nuestra página de [precios de diseño web](/es/precios) tienes los planes detallados, sin sorpresas.
+
+## El coste de esperar
+
+Cada semana sin un sitio web profesional es una semana en la que los clientes que te buscan acaban en la competencia, simplemente porque a ella sí la encontraron y les inspiró confianza. Y el efecto se acumula: el posicionamiento web lleva tiempo, así que cuanto antes exista tu sitio, antes empieza a sumar autoridad en Google.
+
+La buena noticia es que montar un sitio web enfocado y listo para convertir ya no es cuestión de meses: con un proceso claro se construye en días. Si llevas tiempo posponiéndolo, 2026 es el año de darle la prioridad que merece. [Cuéntanos tu proyecto](/es/contacto) y te diremos, sin compromiso, qué necesita exactamente tu negocio para empezar a captar clientes en internet.`,
     },
-    'local-seo-rank-number-one-city-google': {
-      title: 'SEO local: cómo posicionarte #1 en tu ciudad en Google',
-      excerpt: 'La búsqueda local es donde están los clientes listos para comprar. Estas son las acciones probadas que llevan tu negocio a lo más alto de Google.',
+    'seo-local-como-posicionar-tu-negocio-en-google': {
+      title: 'SEO local: cómo posicionar tu negocio en lo más alto de Google',
+      excerpt: 'La búsqueda local es donde están los clientes a punto de comprar. Estas son las acciones probadas que llevan tu negocio a lo más alto de Google.',
       date: 'Mayo 2026',
-      content: `Cuando alguien busca un servicio "cerca de mí", casi siempre está listo para comprar, no solo mirando. El SEO local se encarga de que tu negocio sea el que encuentran, llaman y eligen. Lo mejor: la competencia local suele ser mucho más débil que la nacional, así que unas pocas acciones enfocadas pueden llevarte a lo más alto sorprendentemente rápido.
+      content: `Cuando alguien busca "cerrajero cerca de mí" o "clínica dental abierta ahora", no está curioseando: está a punto de contratar. El SEO local es la parte del posicionamiento web que se encarga de que tu negocio sea el que aparece, el que recibe la llamada y el que esa persona elige. Y tiene una ventaja enorme para las PYMEs: no compites contra todo internet, sino contra los negocios de tu zona, y la mayoría apenas ha trabajado su presencia en Google. Con unas pocas acciones bien hechas se puede escalar posiciones sorprendentemente rápido.
 
-## Empieza por tu Perfil de Empresa de Google
+## Empieza por tu Perfil de Empresa en Google
 
-Tu Perfil de Empresa de Google es el factor de posicionamiento local más importante. Reclámalo, verifícalo y completa cada campo: categorías, servicios, horarios, fotos y una descripción con tus palabras clave. Los negocios con perfiles completos y activos superan una y otra vez a los que tienen perfiles pobres y abandonados.
+El Perfil de Empresa de Google (lo que aparece en el mapa y en el panel lateral de resultados) es el factor de posicionamiento local más importante. Reclámalo, verifícalo y completa cada campo: categoría principal y secundarias, servicios, horarios, fotos reales y una descripción que use de forma natural las palabras con las que te buscan tus clientes.
 
-## Las reseñas son combustible
+Dos detalles que marcan la diferencia: publica fotos propias con regularidad (Google premia los perfiles activos) y responde a las preguntas que dejan los usuarios en el propio perfil. Un perfil completo y vivo supera de forma sistemática a los perfiles a medio rellenar y abandonados, aunque el negocio que hay detrás sea mejor.
 
-Google confía en los negocios en los que confían los clientes. Un flujo constante de reseñas genuinas —sobre todo recientes y que mencionen tu servicio y ciudad— indica relevancia y calidad. Convierte el pedir una reseña en parte de tu rutina después de cada cliente satisfecho, y responde siempre, incluso a las negativas.
+## Las reseñas son tu combustible
 
-## Optimiza tu web para la intención local
+Google confía en los negocios en los que confían los clientes. Un flujo constante de reseñas auténticas —sobre todo recientes y que mencionan el servicio concreto y la zona— indica relevancia y calidad. Convierte el pedirlas en un hábito: después de cada trabajo bien terminado, envía al cliente el enlace directo para dejar su reseña, por WhatsApp o por correo, justo cuando está más satisfecho.
 
-Tu sitio debe dejar claro dónde trabajas y qué haces. Eso significa:
+Y responde siempre, también a las negativas. Una respuesta educada y resolutiva a una crítica dice más de ti que diez reseñas de cinco estrellas, porque demuestra cómo tratas a un cliente cuando algo sale mal.
 
-- Ciudad y servicio en tus títulos y encabezados
-- Una página dedicada a cada servicio principal
-- Nombre, dirección y teléfono consistentes en toda la web
-- Páginas rápidas y adaptadas a móvil que carguen en menos de dos segundos
+## Optimiza tu sitio web para la intención local
 
-## Construye relevancia y enlaces locales
+Tu Perfil de Empresa necesita un sitio web detrás que confirme lo que promete. Google cruza ambas señales, y tus clientes también: muchos pasan del mapa a tu web antes de llamar. Lo esencial:
 
-Aparece en directorios locales y sitios del sector con buena reputación. Una mención o enlace desde un medio, socio o proveedor local respetado le dice a Google que tu negocio es una parte real de la comunidad. La calidad gana a la cantidad: pocos enlaces confiables superan a decenas de enlaces de baja calidad.
+- Incluye la zona y el servicio en títulos y encabezados de forma natural
+- Crea una página propia para cada servicio principal, en lugar de un listado genérico
+- Mantén el nombre, la dirección y el teléfono idénticos en la web, el perfil y los directorios
+- Cuida la velocidad de carga: una web local lenta pierde llamadas, sobre todo en el móvil
 
-## Mide y redobla la apuesta
+Si tu web actual no te permite hacer nada de esto (o directamente no tienes web), ese es el primer cuello de botella que resolver: un [sitio web bien construido](/es/servicios/desarrollo-web) es la base sobre la que funciona todo lo demás.
 
-Usa Google Search Console para ver qué búsquedas ya te traen tráfico y luego crea contenido y páginas que apunten a las que tienen intención de compra. El SEO local no es una tarea de una sola vez: es una ventaja que se acumula. Los negocios que aparecen primero el año que viene son los que hacen un trabajo constante y honesto hoy.`,
+## Consigue menciones y enlaces locales
+
+Los enlaces siguen siendo uno de los grandes factores del posicionamiento web, y en local son más fáciles de conseguir de lo que parece: directorios de tu sector con buena reputación, la asociación de comerciantes de tu zona, proveedores y colaboradores, o la prensa local que cubre historias de negocios. Una mención desde un medio o una entidad respetada de tu ciudad le dice a Google que tu negocio es una parte real de la comunidad.
+
+La regla de oro: calidad antes que cantidad. Cinco enlaces relevantes y fiables valen más que cincuenta de directorios de baja calidad, que en el peor de los casos incluso te perjudican.
+
+## Errores que frenan a la mayoría de los negocios
+
+Casi tan importante como lo que haces es lo que evitas. Estos son los fallos que más vemos en negocios que "hacen SEO local" sin resultados:
+
+- Crear el perfil y no volver a tocarlo en meses: Google interpreta el abandono como falta de relevancia
+- Comprar reseñas o pedirlas todas de golpe: los picos artificiales se notan y pueden costarte un filtrado
+- Tener horarios desactualizados: pocas cosas generan peores reseñas que desplazarse y encontrar cerrado lo que Google decía abierto
+- Repetir la misma página cambiando solo el nombre del barrio: contenido duplicado que no aporta nada a nadie
+- Ignorar el móvil: la inmensa mayoría de las búsquedas locales se hacen desde el teléfono, muchas con intención de llamar en ese momento
+
+Evitar estos errores, por sí solo, ya te coloca por delante de buena parte de tu competencia local.
+
+## Mide, ajusta y repite
+
+Da de alta tu sitio en Google Search Console (es gratuito) y revisa cada mes qué búsquedas te están trayendo visitas. Ahí descubrirás oportunidades muy concretas: búsquedas en las que apareces en la segunda página y que, con un pequeño empujón de contenido, pueden subir a la primera. Crea páginas y contenidos que respondan exactamente a esas búsquedas con intención de compra.
+
+El SEO local no es una tarea de una sola vez, sino una ventaja que se acumula: los negocios que aparecen los primeros el año que viene son los que hacen un trabajo constante y honesto hoy.
+
+## ¿Prefieres que lo hagamos por ti?
+
+Todo lo anterior está al alcance de cualquier negocio, pero exige método y constancia. Si prefieres invertir ese tiempo en atender a tus clientes, nuestro servicio de [posicionamiento web](/es/servicios/seo) se encarga del perfil, el contenido, la parte técnica y la medición, con informes claros de resultados. Puedes ver con quién trabajamos ya en [nuestros clientes](/es/clientes). [Escríbenos](/es/contacto) y te contamos por dónde empezaríamos en tu caso concreto.`,
     },
-    'ai-chatbots-24-7-sales-tool': {
-      title: 'Chatbots con IA: la herramienta de ventas 24/7 que le falta a tu negocio',
-      excerpt: 'Un chatbot con IA responde al instante, califica prospectos y agenda citas a toda hora, para que nunca pierdas un cliente por responder tarde.',
+    'chatbots-ia-ventas-automaticas-24-7': {
+      title: 'Chatbots con IA: el comercial 24/7 que le falta a tu negocio',
+      excerpt: 'Un chatbot con IA responde al instante, cualifica contactos y reserva citas a cualquier hora, para que no pierdas más clientes por contestar tarde.',
       date: 'Abril 2026',
-      content: `La mayoría de los prospectos no se pierden porque el precio esté mal, sino porque nadie respondió a tiempo. Los clientes esperan respuestas en minutos, no en horas, y mucho menos "mañana por la mañana". Un chatbot con IA cierra esa brecha respondiendo al instante, a toda hora, con una voz natural y acorde a tu marca.
+      content: `La mayoría de las ventas que se pierden por internet no se pierden por el precio, sino por el tiempo de respuesta. Alguien te escribe un martes a las diez de la noche, nadie contesta hasta la mañana siguiente y, para entonces, ya ha contratado al que sí respondió. Los clientes esperan respuestas en minutos, no en horas, y desde luego no "mañana a primera hora". Un chatbot con IA cierra esa brecha: responde al instante, a cualquier hora, con un tono natural y coherente con tu marca.
+
+Y no hablamos de los robots frustrantes de hace unos años, los de "pulse 1 para ventas". La IA actual entiende preguntas escritas con naturalidad, responde con información real de tu negocio y sabe cuándo debe pasar la conversación a una persona.
 
 ## La velocidad lo es todo
 
-El negocio que responde primero suele ganar la venta. Un asistente con IA saluda a cada visitante en el momento en que llega, responde las preguntas comunes y mantiene la conversación viva hasta que tú puedas intervenir. Sin mensajes perdidos, sin "disculpa la demora", sin prospectos que se escapan de noche.
+En casi cualquier sector, el negocio que responde primero se lleva la venta. Un asistente con IA saluda a cada visitante de tu sitio web en cuanto llega, resuelve las dudas habituales y mantiene viva la conversación hasta que tú puedas intervenir. Sin mensajes perdidos, sin "disculpa el retraso", sin contactos que se enfrían durante el fin de semana.
 
-## Hace mucho más que chatear
+Esto importa especialmente en España, donde buena parte de las consultas llegan por WhatsApp a cualquier hora: la gente escribe cuando le surge la necesidad, no cuando a ti te viene bien atender.
 
-Un buen agente con IA es una herramienta de ventas real, no un adorno. Puede:
+## Mucho más que un chat
 
-- Responder preguntas frecuentes sobre precios, servicios y tiempos de entrega
-- Calificar prospectos haciendo las preguntas correctas
-- Agendar citas directamente en tu calendario
-- Pasar las conversaciones complejas a una persona sin fricción
-- Capturar datos de contacto para que ningún prospecto se pierda
+Un buen asistente con IA es una herramienta comercial de verdad, no un adorno en la esquina de la pantalla. Bien configurado, puede:
 
-## Siempre consistente, nunca cansado
+- Responder las preguntas frecuentes sobre precios, servicios, plazos y formas de pago
+- Cualificar a cada contacto haciendo las preguntas adecuadas: qué necesita, para cuándo y con qué presupuesto
+- Reservar citas directamente en tu calendario, sin cruces de correos
+- Derivar las conversaciones complejas a una persona, con todo el contexto ya recogido
+- Guardar los datos de contacto para que ningún interesado se pierda
 
-La energía de una persona sube y baja; la de una IA no. Da las mismas respuestas útiles y precisas a las 9 de la mañana y a las 2 de la madrugada, en tu semana más ocupada o durante tus vacaciones. Esa consistencia genera confianza y libera a tu equipo para enfocarse en las conversaciones que de verdad necesitan a una persona.
+El resultado práctico: cuando entras por la mañana, en lugar de una bandeja de mensajes sin contestar tienes una lista de contactos ya filtrados, con su necesidad clara y, en muchos casos, con la cita ya reservada.
 
-## Se paga solo rápidamente
+## Consistente a las nueve de la mañana y a las tres de la madrugada
 
-Haz las cuentas: si un chatbot captura apenas unos pocos prospectos extra al mes que de otro modo habrías perdido, normalmente cubre su costo en semanas. Todo lo que viene después es pura ganancia: más citas, más ventas y menos trabajo administrativo.
+La energía de una persona sube y baja; la de una IA, no. Da las mismas respuestas útiles y precisas un lunes por la mañana que un sábado de madrugada, en tu semana más tranquila o en plena campaña. Esa consistencia genera confianza en el cliente y libera a tu equipo para centrarse en las conversaciones que de verdad necesitan criterio humano: negociaciones, casos delicados, clientes importantes.
 
-## Empieza simple y crece
+Un apunte que no debes pasar por alto: si el asistente recoge datos personales, asegúrate de informar al usuario y de tratarlos conforme al RGPD. Un asistente bien montado lo tiene resuelto desde el diseño, no como un parche posterior.
 
-No necesitas un sistema complejo el primer día. Empieza con un asistente enfocado que atienda tus preguntas principales y capture prospectos, y amplíalo a medida que descubras qué preguntan más tus clientes. En un mundo donde el tiempo de respuesta decide quién gana, un chatbot con IA ya no es un lujo: es cómo los negocios modernos se mantienen en la jugada.`,
+## Dónde funciona especialmente bien
+
+Aunque casi cualquier negocio con consultas repetitivas se beneficia, hay perfiles donde el efecto se nota desde la primera semana: clínicas y consultas que viven de la agenda, academias y centros de formación que responden las mismas dudas sobre plazas y horarios, inmobiliarias que cualifican interesados antes de enseñar un piso, talleres y servicios técnicos que reciben avisos a cualquier hora, y tiendas online donde una duda sin responder es un carrito abandonado.
+
+El patrón común: mucha consulta parecida, valor alto de cada cliente y horarios de atención limitados. Si te reconoces en dos de las tres, un asistente con IA tiene un caso de negocio claro en tu empresa. Entre [nuestros clientes](/es/clientes) encontrarás varios de estos perfiles.
+
+## Las cuentas salen rápido
+
+Haz un cálculo sencillo: ¿cuánto vale para ti un cliente nuevo? Si un chatbot captura apenas dos o tres contactos al mes que de otro modo habrías perdido —los de fuera de horario, los del fin de semana, los que no rellenan un formulario pero sí preguntan en el chat—, lo normal es que cubra su coste en cuestión de semanas. Todo lo que viene después es margen: más citas, más ventas y menos tiempo de tu equipo respondiendo por enésima vez a las mismas preguntas.
+
+Comparado con ampliar el horario de atención o contratar a alguien solo para responder mensajes, la diferencia de coste es abismal.
+
+## Empieza simple y ve ampliando
+
+No necesitas un sistema complejo desde el primer día. Empieza con un asistente enfocado que domine tus diez preguntas más habituales y capture contactos; con las conversaciones reales descubrirás qué más preguntan tus clientes y podrás ampliarlo sobre seguro. Es mucho mejor un asistente sencillo que funciona de verdad que uno ambicioso que responde mal.
+
+En nuestro servicio de [automatización con IA](/es/servicios/automatizacion-ia) diseñamos, entrenamos e integramos el asistente con tu sitio web y tus canales, y lo vamos afinando con datos reales de tus conversaciones. Y si tu web necesita además una puesta a punto para convertir mejor, lo abordamos junto con el [diseño web](/es/servicios/desarrollo-web) para que todo funcione como un único sistema. ¿Quieres verlo aplicado a tu negocio? [Hablemos](/es/contacto): cuéntanos qué preguntas te quitan más tiempo y te proponemos un plan concreto.`,
     },
-    'launch-online-store-7-days': {
-      title: 'Cómo lanzar una tienda online en 7 días',
-      excerpt: 'No necesitas meses ni un gran presupuesto para empezar a vender en internet. Este es un plan realista de 7 días para lanzar una tienda que convierte.',
+    'crear-tienda-online-en-7-dias': {
+      title: 'Cómo crear una tienda online en 7 días',
+      excerpt: 'No necesitas meses ni un gran presupuesto para vender por internet. Este es un plan realista de 7 días para lanzar una tienda online que convierte.',
       date: 'Marzo 2026',
-      content: `Vender por internet solía significar grandes presupuestos y plazos largos. Ya no. Con el enfoque correcto, una tienda online bien pensada puede pasar de idea a primera venta en una sola semana. El secreto no es hacerlo todo, sino hacer bien lo esencial y lanzar antes de sentirte "listo".
+      content: `Montar una tienda online solía significar presupuestos grandes y meses de proyecto. Ya no. Con un enfoque claro, una tienda online bien planteada puede pasar de idea a primera venta en una semana. El secreto no está en hacerlo todo, sino en hacer bien lo esencial y lanzar antes de sentirte "del todo preparado". Este es un plan realista de siete días, pensado para PYMEs y autónomos que quieren empezar a vender por internet sin volverse locos.
 
-## Días 1–2: Base y productos
+## Días 1–2: base y catálogo
 
-Empieza con claridad. Decide qué vendes, a quién y por qué deberían comprarte a ti. Luego prepara tus productos: fotos claras, descripciones honestas y precios simples. No necesitas cien productos para lanzar; un catálogo pequeño y bien presentado convierte mejor que uno saturado.
+Empieza por la claridad, no por la tecnología. Decide qué vendes, a quién y por qué deberían comprártelo a ti y no a un marketplace gigante: cercanía, especialización, producto propio, asesoramiento. Esa respuesta guiará todo lo demás.
 
-## Días 3–4: Construye la tienda
+Después prepara el catálogo: fotos claras con buena luz, descripciones honestas que respondan a las dudas típicas (medidas, materiales, plazos) y precios simples en euros, con el IVA claro desde el principio. No necesitas cien productos para lanzar; un catálogo pequeño y bien presentado convierte mejor que uno enorme y descuidado. Diez productos buenos son un lanzamiento perfectamente digno.
 
-Elige una plataforma que se ajuste a tus necesidades y arma las páginas clave: inicio, producto, carrito y pago. Mantén el diseño limpio y el camino a la compra corto. Cada clic o distracción de más te cuesta ventas. Asegúrate de que se vea y funcione perfecto en el móvil, donde estará la mayoría de tus clientes.
+## Días 3–4: construye la tienda
 
-## Día 5: Pagos y envíos
+Monta las páginas clave: inicio, ficha de producto, carrito y pago. Mantén el diseño limpio y el camino hasta la compra lo más corto posible: cada clic de más y cada distracción cuestan ventas. Y asegúrate de que todo se ve y funciona perfecto en el móvil, porque ahí estará la mayoría de tus clientes.
 
-Conecta un método de pago confiable para que los clientes paguen con seguridad, y define opciones y costos de envío claros. Nada mata una venta más rápido que un costo sorpresa o un pago confuso. Prueba todo el flujo tú mismo, desde agregar al carrito hasta recibir el correo de confirmación.
+Es también el momento de los textos legales básicos: aviso legal, política de privacidad conforme al RGPD, condiciones de venta y una política de devoluciones clara. Además de ser obligatorios, transmiten seriedad: nadie mete su tarjeta en una tienda que no dice quién hay detrás. Para el detalle legal, consulta con un profesional; lo importante aquí es que no lances sin ellos.
 
-## Día 6: Confianza y velocidad
+Si prefieres no pelearte con plantillas y configuraciones, este es el paso en el que un servicio de [desarrollo web](/es/servicios/desarrollo-web) te ahorra más tiempo y errores.
 
-Antes de lanzar, agrega los detalles que hacen que la gente se sienta cómoda comprando:
+## Día 5: pagos y envíos
 
-- Fotos reales y términos claros de devolución o garantía
-- Opciones de contacto como WhatsApp para dudas rápidas
-- Carga rápida para que la tienda se sienta confiable
-- Algunos testimonios o reseñas si los tienes
+Conecta los métodos de pago que tus clientes esperan: tarjeta y, según tu público, Bizum o PayPal. En España, ofrecer Bizum elimina mucha fricción en compras pequeñas. Cuantas menos dudas en el momento de pagar, más ventas terminadas.
 
-## Día 7: Lanza y promociona
+Define también los envíos: opciones, plazos y costes claros desde la ficha de producto. Nada mata una venta más rápido que un gasto de envío sorpresa en el último paso. Si puedes, ofrece un umbral de envío gratuito a partir de cierto importe: es un incentivo clásico porque funciona.
 
-Sal en vivo y cuéntalo. Anúncialo a tus contactos actuales, compártelo en redes y escribe a tus clientes anteriores. Tus primeras ventas casi siempre vienen de gente que ya te conoce. No esperes la perfección: lanza, aprende de clientes reales y mejora sobre la marcha. Una tienda en vivo que vende vale mucho más que una perfecta que nunca sale.`,
+Antes de seguir, prueba tú mismo el flujo completo: añade al carrito, haz un pedido de prueba real y comprueba que llega el correo de confirmación. Lo que no pruebes tú, lo "probará" tu primer cliente.
+
+## Día 6: confianza y velocidad
+
+Antes de lanzar, añade los detalles que hacen que un desconocido se sienta cómodo comprando:
+
+- Fotos reales del producto y, si puedes, de ti o de tu equipo: las tiendas con cara venden más
+- Condiciones de devolución visibles y fáciles de entender
+- Un canal de contacto rápido, como WhatsApp, para dudas de última hora antes de comprar
+- Opiniones o reseñas de clientes, aunque al principio sean pocas
+- Velocidad de carga: una tienda lenta parece poco fiable y pierde compradores antes de mostrar el producto
+
+Ese último punto se subestima siempre: la velocidad de carga es a la vez experiencia de compra y posicionamiento web. Una tienda rápida vende más y aparece mejor en Google.
+
+## Día 7: lanza y cuéntalo
+
+Publica y díselo al mundo. Anúncialo a tus contactos, compártelo en tus redes, escribe a tus clientes de siempre y pon el enlace en tu WhatsApp Business y en tu Perfil de Empresa de Google. Tus primeras ventas casi siempre vienen de gente que ya te conoce, y sus opiniones serán la prueba social para los que todavía no. Si quieres ver cómo luce esa prueba social bien presentada, echa un vistazo a [nuestros clientes](/es/clientes).
+
+## Y después del día 7: la semana dos
+
+El lanzamiento no es la meta, es el punto de partida. En las semanas siguientes, dedica un rato fijo a tres cosas: revisar qué productos se miran mucho pero se compran poco (suele ser señal de precio, foto o descripción mejorable), responder rápido cada consulta que llegue por WhatsApp o correo, y pedir una reseña a cada comprador satisfecho. Con esos tres hábitos, la tienda mejora sola mes a mes.
+
+A partir de ahí, no persigas la perfección: lanza, aprende de pedidos reales y mejora cada semana. Una tienda publicada que vende vale infinitamente más que una perfecta que nunca ve la luz. Y cuando quieras crecer, el siguiente paso natural es trabajar el [posicionamiento web](/es/servicios/seo) para atraer a compradores que aún no te conocen y que están buscando en Google exactamente lo que tú vendes.
+
+¿Quieres lanzar tu tienda con ayuda? Consulta nuestros [planes y precios](/es/precios) o [cuéntanos tu proyecto](/es/contacto) y te diremos qué encaja mejor con lo que vendes.`,
     },
-    'web-performance-core-web-vitals': {
-      title: 'Rendimiento web y Core Web Vitals: por qué la velocidad gana clientes',
-      excerpt: 'Una web lenta pierde ventas y posiciones en silencio. Aprende las métricas que mide Google y los ajustes prácticos que hacen tu sitio rápido.',
+    'velocidad-web-core-web-vitals': {
+      title: 'Velocidad de carga y Core Web Vitals: por qué un sitio web rápido vende más',
+      excerpt: 'Un sitio web lento pierde ventas y posiciones en silencio. Aprende qué mide Google con los Core Web Vitals y cómo mejorar tu velocidad de carga.',
       date: 'Febrero 2026',
-      content: `La velocidad no es un detalle técnico: es una métrica de negocio. Un sitio lento frustra a los visitantes, los ahuyenta y le dice a Google que tus páginas son de baja calidad. Un sitio rápido hace lo contrario: mantiene a la gente enganchada, convierte mejor y posiciona más alto. En 2026, el rendimiento es una de las ventajas competitivas más claras que puede tener una web.
+      content: `La velocidad de carga no es un detalle técnico: es una métrica de negocio. Un sitio web lento frustra a los visitantes, los echa antes de que vean lo que ofreces y le dice a Google que tus páginas dan una mala experiencia. Un sitio rápido consigue lo contrario: retiene, convierte mejor y posiciona más alto. En 2026, con la mayoría de las visitas llegando desde el móvil, el rendimiento es una de las ventajas competitivas más claras —y más baratas— que puede tener el sitio web de una PYME.
 
-## Qué mide realmente Google
+## Qué mide Google exactamente
 
-Google califica la experiencia real con los Core Web Vitals, tres métricas que reflejan cómo se siente una página para el visitante:
+Google evalúa la experiencia real de tus visitantes con los Core Web Vitals, tres métricas que resumen cómo "se siente" una página:
 
-- LCP (Largest Contentful Paint): qué tan rápido carga el contenido principal
-- INP (Interaction to Next Paint): qué tan rápido responde la página a los clics y toques
-- CLS (Cumulative Layout Shift): qué tan estable es el diseño mientras carga
+- LCP (Largest Contentful Paint): cuánto tarda en verse el contenido principal; lo ideal es que sea cuestión de un par de segundos
+- INP (Interaction to Next Paint): cuánto tarda la página en reaccionar cuando el usuario toca o hace clic
+- CLS (Cumulative Layout Shift): cuánto "baila" el diseño mientras carga, como ese botón que se mueve justo cuando ibas a pulsarlo
 
-Si las apruebas, ganas ventaja sobre competidores más lentos. Si las repruebas, ninguna cantidad de palabras clave lo compensa del todo.
+Estas métricas se miden con datos de usuarios reales, no solo en pruebas de laboratorio, y forman parte de las señales de experiencia de página del buscador. Aprobarlas te da ventaja frente a competidores lentos; suspenderlas es un lastre que ninguna cantidad de palabras clave compensa del todo.
 
 ## Por qué cada segundo cuenta
 
-La investigación muestra una y otra vez que las conversiones caen bruscamente a medida que crece el tiempo de carga. Un visitante que espera tres o cuatro segundos por una página muchas veces simplemente se va, y se pasa a la competencia. En conexiones móviles, donde la velocidad es más difícil de garantizar, el efecto es aún más fuerte.
+Piensa en tu propio comportamiento con el móvil: si una página tarda, no esperas; vuelves atrás y abres la siguiente. Tus clientes hacen exactamente lo mismo. La investigación del sector lleva años mostrando el mismo patrón: a más tiempo de carga, más abandono y menos conversión, y el efecto es aún más duro en conexiones móviles.
 
-## Ajustes prácticos que marcan la diferencia
+Traducido a negocio: cada segundo de más en tu velocidad de carga son presupuestos que no se piden, carritos que se abandonan y llamadas que no llegan. Y lo más frustrante es que el visitante que se va por lentitud no te lo dice: simplemente desaparece de tus estadísticas.
 
-No necesitas ser ingeniero para beneficiarte de un sitio más rápido. Las mejoras de mayor impacto suelen ser:
+Hay además un efecto de marca que pocas veces se menciona: la velocidad transmite solvencia. Igual que un local cuidado invita a entrar, un sitio que responde al instante da la sensación de negocio serio y al día. Y al contrario: si tu web se arrastra, el visitante lo proyecta —injustamente o no— sobre la calidad de tu producto o servicio. Los sitios de [nuestros clientes](/es/clientes) son una buena muestra de lo que transmite una web rápida y cuidada.
 
-- Comprimir y redimensionar imágenes, y servirlas en formatos modernos como WebP
-- Cargar de forma diferida (lazy-load) las imágenes bajo el pliegue
-- Precargar la imagen principal del hero para que aparezca rápido
-- Reducir y aplazar los scripts pesados
-- Usar un hosting confiable y rápido
+## Mejoras prácticas que marcan la diferencia
+
+No hace falta ser ingeniero para tener un sitio web rápido. La mayoría de los problemas de velocidad de carga vienen de unos pocos culpables habituales:
+
+- Imágenes sin optimizar: comprímelas, redimensiónalas y sírvelas en formatos modernos como WebP
+- Cargarlo todo a la vez: aplica carga diferida (lazy loading) a las imágenes que quedan por debajo de la primera pantalla
+- La imagen principal tarda: precárgala para que la parte superior de la página aparezca de inmediato
+- Exceso de scripts: cada plugin, píxel y widget suma; elimina lo que no uses y aplaza lo que no sea crítico
+- Alojamiento flojo: un hosting serio y con buenos tiempos de respuesta es la base de todo
+
+Si solo puedes hacer una cosa esta semana, empieza por las imágenes: en la mayoría de los sitios web de PYMEs son, con diferencia, el mayor peso de la página, y optimizarlas no requiere tocar código. El segundo candidato habitual es esa colección de plugins y códigos de seguimiento que se fueron acumulando con los años y que ya nadie recuerda para qué servían.
+
+Un buen [diseño web](/es/servicios/desarrollo-web) lleva el rendimiento incorporado desde el primer día: siempre es más barato construir rápido que arreglar lento.
 
 ## Mide, no adivines
 
-Prueba tu sitio con una herramienta gratuita como PageSpeed Insights, enfócate en la sección de Core Web Vitals y corrige primero los mayores problemas. Luego vuelve a medir. El rendimiento no es una limpieza de una sola vez: es un hábito continuo. Los negocios que tratan la velocidad como una característica —y no como algo secundario— son los que, en silencio, ganan más tráfico y más ventas.`,
+Antes de tocar nada, mide. Pasa tu sitio por PageSpeed Insights (gratuito), céntrate en la sección de Core Web Vitals y anota los problemas por orden de impacto. Corrige primero el mayor, vuelve a medir y repite. Es un ciclo, no una limpieza de una sola vez: cada plugin nuevo, cada banner y cada vídeo incrustado pueden devolverte al punto de partida si nadie vigila.
+
+Y no midas solo la parte técnica: cruza la velocidad con tus datos de negocio (visitas, conversiones, ventas). Si trabajas con [dashboards de KPIs](/es/servicios/dashboards-kpi), añadir las métricas de rendimiento te permite ver en un mismo panel cómo afecta la velocidad a los resultados, y justificar (o descartar) cada inversión con datos y no con sensaciones.
+
+## Velocidad y posicionamiento web van de la mano
+
+El rendimiento no solo convierte más: también ayuda a que te encuentren. La experiencia de página es una señal para Google y, además, un sitio rápido se rastrea de forma más eficiente. Por eso cualquier estrategia seria de [posicionamiento web](/es/servicios/seo) empieza revisando la salud técnica y la velocidad de carga antes de escribir una sola línea de contenido nuevo.
+
+La conclusión es simple: los negocios que tratan la velocidad como una característica del producto —y no como un tema técnico que ya se mirará algún día— son los que, sin hacer ruido, ganan más tráfico y más ventas. Si sospechas que tu sitio va lento (o lo sabes y lo vas posponiendo), [escríbenos](/es/contacto) y lo revisamos contigo.`,
     },
-    'mobile-first-design-strategy': {
-      title: 'Diseño mobile-first: el futuro del desarrollo web',
-      excerpt: 'La mayoría de tus visitantes está en el móvil. El diseño mobile-first les da una experiencia rápida y sin fricción, y además mejora tu posicionamiento.',
+    'diseno-web-mobile-first': {
+      title: 'Diseño web mobile-first: por qué el móvil va primero',
+      excerpt: 'La mayoría de tus visitas llegan desde el móvil. El diseño web mobile-first les da una experiencia rápida y sin fricciones, y mejora tu posicionamiento web.',
       date: 'Enero 2026',
-      content: `La mayor parte del tráfico web ya viene de dispositivos móviles, y para muchos negocios supera el 70%. Sin embargo, muchísimos sitios se siguen diseñando primero para escritorio y luego se aprietan en el teléfono como algo secundario. El diseño mobile-first invierte esa lógica: diseñas primero para la pantalla pequeña y luego escalas hacia arriba. El resultado es un sitio que se siente natural para quienes de verdad lo usan.
+      content: `Hoy, la mayor parte del tráfico web llega desde el móvil, y en muchos negocios supera con claridad al de ordenador. Sin embargo, muchísimos sitios se siguen diseñando primero en una pantalla grande y luego se "aprietan" para que quepan en el teléfono, como algo secundario. El diseño web mobile-first invierte esa lógica: se diseña primero para la pantalla pequeña y después se escala hacia arriba. El resultado es un sitio web que se siente natural para quienes de verdad lo usan, que casi siempre llegan con el móvil en la mano: desde el metro, desde el sofá, entre una cosa y otra.
 
-## Diseña para el pulgar, no para el mouse
+## Diseña para el pulgar, no para el ratón
 
-En un teléfono, la gente se desplaza con el pulgar y toca con el dedo, no con un cursor preciso. Mobile-first significa botones grandes y fáciles de tocar, texto legible sin hacer zoom y un diseño que fluye de forma natural en una sola columna. Cada elemento se gana su lugar, porque no hay espacio para el desorden.
+En el móvil no hay cursor de precisión: la gente se desplaza con el pulgar y toca con el dedo. Un diseño web mobile-first lo asume desde el principio: botones grandes y fáciles de pulsar, texto legible sin hacer zoom y una estructura que fluye con naturalidad en una sola columna. Cada elemento tiene que ganarse su sitio, porque en una pantalla de quince centímetros no hay espacio para el relleno.
 
-## Velocidad y simplicidad van juntas
+Ese filtro es incómodo, pero sanísimo: obliga a decidir qué es lo importante de verdad. ¿Qué debe ver el visitante en los primeros dos segundos? ¿Qué acción quieres que haga? En escritorio puedes disimular la falta de foco con columnas y banners; en el móvil, no.
 
-Diseñar para el móvil obliga a buenos hábitos. Priorizas el contenido que importa, recortas lo que no y mantienes las páginas ligeras. Esa disciplina hace tu sitio más rápido para todos, y la velocidad, como dejan claro los Core Web Vitals de Google, afecta directamente tanto la experiencia como el posicionamiento.
+## Velocidad y sencillez van juntas
 
-## Cómo se ve mobile-first en la práctica
+Diseñar primero para el móvil impone buenos hábitos: priorizas el contenido que importa, recortas lo accesorio y mantienes las páginas ligeras. Esa disciplina se traduce directamente en velocidad de carga, y la velocidad —como dejan claro los Core Web Vitals de Google— afecta tanto a la experiencia como al posicionamiento. Un sitio pensado para funcionar bien con una conexión móvil normal vuela cuando se abre desde la fibra de casa.
+
+La relación también funciona al revés: los sitios diseñados primero para escritorio suelen arrastrar imágenes enormes, menús complejos y scripts que el móvil paga carísimos. Empezar por el móvil evita ese sobrepeso de raíz.
+
+## Cómo se ve el mobile-first en la práctica
 
 Una buena experiencia móvil suele incluir:
 
-- Una llamada a la acción clara y visible sin desplazarse mucho
-- Navegación fácil de alcanzar con una sola mano
-- Formularios cortos, con el teclado adecuado para cada campo
-- Imágenes del tamaño correcto para pantallas pequeñas
-- Áreas de toque bien espaciadas para no tocar la opción equivocada
+- Una llamada a la acción clara, visible casi sin desplazarse
+- Navegación alcanzable con una sola mano, sin menús laberínticos
+- Formularios cortos, con el teclado adecuado para cada campo: numérico para el teléfono, con arroba a mano para el correo
+- Botón o enlace directo a WhatsApp, que en España es muchas veces el canal preferido para preguntar
+- Imágenes servidas al tamaño correcto para pantallas pequeñas
+- Zonas táctiles bien separadas, para no pulsar la opción equivocada
 
-## Google lo premia
+Nada de esto es decorativo: cada punto elimina una fricción concreta que hoy puede estar costándote contactos.
 
-Google usa la indexación mobile-first, lo que significa que mira principalmente la versión móvil de tu sitio para decidir tu posición. Si tu experiencia móvil es mala, tu posicionamiento sufre, incluso en búsquedas de escritorio. Hacer bien el móvil ya no es opcional: es el punto de partida.
+## Mobile-first no significa olvidar el ordenador
+
+Es el malentendido más habitual. Diseñar primero para el móvil no implica que la versión de escritorio quede pobre o vacía: implica decidir la jerarquía del contenido en la pantalla más exigente y luego aprovechar el espacio extra del ordenador para respirar, no para rellenar. De hecho, los sitios mobile-first suelen verse más elegantes también en pantalla grande, precisamente porque cada elemento está ahí por una razón. La versión de escritorio sigue importando —muchas decisiones de compra, sobre todo entre empresas, se rematan delante de un ordenador—, pero se construye sobre una base que ya funciona en cualquier parte.
+
+## Google mira tu versión móvil primero
+
+Google utiliza la indexación mobile-first: para decidir cómo posicionar tu sitio, se fija principalmente en su versión móvil. Si tu experiencia móvil es pobre —textos diminutos, elementos que no caben, contenido recortado respecto al escritorio—, tu visibilidad sufre incluso en las búsquedas hechas desde el ordenador. Hacer bien el móvil ya no es un extra: es el punto de partida de cualquier estrategia de [posicionamiento web](/es/servicios/seo).
+
+Comprobarlo es fácil y gratuito: abre tu sitio en tu propio teléfono, con datos móviles en lugar de wifi, e intenta hacer lo que haría un cliente —encontrar un servicio, ver precios y contactar—. Si en algún punto dudas, tienes que ampliar con los dedos o te toca esperar, ahí tienes tu lista de tareas. Herramientas gratuitas como PageSpeed Insights te darán, además, la foto técnica del estado de tu versión móvil.
 
 ## En resumen
 
-Tus clientes ya están en sus teléfonos. Recibirlos ahí con una experiencia rápida, limpia y sin fricción es una de las decisiones de mayor retorno que puedes tomar. Mobile-first no es una moda: es simplemente cómo se construyen hoy las buenas páginas web.`,
+Tus clientes ya están en el móvil; la pregunta es si tu sitio web los recibe bien o les pone cuesta arriba contactarte. Recibirlos con una experiencia rápida, clara y sin fricciones es de las decisiones con mejor retorno que puede tomar una PYME en internet. El mobile-first no es una moda: es, simplemente, cómo se construye hoy un buen sitio web. Los proyectos de [nuestros clientes](/es/clientes) son la mejor prueba.
+
+Si el tuyo se diseñó pensando en el ordenador y el móvil se quedó a medias, es buen momento para replantearlo: nuestro servicio de [diseño y desarrollo web](/es/servicios/desarrollo-web) construye cada proyecto mobile-first desde el primer boceto. Echa un vistazo a los [planes y precios](/es/precios) o [escríbenos](/es/contacto) y revisamos juntos cómo se ve tu sitio en un teléfono real.`,
     },
   },
 };

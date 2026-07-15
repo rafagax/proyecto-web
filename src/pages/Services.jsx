@@ -66,17 +66,43 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    to={contactPath}
-                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: v.color, fontWeight: '600', fontSize: '0.9rem', marginTop: '0.5rem', transition: 'gap 0.2s' }}
-                    onMouseOver={e => e.currentTarget.style.gap = '10px'}
-                    onMouseOut={e => e.currentTarget.style.gap = '6px'}
-                  >
-                    {t.cardCta} <ArrowRight size={16} />
-                  </Link>
+                  {/* Primary link goes to the service detail page (hub → spoke);
+                      contact stays available as a secondary, muted CTA. */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginTop: '0.5rem' }}>
+                    <Link
+                      to={getLocalizedPath(service.serviceKey, locale)}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: v.color, fontWeight: '600', fontSize: '0.9rem', transition: 'gap 0.2s' }}
+                      onMouseOver={e => e.currentTarget.style.gap = '10px'}
+                      onMouseOut={e => e.currentTarget.style.gap = '6px'}
+                    >
+                      {service.detailCta} <ArrowRight size={16} />
+                    </Link>
+                    <Link
+                      to={contactPath}
+                      style={{ color: 'var(--text-secondary)', fontWeight: '500', fontSize: '0.85rem' }}
+                      onMouseOver={e => e.currentTarget.style.color = 'var(--text-primary)'}
+                      onMouseOut={e => e.currentTarget.style.color = 'var(--text-secondary)'}
+                    >
+                      {t.cardCta}
+                    </Link>
+                  </div>
                 </div>
               );
             })}
+          </div>
+
+          {/* Keyword-anchor links to the four service detail pages */}
+          <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+            <h2 style={{ fontSize: '1.6rem', marginBottom: '1.5rem' }}>
+              {t.detailLinksHeading.before}<span className="text-gradient">{t.detailLinksHeading.accent}</span>{t.detailLinksHeading.after}
+            </h2>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              {t.detailLinks.map((l) => (
+                <Link key={l.key} to={getLocalizedPath(l.key, locale)} className="btn btn-secondary" style={{ padding: '12px 24px', fontSize: '0.95rem' }}>
+                  {l.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </section>

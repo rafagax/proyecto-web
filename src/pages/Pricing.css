@@ -1,0 +1,76 @@
+/* Pricing page-specific styles (imported only by Pricing.jsx).
+   Shared pricing-card / price-features base styles live in App.css. */
+
+/* Features NOT included in a plan: gray X icon + struck-through, dimmed text,
+   so exclusions are distinguishable from included features at a glance. */
+.price-features li.feature-excluded {
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
+.price-features li.feature-excluded svg {
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.price-features li.feature-excluded s {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* Screen-reader-only prefix ("Not included:") for excluded features. */
+.pricing-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Trust strip under the main plans: real, already-published commitments. */
+.pricing-trust {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(77, 148, 255, 0.15);
+  border-radius: var(--border-radius-md);
+}
+
+.pricing-trust-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+}
+
+.pricing-trust-item svg {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pricing-trust-item h3 {
+  font-size: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.pricing-trust-item p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .pricing-trust {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+}

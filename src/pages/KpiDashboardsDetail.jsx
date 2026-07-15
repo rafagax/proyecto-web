@@ -11,16 +11,26 @@ import {
   Bot,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import MobileAutoCarousel from '../components/MobileAutoCarousel';
+// Each heavy image ships as AVIF (scripts/gen-avif.mjs) with the WebP original
+// as the <picture> fallback. NOTE: wrapping the eager hero in <picture>
+// suppresses React 19's automatic SSR preload — app/routes/service-kpi.jsx
+// emits the equivalent manual preload via its links() export.
 import kpiDashImg from '../assets/kpidasboard.webp';
+import kpiDashAvif from '../assets/kpidasboard.avif';
 import financeImg from '../assets/kpi financiero.webp';
+import financeAvif from '../assets/kpi financiero.avif';
 import callCenterImg from '../assets/kpidasboardhome.webp';
+import callCenterAvif from '../assets/kpidasboardhome.avif';
 import operationalImg from '../assets/kpi operational.webp';
+import operationalAvif from '../assets/kpi operational.avif';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+
+// Discreet secondary-channel link shown under the hero CTA.
+const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };
 
 const FeatureCard = ({ Icon, title, text, reveal = false }) => (
   <div className={`wdd-feature-card${reveal ? ' reveal-card' : ''}`}>
@@ -39,7 +49,19 @@ const ProcessCard = ({ n, title, text, reveal = false }) => (
 );
 
 const capabilityIcons = [Target, BarChart3, TrendingUp, LayoutDashboard, Database, FileText];
-const sectionImages = [financeImg, callCenterImg, operationalImg];
+// { webp, avif } pairs, in section order (AVIF served via <picture>, WebP fallback).
+const sectionImages = [
+  { webp: financeImg, avif: financeAvif },
+  { webp: callCenterImg, avif: callCenterAvif },
+  { webp: operationalImg, avif: operationalAvif },
+];
+// Intrinsic dimensions of sectionImages, in order (reserves space before the
+// image loads — avoids CLS).
+const sectionImageSizes = [
+  { width: 1397, height: 1126 },
+  { width: 1672, height: 941 },
+  { width: 1758, height: 895 },
+];
 const sectionReverse = [false, true, false];
 const sectionBg = [{ background: 'var(--bg-secondary)' }, undefined, { background: 'var(--bg-secondary)' }];
 const colImgStyle = { width: '100%', height: 'auto', display: 'block', borderRadius: 20, border: '1px solid var(--border-subtle)' };
@@ -55,7 +77,30 @@ const KpiDashboardsDetail = () => {
   const { locale, content } = useLocalizedContent();
   const t = content.serviceKpi;
   const contactPath = getLocalizedPath('contact', locale);
+  // Deep link to the localized contact form with this service preselected (contract C2).
+  const contactHref = `${contactPath}?service=kpi-dashboards`;
+  const isEs = locale === 'es';
   const others = otherDefs.map((d, i) => ({ ...d, ...t.others[i] }));
+
+  // Market-aware CTAs: English visitors (US/UK primary market) get the contact
+  // form as the primary action with WhatsApp as a secondary option; Spanish
+  // visitors keep WhatsApp primary with the form as the alternative.
+  const primaryCta = (label, waQuote) =>
+    isEs ? (
+      <a href={wa(waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+        {label} <ArrowRight size={16} />
+      </a>
+    ) : (
+      <Link to={contactHref} className="hero-advisory-btn" style={{ margin: 0 }}>
+        {label} <ArrowRight size={16} />
+      </Link>
+    );
+  const altCta = (waQuote) =>
+    isEs ? (
+      <Link to={contactHref} style={altCtaStyle}>{t.ctaAlt.form}</Link>
+    ) : (
+      <a href={wa(waQuote)} target="_blank" rel="noopener noreferrer" style={altCtaStyle}>{t.ctaAlt.whatsapp}</a>
+    );
 
   return (
     <div className="animate-fade-in wdd-page">
@@ -74,13 +119,15 @@ const KpiDashboardsDetail = () => {
             </div>
 
             <div className="reveal-right wdd-hero-img">
-              <img src={kpiDashImg} alt={t.hero.alt} loading="eager" />
+              <picture>
+                <source type="image/avif" srcSet={kpiDashAvif} />
+                <img src={kpiDashImg} alt={t.hero.alt} width={1448} height={1086} loading="eager" fetchPriority="high" />
+              </picture>
             </div>
 
             <div className="wdd-hero-cta">
-              <a href={wa(t.hero.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {t.hero.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(t.hero.cta, t.hero.waQuote)}
+              <div style={{ marginTop: '0.9rem' }}>{altCta(t.hero.waQuote)}</div>
             </div>
           </div>
         </div>
@@ -101,12 +148,13 @@ const KpiDashboardsDetail = () => {
                 <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                   {s.points.map((p) => <li key={p}>{p}</li>)}
                 </ul>
-                <a href={wa(s.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                  {s.cta} <ArrowRight size={16} />
-                </a>
+                {primaryCta(s.cta, s.waQuote)}
               </div>
               <div className="reveal-right wdd-col-img">
-                <img src={sectionImages[i]} alt={s.alt} loading="lazy" style={colImgStyle} />
+                <picture>
+                  <source type="image/avif" srcSet={sectionImages[i].avif} />
+                  <img src={sectionImages[i].webp} alt={s.alt} {...sectionImageSizes[i]} loading="lazy" style={colImgStyle} />
+                </picture>
               </div>
             </div>
           </div>
@@ -125,17 +173,13 @@ const KpiDashboardsDetail = () => {
             </p>
           </div>
 
-          <div className="wdd-feature-grid wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-feature-grid reveal-group">
             {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} reveal />)}
           </div>
-          <MobileAutoCarousel>
-            {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} />)}
-          </MobileAutoCarousel>
 
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa(t.capabilities.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              {t.capabilities.cta} <ArrowRight size={16} />
-            </a>
+            {primaryCta(t.capabilities.cta, t.capabilities.waQuote)}
           </div>
         </div>
       </section>
@@ -151,9 +195,7 @@ const KpiDashboardsDetail = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                 {t.why.copy}
               </p>
-              <a href={wa(t.why.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {t.why.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(t.why.cta, t.why.waQuote)}
             </div>
             <div className="reveal-right">
               <div className="wdd-why-card">
@@ -177,16 +219,12 @@ const KpiDashboardsDetail = () => {
               {t.process.heading.before}<span className="text-gradient">{t.process.heading.accent}</span>{t.process.heading.after}
             </h2>
           </div>
-          <div className="wdd-process wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-process reveal-group">
             {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} reveal />)}
           </div>
-          <MobileAutoCarousel speed={0.95}>
-            {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} />)}
-          </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa(t.process.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              {t.process.cta} <ArrowRight size={16} />
-            </a>
+            {primaryCta(t.process.cta, t.process.waQuote)}
           </div>
         </div>
       </section>
@@ -204,12 +242,16 @@ const KpiDashboardsDetail = () => {
                 {t.finalCta.copy}
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-                <a href={wa(t.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                  {t.finalCta.primary} <ArrowRight size={16} />
-                </a>
-                <Link to={contactPath} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
-                  {t.finalCta.secondary}
-                </Link>
+                {primaryCta(t.finalCta.primary, t.finalCta.primaryWaQuote)}
+                {isEs ? (
+                  <Link to={contactHref} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                    {t.finalCta.secondary}
+                  </Link>
+                ) : (
+                  <a href={wa(t.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                    {t.ctaAlt.whatsapp}
+                  </a>
+                )}
               </div>
             </div>
           </div>

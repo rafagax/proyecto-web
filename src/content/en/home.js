@@ -8,6 +8,7 @@ export default {
   },
 
   hero: {
+    // Owner's call (2026-07): keep the original service-list H1.
     title: {
       before: 'Web Development, ',
       accent1: 'AI Automation',
@@ -15,7 +16,7 @@ export default {
       accent2: 'KPI Dashboards',
     },
     subtitle:
-      'We build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.',
+      'Web design services for small business owners who want results: we build your professional website, optimize your Google ranking, and automate your sales with AI, while structuring your key metrics (KPIs) so you maintain total control over your growth in real time.',
     imageAlt: 'Web development, AI automation, SEO and KPI dashboards illustration',
     cards: {
       web: { tagline: 'Premium websites built to convert' },
@@ -23,15 +24,7 @@ export default {
       kpi: { tagline: 'Track the numbers that matter' },
       ai: { tagline: 'Respond faster, 24/7' },
     },
-    form: {
-      phonePlaceholder: 'Your phone number',
-      emailPlaceholder: 'Your email',
-      messagePlaceholder: 'What service do you need or why are you contacting us?',
-      sending: 'Sending...',
-      success: "Sent! We'll be in touch shortly. ✓",
-      error: 'Could not send. Try WhatsApp below.',
-      whatsappButton: 'Send via WhatsApp',
-    },
+    ctaSecondary: 'Explore Our Services',
   },
 
   value: {
@@ -43,7 +36,7 @@ export default {
   featured: {
     title: { before: 'A fast, premium website built to ', accent: 'convert', after: '' },
     description:
-      'We design and develop responsive websites that communicate your value clearly, build trust, and guide visitors toward action.',
+      'Our small business website design services deliver responsive sites that communicate your value clearly, build trust, and guide visitors toward action.',
     imageAlt: 'Premium corporate website design on screen',
     imageCaption: 'Premium corporate websites',
     bullets: [
@@ -58,7 +51,7 @@ export default {
     web: {
       description:
         'High-end, responsive websites designed to build trust, convert visitors, and support long-term business growth.',
-      highlight: 'Built fast — ready in 7 days or less',
+      highlight: 'Built fast — ready in 7 business days or less',
     },
     seo: {
       description:
@@ -150,7 +143,7 @@ export default {
       },
       launch: {
         title: 'Launch & Improve',
-        text: 'Your website is ready to go live in 7 days or less. We publish it, connect the essentials and stay available for updates, fixes and improvements as your business grows.',
+        text: 'Your standard business website can be ready to go live in 7 business days or less. We publish it, connect the essentials and stay available for updates, fixes and improvements as your business grows.',
       },
     },
     cta: 'Start Your Project',
@@ -215,14 +208,13 @@ export default {
     message: { label: 'Message', placeholder: 'Tell us a bit about your project...' },
     submit: 'Get My Free Digital Strategy',
     sending: 'Sending...',
-    success: "Sent! We'll get back to you shortly. ✓",
+    success: "Sent! We'll get back to you within 1 business day. ✓",
     error: 'Could not send. Please try again or message us on WhatsApp.',
     whatsappButton: 'Or message us on WhatsApp',
   },
 
   whatsapp: {
-    advisory: 'Hello, I would like to get a free advisory session for my business.',
-    audit: 'Hello, I would like to request a free audit for my business.',
+    audit: 'Hello, I would like to request a free audit for my business.', // still used by the Navbar CTA
     system: 'Hello, I would like to learn more about your Digital Growth System.',
     project: 'Hello, I would like to start my website project.',
     auditStrategy: 'Hello, I would like to request a free audit and strategy session.',

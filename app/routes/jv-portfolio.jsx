@@ -2,6 +2,7 @@ import JvPortfolio from '../../src/pages/JvPortfolio.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import jvContent, { AUTHOR_LINKS, AUTHOR_PHOTO } from '../../src/content/jvPortfolio.js';
+import { ogTags } from '../og.js';
 
 // Author page for Jesús Vásquez (the expert behind Webraf). Indexable (E-E-A-T), bilingual
 // at /jvportafolio (EN) and /es/jvportafolio (ES) with canonical + hreflang. The Person
@@ -15,21 +16,27 @@ const personSchema = {
   url: absoluteUrl('/jvportafolio'),
   image: absoluteUrl(AUTHOR_PHOTO),
   jobTitle: 'Front-End Developer & Technical SEO Specialist',
+  description:
+    'Front-End Developer (React) and Technical SEO Specialist with 5+ years of experience building fast, SEO-optimized websites, plus advanced AI development and Power BI dashboards. Founder and technical lead of Webraf.',
   worksFor: { '@type': 'Organization', name: 'Webraf', url: absoluteUrl('/') },
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Politécnico Santiago Mariño' },
   knowsAbout: [
-    'Technical SEO',
     'Front-End Development',
     'React',
     'JavaScript',
+    'Technical SEO',
     'Core Web Vitals',
+    'Web Performance Optimization',
+    'WordPress',
+    'Shopify',
     'Power BI',
     'KPI Dashboards',
-    'Web Performance Optimization',
+    'AI Agents',
+    'AI-Assisted Development',
   ],
   knowsLanguage: ['es', 'en'],
   email: 'mailto:contact@webraf.com',
-  address: { '@type': 'PostalAddress', addressLocality: 'Maracay', addressCountry: 'VE' },
+  address: { '@type': 'PostalAddress', addressCountry: 'VE' },
   sameAs: [AUTHOR_LINKS.linkedin, AUTHOR_LINKS.github, AUTHOR_LINKS.portfolio],
 };
 
@@ -42,10 +49,9 @@ export function meta({ location }) {
   return [
     { title: t.meta.title },
     { name: 'description', content: t.meta.description },
-    { property: 'og:type', content: 'profile' },
     { property: 'og:title', content: t.meta.title },
     { property: 'og:description', content: t.meta.description },
-    { property: 'og:image', content: absoluteUrl(AUTHOR_PHOTO) },
+    ...ogTags({ canonical, locale, type: 'profile', image: absoluteUrl(AUTHOR_PHOTO) }),
     { name: 'twitter:title', content: t.meta.title },
     { name: 'twitter:description', content: t.meta.description },
     { tagName: 'link', rel: 'canonical', href: canonical },

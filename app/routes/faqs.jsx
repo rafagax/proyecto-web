@@ -2,6 +2,13 @@ import FAQs from '../../src/pages/FAQs.jsx';
 import { absoluteUrl } from '../../src/config/site.js';
 import { getLocaleFromPath } from '../../src/i18n/locale.js';
 import { getContent } from '../../src/i18n/content.js';
+import { ogTags } from '../og.js';
+
+// Breadcrumb labels per locale (paths match app/route-manifest.js).
+const CRUMBS = {
+  en: { home: 'Home', homePath: '/', page: 'FAQs' },
+  es: { home: 'Inicio', homePath: '/es/', page: 'Preguntas frecuentes' },
+};
 
 // Locale-aware meta + FAQPage JSON-LD for /faqs and /es/preguntas-frecuentes.
 // The structured data is built from the same localized content the page renders,
@@ -12,16 +19,25 @@ export function meta({ location }) {
   const enHref = absoluteUrl('/faqs');
   const canonical = locale === 'en' ? enHref : esHref;
   const faqs = getContent(locale).faqs;
+  const c = CRUMBS[locale] || CRUMBS.en;
 
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.categories
-      .flatMap((c) => c.items)
+      .flatMap((cat) => cat.items)
       .map((item) => ({
         '@type': 'Question',
         name: item.question,
-        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+        // Answers may carry [text](url) inline links for the UI (src/pages/FAQs.jsx);
+        // Google accepts <a href> inside FAQ answer text, so convert instead of strip.
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: String(item.answer).replace(
+            /\[([^\]]+)\]\(([^)]+)\)/g,
+            (m, label, url) => `<a href="${url.startsWith('/') ? absoluteUrl(url) : url}">${label}</a>`
+          ),
+        },
       })),
   };
 
@@ -30,6 +46,7 @@ export function meta({ location }) {
     { name: 'description', content: faqs.meta.description },
     { property: 'og:title', content: faqs.meta.ogTitle },
     { property: 'og:description', content: faqs.meta.ogDescription },
+    ...ogTags({ canonical, locale }),
     { name: 'twitter:title', content: faqs.meta.ogTitle },
     { name: 'twitter:description', content: faqs.meta.ogDescription },
     { tagName: 'link', rel: 'canonical', href: canonical },
@@ -37,6 +54,16 @@ export function meta({ location }) {
     { tagName: 'link', rel: 'alternate', hrefLang: 'en', href: enHref },
     { tagName: 'link', rel: 'alternate', hrefLang: 'x-default', href: enHref },
     { 'script:ld+json': faqSchema },
+    {
+      'script:ld+json': {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: c.home, item: absoluteUrl(c.homePath) },
+          { '@type': 'ListItem', position: 2, name: c.page, item: canonical },
+        ],
+      },
+    },
   ];
 }
 

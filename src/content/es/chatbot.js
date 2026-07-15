@@ -2,6 +2,10 @@
 // number of quickReplies and intents). `keywords` are the Spanish matching terms — they
 // are language-specific, so the keyword arrays may differ in length from English.
 // Plain strings only — no functions/JSX.
+//
+// Optional per-intent fields read by Chatbot.jsx (mirror en/chatbot.js):
+//   leadCapture: true        → after this answer the bot offers to take the visitor's email
+//   cta: { path, label }     → internal link rendered under the answer (client-side <Link>)
 export default {
   ui: {
     openAria: 'Abrir chat',
@@ -18,15 +22,22 @@ export default {
     { label: 'Planes y precios', value: 'Cuáles son los planes y precios' },
     { label: 'Tiempo de entrega', value: 'Cuánto tarda' },
   ],
-  fallback: `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Planes Inicial, Empresarial y E-Commerce\n✅ Entrega en 7 días\n✅ SEO local y Google\n✅ Chatbot e IA integrados\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Correo: contact@webraf.com\n\nCuéntame un poco sobre lo que necesitas y te ayudo.`,
+  leadCapture: {
+    prompt: `Por cierto, si lo prefieres, déjanos tu email aquí en el chat y te escribimos nosotros. 📧`,
+    success: `¡Gracias! Hemos recibido tu email. Te responderemos en menos de 24 h laborables.`,
+    error: `Lo sentimos, no pudimos enviar tu email en este momento. Inténtalo de nuevo en unos minutos o usa nuestro formulario de contacto:`,
+    errorLinkLabel: 'Ir al formulario de contacto',
+    contactPath: '/es/contacto?service=web-development',
+  },
+  fallback: `Gracias por escribirme. Puedo ayudarte con información sobre:\n\n✅ Creación de páginas web\n✅ Planes Inicial, Empresarial y E-Commerce\n✅ Entrega en 7 días hábiles o menos\n✅ SEO local y Google\n✅ Chatbot e IA integrados\n✅ WhatsApp, formularios y contacto\n\n WhatsApp: +58 414 473 5431\n📧 Correo: contact@webraf.com\n\nCuéntame un poco sobre lo que necesitas y te ayudo.`,
   intents: [
     {
       keywords: ['hola', 'buenas', 'hey', 'saludos', 'ayuda', 'info', 'informacion', 'información', 'asistencia', 'soporte'],
-      response: `¡Hola! 👋 Soy el asistente virtual de Webraf.\n\nPuedo ayudarte con información sobre creación de páginas web, planes, precios, entrega en 7 días, SEO local, integración de IA, chatbots, tiendas online y datos de contacto.\n\n¿Qué tipo de página web necesitas para tu negocio?`,
+      response: `¡Hola! 👋 Soy el asistente virtual de Webraf.\n\nPuedo ayudarte con información sobre creación de páginas web, planes, precios, entrega en 7 días hábiles o menos, SEO local, integración de IA, chatbots, tiendas online y datos de contacto.\n\n¿Qué tipo de página web necesitas para tu negocio?`,
     },
     {
       keywords: ['7 dias', '7 días', 'siete dias', 'tiempo', 'cuanto tarda', 'cuánto tarda', 'entrega', 'rapido', 'rápido', 'plazo'],
-      response: `Tu diseño web puede estar listo en solo 7 días, según el tipo de proyecto, la cantidad de secciones y la información que necesites incluir.\n\nTrabajamos con un proceso rápido, organizado y profesional para que empieces a mostrar tu negocio en internet lo antes posible.`,
+      response: `Un sitio web empresarial estándar puede estar listo en 7 días hábiles o menos, según la cantidad de páginas y qué tan preparado esté el contenido. Las funciones a medida y los proyectos e-commerce requieren un plazo mayor.\n\nAcordamos un cronograma claro antes de empezar y te mantenemos informado durante todo el proceso.`,
     },
     {
       keywords: ['quienes son', 'quiénes son', 'empresa', 'webraf', 'sobre nosotros', 'que hacen', 'qué hacen'],
@@ -34,6 +45,7 @@ export default {
     },
     {
       keywords: ['pagina web', 'página web', 'sitio web', 'web', 'quiero una web', 'crear web', 'necesito web', 'desarrollo web', 'landing'],
+      leadCapture: true,
       response: `¡Excelente elección! 🚀\n\nEn Webraf creamos páginas web modernas, rápidas y estratégicas para que tu negocio transmita profesionalismo y atraiga más clientes.\n\nPodemos desarrollar Landing Pages, páginas web empresariales o tiendas online en tiempo récord.\n\n¿Te gustaría agendar una **CONSULTA GRATUITA** por WhatsApp para asesorarte con tu proyecto?\n\n Haz clic aquí para chatear:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+agendar+una+consulta+gratuita`,
     },
     {
@@ -62,7 +74,9 @@ export default {
     },
     {
       keywords: ['planes', 'precios', 'precio', 'plan', 'costo', 'cuanto cuesta', 'cuánto cuesta', 'tarifa', 'paquetes', 'basico', '299', '599', '1500'],
-      response: `¡Oferta especial solo esta semana!\n\nCrea tu página web profesional con **50% de descuento** y paga solo **$149.99**.\n\nHaz que tu negocio se vea más confiable, moderno y listo para recibir clientes.\n\n Aprovecha esta promoción antes de que termine:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+aprovechar+la+oferta+de+149`,
+      leadCapture: true,
+      cta: { path: '/es/precios', label: 'Ver planes y precios' },
+      response: `Nuestros precios son simples y transparentes, sin costos ocultos:\n\n✅ Inicial — $299 (landing page de 5 secciones, entrega en 7 días hábiles o menos)\n✅ Empresarial — $599 (hasta 5 páginas, dominio y hosting por 1 año)\n✅ E-Commerce — $1,500 (tienda online completa)\n\nTambién ofrecemos servicios mensuales de SEO, gestión web y analítica de KPIs.\n\n¿Quieres asesoría sobre qué plan se adapta a tu negocio? Escríbenos:\nhttps://wa.me/584144735431?text=Hola+me+gustaria+saber+que+plan+se+adapta+a+mi+negocio`,
     },
     {
       keywords: ['dominio', 'hosting', 'correo corporativo', 'servidor'],
@@ -90,7 +104,7 @@ export default {
     },
     {
       keywords: ['mantenimiento', 'soporte', 'cambios', 'actualizaciones', 'posventa', 'postventa'],
-      response: `Podemos ofrecer soporte según el tipo de proyecto contratado.\n\nEl Plan E-Commerce incluye soporte prioritario por 1 mes. Para otros planes, podemos orientarte sobre las opciones de mantenimiento, cambios o actualizaciones según lo que necesites.`,
+      response: `Podemos ofrecer soporte según el tipo de proyecto contratado.\n\nEl Plan Empresarial incluye soporte prioritario por 1 mes y el Plan E-Commerce por 2 meses. Para otros planes, podemos orientarte sobre las opciones de mantenimiento, cambios o actualizaciones según lo que necesites.`,
     },
   ],
 };

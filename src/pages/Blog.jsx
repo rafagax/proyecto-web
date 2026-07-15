@@ -2,7 +2,7 @@ import { Calendar, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
-import { blogPostPath } from '../../app/route-manifest.js';
+import { blogPostPath, localizedSlug } from '../../app/route-manifest.js';
 
 const Blog = () => {
   const { locale, content } = useLocalizedContent();
@@ -27,13 +27,25 @@ const Blog = () => {
       <section className="blog-section">
         <div className="container">
           <div className="blog-grid">
-            {blogPosts.map((post) => {
-              const lp = t.posts[post.slug];
+            {blogPosts.map((post, cardIndex) => {
+              // Locale content is keyed by that locale's own slug (ES slugs are translated).
+              const lp = t.posts[localizedSlug(post.slug, locale)];
+              const postUrl = blogPostPath(post.slug, locale);
               return (
                 <article key={post.id} className="blog-card">
-                  <img src={post.image} alt={lp.title} className="blog-card-image" />
+                  {/* Image link is a duplicate of the title link → hidden from AT/tab order. */}
+                  <Link to={postUrl} aria-hidden="true" tabIndex={-1}>
+                    {/* First card is the page's LCP candidate: stays eager (and keeps its
+                        SSR preload). The rest lazy-load so they don't compete with it. */}
+                    <img src={post.image} alt={lp.imageAlt || `${t.article.imageAltPrefix} ${lp.title}`} className="blog-card-image" loading={cardIndex === 0 ? undefined : 'lazy'} />
+                  </Link>
                   <div className="blog-category">{t.categories[post.category] || post.category}</div>
-                  <h2>{lp.title}</h2>
+                  {/* Title is the main link: descriptive anchor text for the post. */}
+                  <h2>
+                    <Link to={postUrl} style={{ color: 'inherit', textDecoration: 'none' }}>
+                      {lp.title}
+                    </Link>
+                  </h2>
                   <p className="blog-excerpt">{lp.excerpt}</p>
                   <div className="blog-meta">
                     <div className="meta-item">
@@ -45,7 +57,8 @@ const Blog = () => {
                       <span>{lp.date}</span>
                     </div>
                   </div>
-                  <Link to={blogPostPath(post.slug, locale)} className="read-more">
+                  {/* Visible text stays "Read More"; aria-label makes the link name descriptive. */}
+                  <Link to={postUrl} className="read-more" aria-label={`${t.section.readMore}: ${lp.title}`}>
                     {t.section.readMore} <ArrowRight size={18} />
                   </Link>
                 </article>

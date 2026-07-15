@@ -1,6 +1,10 @@
-// English chatbot copy. Exact current text. Interpolated contact constants are inlined
-// as literals (email / location / WhatsApp number). `keywords` are the matching terms
-// for English input. Plain strings only — no functions/JSX.
+// English chatbot copy. Interpolated contact constants are inlined as literals
+// (email / location / WhatsApp number). `keywords` are the matching terms for
+// English input. Plain strings only — no functions/JSX.
+//
+// Optional per-intent fields read by Chatbot.jsx:
+//   leadCapture: true        → after this answer the bot offers to take the visitor's email
+//   cta: { path, label }     → internal link rendered under the answer (client-side <Link>)
 export default {
   ui: {
     openAria: 'Open chat',
@@ -17,6 +21,13 @@ export default {
     { label: 'Plans & Pricing', value: 'What are the plans and pricing' },
     { label: 'Delivery Time', value: 'How long does it take' },
   ],
+  leadCapture: {
+    prompt: `By the way — if you prefer, leave us your email here in the chat and we'll write to you personally. 📧`,
+    success: `Thank you! We've received your email. We'll get back to you within 1 business day.`,
+    error: `Sorry — we couldn't send your email right now. Please try again in a moment, or use our contact form:`,
+    errorLinkLabel: 'Go to the contact form',
+    contactPath: '/contact?service=web-development',
+  },
   fallback: `Thank you for writing to me. I can help you with information about:\n\n✅ Website creation\n✅ Starter, Business, and E-Commerce Plans\n✅ 7-day delivery\n✅ Local SEO and Google\n✅ Integrated chatbot and AI\n✅ WhatsApp, forms, and contact\n\n WhatsApp: +58 414 473 5431\n📧 Email: contact@webraf.com\n\nTell me a bit about what you need and I'll help you.`,
   intents: [
     {
@@ -25,7 +36,7 @@ export default {
     },
     {
       keywords: ['7 days', 'seven days', 'time', 'how long', 'delivery', 'fast', 'quick', 'timeline', 'deadline'],
-      response: `Your web design can be ready in just 7 days, depending on the type of project, the number of sections, and the information you need to include.\n\nWe work with a fast, organized, and professional process so you can start showcasing your business on the internet as soon as possible.`,
+      response: `A standard business website can be ready in 7 business days or less, depending on the number of pages and how much content is prepared. Custom features and e-commerce require a longer timeline.\n\nWe agree on a clear schedule before starting and keep you updated throughout the process.`,
     },
     {
       keywords: ['who are you', 'company', 'digital investments', 'about us', 'what do you do'],
@@ -33,6 +44,7 @@ export default {
     },
     {
       keywords: ['website', 'web site', 'web page', 'web', 'want a website', 'build website', 'create website', 'need website', 'web development'],
+      leadCapture: true,
       response: `Excellent choice! 🚀\n\nAt Webraf we create modern, fast, and strategic websites for your business to transmit professionalism and attract more customers.\n\nWe can develop Landing Pages, Business Websites, or Online Stores in record time.\n\nWould you like to schedule a **FREE CONSULTATION** on WhatsApp to advise you on your project?\n\n Click here to chat:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+schedule+a+free+consultation`,
     },
     {
@@ -61,7 +73,9 @@ export default {
     },
     {
       keywords: ['plans', 'pricing', 'price', 'plan', 'cost', 'how much', 'rate', 'packages', 'basic', '299', '599', '1500'],
-      response: `Special offer this week only! \n\nCreate your professional website with **50% discount** and pay only **$149.99**.\n\nMake your business look more trustworthy, modern, and ready to receive customers.\n\n Take advantage of this promotion before it ends:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+take+advantage+of+the+149+offer`,
+      leadCapture: true,
+      cta: { path: '/pricing', label: 'View plans & pricing' },
+      response: `Our pricing is simple and transparent, with no hidden fees:\n\n✅ Starter — $299 (5-section landing page, delivery in 7 business days or less)\n✅ Business — $599 (up to 5 pages, domain & hosting for 1 year)\n✅ E-Commerce — $1,500 (full online store)\n\nWe also offer monthly services for SEO, website management, and KPI analytics.\n\nWant advice on which plan fits your business? Chat with us:\nhttps://wa.me/584144735431?text=Hi+I+would+like+to+know+which+plan+fits+my+business`,
     },
     {
       keywords: ['domain', 'hosting', 'corporate email', 'server'],
@@ -89,7 +103,7 @@ export default {
     },
     {
       keywords: ['maintenance', 'support', 'changes', 'updates', 'after-sales'],
-      response: `We can offer support depending on the type of project contracted.\n\nThe E-Commerce Plan includes priority support for 1 month. For other plans, we can guide you on maintenance, changes, or updates options according to what you need.`,
+      response: `We can offer support depending on the type of project contracted.\n\nThe Business Plan includes priority support for 1 month and the E-Commerce Plan for 2 months. For other plans, we can guide you on maintenance, changes, or updates options according to what you need.`,
     },
   ],
 };

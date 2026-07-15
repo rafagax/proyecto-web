@@ -3,25 +3,26 @@
 // Plain strings only — no functions/JSX/booleans.
 export default {
   meta: {
-    title: 'Plans & Pricing — Websites from $299 | Webraf',
+    title: 'Website Design Packages & Pricing — From $299 | Webraf',
     description:
-      'Simple, transparent pricing for websites, SEO, KPI dashboards, and AI automation. Professional websites starting from $299, with no hidden fees.',
-    ogTitle: 'Plans & Pricing | Webraf',
-    ogDescription: 'Transparent pricing with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',
+      'Website design packages from $299 with no hidden fees. See how much a website costs for a small business, compare plans, and get started today.',
+    ogTitle: 'Website Design Packages & Pricing | Webraf',
+    ogDescription: 'Transparent website design packages with no hidden fees. Websites from $299, plus monthly SEO, management, and AI services.',
   },
   hero: {
     eyebrow: 'Transparent Pricing',
-    title: { before: 'Plans & ', accent: 'Pricing', after: '' },
+    title: { before: 'Website Design ', accent: 'Packages & Pricing', after: '' },
     subtitle:
-      'Simple, transparent pricing. No hidden fees. Choose the plan that best fits your business needs and start growing today.',
+      'Simple, transparent website design packages with no hidden fees. Choose the plan that best fits your business needs and start growing today.',
   },
   popularBadge: 'Most Popular',
   getStarted: 'Get Started',
+  notIncludedLabel: 'Not included:',
   plans: [
     {
       name: 'Starter',
       audience: 'Perfect for freelancers & new businesses',
-      features: ['5-Section Landing Page', 'Responsive Design (Mobile-First)', 'WhatsApp CTA Button', 'Contact Form', 'Google Analytics Setup', 'Delivery in 7 Days', 'Local SEO Positioning', 'Social Media Integration'],
+      features: ['5-Section Landing Page', 'Responsive Design (Mobile-First)', 'WhatsApp CTA Button', 'Contact Form', 'Google Analytics Setup', 'Delivery in 7 Business Days or Less', 'Local SEO Positioning', 'Social Media Integration'],
     },
     {
       name: 'Business',
@@ -34,6 +35,24 @@ export default {
       features: ['Full Online Store', 'Payment Gateway Integration', 'Admin Dashboard', 'First 20 Products Uploaded', 'Inventory Management', 'Order Tracking System', 'SEO for Products', 'Priority Support (2 Months)'],
     },
   ],
+  // Trust strip under the plan cards. Only commitments already published elsewhere
+  // on the site (FAQs, plan features) — no invented guarantees.
+  trust: {
+    items: [
+      {
+        title: 'Free, no-obligation audit',
+        text: 'Start with a free audit of your website or digital presence — a useful starting point whether or not you decide to work with us.',
+      },
+      {
+        title: 'No hidden fees',
+        text: 'The price you see is the price you pay. We agree on a clear timeline and scope before we start.',
+      },
+      {
+        title: 'Support after launch',
+        text: "We stay available after launch for updates, fixes, and improvements. We don't disappear once your project goes live.",
+      },
+    ],
+  },
   monthly: {
     heading: { before: 'Monthly ', accent: 'Services', after: '' },
     subtitle: 'Ongoing monthly services to keep your business growing and performing at its best.',
@@ -64,7 +83,7 @@ export default {
   },
   faqTeaser: {
     heading: { before: 'Have ', accent: 'questions?', after: '' },
-    copy: 'Check our FAQ page for answers to the most common questions about our services and pricing.',
+    copy: 'Wondering how much a website costs for a small business? Our FAQ page covers that and the most common questions about our services and pricing.',
     cta: 'View FAQs',
   },
 };

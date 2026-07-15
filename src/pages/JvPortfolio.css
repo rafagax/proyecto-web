@@ -1,0 +1,603 @@
+/* Scoped styles for the /jvportafolio author page only. Every selector is prefixed
+   with `.jv-`, so nothing here can affect Home, Services, Blog or any other page.
+   Uses the site design tokens (--accent-cyan, --bg-card, --border-subtle, etc.) so
+   it respects light/dark themes automatically. */
+
+/* Small eyebrow label above section headings */
+.jv-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  margin-bottom: 0.6rem;
+}
+
+/* Soft decorative glow (pure CSS, no images) behind the hero */
+.jv-hero {
+  position: relative;
+  overflow: hidden;
+}
+.jv-hero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -10%;
+  width: 55%;
+  height: 120%;
+  background: radial-gradient(closest-side, rgba(77, 148, 255, 0.14), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.jv-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Founder / trust badge under the name */
+.jv-founder-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(77, 148, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.jv-founder-badge .jv-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.18);
+}
+
+/* ── Measurable results (premium stat cards) ──────────────────────────── */
+.jv-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.1rem;
+}
+.jv-metric {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  padding: 1.6rem 1.4rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.jv-metric::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-cyan), transparent);
+  opacity: 0.7;
+}
+.jv-metric:hover {
+  transform: translateY(-4px);
+  border-color: rgba(77, 148, 255, 0.4);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+}
+.jv-metric__value {
+  font-size: clamp(1.5rem, 3.4vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--accent-cyan);
+  margin: 0 0 0.5rem;
+}
+.jv-metric__label {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Selected client websites ───────────────────────────────────────────── */
+.jv-results-section,
+.jv-web-projects-section,
+.jv-speed-section,
+.jv-kpi-section {
+  padding-top: 4.25rem;
+  padding-bottom: 4.25rem;
+}
+
+.jv-web-projects-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.jv-web-projects-intro {
+  max-width: 68ch;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.jv-web-projects-grid {
+  display: flex;
+  gap: 1.4rem;
+  margin-top: 2rem;
+  padding: 0.25rem 0 1rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.jv-web-projects-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.jv-web-projects-grid:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 6px;
+  border-radius: var(--border-radius-md);
+}
+
+.jv-web-project {
+  display: flex;
+  min-width: 0;
+  flex: 0 0 calc((100% - 2.8rem) / 3);
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.jv-web-project:hover {
+  transform: translateY(-4px);
+  border-color: rgba(77, 148, 255, 0.4);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.2);
+}
+
+.jv-web-project__visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.96 / 1;
+  overflow: hidden;
+  background: #05070d;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.jv-web-project__visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: filter 0.25s ease;
+}
+
+.jv-web-project__visual:hover img,
+.jv-web-project__visual:focus-visible img {
+  filter: brightness(1.05);
+}
+
+.jv-web-project__visual:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: -3px;
+}
+
+.jv-web-project__language {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.45rem 0.65rem;
+  color: #fff;
+  background: rgba(5, 8, 16, 0.84);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+  font-size: 0.68rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.jv-web-project__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.25rem;
+}
+
+.jv-web-project__category {
+  display: inline-flex;
+  margin-bottom: 0.8rem;
+  padding: 4px 10px;
+  color: var(--accent-text, var(--accent-cyan));
+  background: rgba(77, 148, 255, 0.1);
+  border: 1px solid rgba(77, 148, 255, 0.24);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.jv-web-project__body h3 {
+  margin: 0 0 1rem;
+  color: var(--text-primary);
+  font-size: 1.18rem;
+  line-height: 1.25;
+}
+
+.jv-web-project__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  color: var(--accent-text, var(--accent-cyan));
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.jv-web-project__link svg {
+  transition: transform 0.2s ease;
+}
+
+.jv-web-project__link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.jv-web-projects-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.jv-web-projects-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jv-web-carousel-toggle {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-text, var(--accent-cyan));
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.jv-web-carousel-toggle:hover,
+.jv-web-carousel-toggle:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(77, 148, 255, 0.48);
+  background: rgba(77, 148, 255, 0.1);
+}
+
+.jv-web-carousel-toggle:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+/* ── Proof of work (dashboard gallery) ────────────────────────────────── */
+.jv-proof-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.4rem;
+}
+.jv-proof-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.jv-proof-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(77, 148, 255, 0.4);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.22);
+}
+.jv-proof-figure {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  background: #05070d;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.jv-proof-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+.jv-proof-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: rgba(77, 148, 255, 0.85);
+  backdrop-filter: blur(4px);
+}
+.jv-proof-cap {
+  padding: 1rem 1.1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Tech stack (category cards) ──────────────────────────────────────── */
+.jv-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+  gap: 0.85rem;
+}
+.jv-tech-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 0.85rem 0.95rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.jv-tech-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(77, 148, 255, 0.35);
+}
+.jv-tech-ico {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 11px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-secondary);
+}
+.jv-tech-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.jv-tech-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.jv-tech-cat {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+/* ── Tech marquee (auto-scrolling carousel) ───────────────────────────── */
+.jv-marquee {
+  position: relative;
+  overflow: hidden;
+  margin-top: 1.4rem;
+  padding: 0.35rem 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.jv-marquee__track {
+  display: flex;
+  width: max-content;
+  gap: 0.7rem;
+  animation: jv-scroll 34s linear infinite;
+  will-change: transform;
+}
+.jv-marquee:hover .jv-marquee__track,
+.jv-marquee:focus-within .jv-marquee__track {
+  animation-play-state: paused;
+}
+.jv-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.jv-chip .jv-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+@keyframes jv-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jv-marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+    overflow-x: auto;
+  }
+  .jv-marquee__track {
+    animation: none;
+  }
+  /* Avoid rendering the duplicated set when the loop is disabled */
+  .jv-marquee__track[data-dup] > .jv-chip:nth-child(n + 16) {
+    display: none;
+  }
+}
+
+/* ── AI-assisted development card ─────────────────────────────────────── */
+.jv-ai-card {
+  position: relative;
+  background:
+    radial-gradient(120% 140% at 100% 0%, rgba(77, 148, 255, 0.1), transparent 55%),
+    var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  padding: 1.75rem;
+}
+.jv-ai-card__text {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 1.02rem;
+  max-width: 62ch;
+  margin: 0 0 1.25rem;
+}
+.jv-ai-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+.jv-ai-tag {
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(77, 148, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .jv-results-section,
+  .jv-web-projects-section,
+  .jv-speed-section,
+  .jv-kpi-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .jv-web-projects-section {
+    overflow: hidden;
+  }
+
+  .jv-web-projects-heading-row {
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .jv-web-carousel-toggle {
+    display: none;
+  }
+
+  .jv-web-projects-grid {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem -2rem 0;
+    padding: 0.25rem 2rem 1rem;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 2rem;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pinch-zoom;
+    cursor: grab;
+  }
+
+  .jv-web-projects-grid:active {
+    cursor: grabbing;
+  }
+
+  .jv-web-projects-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .jv-web-project {
+    flex: 0 0 86%;
+    max-width: 340px;
+  }
+
+  .jv-web-projects-cta {
+    justify-content: stretch;
+    margin-top: 1rem;
+  }
+
+  .jv-web-projects-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 640px) {
+  .jv-tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+}
+
+/* ── Subtle always-on motion (GPU-only transforms; no layout work → CWV-safe) ── */
+.jv-float {
+  animation: jv-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes jv-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.jv-founder-badge .jv-dot {
+  animation: jv-pulse 2.6s ease-in-out infinite;
+}
+@keyframes jv-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.18); }
+  50% { box-shadow: 0 0 0 6px rgba(46, 204, 113, 0.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jv-web-carousel-toggle {
+    display: none;
+  }
+
+  .jv-float,
+  .jv-founder-badge .jv-dot {
+    animation: none;
+  }
+}
+
+/* Justified prose (owner request, 2026-07): long resume-style paragraphs read
+   justified like a formal CV. Short UI text (metric cards, gallery captions)
+   stays left-aligned - justify creates ugly word-gaps on 1-2 line blocks.
+   Inline text-align styles (centered section headers) still win over this. */
+.jv-page p {
+  text-align: justify;
+  hyphens: auto;
+}
+.jv-page .jv-metric__value,
+.jv-page .jv-metric__label,
+.jv-page .jv-proof-cap,
+.jv-page figcaption {
+  text-align: left;
+}

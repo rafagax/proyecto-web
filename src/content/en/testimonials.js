@@ -6,6 +6,8 @@ export default {
     prevLabel: 'Previous testimonial',
     nextLabel: 'Next testimonial',
     indicatorLabel: 'Go to testimonial',
+    // Prefixed with the numeric rating, e.g. "5 out of 5 stars"
+    ratingLabel: 'out of 5 stars',
   },
   items: [
     {

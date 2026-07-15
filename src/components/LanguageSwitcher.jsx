@@ -48,7 +48,9 @@ export function LanguageSwitcher({ onNavigate, variant = 'full' }) {
           whiteSpace: 'nowrap',
         }}
       >
-        <Globe size={15} aria-hidden="true" style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+        {/* --accent-text: same #4d94ff on dark, darker blue on light so the icon
+            stays visible on the near-white card background */}
+        <Globe size={15} aria-hidden="true" style={{ color: 'var(--accent-text)', flexShrink: 0 }} />
         {otherLabel}
       </Link>
     );
@@ -91,7 +93,9 @@ export function LanguageSwitcher({ onNavigate, variant = 'full' }) {
             style={{
               padding: '4px 9px',
               borderRadius: '999px',
-              background: active ? 'var(--accent-cyan)' : 'transparent',
+              // --accent-blue (#0066ff): 4.8:1 with white text (WCAG AA for this
+              // small size); the lighter --accent-cyan only reached 3.0:1.
+              background: active ? 'var(--accent-blue)' : 'transparent',
               color: active ? '#fff' : 'var(--text-secondary)',
               fontWeight: active ? 700 : 500,
               textDecoration: 'none',

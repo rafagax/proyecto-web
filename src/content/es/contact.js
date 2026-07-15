@@ -6,7 +6,7 @@ export default {
     description:
       '¿Listo para hacer crecer tu negocio? Contáctanos para una consulta gratuita. Normalmente respondemos en pocas horas por WhatsApp, correo o teléfono.',
     ogTitle: 'Contáctanos | Webraf',
-    ogDescription: 'Agenda una consulta y sesión de estrategia gratuita para tu página web, SEO, dashboards de KPI o automatización con IA.',
+    ogDescription: 'Agenda una consulta y sesión de estrategia gratuita para tu sitio web, SEO, dashboards de KPI o automatización con IA.',
   },
   hero: {
     eyebrow: 'Hablemos',
@@ -15,7 +15,7 @@ export default {
       '¿Listo para empezar tu proyecto? Escríbenos y un profesional te responderá lo antes posible — normalmente en pocas horas.',
   },
   info: {
-    heading: { before: 'Páginas web profesionales en ', accent: '7 días', after: '' },
+    heading: { before: 'Sitios web profesionales en ', accent: '7 días hábiles o menos', after: '' },
     copy:
       'No dejes pasar un día más sin una presencia profesional en internet. Nuestro equipo analizará tus necesidades y creará una estrategia personalizada para ayudarte a destacar y dominar tu mercado.',
     whatsappLabel: 'WhatsApp',
@@ -31,15 +31,23 @@ export default {
     namePlaceholder: 'Tu nombre',
     emailLabel: 'Correo electrónico',
     emailPlaceholder: 'tu@correo.com',
-    phoneLabel: 'Número de teléfono',
+    phoneLabel: 'Número de teléfono (opcional)',
     phonePlaceholder: 'Tu número de teléfono',
+    serviceLabel: 'Servicio',
+    servicePlaceholder: 'Selecciona un servicio (opcional)',
     messageLabel: 'Mensaje',
     messagePlaceholder: 'Cuéntanos un poco sobre tu proyecto...',
     submit: 'Agenda tu llamada de estrategia gratis',
     sending: 'Enviando...',
-    success: '¡Enviado! Te responderemos muy pronto. ✓',
+    success: '¡Enviado! Te responderemos en menos de 24 h laborables. ✓',
     error: 'No se pudo enviar. Intenta de nuevo o escríbenos por WhatsApp.',
+    continueWhatsapp: 'Continuar por WhatsApp',
     whatsappButton: 'O escríbenos por WhatsApp',
+    errors: {
+      name: 'Escribe tu nombre.',
+      email: 'Introduce un correo electrónico válido.',
+      message: 'Cuéntanos un poco sobre tu proyecto.',
+    },
     waTemplate: 'Hola, mi nombre es {name}. Mi correo es {email}. Mi teléfono es {phone}. Mi mensaje: {message}',
   },
 };

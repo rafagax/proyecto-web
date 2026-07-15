@@ -2,15 +2,22 @@
 // as en/serviceSeo.js. Images/icons/structure stay in the component.
 export default {
   meta: {
-    title: 'Servicios de SEO y crecimiento digital | Webraf',
+    title: 'Posicionamiento SEO para pymes que buscan clientes | Webraf',
     description:
-      'Servicios de SEO y crecimiento digital diseñados para ayudar a tu negocio a mejorar su visibilidad en Google, atraer tráfico calificado y convertir la intención de búsqueda en oportunidades reales.',
+      'Posicionamiento SEO para pymes: SEO técnico, contenidos y palabras clave para tu página web. Atrae tráfico cualificado desde Google y gana clientes.',
     ogTitle: 'Servicios de SEO y crecimiento digital para negocios que quieren ser encontrados',
     schemaName: 'SEO y crecimiento digital',
   },
+  // Secondary-action labels for the market-aware CTAs (contract C2): Spanish
+  // pages lead with WhatsApp and offer the contact form as the alternative;
+  // English pages lead with the form and offer WhatsApp.
+  ctaAlt: {
+    whatsapp: '¿Prefieres WhatsApp? Escríbenos',
+    form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
+  },
   hero: {
     title: { before: 'SEO y crecimiento ', accent: 'digital', after: '' },
-    subtitle: 'Ayudamos a tu negocio a posicionarse más alto en Google, atraer tráfico calificado y convertir la intención de búsqueda en clientes reales.',
+    subtitle: 'Ayudamos a pymes y negocios en crecimiento a posicionarse más alto en Google, atraer tráfico cualificado y convertir la intención de búsqueda en clientes reales.',
     cta: 'Solicita una auditoría SEO gratis',
     alt: 'Dashboard de analítica SEO mostrando crecimiento en búsquedas',
     waQuote: 'Hola, me gustaría obtener una auditoría SEO gratis para mi negocio.',
@@ -18,8 +25,8 @@ export default {
   sections: [
     {
       heading: { before: 'Que te encuentren las personas que ya están ', accent: 'buscando', after: '' },
-      copy: 'El mejor tráfico proviene de personas que ya buscan lo que ofreces. Optimizamos tu página web y tu contenido para que los clientes adecuados te encuentren primero en Google.',
-      points: ['Investigación de palabras clave y competencia', 'Optimización SEO on-page', 'Contenido creado para posicionar', 'Mayor visibilidad en Google'],
+      copy: 'El mejor tráfico proviene de personas que ya buscan lo que ofreces. Nuestro posicionamiento SEO para pymes optimiza tu página web y tu contenido para que los clientes adecuados te encuentren primero en Google.',
+      points: ['Análisis de palabras clave y competencia', 'Optimización SEO on-page', 'Contenido creado para posicionar', 'Mayor visibilidad en Google'],
       cta: 'Empieza a posicionarte más alto',
       waQuote: 'Hola, me gustaría empezar a posicionarme más alto en Google.',
       alt: 'Analítica de búsqueda e investigación de palabras clave en una laptop',
@@ -43,13 +50,13 @@ export default {
   ],
   capabilities: {
     heading: { before: 'Todo lo que tu SEO necesita para ', accent: 'crecer', after: '' },
-    copy: 'Estrategia, contenido y experiencia técnica trabajando en conjunto para hacer crecer tu visibilidad, tu tráfico y tus contactos calificados.',
+    copy: 'Estrategia, contenido y experiencia técnica trabajando en conjunto para hacer crecer tu visibilidad, tu tráfico y tus contactos cualificados.',
     items: [
       { title: 'Investigación de palabras clave', text: 'Encontramos los términos que tus clientes realmente buscan para apuntar a demanda real.' },
       { title: 'SEO on-page', text: 'Títulos, encabezados, contenido y enlaces internos optimizados para posicionar.' },
       { title: 'SEO técnico', text: 'Páginas rápidas, rastreables y bien estructuradas que los buscadores premian.' },
       { title: 'SEO local', text: 'Aparece en Google Maps y en el paquete local para los clientes cerca de ti.' },
-      { title: 'Estrategia de contenidos', text: 'Un plan de contenidos que atrae tráfico calificado y construye autoridad.' },
+      { title: 'Estrategia de contenidos', text: 'Un plan de contenidos que atrae tráfico cualificado y construye autoridad.' },
       { title: 'Analítica y seguimiento', text: 'Reportes claros para que veas posiciones, tráfico y resultados a lo largo del tiempo.' },
     ],
     cta: 'Haz crecer mi tráfico orgánico',
@@ -66,7 +73,7 @@ export default {
     heading: { before: 'Nuestro ', accent: 'proceso de SEO', after: '' },
     steps: [
       { title: 'Auditoría SEO', text: 'Analizamos tu sitio, tu competencia y tu visibilidad actual para encontrar oportunidades.' },
-      { title: 'Investigación de palabras clave', text: 'Mapeamos los términos de búsqueda y la intención que traen clientes calificados.' },
+      { title: 'Estudio de palabras clave', text: 'Mapeamos los términos de búsqueda y la intención que traen clientes cualificados.' },
       { title: 'On-page y técnico', text: 'Optimizamos contenido, estructura, velocidad y metadatos para posicionar.' },
       { title: 'Local y contenido', text: 'Fortalecemos la presencia local y publicamos contenido que atrae tráfico.' },
       { title: 'Medir y reportar', text: 'Medimos posiciones, tráfico y contactos — y seguimos mejorando.' },
@@ -76,7 +83,7 @@ export default {
   },
   finalCta: {
     heading: { before: '¿Listo para posicionarte más alto y ', accent: 'hacer crecer tu tráfico?', after: '' },
-    copy: 'Construyamos una estrategia de SEO que haga que encuentren tu negocio, atraiga tráfico calificado y convierta las búsquedas en clientes.',
+    copy: 'Construyamos una estrategia de SEO que haga que encuentren tu negocio, atraiga tráfico cualificado y convierta las búsquedas en clientes.',
     primary: 'Solicita una auditoría SEO gratis',
     primaryWaQuote: 'Hola, me gustaría obtener una auditoría SEO gratis para mi negocio.',
     secondary: 'Contáctanos hoy',

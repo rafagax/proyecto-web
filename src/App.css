@@ -40,57 +40,36 @@
   align-items: center;
 }
 
-/* Webraf logo — horizontal on desktop, compact square on mobile (so the hamburger
-   fits), each swapped dark/light by the active theme. All hidden by default; the
-   matching one is shown below. */
+/* Webraf logo — one <picture> per theme in Navbar.jsx: the <source media> swaps
+   the horizontal (desktop) and square (mobile) FILES, so CSS here only handles the
+   dark/light pair. Both theme <img>s render; the active theme's one is shown. */
+.navbar-logo picture {
+  /* Let each <img> participate directly in the .navbar-logo flexbox */
+  display: contents;
+}
 .navbar-logo img {
   width: auto;
   display: none;
 }
-.navbar-logo .logo-h.logo-dark {
+.navbar-logo .logo-img.logo-dark {
   display: block;
   height: 54px;
 }
-[data-theme='light'] .navbar-logo .logo-h.logo-dark {
+[data-theme='light'] .navbar-logo .logo-img.logo-dark {
   display: none;
 }
-[data-theme='light'] .navbar-logo .logo-h.logo-light {
+[data-theme='light'] .navbar-logo .logo-img.logo-light {
   display: block;
   height: 54px;
 }
 @media (max-width: 768px) {
-  .navbar-logo .logo-h {
-    display: none !important;
-  }
-  .navbar-logo .logo-sq.logo-dark {
-    display: block;
-    height: 40px;
-  }
-  [data-theme='light'] .navbar-logo .logo-sq.logo-dark {
-    display: none;
-  }
-  [data-theme='light'] .navbar-logo .logo-sq.logo-light {
-    display: block;
-    height: 40px;
-  }
-}
-
-.header-logo {
-  height: 88px;
-  width: auto;
-  object-fit: contain;
-  transition: opacity 0.3s ease;
-}
-
-.mobile-nav-logo {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-}
-
-@media (max-width: 768px) {
-  .header-logo {
-    height: 58px;
+  /* Square variant (chosen by <source media>). The file has generous transparent
+     padding, so a 48px box renders a ~36-40px visible mark — the previous 40px
+     box made the logo look tiny (owner report 2026-07). Header still fits: the
+     navbar's 1.1rem vertical padding absorbs the extra 8px. */
+  .navbar-logo .logo-img.logo-dark,
+  [data-theme='light'] .navbar-logo .logo-img.logo-light {
+    height: 48px;
   }
 }
 
@@ -171,143 +150,14 @@
 }
 
 /* Mega Menu Desktop */
-.nav-mega-item {
-  position: relative;
-  padding: 1.2rem 0;
-  /* Creates hover area */
-}
-
-.nav-mega-trigger {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.3s ease;
-}
 
 .nav-mega-trigger .chevron-icon {
   transition: transform 0.3s ease;
 }
 
-.nav-mega-item:hover .nav-mega-trigger {
-  color: var(--text-primary);
-}
-
 .nav-mega-item:hover .nav-mega-trigger .chevron-icon {
   transform: rotate(180deg);
   color: var(--accent-cyan);
-}
-
-.mega-menu-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(15px);
-  width: 960px;
-  background: linear-gradient(135deg, rgba(5, 5, 8, 0.96) 0%, rgba(10, 10, 16, 0.98) 100%);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border: 1px solid rgba(77, 148, 255, 0.15);
-  border-radius: var(--border-radius-lg);
-  padding: 2.5rem;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    0 0 40px rgba(0, 102, 255, 0.05);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
-    visibility 0.3s;
-  z-index: 999;
-}
-
-.nav-mega-item:hover .mega-menu-dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-
-.mega-menu-content {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.5rem;
-}
-
-.mega-menu-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.mega-menu-col-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.mega-menu-col-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent-cyan);
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  background: rgba(77, 148, 255, 0.06);
-  border: 1px solid rgba(77, 148, 255, 0.15);
-  flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(77, 148, 255, 0.1);
-}
-
-.mega-menu-col-header h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 2px;
-}
-
-.mega-menu-col-header p {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.3;
-}
-
-.mega-menu-col-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-
-.mega-menu-col-links a {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.mega-menu-col-links a::before {
-  content: '';
-  width: 4px;
-  height: 4px;
-  background: var(--accent-cyan);
-  border-radius: 50%;
-  opacity: 0;
-  transform: scale(0);
-  transition: all 0.2s ease;
 }
 
 .mega-menu-col-links a:hover,
@@ -374,10 +224,6 @@
   gap: 0.7rem;
 }
 
-.theme-toggle-mobile {
-  display: none;
-}
-
 @media (max-width: 768px) {
   .navbar-links {
     display: none;
@@ -389,10 +235,6 @@
 
   .menu-toggle {
     display: block;
-  }
-
-  .theme-toggle-mobile {
-    display: inline-flex;
   }
 
   .hero-image {
@@ -416,7 +258,10 @@
   }
 }
 
-/* Mobile Menu */
+/* Mobile Menu — compact vertical rhythm so all items (Home…FAQs, CTA, Contact,
+   language + theme) fit a ~360x740 viewport without scrolling. While closed it is
+   visibility:hidden (delayed until the slide-out ends) + inert in Navbar.jsx, so
+   its links are never tabbable off-screen. */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -428,19 +273,22 @@
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 0.4s;
   transform: translateY(-100%);
+  visibility: hidden;
 }
 
 .mobile-menu.open {
   transform: translateY(0);
+  visibility: visible;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 0s;
 }
 
 .mobile-menu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.9rem var(--spacing-md);
+  padding: 0.6rem var(--spacing-md);
   background: var(--bg-primary);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -456,9 +304,12 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 1.25rem var(--spacing-md) 1.25rem;
+  padding: 0.75rem var(--spacing-md) 0.75rem;
   overflow-y: auto;
-  gap: 0.55rem;
+  gap: 0.4rem;
+  /* Spread the leftover height evenly between items so the menu fills the
+     screen uniformly instead of leaving a dead gap above the footer CTA. */
+  justify-content: space-between;
 }
 
 .mobile-menu-item {
@@ -469,11 +320,11 @@
   align-items: center;
   justify-content: space-between;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: var(--text-secondary);
-  padding: 0.65rem 1.1rem;
+  padding: 0.5rem 1rem;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--border-radius-md);
@@ -517,42 +368,18 @@
 .mobile-mega-submenu.open {
   max-height: 1200px;
   opacity: 1;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .mobile-submenu-col {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-}
-
-.mobile-submenu-col-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: white;
-  padding-left: 0.5rem;
-  border-left: 2px solid var(--accent-cyan);
-}
-
-.mobile-submenu-col-header .col-icon {
-  color: var(--accent-cyan);
-  display: flex;
-  align-items: center;
-}
-
-.mobile-submenu-col-links {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-left: 1rem;
+  gap: 0.35rem;
 }
 
 .mobile-submenu-item {
-  padding: 0.8rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.01);
@@ -569,13 +396,14 @@
 }
 
 .mobile-menu-footer {
-  margin-top: auto;
-  padding-top: 0.85rem;
+  /* No margin-top: auto here — the nav's space-between distributes the free
+     height uniformly across all items (an auto margin would swallow it all). */
+  padding-top: 0.6rem;
   width: 100%;
   border-top: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.4rem;
 }
 
 /* Primary CTA button inside the mobile menu footer (reuses .btn .btn-primary colors). */
@@ -585,8 +413,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px;
-  font-size: 1.05rem;
+  padding: 10px;
+  font-size: 1rem;
   font-weight: 700;
   border-radius: var(--border-radius-md);
 }
@@ -598,19 +426,9 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-top: 0.4rem;
-  padding-top: 0.8rem;
+  margin-top: 0.2rem;
+  padding-top: 0.5rem;
   border-top: 1px solid var(--border-subtle);
-}
-
-.mobile-contact-btn {
-  width: 100%;
-  padding: 16px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  border-radius: var(--border-radius-md);
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(77, 148, 255, 0.2);
 }
 
 /* Footer Styles */
@@ -652,14 +470,6 @@
   padding-left: 5px;
 }
 
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
 /* ---- Testimonials Section ---- */
 .testimonials-section {
   padding: 5rem 0 4rem;
@@ -691,22 +501,6 @@
   color: var(--accent-cyan);
 }
 
-.testimonials-rating-badge {
-  display: none;
-  padding: 8px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
-  font-size: 0.9rem;
-  background: var(--bg-secondary);
-  white-space: nowrap;
-}
-
-@media (min-width: 768px) {
-  .testimonials-rating-badge {
-    display: block;
-  }
-}
-
 /* Mobile carousel */
 .testimonials-carousel {
   display: flex;
@@ -729,9 +523,6 @@
 }
 
 /* Desktop grid - hidden always, carousel is used instead */
-.testimonials-grid {
-  display: none;
-}
 
 /* Carousel always visible on all screen sizes */
 .testimonials-carousel {
@@ -996,18 +787,7 @@ body.cookie-consent-open #ka-chatbot-toggle {
   margin-right: auto;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 1.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
 @media (max-width: 600px) {
-  .hero-buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
 
   .btn-whatsapp-large {
     width: 100%;
@@ -1153,43 +933,16 @@ body.cookie-consent-open #ka-chatbot-toggle {
   }
 
   /* Compact form */
-  .hero-contact-form {
-    margin-top: 0.4rem !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
 
   /* Form title - HIDDEN on mobile so it starts directly with the fields */
-  .hero-contact-form h3 {
-    display: none !important;
-  }
 
   /* Form inputs */
-  .hero-contact-form input,
-  .hero-contact-form textarea {
-    padding: 0.55rem 0.75rem !important;
-    font-size: 0.8rem !important;
-    border-radius: 8px !important;
-  }
 
   /* Shorter textarea */
-  .hero-contact-form textarea {
-    rows: 2;
-    height: 58px !important;
-    resize: none !important;
-  }
 
   /* Shorter form gap */
-  .hero-contact-form form {
-    gap: 0.45rem !important;
-  }
 
   /* Compact submit button */
-  .hero-contact-form button[type="submit"] {
-    padding: 0.65rem !important;
-    font-size: 0.88rem !important;
-    border-radius: 8px !important;
-  }
 
   /* Contenedor del hero sin min-height y centrado */
   .hero-content-responsive {
@@ -1697,16 +1450,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
   opacity: 1;
 }
 
-.whatsapp-icon-bg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--accent-blue);
-  border-radius: 50%;
-}
-
 .btn-whatsapp-large .whatsapp-icon-bg {
   margin-right: 4px;
 }
@@ -1752,13 +1495,16 @@ body.cookie-consent-open #ka-chatbot-toggle {
   transform: scale(1.1) translateY(-5px);
 }
 
-/* Smaller, less invasive floating WhatsApp on mobile */
+/* Smaller, less invasive floating WhatsApp on mobile/tablet. bottom must clear
+   the chatbot toggle (56px at bottom:18px in this same range — Chatbot.css), or
+   both buttons land on the same spot on tablets (481-768px; phones ≤480px and
+   desktop ≥769px have their own stacked overrides elsewhere). */
 @media (max-width: 768px) {
   .floating-whatsapp {
     width: 56px;
     height: 56px;
-    bottom: 16px;
-    right: 16px;
+    bottom: 90px;
+    right: 18px;
   }
   .floating-whatsapp svg {
     width: 26px;
@@ -1795,36 +1541,15 @@ body.cookie-consent-open #ka-chatbot-toggle {
   min-height: 100vh;
 }
 
-.blog-header {
-  background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(77, 148, 255, 0.05) 100%);
-  border-bottom: 1px solid rgba(77, 148, 255, 0.2);
-  padding: 4rem 0;
-  margin-bottom: 3rem;
-}
-
-.blog-header h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin-bottom: 1rem;
-  color: #fff;
-  background: linear-gradient(90deg, #fff 0%, var(--accent-cyan) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.blog-header p {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  max-width: 600px;
-}
-
 .blog-section {
   padding: 3rem 0;
 }
 
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* min(100%, 320px): below ~384px viewports the container is narrower than
+     320px — the plain minmax forced a 320px column and horizontal overflow. */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
 }
@@ -1878,7 +1603,8 @@ body.cookie-consent-open #ka-chatbot-toggle {
 .blog-card h2 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  color: #fff;
+  /* Theme token (was #fff) — hardcoded white was unreadable in light mode */
+  color: var(--text-primary);
   line-height: 1.4;
   flex-grow: 1;
 }
@@ -2002,9 +1728,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 @media (max-width: 768px) {
-  .blog-header h1 {
-    font-size: 2rem;
-  }
 
   .blog-grid {
     grid-template-columns: 1fr;
@@ -2083,27 +1806,30 @@ body.cookie-consent-open #ka-chatbot-toggle {
 .carousel-indicators-blog {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0; /* the transparent padding of each dot provides the visual spacing */
   margin-bottom: 2rem;
 }
 
+/* 10px visual dot inside a 24x24px tap target (WCAG 2.5.8) */
 .carousel-indicators-blog .indicator {
+  box-sizing: content-box;
   width: 10px;
   height: 10px;
+  padding: 7px;
   border-radius: 50%;
-  background: rgba(77, 148, 255, 0.2);
-  border: 1px solid rgba(77, 148, 255, 0.3);
+  background-color: rgba(77, 148, 255, 0.2);
+  background-clip: content-box;
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 0;
 }
 
 .carousel-indicators-blog .indicator:hover {
-  background: rgba(77, 148, 255, 0.4);
+  background-color: rgba(77, 148, 255, 0.4);
 }
 
 .carousel-indicators-blog .indicator.active {
-  background: var(--accent-cyan);
+  background-color: var(--accent-cyan);
   box-shadow: 0 0 12px rgba(77, 148, 255, 0.5);
 }
 
@@ -2293,7 +2019,8 @@ body.cookie-consent-open #ka-chatbot-toggle {
 .blog-post-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #fff;
+  /* Theme token (was #fff) — hardcoded white was unreadable in light mode */
+  color: var(--text-primary);
   line-height: 1.3;
 }
 
@@ -2326,14 +2053,14 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 .blog-post-content h2 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.8rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .blog-post-content h3 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.3rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
@@ -2363,7 +2090,7 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 .blog-post-cta h3 {
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .blog-post-cta p {
@@ -2626,26 +2353,29 @@ body.cookie-consent-open #ka-chatbot-toggle {
 .carousel-indicators-testimonials {
   display: flex;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0; /* the transparent padding of each dot provides the visual spacing */
 }
 
+/* 10px visual dot inside a 24x24px tap target (WCAG 2.5.8) */
 .carousel-indicators-testimonials .indicator {
+  box-sizing: content-box;
   width: 10px;
   height: 10px;
+  padding: 7px;
   border-radius: 50%;
-  background: rgba(77, 148, 255, 0.2);
-  border: 1px solid rgba(77, 148, 255, 0.3);
+  background-color: rgba(77, 148, 255, 0.2);
+  background-clip: content-box;
+  border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  padding: 0;
 }
 
 .carousel-indicators-testimonials .indicator:hover {
-  background: rgba(77, 148, 255, 0.4);
+  background-color: rgba(77, 148, 255, 0.4);
 }
 
 .carousel-indicators-testimonials .indicator.active {
-  background: var(--accent-cyan);
+  background-color: var(--accent-cyan);
   box-shadow: 0 0 12px rgba(77, 148, 255, 0.5);
 }
 
@@ -2778,66 +2508,10 @@ body.cookie-consent-open #ka-chatbot-toggle {
     width: 100% !important;
   }
 
-  .hero-contact-form {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 1rem !important;
-  }
-
-  .hero-contact-form input,
-  .hero-contact-form select {
-    width: 100% !important;
-  }
-
-  .hero-contact-form input::placeholder,
-  .hero-contact-form select::placeholder {
-    color: rgba(160, 174, 192, 0.7) !important;
-  }
-
-  .btn-hero-primary {
-    display: none !important;
-  }
-
-  .hero-buttons {
-    display: none !important;
-  }
 }
 
 /* Desktop - show WhatsApp button */
 @media (min-width: 769px) {
-  .hero-contact-form {
-    display: none !important;
-  }
-
-  .hero-buttons {
-    display: flex !important;
-  }
-
-  .hero-buttons> :last-child {
-    display: none !important;
-  }
-
-  .btn-hero-primary {
-    width: 100% !important;
-    max-width: 290px !important;
-    background-color: #4d94ff !important;
-    color: #05050a !important;
-    border: none !important;
-    padding: 1rem 1.5rem !important;
-    border-radius: 12px !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 20px rgba(77, 148, 255, 0.3) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-  }
-
-  .btn-hero-primary:hover {
-    background-color: #4d94ff !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 6px 25px rgba(77, 148, 255, 0.4) !important;
-  }
 
   /* Show floating WhatsApp button on mobile */
   .floating-whatsapp {
@@ -2861,13 +2535,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
 
 /* Small-screen overrides: ensure hero buttons visible and shrink floating/chat controls */
 @media (max-width: 480px) {
-  .hero-buttons {
-    display: flex !important;
-    justify-content: center !important;
-    gap: 0.6rem !important;
-    position: relative !important;
-    z-index: 50 !important;
-  }
 
   .btn-whatsapp-large {
     padding: 10px 16px !important;
@@ -2899,27 +2566,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
 /* ==============================
    Decision CTA Section
    ============================== */
-.decision-cta-section {
-  position: relative;
-  padding: 6rem 0;
-  overflow: hidden;
-  background: linear-gradient(135deg, rgba(5, 5, 10, 0.95) 0%, rgba(8, 8, 18, 0.98) 100%);
-  border-top: 1px solid rgba(77, 148, 255, 0.08);
-  border-bottom: 1px solid rgba(77, 148, 255, 0.08);
-}
-
-.decision-cta-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  height: 400px;
-  background: radial-gradient(ellipse at center, rgba(0, 102, 255, 0.18) 0%, rgba(77, 148, 255, 0.08) 50%, transparent 80%);
-  pointer-events: none;
-  z-index: 0;
-  animation: decision-glow-pulse 5s ease-in-out infinite;
-}
 
 @keyframes decision-glow-pulse {
 
@@ -2935,146 +2581,17 @@ body.cookie-consent-open #ka-chatbot-toggle {
   }
 }
 
-.decision-cta-wrapper {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 1.5rem;
-  max-width: 760px;
-  margin: 0 auto;
-}
-
 /* Badge */
-.decision-cta-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 16px;
-  border-radius: 50px;
-  background: rgba(77, 148, 255, 0.08);
-  border: 1px solid rgba(77, 148, 255, 0.3);
-  color: var(--accent-cyan, #4d94ff);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  backdrop-filter: blur(8px);
-}
 
 /* Title */
-.decision-cta-title {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.5px;
-  color: #fff;
-  margin: 0;
-}
 
 /* Subtitle */
-.decision-cta-subtitle {
-  font-size: 1.05rem;
-  color: var(--text-secondary, rgba(255, 255, 255, 0.55));
-  max-width: 580px;
-  line-height: 1.65;
-  margin: 0;
-}
 
 /* Pills */
-.decision-cta-pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.decision-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 16px;
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.82rem;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: all 0.25s ease;
-}
-
-.decision-pill svg {
-  color: var(--accent-cyan, #4d94ff);
-  flex-shrink: 0;
-}
-
-.decision-pill:hover {
-  border-color: rgba(77, 148, 255, 0.35);
-  background: rgba(77, 148, 255, 0.06);
-  color: #fff;
-}
 
 /* CTA Button */
-.decision-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 0.5rem;
-  padding: 1rem 2.4rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #0066ff 0%, #4d94ff 100%);
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: 0.01em;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-    box-shadow 0.3s ease;
-  box-shadow: 0 6px 30px rgba(0, 102, 255, 0.35),
-    0 2px 8px rgba(77, 148, 255, 0.2);
-}
-
-.decision-cta-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.decision-cta-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 14px 40px rgba(0, 102, 255, 0.5),
-    0 4px 16px rgba(77, 148, 255, 0.35);
-}
-
-.decision-cta-btn:hover::before {
-  opacity: 1;
-}
-
-.decision-cta-btn:active {
-  transform: translateY(-1px) scale(1.01);
-}
 
 /* Pulsing ring animation on the button */
-.decision-cta-btn::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: 17px;
-  background: linear-gradient(135deg, #0066ff, #4d94ff);
-  z-index: -1;
-  opacity: 0;
-  animation: decision-btn-ring 2.5s ease-in-out infinite;
-}
 
 @keyframes decision-btn-ring {
   0% {
@@ -3089,28 +2606,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
   100% {
     opacity: 0;
     transform: scale(1.18);
-  }
-}
-
-@media (max-width: 600px) {
-  .decision-cta-section {
-    padding: 4rem 0;
-  }
-
-  .decision-cta-title {
-    font-size: 1.75rem;
-  }
-
-  .decision-cta-pills {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .decision-cta-btn {
-    width: 100%;
-    justify-content: center;
-    font-size: 1rem;
-    padding: 0.95rem 1.5rem;
   }
 }
 
@@ -3502,12 +2997,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
   }
 }
 
-/* Inline mobile image for feature blocks — hidden on larger screens,
-   where the side image (direct child of .feature-row) is used instead. */
-.mobile-feature-img {
-  display: none;
-}
-
 @media (max-width: 600px) {
   /* Featured Web Dev section: tighter vertical padding; the default 80px
      top/bottom leaves too much empty space on small screens. */
@@ -3516,13 +3005,40 @@ body.cookie-consent-open #ka-chatbot-toggle {
     padding-bottom: 2.5rem;
   }
 
-  /* On phones every feature block reads title → image → paragraph → bullets → CTA:
-     hide the side image and reveal the inline one placed right under the title. */
-  .feature-row > .feature-visual {
-    display: none;
+  /* On phones every feature block reads title → image → paragraph → bullets → CTA
+     with a SINGLE copy of the visual in the DOM (SEO dedup — no hidden duplicate).
+     The text column unwraps (display: contents) so its children and the side
+     visual share one flex column, and `order` slots the visual under the title. */
+  .feature-row {
+    display: flex;
+    flex-direction: column;
+    /* Base rule sets align-items: center (grid block axis); on this flex
+       column that would center children horizontally — reset to stretch. */
+    align-items: stretch;
+    gap: 0; /* spacing comes from the elements' own margins, as before */
   }
-  .feature-row .feature-text .mobile-feature-img {
-    display: block;
+  .feature-row > .feature-text {
+    display: contents;
+  }
+  .feature-text > .feature-eyebrow,
+  .feature-text > h2,
+  .feature-text > h3 {
+    order: -2;
+  }
+  .feature-row > .feature-visual,
+  .feature-row.reverse > .feature-visual {
+    order: -1;
+    width: 100%;
+    min-height: 0; /* plain images keep their natural height on phones */
+    margin-bottom: 1.5rem;
+  }
+  /* The framed photo variant needs an explicit box for its absolute image */
+  .feature-row > .feature-visual.feature-visual-image {
+    min-height: 240px;
+  }
+  /* CTA links keep their natural inline width (flex items would stretch) */
+  .feature-text > a {
+    align-self: flex-start;
   }
 }
 
@@ -3688,15 +3204,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
   max-width: 100%;
 }
 
-.wdd-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--accent-cyan);
-  box-shadow: 0 0 0 0 rgba(77, 148, 255, 0.5);
-  animation: wdd-pulse 2s infinite;
-}
-
 @keyframes wdd-pulse {
   0% { box-shadow: 0 0 0 0 rgba(77, 148, 255, 0.5); }
   70% { box-shadow: 0 0 0 8px rgba(77, 148, 255, 0); }
@@ -3704,75 +3211,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 /* Browser mockup */
-.wdd-browser {
-  border-radius: 14px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-card);
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
-}
-
-.wdd-browser-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.wdd-dot {
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  opacity: 0.7;
-}
-
-.wdd-url {
-  flex: 1;
-  margin-left: 10px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  background: rgba(127, 127, 127, 0.12);
-  font-size: 0.65rem;
-  color: var(--text-secondary);
-}
-
-.wdd-browser-body {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.wdd-sk {
-  border-radius: 5px;
-  background: rgba(127, 127, 127, 0.15);
-}
-
-.wdd-grid3 {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 1rem;
-}
-
-.wdd-score {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  padding: 1rem;
-  border: 1px solid rgba(77, 148, 255, 0.25);
-  background: rgba(77, 148, 255, 0.06);
-}
-
-.wdd-tile {
-  height: 80px;
-  border-radius: 10px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-subtle);
-}
 
 /* Two-column generic layout */
 .wdd-two-col {
@@ -3807,7 +3245,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
   flex-shrink: 0;
 }
 
-.wdd-list-bad li::before { background: #ff6b6b; }
 .wdd-list-good li::before { background: var(--accent-cyan); }
 
 /* Image panels (two-column sections) */
@@ -3836,62 +3273,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 /* Responsive device mockup */
-.wdd-devices {
-  position: relative;
-  height: 320px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.wdd-device {
-  border: 2px solid var(--border-accent, rgba(77, 148, 255, 0.3));
-  background: var(--bg-card);
-  border-radius: 10px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
-}
-
-.wdd-device span {
-  display: block;
-  border-radius: 4px;
-  background: rgba(77, 148, 255, 0.18);
-}
-
-.wdd-device span:first-child {
-  background: var(--accent-gradient);
-}
-
-.wdd-device-desktop {
-  width: 260px;
-  height: 180px;
-}
-.wdd-device-desktop span { height: 16px; }
-.wdd-device-desktop span:first-child { height: 50px; }
-
-.wdd-device-tablet {
-  width: 120px;
-  height: 160px;
-  position: relative;
-  z-index: 2;
-  margin-left: -40px;
-}
-.wdd-device-tablet span { height: 14px; }
-.wdd-device-tablet span:first-child { height: 44px; }
-
-.wdd-device-phone {
-  width: 74px;
-  height: 140px;
-  position: relative;
-  z-index: 3;
-  margin-left: -30px;
-  border-radius: 14px;
-}
-.wdd-device-phone span { height: 12px; }
-.wdd-device-phone span:first-child { height: 36px; }
 
 /* Feature card grid (essentials) */
 .wdd-feature-grid {
@@ -3936,36 +3317,6 @@ body.cookie-consent-open #ka-chatbot-toggle {
 }
 
 /* Advanced features grid */
-.wdd-adv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-.wdd-adv-item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  padding: 1.1rem 1.25rem;
-  border-radius: 12px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
-.wdd-adv-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--accent-cyan);
-  background: rgba(77, 148, 255, 0.1);
-  border: 1px solid rgba(77, 148, 255, 0.2);
-}
 
 /* Why choose us checklist card */
 .wdd-why-card {
@@ -4169,5 +3520,443 @@ body.cookie-consent-open #ka-chatbot-toggle {
   }
 
   .wdd-why-card { padding: 1.75rem; }
-  .wdd-devices { height: 260px; }
+
+}
+/* Interior page headers (Services, Contact, Pricing, FAQs, Blog, 404): give the
+   eyebrow room below the fixed navbar on mobile - the generic 72px .hero override
+   left it touching/clipped (owner report 2026-07). Home keeps its compact 72px. */
+@media (max-width: 768px) {
+  .hero:has(.page-hero-title) {
+    padding-top: 108px !important;
+  }
+}
+
+/* ==========================================================================
+   DOM dedup (SEO) — service-page capability/process blocks render ONCE.
+   Desktop keeps the grid; on mobile the SAME grid becomes a swipeable
+   horizontal scroll-snap carousel (replaces the old MobileAutoCarousel,
+   which kept a hidden duplicate grid + a cloned card track in the DOM).
+   ========================================================================== */
+@media (max-width: 768px) {
+  .wdd-feature-grid,
+  .wdd-process {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 2rem;
+    scrollbar-width: none;
+    /* Full-bleed strip; side padding matches the 2rem container padding */
+    margin: 0 -2rem;
+    padding: 1rem 2rem;
+    /* Fade cards in/out at the edges — same look as the previous carousel */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 28px), transparent 100%);
+  }
+
+  .wdd-feature-grid::-webkit-scrollbar,
+  .wdd-process::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fixed-width cards (consistent size + peek of the next card) */
+  .wdd-feature-grid .wdd-feature-card,
+  .wdd-process .wdd-process-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    user-select: none;
+  }
+
+  /* Cards live in a horizontal strip: never gate them behind the vertical
+     scroll-reveal, or the ones off-screen to the right would stay invisible. */
+  .reveal-ready .wdd-feature-grid .reveal-card,
+  .reveal-ready .wdd-process .reveal-card {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* R3: mobile UX (2026-07) */
+
+/* ── 1.1 Single document scroll ──────────────────────────────────────────────
+   index.css sets body { overflow-x: hidden }. Per the CSS overflow spec, when one
+   axis is not `visible` the other computes visible → auto, so <body> became its
+   OWN scroll container: the page scrolled inside body while html/viewport could
+   still scroll — the "nested scroll" felt on mobile Contact, worst with the
+   keyboard open. `clip` forbids horizontal overflow WITHOUT creating a scroll
+   container, restoring one natural document scroll. App.css loads after
+   index.css, so this wins; older browsers ignore `clip` and keep `hidden`. */
+body {
+  overflow-x: clip;
+}
+
+/* ── 1.1 Contact: one comfortable column on phones ── */
+@media (max-width: 768px) {
+  .contact-container {
+    gap: 2rem;
+  }
+
+  /* The desktop 2.5rem card padding left ~236px-wide inputs on a 380px screen */
+  .contact-form {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ── 1.3 Blog index (/blog, /es/blog) ──
+   .blog-card-image never had sizing rules: the file rendered at natural size and
+   was clipped by the card. Fixed height + cover keeps every card image uniform
+   and inside the card at all widths. */
+.blog-card-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+/* Article hero image (was an inline 400px height in BlogPost.jsx) */
+.blog-post-hero-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  /* Blog index: clean single column with consistent rhythm */
+  .blog-section {
+    padding: 1.5rem 0 2.5rem;
+  }
+
+  .blog-grid {
+    gap: 1.25rem;
+  }
+
+  .blog-card {
+    padding: 1.25rem;
+  }
+
+  .blog-card-image {
+    height: 170px;
+    margin-bottom: 1rem;
+  }
+
+  .blog-card h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-excerpt {
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+  }
+
+  .blog-meta {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Article template */
+  .blog-post-hero-img {
+    height: 220px;
+  }
+
+  .blog-post-article {
+    padding: 2rem 0;
+  }
+
+  /* Overrides the 1.5rem set in the older ≤640px block (this file loads later) —
+     1.6rem reads better on 380-430px screens */
+  .blog-post-title {
+    font-size: 1.6rem;
+  }
+
+  .blog-post-info {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .blog-post-content ul {
+    margin-left: 1.25rem;
+  }
+
+  .blog-post-cta {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ── 1.4 Clients: case-study cards (Problem → Solution → Result → live link) ── */
+.clients-projects-section {
+  padding-top: clamp(5rem, 7vw, 6.75rem);
+}
+
+.clients-projects-title {
+  margin: 0 0 0.8rem;
+  color: var(--text-primary);
+  font-size: clamp(2.25rem, 3.2vw, 2.75rem);
+  line-height: 1.15;
+  text-align: left;
+}
+
+.clients-projects-intro {
+  max-width: 620px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  opacity: 0.82;
+  text-align: left;
+}
+
+.clients-projects-mobile-heading {
+  display: none;
+}
+
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.case-study-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.case-study-card:hover {
+  border-color: rgba(77, 148, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 102, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+.case-study-card--featured {
+  border-color: rgba(77, 148, 255, 0.48);
+  box-shadow: 0 16px 42px rgba(0, 102, 255, 0.14);
+}
+
+.case-study-card--featured:hover {
+  border-color: rgba(77, 148, 255, 0.72);
+  box-shadow: 0 20px 48px rgba(0, 102, 255, 0.2);
+}
+
+.case-study-visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.96 / 1;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.case-study-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  background: var(--bg-secondary);
+  transition: filter 0.3s ease;
+}
+
+.case-study-visual:hover img,
+.case-study-visual:focus-visible img {
+  filter: brightness(1.04);
+}
+
+.case-study-visual:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: -3px;
+}
+
+.case-study-visual-label {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(5, 8, 16, 0.82);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-size: 0.75rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.case-study-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.45rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.case-study-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.case-study-service {
+  padding: 4px 12px;
+  border-radius: 20px;
+  background: rgba(77, 148, 255, 0.12);
+  border: 1px solid rgba(77, 148, 255, 0.25);
+  color: var(--accent-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.85rem;
+}
+
+.case-study-head h3 {
+  font-size: 1.3rem;
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+}
+
+.case-study-client {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.case-study-summary {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.case-study-block h4 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-text);
+  margin: 0 0 0.35rem;
+}
+
+.case-study-block p {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Optional highlighted metric line — rendered only when the content provides it */
+.case-study-metric {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: rgba(77, 148, 255, 0.08);
+  border: 1px solid rgba(77, 148, 255, 0.25);
+  color: var(--accent-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.case-study-live {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 992px) {
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .clients-page-hero {
+    min-height: auto !important;
+    padding-top: 94px !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .clients-page-hero .container {
+    text-align: left !important;
+  }
+
+  .clients-page-hero .page-hero-title {
+    margin-bottom: 0.7rem !important;
+    font-size: 1.75rem !important;
+    line-height: 1.12 !important;
+    text-align: left !important;
+  }
+
+  .clients-page-hero .hero-subtitle {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 !important;
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+    text-align: left !important;
+  }
+
+  .clients-hero-eyebrow {
+    display: none !important;
+  }
+
+  .clients-projects-section {
+    padding-top: 1.5rem;
+  }
+
+  .clients-projects-title,
+  .clients-projects-intro {
+    display: none;
+  }
+
+  .clients-projects-mobile-heading {
+    display: block;
+    margin: 0 0 1rem;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  .case-studies-grid {
+    margin-top: 0;
+    gap: 1.4rem;
+  }
+
+  .case-study-content {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .case-study-visual-label {
+    right: 0.65rem;
+    bottom: 0.65rem;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.68rem;
+  }
+
+  /* Full-width tap target on phones */
+  .case-study-live {
+    align-self: stretch;
+  }
+
 }

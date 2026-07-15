@@ -2,13 +2,31 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
-import { getLocalizedPath } from '../../app/route-manifest.js';
+import { getLocalizedPath, articles } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
+
+// Minimal inline-markdown support for article bodies: [text](url). Internal URLs
+// (starting with "/") become client-side <Link>s; external ones open in a new tab.
+const renderInline = (text) =>
+  text.split(/(\[[^\]]+\]\([^()\s]+\))/g).map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^()\s]+)\)$/);
+    if (!match) return part;
+    const [, label, url] = match;
+    return url.startsWith('/') ? (
+      <Link key={i} to={url}>{label}</Link>
+    ) : (
+      <a key={i} href={url} target="_blank" rel="noopener noreferrer">{label}</a>
+    );
+  });
 
 const BlogPost = () => {
   const { slug } = useParams();
   const { locale, content } = useLocalizedContent();
   const t = content.blog;
-  const post = blogPosts.find((p) => p.slug === slug);
+  // Slugs are localized (EN at /blog/<en>, ES at /es/blog/<es>): resolve the
+  // article through the manifest so either slug maps back to the shared data entry.
+  const article = articles.find((a) => a.en === slug || a.es === slug);
+  const post = blogPosts.find((p) => p.slug === (article ? article.en : slug));
   const blogIndex = getLocalizedPath('blog', locale);
 
   if (!post) {
@@ -27,13 +45,15 @@ const BlogPost = () => {
     );
   }
 
-  const lp = t.posts[post.slug];
+  // Locale content is keyed by that locale's own slug (ES keys are the ES slugs).
+  const lp = t.posts[article ? article[locale] : post.slug];
 
   return (
     <div className="blog-page">
-      {/* Hero Image */}
+      {/* Hero Image — sized via .blog-post-hero-img (App.css) so the height can
+          shrink on phones; an inline height can't be overridden by media queries. */}
       <div className="blog-post-hero">
-        <img src={post.image} alt={lp.title} style={{ width: '100%', height: '400px', objectFit: 'cover' }} />
+        <img src={post.image} alt={lp.imageAlt || `${t.article.imageAltPrefix} ${lp.title}`} className="blog-post-hero-img" />
       </div>
 
       {/* Article Content */}
@@ -82,11 +102,13 @@ const BlogPost = () => {
                 );
               }
               if (paragraph.startsWith('-')) {
+                // Indent comes from .blog-post-content ul (App.css): 2rem on
+                // desktop, reduced on phones — do not hardcode it inline.
                 return (
-                  <ul key={idx} style={{ marginLeft: '2rem', marginBottom: '1rem', color: 'var(--text-secondary)' }}>
+                  <ul key={idx} style={{ marginBottom: '1rem', color: 'var(--text-secondary)' }}>
                     {paragraph.split('\n').map((item, i) => (
                       <li key={i} style={{ marginBottom: '0.5rem', lineHeight: '1.6' }}>
-                        {item.replace('-', '').trim()}
+                        {renderInline(item.replace('-', '').trim())}
                       </li>
                     ))}
                   </ul>
@@ -94,7 +116,7 @@ const BlogPost = () => {
               }
               return (
                 <p key={idx} style={{ marginBottom: '1.5rem', lineHeight: '1.8', color: 'var(--text-secondary)', fontSize: '1.05rem' }}>
-                  {paragraph}
+                  {renderInline(paragraph)}
                 </p>
               );
             })}
@@ -117,7 +139,7 @@ const BlogPost = () => {
             <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
               {t.article.ctaCopy}
             </p>
-            <a href="https://wa.me/584144735431" target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
+            <a href={`https://wa.me/${BUSINESS_WHATSAPP}`} target="_blank" rel="noopener noreferrer" className="btn-whatsapp-large">
               {t.article.ctaButton}
             </a>
           </div>

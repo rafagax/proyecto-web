@@ -18,12 +18,14 @@ import {
   BarChart3,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import MobileAutoCarousel from '../components/MobileAutoCarousel';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
+import { BUSINESS_WHATSAPP } from '../config/forms.js';
 
-const WHATSAPP_PHONE = '584144735431';
-const wa = (msg) => `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+const wa = (msg) => `https://wa.me/${BUSINESS_WHATSAPP}?text=${encodeURIComponent(msg)}`;
+
+// Discreet secondary-channel link shown under the hero CTA.
+const altCtaStyle = { color: 'var(--text-secondary)', fontSize: '0.92rem', textDecoration: 'underline', textUnderlineOffset: 4 };
 
 const FeatureCard = ({ Icon, title, text, reveal = false }) => (
   <div className={`wdd-feature-card${reveal ? ' reveal-card' : ''}`}>
@@ -161,10 +163,33 @@ const AiAutomationChatbotsDetail = () => {
   const { locale, content } = useLocalizedContent();
   const t = content.serviceAi;
   const contactPath = getLocalizedPath('contact', locale);
+  // Deep link to the localized contact form with this service preselected (contract C2).
+  const contactHref = `${contactPath}?service=ai-automation`;
+  const isEs = locale === 'es';
   const others = otherDefs.map((d, i) => ({ ...d, ...t.others[i] }));
   const s0 = t.sections[0];
   const s1 = t.sections[1];
   const s2 = t.sections[2];
+
+  // Market-aware CTAs: English visitors (US/UK primary market) get the contact
+  // form as the primary action with WhatsApp as a secondary option; Spanish
+  // visitors keep WhatsApp primary with the form as the alternative.
+  const primaryCta = (label, waQuote) =>
+    isEs ? (
+      <a href={wa(waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
+        {label} <ArrowRight size={16} />
+      </a>
+    ) : (
+      <Link to={contactHref} className="hero-advisory-btn" style={{ margin: 0 }}>
+        {label} <ArrowRight size={16} />
+      </Link>
+    );
+  const altCta = (waQuote) =>
+    isEs ? (
+      <Link to={contactHref} style={altCtaStyle}>{t.ctaAlt.form}</Link>
+    ) : (
+      <a href={wa(waQuote)} target="_blank" rel="noopener noreferrer" style={altCtaStyle}>{t.ctaAlt.whatsapp}</a>
+    );
 
   return (
     <div className="animate-fade-in wdd-page">
@@ -187,9 +212,8 @@ const AiAutomationChatbotsDetail = () => {
             </div>
 
             <div className="wdd-hero-cta">
-              <a href={wa(t.hero.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {t.hero.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(t.hero.cta, t.hero.waQuote)}
+              <div style={{ marginTop: '0.9rem' }}>{altCta(t.hero.waQuote)}</div>
             </div>
           </div>
         </div>
@@ -209,9 +233,7 @@ const AiAutomationChatbotsDetail = () => {
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {s0.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
-              <a href={wa(s0.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {s0.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(s0.cta, s0.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img">
               <WaChat label={s0.chat.label} assistantName={t.assistantName} online={t.online} messages={buildMsgs(1, s0.chat.messages)} />
@@ -234,9 +256,7 @@ const AiAutomationChatbotsDetail = () => {
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {s1.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
-              <a href={wa(s1.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {s1.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(s1.cta, s1.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img">
               <WaChat label={s1.chat.label} assistantName={t.assistantName} online={t.online} messages={buildMsgs(2, s1.chat.messages)} />
@@ -259,9 +279,7 @@ const AiAutomationChatbotsDetail = () => {
               <ul className="wdd-list wdd-list-good" style={{ marginBottom: '2rem' }}>
                 {s2.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
-              <a href={wa(s2.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {s2.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(s2.cta, s2.waQuote)}
             </div>
             <div className="reveal-right wdd-col-img">
               <TrainPanel label={s2.train.label} title={s2.train.title} subtitle={s2.train.subtitle} items={s2.train.items} />
@@ -282,17 +300,13 @@ const AiAutomationChatbotsDetail = () => {
             </p>
           </div>
 
-          <div className="wdd-feature-grid wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-feature-grid reveal-group">
             {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} reveal />)}
           </div>
-          <MobileAutoCarousel>
-            {t.capabilities.items.map((c, i) => <FeatureCard key={c.title} Icon={capabilityIcons[i]} title={c.title} text={c.text} />)}
-          </MobileAutoCarousel>
 
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa(t.capabilities.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              {t.capabilities.cta} <ArrowRight size={16} />
-            </a>
+            {primaryCta(t.capabilities.cta, t.capabilities.waQuote)}
           </div>
         </div>
       </section>
@@ -308,9 +322,7 @@ const AiAutomationChatbotsDetail = () => {
               <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                 {t.why.copy}
               </p>
-              <a href={wa(t.why.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                {t.why.cta} <ArrowRight size={16} />
-              </a>
+              {primaryCta(t.why.cta, t.why.waQuote)}
             </div>
             <div className="reveal-right">
               <div className="wdd-why-card">
@@ -334,16 +346,12 @@ const AiAutomationChatbotsDetail = () => {
               {t.process.heading.before}<span className="text-gradient">{t.process.heading.accent}</span>{t.process.heading.after}
             </h2>
           </div>
-          <div className="wdd-process wdd-only-desktop reveal-group">
+          {/* Single grid — desktop grid, horizontal scroll-snap carousel on mobile (CSS only, no duplicated DOM) */}
+          <div className="wdd-process reveal-group">
             {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} reveal />)}
           </div>
-          <MobileAutoCarousel speed={0.95}>
-            {t.process.steps.map((p, i) => <ProcessCard key={p.title} n={String(i + 1).padStart(2, '0')} title={p.title} text={p.text} />)}
-          </MobileAutoCarousel>
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <a href={wa(t.process.waQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-              {t.process.cta} <ArrowRight size={16} />
-            </a>
+            {primaryCta(t.process.cta, t.process.waQuote)}
           </div>
         </div>
       </section>
@@ -361,12 +369,16 @@ const AiAutomationChatbotsDetail = () => {
                 {t.finalCta.copy}
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center' }}>
-                <a href={wa(t.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="hero-advisory-btn" style={{ margin: 0 }}>
-                  {t.finalCta.primary} <ArrowRight size={16} />
-                </a>
-                <Link to={contactPath} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
-                  {t.finalCta.secondary}
-                </Link>
+                {primaryCta(t.finalCta.primary, t.finalCta.primaryWaQuote)}
+                {isEs ? (
+                  <Link to={contactHref} className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                    {t.finalCta.secondary}
+                  </Link>
+                ) : (
+                  <a href={wa(t.finalCta.primaryWaQuote)} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ padding: '14px 34px', fontSize: '1rem' }}>
+                    {t.ctaAlt.whatsapp}
+                  </a>
+                )}
               </div>
             </div>
           </div>

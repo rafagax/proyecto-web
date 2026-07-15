@@ -2,17 +2,24 @@
 // as en/serviceAi.js. Message times/direction and icons stay in the component.
 export default {
   meta: {
-    title: 'Automatización con IA y chatbots | Webraf',
+    title: 'Agencia de automatización con IA y chatbots 24/7 | Webraf',
     description:
-      'Servicios de automatización con IA y chatbots para negocios que quieren respuestas más rápidas, calificación de contactos, agendamiento de citas y atención al cliente 24/7.',
+      'Agencia de automatización con IA: chatbots para empresas, WhatsApp automático, citas y atención 24/7. Convierte más contactos en clientes. Escríbenos.',
     ogTitle: 'Automatización con IA y chatbots que te ayudan a responder más rápido y convertir más contactos',
     schemaName: 'Automatización con IA y chatbots',
+  },
+  // Secondary-action labels for the market-aware CTAs (contract C2): Spanish
+  // pages lead with WhatsApp and offer the contact form as the alternative;
+  // English pages lead with the form and offer WhatsApp.
+  ctaAlt: {
+    whatsapp: '¿Prefieres WhatsApp? Escríbenos',
+    form: '¿Prefieres el formulario? Cuéntanos tu proyecto',
   },
   assistantName: 'Asistente de IA',
   online: 'en línea',
   hero: {
-    title: { before: 'Automatización con IA y ', accent: 'chatbots', after: '' },
-    subtitle: 'Creamos chatbots con IA y automatización de WhatsApp que responden al instante, califican contactos y atienden a tus clientes 24/7 — incluso mientras duermes.',
+    title: { before: 'Tu agencia de ', accent: 'automatización con IA', after: '' },
+    subtitle: 'Creamos chatbots con IA para empresas y automatización de WhatsApp que responden al instante, califican contactos y atienden a tus clientes 24/7 — incluso mientras duermes.',
     cta: 'Crea mi asistente de IA',
     waQuote: 'Hola, me gustaría crear un asistente de IA para mi negocio.',
     chat: {
@@ -73,7 +80,7 @@ export default {
   },
   why: {
     heading: { before: '¿Por qué trabajar con nuestro ', accent: 'equipo de IA?', after: '' },
-    copy: 'Creamos una IA que realmente encaja con tu negocio — entrenada en tus servicios, conectada a WhatsApp y ajustada con el tiempo. Respuestas rápidas, contactos calificados y una transferencia a una persona cuando cuenta.',
+    copy: 'Somos una agencia de automatización con IA que crea asistentes que realmente encajan con tu negocio — entrenados en tus servicios, conectados a WhatsApp y ajustados con el tiempo. Respuestas rápidas, contactos calificados y una transferencia a una persona cuando cuenta.',
     cta: 'Hablemos de automatización',
     waQuote: 'Hola, me gustaría hablar sobre automatizar mi negocio con IA.',
     points: ['IA personalizada y entrenada en tu negocio', 'Respuestas en segundos, 24/7', 'Califica contactos automáticamente', 'Transferencia a una persona cuando importa', 'Ajuste y soporte continuos'],

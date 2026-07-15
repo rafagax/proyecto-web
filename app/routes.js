@@ -41,6 +41,7 @@ export default [
   route('privacy', 'routes/privacy.jsx', { id: 'privacy-en' }),
   route('es/privacidad', 'routes/privacy.jsx', { id: 'privacy-es' }),
   // Catch-all for unknown URLs → localized NotFound. The real HTTP 404 status is
-  // served by Vercel from the prerendered /404 and /es/404 documents (vercel.json).
+  // served by Apache via ErrorDocument (public/.htaccess → /404.html for EN;
+  // the postbuild-generated es/.htaccess → /es/404/index.html for Spanish URLs).
   route('*', 'routes/not-found.jsx'),
 ];

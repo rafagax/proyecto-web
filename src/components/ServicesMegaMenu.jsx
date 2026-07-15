@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Code, TrendingUp, BarChart3, Bot, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
@@ -38,6 +38,9 @@ export const ServicesMegaMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
   const wrapperRef = useRef(null);
+  // True while the current tap started on a touch pointer with the menu closed
+  // (set on pointerdown, i.e. before any emulated mouseenter can open it).
+  const touchOpensMenuRef = useRef(false);
 
   const handleMouseEnter = () => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
@@ -67,6 +70,39 @@ export const ServicesMegaMenu = () => {
     if (e.key === 'Escape') setIsOpen(false);
   };
 
+  // Touch support (wide touch screens show the desktop navbar): the first tap on
+  // the trigger opens the dropdown instead of navigating; a second tap follows the
+  // link. ARIA APG "disclosure navigation" pattern.
+  const handleTriggerPointerDown = (e) => {
+    touchOpensMenuRef.current = e.pointerType === 'touch' && !isOpen;
+  };
+
+  const handleTriggerClick = (e) => {
+    if (touchOpensMenuRef.current) {
+      e.preventDefault();
+      touchOpensMenuRef.current = false;
+      setIsOpen(true);
+    }
+  };
+
+  // While open: close on tap/click outside and on Escape pressed anywhere
+  // (the wrapper's onKeyDown only fires while focus is inside the menu).
+  useEffect(() => {
+    if (!isOpen) return undefined;
+    const handleOutsidePointerDown = (e) => {
+      if (!wrapperRef.current?.contains(e.target)) setIsOpen(false);
+    };
+    const handleDocumentKeyDown = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    document.addEventListener('pointerdown', handleOutsidePointerDown);
+    document.addEventListener('keydown', handleDocumentKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handleOutsidePointerDown);
+      document.removeEventListener('keydown', handleDocumentKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <div
       ref={wrapperRef}
@@ -86,7 +122,6 @@ export const ServicesMegaMenu = () => {
         style={{
           background: 'transparent',
           border: 'none',
-          color: 'var(--text-secondary)',
           fontSize: '0.92rem',
           fontWeight: '500',
           letterSpacing: '0.3px',
@@ -98,8 +133,8 @@ export const ServicesMegaMenu = () => {
           textDecoration: 'none',
           transition: 'all 0.3s ease',
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.color = '#fff'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-secondary)'; }}
+        onPointerDown={handleTriggerPointerDown}
+        onClick={handleTriggerClick}
       >
         {nav.services}
         <ChevronDown size={14} style={{ transition: 'transform 0.3s ease', transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
@@ -112,7 +147,8 @@ export const ServicesMegaMenu = () => {
             <Link key={item.path} to={item.path} className="services-dropdown-item">
               <span className="services-dropdown-icon">{item.icon}</span>
               <span className="services-dropdown-text">
-                <h4>{item.title}</h4>
+                {/* Not a heading: nav menu items must stay out of the document outline. */}
+                <span className="services-dropdown-item-title">{item.title}</span>
                 <p>{item.description}</p>
               </span>
               <ChevronRight size={16} className="services-dropdown-arrow" />
@@ -122,6 +158,16 @@ export const ServicesMegaMenu = () => {
       )}
 
       <style>{`
+        /* Trigger color lives here (not inline) so hover uses the theme token:
+           a hardcoded #fff turned invisible on the light theme's white navbar. */
+        .services-trigger {
+          color: var(--text-secondary);
+        }
+
+        .services-trigger:hover {
+          color: var(--text-primary);
+        }
+
         .services-dropdown {
           position: absolute;
           top: calc(100% + 12px);
@@ -179,7 +225,8 @@ export const ServicesMegaMenu = () => {
           min-width: 0;
         }
 
-        .services-dropdown-text h4 {
+        .services-dropdown-text .services-dropdown-item-title {
+          display: block;
           font-size: 0.92rem;
           font-weight: 600;
           color: var(--text-primary);
