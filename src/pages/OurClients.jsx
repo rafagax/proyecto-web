@@ -4,7 +4,7 @@ import { useLocalizedContent } from '../i18n/useLocalizedContent.js';
 import { getLocalizedPath } from '../../app/route-manifest.js';
 import pediatricWebsite from '../assets/pediatra.webp';
 import lawyerWebsite from '../assets/abogado.webp';
-import swimwearWebsite from '../assets/traje de baño.webp';
+import swimwearWebsite from '../assets/bikinis-orgina.webp';
 import briochefWebsite from '../assets/briocheff.webp';
 import farmavitalWebsite from '../assets/Farmavital.webp';
 import stageMiamiWebsite from '../assets/stagemiami.webp';

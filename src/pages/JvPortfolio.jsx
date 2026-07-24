@@ -17,7 +17,7 @@ import pediatricWebsite from '../assets/pediatra.webp';
 import lawyerWebsite from '../assets/abogado.webp';
 import briochefWebsite from '../assets/briocheff.webp';
 import farmavitalWebsite from '../assets/Farmavital.webp';
-import swimwearWebsite from '../assets/traje de baño.webp';
+import swimwearWebsite from '../assets/bikinis-orgina.webp';
 
 const PROOF_IMAGES = [kpiRevenue, kpiOperations, kpiCallCenter];
 
